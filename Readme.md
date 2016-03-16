@@ -4,3 +4,4 @@ Authors:
 Odell Dotson
 Yu-sen Wu
 Ethan Prihar
+Vishal (V) Rathi
