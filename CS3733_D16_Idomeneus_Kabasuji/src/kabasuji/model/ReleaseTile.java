@@ -1,34 +1,30 @@
 package kabasuji.model;
 
-public class ReleaseTile extends PlayableTile
-{
+public class ReleaseTile extends PlayableTile {
 	int number;
 	int color;
-	
-	public ReleaseTile()
-	{
+
+	// Constructor for Release Tile
+	public ReleaseTile(int number, int color) {
 		super();
-		color = 0;
-		number = 0;
+		this.color = color;
+		this.number = number;
 	}
+
 	
-	public int getColor()
-	{
+	public int getColor() {
 		return color;
 	}
-	
-	public void setColor(int c)
-	{
+
+	public void setColor(int c) {
 		color = c;
 	}
-	
-	public int getNumber()
-	{
+
+	public int getNumber() {
 		return number;
 	}
-	
-	public void setNumber(int n)
-	{
+
+	public void setNumber(int n) {
 		number = n;
 	}
 }
