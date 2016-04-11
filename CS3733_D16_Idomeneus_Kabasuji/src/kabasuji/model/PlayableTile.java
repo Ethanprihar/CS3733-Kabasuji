@@ -1,6 +1,6 @@
 package kabasuji.model;
 
-public class PlayableTile extends NullTile
+public class PlayableTile extends BlankTile
 {
 	boolean hint;
 	Piece piece;
