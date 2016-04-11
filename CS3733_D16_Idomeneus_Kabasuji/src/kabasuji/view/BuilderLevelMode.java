@@ -15,16 +15,16 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class LevelSelect extends JPanel {
+public class BuilderLevelMode extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public LevelSelect() {
+	public BuilderLevelMode() {
 		setBackground(SystemColor.textHighlight);
 		setBorder(new CompoundBorder());
 		
-		JLabel lblKabasuji = new JLabel("Kabasuji Level Select");
+		JLabel lblKabasuji = new JLabel("Builder Level Select");
 		lblKabasuji.setHorizontalAlignment(SwingConstants.CENTER);
 		lblKabasuji.setFont(new Font("Tahoma", Font.BOLD, 73));
 		
