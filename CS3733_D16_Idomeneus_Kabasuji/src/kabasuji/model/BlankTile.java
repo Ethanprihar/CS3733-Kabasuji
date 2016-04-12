@@ -7,6 +7,11 @@ public class BlankTile
 	// this method will be used to determine if a tile is part of the board
 	public boolean isValid()
 	{
-		return true;
+		return false;
+	}
+	
+	public Piece getPiece()
+	{
+		return null;
 	}
 }

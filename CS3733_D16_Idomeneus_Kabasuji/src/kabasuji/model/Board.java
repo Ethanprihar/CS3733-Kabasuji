@@ -12,20 +12,54 @@ public abstract class Board {
 		this.tiles = t;
 	}
 	
-	void addPiece()
-	{}
+	// This method adds a piece to the board
+	// using a tile on the board as the anchor point
+	// for the overlapping of the piece's matrix of
+	// tiles onto the board's matrix of tiles.
+	// Only tiles in the piece's matrix that contain
+	// a piece will be copied to the board's matrix.
+	public void addPiece(Piece p, BlankTile start)
+	{
+		for(int i=0; i<tiles.length; i++)
+		{
+			for(int j=0; j<tiles.length; j++)
+			{
+				if(tiles[i][j] == start)
+				{
+					for(int y=0; y<p.getDim(); y++)
+					{
+						for(int x=0; x<p.getDim(); x++)
+						{
+							if(p.getTile(y,x).getPiece() != null)
+								tiles[i+y][j+x] = p.getTile(y,x);
+						}
+					}
+				}
+			}
+		}
+		pieces.add(p);		
+	}
 	
-	void removePiece()
-	{}
+	public void removePiece(Piece p)
+	{
+		for(int i=0; i<tiles.length; i++)
+		{
+			for(int j=0; j<tiles.length; j++)
+			{
+				if(tiles[i][j].getPiece() != null && tiles[i][j].getPiece() == p)
+				{
+					tiles[i][j] = new PlayableTile();
+				}
+			}
+		}
+		pieces.remove(p);
+	}
 	
-	boolean canAddPiece()
-	{return true;}
+	public abstract boolean canAddPiece();
 	
-	boolean canRemovePiece()
-	{return true;}
+	public abstract boolean canRemovePiece();
 	
-	boolean isComplete()
-	{return true;}
+	public abstract boolean isComplete();
 	
 	// Sets the selected piece in memory to the given  newly selected piece.
 	void selectPiece(Piece p)
