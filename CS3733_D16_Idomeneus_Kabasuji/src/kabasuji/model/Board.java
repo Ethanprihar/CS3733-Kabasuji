@@ -3,11 +3,11 @@ package kabasuji.model;
 import java.util.ArrayList;
 
 public abstract class Board {
-	BlankTile tiles[][] = new BlankTile[12][12];
+	Tile tiles[][] = new Tile[12][12];
 	ArrayList<Piece> pieces = new ArrayList<Piece>();
 	Piece selectedPiece; //The selected piece. May be null.
 	
-	Board(BlankTile[][] t)
+	Board(Tile[][] t)
 	{
 		this.tiles = t;
 	}
@@ -18,7 +18,7 @@ public abstract class Board {
 	// tiles onto the board's matrix of tiles.
 	// Only tiles in the piece's matrix that contain
 	// a piece will be copied to the board's matrix.
-	public void addPiece(Piece p, BlankTile start)
+	public void addPiece(Piece p, Tile start)
 	{
 		for(int i=0; i<tiles.length; i++)
 		{
@@ -30,8 +30,9 @@ public abstract class Board {
 					{
 						for(int x=0; x<p.getDim(); x++)
 						{
-							if(p.getTile(y,x).getPiece() != null)
-								tiles[i+y][j+x] = p.getTile(y,x);
+							if(p.getTile(y,x).isValid())
+								tiles[i+y][j+x].setPiece(p);
+								tiles[i+y][j+x].setValid(true);
 						}
 					}
 				}
@@ -46,16 +47,17 @@ public abstract class Board {
 		{
 			for(int j=0; j<tiles.length; j++)
 			{
-				if(tiles[i][j].getPiece() != null && tiles[i][j].getPiece() == p)
+				if(tiles[i][j].getPiece() == p)
 				{
-					tiles[i][j] = new Tile();
+					tiles[i][j].setPiece(null);
+					tiles[i][j].setValid(false);
 				}
 			}
 		}
 		pieces.remove(p);
 	}
 	
-	public abstract boolean canAddPiece();
+	public abstract boolean canAddPiece(Piece p, Tile start);
 	
 	public abstract boolean canRemovePiece();
 	
