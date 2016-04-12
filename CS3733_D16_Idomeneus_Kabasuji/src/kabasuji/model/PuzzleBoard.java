@@ -2,7 +2,7 @@ package kabasuji.model;
 
 public class PuzzleBoard extends Board {
 	
-	PuzzleBoard(BlankTile[][] t) {
+	PuzzleBoard(Tile[][] t) {
 		super(t);
 	}
 	
@@ -17,8 +17,24 @@ public class PuzzleBoard extends Board {
 	}
 
 	@Override
-	public boolean canAddPiece() {
-		// TODO Auto-generated method stub
+	public boolean canAddPiece(Piece p, Tile start) {
+		for(int i=0; i<tiles.length; i++)
+		{
+			for(int j=0; j<tiles.length; j++)
+			{
+				if(tiles[i][j] == start)
+				{
+					for(int y=0; y<p.getDim(); y++)
+					{
+						for(int x=0; x<p.getDim(); x++)
+						{
+							if( !(p.getTile(y,x).isValid()))
+								tiles[i+y][j+x] = p.getTile(y,x);
+						}
+					}
+				}
+			}
+		}
 		return false;
 	}
 

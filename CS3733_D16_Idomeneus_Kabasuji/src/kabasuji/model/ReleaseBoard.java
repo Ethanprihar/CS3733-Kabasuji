@@ -2,12 +2,12 @@ package kabasuji.model;
 
 public class ReleaseBoard extends Board {
 	
-	ReleaseBoard(BlankTile[][] t) {
+	ReleaseBoard(Tile[][] t) {
 		super(t);
 	}
 
 	@Override
-	public boolean canAddPiece() {
+	public boolean canAddPiece(Piece p, Tile start) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -41,20 +41,18 @@ public class ReleaseBoard extends Board {
 		{
 			for(int j=0; j<tiles.length; j++)
 			{
-				if(tiles[i][j] instanceof ReleaseTile) // TODO We shouldn't need instanceof but maybe this was designed poorly?
+
+				if (tiles[i][j].getColor() == 1)
 				{
-					if (tiles[i][j].getColor() == 0)
-					{
-						color0Released[tiles[i][j].getNumber()] = 1;
-					}
-					else if (tiles[i][j].getColor() == 1)
-					{
-						color1Released[tiles[i][j].getNumber()] = 1;
-					}
-					else if (tiles[i][j].getColor() == 2)
-					{
-						color2Released[tiles[i][j].getNumber()] = 1;
-					}
+					color0Released[tiles[i][j].getNumber()-1] = 1;
+				}
+				else if (tiles[i][j].getColor() == 2)
+				{
+					color1Released[tiles[i][j].getNumber()-1] = 1;
+				}
+				else if (tiles[i][j].getColor() == 3)
+				{
+					color2Released[tiles[i][j].getNumber()-1] = 1;
 				}
 			}
 		}
