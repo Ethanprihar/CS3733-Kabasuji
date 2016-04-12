@@ -12,12 +12,15 @@ public abstract class Board {
 		this.tiles = t;
 	}
 	
-	// This method adds a piece to the board
-	// using a tile on the board as the anchor point
-	// for the overlapping of the piece's matrix of
-	// tiles onto the board's matrix of tiles.
-	// Only tiles in the piece's matrix that contain
-	// a piece will be copied to the board's matrix.
+	/**
+	 * 
+	 * This method adds a piece to the board
+	 * using a tile on the board as the anchor point
+	 * for the overlapping of the piece's matrix of
+	 * tiles onto the board's matrix of tiles.
+	 * Only tiles in the piece's matrix that contain
+	 * a piece will be copied to the board's matrix.
+	 */
 	public void addPiece(Piece p, Tile start)
 	{
 		for(int i=0; i<tiles.length; i++)
@@ -41,6 +44,10 @@ public abstract class Board {
 		pieces.add(p);		
 	}
 	
+	
+	/**
+	 * Removes a piece from the board.
+	 */
 	public void removePiece(Piece p)
 	{
 		for(int i=0; i<tiles.length; i++)
@@ -57,9 +64,47 @@ public abstract class Board {
 		pieces.remove(p);
 	}
 	
-	public abstract boolean canAddPiece(Piece p, Tile start);
+	/** 
+	 * Can piece be added to the board, given target tile as anchor
+	 * 
+	 */
+	public boolean canAddPiece(Piece p, Tile start)
+	{
+		for(int i=0; i<tiles.length; i++)
+		{
+			for(int j=0; j<tiles.length; j++)
+			{
+				if(tiles[i][j] == start)
+				{
+					for(int y=0; y<p.getDim(); y++)
+					{
+						for(int x=0; x<p.getDim(); x++)
+						{
+							try { //If we're trying to place a piece out of range of the board
+							if(((p.getTile(y,x).isValid()) && !(tiles[i+y][j+x].isValid())))
+								return false;
+							else if(((p.getTile(y,x).isValid()) && !(tiles[i+y][j+x].getPiece() == null)))
+								return false;
+							} catch (IndexOutOfBoundsException e) 
+							{
+								return false;
+							}
+						}
+					}
+				}
+			}
+		}
+		return true;
+	}
 	
-	public abstract boolean canRemovePiece();
+	/**
+	 * Default false, puzzle overrides.
+	 */
+	public boolean canRemovePiece()
+	{
+		return false;
+	}
+	
 	
 	public abstract boolean isComplete();
 	
@@ -72,9 +117,9 @@ public abstract class Board {
 	/**
 	 * Common to both Puzzle and Lightning boards.
 	 * Release has it's own override.
-	 * @return
 	 */
 	public int getStars() {
+
 		int uncoveredTiles = 0;
 		for(int i=0; i<tiles.length; i++)
 		{
@@ -89,4 +134,5 @@ public abstract class Board {
 		//Return the number of stars.
 		return (uncoveredTiles == 0) ? 3 : (uncoveredTiles <= 6) ? 2 : (uncoveredTiles <=12) ? 1: 0;
 	}
+
 }

@@ -6,18 +6,11 @@ public class PuzzleBoard extends Board {
 		super(t);
 	}
 	
-	boolean canShiftPiece(Piece p)
+	/**
+	 * Same as canAddPiece function except that a piece can shift to overlap itself.
+	 */
+	boolean canShiftPiece(Piece p, Tile start)
 	{
-		return true;
-	}
-
-	void shiftPiece(Piece p)
-	{
-		
-	}
-
-	@Override
-	public boolean canAddPiece(Piece p, Tile start) {
 		for(int i=0; i<tiles.length; i++)
 		{
 			for(int j=0; j<tiles.length; j++)
@@ -28,25 +21,41 @@ public class PuzzleBoard extends Board {
 					{
 						for(int x=0; x<p.getDim(); x++)
 						{
-							if( !(p.getTile(y,x).isValid()))
-								tiles[i+y][j+x] = p.getTile(y,x);
+							try { //If we're trying to place a piece out of range of the board
+							if(((p.getTile(y,x).isValid()) && !(tiles[i+y][j+x].isValid())))
+								return false;
+							else if(((p.getTile(y,x).isValid()) && !((tiles[i+y][j+x].getPiece() == null) || (tiles[i+y][j+x].getPiece() == p))))
+								return false;
+							} catch (IndexOutOfBoundsException e) 
+							{
+								return false;
+							}
 						}
 					}
 				}
 			}
 		}
-		return false;
+		return true;
 	}
 
-	@Override
-	public boolean canRemovePiece() {
-		// TODO Auto-generated method stub
-		return false;
+	/**
+	 * Shifts a piece on the board to another valid location on the board.
+	 */
+	void shiftPiece(Piece p, Tile start)
+	{
+		removePiece(p);
+		addPiece(p, start);
 	}
+
+	/**
+	 * Can always remove pieces from the puzzle boards.
+	 */
+	@Override
+	public boolean canRemovePiece() 
+	{return true;}
 
 	@Override
 	public boolean isComplete() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
