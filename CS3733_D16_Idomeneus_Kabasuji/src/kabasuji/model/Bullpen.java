@@ -21,8 +21,13 @@ public class Bullpen {
 	}
 
 	// Sets the selected piece in memory to the given newly selected piece.
-	void selectPiece(Piece p) {
+	public void selectPiece(Piece p) {
 		this.selectedPiece = p;
+	}
+	
+	public boolean isEmpty()
+	{
+		return pieces.size() == 0;
 	}
 
 }
