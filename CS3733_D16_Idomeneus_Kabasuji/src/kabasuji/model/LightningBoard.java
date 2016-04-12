@@ -29,9 +29,4 @@ public class LightningBoard extends Board {
 		return false;
 	}
 
-	@Override
-	public int getStars() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 }

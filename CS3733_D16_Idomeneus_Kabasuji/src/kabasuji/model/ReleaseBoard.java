@@ -28,8 +28,24 @@ public class ReleaseBoard extends Board {
 
 	@Override
 	public int getStars() {
-		// TODO Auto-generated method stub
-		return 0;
+		int[] color0Released = new int[6];
+		int[] color1Released = new int[6];
+		int[] color2Released = new int[6];
+		
+		for(int i=0; i<tiles.length; i++)
+		{
+			for(int j=0; j<tiles.length; j++)
+			{
+//				if(tiles[i][j] instanceof ReleaseTile) // TODO We shouldn't need instanceof but maybe this was designed poorly?
+//				{
+//					if (tiles[i][j].getColor() == 0)
+//					{
+//						
+//					}
+//				}
+			}
+		}
+		return -1;
 	}
 	
 	
