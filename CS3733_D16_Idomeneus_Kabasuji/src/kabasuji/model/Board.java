@@ -48,7 +48,7 @@ public abstract class Board {
 			{
 				if(tiles[i][j].getPiece() != null && tiles[i][j].getPiece() == p)
 				{
-					tiles[i][j] = new PlayableTile();
+					tiles[i][j] = new Tile();
 				}
 			}
 		}

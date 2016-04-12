@@ -2,9 +2,9 @@ package kabasuji.model;
 
 public class Piece
 {
-	PlayableTile[][] tiles;
+	Tile[][] tiles;
 	
-	public Piece(PlayableTile[][] t)
+	public Piece(Tile[][] t)
 	{
 		tiles = t;
 	}
@@ -17,7 +17,7 @@ public class Piece
 	
 	public void flip(boolean vertical)
 	{
-		PlayableTile[][] newTiles = new PlayableTile[tiles.length][tiles.length];
+		Tile[][] newTiles = new Tile[tiles.length][tiles.length];
 		for(int i=0; i<tiles.length; i++)
 		{
 			for(int j=0; j<tiles.length; j++)
@@ -33,7 +33,7 @@ public class Piece
 	
 	private void transpose()
 	{
-		PlayableTile[][] newTiles = new PlayableTile[tiles.length][tiles.length];
+		Tile[][] newTiles = new Tile[tiles.length][tiles.length];
 		for(int i=0; i<tiles.length; i++)
 		{
 			for(int j=0; j<tiles.length; j++)
@@ -44,7 +44,7 @@ public class Piece
 		tiles = newTiles;
 	}
 	
-	public PlayableTile getTile(int y, int x)
+	public Tile getTile(int y, int x)
 	{
 		return tiles[y][x];
 	}
