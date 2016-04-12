@@ -12,6 +12,12 @@ public abstract class Level {
 		this.bullpen = bp;
 		stars = 0; // initialize number of stars to 0
 	}
+	
+	public abstract boolean canMoveBullpenToBoard(Tile destination);
+	
+	public abstract boolean canMoveBoardToBullpen();
+	
+	public abstract boolean canMoveBoardToBoard(Tile destination);
 
 	int getScore()
 	{

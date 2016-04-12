@@ -11,6 +11,12 @@ public class LightningLevel extends Level {
 		currentTime = 0;
 	}
 	
+	public abstract boolean canMoveBullpenToBoard(Tile destination);
+	
+	public abstract boolean canMoveBoardToBullpen();
+	
+	public abstract boolean canMoveBoardToBoard(Tile destination);
+	
 	public int getTimeLimit() {
 		return timeLimit;
 	}
