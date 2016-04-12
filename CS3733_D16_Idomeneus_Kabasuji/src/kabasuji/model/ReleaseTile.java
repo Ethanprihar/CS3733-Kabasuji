@@ -1,8 +1,8 @@
 package kabasuji.model;
 
 public class ReleaseTile extends PlayableTile {
-	int number;
-	int color;
+	int number; // 0 - 5
+	int color; //0, 1 or 2
 
 	// Constructor for Release Tile
 	public ReleaseTile(int number, int color) {
