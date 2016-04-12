@@ -10,6 +10,7 @@ public abstract class Level {
 	{
 		this.board = bd;
 		this.bullpen = bp;
+		stars = 0; // initialize number of stars to 0
 	}
 
 	int getScore()
