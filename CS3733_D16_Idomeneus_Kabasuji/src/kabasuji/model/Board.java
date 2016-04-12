@@ -66,4 +66,6 @@ public abstract class Board {
 	{
 		this.selectedPiece = p;
 	}
+
+	public abstract int getStars();
 }

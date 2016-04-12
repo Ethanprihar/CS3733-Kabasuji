@@ -6,10 +6,32 @@ public class LightningBoard extends Board {
 		super(t);
 	}
 	
-	
+	/**
+	 * Pieces can never be removed from Lightning boards.
+	 */
 	@Override
-	boolean canRemovePiece()
+	public boolean canRemovePiece()
 	{
 		return false;
+	}
+
+
+	@Override
+	public boolean canAddPiece() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	@Override
+	public boolean isComplete() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int getStars() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
