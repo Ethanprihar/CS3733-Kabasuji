@@ -33,9 +33,19 @@ public abstract class Level {
 		board.selectPiece(null);
 	}
 
-	int getScore()
+	public int getScore()
 	{
 		return board.getStars();
+	}
+	
+	public boolean getLocked()
+	{
+		return locked;
+	}
+	
+	public void setLocked(boolean l)
+	{
+		locked = l;
 	}
 	
 }
