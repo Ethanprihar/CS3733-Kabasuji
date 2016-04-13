@@ -25,6 +25,11 @@ public class Bullpen {
 		this.selectedPiece = p;
 	}
 	
+	public Piece getSelectedPiece()
+	{
+		return selectedPiece;
+	}
+	
 	public boolean isEmpty()
 	{
 		return pieces.size() == 0;

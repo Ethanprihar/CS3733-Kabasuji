@@ -18,6 +18,26 @@ public abstract class Level {
 	public abstract boolean canMoveBoardToBullpen();
 	
 	public abstract boolean canMoveBoardToBoard(Tile destination);
+	
+	public void moveBullpenToBoard(Tile destination)
+	{
+		board.addPiece(bullpen.getSelectedPiece(), destination);
+		bullpen.removePiece(bullpen.getSelectedPiece());
+		bullpen.selectPiece(null);
+	}
+	
+	public void moveBoardToBullpen()
+	{
+		bullpen.addPiece(board.getSelectedPiece());
+		board.removePiece(board.getSelectedPiece());
+		board.selectPiece(null);
+	}
+	
+	public void moveBoardToBoard(Tile destination)
+	{
+		board.shiftPiece(board.getSelectedPiece(), destination);
+		board.selectPiece(null);
+	}
 
 	int getScore()
 	{

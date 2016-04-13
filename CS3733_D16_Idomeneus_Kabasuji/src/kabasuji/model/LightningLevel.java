@@ -5,17 +5,30 @@ public class LightningLevel extends Level {
 	int timeLimit;
 	int currentTime;
 	
-	LightningLevel(Board bd, Bullpen bp, int tl) {
+	LightningLevel(LightningBoard bd, Bullpen bp, int tl) {
 		super(bd, bp);
 		timeLimit = tl;
 		currentTime = 0;
 	}
 	
-	public abstract boolean canMoveBullpenToBoard(Tile destination);
+	public boolean canMoveBullpenToBoard(Tile destination)
+	{
+		if(board.canAddPiece(bullpen.getSelectedPiece(), destination) && hasTimeLeft())
+		{
+			return true;
+		}
+		return false;
+	}
 	
-	public abstract boolean canMoveBoardToBullpen();
+	public boolean canMoveBoardToBullpen()
+	{
+		return false;
+	}
 	
-	public abstract boolean canMoveBoardToBoard(Tile destination);
+	public boolean canMoveBoardToBoard(Tile destination)
+	{
+		return false;
+	}
 	
 	public int getTimeLimit() {
 		return timeLimit;
