@@ -88,7 +88,7 @@ public class MainMenu extends JPanel {
 		add(lblKabasuji);
 		add(btnNewButton);
 		
-		panel.setBounds(173, 56, 120, 255);
+		panel.setBounds(0, 0, 1000, 800);
 		add(panel);
 	}
 }
