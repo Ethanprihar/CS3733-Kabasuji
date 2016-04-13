@@ -38,8 +38,13 @@ package kabasuji.view;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
-public class SplashWindow extends Frame implements ActionListener {
+import javax.imageio.ImageIO;
+
+public class SplashWindow extends Frame{
 	static void renderSplashFrame(Graphics2D g, int frame) {
 		final String[] names = { "THE COOLEST KIDS", "Odell Dotson", "Breanne Happell", "Ethan Prihar", "Vishal Rathi",
 				"Yu-sen Wu" };
@@ -47,61 +52,55 @@ public class SplashWindow extends Frame implements ActionListener {
 		g.fillRect(20, 20, 200, 200);
 		g.setPaintMode();
 		g.setColor(Color.BLACK);
-		g.setFont(Font.decode("Times-BOLDITALIC-15"));
-		for (int i = 0; i < frame+1; i++) {
+		g.setFont(Font.decode("Arial-BOLD-18"));
+		// need exception catching
+		BufferedImage img = null;
+		try {
+			// maps path to the image file
+			String path = System.getProperty("user.dir") + File.separator + "src\\images\\8bitbunny.jpg";
+			img = ImageIO.read(new File(path));
+		} catch (IOException e) {
+		}
+		for (int i = 0; i < frame + 1; i++) {
 			int plotX = 20;
-			int plotY = 30 + 30*i;
-			g.drawString(" " + names[i] + "...", plotX, plotY);
+			int plotY = 30 + 43 * i;
+			if (i > 4) {
+				plotX = 150;
+				g.drawImage(img, 255, 10 + 43 * i, null);
+			}
+			g.drawString(" " + names[i], plotX, plotY);
 		}
 	}
 
 	public SplashWindow() {
 		super("SplashScreen demo");
-		setSize(300, 200);
-		setLayout(new BorderLayout());
-		Menu m1 = new Menu("File");
-		MenuItem mi1 = new MenuItem("Exit");
-		m1.add(mi1);
-		mi1.addActionListener(this);
-		this.addWindowListener(closeWindow);
-
-		MenuBar mb = new MenuBar();
-		setMenuBar(mb);
-		mb.add(m1);
-		final SplashScreen splash = SplashScreen.getSplashScreen();
-		if (splash == null) {
-			System.out.println("SplashScreen.getSplashScreen() returned null");
-			return;
-		}
-		Graphics2D g = splash.createGraphics();
-		if (g == null) {
-			System.out.println("g is null");
-			return;
-		}
-		for (int i = 0; i < 6; i++) {
-			renderSplashFrame(g, i);
-			splash.update();
-			try {
-				Thread.sleep(850);
-			} catch (InterruptedException e) {
+		try {
+			final SplashScreen splash = SplashScreen.getSplashScreen();
+			if (splash == null) {
+				System.out.println("SplashScreen.getSplashScreen() returned null");
+				return;
 			}
+			Graphics2D g = splash.createGraphics();
+
+			if (g == null) {
+				System.out.println("g is null");
+				return;
+			}
+			for (int i = 0; i < 6; i++) {
+				renderSplashFrame(g, i);
+				splash.update();
+				try {
+					if (i > 4) {
+						Thread.sleep(1700);
+					} else {
+						Thread.sleep(550);
+					}
+				} catch (InterruptedException e) {
+				}
+			}
+			splash.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		splash.close();
-		setVisible(true);
-		toFront();
-	}
-
-	public void actionPerformed(ActionEvent ae) {
-		System.exit(0);
-	}
-
-	private static WindowListener closeWindow = new WindowAdapter() {
-		public void windowClosing(WindowEvent e) {
-			e.getWindow().dispose();
-		}
-	};
-
-	public static void main(String args[]) {
-		SplashWindow test = new SplashWindow();
 	}
 }
