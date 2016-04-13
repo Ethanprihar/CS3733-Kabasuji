@@ -24,7 +24,9 @@ public class PuzzleBoard extends Board {
 							try { //If we're trying to place a piece out of range of the board
 							if(((p.getTile(y,x).isValid()) && !(tiles[i+y][j+x].isValid())))
 								return false;
-							else if(((p.getTile(y,x).isValid()) && !((tiles[i+y][j+x].getPiece() == null) || (tiles[i+y][j+x].getPiece() == p))))
+							else if(((p.getTile(y,x).isValid()) && 
+									!((tiles[i+y][j+x].getPiece() == null) || 
+											(tiles[i+y][j+x].getPiece() == p))))
 								return false;
 							} catch (IndexOutOfBoundsException e) 
 							{
@@ -51,7 +53,7 @@ public class PuzzleBoard extends Board {
 	 * Can always remove pieces from the puzzle boards.
 	 */
 	@Override
-	public boolean canRemovePiece() 
+	public boolean canRemovePiece(Piece p) 
 	{return true;}
 
 	@Override
