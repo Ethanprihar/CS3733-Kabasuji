@@ -8,8 +8,8 @@ public class Kabasuji
 {
 	// to indicate opening, level select, and level play screens
 	int currentScreen;
-	ArrayList<Level> levels;
-	Level selectedLevel;
+	public ArrayList<Level> levels;
+	public Level selectedLevel;
 	
 	public Kabasuji()
 	{
@@ -52,4 +52,13 @@ public class Kabasuji
 	public void setCurrentScreen(int newCurrentScreen){
 		currentScreen = newCurrentScreen;
 	}
+	
+	public Level getSelectedLevel(){
+		return selectedLevel;
+	}
+	
+	public void setSelectedLevel(Level l){
+		selectedLevel = l;
+	}
+	
 }

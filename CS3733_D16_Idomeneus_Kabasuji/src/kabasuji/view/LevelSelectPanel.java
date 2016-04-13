@@ -2,6 +2,11 @@ package kabasuji.view;
 
 import javax.swing.JPanel;
 import javax.swing.border.CompoundBorder;
+
+import kabasuji.controller.GoToLevelSelectController;
+import kabasuji.controller.SelectLevelController;
+import kabasuji.model.Kabasuji;
+
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.GroupLayout;
@@ -16,11 +21,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class LevelSelectPanel extends JPanel {
-
+	Kabasuji kabasuji;
+	TopLevelApplication app;
 	/**
 	 * Create the panel.
 	 */
-	public LevelSelectPanel() {
+	public LevelSelectPanel(Kabasuji kabasuji, TopLevelApplication app) {
+		this.kabasuji = kabasuji;
+		this.app = app;
+		
 		setBackground(SystemColor.textHighlight);
 		setBorder(new CompoundBorder());
 		
@@ -61,6 +70,10 @@ public class LevelSelectPanel extends JPanel {
 		JButton btnNewButton_15 = new JButton("Forward");
 		
 		JButton button = new JButton("Back");
+		
+		btnNewButton.addMouseListener(new SelectLevelController(kabasuji, app, 1));
+		
+		btnNewButton_1.addMouseListener(new SelectLevelController(kabasuji, app, 2));
 		
 		JButton btnReturnToTitle = new JButton("Return to Title");
 		GroupLayout groupLayout = new GroupLayout(this);

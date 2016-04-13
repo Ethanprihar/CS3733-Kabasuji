@@ -1,6 +1,7 @@
 package kabasuji.controller.moves;
 
 import kabasuji.model.Kabasuji;
+import kabasuji.model.Level;
 import kabasuji.model.Screen;
 
 /**
@@ -10,14 +11,14 @@ import kabasuji.model.Screen;
  * @author jwu
  */
 
-public class ChangeScreenMove extends Move{
+public class SelectLevelMove extends Move{
 	
 	// target screen represented as integer
-	int newScreen;
+	int level;
 	
 	// Constructor for Level Select Move
-	public ChangeScreenMove(int newScreen ){
-		this.newScreen = newScreen;
+	public SelectLevelMove(int level){
+		this.level = level;
 	}
 
 	@Override
@@ -25,15 +26,17 @@ public class ChangeScreenMove extends Move{
 		if(!valid(kabasuji)){
 			return false;
 		}
-		/** sets screen of kabasuji game to desired**/
-		kabasuji.setCurrentScreen(newScreen);
+		
+		/** changes the selected level**/
+		kabasuji.setSelectedLevel(kabasuji.levels.get(level));
 		return true;
 	}
 
 	@Override
 	public boolean valid(Kabasuji kabasuji) {
 		// move is valid if the current screen is not equal to the new screen
-		if (kabasuji.getCurrentScreen() != newScreen){
+		if (!kabasuji.levels.get(level-1).getLocked()){
+			System.out.println("Level is " + !kabasuji.levels.get(level-1).getLocked());
 			return true;
 		}
 		return false;

@@ -6,10 +6,11 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
 import kabasuji.controller.moves.ChangeScreenMove;
+import kabasuji.controller.moves.SelectLevelMove;
 import kabasuji.model.Kabasuji;
 import kabasuji.model.Screen;
-import kabasuji.view.LevelSelect;
 import kabasuji.view.LevelSelectPanel;
+import kabasuji.view.MainMenu;
 import kabasuji.view.TopLevelApplication;
 
 /**
@@ -21,17 +22,19 @@ import kabasuji.view.TopLevelApplication;
  * @author jwu
  *
  */
-public class GoToLevelSelectController extends MouseAdapter {
+public class SelectLevelController extends MouseAdapter {
 
 	/** Entity and Boundaries Associated **/
+	int level;
 	Kabasuji kabasuji;
 	TopLevelApplication app;
 	JPanel contentPanel;
 
-	public GoToLevelSelectController(Kabasuji kabasuji, TopLevelApplication app) {
+	public SelectLevelController(Kabasuji kabasuji, TopLevelApplication app, int level) {
 		this.kabasuji = kabasuji;
 		this.app = app;
 		this.contentPanel = app.getContentPane();
+		this.level = level;
 	}
 
 	/**
@@ -40,9 +43,12 @@ public class GoToLevelSelectController extends MouseAdapter {
 	 */
 	public void mousePressed(MouseEvent me) {
 
-		ChangeScreenMove gtsm = new ChangeScreenMove(Screen.LevelSelect);
-		gtsm.execute(kabasuji);
-		LevelSelectPanel lsp = new LevelSelectPanel(kabasuji, app);
-		app.changeContentPane(lsp);
+		SelectLevelMove slm = new SelectLevelMove(level);
+		ChangeScreenMove gtsm = new ChangeScreenMove(Screen.Opening);
+		if (slm.execute(kabasuji)) {
+			gtsm.execute(kabasuji);
+			MainMenu lsp = new MainMenu(kabasuji, app);
+			app.changeContentPane(lsp);
+		}
 	}
 }
