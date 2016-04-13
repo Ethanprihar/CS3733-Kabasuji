@@ -13,7 +13,7 @@ public class Builder
 	{
 		try
 		{
-			FileInputStream saveFile = new FileInputStream("levels.sav");
+			FileInputStream saveFile = new FileInputStream("levels.data");
 			ObjectInputStream save = new ObjectInputStream(saveFile);
 			levels = (ArrayList<Level>) save.readObject();
 			save.close();
@@ -69,7 +69,7 @@ public class Builder
 	{
 		try
 		{
-			FileOutputStream saveFile = new FileOutputStream("levels.sav");
+			FileOutputStream saveFile = new FileOutputStream("levels.data");
 			ObjectOutputStream save = new ObjectOutputStream(saveFile);
 			save.writeObject(levels);
 			save.close();
