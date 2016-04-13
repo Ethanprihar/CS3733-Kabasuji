@@ -16,7 +16,7 @@ public class Kabasuji
 		currentScreen = 1;
 		try
 		{
-			FileInputStream saveFile = new FileInputStream("levels.sav");
+			FileInputStream saveFile = new FileInputStream("levels.data");
 			ObjectInputStream save = new ObjectInputStream(saveFile);
 			levels = (ArrayList<Level>) save.readObject();
 			save.close();
