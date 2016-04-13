@@ -20,7 +20,7 @@ public class Builder
 		}
 		catch (Exception exc)
 		{
-			exc.printStackTrace(); // If there was an error, print the info.
+			//exc.printStackTrace(); // If there was an error, print the info.
 		}
 	}
 
@@ -76,12 +76,22 @@ public class Builder
 		}
 		catch (Exception exc)
 		{
-			exc.printStackTrace(); // If there was an error, print the info.
+			//exc.printStackTrace(); // If there was an error, print the info.
 		}
 	}
 	
 	public Level getSelectedLevel()
 	{
 		return selectedLevel;
+	}
+	
+	public ArrayList<Level> getLevels()
+	{
+		return levels;
+	}
+	
+	public void setLevels(ArrayList<Level> l)
+	{
+		levels = l;
 	}
 }

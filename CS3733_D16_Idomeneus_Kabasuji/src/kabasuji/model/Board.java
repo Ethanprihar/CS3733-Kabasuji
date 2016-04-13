@@ -1,8 +1,9 @@
 package kabasuji.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Board {
+public abstract class Board implements Serializable{
 	Tile[][] tiles;// = new Tile[][];
 	ArrayList<Piece> pieces = new ArrayList<Piece>();
 	Piece selectedPiece; //The selected piece. May be null.

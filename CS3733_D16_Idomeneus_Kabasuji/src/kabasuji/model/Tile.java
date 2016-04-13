@@ -1,6 +1,8 @@
 package kabasuji.model;
 
-public class Tile {
+import java.io.Serializable;
+
+public class Tile implements Serializable{
 
 	boolean valid; // whether the tile is part of a board or a piece or just extra in the matrix
 	boolean hint;

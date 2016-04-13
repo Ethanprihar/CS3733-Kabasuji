@@ -1,6 +1,8 @@
 package kabasuji.model;
 
-public abstract class Level {
+import java.io.Serializable;
+
+public abstract class Level implements Serializable{
 	Board board;
 	Bullpen bullpen;
 	int stars;
