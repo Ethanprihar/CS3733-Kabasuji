@@ -2,6 +2,8 @@ package kabasuji.view;
 
 import javax.swing.border.CompoundBorder;
 
+import kabasuji.controller.GoToMainMenuController;
+import kabasuji.controller.SelectLevelController;
 import kabasuji.model.Kabasuji;
 
 import java.awt.Color;
@@ -82,6 +84,8 @@ public class PuzzleLevelPanel extends JPanel {
 		btnNewButton_7.setForeground(Color.BLACK);
 		btnNewButton_7.setContentAreaFilled(false);
 		btnNewButton_7.setOpaque(true);
+		
+		btnNewButton_7.addMouseListener(new GoToMainMenuController(kabasuji, app));
 		
 		JLabel movesLeft = new JLabel("Moves Left");
 		movesLeft.setBounds(0, 547, 150, 50);
