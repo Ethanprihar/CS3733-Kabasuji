@@ -11,6 +11,7 @@ public class Builder
 
 	public Builder()
 	{
+		levels = new ArrayList<Level>();
 		try
 		{
 			FileInputStream saveFile = new FileInputStream("levels.data");
@@ -71,6 +72,7 @@ public class Builder
 		{
 			FileOutputStream saveFile = new FileOutputStream("levels.data");
 			ObjectOutputStream save = new ObjectOutputStream(saveFile);
+			save.reset();
 			save.writeObject(levels);
 			save.close();
 		}

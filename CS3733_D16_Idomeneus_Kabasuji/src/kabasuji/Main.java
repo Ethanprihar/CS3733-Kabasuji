@@ -12,9 +12,9 @@ public class Main {
 	 */
 	public static void main(String[] args)
 	{
+		/* THIS CODE SEGMENT WILL RESET THE LEVELS FILE AND ADD 15 FRESH LEVELS
 		Builder builder = new Builder();
-		ArrayList<Level> levels = new ArrayList<Level>();
-		builder.setLevels(levels);
+		builder.setLevels(new ArrayList<Level>);
 		for(int i=0; i<15; i++)
 		{
 			builder.addNewLevel(i%3, 12, 12);
@@ -22,9 +22,13 @@ public class Main {
 			System.out.println(builder.getLevels());
 		}
 		builder.saveToDisc();
+		*/
 		Kabasuji kabasuji = new Kabasuji();
 		System.out.println("In Kabasuji the levels:");
-		System.out.println(kabasuji.getLevels());
+		for(Level l: kabasuji.getLevels())
+		{
+			System.out.println(l.getLocked());
+		}
 		TopLevelApplication frame = new TopLevelApplication(kabasuji);
 		// start splash screen
 		new SplashWindow();
