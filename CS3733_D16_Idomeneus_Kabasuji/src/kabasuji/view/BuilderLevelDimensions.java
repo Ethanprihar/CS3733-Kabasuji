@@ -15,82 +15,66 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class BuilderLevelSelect extends JPanel {
+public class BuilderLevelDimensions extends JPanel {
 	private JTextField textField;
-	private JTextField textField_1;
 
 	/**
 	 * Create the panel.
 	 */
-	public BuilderLevelSelect() {
+	public BuilderLevelDimensions() {
+		setSize(1000,800);
 		setBackground(SystemColor.textHighlight);
 		setBorder(new CompoundBorder());
+		setBackground(Color.WHITE);
 		
-		JLabel lblKabasuji = new JLabel("Level Dimensions");
+		JLabel lblKabasuji = new JLabel("Builder Level Dimensions");
+		lblKabasuji.setBounds(50, 90, 900, 90);
 		lblKabasuji.setHorizontalAlignment(SwingConstants.CENTER);
-		lblKabasuji.setFont(new Font("Tahoma", Font.BOLD, 73));
-		
-		JButton btnReturnToTitle = new JButton("Return to Title");
-		
-		textField = new JTextField();
-		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		
-		JLabel lblNewLabel = new JLabel("Width:");
-		
-		JLabel lblNewLabel_1 = new JLabel("Height:");
+		lblKabasuji.setFont(new Font("Tahoma", Font.BOLD, 60));
 		
 		JButton btnNewButton = new JButton("Go");
-		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(18)
-							.addComponent(lblKabasuji))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(258)
-							.addComponent(lblNewLabel)
-							.addGap(10)
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(258)
-							.addComponent(lblNewLabel_1)
-							.addGap(10)
-							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(270)
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-								.addComponent(btnNewButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnReturnToTitle, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-					.addContainerGap(19, Short.MAX_VALUE))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(53)
-					.addComponent(lblKabasuji)
-					.addGap(51)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblNewLabel))
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(51)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblNewLabel_1))
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(49)
-					.addComponent(btnNewButton)
-					.addGap(95)
-					.addComponent(btnReturnToTitle))
-		);
-		setLayout(groupLayout);
-
-	}
+		btnNewButton.setBounds(425, 500, 100, 50);
+		btnNewButton.setBackground(Color.cyan);
+		btnNewButton.setForeground(Color.BLACK);
+		btnNewButton.setContentAreaFilled(false);
+		btnNewButton.setOpaque(true);
+		
+		JButton btnNewButton1 = new JButton("Main Menu");
+		btnNewButton1.setBounds(425, 700, 100, 50);
+		btnNewButton1.setBackground(Color.orange);
+		btnNewButton1.setForeground(Color.BLACK);
+		btnNewButton1.setContentAreaFilled(false);
+		btnNewButton1.setOpaque(true);
+		
+		JLabel height = new JLabel("Height");
+		height.setBounds(300, 218, 100, 50);
+		height.setFont(new Font("Tahoma", Font.BOLD, 25));
+		
+		JLabel width = new JLabel("Width");
+		width.setBounds(300, 318, 100, 50);
+		width.setFont(new Font("Tahoma", Font.BOLD, 25));
+		
+		textField = new JTextField();
+		textField.setBounds(425, 218, 100, 50);
+		add(textField);
+		textField.setColumns(10);
+		
+		textField = new JTextField();
+		textField.setBounds(425, 318, 100, 50);
+		add(textField);
+		textField.setColumns(10);
+		
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		
+		setLayout(null);
+		add(lblKabasuji);
+		add(btnNewButton);
+		add(btnNewButton1);
+		add(height);
+		add(width);
+		
+}
 }
