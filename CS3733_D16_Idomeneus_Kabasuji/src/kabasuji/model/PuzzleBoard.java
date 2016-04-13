@@ -9,7 +9,7 @@ public class PuzzleBoard extends Board {
 	/**
 	 * Same as canAddPiece function except that a piece can shift to overlap itself.
 	 */
-	boolean canShiftPiece(Piece p, Tile start)
+	public boolean canShiftPiece(Piece p, Tile start)
 	{
 		for(int i=0; i<tiles.length; i++)
 		{
@@ -41,7 +41,7 @@ public class PuzzleBoard extends Board {
 	/**
 	 * Shifts a piece on the board to another valid location on the board.
 	 */
-	void shiftPiece(Piece p, Tile start)
+	public void shiftPiece(Piece p, Tile start)
 	{
 		removePiece(p);
 		addPiece(p, start);

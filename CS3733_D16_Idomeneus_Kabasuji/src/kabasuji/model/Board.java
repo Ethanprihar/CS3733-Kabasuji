@@ -139,5 +139,11 @@ public abstract class Board {
 		//Return the number of stars.
 		return (uncoveredTiles == 0) ? 3 : (uncoveredTiles <= 6) ? 2 : (uncoveredTiles <=12) ? 1: 0;
 	}
+	
+	public void shiftPiece(Piece p, Tile start) {}
+	
+	public boolean canShiftPiece(Piece p, Tile start) {
+		return false;
+	}
 
 }

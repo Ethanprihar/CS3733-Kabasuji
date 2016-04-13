@@ -32,12 +32,6 @@ public abstract class Level {
 		board.removePiece(board.getSelectedPiece());
 		board.selectPiece(null);
 	}
-	
-	public void moveBoardToBoard(Tile destination)
-	{
-		board.shiftPiece(board.getSelectedPiece(), destination);
-		board.selectPiece(null);
-	}
 
 	int getScore()
 	{

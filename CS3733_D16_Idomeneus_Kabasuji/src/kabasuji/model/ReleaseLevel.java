@@ -5,7 +5,7 @@ public class ReleaseLevel extends Level {
 	int movesUsed;
 	int maxMoves;
 	
-	ReleaseLevel(Board bd, Bullpen bp, int mm) {
+	ReleaseLevel(ReleaseBoard bd, Bullpen bp, int mm) {
 		super(bd, bp);
 		maxMoves = mm;
 		movesUsed = 0; // initialize the moves used to 0
@@ -35,6 +35,27 @@ public class ReleaseLevel extends Level {
 	// Returns the number of moves left
 	public int getMovesLeft() {
 		return maxMoves - movesUsed;
+	}
+	
+	
+	
+	public boolean canMoveBullpenToBoard(Tile destination) {
+		// check that the player has moves left and the piece can be added to the board
+		return ((hasMovesLeft()) && (board.canAddPiece(bullpen.selectedPiece, destination)));	
+	}
+	
+	/**
+	 * Release Mode does not allow board to bullpen movement
+	 */
+	public boolean canMoveBoardToBullpen() {
+		return false;
+	}
+	
+	/**
+	 * Release Mode does not allow board to board movement
+	 */
+	public boolean canMoveBoardToBoard(Tile destination) {
+		return true; 
 	}
 	
 }
