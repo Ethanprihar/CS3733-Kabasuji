@@ -21,89 +21,63 @@ public class BuilderMainMenu extends JPanel {
 	 * Create the panel.
 	 */
 	public BuilderMainMenu() {
+		setSize(1000,800);
 		setBackground(SystemColor.textHighlight);
 		setBorder(new CompoundBorder());
+		setBackground(Color.WHITE);
 		
-		JLabel lblKabasuji = new JLabel("Kabasuji Builder");
+		JLabel lblKabasuji = new JLabel("Builder");
+		lblKabasuji.setBounds(250, 90, 500, 90);
 		lblKabasuji.setHorizontalAlignment(SwingConstants.CENTER);
 		lblKabasuji.setFont(new Font("Tahoma", Font.BOLD, 73));
 		
 		JLabel lblNewLabel = new JLabel("Odell Dotson");
+		lblNewLabel.setBounds(425, 200, 500, 90);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
 		
 		JLabel label = new JLabel("Ethan Prihar");
+		label.setBounds(425, 250, 500, 90);
+		label.setFont(new Font("Tahoma", Font.BOLD, 20));
 		
 		JLabel label_1 = new JLabel("Vishal Rathi");
+		label_1.setBounds(425, 301, 500, 90);
+		label_1.setFont(new Font("Tahoma", Font.BOLD, 20));
 		
 		JLabel label_2 = new JLabel("Breanne Happell");
+		label_2.setBounds(425, 351, 500, 90);
+		label_2.setFont(new Font("Tahoma", Font.BOLD, 20));
 		
 		JLabel label_3 = new JLabel("yu-Sen Wu");
+		label_3.setBounds(425, 402, 500, 90);
+		label_3.setFont(new Font("Tahoma", Font.BOLD, 20));
 		
-		JButton btnNewButton = new JButton("Build Level");
+		JButton btnNewButton = new JButton("Level Select");
+		btnNewButton.setBounds(425, 600, 100, 50);
+		btnNewButton.setBackground(Color.cyan);
+		btnNewButton.setForeground(Color.BLACK);
+		btnNewButton.setContentAreaFilled(false);
+		btnNewButton.setOpaque(true);
+		
+		JButton btnNewButton1 = new JButton("Load Level");
+		btnNewButton1.setBounds(425, 700, 100, 50);
+		btnNewButton1.setBackground(Color.cyan);
+		btnNewButton1.setForeground(Color.BLACK);
+		btnNewButton1.setContentAreaFilled(false);
+		btnNewButton1.setOpaque(true);
+		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		
-		JLabel lblNewLabel_1 = new JLabel("Idomeneus");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 45));
-		
-		JButton btnNewButton_1 = new JButton("Load Level");
-		
-		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(27)
-							.addComponent(lblKabasuji))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(281)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblNewLabel)
-								.addComponent(label)
-								.addComponent(label_1)))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(273)
-							.addComponent(label_2))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(286)
-							.addComponent(label_3))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(181)
-							.addComponent(btnNewButton)
-							.addGap(120)
-							.addComponent(btnNewButton_1))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(194)
-							.addComponent(lblNewLabel_1)))
-					.addContainerGap(26, Short.MAX_VALUE))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(43)
-					.addComponent(lblKabasuji)
-					.addGap(18)
-					.addComponent(lblNewLabel_1)
-					.addGap(76)
-					.addComponent(lblNewLabel)
-					.addGap(18)
-					.addComponent(label)
-					.addGap(18)
-					.addComponent(label_1)
-					.addGap(18)
-					.addComponent(label_2)
-					.addGap(18)
-					.addComponent(label_3)
-					.addGap(46)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnNewButton)
-						.addComponent(btnNewButton_1))
-					.addContainerGap(127, Short.MAX_VALUE))
-		);
-		setLayout(groupLayout);
+		setLayout(null);
+		add(lblNewLabel);
+		add(label);
+		add(label_1);
+		add(label_2);
+		add(label_3);
+		add(lblKabasuji);
+		add(btnNewButton);
+		add(btnNewButton1);
 
 	}
 }
