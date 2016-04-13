@@ -13,7 +13,6 @@ public class BoardPuzzleTest extends TestCase{
 	
 	public void testBoards()
 	{
-		
 		Tile testTile1 = new Tile(false, true, 0, 0);
 		Tile testTile2 = new Tile(false, true, 0, 0);
 		Tile testTile3 = new Tile(false, false, 0, 0);
@@ -91,7 +90,7 @@ public class BoardPuzzleTest extends TestCase{
 		
 		Board testBoard1 = new LightningBoard(board1);
 		
+		assertEquals (testBoard1.canAddPiece(testPiece1, boardTile0_0), false);
 		
-		assertEquals (testTile1.getNumber(), 0);
 	}
 }
