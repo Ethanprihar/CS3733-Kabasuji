@@ -62,6 +62,7 @@ public class Builder
 			ReleaseBoard board = new ReleaseBoard(tiles);
 			selectedLevel = new ReleaseLevel(board, bullpen, 0);
 		}
+		selectedLevel.setLocked(true);
 	}
 	
 	public void saveToDisc()
