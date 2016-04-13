@@ -7,9 +7,9 @@ public class Piece
 	public Piece(Tile[][] t)
 	{
 		tiles = t;
-		for(int i = 0; i<this.getDim(); i++)
+		for(int i = 0; i<tiles.length; i++)
 		{
-			for(int j = 0; j<this.getDim(); j++)
+			for(int j = 0; j<tiles.length; j++)
 			{
 				if(this.tiles[j][i].isValid())
 				{
