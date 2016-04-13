@@ -21,132 +21,46 @@ public class BuilderLevelMode extends JPanel {
 	 * Create the panel.
 	 */
 	public BuilderLevelMode() {
+		setSize(1000,800);
 		setBackground(SystemColor.textHighlight);
 		setBorder(new CompoundBorder());
+		setBackground(Color.WHITE);
 		
-		JLabel lblKabasuji = new JLabel("Builder Level Select");
+		JLabel lblKabasuji = new JLabel("Builder Level Mode");
+		lblKabasuji.setBounds(125, 90, 750, 90);
 		lblKabasuji.setHorizontalAlignment(SwingConstants.CENTER);
 		lblKabasuji.setFont(new Font("Tahoma", Font.BOLD, 73));
 		
-		JButton btnNewButton = new JButton("Level 1 ");
+		JButton btnNewButton = new JButton("Puzzle");
+		btnNewButton.setBounds(425, 300, 100, 50);
+		btnNewButton.setBackground(Color.cyan);
+		btnNewButton.setForeground(Color.BLACK);
+		btnNewButton.setContentAreaFilled(false);
+		btnNewButton.setOpaque(true);
 		
-		JButton btnNewButton_1 = new JButton("Level 2 ");
+		JButton btnNewButton1 = new JButton("Lightning");
+		btnNewButton1.setBounds(425, 400, 100, 50);
+		btnNewButton1.setBackground(Color.orange);
+		btnNewButton1.setForeground(Color.BLACK);
+		btnNewButton1.setContentAreaFilled(false);
+		btnNewButton1.setOpaque(true);
 		
-		JButton btnNewButton_2 = new JButton("Level 3 ");
+		JButton btnNewButton2 = new JButton("Release");
+		btnNewButton2.setBounds(425, 500, 100, 50);
+		btnNewButton2.setBackground(Color.green);
+		btnNewButton2.setForeground(Color.BLACK);
+		btnNewButton2.setContentAreaFilled(false);
+		btnNewButton2.setOpaque(true);
 		
-		JButton btnNewButton_3 = new JButton("Level 4 ");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		
-		JButton btnNewButton_4 = new JButton("Level 5 ");
-		
-		JButton btnNewButton_5 = new JButton("Level 6 ");
-		
-		JButton btnNewButton_6 = new JButton("Level 7 ");
-		 
-		JButton btnNewButton_7 = new JButton("Level 8 ");
-		
-		JButton btnNewButton_8 = new JButton("Level 9 ");
-		
-		JButton btnNewButton_9 = new JButton("Level 10");
-		
-		JButton btnNewButton_10 = new JButton("Level 11");
-		
-		JButton btnNewButton_11 = new JButton("Level 12");
-		
-		JButton btnNewButton_12 = new JButton("Level 13");
-		
-		JButton btnNewButton_13 = new JButton("Level 14");
-		
-		JButton btnNewButton_14 = new JButton("Level 15");
-		
-		JButton btnNewButton_15 = new JButton("Forward");
-		
-		JButton button = new JButton("Back");
-		
-		JButton btnReturnToTitle = new JButton("Return to Title");
-		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addComponent(lblKabasuji)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(75)
-					.addComponent(btnNewButton)
-					.addGap(18)
-					.addComponent(btnNewButton_1)
-					.addGap(18)
-					.addComponent(btnNewButton_2)
-					.addGap(18)
-					.addComponent(btnNewButton_3)
-					.addGap(18)
-					.addComponent(btnNewButton_4, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(75)
-					.addComponent(btnNewButton_5)
-					.addGap(18)
-					.addComponent(btnNewButton_6, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-					.addGap(10)
-					.addComponent(btnNewButton_7, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-					.addGap(10)
-					.addComponent(btnNewButton_8)
-					.addGap(18)
-					.addComponent(btnNewButton_9))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(75)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(button)
-							.addGap(381)
-							.addComponent(btnNewButton_15))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnNewButton_10)
-							.addGap(18)
-							.addComponent(btnNewButton_11)
-							.addGap(18)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnReturnToTitle)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(btnNewButton_12)
-									.addGap(18)
-									.addComponent(btnNewButton_13)
-									.addGap(18)
-									.addComponent(btnNewButton_14)))))
-					.addContainerGap(191, Short.MAX_VALUE))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(68)
-					.addComponent(lblKabasuji)
-					.addGap(70)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnNewButton)
-						.addComponent(btnNewButton_1)
-						.addComponent(btnNewButton_2)
-						.addComponent(btnNewButton_3)
-						.addComponent(btnNewButton_4))
-					.addGap(55)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnNewButton_5)
-						.addComponent(btnNewButton_6)
-						.addComponent(btnNewButton_7)
-						.addComponent(btnNewButton_8)
-						.addComponent(btnNewButton_9))
-					.addGap(52)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnNewButton_10)
-						.addComponent(btnNewButton_11)
-						.addComponent(btnNewButton_12)
-						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-							.addComponent(btnNewButton_13)
-							.addComponent(btnNewButton_14)))
-					.addGap(94)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnNewButton_15)
-						.addComponent(button))
-					.addGap(34)
-					.addComponent(btnReturnToTitle)
-					.addContainerGap(54, Short.MAX_VALUE))
-		);
-		setLayout(groupLayout);
-
+		setLayout(null);
+		add(lblKabasuji);
+		add(btnNewButton);
+		add(btnNewButton1);
+		add(btnNewButton2);
 	}
 }
