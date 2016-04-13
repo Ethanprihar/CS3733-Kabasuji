@@ -2,7 +2,7 @@ package kabasuji.model;
 
 public class PuzzleBoard extends Board {
 	
-	PuzzleBoard(Tile[][] t) {
+	public PuzzleBoard(Tile[][] t) {
 		super(t);
 	}
 	

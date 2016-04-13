@@ -2,7 +2,7 @@ package kabasuji.model;
 
 public class ReleaseBoard extends Board {
 	
-	ReleaseBoard(Tile[][] t) {
+	public ReleaseBoard(Tile[][] t) {
 		super(t);
 	}
 

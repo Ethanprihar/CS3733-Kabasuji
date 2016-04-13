@@ -3,7 +3,7 @@ package kabasuji.modelTests;
 import kabasuji.model.*;
 import junit.framework.TestCase;
 
-public class BoardTest extends TestCase{
+public class BoardLightningTest extends TestCase{
 
 	protected void setUp()
 	{
@@ -87,7 +87,7 @@ public class BoardTest extends TestCase{
 		 */
 		Piece testPiece2 = new Piece(piece2);
 		
-		//Board testBoard1 = new Board(board1);
+		Board testBoard1 = new LightningBoard(board1);
 		
 		
 		assertEquals (testTile1.getNumber(), 0);

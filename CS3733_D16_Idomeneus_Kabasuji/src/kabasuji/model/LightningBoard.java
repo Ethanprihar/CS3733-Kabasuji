@@ -2,7 +2,7 @@ package kabasuji.model;
 
 public class LightningBoard extends Board {
 	
-	LightningBoard(Tile[][] t) {
+	public LightningBoard(Tile[][] t) {
 		super(t);
 	}
 	

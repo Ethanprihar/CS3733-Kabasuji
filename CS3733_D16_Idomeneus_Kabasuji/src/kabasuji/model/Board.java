@@ -3,7 +3,7 @@ package kabasuji.model;
 import java.util.ArrayList;
 
 public abstract class Board {
-	Tile tiles[][] = new Tile[12][12];
+	Tile[][] tiles;// = new Tile[][];
 	ArrayList<Piece> pieces = new ArrayList<Piece>();
 	Piece selectedPiece; //The selected piece. May be null.
 	
