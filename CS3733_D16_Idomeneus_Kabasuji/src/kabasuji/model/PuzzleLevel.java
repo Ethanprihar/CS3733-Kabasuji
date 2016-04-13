@@ -5,7 +5,7 @@ public class PuzzleLevel extends Level {
 	int movesUsed;
 	int maxMoves;
 	
-	PuzzleLevel(PuzzleBoard bd, Bullpen bp, int mm) {
+	public PuzzleLevel(PuzzleBoard bd, Bullpen bp, int mm) {
 		super(bd, bp);
 		maxMoves = mm;
 		movesUsed = 0; // initialize the moves used to 0

@@ -5,7 +5,7 @@ public class ReleaseLevel extends Level {
 	int movesUsed;
 	int maxMoves;
 	
-	ReleaseLevel(ReleaseBoard bd, Bullpen bp, int mm) {
+	public ReleaseLevel(ReleaseBoard bd, Bullpen bp, int mm) {
 		super(bd, bp);
 		maxMoves = mm;
 		movesUsed = 0; // initialize the moves used to 0
