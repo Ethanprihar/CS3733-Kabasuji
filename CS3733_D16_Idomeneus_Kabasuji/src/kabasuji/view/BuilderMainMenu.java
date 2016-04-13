@@ -3,7 +3,10 @@ package kabasuji.view;
 import javax.swing.JPanel;
 import javax.swing.border.CompoundBorder;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JButton;
+import javax.imageio.ImageIO;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -11,8 +14,14 @@ import java.awt.SystemColor;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
+
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class BuilderMainMenu extends JPanel {
@@ -20,6 +29,24 @@ public class BuilderMainMenu extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	// The Image to store the background image in.
+    BufferedImage img;
+    public void BackgroundPanel()
+    {
+    	try {
+			// maps path to the image file
+			String path = System.getProperty("user.dir") + File.separator + "src\\images\\star.png";
+			img = ImageIO.read(new File(path));
+		} catch (IOException e) {
+		}
+    }
+
+    public void paint(Graphics g)
+    {
+        // Draws the img to the BackgroundPanel.
+        g.drawImage(img, 200, 200, null);
+    }
+
 	public BuilderMainMenu() {
 		setSize(1000,800);
 		setBackground(SystemColor.textHighlight);
@@ -78,6 +105,5 @@ public class BuilderMainMenu extends JPanel {
 		add(lblKabasuji);
 		add(btnNewButton);
 		add(btnNewButton1);
-
 	}
 }
