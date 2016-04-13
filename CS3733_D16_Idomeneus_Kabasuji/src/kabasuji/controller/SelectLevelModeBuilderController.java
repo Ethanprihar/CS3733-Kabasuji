@@ -12,6 +12,7 @@ import kabasuji.model.Kabasuji;
 import kabasuji.model.Screen;
 import kabasuji.view.BuilderLevelMode;
 import kabasuji.view.BuilderMainMenu;
+import kabasuji.view.BuilderPuzzleLevelPanel;
 import kabasuji.view.LevelSelect;
 import kabasuji.view.LevelSelectPanel;
 import kabasuji.view.TopLevelApplication;
@@ -49,7 +50,7 @@ public class SelectLevelModeBuilderController extends MouseAdapter {
 
 		ChangeScreenBuilderMove gtsm = new ChangeScreenBuilderMove(Screen.LevelSelect);
 		gtsm.execute(builder);
-		BuilderMainMenu lpm = new BuilderMainMenu(builder, app);
+		BuilderPuzzleLevelPanel lpm = new BuilderPuzzleLevelPanel(builder, app);
 		app.changeContentPane(lpm);
 	}
 }
