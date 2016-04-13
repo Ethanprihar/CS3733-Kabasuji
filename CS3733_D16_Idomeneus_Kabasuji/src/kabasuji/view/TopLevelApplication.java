@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.SplashScreen;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -22,6 +23,8 @@ import java.io.File;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JScrollPane;
 
@@ -55,8 +58,17 @@ public class TopLevelApplication extends JFrame {
 		contentPane.repaint();
 	}
 	void init(){
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = screenSize.getWidth();
+		double height = screenSize.getHeight();
+		
+		int x0 = (int) (0.1*width);
+		int x1 = (int) (0.8*width);
+		int y0 = (int) (0.1*height);
+		int y1 = (int) (0.8*height);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(50, 50, 800, 500);
+		setBounds(x0,y0,x1,y1);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

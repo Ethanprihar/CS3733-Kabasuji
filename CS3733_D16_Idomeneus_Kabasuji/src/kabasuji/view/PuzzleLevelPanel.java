@@ -1,6 +1,9 @@
 package kabasuji.view;
 
 import javax.swing.border.CompoundBorder;
+
+import kabasuji.model.Kabasuji;
+
 import java.awt.Color;
 import java.awt.Font;
 
@@ -12,11 +15,14 @@ import javax.swing.SwingConstants;
 import java.awt.SystemColor;
 
 public class PuzzleLevelPanel extends JPanel {
-
+	Kabasuji kabasuji;
+	TopLevelApplication app;
 	/**
 	 * Create the bullpen.
 	 */
-	public PuzzleLevelPanel() {
+	public PuzzleLevelPanel(Kabasuji kabasuji, TopLevelApplication app) {
+		this.kabasuji = kabasuji;
+		this.app = app;
 		setSize(1000,800);
 		setBackground(SystemColor.textHighlight);
 		setBorder(new CompoundBorder());

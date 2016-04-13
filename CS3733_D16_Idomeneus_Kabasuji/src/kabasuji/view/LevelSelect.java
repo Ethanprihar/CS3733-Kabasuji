@@ -3,6 +3,7 @@ package kabasuji.view;
 import javax.swing.JPanel;
 import javax.swing.border.CompoundBorder;
 
+import kabasuji.controller.SelectLevelController;
 import kabasuji.model.Kabasuji;
 
 import java.awt.Color;
@@ -197,5 +198,9 @@ public class LevelSelect extends JPanel {
 		add(btnNewButton_14);
 		add(lblKabasuji);
 		add(starlabel);
+		
+		btnNewButton_1.addMouseListener(new SelectLevelController(kabasuji, app, 1));
+		btnNewButton_2.addMouseListener(new SelectLevelController(kabasuji, app, 2));
+		
 	}
 }

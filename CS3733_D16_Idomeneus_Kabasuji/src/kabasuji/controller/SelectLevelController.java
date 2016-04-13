@@ -11,6 +11,7 @@ import kabasuji.model.Kabasuji;
 import kabasuji.model.Screen;
 import kabasuji.view.LevelSelectPanel;
 import kabasuji.view.MainMenu;
+import kabasuji.view.PuzzleLevelPanel;
 import kabasuji.view.TopLevelApplication;
 
 /**
@@ -47,7 +48,7 @@ public class SelectLevelController extends MouseAdapter {
 		ChangeScreenMove gtsm = new ChangeScreenMove(Screen.Opening);
 		if (slm.execute(kabasuji)) {
 			gtsm.execute(kabasuji);
-			MainMenu lsp = new MainMenu(kabasuji, app);
+			PuzzleLevelPanel lsp = new PuzzleLevelPanel(kabasuji, app);
 			app.changeContentPane(lsp);
 		}
 	}

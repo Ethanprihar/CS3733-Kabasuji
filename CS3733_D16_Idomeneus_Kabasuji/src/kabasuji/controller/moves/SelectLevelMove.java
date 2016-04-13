@@ -1,8 +1,6 @@
 package kabasuji.controller.moves;
 
 import kabasuji.model.Kabasuji;
-import kabasuji.model.Level;
-import kabasuji.model.Screen;
 
 /**
  * Move class to move to different screens by passing in the screen number

@@ -42,7 +42,7 @@ public class GoToLevelSelectController extends MouseAdapter {
 
 		ChangeScreenMove gtsm = new ChangeScreenMove(Screen.LevelSelect);
 		gtsm.execute(kabasuji);
-		LevelSelectPanel lsp = new LevelSelectPanel(kabasuji, app);
+		LevelSelect lsp = new LevelSelect(kabasuji, app);
 		app.changeContentPane(lsp);
 	}
 }
