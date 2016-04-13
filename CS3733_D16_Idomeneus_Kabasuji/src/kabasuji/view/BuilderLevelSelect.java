@@ -2,6 +2,9 @@ package kabasuji.view;
 
 import javax.swing.JPanel;
 import javax.swing.border.CompoundBorder;
+
+import kabasuji.model.Builder;
+
 import java.awt.Color;
 
 import javax.imageio.ImageIO;
@@ -17,11 +20,12 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 
 public class BuilderLevelSelect extends JPanel {
-
+	Builder builder;
+	TopLevelApplicationBuilder app;
 	/**
 	 * Create the panel.
 	 */
-	public BuilderLevelSelect() {
+	public BuilderLevelSelect(Builder builder, TopLevelApplicationBuilder app) {
 		setSize(1000,800);
 		setBackground(SystemColor.textHighlight);
 		setBorder(new CompoundBorder());

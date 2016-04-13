@@ -6,21 +6,21 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import kabasuji.model.Kabasuji;
+import kabasuji.model.Builder;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Dimension;
 
-public class TopLevelApplication extends JFrame {
+public class TopLevelApplicationBuilder extends JFrame {
 
-	public Kabasuji kabasuji;
+	public Builder builder;
 	public JPanel contentPane;
 	/**
 	 * Create the frame.
 	 */
-	public TopLevelApplication(Kabasuji kabasuji) {
-		this.kabasuji = kabasuji;
+	public TopLevelApplicationBuilder(Builder builder) {
+		this.builder = builder;
 		init();
 	}
 	
@@ -57,7 +57,7 @@ public class TopLevelApplication extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		MainMenu panel = new MainMenu(kabasuji,TopLevelApplication.this);
+		BuilderMainMenu panel = new BuilderMainMenu(builder,TopLevelApplicationBuilder.this);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)

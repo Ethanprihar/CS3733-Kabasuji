@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Builder
 {
+	int currentScreen;
 	ArrayList<Level> levels;
 	Level selectedLevel;
 	UndoManager undoManager;
@@ -95,5 +96,11 @@ public class Builder
 	public void setLevels(ArrayList<Level> l)
 	{
 		levels = l;
+	}
+	public int getCurrentScreen(){
+		return currentScreen;
+	}
+	public void setCurrentScreen(int newScreen){
+		currentScreen = newScreen;
 	}
 }
