@@ -10,6 +10,7 @@ public class Tile {
 
 	public Tile(boolean h, boolean v, int c, int n) {
 		hint = false;
+		valid = v;
 		piece = null;
 		color = 0;
 		number = 0;

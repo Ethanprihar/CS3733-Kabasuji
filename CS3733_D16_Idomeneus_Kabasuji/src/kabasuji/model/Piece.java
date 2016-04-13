@@ -7,11 +7,21 @@ public class Piece
 	public Piece(Tile[][] t)
 	{
 		tiles = t;
+		for(int i = 0; i<this.getDim(); i++)
+		{
+			for(int j = 0; j<this.getDim(); j++)
+			{
+				if(this.tiles[j][i].isValid())
+				{
+					this.tiles[j][i].setPiece(this);
+				}
+			}
+		}
 	}
 	
-	public void rotate(boolean left)
+	public void rotate(boolean right)
 	{
-		flip(left);
+		flip(right);
 		transpose();
 	}
 	
