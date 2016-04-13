@@ -11,6 +11,7 @@ public class Builder
 
 	public Builder()
 	{
+		levels = new ArrayList<Level>();
 		try
 		{
 			FileInputStream saveFile = new FileInputStream("levels.data");
@@ -20,7 +21,7 @@ public class Builder
 		}
 		catch (Exception exc)
 		{
-			exc.printStackTrace(); // If there was an error, print the info.
+			//exc.printStackTrace(); // If there was an error, print the info.
 		}
 	}
 
@@ -71,17 +72,28 @@ public class Builder
 		{
 			FileOutputStream saveFile = new FileOutputStream("levels.data");
 			ObjectOutputStream save = new ObjectOutputStream(saveFile);
+			save.reset();
 			save.writeObject(levels);
 			save.close();
 		}
 		catch (Exception exc)
 		{
-			exc.printStackTrace(); // If there was an error, print the info.
+			//exc.printStackTrace(); // If there was an error, print the info.
 		}
 	}
 	
 	public Level getSelectedLevel()
 	{
 		return selectedLevel;
+	}
+	
+	public ArrayList<Level> getLevels()
+	{
+		return levels;
+	}
+	
+	public void setLevels(ArrayList<Level> l)
+	{
+		levels = l;
 	}
 }

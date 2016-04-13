@@ -39,6 +39,11 @@ public class Kabasuji
 		levels.get(levels.indexOf(selectedLevel)+1).setLocked(false);
 	}
 	
+	public ArrayList<Level> getLevels()
+	{
+		return levels;
+	}
+	
 	// getter for current Screen
 	public int getCurrentScreen(){
 		return currentScreen;

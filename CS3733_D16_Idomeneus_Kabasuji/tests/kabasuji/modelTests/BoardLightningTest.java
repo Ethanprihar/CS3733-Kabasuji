@@ -90,7 +90,7 @@ public class BoardLightningTest extends TestCase{
 		Board testBoard1 = new LightningBoard(board1);
 		
 		
-		assertEquals (testTile1.getNumber(), 0);
+		//assertEquals (testTile1.getNumber(), 0);
 	}
 	
 }

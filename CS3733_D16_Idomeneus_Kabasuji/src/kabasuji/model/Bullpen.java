@@ -1,8 +1,9 @@
 package kabasuji.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Bullpen {
+public class Bullpen implements Serializable{
 
 	ArrayList<Piece> pieces;
 	Piece selectedPiece;
