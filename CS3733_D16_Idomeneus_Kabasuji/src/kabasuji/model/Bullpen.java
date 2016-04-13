@@ -8,6 +8,7 @@ public class Bullpen {
 	Piece selectedPiece;
 
 	public Bullpen() {
+		pieces = new ArrayList<Piece>();
 	}
 
 	// Adds a piece to the pieces array list
