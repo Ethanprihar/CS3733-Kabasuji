@@ -36,7 +36,7 @@ public class MainMenu extends JPanel {
 		this.app = app;
 
 		BufferedImage img = null;
-		String path = System.getProperty("user.dir") + File.separator + "src\\images\\pusheen.gif";
+		String path = System.getProperty("user.dir") + File.separator + "src\\images\\waterfall.jpg";
 		try {
 			img = ImageIO.read(new File(path));
 		} catch (IOException e) {
@@ -95,11 +95,11 @@ public class MainMenu extends JPanel {
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(174)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 500, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 500, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 500, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label, GroupLayout.PREFERRED_SIZE, 500, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNewLabel)))
 				.addComponent(lblKabasuji, GroupLayout.PREFERRED_SIZE, 500, GroupLayout.PREFERRED_SIZE)
 		);
@@ -111,13 +111,13 @@ public class MainMenu extends JPanel {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(label, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+					.addComponent(label, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+					.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+					.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+					.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addGap(7)
 					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(174, Short.MAX_VALUE))
