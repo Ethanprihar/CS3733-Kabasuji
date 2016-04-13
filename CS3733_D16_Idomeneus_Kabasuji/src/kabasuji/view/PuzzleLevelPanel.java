@@ -61,5 +61,11 @@ public class PuzzleLevelPanel extends JPanel {
 		bullpen.add(btnNewButton_3);
 		bullpen.add(btnNewButton_4);
 		
+		JPanel board = new JPanel();
+		board.setBounds(0, 320, 1000, 480);
+		add(board);
+		board.setBackground(Color.cyan);
+		board.setLayout(null);
+		
 	}
 }

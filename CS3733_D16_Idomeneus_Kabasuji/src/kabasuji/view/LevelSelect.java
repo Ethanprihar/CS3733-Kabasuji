@@ -8,6 +8,7 @@ import kabasuji.model.Kabasuji;
 import java.awt.Color;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.SystemColor;
 import java.awt.image.BufferedImage;
@@ -57,8 +58,9 @@ public class LevelSelect extends JPanel {
 		} catch (IOException e) {
 		}
 		
-		PaintPane panel = new PaintPane(img);
-		PaintPane panel1 = new PaintPane(img);
+		ImageIcon image = new ImageIcon("src\\images\\star.png");
+		JLabel starlabel = new JLabel("", image, JLabel.CENTER);
+		starlabel.setBounds(350, 250, 50, 50);
 		
 		JButton btnNewButton_2 = new JButton("Level 2");
 		btnNewButton_2.setBounds(350, 200, 100, 100);
@@ -194,12 +196,6 @@ public class LevelSelect extends JPanel {
 		add(btnNewButton_13);
 		add(btnNewButton_14);
 		add(lblKabasuji);
-		
-		panel.setBounds(228, 279, 10, 10);
-		add(panel);
-		
-		panel1.setBounds(257, 279, 10, 10);
-		add(panel1);
-		
+		add(starlabel);
 	}
 }
