@@ -113,6 +113,11 @@ public abstract class Board {
 	{
 		this.selectedPiece = p;
 	}
+	
+	Piece getSelectedPiece()
+	{
+		return this.selectedPiece;
+	}
 
 	/**
 	 * Common to both Puzzle and Lightning boards.
