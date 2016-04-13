@@ -81,10 +81,12 @@ public abstract class Board {
 						for(int x=0; x<p.getDim(); x++)
 						{
 							try { //If we're trying to place a piece out of range of the board
-							if(((p.getTile(y,x).isValid()) && !(tiles[i+y][j+x].isValid())))
-								return false;
-							else if(((p.getTile(y,x).isValid()) && !(tiles[i+y][j+x].getPiece() == null)))
-								return false;
+;
+							if((p.getTile(y,x).isValid()))
+								if(!(tiles[i+y][j+x].isValid()))
+									return false;
+								else if(!(tiles[i+y][j+x].getPiece() == null))
+									return false;
 							} catch (IndexOutOfBoundsException e) 
 							{
 								return false;

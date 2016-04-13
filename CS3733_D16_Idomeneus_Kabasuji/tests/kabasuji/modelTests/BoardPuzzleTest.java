@@ -2,8 +2,8 @@ package kabasuji.modelTests;
 
 import junit.framework.TestCase;
 import kabasuji.model.Board;
-import kabasuji.model.LightningBoard;
 import kabasuji.model.Piece;
+import kabasuji.model.PuzzleBoard;
 import kabasuji.model.Tile;
 
 public class BoardPuzzleTest extends TestCase{
@@ -19,8 +19,8 @@ public class BoardPuzzleTest extends TestCase{
 		Tile testTile4 = new Tile(false, false, 0, 0);
 		
 		Tile testTile5 = new Tile(false, false, 0, 0);
-		Tile testTile6 = new Tile(false, false, 0, 0);
-		Tile testTile7 = new Tile(false, true, 0, 0);
+		Tile testTile6 = new Tile(false, true, 0, 0);
+		Tile testTile7 = new Tile(false, false, 0, 0);
 		Tile testTile8 = new Tile(false, true, 0, 0);
 		Tile testTile9 = new Tile(false, false, 0, 0);
 		Tile testTile10 = new Tile(false, false, 0, 0);
@@ -51,22 +51,22 @@ public class BoardPuzzleTest extends TestCase{
 		Tile testTile35 = new Tile(false, false, 0, 0);
 		Tile testTile36 = new Tile(false, false, 0, 0);
 		
-		Tile boardTile0_0 = new Tile(false, false, 0, 0);
-		Tile boardTile0_1 = new Tile(false, false, 0, 0);
-		Tile boardTile0_2 = new Tile(false, false, 0, 0);
-		Tile boardTile0_3 = new Tile(false, false, 0, 0);
-		Tile boardTile1_0 = new Tile(false, false, 0, 0);
-		Tile boardTile1_1 = new Tile(false, false, 0, 0);
-		Tile boardTile1_2 = new Tile(false, false, 0, 0);
-		Tile boardTile1_3 = new Tile(false, false, 0, 0);
-		Tile boardTile2_0 = new Tile(false, false, 0, 0);
-		Tile boardTile2_1 = new Tile(false, false, 0, 0);
-		Tile boardTile2_2 = new Tile(false, false, 0, 0);
-		Tile boardTile2_3 = new Tile(false, false, 0, 0);
-		Tile boardTile3_0 = new Tile(false, false, 0, 0);
-		Tile boardTile3_1 = new Tile(false, false, 0, 0);
-		Tile boardTile3_2 = new Tile(false, false, 0, 0);
-		Tile boardTile3_3 = new Tile(false, false, 0, 0);
+		Tile boardTile0_0 = new Tile(false, true, 0, 0);
+		Tile boardTile0_1 = new Tile(false, true, 0, 0);
+		Tile boardTile0_2 = new Tile(false, true, 0, 0);
+		Tile boardTile0_3 = new Tile(false, true, 0, 0);
+		Tile boardTile1_0 = new Tile(false, true, 0, 0);
+		Tile boardTile1_1 = new Tile(false, true, 0, 0);
+		Tile boardTile1_2 = new Tile(false, true, 0, 0);
+		Tile boardTile1_3 = new Tile(false, true, 0, 0);
+		Tile boardTile2_0 = new Tile(false, true, 0, 0);
+		Tile boardTile2_1 = new Tile(false, true, 0, 0);
+		Tile boardTile2_2 = new Tile(false, true, 0, 0);
+		Tile boardTile2_3 = new Tile(false, true, 0, 0);
+		Tile boardTile3_0 = new Tile(false, true, 0, 0);
+		Tile boardTile3_1 = new Tile(false, true, 0, 0);
+		Tile boardTile3_2 = new Tile(false, true, 0, 0);
+		Tile boardTile3_3 = new Tile(false, true, 0, 0);
 
 		
 		Tile[][] piece1 = {{testTile1, testTile2},{testTile3, testTile4}};
@@ -88,9 +88,18 @@ public class BoardPuzzleTest extends TestCase{
 		 */
 		Piece testPiece2 = new Piece(piece2);
 		
-		Board testBoard1 = new LightningBoard(board1);
+		Board testBoard1 = new PuzzleBoard(board1);
 		
-		assertEquals (testBoard1.canAddPiece(testPiece1, boardTile0_0), false);
+		
+		
+		assertEquals (testBoard1.canAddPiece(testPiece1, boardTile0_0), true);
+		assertEquals (testBoard1.canAddPiece(testPiece1, boardTile3_3), false);
+
+		testBoard1.addPiece(testPiece1, boardTile0_0);
+		//System.out.println(null);
+		
+		assertEquals(testBoard1.canAddPiece(testPiece2, boardTile0_0), false);
+		assertEquals(testBoard1.canAddPiece(testPiece2, boardTile0_1), true);
 		
 	}
 }
