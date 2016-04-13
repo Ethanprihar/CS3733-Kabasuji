@@ -9,12 +9,14 @@ import kabasuji.model.Kabasuji;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import java.awt.SystemColor;
+import java.io.File;
 
 public class PuzzleLevelPanel extends JPanel {
 	Kabasuji kabasuji;
@@ -104,14 +106,41 @@ public class PuzzleLevelPanel extends JPanel {
 		add(movesLeftNum);
 		
 		JPanel bullpen = new JPanel();
-		bullpen.setBounds(155, 449, 585, 286);
+		bullpen.setBounds(155, 70, 585, 350);
 		bullpen.setBackground(Color.lightGray);
 		add(bullpen);
+		bullpen.setLayout(null);
 		
-		PuzzleBoardPanel board = new PuzzleBoardPanel();
-		board.setBounds(336, 70, 250, 250);
-		board.setBackground(Color.cyan);
+		JPanel board = new JPanel();
+		board.setBounds(196, 450, 500, 250);
+		board.setBackground(Color.WHITE);
 		add(board);
 		board.setLayout(null);
+		
+		String path = System.getProperty("user.dir") + File.separator + "src\\images\\tile.PNG";
+		String path_bullpen = System.getProperty("user.dir") + File.separator + "src\\images\\bullpen_piece.PNG";
+
+		for (int i = 0; i < 6; i++){
+			for (int j = 0; j < 6; j++){
+				ImageIcon image = new ImageIcon(path);
+				JLabel starlabel = new JLabel("", image, JLabel.CENTER);
+				starlabel.setBounds(j*50, i*50, 50, 50);
+				board.add(starlabel);
+			}
+		}
+		
+		for (int i = 0; i < 6; i++){
+			ImageIcon image = new ImageIcon(path_bullpen);
+			JLabel pieceLabel = new JLabel("", image, JLabel.CENTER);
+			pieceLabel.setBounds(10 + i*50, 50, 50, 50);
+			bullpen.add(pieceLabel);
+		}
+		
+		for (int i = 0; i < 6; i++){
+			ImageIcon image = new ImageIcon(path_bullpen);
+			JLabel pieceLabel = new JLabel("", image, JLabel.CENTER);
+			pieceLabel.setBounds(400, 10 + i*50, 50, 50);
+			bullpen.add(pieceLabel);
+		}
 	}
 }
