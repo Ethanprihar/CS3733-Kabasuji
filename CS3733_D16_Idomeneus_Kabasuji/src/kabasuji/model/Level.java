@@ -33,9 +33,19 @@ public abstract class Level {
 		board.selectPiece(null);
 	}
 
-	public int getScore()
+	public void updateStars()
 	{
-		return board.getStars();
+		stars = board.getStars();
+	}
+	
+	public int getStars()
+	{
+		return stars;
+	}
+	
+	public boolean canGoNextLevel()
+	{
+		return stars > 0;
 	}
 	
 	public boolean getLocked()
