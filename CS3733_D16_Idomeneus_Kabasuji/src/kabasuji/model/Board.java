@@ -58,7 +58,6 @@ public abstract class Board implements Serializable{
 				if(tiles[i][j].getPiece() == p)
 				{
 					tiles[i][j].setPiece(null);
-					tiles[i][j].setValid(false);
 				}
 			}
 		}
@@ -103,7 +102,7 @@ public abstract class Board implements Serializable{
 	/**
 	 * Default false, puzzle overrides.
 	 */
-	public boolean canRemovePiece()
+	public boolean canRemovePiece(Piece p)
 	{
 		return false;
 	}

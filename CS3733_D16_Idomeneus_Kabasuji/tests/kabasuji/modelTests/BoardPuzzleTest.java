@@ -100,6 +100,18 @@ public class BoardPuzzleTest extends TestCase{
 		
 		assertEquals(testBoard1.canAddPiece(testPiece2, boardTile0_0), false);
 		assertEquals(testBoard1.canAddPiece(testPiece2, boardTile0_1), true);
+		assertEquals(testBoard1.canAddPiece(testPiece1, boardTile0_0), false);
 		
+		assertEquals(testBoard1.canRemovePiece(testPiece1), true);
+		testBoard1.removePiece(testPiece1);
+		
+		assertEquals(testBoard1.canAddPiece(testPiece1, boardTile0_0), true);
+		
+		assertEquals(testBoard1.canAddPiece(testPiece1, boardTile0_0), true);
+		testBoard1.addPiece(testPiece2, boardTile0_0);
+		
+		assertEquals(testBoard1.canShiftPiece(testPiece1, boardTile0_2), true);
+		assertEquals(testBoard1.canShiftPiece(testPiece1, boardTile1_0), true);
+
 	}
 }
