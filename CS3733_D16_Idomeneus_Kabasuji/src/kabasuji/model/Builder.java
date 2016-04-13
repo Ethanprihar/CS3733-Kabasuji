@@ -13,7 +13,7 @@ public class Builder
 	{
 		try
 		{
-			FileInputStream saveFile = new FileInputStream("levels.sav");
+			FileInputStream saveFile = new FileInputStream("levels.data");
 			ObjectInputStream save = new ObjectInputStream(saveFile);
 			levels = (ArrayList<Level>) save.readObject();
 			save.close();
@@ -62,13 +62,14 @@ public class Builder
 			ReleaseBoard board = new ReleaseBoard(tiles);
 			selectedLevel = new ReleaseLevel(board, bullpen, 0);
 		}
+		selectedLevel.setLocked(true);
 	}
 	
 	public void saveToDisc()
 	{
 		try
 		{
-			FileOutputStream saveFile = new FileOutputStream("levels.sav");
+			FileOutputStream saveFile = new FileOutputStream("levels.data");
 			ObjectOutputStream save = new ObjectOutputStream(saveFile);
 			save.writeObject(levels);
 			save.close();

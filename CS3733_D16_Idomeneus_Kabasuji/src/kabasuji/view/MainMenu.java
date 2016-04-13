@@ -6,8 +6,14 @@ import javax.swing.border.CompoundBorder;
 import kabasuji.controller.GoToLevelSelectController;
 import kabasuji.model.Kabasuji;
 import java.awt.Color;
+
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import java.awt.SystemColor;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -24,6 +30,16 @@ public class MainMenu extends JPanel {
 		this.kabasuji = kabasuji;
 		this.app = app;
 
+		BufferedImage img = null;
+		String path = System.getProperty("user.dir") + File.separator + "src\\images\\pusheen.gif";
+		try {
+			img = ImageIO.read(new File(path));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		PaintPane panel = new PaintPane(img);
+		
 		setSize(1000,800);
 		setBackground(SystemColor.textHighlight);
 		setBorder(new CompoundBorder());
@@ -71,5 +87,8 @@ public class MainMenu extends JPanel {
 		add(label_3);
 		add(lblKabasuji);
 		add(btnNewButton);
+		
+		panel.setBounds(0, 0, 1000, 800);
+		add(panel);
 	}
 }
