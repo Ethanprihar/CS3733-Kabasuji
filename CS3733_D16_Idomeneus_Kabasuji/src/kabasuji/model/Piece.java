@@ -38,7 +38,7 @@ public class Piece
 		{
 			for(int j=0; j<tiles.length; j++)
 			{
-				newTiles[i][j] = tiles[tiles.length-1-i][tiles.length-1-j];
+				newTiles[i][j] = tiles[j][i];
 			}
 		}
 		tiles = newTiles;
