@@ -15,136 +15,80 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class BuilderLevelDimensions extends JPanel {
+public class BuilderLevelSelect extends JPanel {
+	private JTextField textField;
+	private JTextField textField_1;
 
 	/**
 	 * Create the panel.
 	 */
-	public BuilderLevelDimensions() {
+	public BuilderLevelSelect() {
 		setBackground(SystemColor.textHighlight);
 		setBorder(new CompoundBorder());
 		
-		JLabel lblKabasuji = new JLabel("Builder Level Select");
+		JLabel lblKabasuji = new JLabel("Level Dimensions");
 		lblKabasuji.setHorizontalAlignment(SwingConstants.CENTER);
 		lblKabasuji.setFont(new Font("Tahoma", Font.BOLD, 73));
 		
-		JButton btnNewButton = new JButton("Level 1 ");
-		
-		JButton btnNewButton_1 = new JButton("Level 2 ");
-		
-		JButton btnNewButton_2 = new JButton("Level 3 ");
-		
-		JButton btnNewButton_3 = new JButton("Level 4 ");
-		
-		JButton btnNewButton_4 = new JButton("Level 5 ");
-		
-		JButton btnNewButton_5 = new JButton("Level 6 ");
-		
-		JButton btnNewButton_6 = new JButton("Level 7 ");
-		 
-		JButton btnNewButton_7 = new JButton("Level 8 ");
-		
-		JButton btnNewButton_8 = new JButton("Level 9 ");
-		
-		JButton btnNewButton_9 = new JButton("Level 10");
-		
-		JButton btnNewButton_10 = new JButton("Level 11");
-		
-		JButton btnNewButton_11 = new JButton("Level 12");
-		
-		JButton btnNewButton_12 = new JButton("Level 13");
-		
-		JButton btnNewButton_13 = new JButton("Level 14");
-		
-		JButton btnNewButton_14 = new JButton("Level 15");
-		
-		JButton btnNewButton_15 = new JButton("Forward");
-		
-		JButton button = new JButton("Back");
-		
 		JButton btnReturnToTitle = new JButton("Return to Title");
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("Width:");
+		
+		JLabel lblNewLabel_1 = new JLabel("Height:");
+		
+		JButton btnNewButton = new JButton("Go");
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addComponent(lblKabasuji)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(75)
-					.addComponent(btnNewButton)
-					.addGap(18)
-					.addComponent(btnNewButton_1)
-					.addGap(18)
-					.addComponent(btnNewButton_2)
-					.addGap(18)
-					.addComponent(btnNewButton_3)
-					.addGap(18)
-					.addComponent(btnNewButton_4, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(75)
-					.addComponent(btnNewButton_5)
-					.addGap(18)
-					.addComponent(btnNewButton_6, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-					.addGap(10)
-					.addComponent(btnNewButton_7, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-					.addGap(10)
-					.addComponent(btnNewButton_8)
-					.addGap(18)
-					.addComponent(btnNewButton_9))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(75)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(button)
-							.addGap(381)
-							.addComponent(btnNewButton_15))
+							.addGap(18)
+							.addComponent(lblKabasuji))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnNewButton_10)
-							.addGap(18)
-							.addComponent(btnNewButton_11)
-							.addGap(18)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnReturnToTitle)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(btnNewButton_12)
-									.addGap(18)
-									.addComponent(btnNewButton_13)
-									.addGap(18)
-									.addComponent(btnNewButton_14)))))
-					.addContainerGap(191, Short.MAX_VALUE))
+							.addGap(258)
+							.addComponent(lblNewLabel)
+							.addGap(10)
+							.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(258)
+							.addComponent(lblNewLabel_1)
+							.addGap(10)
+							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(270)
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+								.addComponent(btnNewButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(btnReturnToTitle, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+					.addContainerGap(19, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(68)
+					.addGap(53)
 					.addComponent(lblKabasuji)
-					.addGap(70)
+					.addGap(51)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnNewButton)
-						.addComponent(btnNewButton_1)
-						.addComponent(btnNewButton_2)
-						.addComponent(btnNewButton_3)
-						.addComponent(btnNewButton_4))
-					.addGap(55)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(lblNewLabel))
+						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(51)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnNewButton_5)
-						.addComponent(btnNewButton_6)
-						.addComponent(btnNewButton_7)
-						.addComponent(btnNewButton_8)
-						.addComponent(btnNewButton_9))
-					.addGap(52)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnNewButton_10)
-						.addComponent(btnNewButton_11)
-						.addComponent(btnNewButton_12)
-						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-							.addComponent(btnNewButton_13)
-							.addComponent(btnNewButton_14)))
-					.addGap(94)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnNewButton_15)
-						.addComponent(button))
-					.addGap(34)
-					.addComponent(btnReturnToTitle)
-					.addContainerGap(54, Short.MAX_VALUE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(lblNewLabel_1))
+						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(49)
+					.addComponent(btnNewButton)
+					.addGap(95)
+					.addComponent(btnReturnToTitle))
 		);
 		setLayout(groupLayout);
 

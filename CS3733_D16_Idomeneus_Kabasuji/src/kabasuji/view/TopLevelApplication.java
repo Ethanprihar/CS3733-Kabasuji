@@ -82,7 +82,7 @@ public class TopLevelApplication extends JFrame {
 		} catch (IOException e) {
 		}
 		for (int i = 0; i < frame + 1; i++) {
-			int plotX = 20;
+			int plotX = 20; 
 			int plotY = 30 + 43 * i;
 			if (i > 4) {
 				plotX = 150;

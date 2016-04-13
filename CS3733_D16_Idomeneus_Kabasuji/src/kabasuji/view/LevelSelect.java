@@ -3,20 +3,18 @@ package kabasuji.view;
 import javax.swing.JPanel;
 import javax.swing.border.CompoundBorder;
 import java.awt.Color;
-import java.awt.Dimension;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.SystemColor;
-import javax.swing.JTextField;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 import javax.swing.JLabel;
 import java.awt.Font;
+
 import javax.swing.SwingConstants;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class LevelSelect extends JPanel {
 
@@ -40,6 +38,14 @@ public class LevelSelect extends JPanel {
 		btnNewButton_1.setForeground(Color.BLACK);
 		btnNewButton_1.setContentAreaFilled(false);
 		btnNewButton_1.setOpaque(true);
+		
+		BufferedImage img = null;
+		try {
+			// maps path to the image file
+			String path = System.getProperty("user.dir") + File.separator + "src\\images\\star.png";
+			img = ImageIO.read(new File(path));
+		} catch (IOException e) {
+		}
 		
 		JButton btnNewButton_2 = new JButton("Level 2");
 		btnNewButton_2.setBounds(350, 200, 100, 100);
@@ -175,6 +181,6 @@ public class LevelSelect extends JPanel {
 		add(btnNewButton_13);
 		add(btnNewButton_14);
 		add(lblKabasuji);
-
+		
 	}
 }
