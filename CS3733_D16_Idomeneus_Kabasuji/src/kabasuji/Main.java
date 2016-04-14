@@ -14,8 +14,6 @@ public class Main {
 	 */
 	public static void main(String[] args)
 	{
-		//Main.makeLevelsForTesting();
-		Main.makePieces();
 		Kabasuji kabasuji = new Kabasuji();
 		System.out.println("In Kabasuji the levels:");
 		for(Level l: kabasuji.getLevels())
