@@ -111,12 +111,12 @@ public abstract class Board implements Serializable{
 	public abstract boolean isComplete();
 	
 	// Sets the selected piece in memory to the given  newly selected piece.
-	void selectPiece(Piece p)
+	public void selectPiece(Piece p)
 	{
 		this.selectedPiece = p;
 	}
 	
-	Piece getSelectedPiece()
+	public Piece getSelectedPiece()
 	{
 		return this.selectedPiece;
 	}
