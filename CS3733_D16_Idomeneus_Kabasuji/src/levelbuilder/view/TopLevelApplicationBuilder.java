@@ -1,4 +1,4 @@
-package kabasuji.view;
+package levelbuilder.view;
 
 import java.awt.Toolkit;
 

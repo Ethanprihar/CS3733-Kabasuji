@@ -1,4 +1,4 @@
-package kabasuji.view;
+package levelbuilder.view;
 
 import javax.swing.border.CompoundBorder;
 

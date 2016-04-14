@@ -5,7 +5,7 @@ import kabasuji.model.Kabasuji;
 import kabasuji.model.Level;
 import kabasuji.view.SplashWindow;
 import kabasuji.view.TopLevelApplication;
-import kabasuji.view.TopLevelApplicationBuilder;
+import levelbuilder.view.TopLevelApplicationBuilder;
 
 public class LBMain {
 	/**

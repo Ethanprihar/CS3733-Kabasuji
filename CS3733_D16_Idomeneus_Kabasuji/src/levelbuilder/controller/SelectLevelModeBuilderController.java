@@ -9,14 +9,12 @@ import kabasuji.controller.moves.ChangeScreenMove;
 import kabasuji.model.Builder;
 import kabasuji.model.Kabasuji;
 import kabasuji.model.Screen;
-import kabasuji.view.BuilderLevelMode;
-import kabasuji.view.BuilderMainMenu;
-import kabasuji.view.BuilderPuzzleLevelPanel;
 import kabasuji.view.LevelSelect;
 import kabasuji.view.LevelSelectPanel;
 import kabasuji.view.TopLevelApplication;
-import kabasuji.view.TopLevelApplicationBuilder;
 import levelbuilder.controller.moves.ChangeScreenBuilderMove;
+import levelbuilder.view.BuilderPuzzleLevelPanel;
+import levelbuilder.view.TopLevelApplicationBuilder;
 
 /**
  * Controller for Moving Screens; Go To BoardBuilding Screen (Panel)
