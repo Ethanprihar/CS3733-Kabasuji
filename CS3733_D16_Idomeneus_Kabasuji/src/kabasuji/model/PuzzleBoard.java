@@ -57,6 +57,7 @@ public class PuzzleBoard extends Board {
 	{return true;}
 
 	@Override
+	//This still needs to be written.
 	public boolean isComplete() {
 		return false;
 	}
