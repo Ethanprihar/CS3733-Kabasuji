@@ -34,9 +34,12 @@ public abstract class Board implements Serializable{
 					{
 						for(int x=0; x<p.getDim(); x++)
 						{
+
 							if(p.getTile(y,x).isValid())
+							{
 								tiles[i+y][j+x].setPiece(p);
 								tiles[i+y][j+x].setValid(true);
+							}
 						}
 					}
 				}
@@ -111,12 +114,12 @@ public abstract class Board implements Serializable{
 	public abstract boolean isComplete();
 	
 	// Sets the selected piece in memory to the given  newly selected piece.
-	void selectPiece(Piece p)
+	public void selectPiece(Piece p)
 	{
 		this.selectedPiece = p;
 	}
 	
-	Piece getSelectedPiece()
+	public Piece getSelectedPiece()
 	{
 		return this.selectedPiece;
 	}
