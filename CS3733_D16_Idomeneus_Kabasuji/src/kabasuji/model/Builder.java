@@ -7,6 +7,7 @@ public class Builder
 {
 	int currentScreen;
 	ArrayList<Level> levels;
+	Piece[] pieces = new Piece[35];
 	Level selectedLevel;
 	UndoManager undoManager;
 
@@ -18,6 +19,17 @@ public class Builder
 			FileInputStream saveFile = new FileInputStream("levels.data");
 			ObjectInputStream save = new ObjectInputStream(saveFile);
 			levels = (ArrayList<Level>) save.readObject();
+			save.close();
+		}
+		catch (Exception exc)
+		{
+			//exc.printStackTrace(); // If there was an error, print the info.
+		}
+		try
+		{
+			FileInputStream saveFile = new FileInputStream("pieces.data");
+			ObjectInputStream save = new ObjectInputStream(saveFile);
+			pieces = (Piece[]) save.readObject();
 			save.close();
 		}
 		catch (Exception exc)
@@ -49,6 +61,13 @@ public class Builder
 	{
 		Bullpen bullpen = new Bullpen();
 		Tile[][] tiles = new Tile[boardHeight][boardWidth];
+		for(int i=0; i<boardHeight;i++)
+		{
+			for(int j=0; j<boardWidth; j++)
+			{
+				tiles[i][j] = new Tile(false, true, 0, 0);
+			}
+		}
 		if (type == 0)
 		{
 			PuzzleBoard board = new PuzzleBoard(tiles);
