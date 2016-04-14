@@ -2,11 +2,11 @@ package kabasuji.view;
 
 import javax.swing.border.CompoundBorder;
 
-import kabasuji.controller.GoToMainMenuBuilderController;
 import kabasuji.controller.GoToMainMenuController;
 import kabasuji.controller.SelectLevelController;
 import kabasuji.model.Builder;
 import kabasuji.model.Kabasuji;
+import levelbuilder.controller.GoToMainMenuBuilderController;
 
 import java.awt.Color;
 import java.awt.Font;

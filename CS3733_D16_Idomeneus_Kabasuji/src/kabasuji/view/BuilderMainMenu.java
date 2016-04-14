@@ -3,9 +3,9 @@ package kabasuji.view;
 import javax.swing.JPanel;
 import javax.swing.border.CompoundBorder;
 
-import kabasuji.controller.CreateNewLevelBuilderController;
 import kabasuji.controller.GoToLevelSelectController;
 import kabasuji.model.Builder;
+import levelbuilder.controller.CreateNewLevelBuilderController;
 
 import java.awt.Color;
 import java.awt.Dimension;

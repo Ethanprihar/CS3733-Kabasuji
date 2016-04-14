@@ -1,20 +1,22 @@
-package kabasuji.controller;
+package levelbuilder.controller;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
-import kabasuji.controller.moves.ChangeScreenBuilderMove;
 import kabasuji.controller.moves.ChangeScreenMove;
 import kabasuji.model.Builder;
 import kabasuji.model.Kabasuji;
 import kabasuji.model.Screen;
 import kabasuji.view.BuilderLevelMode;
+import kabasuji.view.BuilderMainMenu;
+import kabasuji.view.BuilderPuzzleLevelPanel;
 import kabasuji.view.LevelSelect;
 import kabasuji.view.LevelSelectPanel;
 import kabasuji.view.TopLevelApplication;
 import kabasuji.view.TopLevelApplicationBuilder;
+import levelbuilder.controller.moves.ChangeScreenBuilderMove;
 
 /**
  * Controller for Moving Screens; Go To Level Select Screen (Panel)
@@ -25,17 +27,19 @@ import kabasuji.view.TopLevelApplicationBuilder;
  * @author jwu
  *
  */
-public class CreateNewLevelBuilderController extends MouseAdapter {
+public class SelectLevelModeBuilderController extends MouseAdapter {
 
 	/** Entity and Boundaries Associated **/
+	int levelType;
 	Builder builder;
 	TopLevelApplicationBuilder app;
 	JPanel contentPanel;
 
-	public CreateNewLevelBuilderController(Builder builder, TopLevelApplicationBuilder app) {
+	public SelectLevelModeBuilderController(Builder builder, TopLevelApplicationBuilder app, int levelType) {
 		this.builder = builder;
 		this.app = app;
 		this.contentPanel = app.getContentPane();
+		this.levelType = levelType;
 	}
 
 	/**
@@ -46,7 +50,7 @@ public class CreateNewLevelBuilderController extends MouseAdapter {
 
 		ChangeScreenBuilderMove gtsm = new ChangeScreenBuilderMove(Screen.LevelSelect);
 		gtsm.execute(builder);
-		BuilderLevelMode lsp = new BuilderLevelMode(builder, app);
-		app.changeContentPane(lsp);
+		BuilderPuzzleLevelPanel lpm = new BuilderPuzzleLevelPanel(builder, app);
+		app.changeContentPane(lpm);
 	}
 }

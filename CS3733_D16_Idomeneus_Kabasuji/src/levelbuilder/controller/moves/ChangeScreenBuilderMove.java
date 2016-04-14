@@ -1,4 +1,4 @@
-package kabasuji.controller.moves;
+package levelbuilder.controller.moves;
 
 import kabasuji.model.Builder;
 import kabasuji.model.Kabasuji;

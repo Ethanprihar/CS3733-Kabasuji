@@ -1,11 +1,10 @@
-package kabasuji.controller;
+package levelbuilder.controller;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
-import kabasuji.controller.moves.ChangeScreenBuilderMove;
 import kabasuji.controller.moves.ChangeScreenMove;
 import kabasuji.model.Builder;
 import kabasuji.model.Kabasuji;
@@ -16,6 +15,7 @@ import kabasuji.view.LevelSelectPanel;
 import kabasuji.view.MainMenu;
 import kabasuji.view.TopLevelApplication;
 import kabasuji.view.TopLevelApplicationBuilder;
+import levelbuilder.controller.moves.ChangeScreenBuilderMove;
 
 /**
  * Controller for Moving Screens; Go To Level Select Screen (Panel)
