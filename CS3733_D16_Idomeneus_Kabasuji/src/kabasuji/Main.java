@@ -14,6 +14,7 @@ public class Main {
 	 */
 	public static void main(String[] args)
 	{
+		//Main.makeLevelsForTesting();
 		Main.makePieces();
 		Kabasuji kabasuji = new Kabasuji();
 		System.out.println("In Kabasuji the levels:");
@@ -337,7 +338,7 @@ public class Main {
 		}
 		try
 		{
-			FileOutputStream saveFile = new FileOutputStream("levels.data");
+			FileOutputStream saveFile = new FileOutputStream("pieces.data");
 			ObjectOutputStream save = new ObjectOutputStream(saveFile);
 			save.reset();
 			save.writeObject(pieces);
@@ -345,7 +346,7 @@ public class Main {
 		}
 		catch (Exception exc)
 		{
-			//exc.printStackTrace(); // If there was an error, print the info.
+			exc.printStackTrace(); // If there was an error, print the info.
 		}
 	}
 }
