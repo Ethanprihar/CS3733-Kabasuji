@@ -16,7 +16,7 @@ public class ChangeScreenBuilderMove extends BuilderMove{
 	// target screen represented as integer
 	int newScreen;
 	
-	// Constructor for Level Select Move
+	// Constructor for Change Screen Move
 	public ChangeScreenBuilderMove(int newScreen ){
 		this.newScreen = newScreen;
 	}
@@ -26,7 +26,7 @@ public class ChangeScreenBuilderMove extends BuilderMove{
 		if(!valid(builder)){
 			return false;
 		}
-		/** sets screen of kabasuji game to desired**/
+		/** sets screen of builder to desired**/
 		builder.setCurrentScreen(newScreen);
 		return true;
 	}

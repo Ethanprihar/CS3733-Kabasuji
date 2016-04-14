@@ -14,7 +14,7 @@ import kabasuji.view.MainMenu;
 import kabasuji.view.TopLevelApplication;
 
 /**
- * Controller for Moving Screens; Go To Level Select Screen (Panel)
+ * Controller for Moving Screens; Go To MainMenu Screen (Panel)
  * 
  * When the button is pressed to attempt to go to the next screen, the model
  * will update what screen it is on and the gui will reflect the changes
@@ -41,8 +41,11 @@ public class GoToMainMenuController extends MouseAdapter {
 	 */
 	public void mousePressed(MouseEvent me) {
 
+		// Created ChangeScreenMove and input desired screen
 		ChangeScreenMove gtsm = new ChangeScreenMove(Screen.Opening);
+		// Attempt to execute action on model
 		gtsm.execute(kabasuji);
+		// Created JPanel screen object and update boundary to reflect changes
 		MainMenu lsp = new MainMenu(kabasuji, app);
 		app.changeContentPane(lsp);
 	}

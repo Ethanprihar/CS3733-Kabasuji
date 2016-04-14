@@ -19,7 +19,7 @@ import kabasuji.view.TopLevelApplicationBuilder;
 import levelbuilder.controller.moves.ChangeScreenBuilderMove;
 
 /**
- * Controller for Moving Screens; Go To Level Select Screen (Panel)
+ * Controller for Moving Screens; Go To BoardBuilding Screen (Panel)
  * 
  * When the button is pressed to attempt to go to the next screen, the model
  * will update what screen it is on and the gui will reflect the changes
@@ -47,9 +47,11 @@ public class SelectLevelModeBuilderController extends MouseAdapter {
 	 * is a GUI controller.
 	 */
 	public void mousePressed(MouseEvent me) {
-
+		// Created ChangeScreenMove and input desired screen
 		ChangeScreenBuilderMove gtsm = new ChangeScreenBuilderMove(Screen.LevelSelect);
+		// Attempt to execute action on model
 		gtsm.execute(builder);
+		// Created JPanel screen object and update boundary to reflect changes
 		BuilderPuzzleLevelPanel lpm = new BuilderPuzzleLevelPanel(builder, app);
 		app.changeContentPane(lpm);
 	}

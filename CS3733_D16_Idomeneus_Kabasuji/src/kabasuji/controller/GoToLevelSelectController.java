@@ -40,8 +40,11 @@ public class GoToLevelSelectController extends MouseAdapter {
 	 */
 	public void mousePressed(MouseEvent me) {
 
+		// Created ChangeScreenMove and input desired screen
 		ChangeScreenMove gtsm = new ChangeScreenMove(Screen.LevelSelect);
+		// Attempt to execute action on model
 		gtsm.execute(kabasuji);
+		// Created JPanel screen object and update boundary to reflect changes
 		LevelSelect lsp = new LevelSelect(kabasuji, app);
 		app.changeContentPane(lsp);
 	}

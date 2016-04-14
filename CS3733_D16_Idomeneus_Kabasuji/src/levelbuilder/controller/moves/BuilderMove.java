@@ -9,5 +9,8 @@ public abstract class BuilderMove {
 	
 	/** Request validity. */
 	public abstract boolean valid(Builder builder);
+	
+	/** Undo **/
+	//public abstract boolean undo(Builder builder);
 }
 

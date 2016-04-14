@@ -15,7 +15,7 @@ import kabasuji.view.PuzzleLevelPanel;
 import kabasuji.view.TopLevelApplication;
 
 /**
- * Controller for Moving Screens; Go To Level Select Screen (Panel)
+ * Controller for Moving Screens; Go To Play Level Screen (Panel)
  * 
  * When the button is pressed to attempt to go to the next screen, the model
  * will update what screen it is on and the gui will reflect the changes
@@ -43,11 +43,14 @@ public class SelectLevelController extends MouseAdapter {
 	 * is a GUI controller.
 	 */
 	public void mousePressed(MouseEvent me) {
-
+		// Created SelectLevelMove and input desired level integer
 		SelectLevelMove slm = new SelectLevelMove(level);
-		ChangeScreenMove gtsm = new ChangeScreenMove(Screen.Opening);
+		// Created ChangeScreenMove and input desired screen
+		ChangeScreenMove gtsm = new ChangeScreenMove(Screen.PlayLevel);
+		// Attempt to execute action on model
 		if (slm.execute(kabasuji)) {
 			gtsm.execute(kabasuji);
+			// Created JPanel screen object and update boundary to reflect changes
 			PuzzleLevelPanel lsp = new PuzzleLevelPanel(kabasuji, app);
 			app.changeContentPane(lsp);
 		}

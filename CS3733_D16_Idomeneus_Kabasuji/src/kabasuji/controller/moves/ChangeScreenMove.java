@@ -15,7 +15,7 @@ public class ChangeScreenMove extends Move{
 	// target screen represented as integer
 	int newScreen;
 	
-	// Constructor for Level Select Move
+	// Constructor for Change Screen Move
 	public ChangeScreenMove(int newScreen ){
 		this.newScreen = newScreen;
 	}
