@@ -5,7 +5,7 @@ public class LightningLevel extends Level {
 	int timeLimit;
 	int currentTime;
 	
-	LightningLevel(LightningBoard bd, Bullpen bp, int tl) {
+	public LightningLevel(LightningBoard bd, Bullpen bp, int tl) {
 		super(bd, bp);
 		timeLimit = tl;
 		currentTime = 0;

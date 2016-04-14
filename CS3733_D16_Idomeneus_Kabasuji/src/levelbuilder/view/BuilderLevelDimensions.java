@@ -2,6 +2,12 @@ package levelbuilder.view;
 
 import javax.swing.JPanel;
 import javax.swing.border.CompoundBorder;
+
+import kabasuji.model.Builder;
+import levelbuilder.controller.GoToMainMenuBuilderController;
+import levelbuilder.controller.SelectDimensionsBuilderController;
+import levelbuilder.controller.SelectLevelModeBuilderController;
+
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.GroupLayout;
@@ -17,11 +23,14 @@ import java.awt.event.ActionEvent;
 
 public class BuilderLevelDimensions extends JPanel {
 	private JTextField textField;
+	
+	Builder builder;
+	TopLevelApplicationBuilder app;
 
 	/**
 	 * Create the panel.
 	 */
-	public BuilderLevelDimensions() {
+	public BuilderLevelDimensions(Builder builder, TopLevelApplicationBuilder app) {
 		setSize(1000,800);
 		setBackground(SystemColor.textHighlight);
 		setBorder(new CompoundBorder());
@@ -38,6 +47,9 @@ public class BuilderLevelDimensions extends JPanel {
 		btnNewButton.setForeground(Color.BLACK);
 		btnNewButton.setContentAreaFilled(false);
 		btnNewButton.setOpaque(true);
+		
+		//TODO : Add logic to go to the right level
+		btnNewButton.addMouseListener(new SelectDimensionsBuilderController(builder, app, 1));
 		
 		JButton btnNewButton1 = new JButton("Main Menu");
 		btnNewButton1.setBounds(425, 700, 100, 50);
