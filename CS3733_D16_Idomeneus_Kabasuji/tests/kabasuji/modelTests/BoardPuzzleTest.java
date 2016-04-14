@@ -175,5 +175,7 @@ public class BoardPuzzleTest extends TestCase{
 
 		testBoard1.addPiece(testPiece1, boardTile3_2);	
 		assertEquals(testBoard1.getStars(), 3);		
+		
+		assertEquals(boardTile4_1.isValid(), false);
 	}
 }
