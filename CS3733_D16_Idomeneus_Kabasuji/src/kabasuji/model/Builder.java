@@ -7,12 +7,15 @@ public class Builder
 {
 	int currentScreen;
 	ArrayList<Level> levels;
-	Piece[] pieces = new Piece[35];
+	Piece[] pieces;
+	int[] numOfPieces;
 	Level selectedLevel;
 	UndoManager undoManager;
 
 	public Builder()
 	{
+		pieces = new Piece[35];
+		numOfPieces = new int[35];
 		levels = new ArrayList<Level>();
 		try
 		{
@@ -41,13 +44,34 @@ public class Builder
 	public void loadLevel(Level l)
 	{
 		selectedLevel = l;
+		numOfPieces = new int[35];
+		// this will set the 35 numbers corresponding to the 35
+		// textfields that determine what pieces are in the bullpen
+		for(Piece p: selectedLevel.getBullpen().getPieces())
+		{
+			for(int i=0; i<35; i++)
+			{
+				if(p.equals(pieces[i]))
+				{
+					numOfPieces[i]++;
+				}
+			}
+		}
 	}
-
+	
 	public void saveLevel()
 	{
+		for(int i=0; i<35; i++)
+		{
+			for(int j=0; j<numOfPieces[i]; j++)
+			{
+				selectedLevel.getBullpen().addPiece(pieces[i].copy());
+			}
+		}
 		if (!levels.contains(selectedLevel))
 			levels.add(selectedLevel);
 		selectedLevel = null;
+		numOfPieces = new int[35];
 	}
 	
 	public void deleteLevel()
