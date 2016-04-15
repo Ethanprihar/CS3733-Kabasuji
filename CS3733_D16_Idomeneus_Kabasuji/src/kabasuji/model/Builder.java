@@ -10,7 +10,6 @@ public class Builder
 	Piece[] pieces;
 	int[] numOfPieces;
 	Level selectedLevel;
-	UndoManager undoManager;
 
 	public Builder()
 	{
