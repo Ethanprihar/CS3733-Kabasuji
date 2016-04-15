@@ -3,7 +3,8 @@ package kabasuji.model;
 import java.io.*;
 import java.util.ArrayList;
 
-
+// TODO make a copy method in board
+// TODO make a equals method in board
 
 public class Builder
 {
@@ -126,6 +127,57 @@ public class Builder
 		catch (Exception exc)
 		{
 			//exc.printStackTrace(); // If there was an error, print the info.
+		}
+	}
+	
+	// adds the current board to the history
+	// needs to be called before changing a tile
+	public void updateHistory()
+	{
+		boolean remove = false;
+		for(Board b: history)
+		{
+			if(!remove && b.equals(selectedLevel.getBoard()))
+			{
+				remove = true;
+			}
+			if(remove)
+			{
+				history.remove(b);
+			}
+		}
+		history.add(selectedLevel.getBoard());
+	}
+	
+	// undoes the last tile change
+	public void undo()
+	{
+		if(history.size() != 0)
+		{
+			for(Board b: history)
+			{
+				if(b.equals(selectedLevel.getBoard()))
+				{
+					selectedLevel.setBoard(history.get(history.indexOf(b)-1));
+					break;
+				}
+			}
+		}
+	}
+	
+	//redoes the last tile change
+	public void redo()
+	{
+		if(history.size() != 0)
+		{
+			for(Board b: history)
+			{
+				if(b.equals(selectedLevel.getBoard()) && (history.size()-1 > history.indexOf(b)))
+				{
+					selectedLevel.setBoard(history.get(history.indexOf(b)+1));
+					break;
+				}
+			}
 		}
 	}
 	

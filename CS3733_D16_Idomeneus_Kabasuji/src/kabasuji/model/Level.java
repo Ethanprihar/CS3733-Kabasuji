@@ -69,4 +69,9 @@ public abstract class Level implements Serializable{
 	{
 		return board;
 	}
+	
+	public void setBoard(Board b)
+	{
+		board = b;
+	}
 }
