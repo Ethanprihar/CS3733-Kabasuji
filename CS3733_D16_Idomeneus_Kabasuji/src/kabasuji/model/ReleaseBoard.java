@@ -1,15 +1,12 @@
 package kabasuji.model;
 
+@SuppressWarnings("serial")
 public class ReleaseBoard extends Board {
 	
 	public ReleaseBoard(Tile[][] t) {
 		super(t);
 	}
 
-	@Override
-	public boolean isComplete() {
-		return false;
-	}
 
 	@Override
 	public int getStars() {
@@ -27,17 +24,20 @@ public class ReleaseBoard extends Board {
 			for(int j=0; j<tiles.length; j++)
 			{
 
-				if (tiles[i][j].getColor() == 1)
+				if(tiles[i][j].getPiece() != null)
 				{
-					color0Released[tiles[i][j].getNumber()-1] = 1;
-				}
-				else if (tiles[i][j].getColor() == 2)
-				{
-					color1Released[tiles[i][j].getNumber()-1] = 1;
-				}
-				else if (tiles[i][j].getColor() == 3)
-				{
-					color2Released[tiles[i][j].getNumber()-1] = 1;
+					if (tiles[i][j].getColor() == 1)
+					{
+						color0Released[tiles[i][j].getNumber()-1] = 1;
+					}
+					else if (tiles[i][j].getColor() == 2)
+					{
+						color1Released[tiles[i][j].getNumber()-1] = 1;
+					}
+					else if (tiles[i][j].getColor() == 3)
+					{
+						color2Released[tiles[i][j].getNumber()-1] = 1;
+					}
 				}
 			}
 		}
@@ -66,6 +66,19 @@ public class ReleaseBoard extends Board {
 			stars++;
 		
 		return stars;
+	}
+	
+	public ReleaseBoard copy()
+	{
+		Tile[][] t = new Tile[tiles.length][tiles.length];
+		for(int i=0; i<tiles.length; i++)
+		{
+			for(int j=0; j<tiles.length; j++)
+			{
+				t[i][j] = tiles[i][j].copy();
+			}
+		}
+		return new ReleaseBoard(t);
 	}
 	
 }

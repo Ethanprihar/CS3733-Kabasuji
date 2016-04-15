@@ -36,5 +36,10 @@ public class Bullpen implements Serializable{
 	{
 		return pieces.size() == 0;
 	}
+	
+	public ArrayList<Piece> getPieces()
+	{
+		return pieces;
+	}
 
 }

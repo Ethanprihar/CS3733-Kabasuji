@@ -60,4 +60,18 @@ public abstract class Level implements Serializable{
 		locked = l;
 	}
 	
+	public Bullpen getBullpen()
+	{
+		return bullpen;
+	}
+	
+	public Board getBoard()
+	{
+		return board;
+	}
+	
+	public void setBoard(Board b)
+	{
+		board = b;
+	}
 }

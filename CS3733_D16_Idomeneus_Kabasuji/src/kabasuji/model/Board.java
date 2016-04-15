@@ -3,6 +3,7 @@ package kabasuji.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+@SuppressWarnings("serial")
 public abstract class Board implements Serializable{
 	Tile[][] tiles;// = new Tile[][];
 	ArrayList<Piece> pieces = new ArrayList<Piece>();
@@ -34,9 +35,12 @@ public abstract class Board implements Serializable{
 					{
 						for(int x=0; x<p.getDim(); x++)
 						{
+
 							if(p.getTile(y,x).isValid())
+							{
 								tiles[i+y][j+x].setPiece(p);
 								tiles[i+y][j+x].setValid(true);
+							}
 						}
 					}
 				}
@@ -106,9 +110,7 @@ public abstract class Board implements Serializable{
 	{
 		return false;
 	}
-	
-	
-	public abstract boolean isComplete();
+
 	
 	// Sets the selected piece in memory to the given  newly selected piece.
 	public void selectPiece(Piece p)
@@ -142,10 +144,39 @@ public abstract class Board implements Serializable{
 		return (uncoveredTiles == 0) ? 3 : (uncoveredTiles <= 6) ? 2 : (uncoveredTiles <=12) ? 1: 0;
 	}
 	
+	public boolean equals(Board b)
+	{
+		boolean equal = true;
+		for(int i=0; i<tiles.length; i++)
+		{
+			for(int j=0; j<tiles.length; j++)
+			{
+				if(!(tiles[i][j].equals(b.getTiles()[i][j])))
+				{
+					equal = false;
+				}
+			}
+		}
+		return equal;
+	}
+	
+	public abstract Board copy();
+	
 	public void shiftPiece(Piece p, Tile start) {}
 	
 	public boolean canShiftPiece(Piece p, Tile start) {
 		return false;
 	}
-
+	
+	public Tile[][] getTiles()
+	{
+		return tiles;
+	}
+	
+	public boolean isComplete() {
+		if(this.getStars() == 3)
+			return true;
+		else
+			return false;
+	}
 }

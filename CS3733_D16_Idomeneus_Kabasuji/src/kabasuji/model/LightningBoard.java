@@ -1,7 +1,8 @@
 package kabasuji.model;
 
+@SuppressWarnings("serial")
 public class LightningBoard extends Board {
-	
+
 	public LightningBoard(Tile[][] t) {
 		super(t);
 	}
@@ -37,10 +38,17 @@ public class LightningBoard extends Board {
 		}
 		return true;
 	}
-
-	@Override
-	public boolean isComplete() {
-		// TODO Auto-generated method stub
-		return false;
+	
+	public LightningBoard copy()
+	{
+		Tile[][] t = new Tile[tiles.length][tiles.length];
+		for(int i=0; i<tiles.length; i++)
+		{
+			for(int j=0; j<tiles.length; j++)
+			{
+				t[i][j] = tiles[i][j].copy();
+			}
+		}
+		return new LightningBoard(t);
 	}
 }

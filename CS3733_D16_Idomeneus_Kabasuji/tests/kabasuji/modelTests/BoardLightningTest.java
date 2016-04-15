@@ -26,22 +26,22 @@ public class BoardLightningTest extends TestCase{
 		Tile boardTile0_1 = new Tile(false, true, 0, 0);
 		Tile boardTile0_2 = new Tile(false, true, 0, 0);
 		Tile boardTile0_3 = new Tile(false, true, 0, 0);
-		Tile boardTile0_4 = new Tile(false, true, 0, 0);
+		Tile boardTile0_4 = new Tile(false, false, 0, 0);
 		Tile boardTile1_0 = new Tile(false, true, 0, 0);
 		Tile boardTile1_1 = new Tile(false, true, 0, 0);
 		Tile boardTile1_2 = new Tile(false, true, 0, 0);
 		Tile boardTile1_3 = new Tile(false, true, 0, 0);
-		Tile boardTile1_4 = new Tile(false, true, 0, 0);
+		Tile boardTile1_4 = new Tile(false, false, 0, 0);
 		Tile boardTile2_0 = new Tile(false, true, 0, 0);
 		Tile boardTile2_1 = new Tile(false, true, 0, 0);
 		Tile boardTile2_2 = new Tile(false, true, 0, 0);
 		Tile boardTile2_3 = new Tile(false, true, 0, 0);
-		Tile boardTile2_4 = new Tile(false, true, 0, 0);
+		Tile boardTile2_4 = new Tile(false, false, 0, 0);
 		Tile boardTile3_0 = new Tile(false, true, 0, 0);
 		Tile boardTile3_1 = new Tile(false, true, 0, 0);
 		Tile boardTile3_2 = new Tile(false, true, 0, 0);
 		Tile boardTile3_3 = new Tile(false, true, 0, 0);
-		Tile boardTile3_4 = new Tile(false, true, 0, 0);
+		Tile boardTile3_4 = new Tile(false, false, 0, 0);
 		Tile boardTile4_0 = new Tile(false, false, 0, 0);
 		Tile boardTile4_1 = new Tile(false, false, 0, 0);
 		Tile boardTile4_2 = new Tile(false, false, 0, 0);
@@ -77,12 +77,15 @@ public class BoardLightningTest extends TestCase{
 		//test if piece cannot be added to a valid part of the board that would leave
 		//some of the piece off the board
 		assertEquals (testBoard1.canAddPiece(testPiece2, boardTile3_3), false);
-		assertEquals (testBoard1.canAddPiece(testPiece1, boardTile3_3), true);
+		assertEquals (testBoard1.canAddPiece(testPiece1, boardTile3_3), false);
 		assertEquals (testBoard1.canAddPiece(testPiece1, boardTile4_3), false);
 	
 	
 		//Actually add a piece
 		testBoard1.addPiece(testPiece1, boardTile0_0);
+		
+		assertEquals (testBoard1.canShiftPiece(testPiece1, boardTile1_0), false);
+
 		
 		//Test if pieces can be added on top of each other and such.
 		assertEquals(testBoard1.canAddPiece(testPiece2, boardTile0_0), true);

@@ -65,4 +65,32 @@ public class Piece implements Serializable
 	{
 		return tiles.length;
 	}
+	
+	public boolean equals(Piece p)
+	{
+		boolean equal = true;
+		for(int i=0; i<tiles.length; i++)
+		{
+			for(int j=0; j<tiles.length; j++)
+			{
+				if(equal)
+					equal = p.getTile(i,j).isValid() == getTile(i,j).isValid();
+			}
+		}
+		return equal;
+	}
+	
+	public Piece copy()
+	{
+		Tile[][] t = new Tile[tiles.length][tiles.length];
+		for(int i=0; i<tiles.length; i++)
+		{
+			for(int j=0; j<tiles.length; j++)
+			{
+				boolean v = tiles[i][j].isValid();
+				t[i][j] = new Tile(false, v, 0, 0);
+			}
+		}
+		return new Piece(t);
+	}
 }

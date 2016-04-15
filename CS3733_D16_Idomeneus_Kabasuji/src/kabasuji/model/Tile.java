@@ -11,11 +11,11 @@ public class Tile implements Serializable{
 	Piece piece;
 
 	public Tile(boolean h, boolean v, int c, int n) {
-		hint = false;
+		hint = h;
 		valid = v;
 		piece = null;
-		color = 0;
-		number = 0;
+		color = c;
+		number = n;
 	}
 
 	public void toggleHint() {
@@ -60,5 +60,31 @@ public class Tile implements Serializable{
 	
 	public void setPiece(Piece p) {
 		piece = p;
+	}
+	
+	public Tile copy()
+	{
+		return new Tile(hint, valid, color, number);
+	}
+	
+	public boolean equals(Tile t)
+	{
+		if(getNumber()  != t.getNumber())
+		{
+			return false;
+		}		
+		if(isValid()  != t.isValid())
+		{
+			return false;
+		}	
+		if(isHint()  != t.isHint())
+		{
+			return false;
+		}	
+		if(getColor()  != t.getColor())
+		{
+			return false;
+		}
+		return true;
 	}
 }

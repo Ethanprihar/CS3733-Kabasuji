@@ -3,17 +3,24 @@ package kabasuji.model;
 import java.io.*;
 import java.util.ArrayList;
 
+// TODO make a copy method in board
+// TODO make a equals method in board
+
 public class Builder
 {
 	int currentScreen;
 	ArrayList<Level> levels;
-	Piece[] pieces = new Piece[35];
+	Piece[] pieces;
+	int[] numOfPieces;
 	Level selectedLevel;
-	UndoManager undoManager;
+	ArrayList<Board> history;
 
 	public Builder()
 	{
+		pieces = new Piece[35];
+		numOfPieces = new int[35];
 		levels = new ArrayList<Level>();
+		history = new ArrayList<Board>();
 		try
 		{
 			FileInputStream saveFile = new FileInputStream("levels.data");
@@ -41,13 +48,34 @@ public class Builder
 	public void loadLevel(Level l)
 	{
 		selectedLevel = l;
+		numOfPieces = new int[35];
+		// this will set the 35 numbers corresponding to the 35
+		// textfields that determine what pieces are in the bullpen
+		for(Piece p: selectedLevel.getBullpen().getPieces())
+		{
+			for(int i=0; i<35; i++)
+			{
+				if(p.equals(pieces[i]))
+				{
+					numOfPieces[i]++;
+				}
+			}
+		}
 	}
-
+	
 	public void saveLevel()
 	{
+		for(int i=0; i<35; i++)
+		{
+			for(int j=0; j<numOfPieces[i]; j++)
+			{
+				selectedLevel.getBullpen().addPiece(pieces[i].copy());
+			}
+		}
 		if (!levels.contains(selectedLevel))
 			levels.add(selectedLevel);
 		selectedLevel = null;
+		numOfPieces = new int[35];
 	}
 	
 	public void deleteLevel()
@@ -99,6 +127,57 @@ public class Builder
 		catch (Exception exc)
 		{
 			//exc.printStackTrace(); // If there was an error, print the info.
+		}
+	}
+	
+	// adds the current board to the history
+	// needs to be called before changing a tile
+	public void updateHistory()
+	{
+		boolean remove = false;
+		for(Board b: history)
+		{
+			if(!remove && b.equals(selectedLevel.getBoard()))
+			{
+				remove = true;
+			}
+			if(remove)
+			{
+				history.remove(b);
+			}
+		}
+		history.add(selectedLevel.getBoard().copy());
+	}
+	
+	// undoes the last tile change
+	public void undo()
+	{
+		if(history.size() != 0)
+		{
+			for(Board b: history)
+			{
+				if(b.equals(selectedLevel.getBoard()))
+				{
+					selectedLevel.setBoard(history.get(history.indexOf(b)-1));
+					break;
+				}
+			}
+		}
+	}
+	
+	//redoes the last tile change
+	public void redo()
+	{
+		if(history.size() != 0)
+		{
+			for(Board b: history)
+			{
+				if(b.equals(selectedLevel.getBoard()) && (history.size()-1 > history.indexOf(b)))
+				{
+					selectedLevel.setBoard(history.get(history.indexOf(b)+1));
+					break;
+				}
+			}
 		}
 	}
 	
