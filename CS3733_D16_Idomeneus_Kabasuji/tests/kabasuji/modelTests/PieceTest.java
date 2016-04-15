@@ -36,6 +36,17 @@ public class PieceTest extends TestCase{
 		//Test if basic dimension getter is working right.
 		assertEquals (testPiece1.getDim(), 2);	
 		
+		assertEquals (testPiece1.equals(testPiece2), false);
+		assertEquals (testPiece1.equals(testPiece1), true);
+		
+		Piece testPiece3 = testPiece1.copy();
+		
+		assertEquals (testPiece1.equals(testPiece3), true);
+		assertEquals (testPiece2.equals(testPiece3), false);
+
+		testPiece3.rotate(true);
+		assertEquals (testPiece2.equals(testPiece3), true);
+		
 		//Rotate the first piece to the right.
 		testPiece1.rotate(true);
 
