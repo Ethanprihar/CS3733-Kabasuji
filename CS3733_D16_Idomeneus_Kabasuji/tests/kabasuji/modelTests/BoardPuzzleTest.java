@@ -83,7 +83,8 @@ public class BoardPuzzleTest extends TestCase{
 		
 		Board testBoard1 = new PuzzleBoard(board1);
 		
-		
+		assertEquals(testBoard1.isComplete(), false);
+
 		//Test if piece can be added to valid area of board
 		assertEquals (testBoard1.canAddPiece(testPiece1, boardTile0_0), true);
 		
@@ -151,6 +152,8 @@ public class BoardPuzzleTest extends TestCase{
 		//14 free still gives 0 stars
 		testBoard1.addPiece(testPiece1, boardTile0_0);
 		assertEquals(testBoard1.getStars(), 0);
+		assertEquals(testBoard1.isComplete(), false);
+
 		
 		//Covering all but 12 gives 1 star
 		testBoard1.addPiece(testPiece1, boardTile1_0);		
@@ -171,10 +174,14 @@ public class BoardPuzzleTest extends TestCase{
 		testBoard1.addPiece(testPiece1, boardTile1_2);	
 		assertEquals(testBoard1.getStars(), 2);		
 		testBoard1.addPiece(testPiece1, boardTile2_2);	
-		assertEquals(testBoard1.getStars(), 2);		
+		assertEquals(testBoard1.getStars(), 2);	
+		assertEquals(testBoard1.isComplete(), false);
+
 
 		testBoard1.addPiece(testPiece1, boardTile3_2);	
 		assertEquals(testBoard1.getStars(), 3);		
+		
+		assertEquals(testBoard1.isComplete(), true);
 		
 		assertEquals(boardTile4_1.isValid(), false);
 	}

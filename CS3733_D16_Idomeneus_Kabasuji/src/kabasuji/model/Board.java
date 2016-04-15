@@ -3,6 +3,7 @@ package kabasuji.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+@SuppressWarnings("serial")
 public abstract class Board implements Serializable{
 	Tile[][] tiles;// = new Tile[][];
 	ArrayList<Piece> pieces = new ArrayList<Piece>();
@@ -109,9 +110,7 @@ public abstract class Board implements Serializable{
 	{
 		return false;
 	}
-	
-	
-	public abstract boolean isComplete();
+
 	
 	// Sets the selected piece in memory to the given  newly selected piece.
 	public void selectPiece(Piece p)
@@ -150,5 +149,11 @@ public abstract class Board implements Serializable{
 	public boolean canShiftPiece(Piece p, Tile start) {
 		return false;
 	}
-
+	
+	public boolean isComplete() {
+		if(this.getStars() == 3)
+			return true;
+		else
+			return false;
+	}
 }

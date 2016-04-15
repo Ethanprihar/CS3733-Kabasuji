@@ -1,7 +1,8 @@
 package kabasuji.model;
 
+@SuppressWarnings("serial")
 public class LightningBoard extends Board {
-	
+
 	public LightningBoard(Tile[][] t) {
 		super(t);
 	}
@@ -36,11 +37,5 @@ public class LightningBoard extends Board {
 			}
 		}
 		return true;
-	}
-
-	@Override
-	public boolean isComplete() {
-		// TODO Auto-generated method stub
-		return false;
 	}
 }

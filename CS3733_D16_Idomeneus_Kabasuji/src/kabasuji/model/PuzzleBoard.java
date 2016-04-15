@@ -1,5 +1,6 @@
 package kabasuji.model;
 
+@SuppressWarnings("serial")
 public class PuzzleBoard extends Board {
 	
 	public PuzzleBoard(Tile[][] t) {
@@ -55,14 +56,4 @@ public class PuzzleBoard extends Board {
 	@Override
 	public boolean canRemovePiece(Piece p) 
 	{return true;}
-
-	@Override
-	//This still needs to be written.
-	public boolean isComplete() {
-		return false;
-	}
-
-	
-
-	
 }
