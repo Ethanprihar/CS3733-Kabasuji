@@ -146,7 +146,7 @@ public class Builder
 				history.remove(b);
 			}
 		}
-		history.add(selectedLevel.getBoard());
+		history.add(selectedLevel.getBoard().copy());
 	}
 	
 	// undoes the last tile change

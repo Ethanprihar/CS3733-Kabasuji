@@ -38,4 +38,17 @@ public class LightningBoard extends Board {
 		}
 		return true;
 	}
+	
+	public LightningBoard copy()
+	{
+		Tile[][] t = new Tile[tiles.length][tiles.length];
+		for(int i=0; i<tiles.length; i++)
+		{
+			for(int j=0; j<tiles.length; j++)
+			{
+				t[i][j] = tiles[i][j].copy();
+			}
+		}
+		return new LightningBoard(t);
+	}
 }

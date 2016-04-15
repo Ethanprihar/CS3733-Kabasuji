@@ -49,6 +49,19 @@ public class PuzzleBoard extends Board {
 		removePiece(p);
 		addPiece(p, start);
 	}
+	
+	public PuzzleBoard copy()
+	{
+		Tile[][] t = new Tile[tiles.length][tiles.length];
+		for(int i=0; i<tiles.length; i++)
+		{
+			for(int j=0; j<tiles.length; j++)
+			{
+				t[i][j] = tiles[i][j].copy();
+			}
+		}
+		return new PuzzleBoard(t);
+	}
 
 	/**
 	 * Can always remove pieces from the puzzle boards.
