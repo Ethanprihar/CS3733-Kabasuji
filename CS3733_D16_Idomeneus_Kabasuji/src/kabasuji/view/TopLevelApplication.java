@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import kabasuji.model.Kabasuji;
+import kabasuji.model.Screen;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -47,14 +48,15 @@ public class TopLevelApplication extends JFrame {
 		double height = screenSize.getHeight();
 		
 		int x0 = (int) (0.1*width);
-		int x1 = (int) (0.8*width);
 		int y0 = (int) (0.1*height);
-		int y1 = (int) (0.8*height);
 		
+		
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(x0,y0,x1,y1);
+		setBounds(x0,y0,Screen.width,Screen.height);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+//		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBounds(0, 0, Screen.width, Screen.height);
 		setContentPane(contentPane);
 		
 		MainMenu panel = new MainMenu(kabasuji,TopLevelApplication.this);

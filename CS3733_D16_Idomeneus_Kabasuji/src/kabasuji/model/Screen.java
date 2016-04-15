@@ -9,4 +9,11 @@ public class Screen {
 
 	/** Game Play Screen */
 	public final static int PlayLevel = 3;
+	
+	/** Game Screen Size */
+	public final static int height = 600;
+	
+	/** Game Screen Size */
+	public final static int width = 800;
+
 }

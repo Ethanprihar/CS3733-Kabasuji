@@ -5,23 +5,24 @@ import javax.swing.border.CompoundBorder;
 
 import kabasuji.controller.GoToLevelSelectController;
 import kabasuji.model.Kabasuji;
+import kabasuji.model.Screen;
+
 import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import java.awt.SystemColor;
-import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.SwingConstants;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.ImageIcon;
 
 public class MainMenu extends JPanel {
 	Kabasuji kabasuji;
@@ -35,15 +36,39 @@ public class MainMenu extends JPanel {
 		this.kabasuji = kabasuji;
 		this.app = app;
 
-		BufferedImage img = null;
+		Image img = null;
+		Image img2 = null;
+		
 		String path = System.getProperty("user.dir") + File.separator + "src\\images\\waterfall.jpg";
+		String path2 = System.getProperty("user.dir") + File.separator + "src\\images\\star_score.png";
 		try {
 			img = ImageIO.read(new File(path));
+			img2 = ImageIO.read(new File(path2));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		PaintPane panel = new PaintPane(img);
+//		PaintPane panel = new PaintPane(img);
+		
+		String path1 = System.getProperty("user.dir") + File.separator + "src\\images\\clover.png";
+	
+		Image scaledImage2 = img.getScaledInstance(Screen.width,Screen.height,Image.SCALE_SMOOTH);
+		ImageIcon imgi2 = new ImageIcon();
+		imgi2.setImage(scaledImage2);
+		
+		JLabel panel = new JLabel(imgi2);
+		JLabel panel1 = new JLabel(new ImageIcon(path1));
+		
+		Image scaledImage = img2.getScaledInstance(10,10,Image.SCALE_SMOOTH);
+		ImageIcon imgi = new ImageIcon();
+		imgi.setImage(scaledImage);
+		
+
+		
+		JLabel panel2 = new JLabel(imgi);
+		panel2.setBounds(0,0,700,700);
+		panel1.setSize(700,700);
+		panel1.setLocation(0,0);
 		
 		Dimension mmSize = this.getSize();
 		double width = mmSize.getWidth();
@@ -60,68 +85,50 @@ public class MainMenu extends JPanel {
 		
 		setLayout(null);
 		
-		panel.setBounds(0, 0, 520, 656);
+		panel.setBounds(0, 0, Screen.width, Screen.height);
 		add(panel);
 		
-		JLabel lblNewLabel = new JLabel("Odell Dotson");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
-		
-		JLabel label = new JLabel("Ethan Prihar");
-		label.setFont(new Font("Tahoma", Font.BOLD, 20));
-		
-		JLabel label_1 = new JLabel("Vishal Rathi");
-		label_1.setFont(new Font("Tahoma", Font.BOLD, 20));
-		
-		JLabel label_2 = new JLabel("Breanne Happell");
-		label_2.setFont(new Font("Tahoma", Font.BOLD, 20));
-		
-		JLabel label_3 = new JLabel("yu-Sen Wu");
-		label_3.setFont(new Font("Tahoma", Font.BOLD, 20));
-		
-		JButton btnNewButton = new JButton("Level Select");
-		btnNewButton.setBackground(Color.cyan);
-		btnNewButton.setForeground(Color.BLACK);
-		btnNewButton.setContentAreaFilled(false);
-		btnNewButton.setOpaque(true);
-		
-		btnNewButton.addMouseListener(new GoToLevelSelectController(kabasuji, app));
+		String[] names = {"Odell Dotson", "Breanne Happell", "Ethan Prihar", "Vishal Rathi","Yu-sen Wu"};
+		JLabel[] label = new JLabel[names.length];
 		
 		JLabel lblKabasuji = new JLabel("Kabasuji");
+		lblKabasuji.setFont(new Font("Onyx", Font.BOLD, 125));
+		lblKabasuji.setSize(500,100);
+		lblKabasuji.setLocation((int) ((Screen.width-lblKabasuji.getSize().getWidth())/2), (int)((Screen.height)/(names.length+3)));
 		lblKabasuji.setHorizontalAlignment(SwingConstants.CENTER);
-		lblKabasuji.setFont(new Font("Tahoma", Font.BOLD, 73));
-		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(174)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel)))
-				.addComponent(lblKabasuji, GroupLayout.PREFERRED_SIZE, 500, GroupLayout.PREFERRED_SIZE)
-		);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(21)
-					.addComponent(lblKabasuji, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(label, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-					.addGap(7)
-					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(174, Short.MAX_VALUE))
-		);
-		panel.setLayout(gl_panel);
+		
+		for (int i = 0; i < names.length ;i++){
+			label[i] = new JLabel(names[i]);
+			label[i].setFont(new Font("Tahoma", Font.BOLD, 20));
+			label[i].setSize(200, 50);
+			label[i].setLocation((int) ((Screen.width-label[i].getSize().getWidth())/2), (int)((Screen.height)/(names.length+3))*(i+2));
+			label[i].setHorizontalAlignment(SwingConstants.CENTER);
+		}
+		
+		
+		JButton label_5 = new JButton("Level Select");
+		
+		label_5.setBackground(Color.cyan);
+		label_5.setForeground(Color.BLACK);
+		label_5.setContentAreaFilled(false);
+		label_5.setOpaque(true);
+		label_5.setSize(200, 50);
+		label_5.setLocation((int) ((Screen.width-label_5.getSize().getWidth())/2), (int)((Screen.height)/(names.length+3))*(names.length+2));
+		label_5.setHorizontalAlignment(SwingConstants.CENTER);
+		System.out.println(Screen.width);
+		
+		panel.addMouseListener(new GoToLevelSelectController(kabasuji, app));
+		
+		
+//		panel.add(lblKabasuji);
+//		panel.add(label[0]);
+//		panel.add(label[1]);
+//		panel.add(label[2]);
+//		panel.add(label[3]);
+//		panel.add(label[4]);
+//		panel.add(label_5);
+//		panel.add(panel1);
+		panel.add(panel2);
 	}
+	
 }
