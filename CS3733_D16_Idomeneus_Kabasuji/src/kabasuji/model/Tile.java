@@ -14,8 +14,8 @@ public class Tile implements Serializable{
 		hint = false;
 		valid = v;
 		piece = null;
-		color = 0;
-		number = 0;
+		color = c;
+		number = n;
 	}
 
 	public void toggleHint() {
@@ -60,5 +60,10 @@ public class Tile implements Serializable{
 	
 	public void setPiece(Piece p) {
 		piece = p;
+	}
+	
+	public Tile copy()
+	{
+		return new Tile(hint, valid, color, number);
 	}
 }

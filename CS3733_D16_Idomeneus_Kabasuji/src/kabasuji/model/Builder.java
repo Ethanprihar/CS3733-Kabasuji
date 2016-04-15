@@ -10,12 +10,14 @@ public class Builder
 	Piece[] pieces;
 	int[] numOfPieces;
 	Level selectedLevel;
+	ArrayList<Board> history;
 
 	public Builder()
 	{
 		pieces = new Piece[35];
 		numOfPieces = new int[35];
 		levels = new ArrayList<Level>();
+		history ==
 		try
 		{
 			FileInputStream saveFile = new FileInputStream("levels.data");
