@@ -3,6 +3,8 @@ package kabasuji.model;
 import java.io.*;
 import java.util.ArrayList;
 
+
+
 public class Builder
 {
 	int currentScreen;
@@ -17,7 +19,7 @@ public class Builder
 		pieces = new Piece[35];
 		numOfPieces = new int[35];
 		levels = new ArrayList<Level>();
-		history ==
+		history = new ArrayList<Board>();
 		try
 		{
 			FileInputStream saveFile = new FileInputStream("levels.data");
