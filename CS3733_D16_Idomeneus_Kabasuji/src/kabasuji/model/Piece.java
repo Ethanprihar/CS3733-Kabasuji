@@ -74,7 +74,7 @@ public class Piece implements Serializable
 			for(int j=0; j<tiles.length; j++)
 			{
 				if(equal)
-					equal = p.getTile(i,j).isValid() == getTile(i,j).isValid();
+					equal = p.getTile(i,j).equals(getTile(i,j));
 			}
 		}
 		return equal;
