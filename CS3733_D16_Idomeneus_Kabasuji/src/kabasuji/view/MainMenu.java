@@ -39,8 +39,8 @@ public class MainMenu extends JPanel {
 		Image img = null;
 		Image img2 = null;
 		
-		String path = System.getProperty("user.dir") + File.separator + "src\\images\\waterfall.jpg";
-		String path2 = System.getProperty("user.dir") + File.separator + "src\\images\\star_score.png";
+		String path = System.getProperty("user.dir") + File.separator + "src\\images\\KabasujiTitleScreen.png";
+		String path2 = System.getProperty("user.dir") + File.separator + "src\\images\\generalbutton.png";
 		try {
 			img = ImageIO.read(new File(path));
 			img2 = ImageIO.read(new File(path2));
@@ -59,14 +59,14 @@ public class MainMenu extends JPanel {
 		JLabel panel = new JLabel(imgi2);
 		JLabel panel1 = new JLabel(new ImageIcon(path1));
 		
-		Image scaledImage = img2.getScaledInstance(10,10,Image.SCALE_SMOOTH);
+		Image scaledImage = img2.getScaledInstance(50,50,Image.SCALE_SMOOTH);
 		ImageIcon imgi = new ImageIcon();
 		imgi.setImage(scaledImage);
 		
 
 		
 		JLabel panel2 = new JLabel(imgi);
-		panel2.setBounds(0,0,700,700);
+		panel2.setBounds(0,0,50,50);
 		panel1.setSize(700,700);
 		panel1.setLocation(0,0);
 		
@@ -117,7 +117,7 @@ public class MainMenu extends JPanel {
 		label_5.setHorizontalAlignment(SwingConstants.CENTER);
 		System.out.println(Screen.width);
 		
-		panel.addMouseListener(new GoToLevelSelectController(kabasuji, app));
+		panel2.addMouseListener(new GoToLevelSelectController(kabasuji, app));
 		
 		
 //		panel.add(lblKabasuji);
