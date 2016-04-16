@@ -13,11 +13,7 @@ public class LightningLevel extends Level {
 	
 	public boolean canMoveBullpenToBoard(Tile destination)
 	{
-		if(board.canAddPiece(bullpen.getSelectedPiece(), destination) && hasTimeLeft())
-		{
-			return true;
-		}
-		return false;
+		return (board.canAddPiece(bullpen.getSelectedPiece(), destination) && hasTimeLeft());
 	}
 	
 	public boolean canMoveBoardToBullpen()
@@ -43,7 +39,7 @@ public class LightningLevel extends Level {
 	}
 	
 	public void setCurrentTime(int ct) {
-		timeLimit = ct;
+		currentTime = ct;
 	}
 	
 	// returns true if there is time left in the game
