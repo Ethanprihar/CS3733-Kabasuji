@@ -52,7 +52,7 @@ public class SelectLevelController extends MouseAdapter {
 			gtsm.execute(kabasuji);
 			// Created JPanel screen object and update boundary to reflect changes
 			PuzzleLevelPanel lsp = new PuzzleLevelPanel(kabasuji, app);
-			app.changeContentPane(lsp);
+			app.setContentPane(lsp);
 		}
 	}
 }

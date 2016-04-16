@@ -38,11 +38,11 @@ public class MainMenu extends JPanel {
 		background.setBounds(0, 0, Screen.width, Screen.height);
 		add(background);
 		
-		JLabelIcon levelselectbtn = new JLabelIcon("generalbutton.png",50,50);
+		JLabelIcon levelselectbtn = new JLabelIcon("generalbutton.png",70,70);
 		levelselectbtn.setLocation((int)(Screen.width-levelselectbtn.getSize().getWidth())/2,(int)(Screen.height-levelselectbtn.getSize().getHeight())/2);
 
 		JLabel buttonlbl = new JLabel("<html>Select<br> Level</html>", SwingConstants.CENTER);
-		buttonlbl.setBounds(0,0,50,50);	
+		buttonlbl.setBounds(0,0,70,70);	
 		buttonlbl.setFont(new Font("Onyx", Font.BOLD, 18));
 
 		levelselectbtn.add(buttonlbl);

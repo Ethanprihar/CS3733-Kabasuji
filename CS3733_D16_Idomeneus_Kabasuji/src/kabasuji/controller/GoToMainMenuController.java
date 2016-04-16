@@ -47,6 +47,6 @@ public class GoToMainMenuController extends MouseAdapter {
 		gtsm.execute(kabasuji);
 		// Created JPanel screen object and update boundary to reflect changes
 		MainMenu lsp = new MainMenu(kabasuji, app);
-		app.changeContentPane(lsp);
+		app.setContentPane(lsp);
 	}
 }
