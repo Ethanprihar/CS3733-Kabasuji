@@ -6,6 +6,8 @@ import javax.swing.JTextField;
 import kabasuji.model.Builder;
 import kabasuji.model.Screen;
 import kabasuji.view.JLabelIcon;
+import levelbuilder.controller.EditNewLevelBuilderController;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -33,6 +35,11 @@ public class BuilderLevelMode extends JPanel {
 		
 		// Create an array of JLabels for the buttons
 		JLabel[] buildermainlbl = new JLabel[3];
+		
+		// Create a text field for the board dimensions
+		JTextField boardDimensions = new JTextField();
+		boardDimensions.setBounds((int)(Screen.width - boardDimensions.getSize().getWidth())/2 - 70, (int)(Screen.height/2 + boardDimensions.getSize().getWidth() - 20), 70, 20);
+		background.add(boardDimensions);
 				
 		// This loop will position buttons, create labels for them, add labels to the buttons at the right position and also add buttons to the background
 		for (int i = 0; i < 3; i++){
@@ -52,16 +59,11 @@ public class BuilderLevelMode extends JPanel {
 			buildermainlbl[i].setBounds(0,0,(int)(buildermainbtn[i].getSize().getWidth()),(int)(buildermainbtn[i].getSize().getHeight()));	
 			buildermainlbl[i].setFont(new Font("Onyx", Font.BOLD, 18));
 			buildermainbtn[i].add(buildermainlbl[i]);
+			
+			// Create a mouse listener for the buttons and the board dimensions
+			buildermainbtn[i].addMouseListener(new EditNewLevelBuilderController(builder, app, buildermainbtn[i], i, boardDimensions));
 			background.add(buildermainbtn[i]);
 		}
-		
-		// Create a text field for the board dimensions
-		JTextField boardDimensions = new JTextField();
-		boardDimensions.setBounds((int)(Screen.width - boardDimensions.getSize().getWidth())/2 - 70, (int)(Screen.height/2 + boardDimensions.getSize().getWidth() - 20), 70, 20);
-		background.add(boardDimensions);
-		
-		// Create a mouse listener for the build level button
-		//buildermainbtn[0].addMouseListener(new CreateNewLevelBuilderController(builder, app, buildermainbtn[0]));
 	}
 	
 }
