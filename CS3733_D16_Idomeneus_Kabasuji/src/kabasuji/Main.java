@@ -23,7 +23,7 @@ public class Main {
 		}
 		TopLevelApplication frame = new TopLevelApplication(kabasuji);
 		// start splash screen
-		new SplashWindow();
+		//new SplashWindow();
 		// after splash screen ends, show game
 		frame.setVisible(true);
 	}
