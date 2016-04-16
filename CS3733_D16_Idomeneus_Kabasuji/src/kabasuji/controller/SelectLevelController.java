@@ -32,12 +32,14 @@ public class SelectLevelController extends MouseAdapter {
 	TopLevelApplication app;
 	JPanel contentPanel;
 	JLabelIcon button;
+	String fn;
 
 	public SelectLevelController(Kabasuji kabasuji, TopLevelApplication app, JLabelIcon button, int level) {
 		this.kabasuji = kabasuji;
 		this.app = app;
 		this.contentPanel = app.getContentPane();
 		this.button = button;
+		this.fn = button.getFileName();
 		this.level = level;
 	}
 
@@ -63,6 +65,6 @@ public class SelectLevelController extends MouseAdapter {
 	}
 
 	public void mouseExited(MouseEvent e) {
-		button.setImg("generalbutton.png");
+		button.setImg(fn);
 	}
 }

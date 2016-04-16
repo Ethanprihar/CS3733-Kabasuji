@@ -27,6 +27,7 @@ public class Kabasuji
 		}
 		if(levels.get(0).getLocked())
 			levels.get(0).setLocked(false);
+			levels.get(1).setLocked(false);
 	}
 	
 	public void selectLevel(Level l)

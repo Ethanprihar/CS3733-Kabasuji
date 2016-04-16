@@ -65,4 +65,7 @@ public class JLabelIcon extends JLabel {
 	public void setHeight(int h) {
 		setSize(dimX, h);
 	}
+	public String getFileName(){
+		return filename;
+	}
 }

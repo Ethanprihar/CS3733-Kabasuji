@@ -28,12 +28,14 @@ public class GoToLevelSelectController extends MouseAdapter {
 	TopLevelApplication app;
 	JPanel contentPanel;
 	JLabelIcon button;
+	String fn;
 
 	public GoToLevelSelectController(Kabasuji kabasuji, TopLevelApplication app, JLabelIcon button) {
 		this.kabasuji = kabasuji;
 		this.app = app;
 		this.contentPanel = app.getContentPane();
 		this.button = button;
+		this.fn = button.getFileName();
 	}
 
 	/**
@@ -56,6 +58,6 @@ public class GoToLevelSelectController extends MouseAdapter {
 	}
 
 	public void mouseExited(MouseEvent e) {
-		button.setImg("generalbutton.png");
+		button.setImg(fn);
 	}
 }

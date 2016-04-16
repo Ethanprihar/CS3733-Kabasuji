@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import kabasuji.controller.moves.ChangeScreenMove;
 import kabasuji.model.Kabasuji;
 import kabasuji.model.Screen;
-import kabasuji.view.LevelSelectPanel;
+import kabasuji.view.JLabelIcon;
 import kabasuji.view.MainMenu;
 import kabasuji.view.TopLevelApplication;
 
@@ -27,11 +27,15 @@ public class GoToMainMenuController extends MouseAdapter {
 	Kabasuji kabasuji;
 	TopLevelApplication app;
 	JPanel contentPanel;
+	JLabelIcon button;
+	String fn;
 
-	public GoToMainMenuController(Kabasuji kabasuji, TopLevelApplication app) {
+	public GoToMainMenuController(Kabasuji kabasuji, TopLevelApplication app, JLabelIcon button) {
 		this.kabasuji = kabasuji;
 		this.app = app;
 		this.contentPanel = app.getContentPane();
+		this.button = button;
+		this.fn = button.getFileName();
 	}
 
 	/**
@@ -47,5 +51,12 @@ public class GoToMainMenuController extends MouseAdapter {
 		// Created JPanel screen object and update boundary to reflect changes
 		MainMenu lsp = new MainMenu(kabasuji, app);
 		app.changeContentPane(lsp);
+	}
+	public void mouseEntered(MouseEvent e) {
+		button.setImg("generalhoverbutton.png");
+	}
+
+	public void mouseExited(MouseEvent e) {
+		button.setImg(fn);
 	}
 }

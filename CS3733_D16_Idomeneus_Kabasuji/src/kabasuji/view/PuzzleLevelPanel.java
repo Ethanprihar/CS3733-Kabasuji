@@ -80,14 +80,9 @@ public class PuzzleLevelPanel extends JPanel {
 		btnNewButton_6.setContentAreaFilled(false);
 		btnNewButton_6.setOpaque(true);
 		
-		JButton btnNewButton_7 = new JButton("Main Menu");
-		btnNewButton_7.setBounds(830, 613, 150, 50);
-		btnNewButton_7.setBackground(Color.orange);
-		btnNewButton_7.setForeground(Color.BLACK);
-		btnNewButton_7.setContentAreaFilled(false);
-		btnNewButton_7.setOpaque(true);
-		
-		btnNewButton_7.addMouseListener(new GoToMainMenuController(kabasuji, app));
+		JLabelIcon btnNewButton_7 = new JLabelIcon("generalbutton.png",70,70);
+		btnNewButton_7.setLocation(0, 0);
+		btnNewButton_7.addMouseListener(new GoToMainMenuController(kabasuji, app, btnNewButton_7));
 		
 		JLabel movesLeft = new JLabel("Moves Left");
 		movesLeft.setBounds(0, 547, 150, 50);
