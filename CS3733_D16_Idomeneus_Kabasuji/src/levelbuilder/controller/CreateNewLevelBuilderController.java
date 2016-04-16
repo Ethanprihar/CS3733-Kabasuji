@@ -9,6 +9,7 @@ import kabasuji.controller.moves.ChangeScreenMove;
 import kabasuji.model.Builder;
 import kabasuji.model.Kabasuji;
 import kabasuji.model.Screen;
+import kabasuji.view.JLabelIcon;
 import kabasuji.view.LevelSelectPanel;
 import kabasuji.view.TopLevelApplication;
 import levelbuilder.controller.moves.ChangeScreenBuilderMove;
@@ -30,11 +31,13 @@ public class CreateNewLevelBuilderController extends MouseAdapter {
 	Builder builder;
 	TopLevelApplicationBuilder app;
 	JPanel contentPanel;
+	JLabelIcon button;
 
-	public CreateNewLevelBuilderController(Builder builder, TopLevelApplicationBuilder app) {
+	public CreateNewLevelBuilderController(Builder builder, TopLevelApplicationBuilder app, JLabelIcon button) {
 		this.builder = builder;
 		this.app = app;
 		this.contentPanel = app.getContentPane();
+		this.button = button;
 	}
 
 	/**
@@ -49,5 +52,13 @@ public class CreateNewLevelBuilderController extends MouseAdapter {
 		// Created JPanel screen object and update boundary to reflect changes
 		BuilderLevelMode lsp = new BuilderLevelMode(builder, app);
 		app.changeContentPane(lsp);
+	}
+	
+	public void mouseEntered(MouseEvent e) {
+		button.setImg("generalhoverbutton.png");
+	}
+
+	public void mouseExited(MouseEvent e) {
+		button.setImg("generalbutton.png");
 	}
 }
