@@ -8,9 +8,8 @@ import javax.swing.JPanel;
 import kabasuji.controller.moves.ChangeScreenMove;
 import kabasuji.model.Kabasuji;
 import kabasuji.model.Screen;
-import kabasuji.view.LevelSelect;
+import kabasuji.view.JLabelIcon;
 import kabasuji.view.LevelSelectPanel;
-import kabasuji.view.LevelSelectPanel2;
 import kabasuji.view.TopLevelApplication;
 
 /**
@@ -28,11 +27,13 @@ public class GoToLevelSelectController extends MouseAdapter {
 	Kabasuji kabasuji;
 	TopLevelApplication app;
 	JPanel contentPanel;
+	JLabelIcon button;
 
-	public GoToLevelSelectController(Kabasuji kabasuji, TopLevelApplication app) {
+	public GoToLevelSelectController(Kabasuji kabasuji, TopLevelApplication app, JLabelIcon button) {
 		this.kabasuji = kabasuji;
 		this.app = app;
 		this.contentPanel = app.getContentPane();
+		this.button = button;
 	}
 
 	/**
@@ -46,7 +47,15 @@ public class GoToLevelSelectController extends MouseAdapter {
 		// Attempt to execute action on model
 		gtsm.execute(kabasuji);
 		// Created JPanel screen object and update boundary to reflect changes
-		LevelSelectPanel2 lsp = new LevelSelectPanel2(kabasuji, app);
-		app.setContentPane(lsp);
+		LevelSelectPanel lsp = new LevelSelectPanel(kabasuji, app);
+		app.changeContentPane(lsp);
+	}
+
+	public void mouseEntered(MouseEvent e) {
+		button.setImg("generalhoverbutton.png");
+	}
+
+	public void mouseExited(MouseEvent e) {
+		button.setImg("generalbutton.png");
 	}
 }

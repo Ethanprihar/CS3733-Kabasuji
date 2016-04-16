@@ -28,7 +28,7 @@ public class TopLevelApplication extends JFrame {
 	public JPanel getContentPane(){
 		return contentPane;
 	}
-	public void setContentPane(JPanel j){
+	public void changeContentPane(JPanel j){
 		contentPane.removeAll();
 		j.setBounds(0,0,Screen.width,Screen.height);
 		contentPane.add(j);
@@ -47,21 +47,12 @@ public class TopLevelApplication extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		contentPane = new JPanel();
-//		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setBounds(0, 0, Screen.width, Screen.height);
 		setContentPane(contentPane);
 		
 		MainMenu panel = new MainMenu(kabasuji,TopLevelApplication.this);
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
-		);
-		contentPane.setLayout(gl_contentPane);
+		panel.setBounds(0, 0, Screen.width, Screen.height);
+		contentPane.add(panel);
 	}
 }
 

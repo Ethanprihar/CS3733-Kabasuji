@@ -9,7 +9,6 @@ import kabasuji.controller.moves.ChangeScreenMove;
 import kabasuji.model.Builder;
 import kabasuji.model.Kabasuji;
 import kabasuji.model.Screen;
-import kabasuji.view.LevelSelect;
 import kabasuji.view.LevelSelectPanel;
 import kabasuji.view.TopLevelApplication;
 import levelbuilder.controller.moves.ChangeScreenBuilderMove;

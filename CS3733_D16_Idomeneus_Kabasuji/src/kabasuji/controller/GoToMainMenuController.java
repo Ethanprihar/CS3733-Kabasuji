@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 import kabasuji.controller.moves.ChangeScreenMove;
 import kabasuji.model.Kabasuji;
 import kabasuji.model.Screen;
-import kabasuji.view.LevelSelect;
 import kabasuji.view.LevelSelectPanel;
 import kabasuji.view.MainMenu;
 import kabasuji.view.TopLevelApplication;
@@ -47,6 +46,6 @@ public class GoToMainMenuController extends MouseAdapter {
 		gtsm.execute(kabasuji);
 		// Created JPanel screen object and update boundary to reflect changes
 		MainMenu lsp = new MainMenu(kabasuji, app);
-		app.setContentPane(lsp);
+		app.changeContentPane(lsp);
 	}
 }

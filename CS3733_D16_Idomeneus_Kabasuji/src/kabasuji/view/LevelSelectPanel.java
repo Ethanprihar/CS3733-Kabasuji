@@ -6,6 +6,7 @@ import javax.swing.border.CompoundBorder;
 import kabasuji.controller.GoToLevelSelectController;
 import kabasuji.controller.SelectLevelController;
 import kabasuji.model.Kabasuji;
+import kabasuji.model.Screen;
 
 import java.awt.Color;
 import javax.swing.JButton;
@@ -23,143 +24,36 @@ import java.awt.event.ActionEvent;
 public class LevelSelectPanel extends JPanel {
 	Kabasuji kabasuji;
 	TopLevelApplication app;
+
 	/**
 	 * Create the panel.
 	 */
 	public LevelSelectPanel(Kabasuji kabasuji, TopLevelApplication app) {
 		this.kabasuji = kabasuji;
 		this.app = app;
-		
-		setBackground(SystemColor.textHighlight);
-		setBorder(new CompoundBorder());
-		
-		JLabel lblKabasuji = new JLabel("Kabasuji Level Select");
-		lblKabasuji.setHorizontalAlignment(SwingConstants.CENTER);
-		lblKabasuji.setFont(new Font("Tahoma", Font.BOLD, 73));
-		
-		JButton btnNewButton = new JButton("Level 1 ");
-		
-		JButton btnNewButton_1 = new JButton("Level 2 ");
-		
-		JButton btnNewButton_2 = new JButton("Level 3 ");
-		
-		JButton btnNewButton_3 = new JButton("Level 4 ");
-		
-		JButton btnNewButton_4 = new JButton("Level 5 ");
-		
-		JButton btnNewButton_5 = new JButton("Level 6 ");
-		
-		JButton btnNewButton_6 = new JButton("Level 7 ");
-		 
-		JButton btnNewButton_7 = new JButton("Level 8 ");
-		
-		JButton btnNewButton_8 = new JButton("Level 9 ");
-		
-		JButton btnNewButton_9 = new JButton("Level 10");
-		
-		JButton btnNewButton_10 = new JButton("Level 11");
-		
-		JButton btnNewButton_11 = new JButton("Level 12");
-		
-		JButton btnNewButton_12 = new JButton("Level 13");
-		
-		JButton btnNewButton_13 = new JButton("Level 14");
-		
-		JButton btnNewButton_14 = new JButton("Level 15");
-		
-		JButton btnNewButton_15 = new JButton("Forward");
-		
-		JButton button = new JButton("Back");
-		
-		btnNewButton.addMouseListener(new SelectLevelController(kabasuji, app, 1));
-		
-		btnNewButton_1.addMouseListener(new SelectLevelController(kabasuji, app, 2));
-		
-		JButton btnReturnToTitle = new JButton("Return to Title");
-		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addComponent(lblKabasuji)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(75)
-					.addComponent(btnNewButton)
-					.addGap(18)
-					.addComponent(btnNewButton_1)
-					.addGap(18)
-					.addComponent(btnNewButton_2)
-					.addGap(18)
-					.addComponent(btnNewButton_3)
-					.addGap(18)
-					.addComponent(btnNewButton_4, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(75)
-					.addComponent(btnNewButton_5)
-					.addGap(18)
-					.addComponent(btnNewButton_6, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-					.addGap(10)
-					.addComponent(btnNewButton_7, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-					.addGap(10)
-					.addComponent(btnNewButton_8)
-					.addGap(18)
-					.addComponent(btnNewButton_9))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(75)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(button)
-							.addGap(381)
-							.addComponent(btnNewButton_15))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnNewButton_10)
-							.addGap(18)
-							.addComponent(btnNewButton_11)
-							.addGap(18)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnReturnToTitle)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(btnNewButton_12)
-									.addGap(18)
-									.addComponent(btnNewButton_13)
-									.addGap(18)
-									.addComponent(btnNewButton_14)))))
-					.addContainerGap(191, Short.MAX_VALUE))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(68)
-					.addComponent(lblKabasuji)
-					.addGap(70)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnNewButton)
-						.addComponent(btnNewButton_1)
-						.addComponent(btnNewButton_2)
-						.addComponent(btnNewButton_3)
-						.addComponent(btnNewButton_4))
-					.addGap(55)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnNewButton_5)
-						.addComponent(btnNewButton_6)
-						.addComponent(btnNewButton_7)
-						.addComponent(btnNewButton_8)
-						.addComponent(btnNewButton_9))
-					.addGap(52)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnNewButton_10)
-						.addComponent(btnNewButton_11)
-						.addComponent(btnNewButton_12)
-						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-							.addComponent(btnNewButton_13)
-							.addComponent(btnNewButton_14)))
-					.addGap(94)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnNewButton_15)
-						.addComponent(button))
-					.addGap(34)
-					.addComponent(btnReturnToTitle)
-					.addContainerGap(54, Short.MAX_VALUE))
-		);
-		setLayout(groupLayout);
+
+		JLabelIcon[] levelselectbtn = new JLabelIcon[15];
+		JLabel[] buttonlbl = new JLabel[15];
+
+		JLabelIcon background = new JLabelIcon("LevelSelectScreen.png", Screen.width, Screen.height);
+		background.setBounds(0, 0, Screen.width, Screen.height);
+		add(background);
+
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 5; j++) {
+				levelselectbtn[i * 5 + j] = new JLabelIcon("generalbutton.png", 70, 70);
+				levelselectbtn[i * 5 + j].setLocation(
+						(int) (Screen.width / 7 * (j + 1) + levelselectbtn[i * 5 + j].getSize().getWidth() / 2),
+						(int) (Screen.height / 10 * (i*2 + 2) + levelselectbtn[i * 5 + j].getSize().getHeight() / 2));
+				buttonlbl[i * 5 + j] = new JLabel("<html>Select<br>" + "Level " + (i * 5 + j + 1) + "</html>",
+						SwingConstants.CENTER);
+				buttonlbl[i * 5 + j].setBounds(0, 0, 70, 70);
+				buttonlbl[i * 5 + j].setFont(new Font("Onyx", Font.BOLD, 18));
+				levelselectbtn[i * 5 + j].add(buttonlbl[i * 5 + j]);
+				levelselectbtn[i * 5 + j].addMouseListener(new SelectLevelController(kabasuji, app,levelselectbtn[i * 5 + j], i * 5 + j + 1));
+				background.add(levelselectbtn[i * 5 + j]);
+			}
+		}
 
 	}
 }

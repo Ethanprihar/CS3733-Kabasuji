@@ -14,17 +14,22 @@ public class JLabelIcon extends JLabel {
 	String filename;
 	int dimX;
 	int dimY;
-	public JLabelIcon(String filename, int dimX, int dimY){
+
+	public JLabelIcon(String filename, int dimX, int dimY) {
 		super();
 		this.filename = filename;
 		this.dimX = dimX;
 		this.dimY = dimY;
-		
+
 		// sets size
-		setSize(dimX,dimY);
-		
+		setSize(dimX, dimY);
+		setImg(filename);
+
+	}
+
+	public void setImg(String fn) {
 		// maps a path to the desired picture
-		String path = System.getProperty("user.dir") + File.separator + "src\\images" + File.separator + filename;
+		String path = System.getProperty("user.dir") + File.separator + "src\\images" + File.separator + fn;
 		// attempts to read picture
 		try {
 			img = ImageIO.read(new File(path));
@@ -33,10 +38,31 @@ public class JLabelIcon extends JLabel {
 			e.printStackTrace();
 		}
 		// scale the picture to desired resolution
-		Image scaledImage = img.getScaledInstance(dimX,dimY,Image.SCALE_SMOOTH);
+		Image scaledImage = img.getScaledInstance(dimX, dimY, Image.SCALE_SMOOTH);
 		ImageIcon imgi = new ImageIcon();
 		imgi.setImage(scaledImage);
 		// set picture on label
 		setIcon(imgi);
+		repaint();
+	}
+
+	// getter width
+	public int getWidth() {
+		return dimX;
+	}
+
+	// setter width
+	public void setWidth(int w) {
+		setSize(w, dimY);
+	}
+
+	// getting height
+	public int getHeight() {
+		return dimY;
+	}
+
+	// setter width
+	public void setHeight(int h) {
+		setSize(dimX, h);
 	}
 }

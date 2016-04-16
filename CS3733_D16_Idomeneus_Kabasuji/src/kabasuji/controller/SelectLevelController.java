@@ -9,6 +9,7 @@ import kabasuji.controller.moves.ChangeScreenMove;
 import kabasuji.controller.moves.SelectLevelMove;
 import kabasuji.model.Kabasuji;
 import kabasuji.model.Screen;
+import kabasuji.view.JLabelIcon;
 import kabasuji.view.LevelSelectPanel;
 import kabasuji.view.MainMenu;
 import kabasuji.view.PuzzleLevelPanel;
@@ -30,11 +31,13 @@ public class SelectLevelController extends MouseAdapter {
 	Kabasuji kabasuji;
 	TopLevelApplication app;
 	JPanel contentPanel;
+	JLabelIcon button;
 
-	public SelectLevelController(Kabasuji kabasuji, TopLevelApplication app, int level) {
+	public SelectLevelController(Kabasuji kabasuji, TopLevelApplication app, JLabelIcon button, int level) {
 		this.kabasuji = kabasuji;
 		this.app = app;
 		this.contentPanel = app.getContentPane();
+		this.button = button;
 		this.level = level;
 	}
 
@@ -52,7 +55,14 @@ public class SelectLevelController extends MouseAdapter {
 			gtsm.execute(kabasuji);
 			// Created JPanel screen object and update boundary to reflect changes
 			PuzzleLevelPanel lsp = new PuzzleLevelPanel(kabasuji, app);
-			app.setContentPane(lsp);
+			app.changeContentPane(lsp);
 		}
+	}
+	public void mouseEntered(MouseEvent e) {
+		button.setImg("generalhoverbutton.png");
+	}
+
+	public void mouseExited(MouseEvent e) {
+		button.setImg("generalbutton.png");
 	}
 }
