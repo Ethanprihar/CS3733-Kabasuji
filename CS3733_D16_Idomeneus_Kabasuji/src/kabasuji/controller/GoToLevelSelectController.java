@@ -10,6 +10,7 @@ import kabasuji.model.Kabasuji;
 import kabasuji.model.Screen;
 import kabasuji.view.LevelSelect;
 import kabasuji.view.LevelSelectPanel;
+import kabasuji.view.LevelSelectPanel2;
 import kabasuji.view.TopLevelApplication;
 
 /**
@@ -45,7 +46,7 @@ public class GoToLevelSelectController extends MouseAdapter {
 		// Attempt to execute action on model
 		gtsm.execute(kabasuji);
 		// Created JPanel screen object and update boundary to reflect changes
-		LevelSelect lsp = new LevelSelect(kabasuji, app);
+		LevelSelectPanel2 lsp = new LevelSelectPanel2(kabasuji, app);
 		app.changeContentPane(lsp);
 	}
 }
