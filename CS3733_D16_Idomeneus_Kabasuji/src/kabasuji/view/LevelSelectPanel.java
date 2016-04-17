@@ -1,27 +1,15 @@
 package kabasuji.view;
 
 import javax.swing.JPanel;
-import javax.swing.border.CompoundBorder;
-
-import kabasuji.controller.GoToLevelSelectController;
 import kabasuji.controller.GoToMainMenuController;
 import kabasuji.controller.SelectLevelController;
 import kabasuji.model.Kabasuji;
 import kabasuji.model.Screen;
 
-import java.awt.Color;
-import javax.swing.JButton;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.SystemColor;
-import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import java.awt.event.ActionListener;
 import java.util.Random;
-import java.awt.event.ActionEvent;
 
 public class LevelSelectPanel extends JPanel {
 	Kabasuji kabasuji;
@@ -80,11 +68,12 @@ public class LevelSelectPanel extends JPanel {
 		JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", 70, 70);
 		mainmenubtn.setLocation((int) ((Screen.width - mainmenubtn.getSize().getWidth()) / 2),
 				(int) (Screen.height * .8));
-		mainmenubtn.addMouseListener(new GoToMainMenuController(kabasuji, app, mainmenubtn));
 		JLabel mainmenulbl = new JLabel("<html>Main<br>Menu</html>", SwingConstants.CENTER);
 		mainmenulbl.setBounds(0, 0, 70, 70);
 		mainmenulbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		mainmenubtn.add(mainmenulbl);
+		mainmenubtn.addMouseListener(
+				new GoToMainMenuController(kabasuji, app,mainmenubtn));
 		background.add(mainmenubtn);
 
 	}

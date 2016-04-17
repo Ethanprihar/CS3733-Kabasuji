@@ -12,6 +12,7 @@ import kabasuji.model.Screen;
 import kabasuji.view.JLabelIcon;
 import kabasuji.view.LevelSelectPanel;
 import kabasuji.view.MainMenu;
+import kabasuji.view.PlayLevelPanel;
 import kabasuji.view.PuzzleLevelPanel;
 import kabasuji.view.TopLevelApplication;
 
@@ -56,7 +57,7 @@ public class SelectLevelController extends MouseAdapter {
 		if (slm.execute(kabasuji)) {
 			gtsm.execute(kabasuji);
 			// Created JPanel screen object and update boundary to reflect changes
-			PuzzleLevelPanel lsp = new PuzzleLevelPanel(kabasuji, app);
+			PlayLevelPanel lsp = new PlayLevelPanel(kabasuji, app);
 			app.changeContentPane(lsp);
 		}
 	}
