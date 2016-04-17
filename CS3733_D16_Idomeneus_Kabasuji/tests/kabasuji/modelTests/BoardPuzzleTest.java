@@ -52,6 +52,8 @@ public class BoardPuzzleTest extends TestCase{
 		Tile boardTile4_2 = new Tile(false, false, 0, 0);
 		Tile boardTile4_3 = new Tile(false, false, 0, 0);
 		Tile boardTile4_4 = new Tile(false, false, 0, 0);
+		
+		Tile boardTileBreakTest = new Tile(true, true, 1, 1);
 
 		
 		Tile[][] piece1 = {{testTile1, testTile2},{testTile3, testTile4}};
@@ -63,6 +65,12 @@ public class BoardPuzzleTest extends TestCase{
 			{boardTile2_0,boardTile2_1,boardTile2_2,boardTile2_3,boardTile2_4},
 			{boardTile3_0,boardTile3_1,boardTile3_2,boardTile3_3,boardTile3_4},
 			{boardTile4_0,boardTile4_1,boardTile4_2,boardTile4_3,boardTile4_4}};
+		Tile[][] board2 = 
+			{{boardTile0_0,boardTile0_1,boardTile0_2,boardTile0_3,boardTile0_4},
+			{boardTile1_0,boardTile1_1,boardTile1_2,boardTile1_3,boardTile1_4},
+			{boardTile2_0,boardTile2_1,boardTile2_2,boardTile2_3,boardTile2_4},
+			{boardTile3_0,boardTile3_1,boardTile3_2,boardTile3_3,boardTile3_4},
+			{boardTile4_0,boardTile4_1,boardTile4_2,boardTile4_3,boardTileBreakTest}};
 		
 
 		/* 11
@@ -80,8 +88,14 @@ public class BoardPuzzleTest extends TestCase{
 		 */
 		Piece testPiece3 = new Piece(piece3);
 		
-		
+
 		Board testBoard1 = new PuzzleBoard(board1);
+		Board testBoard2 = new PuzzleBoard(board2);
+		
+		assertEquals(testBoard1.equals(testBoard1), true);
+		assertEquals(testBoard1.equals(testBoard1.copy()), true);
+		assertEquals(testBoard1.equals(testBoard2), false);
+		
 		
 		assertEquals(testBoard1.isComplete(), false);
 

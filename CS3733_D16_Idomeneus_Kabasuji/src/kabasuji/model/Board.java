@@ -146,18 +146,17 @@ public abstract class Board implements Serializable{
 	
 	public boolean equals(Board b)
 	{
-		boolean equal = true;
 		for(int i=0; i<tiles.length; i++)
 		{
 			for(int j=0; j<tiles.length; j++)
 			{
 				if(!(tiles[i][j].equals(b.getTiles()[i][j])))
 				{
-					equal = false;
+					return false;
 				}
 			}
 		}
-		return equal;
+		return true;
 	}
 	
 	public abstract Board copy();
