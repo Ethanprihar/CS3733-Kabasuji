@@ -1,7 +1,9 @@
 package kabasuji.model;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class Kabasuji
@@ -14,17 +16,7 @@ public class Kabasuji
 	public Kabasuji()
 	{
 		currentScreen = 1;
-		try
-		{
-			FileInputStream saveFile = new FileInputStream("levels.data");
-			ObjectInputStream save = new ObjectInputStream(saveFile);
-			levels = (ArrayList<Level>) save.readObject();
-			save.close();
-		}
-		catch (Exception exc)
-		{
-			exc.printStackTrace(); // If there was an error, print the info.
-		}
+		loadLevels();
 		if(levels.get(0).getLocked())
 			levels.get(0).setLocked(false);
 			levels.get(1).setLocked(false);
@@ -62,4 +54,42 @@ public class Kabasuji
 		selectedLevel = l;
 	}
 	
+	public void resetLevel()
+	{
+		int index = levels.indexOf(selectedLevel);
+		selectedLevel = null;
+		loadLevels();
+		selectedLevel = levels.get(index);
+	}
+	
+	private void loadLevels()
+	{
+		try
+		{
+			FileInputStream saveFile = new FileInputStream("levels.data");
+			ObjectInputStream save = new ObjectInputStream(saveFile);
+			levels = (ArrayList<Level>) save.readObject();
+			save.close();
+		}
+		catch (Exception exc)
+		{
+			exc.printStackTrace(); // If there was an error, print the info.
+		}
+	}
+	
+	public void saveLevels()
+	{
+		try
+		{
+			FileOutputStream saveFile = new FileOutputStream("levels.data");
+			ObjectOutputStream save = new ObjectOutputStream(saveFile);
+			save.reset();
+			save.writeObject(levels);
+			save.close();
+		}
+		catch (Exception exc)
+		{
+			//exc.printStackTrace(); // If there was an error, print the info.
+		}
+	}
 }
