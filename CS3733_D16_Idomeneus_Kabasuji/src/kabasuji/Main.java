@@ -35,7 +35,7 @@ public class Main {
 		builder.setLevels(new ArrayList<Level>());
 		for(int i=0; i<15; i++)
 		{
-			builder.addNewLevel(i%3, 12, 12);
+			builder.addNewLevel(i%3, 12);
 			builder.saveLevel();
 			System.out.println(builder.getLevels());
 		}
