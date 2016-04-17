@@ -13,7 +13,6 @@ import kabasuji.view.JLabelIcon;
 import kabasuji.view.LevelSelectPanel;
 import kabasuji.view.MainMenu;
 import kabasuji.view.PlayLevelPanel;
-import kabasuji.view.PuzzleLevelPanel;
 import kabasuji.view.TopLevelApplication;
 
 /**
