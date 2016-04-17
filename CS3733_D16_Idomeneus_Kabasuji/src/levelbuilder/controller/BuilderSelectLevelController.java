@@ -50,4 +50,12 @@ public class BuilderSelectLevelController extends MouseAdapter {
 		BuilderLevelSelect lsp = new BuilderLevelSelect(builder, app);
 		app.changeContentPane(lsp);
 	}
+	
+	public void mouseEntered(MouseEvent e) {
+		button.setImg("generalhoverbutton.png");
+	}
+
+	public void mouseExited(MouseEvent e) {
+		button.setImg("generalbutton.png");
+	}
 }
