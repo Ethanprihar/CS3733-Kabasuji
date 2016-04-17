@@ -9,6 +9,8 @@ import kabasuji.view.JLabelIcon;
 import levelbuilder.controller.GoToMainMenuBuilderController;
 
 import javax.swing.JLabel;
+
+import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
@@ -131,6 +133,26 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		numBtn6Lbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		numBtn6.add(numBtn6Lbl);
 		background.add(numBtn6);
+		
+		JLabelIcon colorBtn1 = new JLabelIcon("general1button.png", 30, 30);
+		colorBtn1.setLocation((int) (Screen.width * 0.02) + (int) (colorBtn1.getSize().getWidth() / 2),
+				(int) (Screen.height * 0.35));	
+		background.add(colorBtn1);
+		
+		JLabelIcon colorBtn2 = new JLabelIcon("general2button.png", 30, 30);
+		colorBtn2.setLocation((int) (Screen.width * 0.08) + (int) (colorBtn2.getSize().getWidth() / 2),
+				(int) (Screen.height * 0.35));	
+		background.add(colorBtn2);
+		
+		JLabelIcon colorBtn3 = new JLabelIcon("general3button.png", 30, 30);
+		colorBtn3.setLocation((int) (Screen.width * 0.14) + (int) (colorBtn3.getSize().getWidth() / 2),
+				(int) (Screen.height * 0.35));	
+		background.add(colorBtn3);
+		
+		JLabelIcon colorClearBtn = new JLabelIcon("generalbutton.png", 30, 30);
+		colorClearBtn.setLocation((int) (Screen.width * 0.08) + (int) (colorClearBtn.getSize().getWidth() / 2),
+				(int) (Screen.height * 0.45));	
+		background.add(colorClearBtn);
 
 		JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", 70, 70);
 		mainmenubtn.setLocation((int) (Screen.width * 0.78) + (int) (saveBtn.getSize().getWidth() / 2),
