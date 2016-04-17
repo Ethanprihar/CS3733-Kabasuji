@@ -11,6 +11,7 @@ import kabasuji.model.Screen;
 import kabasuji.view.JLabelIcon;
 import levelbuilder.controller.moves.ChangeScreenBuilderMove;
 import levelbuilder.controller.moves.LevelModeBuilderMove;
+import levelbuilder.view.BuilderLightningLevelPanel;
 import levelbuilder.view.BuilderPuzzleLevelPanel;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
@@ -59,7 +60,11 @@ public class EditNewLevelBuilderController extends MouseAdapter {
 				app.changeContentPane(lsp);
 			}
 			
-			//TODO: Create panels for the lightning and release screen
+			// Create a lightning level panel if the level type is 1
+			if (levelType == 1){
+				BuilderLightningLevelPanel lsp = new BuilderLightningLevelPanel(builder, app);
+				app.changeContentPane(lsp);
+			}
 		}
 	}
 	
