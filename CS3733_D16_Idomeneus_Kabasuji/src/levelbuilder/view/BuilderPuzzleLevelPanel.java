@@ -74,7 +74,8 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		btnNewButton_8.setContentAreaFilled(false);
 		btnNewButton_8.setOpaque(true);
 		
-		btnNewButton_8.addMouseListener(new GoToMainMenuBuilderController(builder, app));
+		//btnNewButton_8.addMouseListener(new GoToMainMenuBuilderController(builder, app, null));
+		//Added null because I had to change constructor for highlight color changes. - Odell
 		
 		JLabel movesLeft = new JLabel("Moves");
 		movesLeft.setBounds(0, 145, 150, 50);

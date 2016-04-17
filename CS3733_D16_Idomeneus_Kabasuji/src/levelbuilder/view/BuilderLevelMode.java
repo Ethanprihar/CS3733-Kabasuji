@@ -7,6 +7,7 @@ import kabasuji.model.Builder;
 import kabasuji.model.Screen;
 import kabasuji.view.JLabelIcon;
 import levelbuilder.controller.EditNewLevelBuilderController;
+import levelbuilder.controller.GoToMainMenuBuilderController;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -46,8 +47,7 @@ public class BuilderLevelMode extends JPanel {
 			buildermainbtn[i] = new JLabelIcon("generalbutton.png", 70, 70);
 			buildermainbtn[i].setLocation(
 					(int) (Screen.width + ((i*3 - buildermainbtn[i].getSize().getWidth()/5 - 2)*buildermainbtn[i].getSize().getWidth())/2),
-					(int) (Screen.height + 3*buildermainbtn[i].getSize().getWidth())/2);
-			
+					(int) (Screen.height + 3*buildermainbtn[i].getSize().getWidth())/2);			
 			String lbl = new String("Puzzle");
 			if (i == 1){
 				lbl = "Lightning";
@@ -64,6 +64,19 @@ public class BuilderLevelMode extends JPanel {
 			buildermainbtn[i].addMouseListener(new EditNewLevelBuilderController(builder, app, buildermainbtn[i], i, boardDimensions));
 			background.add(buildermainbtn[i]);
 		}
+		
+		JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", 70, 70);
+		
+		mainmenubtn.setLocation(
+				(int) (Screen.width + ((3 - mainmenubtn.getSize().getWidth()/5 - 2)*mainmenubtn.getSize().getWidth())/2),
+				(int) (85+(Screen.height + 3*mainmenubtn.getSize().getWidth())/2));
+		
+		JLabel mainmenulbl = new JLabel("<html>Main<br>Menu</html>", SwingConstants.CENTER);
+		mainmenulbl.setBounds(0, 0, 70, 70);
+		mainmenulbl.setFont(new Font("Onyx", Font.BOLD, 18));
+		mainmenubtn.add(mainmenulbl);
+		mainmenubtn.addMouseListener(new GoToMainMenuBuilderController(builder, app, mainmenubtn));
+		background.add(mainmenubtn);
 	}
 	
 }
