@@ -4,13 +4,9 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
 import kabasuji.model.Kabasuji;
 import kabasuji.model.Screen;
 
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import java.awt.Dimension;
 
 public class TopLevelApplication extends JFrame {

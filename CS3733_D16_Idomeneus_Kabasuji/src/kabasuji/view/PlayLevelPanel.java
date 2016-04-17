@@ -2,14 +2,14 @@ package kabasuji.view;
 
 import javax.swing.JPanel;
 import kabasuji.controller.GoToMainMenuController;
-import kabasuji.controller.SelectLevelController;
 import kabasuji.model.Kabasuji;
+import kabasuji.model.PuzzleBoard;
 import kabasuji.model.Screen;
+import kabasuji.model.Tile;
 
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import java.util.Random;
 
 public class PlayLevelPanel extends JPanel {
 	Kabasuji kabasuji;
@@ -30,10 +30,46 @@ public class PlayLevelPanel extends JPanel {
 				(int) (Screen.height * 0.25));
 		bullpen.setLocation((int) (Screen.width * 0.05), (int) (Screen.height * 0.05));
 		background.add(bullpen);
-
-		JLabelIcon board = new JLabelIcon("boardpanel_opaque.png", (int) (Screen.width * 0.5),
-				(int) (Screen.height * 0.5));
-		board.setLocation((int) (Screen.width * 0.25), (int) (Screen.height * 0.40));
+		
+		Tile boardTile0_0 = new Tile(false, true, 0, 0);
+		Tile boardTile0_1 = new Tile(false, true, 0, 0);
+		Tile boardTile0_2 = new Tile(false, true, 0, 0);
+		Tile boardTile0_3 = new Tile(false, true, 0, 0);
+		Tile boardTile0_4 = new Tile(false, false, 0, 0);
+		Tile boardTile1_0 = new Tile(false, true, 0, 0);
+		Tile boardTile1_1 = new Tile(false, true, 0, 0);
+		Tile boardTile1_2 = new Tile(false, true, 0, 0);
+		Tile boardTile1_3 = new Tile(false, true, 0, 0);
+		Tile boardTile1_4 = new Tile(false, false, 0, 0);
+		Tile boardTile2_0 = new Tile(false, true, 0, 0);
+		Tile boardTile2_1 = new Tile(false, true, 0, 0);
+		Tile boardTile2_2 = new Tile(false, true, 0, 0);
+		Tile boardTile2_3 = new Tile(false, true, 0, 0);
+		Tile boardTile2_4 = new Tile(false, false, 0, 0);
+		Tile boardTile3_0 = new Tile(false, true, 0, 0);
+		Tile boardTile3_1 = new Tile(false, true, 0, 0);
+		Tile boardTile3_2 = new Tile(false, true, 0, 0);
+		Tile boardTile3_3 = new Tile(false, true, 0, 0);
+		Tile boardTile3_4 = new Tile(false, false, 0, 0);
+		Tile boardTile4_0 = new Tile(false, false, 0, 0);
+		Tile boardTile4_1 = new Tile(false, false, 0, 0);
+		Tile boardTile4_2 = new Tile(false, false, 0, 0);
+		Tile boardTile4_3 = new Tile(false, false, 0, 0);
+		Tile boardTile4_4 = new Tile(false, false, 0, 0);
+		Tile[][] tiles = 
+			{{boardTile0_0,boardTile0_1,boardTile0_2,boardTile0_3,boardTile0_4},
+			{boardTile1_0,boardTile1_1,boardTile1_2,boardTile1_3,boardTile1_4},
+			{boardTile2_0,boardTile2_1,boardTile2_2,boardTile2_3,boardTile2_4},
+			{boardTile3_0,boardTile3_1,boardTile3_2,boardTile3_3,boardTile3_4},
+			{boardTile4_0,boardTile4_1,boardTile4_2,boardTile4_3,boardTile4_4}};
+		PuzzleBoard tboard = new PuzzleBoard(tiles);
+		JLabelIcon board = new JLabelIcon("boardpanel_opaque.png", (int) (Screen.width * 3/8),
+				(int) (Screen.height *0.5));
+		board.setLocation((int)(Screen.width * 0.25), (int) (Screen.height * 0.40));
+		
+		BoardView boardview = new BoardView(tboard, board);
+		//board.add(boardview);
+		
 		background.add(board);
 
 		JLabelIcon fliphbtn = new JLabelIcon("generalbutton.png", 70, 70);
@@ -43,6 +79,7 @@ public class PlayLevelPanel extends JPanel {
 		fliphlbl.setBounds(0, 0, 70, 70);
 		fliphlbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		fliphbtn.add(fliphlbl);
+		
 		background.add(fliphbtn);
 
 		JLabelIcon flipvbtn = new JLabelIcon("generalbutton.png", 70, 70);

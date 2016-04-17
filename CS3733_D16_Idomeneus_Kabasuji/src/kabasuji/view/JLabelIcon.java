@@ -31,7 +31,7 @@ public class JLabelIcon extends JLabel {
 		// maps a path to the desired picture
 		String path = System.getProperty("user.dir") + File.separator + "src//images" + File.separator + fn;
 		// attempts to read picture
-		System.out.println(path);
+		//System.out.println(path);
 		try {
 			img = ImageIO.read(new File(path));
 		} catch (IOException e) {
