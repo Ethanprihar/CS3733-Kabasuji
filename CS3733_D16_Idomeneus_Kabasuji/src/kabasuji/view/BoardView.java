@@ -3,7 +3,9 @@ package kabasuji.view;
 import javax.swing.JPanel;
 import javax.swing.border.CompoundBorder;
 
+import kabasuji.controller.BoardController;
 import kabasuji.controller.GoToLevelSelectController;
+import kabasuji.controller.GoToMainMenuController;
 import kabasuji.model.Board;
 import kabasuji.model.Kabasuji;
 import kabasuji.model.Screen;
@@ -35,6 +37,8 @@ public class BoardView extends JPanel {
 
 	int row;
 	int col;
+	
+	JLabelIcon[] tile;
 
 	int sqmatrixlength;
 	int tilesidelength;
@@ -53,6 +57,7 @@ public class BoardView extends JPanel {
 
 		this.row = board.getTiles().length;
 		this.col = board.getTiles()[0].length;
+		this.tile = new JLabelIcon[row * col];
 
 		// this is the largest length of the tile matrix
 		// finds the smallest tile length
@@ -74,8 +79,6 @@ public class BoardView extends JPanel {
 
 	}
 	public void updateBoard(){
-		JLabelIcon[] tile = new JLabelIcon[row * col];
-
 		// display the tiles on the container panel and scales them to fit
 		// row/col
 		// includes centering as well
@@ -84,14 +87,22 @@ public class BoardView extends JPanel {
 				// create a button image with specified dimension
 				// only display tile if it's valid
 				if (tiles[j][i].isValid()) {
-					tile[i * row + j] = new JLabelIcon("generalbutton.png", tilesidescaled, tilesidescaled);
-					tile[i * row + j].setLocation((int) (tilesidelength * (j + (sqmatrixlength - row) / 2)) + offset,
-							(int) (tilesidelength * (i + (sqmatrixlength - col) / 2)) + offset);
-					panel.add(tile[i * row + j]);
+					displayTile(i,j,"general"+tiles[j][i].getColor()+"button.png");
+					tile[i*row+j].addMouseListener(new BoardController(board, panel, tile[i*row+j]));
 				}
 			}
 		}
 		repaint();
+	}
+	public void displayTile(int i,int j, String pic){
+		tile[i * row + j] = new JLabelIcon(pic, tilesidescaled, tilesidescaled);
+		tile[i * row + j].setLocation((int) (tilesidelength * (j + (sqmatrixlength - row) / 2)) + offset,
+				(int) (tilesidelength * (i + (sqmatrixlength - col) / 2)) + offset);
+		JLabel numlbl = new JLabel(""+tiles[j][i].getNumber(), SwingConstants.CENTER);
+		numlbl.setBounds(0, 0, tilesidescaled, tilesidescaled);
+		numlbl.setFont(new Font("Arial", Font.BOLD, (int)(tilesidescaled*0.5)));
+		tile[i*row+j].add(numlbl);
+		panel.add(tile[i * row + j]);
 	}
 
 }

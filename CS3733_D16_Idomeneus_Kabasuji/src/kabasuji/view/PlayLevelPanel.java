@@ -31,7 +31,7 @@ public class PlayLevelPanel extends JPanel {
 		bullpen.setLocation((int) (Screen.width * 0.05), (int) (Screen.height * 0.05));
 		background.add(bullpen);
 		
-		Tile boardTile0_0 = new Tile(false, true, 0, 0);
+		Tile boardTile0_0 = new Tile(false, true, 2, 0);
 		Tile boardTile0_1 = new Tile(false, true, 0, 0);
 		Tile boardTile0_2 = new Tile(false, true, 0, 0);
 		Tile boardTile0_3 = new Tile(false, true, 0, 0);
@@ -41,14 +41,14 @@ public class PlayLevelPanel extends JPanel {
 		Tile boardTile1_2 = new Tile(false, true, 0, 0);
 		Tile boardTile1_3 = new Tile(false, true, 0, 0);
 		Tile boardTile1_4 = new Tile(false, false, 0, 0);
-		Tile boardTile2_0 = new Tile(false, true, 0, 0);
+		Tile boardTile2_0 = new Tile(false, true, 2, 0);
 		Tile boardTile2_1 = new Tile(false, true, 0, 0);
 		Tile boardTile2_2 = new Tile(false, true, 0, 0);
 		Tile boardTile2_3 = new Tile(false, true, 0, 0);
 		Tile boardTile2_4 = new Tile(false, false, 0, 0);
-		Tile boardTile3_0 = new Tile(false, true, 0, 0);
+		Tile boardTile3_0 = new Tile(false, true, 1, 0);
 		Tile boardTile3_1 = new Tile(false, true, 0, 0);
-		Tile boardTile3_2 = new Tile(false, true, 0, 0);
+		Tile boardTile3_2 = new Tile(false, true, 3, 0);
 		Tile boardTile3_3 = new Tile(false, true, 0, 0);
 		Tile boardTile3_4 = new Tile(false, true, 0, 0);
 		Tile boardTile4_0 = new Tile(false, true, 0, 0);
