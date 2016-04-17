@@ -45,7 +45,7 @@ public class LevelModeBuilderMove extends BuilderMove{
 			int dimensions = Integer.parseInt(boardDimensionstext);
 			System.out.println(dimensions);
 			
-			if ((!((dimensions < 3) || (dimensions > 12))) && (levelType == 1 || levelType == 2 || levelType == 3)){
+			if ((!((dimensions < 3) || (dimensions > 12))) && (levelType == 0 || levelType == 1 || levelType == 2)){
 				valid = true;
 			}
 		}catch(IllegalArgumentException e){
