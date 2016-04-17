@@ -79,6 +79,8 @@ public class PlayLevelPanel extends JPanel {
 		mainmenulbl.setBounds(0, 0, 70, 70);
 		mainmenulbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		mainmenubtn.add(mainmenulbl);
+		mainmenubtn.addMouseListener(
+				new GoToMainMenuController(kabasuji, app,mainmenubtn));
 		background.add(mainmenubtn);
 
 		JLabelIcon nextlevelbtn = new JLabelIcon("generalbutton.png", 70, 70);
