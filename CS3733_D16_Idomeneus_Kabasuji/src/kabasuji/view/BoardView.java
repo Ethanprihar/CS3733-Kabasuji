@@ -7,6 +7,7 @@ import kabasuji.controller.GoToLevelSelectController;
 import kabasuji.model.Board;
 import kabasuji.model.Kabasuji;
 import kabasuji.model.Screen;
+import kabasuji.model.Tile;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -30,10 +31,16 @@ public class BoardView extends JPanel {
 	// the JPanel that contains it
 	Container panel;
 
+	Tile[][] tiles;
+
 	int row;
 	int col;
 
+	int sqmatrixlength;
 	int tilesidelength;
+	int tilesidescaled;
+
+	int offset;
 
 	/**
 	 * Create the Main Menu Panel.
@@ -42,13 +49,12 @@ public class BoardView extends JPanel {
 	public BoardView(Board board, Container panel) {
 		this.board = board;
 		this.panel = panel;
-		this.row = 6;
-		this.col = 11;
-		// this.row = board.getTiles().length;
-		// this.col = board.getTiles()[0].length;
-		
+		this.tiles = board.getTiles();
+
+		this.row = board.getTiles().length;
+		this.col = board.getTiles()[0].length;
+
 		// this is the largest length of the tile matrix
-		int sqmatrixlength;
 		// finds the smallest tile length
 		if (row > col) {
 			sqmatrixlength = row;
@@ -58,22 +64,34 @@ public class BoardView extends JPanel {
 			this.tilesidelength = (int) (panel.getSize().getHeight() / sqmatrixlength);
 		}
 
+		// scaling + offset to fit the container panel;
+		tilesidescaled = (int) (tilesidelength * 0.8);
+		offset = (int) ((tilesidelength - tilesidescaled) / 2);
+		
+		// sets the bounds of the boardview within the panel container
 		setBounds(0, 0, (int) panel.getSize().getWidth(), (int) panel.getSize().getHeight());
+		updateBoard();
 
+	}
+	public void updateBoard(){
 		JLabelIcon[] tile = new JLabelIcon[row * col];
 
-		// display the tiles on the container panel and scales them to fit row/col
+		// display the tiles on the container panel and scales them to fit
+		// row/col
 		// includes centering as well
 		for (int i = 0; i < col; i++) {
 			for (int j = 0; j < row; j++) {
 				// create a button image with specified dimension
-				tile[i * row + j] = new JLabelIcon("generalbutton.png", (int) (tilesidelength * 0.8),
-						(int) (tilesidelength * 0.8));
-				tile[i * row + j].setLocation((int) (tilesidelength*(j + (sqmatrixlength - row)/2)) + (int) (tilesidelength * 0.1),
-						(int) (tilesidelength*(i + (sqmatrixlength - col)/2)) + (int) (tilesidelength * 0.1));
-				panel.add(tile[i * row + j]);
+				// only display tile if it's valid
+				if (tiles[j][i].isValid()) {
+					tile[i * row + j] = new JLabelIcon("generalbutton.png", tilesidescaled, tilesidescaled);
+					tile[i * row + j].setLocation((int) (tilesidelength * (j + (sqmatrixlength - row) / 2)) + offset,
+							(int) (tilesidelength * (i + (sqmatrixlength - col) / 2)) + offset);
+					panel.add(tile[i * row + j]);
+				}
 			}
 		}
+		repaint();
 	}
 
 }

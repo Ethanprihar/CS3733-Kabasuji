@@ -37,7 +37,7 @@ public class PlayLevelPanel extends JPanel {
 		Tile boardTile0_3 = new Tile(false, true, 0, 0);
 		Tile boardTile0_4 = new Tile(false, false, 0, 0);
 		Tile boardTile1_0 = new Tile(false, true, 0, 0);
-		Tile boardTile1_1 = new Tile(false, true, 0, 0);
+		Tile boardTile1_1 = new Tile(false, false, 0, 0);
 		Tile boardTile1_2 = new Tile(false, true, 0, 0);
 		Tile boardTile1_3 = new Tile(false, true, 0, 0);
 		Tile boardTile1_4 = new Tile(false, false, 0, 0);
@@ -50,9 +50,9 @@ public class PlayLevelPanel extends JPanel {
 		Tile boardTile3_1 = new Tile(false, true, 0, 0);
 		Tile boardTile3_2 = new Tile(false, true, 0, 0);
 		Tile boardTile3_3 = new Tile(false, true, 0, 0);
-		Tile boardTile3_4 = new Tile(false, false, 0, 0);
-		Tile boardTile4_0 = new Tile(false, false, 0, 0);
-		Tile boardTile4_1 = new Tile(false, false, 0, 0);
+		Tile boardTile3_4 = new Tile(false, true, 0, 0);
+		Tile boardTile4_0 = new Tile(false, true, 0, 0);
+		Tile boardTile4_1 = new Tile(false, true, 0, 0);
 		Tile boardTile4_2 = new Tile(false, false, 0, 0);
 		Tile boardTile4_3 = new Tile(false, false, 0, 0);
 		Tile boardTile4_4 = new Tile(false, false, 0, 0);
@@ -68,7 +68,7 @@ public class PlayLevelPanel extends JPanel {
 		board.setLocation((int)(Screen.width * 0.25), (int) (Screen.height * 0.40));
 		
 		BoardView boardview = new BoardView(tboard, board);
-		//board.add(boardview);
+		// ^ a little weird since we don't actually add the board view to the background
 		
 		background.add(board);
 
