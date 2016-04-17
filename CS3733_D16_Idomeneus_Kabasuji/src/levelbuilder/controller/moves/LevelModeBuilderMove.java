@@ -58,6 +58,14 @@ public class LevelModeBuilderMove extends BuilderMove{
 			return true;
 		}
 		
+		else if ((levelType == 1) && (valid == true)){
+			return true;
+		}
+		
+		else if ((levelType == 2) && (valid == true)){
+			return true;
+		}
+		
 		return false;
 	}
 }

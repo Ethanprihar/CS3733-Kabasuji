@@ -55,7 +55,8 @@ public class PuzzleLevel extends Level {
 	
 	public boolean canMoveBoardToBoard(Tile destination) {
 		// check that the player has moves left and the piece can be added to the board
-		return ((hasMovesLeft()) && (board.canShiftPiece(bullpen.selectedPiece, destination)));
+		// Changed to pass in board.selectedPiece instead of bullpen.selectedPiece
+		return ((hasMovesLeft()) && (board.canShiftPiece(board.selectedPiece, destination)));
 	}
 
 }

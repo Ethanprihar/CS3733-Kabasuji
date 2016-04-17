@@ -7,12 +7,14 @@ import javax.swing.JPanel;
 
 import kabasuji.model.Builder;
 import kabasuji.model.Screen;
+import kabasuji.view.JLabelIcon;
 import levelbuilder.controller.moves.ChangeScreenBuilderMove;
-import levelbuilder.view.BuilderPuzzleLevelPanel;
+import levelbuilder.view.BuilderLevelSelect;
+import levelbuilder.view.BuilderMainMenu;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
 /**
- * Controller for Moving Screens; Go To BoardBuilding Screen (Panel)
+ * Controller for Moving Screens; Go To BuilderMainMenu Screen (Panel)
  * 
  * When the button is pressed to attempt to go to the next screen, the model
  * will update what screen it is on and the gui will reflect the changes
@@ -20,19 +22,19 @@ import levelbuilder.view.TopLevelApplicationBuilder;
  * @author jwu
  *
  */
-public class SelectDimensionsBuilderController extends MouseAdapter {
+public class BuilderSelectLevelController extends MouseAdapter {
 
 	/** Entity and Boundaries Associated **/
-	int levelType;
 	Builder builder;
 	TopLevelApplicationBuilder app;
 	JPanel contentPanel;
+	JLabelIcon button;
 
-	public SelectDimensionsBuilderController(Builder builder, TopLevelApplicationBuilder app, int levelType) {
+	public BuilderSelectLevelController(Builder builder, TopLevelApplicationBuilder app, JLabelIcon button) {
 		this.builder = builder;
 		this.app = app;
 		this.contentPanel = app.getContentPane();
-		this.levelType = levelType;
+		this.button = button;
 	}
 
 	/**
@@ -40,12 +42,12 @@ public class SelectDimensionsBuilderController extends MouseAdapter {
 	 * is a GUI controller.
 	 */
 	public void mousePressed(MouseEvent me) {
-		// Created ChangeScreenMove and input desired screen
-		ChangeScreenBuilderMove gtsm = new ChangeScreenBuilderMove(Screen.LevelSelect);
+		// Created ChangeScreenBuilderMove and input desired screen
+		ChangeScreenBuilderMove gtsm = new ChangeScreenBuilderMove(Screen.Opening);
 		// Attempt to execute action on model
 		gtsm.execute(builder);
 		// Created JPanel screen object and update boundary to reflect changes
-		BuilderPuzzleLevelPanel lpm = new BuilderPuzzleLevelPanel(builder, app);
-		app.changeContentPane(lpm);
+		BuilderLevelSelect lsp = new BuilderLevelSelect(builder, app);
+		app.changeContentPane(lsp);
 	}
 }

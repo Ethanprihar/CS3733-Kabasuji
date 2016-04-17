@@ -58,6 +58,46 @@ public class BoardReleaseTest extends TestCase{
 		Tile boardTile5_3 = new Tile(false, true, 0, 0);
 		Tile boardTile5_4 = new Tile(false, true, 0, 0);
 		Tile boardTile5_5 = new Tile(false, true, 0, 0);
+		
+		
+		Tile board3Tile0_0 = new Tile(false, true, 1, 1);
+		Tile board3Tile0_1 = new Tile(false, true, 1, 2);
+		Tile board3Tile0_2 = new Tile(false, true, 1, 3);
+		Tile board3Tile0_3 = new Tile(false, true, 1, 4);
+		Tile board3Tile0_4 = new Tile(false, true, 1, 5);
+		Tile board3Tile0_5 = new Tile(false, true, 1, 6);
+		Tile board3Tile1_0 = new Tile(false, true, 2, 1);
+		Tile board3Tile1_1 = new Tile(false, true, 2, 2);
+		Tile board3Tile1_2 = new Tile(false, true, 2, 3);
+		Tile board3Tile1_3 = new Tile(false, true, 2, 4);
+		Tile board3Tile1_4 = new Tile(false, true, 2, 5);
+		Tile board3Tile1_5 = new Tile(false, true, 2, 6);
+		Tile board3Tile2_0 = new Tile(false, true, 3, 1);
+		Tile board3Tile2_1 = new Tile(false, true, 3, 2);
+		Tile board3Tile2_2 = new Tile(false, true, 3, 3);
+		Tile board3Tile2_3 = new Tile(false, true, 3, 4);
+		Tile board3Tile2_4 = new Tile(false, true, 3, 5);
+		Tile board3Tile2_5 = new Tile(false, true, 3, 6);
+		Tile board3Tile3_0 = new Tile(false, true, 0, 0);
+		Tile board3Tile3_1 = new Tile(false, true, 0, 0);
+		Tile board3Tile3_2 = new Tile(false, true, 0, 0);
+		Tile board3Tile3_3 = new Tile(false, true, 0, 0);
+		Tile board3Tile3_4 = new Tile(false, false, 1, 1);
+		Tile board3Tile3_5 = new Tile(false, false, 1, 2);
+		Tile board3Tile4_0 = new Tile(false, false, 0, 0);
+		Tile board3Tile4_1 = new Tile(false, false, 0, 0);
+		Tile board3Tile4_2 = new Tile(false, false, 2, 3);
+		Tile board3Tile4_3 = new Tile(false, false, 2, 6);
+		Tile board3Tile4_4 = new Tile(false, false, 3, 1);
+		Tile board3Tile4_5 = new Tile(false, false, 3, 2);		
+		Tile board3Tile5_0 = new Tile(false, true, 3, 3);
+		Tile board3Tile5_1 = new Tile(false, true, 3, 4);
+		Tile board3Tile5_2 = new Tile(false, true, 3, 5);
+		Tile board3Tile5_3 = new Tile(false, true, 3, 6);
+		Tile board3Tile5_4 = new Tile(false, true, 0, 0);
+		Tile board3Tile5_5 = new Tile(false, true, 0, 0);
+
+		Tile boardTileCopyTest = new Tile(true, false, 1, 3);
 	
 		
 		Tile[][] piece1 = {{testTile1, testTile2},{testTile3, testTile4}};
@@ -69,6 +109,20 @@ public class BoardReleaseTest extends TestCase{
 			{boardTile3_0,boardTile3_1,boardTile3_2,boardTile3_3,boardTile3_4,boardTile3_5},
 			{boardTile4_0,boardTile4_1,boardTile4_2,boardTile4_3,boardTile4_4,boardTile4_5},
 			{boardTile5_0,boardTile5_1,boardTile5_2,boardTile5_3,boardTile5_4,boardTile5_5}};
+		Tile[][] board2 = 
+			{{boardTile0_0,boardTile0_1,boardTile0_2,boardTile0_3,boardTile0_4,boardTile0_5},
+			{boardTile1_0,boardTile1_1,boardTile1_2,boardTile1_3,boardTile1_4,boardTile1_5},
+			{boardTile2_0,boardTile2_1,boardTile2_2,boardTile2_3,boardTile2_4,boardTile2_5},
+			{boardTile3_0,boardTile3_1,boardTile3_2,boardTile3_3,boardTile3_4,boardTile3_5},
+			{boardTile4_0,boardTile4_1,boardTile4_2,boardTile4_3,boardTile4_4,boardTile4_5},
+			{boardTile5_0,boardTile5_1,boardTile5_2,boardTile5_3,boardTile5_4,boardTileCopyTest}};
+		Tile[][] board3 = 
+			{{board3Tile0_0,board3Tile0_1,board3Tile0_2,board3Tile0_3,board3Tile0_4,board3Tile0_5},
+			{board3Tile1_0,board3Tile1_1,board3Tile1_2,board3Tile1_3,board3Tile1_4,board3Tile1_5},
+			{board3Tile2_0,board3Tile2_1,board3Tile2_2,board3Tile2_3,board3Tile2_4,board3Tile2_5},
+			{board3Tile3_0,board3Tile3_1,board3Tile3_2,board3Tile3_3,board3Tile3_4,board3Tile3_5},
+			{board3Tile4_0,board3Tile4_1,board3Tile4_2,board3Tile4_3,board3Tile4_4,board3Tile4_5},
+			{board3Tile5_0,board3Tile5_1,board3Tile5_2,board3Tile5_3,board3Tile5_4,board3Tile5_5}};
 		
 	
 		/* 11
@@ -82,6 +136,13 @@ public class BoardReleaseTest extends TestCase{
 		Piece testPiece2 = new Piece(piece2);
 		
 		Board testBoard1 = new ReleaseBoard(board1);
+		Board testBoard2 = new ReleaseBoard(board2);
+		Board testBoard3 = new ReleaseBoard(board3);
+		
+		
+		assertEquals(testBoard1.equals(testBoard1), true);
+		assertEquals(testBoard1.equals(testBoard1.copy()), true);
+		assertEquals(testBoard1.equals(testBoard2), false);
 		
 		//Test if piece can be added to valid area of board
 		assertEquals (testBoard1.canAddPiece(testPiece1, boardTile0_0), true);
@@ -133,5 +194,33 @@ public class BoardReleaseTest extends TestCase{
 		assertEquals(testBoard1.getStars(), 3);
 		
 		assertEquals(testBoard1.isComplete(), true);
+		
+		
+		
+		assertEquals(testBoard3.getStars(), 0);
+		
+
+		//Cover all color 1 pieces in first row, leaving 2  extras.
+		testBoard3.addPiece(testPiece1, board3Tile0_0);
+		testBoard3.addPiece(testPiece1, board3Tile0_2);
+		assertEquals(testBoard3.getStars(), 0);
+		testBoard3.addPiece(testPiece1, board3Tile0_4);
+		assertEquals(testBoard3.getStars(), 1);
+
+		//Cover all color 2 pieces in 2nd row, leaving 2 extras
+		testBoard3.addPiece(testPiece1, board3Tile1_0);
+		testBoard3.addPiece(testPiece1, board3Tile1_2);
+		assertEquals(testBoard3.getStars(), 1);
+		testBoard3.addPiece(testPiece1, board3Tile1_4);
+		assertEquals(testBoard3.getStars(), 2);
+
+		//Cover all color 3 pieces in 3rd row, but the full set of color3's exists elsewhere in board.
+		testBoard3.addPiece(testPiece1, board3Tile2_0);
+		testBoard3.addPiece(testPiece1, board3Tile2_2);
+		assertEquals(testBoard3.getStars(), 2);
+		testBoard3.addPiece(testPiece1, board3Tile2_4);
+		assertEquals(testBoard3.getStars(), 3);
+		
+		assertEquals(testBoard3.isComplete(), true);
 	}
 }
