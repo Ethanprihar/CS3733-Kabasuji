@@ -85,13 +85,13 @@ public class Builder
 		selectedLevel = null;
 	}
 
-	public void addNewLevel(int type, int boardHeight, int boardWidth)
+	public void addNewLevel(int type, int dim)
 	{
 		Bullpen bullpen = new Bullpen();
-		Tile[][] tiles = new Tile[boardHeight][boardWidth];
-		for(int i=0; i<boardHeight;i++)
+		Tile[][] tiles = new Tile[dim][dim];
+		for(int i=0; i<dim;i++)
 		{
-			for(int j=0; j<boardWidth; j++)
+			for(int j=0; j<dim; j++)
 			{
 				tiles[i][j] = new Tile(false, true, 0, 0);
 			}
