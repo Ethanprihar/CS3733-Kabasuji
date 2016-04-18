@@ -49,13 +49,18 @@ public class PlayLevelPanel extends JPanel {
 		}
 		
 		// test adding pieces to Bullpen
+		
+		JLabelIcon enlargetile = new JLabelIcon("boardpanel_opaque.png", (int) (Screen.height * 0.25),
+				(int) (Screen.height * 0.25));
+		enlargetile.setLocation((int) (Screen.width * 0.55), (int) (Screen.height * 0.05));
+		background.add(enlargetile);
 
-		JLabelIcon bullpen = new JLabelIcon("boardpanel_opaque.png", (int) (Screen.width * 0.5),
+		JLabelIcon bullpen = new JLabelIcon("boardpanel_opaque.png", (int) (Screen.width * 0.45),
 				(int) (Screen.height * 0.25));
 		bullpen.setLocation((int) (Screen.width * 0.05), (int) (Screen.height * 0.05));
 		
 		
-		BullpenView bullpenview = new BullpenView(bullpen1, bullpen, 10, 3);
+		BullpenView bullpenview = new BullpenView(bullpen1, bullpen, 10, 4);
 		
 		background.add(bullpen);
 		
