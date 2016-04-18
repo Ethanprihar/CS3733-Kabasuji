@@ -55,8 +55,8 @@ public class BoardView extends JPanel {
 		this.panel = panel;
 		this.tiles = board.getTiles();
 
-		this.row = board.getTiles().length;
-		this.col = board.getTiles()[0].length;
+		this.row = board.getTiles().length+2;
+		this.col = board.getTiles()[0].length+2;
 		this.tile = new JLabelIcon[row * col];
 
 		// this is the largest length of the tile matrix
@@ -70,7 +70,7 @@ public class BoardView extends JPanel {
 		}
 
 		// scaling + offset to fit the container panel;
-		tilesidescaled = (int) (tilesidelength * 0.8);
+		tilesidescaled = (int) (tilesidelength * 0.99);
 		offset = (int) ((tilesidelength - tilesidescaled) / 2);
 		
 		// sets the bounds of the boardview within the panel container
@@ -82,12 +82,12 @@ public class BoardView extends JPanel {
 		// display the tiles on the container panel and scales them to fit
 		// row/col
 		// includes centering as well
-		for (int i = 0; i < col; i++) {
-			for (int j = 0; j < row; j++) {
+		for (int i = 0; i < col-2; i++) {
+			for (int j = 0; j < row-2; j++) {
 				// create a button image with specified dimension
 				// only display tile if it's valid
 				if (tiles[j][i].isValid()) {
-					displayTile(i,j,"general"+tiles[j][i].getColor()+"button.png");
+					displayTile(i,j,"emptytile.png");
 					tile[i*row+j].addMouseListener(new BoardController(board, panel, tile[i*row+j]));
 				}
 			}
@@ -96,13 +96,13 @@ public class BoardView extends JPanel {
 	}
 	public void displayTile(int i,int j, String pic){
 		tile[i * row + j] = new JLabelIcon(pic, tilesidescaled, tilesidescaled);
-		tile[i * row + j].setLocation((int) (tilesidelength * (j + (sqmatrixlength - row) / 2)) + offset,
-				(int) (tilesidelength * (i + (sqmatrixlength - col) / 2)) + offset);
+		tile[i * row + j].setLocation((int) (tilesidelength * (j+1 + (sqmatrixlength - row) / 2)) + offset,
+				(int) (tilesidelength * (i+1 + (sqmatrixlength - col) / 2)) + offset);
 		JLabel numlbl = new JLabel(""+tiles[j][i].getNumber(), SwingConstants.CENTER);
 		numlbl.setBounds(0, 0, tilesidescaled, tilesidescaled);
 		numlbl.setFont(new Font("Arial", Font.BOLD, (int)(tilesidescaled*0.5)));
 		tile[i*row+j].add(numlbl);
 		panel.add(tile[i * row + j]);
 	}
-
+	
 }

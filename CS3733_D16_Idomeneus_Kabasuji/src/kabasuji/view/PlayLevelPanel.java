@@ -1,8 +1,13 @@
 package kabasuji.view;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 import kabasuji.controller.GoToMainMenuController;
+import kabasuji.model.Board;
+import kabasuji.model.Bullpen;
 import kabasuji.model.Kabasuji;
+import kabasuji.model.Piece;
 import kabasuji.model.PuzzleBoard;
 import kabasuji.model.Screen;
 import kabasuji.model.Tile;
@@ -14,6 +19,8 @@ import javax.swing.SwingConstants;
 public class PlayLevelPanel extends JPanel {
 	Kabasuji kabasuji;
 	TopLevelApplication app;
+	Board board;
+	Bullpen bullpen;
 
 	/**
 	 * Create the panel.
@@ -21,14 +28,35 @@ public class PlayLevelPanel extends JPanel {
 	public PlayLevelPanel(Kabasuji kabasuji, TopLevelApplication app) {
 		this.kabasuji = kabasuji;
 		this.app = app;
+		this.board = kabasuji.getSelectedLevel().getBoard();
+		this.bullpen = kabasuji.getSelectedLevel().getBullpen();
 
 		JLabelIcon background = new JLabelIcon("starry_night.jpeg", Screen.width, Screen.height);
 		background.setBounds(0, 0, Screen.width, Screen.height);
 		add(background);
+		
+		// make a new Bullpen
+		Bullpen bullpen1 = new Bullpen();
+		
+		// make pieces to add to Bullpen
+		Tile testTile1 = new Tile(false, true, 0, 0);
+		Tile testTile2 = new Tile(false, false, 0, 0);
+		Tile[][] piece1 = {{testTile1, testTile2},{testTile2, testTile1}};
+		Piece[] testset = new Piece[40];
+		for (int i = 0; i < testset.length; i++){
+			testset[i] = new Piece(piece1);
+			bullpen1.addPiece(testset[i]);
+		}
+		
+		// test adding pieces to Bullpen
 
-		JLabelIcon bullpen = new JLabelIcon("boardpanel_opaque.png", (int) (Screen.width * 0.7),
+		JLabelIcon bullpen = new JLabelIcon("boardpanel_opaque.png", (int) (Screen.width * 0.5),
 				(int) (Screen.height * 0.25));
 		bullpen.setLocation((int) (Screen.width * 0.05), (int) (Screen.height * 0.05));
+		
+		
+		BullpenView bullpenview = new BullpenView(bullpen1, bullpen, 10, 3);
+		
 		background.add(bullpen);
 		
 		Tile boardTile0_0 = new Tile(false, true, 2, 0);
@@ -63,14 +91,14 @@ public class PlayLevelPanel extends JPanel {
 			{boardTile3_0,boardTile3_1,boardTile3_2,boardTile3_3,boardTile3_4},
 			{boardTile4_0,boardTile4_1,boardTile4_2,boardTile4_3,boardTile4_4}};
 		PuzzleBoard tboard = new PuzzleBoard(tiles);
-		JLabelIcon board = new JLabelIcon("boardpanel_opaque.png", (int) (Screen.width * 3/8),
+		JLabelIcon playboard = new JLabelIcon("boardpanel_opaque.png", (int) (Screen.width * 3/8),
 				(int) (Screen.height *0.5));
-		board.setLocation((int)(Screen.width * 0.25), (int) (Screen.height * 0.40));
+		playboard.setLocation((int)(Screen.width * 0.25), (int) (Screen.height * 0.40));
 		
-		BoardView boardview = new BoardView(tboard, board);
+		BoardView boardview = new BoardView(tboard, playboard);
 		// ^ a little weird since we don't actually add the board view to the background
 		
-		background.add(board);
+		background.add(playboard);
 
 		JLabelIcon fliphbtn = new JLabelIcon("generalbutton.png", 70, 70);
 		fliphbtn.setLocation((int) (Screen.width * 0.72) + (int) (fliphbtn.getSize().getWidth() / 2),
