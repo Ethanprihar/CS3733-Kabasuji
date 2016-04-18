@@ -58,6 +58,8 @@ public class BoardView extends JPanel {
 		this.row = board.getTiles().length+2;
 		this.col = board.getTiles()[0].length+2;
 		this.tile = new JLabelIcon[row * col];
+		
+		setLayout(null);
 
 		// this is the largest length of the tile matrix
 		// finds the smallest tile length
@@ -68,7 +70,6 @@ public class BoardView extends JPanel {
 			sqmatrixlength = col;
 			this.tilesidelength = (int) (panel.getSize().getHeight() / sqmatrixlength);
 		}
-
 		// scaling + offset to fit the container panel;
 		tilesidescaled = (int) (tilesidelength * 0.99);
 		offset = (int) ((tilesidelength - tilesidescaled) / 2);
@@ -76,6 +77,10 @@ public class BoardView extends JPanel {
 		// sets the bounds of the boardview within the panel container
 		setBounds(0, 0, (int) panel.getSize().getWidth(), (int) panel.getSize().getHeight());
 		updateBoard();
+		
+		JLabelIcon background = new JLabelIcon("opaque_canvas.png", (int) (Screen.height *0.54),
+				(int) (Screen.height *0.54));
+		add(background);
 
 	}
 	public void updateBoard(){
@@ -102,7 +107,7 @@ public class BoardView extends JPanel {
 		numlbl.setBounds(0, 0, tilesidescaled, tilesidescaled);
 		numlbl.setFont(new Font("Arial", Font.BOLD, (int)(tilesidescaled*0.5)));
 		tile[i*row+j].add(numlbl);
-		panel.add(tile[i * row + j]);
+		add(tile[i * row + j]);
 	}
 	
 }

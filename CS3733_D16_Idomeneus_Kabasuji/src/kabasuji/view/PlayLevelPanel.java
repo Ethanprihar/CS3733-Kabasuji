@@ -19,64 +19,61 @@ import javax.swing.SwingConstants;
 public class PlayLevelPanel extends JPanel {
 	Kabasuji kabasuji;
 	TopLevelApplication app;
-	
+
 	Board board;
 	Bullpen bullpen;
-	
+
 	BoardView boardview;
 	BullpenView bullpenview;
-	
+
 	JLabelIcon zoompiece;
 
 	/**
 	 * Create the panel.
 	 */
 	public PlayLevelPanel(Kabasuji kabasuji, TopLevelApplication app) {
+		super();
 		this.kabasuji = kabasuji;
 		this.app = app;
 		this.board = kabasuji.getSelectedLevel().getBoard();
 		this.bullpen = kabasuji.getSelectedLevel().getBullpen();
-		
-		//set up background
-		JLabelIcon background = new JLabelIcon("starry_night.jpeg", Screen.width, Screen.height);
-		background.setBounds(0, 0, Screen.width, Screen.height);
-		add(background);
-		
+
+		// set layout null
+		setLayout(null);
+
 		// make a new Bullpen
-		Bullpen bullpen1 = new Bullpen();
-		
+		bullpen = new Bullpen();
+
 		// make pieces to add to Bullpen
 		Tile testTile1 = new Tile(false, true, 0, 0);
 		Tile testTile2 = new Tile(false, false, 0, 0);
-		Tile[][] piece1 = {{testTile1, testTile2,testTile2, testTile2,testTile2, testTile2},
-				{testTile1, testTile2,testTile2, testTile2,testTile2, testTile2},
-				{testTile1, testTile2,testTile2, testTile2,testTile2, testTile2},
-				{testTile1, testTile2,testTile2, testTile2,testTile2, testTile2},
-				{testTile1, testTile2,testTile2, testTile2,testTile2, testTile2},
-				{testTile1, testTile2,testTile2, testTile2,testTile2, testTile2}};
+		Tile[][] piece1 = { { testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 },
+				{ testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 },
+				{ testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 },
+				{ testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 },
+				{ testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 },
+				{ testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 } };
 
 		Piece[] testset = new Piece[40];
-		for (int i = 0; i < testset.length; i++){
+		for (int i = 0; i < testset.length; i++) {
 			testset[i] = new Piece(piece1);
-			bullpen1.addPiece(testset[i]);
+			bullpen.addPiece(testset[i]);
 		}
-		
-		// test adding pieces to Bullpen
-		
-		zoompiece = new JLabelIcon("opaque_canvas.png", (int) (Screen.height * 0.25),
-				(int) (Screen.height * 0.25));
-		zoompiece.setLocation((int) (Screen.width * 0.35), (int) (Screen.height * 0.05));
-		background.add(zoompiece);
 
-		JLabelIcon bullpen = new JLabelIcon("opaque_canvas.png", (int) (Screen.width * 0.25),
-				(int) (Screen.height * 0.85));
-		bullpen.setLocation((int) (Screen.width * 0.05), (int) (Screen.height * 0.05));
+		// test adding pieces to Bullpen
+
+		zoompiece = new JLabelIcon("opaque_canvas.png", (int) (Screen.height * 0.25), (int) (Screen.height * 0.25));
+		zoompiece.setLocation((int) (Screen.width * 0.35), (int) (Screen.height * 0.05));
+		add(zoompiece);
+
+		JPanel bullpencontainer = new JPanel();
+		bullpencontainer.setSize((int) (Screen.width * 0.25), (int) (Screen.height * 0.85));
+
+		bullpenview = new BullpenView(bullpen, bullpencontainer, 4, 10);
+		bullpenview.setLocation((int) (Screen.width * 0.05), (int) (Screen.height * 0.05));
 		
-		
-		this.bullpenview = new BullpenView(bullpen1, bullpen, 4, 10);
-		
-		background.add(bullpen);
-		
+		add(bullpenview);
+
 		Tile boardTile0_0 = new Tile(false, true, 2, 0);
 		Tile boardTile0_1 = new Tile(false, true, 0, 0);
 		Tile boardTile0_2 = new Tile(false, true, 0, 0);
@@ -102,21 +99,19 @@ public class PlayLevelPanel extends JPanel {
 		Tile boardTile4_2 = new Tile(false, false, 0, 0);
 		Tile boardTile4_3 = new Tile(false, false, 0, 0);
 		Tile boardTile4_4 = new Tile(false, false, 0, 0);
-		Tile[][] tiles = 
-			{{boardTile0_0,boardTile0_1,boardTile0_2,boardTile0_3,boardTile0_4},
-			{boardTile1_0,boardTile1_1,boardTile1_2,boardTile1_3,boardTile1_4},
-			{boardTile2_0,boardTile2_1,boardTile2_2,boardTile2_3,boardTile2_4},
-			{boardTile3_0,boardTile3_1,boardTile3_2,boardTile3_3,boardTile3_4},
-			{boardTile4_0,boardTile4_1,boardTile4_2,boardTile4_3,boardTile4_4}};
+		Tile[][] tiles = { { boardTile0_0, boardTile0_1, boardTile0_2, boardTile0_3, boardTile0_4 },
+				{ boardTile1_0, boardTile1_1, boardTile1_2, boardTile1_3, boardTile1_4 },
+				{ boardTile2_0, boardTile2_1, boardTile2_2, boardTile2_3, boardTile2_4 },
+				{ boardTile3_0, boardTile3_1, boardTile3_2, boardTile3_3, boardTile3_4 },
+				{ boardTile4_0, boardTile4_1, boardTile4_2, boardTile4_3, boardTile4_4 } };
 		PuzzleBoard tboard = new PuzzleBoard(tiles);
-		JLabelIcon playboard = new JLabelIcon("opaque_canvas.png", (int) (Screen.height *0.54),
-				(int) (Screen.height *0.54));
-		playboard.setLocation((int)(Screen.width * 0.35), (int) (Screen.height * 0.36));
-		
-		this.boardview = new BoardView(tboard, playboard);
-		// ^ a little weird since we don't actually add the board view to the background
-		
-		background.add(playboard);
+		// Create container for size reference only
+		JPanel playboard = new JPanel();
+		playboard.setSize((int) (Screen.height * 0.54), (int) (Screen.height * 0.54));
+		// Create boardview
+		boardview = new BoardView(tboard, playboard);
+		boardview.setLocation((int) (Screen.width * 0.35), (int) (Screen.height * 0.36));
+		add(boardview);
 
 		JLabelIcon fliphbtn = new JLabelIcon("generalbutton.png", 70, 70);
 		fliphbtn.setLocation((int) (Screen.width * 0.52) + (int) (fliphbtn.getSize().getWidth() / 2),
@@ -125,8 +120,8 @@ public class PlayLevelPanel extends JPanel {
 		fliphlbl.setBounds(0, 0, 70, 70);
 		fliphlbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		fliphbtn.add(fliphlbl);
-		
-		background.add(fliphbtn);
+
+		add(fliphbtn);
 
 		JLabelIcon flipvbtn = new JLabelIcon("generalbutton.png", 70, 70);
 		flipvbtn.setLocation((int) (Screen.width * 0.62) + (int) (fliphbtn.getSize().getWidth() / 2),
@@ -135,7 +130,7 @@ public class PlayLevelPanel extends JPanel {
 		flipvlbl.setBounds(0, 0, 70, 70);
 		flipvlbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		flipvbtn.add(flipvlbl);
-		background.add(flipvbtn);
+		add(flipvbtn);
 
 		JLabelIcon rotatehbtn = new JLabelIcon("generalbutton.png", 70, 70);
 		rotatehbtn.setLocation((int) (Screen.width * 0.52) + (int) (rotatehbtn.getSize().getWidth() / 2),
@@ -144,7 +139,7 @@ public class PlayLevelPanel extends JPanel {
 		rotatehlbl.setBounds(0, 0, 70, 70);
 		rotatehlbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		rotatehbtn.add(rotatehlbl);
-		background.add(rotatehbtn);
+		add(rotatehbtn);
 
 		JLabelIcon rotatevbtn = new JLabelIcon("generalbutton.png", 70, 70);
 		rotatevbtn.setLocation((int) (Screen.width * 0.62) + (int) (rotatehbtn.getSize().getWidth() / 2),
@@ -153,7 +148,7 @@ public class PlayLevelPanel extends JPanel {
 		rotatevlbl.setBounds(0, 0, 70, 70);
 		rotatevlbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		rotatevbtn.add(rotatevlbl);
-		background.add(rotatevbtn);
+		add(rotatevbtn);
 
 		JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", 70, 70);
 		mainmenubtn.setLocation((int) (Screen.width * 0.84) + (int) (rotatehbtn.getSize().getWidth() / 2),
@@ -162,9 +157,8 @@ public class PlayLevelPanel extends JPanel {
 		mainmenulbl.setBounds(0, 0, 70, 70);
 		mainmenulbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		mainmenubtn.add(mainmenulbl);
-		mainmenubtn.addMouseListener(
-				new GoToMainMenuController(kabasuji, app,mainmenubtn));
-		background.add(mainmenubtn);
+		mainmenubtn.addMouseListener(new GoToMainMenuController(kabasuji, app, mainmenubtn));
+		add(mainmenubtn);
 
 		JLabelIcon nextlevelbtn = new JLabelIcon("generalbutton.png", 70, 70);
 		nextlevelbtn.setLocation((int) (Screen.width * 0.74) + (int) (rotatehbtn.getSize().getWidth() / 2),
@@ -173,7 +167,7 @@ public class PlayLevelPanel extends JPanel {
 		nextlevellbl.setBounds(0, 0, 70, 70);
 		nextlevellbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		nextlevelbtn.add(nextlevellbl);
-		background.add(nextlevelbtn);
+		add(nextlevelbtn);
 
 		JLabelIcon resetlevelbtn = new JLabelIcon("generalbutton.png", 70, 70);
 		resetlevelbtn.setLocation((int) (Screen.width * 0.74) + (int) (rotatehbtn.getSize().getWidth() / 2),
@@ -182,27 +176,36 @@ public class PlayLevelPanel extends JPanel {
 		resetlevellbl.setBounds(0, 0, 70, 70);
 		resetlevellbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		resetlevelbtn.add(resetlevellbl);
-		background.add(resetlevelbtn);
+		add(resetlevelbtn);
 
 		JLabelIcon[] stars = new JLabelIcon[3];
 		for (int i = 0; i < stars.length; i++) {
 			stars[i] = new JLabelIcon("star_score.png", 50, 50);
-			stars[i].setLocation((int) (nextlevelbtn.getX() + (mainmenubtn.getX() - nextlevelbtn.getX())*(i+1)/(stars.length)),
-					(int) (nextlevelbtn.getY() - (((i+1)% 2)+1) * stars[i].getSize().getWidth()));
-			background.add(stars[i]);
+			stars[i].setLocation(
+					(int) (nextlevelbtn.getX() + (mainmenubtn.getX() - nextlevelbtn.getX()) * (i + 1) / (stars.length)),
+					(int) (nextlevelbtn.getY() - (((i + 1) % 2) + 1) * stars[i].getSize().getWidth()));
+			add(stars[i]);
 		}
 
+		// set up background
+		JLabelIcon background = new JLabelIcon("starry_night.jpeg", Screen.width, Screen.height);
+		background.setBounds(0, 0, Screen.width, Screen.height);
+		add(background);
+
 	}
+
 	// getter for zoompiece
-	public JLabelIcon getZoomPiece(){
+	public JLabelIcon getZoomPiece() {
 		return zoompiece;
 	}
+
 	// getter for boardview
-	public BoardView getBoardView(){
+	public BoardView getBoardView() {
 		return boardview;
 	}
+
 	// getter for bullpenview
-	public BullpenView getBullpenView(){
+	public BullpenView getBullpenView() {
 		return bullpenview;
 	}
 }

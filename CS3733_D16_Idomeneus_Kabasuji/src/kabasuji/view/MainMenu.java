@@ -34,10 +34,8 @@ public class MainMenu extends JPanel {
 		this.kabasuji = kabasuji;
 		this.app = app;
 
-		// create the background canvas ** important
-		JLabelIcon background = new JLabelIcon("KabasujiTitleScreen.png",Screen.width,Screen.height);
-		background.setBounds(0, 0, Screen.width, Screen.height);
-		add(background);
+		// set layout null first
+		setLayout(null);
 		
 		// create a button image with specified dimension
 		JLabelIcon levelselectbtn = new JLabelIcon("generalbutton.png",70,70);
@@ -53,7 +51,12 @@ public class MainMenu extends JPanel {
 		levelselectbtn.addMouseListener(new GoToLevelSelectController(kabasuji, app, levelselectbtn));
 		
 		// add button image to background canvas
-		background.add(levelselectbtn);
+		add(levelselectbtn);
+		
+		// create the background canvas ** important
+		JLabelIcon background = new JLabelIcon("KabasujiTitleScreen.png",Screen.width,Screen.height);
+		background.setBounds(0, 0, Screen.width, Screen.height);
+		add(background);
 	}
 	
 }

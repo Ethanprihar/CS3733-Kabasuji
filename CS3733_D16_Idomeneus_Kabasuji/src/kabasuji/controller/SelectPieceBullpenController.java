@@ -1,5 +1,6 @@
 package kabasuji.controller;
 
+import java.awt.Container;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -30,20 +31,22 @@ public class SelectPieceBullpenController extends MouseAdapter {
 
 	/** Entity and Boundaries Associated **/
 	Bullpen bullpen;
-	PlayLevelPanel panel;	
+	JPanel panel;	
 	BullpenView bullpenview;
+	JLabelIcon pieceicon;
 	
 	JLabelIcon zoompanel;
 	String fn;
 	
 	int numPiece;
 
-	public SelectPieceBullpenController(Bullpen bullpen,PlayLevelPanel panel, int numPiece) {
+	public SelectPieceBullpenController(Bullpen bullpen, JPanel panel, JLabelIcon pieceicon, int numPiece) {
 		this.bullpen = bullpen;
-		this.panel = panel;
-		this.bullpenview = panel.getBullpenView();
-		this.zoompanel = panel.getZoomPiece();
-		this.fn = zoompanel.getFileName();
+//		this.panel = (PlayLevelPanel)(panel);
+//		this.bullpenview = ((PlayLevelPanel) panel).getBullpenView();
+		this.pieceicon = pieceicon;
+//		this.zoompanel = ((PlayLevelPanel) panel).getZoomPiece();
+//		this.fn = zoompanel.getFileName();
 		this.numPiece = numPiece;
 	}
 
@@ -59,6 +62,6 @@ public class SelectPieceBullpenController extends MouseAdapter {
 	}
 
 	public void mouseExited(MouseEvent e) {
-		zoompanel.setImg(fn);
+//		zoompanel.setImg(fn);
 	}
 }

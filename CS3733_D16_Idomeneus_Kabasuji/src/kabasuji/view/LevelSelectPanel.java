@@ -1,6 +1,8 @@
 package kabasuji.view;
 
 import javax.swing.JPanel;
+import javax.swing.OverlayLayout;
+
 import kabasuji.controller.GoToMainMenuController;
 import kabasuji.controller.SelectLevelController;
 import kabasuji.model.Kabasuji;
@@ -8,6 +10,8 @@ import kabasuji.model.Screen;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.LayoutManager;
+
 import javax.swing.SwingConstants;
 import java.util.Random;
 
@@ -27,9 +31,7 @@ public class LevelSelectPanel extends JPanel {
 		this.levelselectbtn = new JLabelIcon[kabasuji.getLevels().size()];
 		this.buttonlbl = new JLabel[kabasuji.getLevels().size()];
 
-		JLabelIcon background = new JLabelIcon("LevelSelectScreen.png", Screen.width, Screen.height);
-		background.setBounds(0, 0, Screen.width, Screen.height);
-		add(background);
+		setLayout(null);
 
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 5; j++) {
@@ -54,7 +56,7 @@ public class LevelSelectPanel extends JPanel {
 				levelselectbtn[i * 5 + j].add(buttonlbl[i * 5 + j]);
 				levelselectbtn[i * 5 + j].addMouseListener(
 						new SelectLevelController(kabasuji, app, levelselectbtn[i * 5 + j], i * 5 + j + 1));
-				background.add(levelselectbtn[i * 5 + j]);
+				add(levelselectbtn[i * 5 + j]);
 				/*** take this out when levels are good ***/
 				Random rn = new Random();
 				int n = rn.nextInt(3) + 1;
@@ -65,7 +67,7 @@ public class LevelSelectPanel extends JPanel {
 							(int) (levelselectbtn[i * 5 + j].getLocation().getX() + lvlbtnw * (k + 1) / (n + 1)
 									- star.getSize().getWidth() / 2),
 							(int) (levelselectbtn[i * 5 + j].getLocation().getY() - star.getSize().getWidth()));
-					background.add(star);
+					add(star);
 				}
 			}
 		}
@@ -78,7 +80,12 @@ public class LevelSelectPanel extends JPanel {
 		mainmenulbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		mainmenubtn.add(mainmenulbl);
 		mainmenubtn.addMouseListener(new GoToMainMenuController(kabasuji, app, mainmenubtn));
-		background.add(mainmenubtn);
+		add(mainmenubtn);
+		
+		// 
+		JLabelIcon background = new JLabelIcon("LevelSelectScreen.png", Screen.width, Screen.height);
+		background.setBounds(0, 0, Screen.width, Screen.height);
+		add(background);
 
 	}
 
