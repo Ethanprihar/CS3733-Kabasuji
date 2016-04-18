@@ -6,6 +6,7 @@ import javax.swing.border.CompoundBorder;
 import kabasuji.controller.BoardController;
 import kabasuji.controller.GoToLevelSelectController;
 import kabasuji.controller.GoToMainMenuController;
+import kabasuji.controller.SelectPieceBullpenController;
 import kabasuji.model.Board;
 import kabasuji.model.Bullpen;
 import kabasuji.model.Kabasuji;
@@ -131,5 +132,12 @@ public class BullpenView extends JPanel {
 		}
 
 		panel.add(imgpieces[i * row + j]);
+		//imgpieces[i * row + j].addMouseListener(new SelectPieceBullpenController(bullpen, this, imgpieces[i * row + j], i * row + j));
+	}
+	public JLabelIcon[] getImgPieces(){
+		return imgpieces;
+	}
+	public Container getPanel(){
+		return panel;
 	}
 }

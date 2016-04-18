@@ -37,7 +37,7 @@ public class SelectLevelController extends MouseAdapter {
 	public SelectLevelController(Kabasuji kabasuji, TopLevelApplication app, JLabelIcon button, int level) {
 		this.kabasuji = kabasuji;
 		this.app = app;
-		this.contentPanel = app.getContentPane();
+		this.contentPanel = app.getContentPanel();
 		this.button = button;
 		this.fn = button.getFileName();
 		this.level = level;
@@ -57,7 +57,7 @@ public class SelectLevelController extends MouseAdapter {
 			gtsm.execute(kabasuji);
 			// Created JPanel screen object and update boundary to reflect changes
 			PlayLevelPanel lsp = new PlayLevelPanel(kabasuji, app);
-			app.changeContentPane(lsp);
+			app.setContentPanel(lsp);
 		}
 	}
 	public void mouseEntered(MouseEvent e) {

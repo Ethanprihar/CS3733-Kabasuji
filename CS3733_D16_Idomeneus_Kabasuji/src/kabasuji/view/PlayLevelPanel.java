@@ -21,6 +21,7 @@ public class PlayLevelPanel extends JPanel {
 	TopLevelApplication app;
 	Board board;
 	Bullpen bullpen;
+	JLabelIcon zoompiece;
 
 	/**
 	 * Create the panel.
@@ -56,17 +57,17 @@ public class PlayLevelPanel extends JPanel {
 		
 		// test adding pieces to Bullpen
 		
-		JLabelIcon enlargetile = new JLabelIcon("boardpanel_opaque.png", (int) (Screen.height * 0.25),
+		zoompiece = new JLabelIcon("opaque_canvas.png", (int) (Screen.height * 0.25),
 				(int) (Screen.height * 0.25));
-		enlargetile.setLocation((int) (Screen.width * 0.55), (int) (Screen.height * 0.05));
-		background.add(enlargetile);
+		zoompiece.setLocation((int) (Screen.width * 0.35), (int) (Screen.height * 0.05));
+		background.add(zoompiece);
 
-		JLabelIcon bullpen = new JLabelIcon("boardpanel_opaque.png", (int) (Screen.width * 0.45),
-				(int) (Screen.height * 0.25));
+		JLabelIcon bullpen = new JLabelIcon("opaque_canvas.png", (int) (Screen.width * 0.25),
+				(int) (Screen.height * 0.85));
 		bullpen.setLocation((int) (Screen.width * 0.05), (int) (Screen.height * 0.05));
 		
 		
-		BullpenView bullpenview = new BullpenView(bullpen1, bullpen, 10, 4);
+		BullpenView bullpenview = new BullpenView(bullpen1, bullpen, 4, 10);
 		
 		background.add(bullpen);
 		
@@ -102,9 +103,9 @@ public class PlayLevelPanel extends JPanel {
 			{boardTile3_0,boardTile3_1,boardTile3_2,boardTile3_3,boardTile3_4},
 			{boardTile4_0,boardTile4_1,boardTile4_2,boardTile4_3,boardTile4_4}};
 		PuzzleBoard tboard = new PuzzleBoard(tiles);
-		JLabelIcon playboard = new JLabelIcon("boardpanel_opaque.png", (int) (Screen.width * 3/8),
-				(int) (Screen.height *0.5));
-		playboard.setLocation((int)(Screen.width * 0.25), (int) (Screen.height * 0.40));
+		JLabelIcon playboard = new JLabelIcon("opaque_canvas.png", (int) (Screen.height *0.54),
+				(int) (Screen.height *0.54));
+		playboard.setLocation((int)(Screen.width * 0.35), (int) (Screen.height * 0.36));
 		
 		BoardView boardview = new BoardView(tboard, playboard);
 		// ^ a little weird since we don't actually add the board view to the background
@@ -112,7 +113,7 @@ public class PlayLevelPanel extends JPanel {
 		background.add(playboard);
 
 		JLabelIcon fliphbtn = new JLabelIcon("generalbutton.png", 70, 70);
-		fliphbtn.setLocation((int) (Screen.width * 0.72) + (int) (fliphbtn.getSize().getWidth() / 2),
+		fliphbtn.setLocation((int) (Screen.width * 0.52) + (int) (fliphbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.05));
 		JLabel fliphlbl = new JLabel("<html>Flip<br>Horizontal</html>", SwingConstants.CENTER);
 		fliphlbl.setBounds(0, 0, 70, 70);
@@ -122,7 +123,7 @@ public class PlayLevelPanel extends JPanel {
 		background.add(fliphbtn);
 
 		JLabelIcon flipvbtn = new JLabelIcon("generalbutton.png", 70, 70);
-		flipvbtn.setLocation((int) (Screen.width * 0.82) + (int) (fliphbtn.getSize().getWidth() / 2),
+		flipvbtn.setLocation((int) (Screen.width * 0.62) + (int) (fliphbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.05));
 		JLabel flipvlbl = new JLabel("<html>Flip<br>Vertical</html>", SwingConstants.CENTER);
 		flipvlbl.setBounds(0, 0, 70, 70);
@@ -131,7 +132,7 @@ public class PlayLevelPanel extends JPanel {
 		background.add(flipvbtn);
 
 		JLabelIcon rotatehbtn = new JLabelIcon("generalbutton.png", 70, 70);
-		rotatehbtn.setLocation((int) (Screen.width * 0.72) + (int) (rotatehbtn.getSize().getWidth() / 2),
+		rotatehbtn.setLocation((int) (Screen.width * 0.52) + (int) (rotatehbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.18));
 		JLabel rotatehlbl = new JLabel("<html>Rotate<br>Horizontal</html>", SwingConstants.CENTER);
 		rotatehlbl.setBounds(0, 0, 70, 70);
@@ -140,7 +141,7 @@ public class PlayLevelPanel extends JPanel {
 		background.add(rotatehbtn);
 
 		JLabelIcon rotatevbtn = new JLabelIcon("generalbutton.png", 70, 70);
-		rotatevbtn.setLocation((int) (Screen.width * 0.82) + (int) (rotatehbtn.getSize().getWidth() / 2),
+		rotatevbtn.setLocation((int) (Screen.width * 0.62) + (int) (rotatehbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.18));
 		JLabel rotatevlbl = new JLabel("<html>Rotate<br>Vertical</html>", SwingConstants.CENTER);
 		rotatevlbl.setBounds(0, 0, 70, 70);
@@ -149,7 +150,7 @@ public class PlayLevelPanel extends JPanel {
 		background.add(rotatevbtn);
 
 		JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", 70, 70);
-		mainmenubtn.setLocation((int) (Screen.width * 0.82) + (int) (rotatehbtn.getSize().getWidth() / 2),
+		mainmenubtn.setLocation((int) (Screen.width * 0.84) + (int) (rotatehbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * .6));
 		JLabel mainmenulbl = new JLabel("<html>Main<br>Menu</html>", SwingConstants.CENTER);
 		mainmenulbl.setBounds(0, 0, 70, 70);
@@ -160,7 +161,7 @@ public class PlayLevelPanel extends JPanel {
 		background.add(mainmenubtn);
 
 		JLabelIcon nextlevelbtn = new JLabelIcon("generalbutton.png", 70, 70);
-		nextlevelbtn.setLocation((int) (Screen.width * 0.72) + (int) (rotatehbtn.getSize().getWidth() / 2),
+		nextlevelbtn.setLocation((int) (Screen.width * 0.74) + (int) (rotatehbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * .6));
 		JLabel nextlevellbl = new JLabel("<html>Next<br>Level</html>", SwingConstants.CENTER);
 		nextlevellbl.setBounds(0, 0, 70, 70);
@@ -169,7 +170,7 @@ public class PlayLevelPanel extends JPanel {
 		background.add(nextlevelbtn);
 
 		JLabelIcon resetlevelbtn = new JLabelIcon("generalbutton.png", 70, 70);
-		resetlevelbtn.setLocation((int) (Screen.width * 0.72) + (int) (rotatehbtn.getSize().getWidth() / 2),
+		resetlevelbtn.setLocation((int) (Screen.width * 0.74) + (int) (rotatehbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * .73));
 		JLabel resetlevellbl = new JLabel("<html>Reset<br>Level</html>", SwingConstants.CENTER);
 		resetlevellbl.setBounds(0, 0, 70, 70);
@@ -185,5 +186,8 @@ public class PlayLevelPanel extends JPanel {
 			background.add(stars[i]);
 		}
 
+	}
+	public JLabelIcon getZoomPiece(){
+		return zoompiece;
 	}
 }

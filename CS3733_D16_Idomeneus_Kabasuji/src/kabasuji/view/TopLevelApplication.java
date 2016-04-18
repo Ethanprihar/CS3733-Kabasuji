@@ -12,7 +12,7 @@ import java.awt.Dimension;
 public class TopLevelApplication extends JFrame {
 
 	public Kabasuji kabasuji;
-	public JPanel contentPane;
+	public JPanel contentPanel;
 	/**
 	 * Create the frame.
 	 */
@@ -21,14 +21,12 @@ public class TopLevelApplication extends JFrame {
 		init();
 	}
 	
-	public JPanel getContentPane(){
-		return contentPane;
+	public JPanel getContentPanel(){
+		return contentPanel;
 	}
-	public void changeContentPane(JPanel j){
-		contentPane.removeAll();
+	public void setContentPanel(JPanel j){
 		j.setBounds(0,0,Screen.width,Screen.height);
-		contentPane.add(j);
-		contentPane.repaint();
+		setContentPane(j);
 	}
 	void init(){
 		// puts top left corner into 10% of screen height and width
@@ -41,14 +39,12 @@ public class TopLevelApplication extends JFrame {
 		// not resizable
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		contentPane = new JPanel();
-		contentPane.setBounds(0, 0, Screen.width, Screen.height);
-		setContentPane(contentPane);
 		
+		// create new panel
 		MainMenu panel = new MainMenu(kabasuji,TopLevelApplication.this);
 		panel.setBounds(0, 0, Screen.width, Screen.height);
-		contentPane.add(panel);
+		// ** set contentPanel for JFrame
+		setContentPane(panel);
 	}
 }
 

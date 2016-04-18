@@ -33,7 +33,7 @@ public class GoToMainMenuController extends MouseAdapter {
 	public GoToMainMenuController(Kabasuji kabasuji, TopLevelApplication app, JLabelIcon button) {
 		this.kabasuji = kabasuji;
 		this.app = app;
-		this.contentPanel = app.getContentPane();
+		this.contentPanel = app.getContentPanel();
 		this.button = button;
 		this.fn = button.getFileName();
 	}
@@ -49,8 +49,8 @@ public class GoToMainMenuController extends MouseAdapter {
 		// Attempt to execute action on model
 		gtsm.execute(kabasuji);
 		// Created JPanel screen object and update boundary to reflect changes
-		MainMenu lsp = new MainMenu(kabasuji, app);
-		app.changeContentPane(lsp);
+		MainMenu mm = new MainMenu(kabasuji, app);
+		app.setContentPanel(mm);
 	}
 	public void mouseEntered(MouseEvent e) {
 		button.setImg("generalhoverbutton.png");
