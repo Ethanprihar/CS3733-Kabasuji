@@ -69,4 +69,5 @@ public class JLabelIcon extends JLabel {
 	public String getFileName(){
 		return filename;
 	}
+	
 }

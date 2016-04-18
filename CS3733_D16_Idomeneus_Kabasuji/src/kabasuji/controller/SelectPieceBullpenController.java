@@ -30,18 +30,20 @@ public class SelectPieceBullpenController extends MouseAdapter {
 
 	/** Entity and Boundaries Associated **/
 	Bullpen bullpen;
-	BullpenView app;
+	PlayLevelPanel panel;	
+	BullpenView bullpenview;
 	
-	JLabelIcon zoomapp;
+	JLabelIcon zoompanel;
 	String fn;
 	
 	int numPiece;
 
-	public SelectPieceBullpenController(Bullpen bullpen,BullpenView app, int numPiece) {
+	public SelectPieceBullpenController(Bullpen bullpen,PlayLevelPanel panel, int numPiece) {
 		this.bullpen = bullpen;
-		this.app = app;
-//		this.zoomapp = app.getPanel()
-		this.fn = zoomapp.getFileName();
+		this.panel = panel;
+		this.bullpenview = panel.getBullpenView();
+		this.zoompanel = panel.getZoomPiece();
+		this.fn = zoompanel.getFileName();
 		this.numPiece = numPiece;
 	}
 
@@ -53,10 +55,10 @@ public class SelectPieceBullpenController extends MouseAdapter {
 		
 	}
 	public void mouseEntered(MouseEvent e) {
-		zoomapp.setImg(app.getImgPieces()[numPiece].getFileName());
+//		zoompanel.setImg(bullpenview.getImgPieces()[numPiece].getFileName());
 	}
 
 	public void mouseExited(MouseEvent e) {
-		zoomapp.setImg(fn);
+		zoompanel.setImg(fn);
 	}
 }

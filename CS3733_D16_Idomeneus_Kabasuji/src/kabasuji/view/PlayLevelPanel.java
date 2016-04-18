@@ -19,8 +19,13 @@ import javax.swing.SwingConstants;
 public class PlayLevelPanel extends JPanel {
 	Kabasuji kabasuji;
 	TopLevelApplication app;
+	
 	Board board;
 	Bullpen bullpen;
+	
+	BoardView boardview;
+	BullpenView bullpenview;
+	
 	JLabelIcon zoompiece;
 
 	/**
@@ -31,7 +36,8 @@ public class PlayLevelPanel extends JPanel {
 		this.app = app;
 		this.board = kabasuji.getSelectedLevel().getBoard();
 		this.bullpen = kabasuji.getSelectedLevel().getBullpen();
-
+		
+		//set up background
 		JLabelIcon background = new JLabelIcon("starry_night.jpeg", Screen.width, Screen.height);
 		background.setBounds(0, 0, Screen.width, Screen.height);
 		add(background);
@@ -67,7 +73,7 @@ public class PlayLevelPanel extends JPanel {
 		bullpen.setLocation((int) (Screen.width * 0.05), (int) (Screen.height * 0.05));
 		
 		
-		BullpenView bullpenview = new BullpenView(bullpen1, bullpen, 4, 10);
+		this.bullpenview = new BullpenView(bullpen1, bullpen, 4, 10);
 		
 		background.add(bullpen);
 		
@@ -107,7 +113,7 @@ public class PlayLevelPanel extends JPanel {
 				(int) (Screen.height *0.54));
 		playboard.setLocation((int)(Screen.width * 0.35), (int) (Screen.height * 0.36));
 		
-		BoardView boardview = new BoardView(tboard, playboard);
+		this.boardview = new BoardView(tboard, playboard);
 		// ^ a little weird since we don't actually add the board view to the background
 		
 		background.add(playboard);
@@ -187,7 +193,16 @@ public class PlayLevelPanel extends JPanel {
 		}
 
 	}
+	// getter for zoompiece
 	public JLabelIcon getZoomPiece(){
 		return zoompiece;
+	}
+	// getter for boardview
+	public BoardView getBoardView(){
+		return boardview;
+	}
+	// getter for bullpenview
+	public BullpenView getBullpenView(){
+		return bullpenview;
 	}
 }
