@@ -72,10 +72,20 @@ public class SelectLevelController extends MouseAdapter {
 				{ testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 },
 				{ testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 },
 				{ testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 } };
+		Tile[][] piece2 = { { testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 },
+				{ testTile1, testTile1, testTile1, testTile2, testTile2, testTile2 },
+				{ testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 },
+				{ testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 },
+				{ testTile2, testTile2, testTile2, testTile2, testTile2, testTile2 },
+				{ testTile2, testTile2, testTile2, testTile2, testTile2, testTile2 } };
 
 		Piece[] testset = new Piece[40];
-		for (int i = 0; i < testset.length; i++) {
+		for (int i = 0; i < testset.length/2; i++) {
 			testset[i] = new Piece(piece1);
+			bullpen.addPiece(testset[i]);
+		}
+		for (int i = 0; i < testset.length/2; i++) {
+			testset[i] = new Piece(piece2);
 			bullpen.addPiece(testset[i]);
 		}
 
@@ -122,7 +132,7 @@ public class SelectLevelController extends MouseAdapter {
 			bv.setBounds((int) (Screen.width * 0.35), (int) (Screen.height * 0.36), (int) (Screen.height * 0.54),
 					(int) (Screen.height * 0.54));
 			
-			BullpenView bpv = new BullpenView(bullpen, lsp, 4, 6);
+			BullpenView bpv = new BullpenView(bullpen, lsp, 4, 10);
 			bpv.setSize((int) (Screen.width * 0.25), (int) (Screen.height * 0.85));
 			bpv.setLocation((int) (Screen.width * 0.05), (int) (Screen.height * 0.05));
 			
