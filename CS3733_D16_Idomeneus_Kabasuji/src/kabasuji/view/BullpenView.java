@@ -74,7 +74,7 @@ public class BullpenView extends JPanel {
 		colp = pieces.get(0).getTiles()[0].length;
 
 		this.imgpieces = new JLabelIcon[pieces.size()];
-		this.piecetiles = new JLabelIcon[rowp*colp];
+		this.piecetiles = new JLabelIcon[rowp * colp];
 
 		// this is the largest length of the tile matrix
 		// finds the smallest tile length
@@ -90,8 +90,8 @@ public class BullpenView extends JPanel {
 		this.piecesidescaled = (int) (piecesidelength * 0.8);
 		offset = (int) ((piecesidelength - piecesidescaled) / 2);
 
-		this.piecesidelengthp = piecesidelength / rowp;
-		this.piecesidescaledp = (int) (piecesidescaled * 0.8);
+		this.piecesidelengthp = piecesidescaled / rowp;
+		this.piecesidescaledp = (int) (piecesidelengthp * 0.8);
 		this.offsetp = (int) ((piecesidelengthp - piecesidescaledp) / 2);
 
 		// sets the bounds of the bullpenview within the panel container
@@ -108,7 +108,7 @@ public class BullpenView extends JPanel {
 			for (int j = 0; j < row; j++) {
 				// create a button image with specified dimension
 				// only display tile if it's valid
-				displayPiece(i, j, "generalbutton.png");
+				displayPiece(i, j, "opaquetile.png");
 			}
 		}
 		repaint();
@@ -120,10 +120,13 @@ public class BullpenView extends JPanel {
 				(int) (piecesidelength * (i) + offset));
 		for (int k = 0; k < colp; k++) {
 			for (int l = 0; l < rowp; l++) {
-				piecetiles[k*rowp + l] = (new JLabelIcon(pic, piecesidescaledp, piecesidescaledp));
-				piecetiles[k * rowp + l].setLocation((int) (piecesidelengthp * (l) + offsetp),
-						(int) (piecesidelengthp * (k) + offsetp));
-				imgpieces[i * row + j].add(piecetiles[k * rowp + l]);
+				if (pieces.get(i * row + j).getTiles()[l][k].isValid()) {
+					piecetiles[k * rowp + l] = (new JLabelIcon("general2button.png", piecesidescaledp,
+							piecesidescaledp));
+					piecetiles[k * rowp + l].setLocation((int) (piecesidelengthp * (l) + offsetp),
+							(int) (piecesidelengthp * (k) + offsetp));
+					imgpieces[i * row + j].add(piecetiles[k * rowp + l]);
+				}
 			}
 		}
 

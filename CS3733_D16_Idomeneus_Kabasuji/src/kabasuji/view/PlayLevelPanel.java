@@ -41,7 +41,13 @@ public class PlayLevelPanel extends JPanel {
 		// make pieces to add to Bullpen
 		Tile testTile1 = new Tile(false, true, 0, 0);
 		Tile testTile2 = new Tile(false, false, 0, 0);
-		Tile[][] piece1 = {{testTile1, testTile2},{testTile2, testTile1}};
+		Tile[][] piece1 = {{testTile1, testTile2,testTile2, testTile2,testTile2, testTile2},
+				{testTile1, testTile2,testTile2, testTile2,testTile2, testTile2},
+				{testTile1, testTile2,testTile2, testTile2,testTile2, testTile2},
+				{testTile1, testTile2,testTile2, testTile2,testTile2, testTile2},
+				{testTile1, testTile2,testTile2, testTile2,testTile2, testTile2},
+				{testTile1, testTile2,testTile2, testTile2,testTile2, testTile2}};
+
 		Piece[] testset = new Piece[40];
 		for (int i = 0; i < testset.length; i++){
 			testset[i] = new Piece(piece1);
