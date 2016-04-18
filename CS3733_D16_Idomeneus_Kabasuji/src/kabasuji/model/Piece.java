@@ -93,4 +93,7 @@ public class Piece implements Serializable
 		}
 		return new Piece(t);
 	}
+	public Tile[][] getTiles(){
+		return tiles;
+	}
 }
