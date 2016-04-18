@@ -4,9 +4,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import kabasuji.model.Builder;
+import kabasuji.model.PuzzleBoard;
 import kabasuji.model.Screen;
+import kabasuji.view.BoardView;
 import kabasuji.view.JLabelIcon;
 import levelbuilder.controller.GoToMainMenuBuilderController;
+import kabasuji.model.Tile;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -15,13 +18,28 @@ import javax.swing.SwingConstants;
 public class BuilderPuzzleLevelPanel extends JPanel {
 	Builder builder;
 	TopLevelApplicationBuilder app;
+	JTextField boardDimensions;
 
 	/**
 	 * Create the panel.
 	 */
-	public BuilderPuzzleLevelPanel(Builder builder, TopLevelApplicationBuilder app) {
+	public BuilderPuzzleLevelPanel(Builder builder, TopLevelApplicationBuilder app, JTextField boardDimensions) {
 		this.builder = builder;
 		this.app = app;
+		this.boardDimensions = boardDimensions;
+		
+		// Get the board dimensions as an integer
+		String boardDimensionstext = boardDimensions.getText();
+		int dimensions = Integer.parseInt(boardDimensionstext);
+		
+		// Create tiles to add to the board
+		Tile[][] boardTile = new Tile[dimensions][dimensions];
+		
+		for (int i = 0; i < dimensions; i++){
+			for (int j = 0; j < dimensions; j++){
+				boardTile[i][j] = new Tile(true, true, 0, 0);
+			}
+		}
 
 		JLabelIcon background = new JLabelIcon("BuilderPuzzleLevel.png", Screen.width, Screen.height);
 		background.setBounds(0, 0, Screen.width, Screen.height);
@@ -35,6 +53,10 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		JLabelIcon board = new JLabelIcon("boardpanel_opaque.png", (int) (Screen.width * 0.5),
 				(int) (Screen.height * 0.5));
 		board.setLocation((int) (Screen.width * 0.22), (int) (Screen.height * 0.05));
+		
+		// Create a puzzle board
+		PuzzleBoard tboard = new PuzzleBoard(boardTile);
+		BuilderBoardView boardview = new BuilderBoardView(tboard, board);
 		background.add(board);
 
 		JLabelIcon undoBtn = new JLabelIcon("generalbutton.png", 70, 70);

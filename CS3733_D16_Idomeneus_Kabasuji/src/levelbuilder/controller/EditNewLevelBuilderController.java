@@ -59,7 +59,7 @@ public class EditNewLevelBuilderController extends MouseAdapter {
 			
 			// Create a release level panel if the level type is 0
 			if (levelType == 0){
-				BuilderPuzzleLevelPanel lsp = new BuilderPuzzleLevelPanel(builder, app);
+				BuilderPuzzleLevelPanel lsp = new BuilderPuzzleLevelPanel(builder, app, boardDimensions);
 				app.changeContentPane(lsp);
 			}
 			
