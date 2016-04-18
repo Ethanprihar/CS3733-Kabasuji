@@ -27,6 +27,7 @@ public class TopLevelApplication extends JFrame {
 	public void setContentPanel(JPanel j){
 		j.setBounds(0,0,Screen.width,Screen.height);
 		setContentPane(j);
+		repaint();
 	}
 	void init(){
 		// puts top left corner into 10% of screen height and width

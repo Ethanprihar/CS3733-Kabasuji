@@ -31,7 +31,6 @@ public class SelectPieceBullpenController extends MouseAdapter {
 
 	/** Entity and Boundaries Associated **/
 	Bullpen bullpen;
-	JPanel panel;	
 	BullpenView bullpenview;
 	JLabelIcon pieceicon;
 	
@@ -40,7 +39,7 @@ public class SelectPieceBullpenController extends MouseAdapter {
 	
 	int numPiece;
 
-	public SelectPieceBullpenController(Bullpen bullpen, JPanel panel, JLabelIcon pieceicon, int numPiece) {
+	public SelectPieceBullpenController(Bullpen bullpen, JLabelIcon pieceicon, int numPiece) {
 		this.bullpen = bullpen;
 //		this.panel = (PlayLevelPanel)(panel);
 //		this.bullpenview = ((PlayLevelPanel) panel).getBullpenView();
@@ -59,6 +58,7 @@ public class SelectPieceBullpenController extends MouseAdapter {
 	}
 	public void mouseEntered(MouseEvent e) {
 //		zoompanel.setImg(bullpenview.getImgPieces()[numPiece].getFileName());
+		
 	}
 
 	public void mouseExited(MouseEvent e) {

@@ -27,13 +27,11 @@ public class BoardController extends MouseAdapter {
 
 	/** Entity and Boundaries Associated **/
 	Board board;
-	Container panel;
 	JLabelIcon tile;
 	String fn;
 
-	public BoardController(Board board, Container panel, JLabelIcon tile) {
+	public BoardController(Board board, JLabelIcon tile) {
 		this.board=  board;
-		this.panel = panel;
 		this.tile = tile;
 		this.fn = tile.getFileName();
 	}

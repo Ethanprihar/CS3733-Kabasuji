@@ -50,14 +50,17 @@ public class BoardView extends JPanel {
 	 * Create the Main Menu Panel.
 	 */
 
-	public BoardView(Board board, Container panel) {
+	public BoardView(Board board) {
 		this.board = board;
-		this.panel = panel;
+//		this.panel = panel;
 		this.tiles = board.getTiles();
 
-		this.row = board.getTiles().length+2;
-		this.col = board.getTiles()[0].length+2;
-		this.tile = new JLabelIcon[row * col];
+	}
+	public void setupBoard(){
+//		panel = getParent();
+		row = board.getTiles().length+2;
+		col = board.getTiles()[0].length+2;
+		tile = new JLabelIcon[row * col];
 		
 		setLayout(null);
 
@@ -65,23 +68,21 @@ public class BoardView extends JPanel {
 		// finds the smallest tile length
 		if (row > col) {
 			sqmatrixlength = row;
-			this.tilesidelength = (int) (panel.getSize().getWidth() / sqmatrixlength);
+			this.tilesidelength = (int) (getSize().getWidth() / sqmatrixlength);
 		} else {
 			sqmatrixlength = col;
-			this.tilesidelength = (int) (panel.getSize().getHeight() / sqmatrixlength);
+			this.tilesidelength = (int) (getSize().getHeight() / sqmatrixlength);
 		}
 		// scaling + offset to fit the container panel;
 		tilesidescaled = (int) (tilesidelength * 0.99);
 		offset = (int) ((tilesidelength - tilesidescaled) / 2);
 		
-		// sets the bounds of the boardview within the panel container
-		setBounds(0, 0, (int) panel.getSize().getWidth(), (int) panel.getSize().getHeight());
 		updateBoard();
 		
 		JLabelIcon background = new JLabelIcon("opaque_canvas.png", (int) (Screen.height *0.54),
 				(int) (Screen.height *0.54));
 		add(background);
-
+		repaint();
 	}
 	public void updateBoard(){
 		// display the tiles on the container panel and scales them to fit
@@ -93,11 +94,10 @@ public class BoardView extends JPanel {
 				// only display tile if it's valid
 				if (tiles[j][i].isValid()) {
 					displayTile(i,j,"emptytile.png");
-					tile[i*row+j].addMouseListener(new BoardController(board, panel, tile[i*row+j]));
+					//tile[i*row+j].addMouseListener(new BoardController(board, tile[i*row+j]));
 				}
 			}
 		}
-		repaint();
 	}
 	public void displayTile(int i,int j, String pic){
 		tile[i * row + j] = new JLabelIcon(pic, tilesidescaled, tilesidescaled);

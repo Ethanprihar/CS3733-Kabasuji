@@ -40,78 +40,16 @@ public class PlayLevelPanel extends JPanel {
 
 		// set layout null
 		setLayout(null);
+		setBounds(0, 0, Screen.width, Screen.height);
 
-		// make a new Bullpen
-		bullpen = new Bullpen();
-
-		// make pieces to add to Bullpen
-		Tile testTile1 = new Tile(false, true, 0, 0);
-		Tile testTile2 = new Tile(false, false, 0, 0);
-		Tile[][] piece1 = { { testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 },
-				{ testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 },
-				{ testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 },
-				{ testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 },
-				{ testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 },
-				{ testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 } };
-
-		Piece[] testset = new Piece[40];
-		for (int i = 0; i < testset.length; i++) {
-			testset[i] = new Piece(piece1);
-			bullpen.addPiece(testset[i]);
-		}
-
+	}
+	public void updatePlayLevelPanel(BoardView bv, BullpenView bpv){
 		// test adding pieces to Bullpen
 
 		zoompiece = new JLabelIcon("opaque_canvas.png", (int) (Screen.height * 0.25), (int) (Screen.height * 0.25));
 		zoompiece.setLocation((int) (Screen.width * 0.35), (int) (Screen.height * 0.05));
 		add(zoompiece);
 
-		JPanel bullpencontainer = new JPanel();
-		bullpencontainer.setSize((int) (Screen.width * 0.25), (int) (Screen.height * 0.85));
-
-		bullpenview = new BullpenView(bullpen, bullpencontainer, 4, 10);
-		bullpenview.setLocation((int) (Screen.width * 0.05), (int) (Screen.height * 0.05));
-		
-		add(bullpenview);
-
-		Tile boardTile0_0 = new Tile(false, true, 2, 0);
-		Tile boardTile0_1 = new Tile(false, true, 0, 0);
-		Tile boardTile0_2 = new Tile(false, true, 0, 0);
-		Tile boardTile0_3 = new Tile(false, true, 0, 0);
-		Tile boardTile0_4 = new Tile(false, false, 0, 0);
-		Tile boardTile1_0 = new Tile(false, true, 0, 0);
-		Tile boardTile1_1 = new Tile(false, false, 0, 0);
-		Tile boardTile1_2 = new Tile(false, true, 0, 0);
-		Tile boardTile1_3 = new Tile(false, true, 0, 0);
-		Tile boardTile1_4 = new Tile(false, false, 0, 0);
-		Tile boardTile2_0 = new Tile(false, true, 2, 0);
-		Tile boardTile2_1 = new Tile(false, true, 0, 0);
-		Tile boardTile2_2 = new Tile(false, true, 0, 0);
-		Tile boardTile2_3 = new Tile(false, true, 0, 0);
-		Tile boardTile2_4 = new Tile(false, false, 0, 0);
-		Tile boardTile3_0 = new Tile(false, true, 1, 0);
-		Tile boardTile3_1 = new Tile(false, true, 0, 0);
-		Tile boardTile3_2 = new Tile(false, true, 3, 0);
-		Tile boardTile3_3 = new Tile(false, true, 0, 0);
-		Tile boardTile3_4 = new Tile(false, true, 0, 0);
-		Tile boardTile4_0 = new Tile(false, true, 0, 0);
-		Tile boardTile4_1 = new Tile(false, true, 0, 0);
-		Tile boardTile4_2 = new Tile(false, false, 0, 0);
-		Tile boardTile4_3 = new Tile(false, false, 0, 0);
-		Tile boardTile4_4 = new Tile(false, false, 0, 0);
-		Tile[][] tiles = { { boardTile0_0, boardTile0_1, boardTile0_2, boardTile0_3, boardTile0_4 },
-				{ boardTile1_0, boardTile1_1, boardTile1_2, boardTile1_3, boardTile1_4 },
-				{ boardTile2_0, boardTile2_1, boardTile2_2, boardTile2_3, boardTile2_4 },
-				{ boardTile3_0, boardTile3_1, boardTile3_2, boardTile3_3, boardTile3_4 },
-				{ boardTile4_0, boardTile4_1, boardTile4_2, boardTile4_3, boardTile4_4 } };
-		PuzzleBoard tboard = new PuzzleBoard(tiles);
-		// Create container for size reference only
-		JPanel playboard = new JPanel();
-		playboard.setSize((int) (Screen.height * 0.54), (int) (Screen.height * 0.54));
-		// Create boardview
-		boardview = new BoardView(tboard, playboard);
-		boardview.setLocation((int) (Screen.width * 0.35), (int) (Screen.height * 0.36));
-		add(boardview);
 
 		JLabelIcon fliphbtn = new JLabelIcon("generalbutton.png", 70, 70);
 		fliphbtn.setLocation((int) (Screen.width * 0.52) + (int) (fliphbtn.getSize().getWidth() / 2),
@@ -186,12 +124,14 @@ public class PlayLevelPanel extends JPanel {
 					(int) (nextlevelbtn.getY() - (((i + 1) % 2) + 1) * stars[i].getSize().getWidth()));
 			add(stars[i]);
 		}
-
+		
+		setBoardView(bv);
+		setBullpenView(bpv);
+		
 		// set up background
 		JLabelIcon background = new JLabelIcon("starry_night.jpeg", Screen.width, Screen.height);
 		background.setBounds(0, 0, Screen.width, Screen.height);
 		add(background);
-
 	}
 
 	// getter for zoompiece
@@ -199,9 +139,21 @@ public class PlayLevelPanel extends JPanel {
 		return zoompiece;
 	}
 
+	// setter for boardview
+	public void setBoardView(BoardView bv) {
+		boardview = bv;
+		boardview.setupBoard();
+		repaint();
+	}
+	
 	// getter for boardview
 	public BoardView getBoardView() {
 		return boardview;
+	}
+	public void setBullpenView(BullpenView bpv) {
+		bullpenview = bpv;
+		bullpenview.setupBullpen();
+		repaint();
 	}
 
 	// getter for bullpenview

@@ -34,8 +34,6 @@ import javax.swing.ImageIcon;
 public class BullpenView extends JPanel {
 	// the associated board
 	Bullpen bullpen;
-	// the JPanel that contains it
-	JPanel panel;
 
 	ArrayList<Piece> pieces;
 
@@ -54,38 +52,38 @@ public class BullpenView extends JPanel {
 	 * Create the Main Menu Panel.
 	 */
 
-	public BullpenView(Bullpen bullpen, JPanel panel, int row, int col) {
+	public BullpenView(Bullpen bullpen, int row, int col) {
 		this.bullpen = bullpen;
-		this.panel = panel;
 		this.pieces = bullpen.getPieces();
 
 		this.row = row;
 		this.col = col;
 
+
+	}
+	public void setupBullpen(){
+		
 		this.imgpieces = new JLabelIcon[pieces.size()];
 		this.pieceview = new PieceView[pieces.size()];
 
 		setLayout(null);
 		// this is the largest length of the tile matrix
 		// finds the smallest tile length
-		if ((panel.getSize().getWidth() / row) < (panel.getSize().getHeight() / col)) {
-			this.piecesidelength = (int) (panel.getSize().getWidth() / row);
+		if ((getSize().getWidth() / row) < (getSize().getHeight() / col)) {
+			this.piecesidelength = (int) (getSize().getWidth() / row);
 		} else {
-			this.piecesidelength = (int) (panel.getSize().getHeight() / col);
+			this.piecesidelength = (int) (getSize().getHeight() / col);
 		}
 
 		// scaling + offset to fit the container panel;
 		this.piecesidescaled = (int) (piecesidelength * 0.8);
 		offset = (int) ((piecesidelength - piecesidescaled) / 2);
-
-		// sets the bounds of the bullpenview within the panel container
-		setBounds(0, 0, (int) panel.getSize().getWidth(), (int) panel.getSize().getHeight());
+		
 		updateBullpen();
 		
 		JLabelIcon background = new JLabelIcon("opaque_canvas.png", (int) (Screen.width * 0.25), (int) (Screen.height * 0.85));
 		background.setLocation(0,0);
 		add(background);
-
 	}
 
 	public void updateBullpen() {
@@ -99,7 +97,6 @@ public class BullpenView extends JPanel {
 				displayPiece(i, j, "opaquetile.png");
 			}
 		}
-		repaint();
 	}
 
 	public void displayPiece(int i, int j, String pic) {
@@ -107,16 +104,15 @@ public class BullpenView extends JPanel {
 		imgpieces[i * row + j].setLocation((int) (piecesidelength * (j) + offset),
 				(int) (piecesidelength * (i) + offset));
 		Piece piece = pieces.get(i * row + j);
-		pieceview[i * row + j] = new PieceView(piece, imgpieces[i * row + j]);
+		pieceview[i * row + j] = new PieceView(piece);
+		pieceview[i * row + j].setBounds(0, 0, piecesidescaled, piecesidescaled);
+		pieceview[i * row + j].setupPiece();
+		imgpieces[i*row+j].add(pieceview[i * row + j]);
 		add(imgpieces[i * row + j]);
-		imgpieces[i * row + j].addMouseListener(new SelectPieceBullpenController(bullpen, panel, imgpieces[i * row + j], i * row + j));
+		//imgpieces[i * row + j].addMouseListener(new SelectPieceBullpenController(bullpen, imgpieces[i * row + j], i * row + j));
 	}
 
 	public JLabelIcon[] getImgPieces() {
 		return imgpieces;
-	}
-
-	public JPanel getPanel() {
-		return panel;
 	}
 }
