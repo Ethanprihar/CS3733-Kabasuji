@@ -3,6 +3,7 @@ package kabasuji.controller;
 import java.awt.Container;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -10,11 +11,13 @@ import kabasuji.controller.moves.ChangeScreenMove;
 import kabasuji.controller.moves.SelectLevelMove;
 import kabasuji.model.Bullpen;
 import kabasuji.model.Kabasuji;
+import kabasuji.model.Piece;
 import kabasuji.model.Screen;
 import kabasuji.view.BullpenView;
 import kabasuji.view.JLabelIcon;
 import kabasuji.view.LevelSelectPanel;
 import kabasuji.view.MainMenu;
+import kabasuji.view.PieceView;
 import kabasuji.view.PlayLevelPanel;
 import kabasuji.view.TopLevelApplication;
 
@@ -33,20 +36,25 @@ public class SelectPieceBullpenController extends MouseAdapter {
 	Bullpen bullpen;
 	BullpenView bullpenview;
 	JLabelIcon pieceicon;
+	PlayLevelPanel panel;
+	PieceView[] pieceviews;
+	ArrayList<Piece> pieces;
 	
 	JLabelIcon zoompanel;
 	String fn;
 	
 	int numPiece;
 
-	public SelectPieceBullpenController(Bullpen bullpen, JLabelIcon pieceicon, int numPiece) {
+	public SelectPieceBullpenController(Bullpen bullpen, PlayLevelPanel panel, JLabelIcon pieceicon, int numPiece) {
 		this.bullpen = bullpen;
-//		this.panel = (PlayLevelPanel)(panel);
-//		this.bullpenview = ((PlayLevelPanel) panel).getBullpenView();
+		this.panel = panel;
+		this.bullpenview = panel.getBullpenView();
+		this.pieceviews = bullpenview.getPieceView();
 		this.pieceicon = pieceicon;
-//		this.zoompanel = ((PlayLevelPanel) panel).getZoomPiece();
-//		this.fn = zoompanel.getFileName();
+		this.zoompanel = panel.getZoomPiece();
+		this.fn = zoompanel.getFileName();
 		this.numPiece = numPiece;
+		this.pieces = bullpen.getPieces();
 	}
 
 	/**
@@ -57,11 +65,17 @@ public class SelectPieceBullpenController extends MouseAdapter {
 		
 	}
 	public void mouseEntered(MouseEvent e) {
-//		zoompanel.setImg(bullpenview.getImgPieces()[numPiece].getFileName());
+		zoompanel.removeAll();
+		PieceView pieceview = new PieceView(pieces.get(numPiece));
+		pieceview.setBounds(0, 0, (int)zoompanel.getSize().getWidth(), (int)zoompanel.getSize().getHeight());
+		pieceview.setupPiece();
+		zoompanel.add(pieceview);
+		zoompanel.repaint();
 		
 	}
 
 	public void mouseExited(MouseEvent e) {
-//		zoompanel.setImg(fn);
+		zoompanel.removeAll();
+		zoompanel.setImg("opaque_canvas.png");
 	}
 }

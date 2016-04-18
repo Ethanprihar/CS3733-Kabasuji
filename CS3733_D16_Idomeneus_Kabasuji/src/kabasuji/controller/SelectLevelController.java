@@ -116,17 +116,17 @@ public class SelectLevelController extends MouseAdapter {
 			gtsm.execute(kabasuji);
 			// Created JPanel screen object and update boundary to reflect
 			// changes
+			PlayLevelPanel lsp = new PlayLevelPanel(kabasuji, app);
+			
 			BoardView bv = new BoardView(tboard);
 			bv.setBounds((int) (Screen.width * 0.35), (int) (Screen.height * 0.36), (int) (Screen.height * 0.54),
 					(int) (Screen.height * 0.54));
 			
-			BullpenView bpv = new BullpenView(bullpen, 4, 6);
+			BullpenView bpv = new BullpenView(bullpen, lsp, 4, 6);
 			bpv.setSize((int) (Screen.width * 0.25), (int) (Screen.height * 0.85));
 			bpv.setLocation((int) (Screen.width * 0.05), (int) (Screen.height * 0.05));
 			
-			PlayLevelPanel lsp = new PlayLevelPanel(kabasuji, app);
-			lsp.add(bv);
-			lsp.add(bpv);
+			lsp.removeAll();
 			lsp.updatePlayLevelPanel(bv, bpv);
 			
 			lsp.repaint();

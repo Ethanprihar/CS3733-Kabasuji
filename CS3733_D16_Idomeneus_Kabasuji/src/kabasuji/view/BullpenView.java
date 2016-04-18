@@ -35,6 +35,7 @@ public class BullpenView extends JPanel {
 	// the associated board
 	Bullpen bullpen;
 
+	PlayLevelPanel panel;
 	ArrayList<Piece> pieces;
 
 	JLabelIcon[] imgpieces;
@@ -52,8 +53,9 @@ public class BullpenView extends JPanel {
 	 * Create the Main Menu Panel.
 	 */
 
-	public BullpenView(Bullpen bullpen, int row, int col) {
+	public BullpenView(Bullpen bullpen, PlayLevelPanel panel, int row, int col) {
 		this.bullpen = bullpen;
+		this.panel = panel;
 		this.pieces = bullpen.getPieces();
 
 		this.row = row;
@@ -109,10 +111,13 @@ public class BullpenView extends JPanel {
 		pieceview[i * row + j].setupPiece();
 		imgpieces[i*row+j].add(pieceview[i * row + j]);
 		add(imgpieces[i * row + j]);
-		//imgpieces[i * row + j].addMouseListener(new SelectPieceBullpenController(bullpen, imgpieces[i * row + j], i * row + j));
+		imgpieces[i * row + j].addMouseListener(new SelectPieceBullpenController(bullpen, panel, imgpieces[i * row + j], i * row + j));
 	}
 
 	public JLabelIcon[] getImgPieces() {
 		return imgpieces;
+	}
+	public PieceView[] getPieceView(){
+		return pieceview;
 	}
 }

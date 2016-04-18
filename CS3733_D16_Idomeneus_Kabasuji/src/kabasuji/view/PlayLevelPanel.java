@@ -125,6 +125,8 @@ public class PlayLevelPanel extends JPanel {
 			add(stars[i]);
 		}
 		
+		add(bv);
+		add(bpv);
 		setBoardView(bv);
 		setBullpenView(bpv);
 		
