@@ -94,7 +94,7 @@ public class BoardView extends JPanel {
 				// only display tile if it's valid
 				if (tiles[j][i].isValid()) {
 					displayTile(i,j,"emptytile.png");
-					//tile[i*row+j].addMouseListener(new BoardController(board, tile[i*row+j]));
+					tile[i*row+j].addMouseListener(new BoardController(board, tile[i*row+j]));
 				}
 			}
 		}

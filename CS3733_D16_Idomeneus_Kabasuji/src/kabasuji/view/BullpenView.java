@@ -69,6 +69,7 @@ public class BullpenView extends JPanel {
 		this.pieceview = new PieceView[pieces.size()];
 
 		setLayout(null);
+		setOpaque(true);
 		// this is the largest length of the tile matrix
 		// finds the smallest tile length
 		if ((getSize().getWidth() / row) < (getSize().getHeight() / col)) {
@@ -83,7 +84,7 @@ public class BullpenView extends JPanel {
 		
 		updateBullpen();
 		
-		JLabelIcon background = new JLabelIcon("opaque_canvas.png", (int) (Screen.width * 0.25), (int) (Screen.height * 0.85));
+		JLabelIcon background = new JLabelIcon("boardpanel_opaque.png", (int) (Screen.width * 0.25), (int) (Screen.height * 0.85));
 		background.setLocation(0,0);
 		add(background);
 	}

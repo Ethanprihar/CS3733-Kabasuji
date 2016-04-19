@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.Point;
 
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
@@ -38,6 +39,8 @@ public class PieceView extends JPanel {
 	Tile[][] tiles;
 
 	JLabelIcon[] tileview;
+	
+	Point centroid;
 
 	int row;
 	int col;
@@ -74,12 +77,12 @@ public class PieceView extends JPanel {
 		// scaling + offset to fit the container panel;
 		this.piecesidescaled = (int) (piecesidelength * 0.8);
 		this.offset = (int) ((piecesidelength - piecesidescaled) / 2);
-
 		updatePiece();
 		repaint();
 	}
 	
 	public void updatePiece() {
+		centroid = calculateCentroid();
 		// display the tiles on the container panel and scales them to fit
 		// row/col
 		// includes centering as well
@@ -95,11 +98,33 @@ public class PieceView extends JPanel {
 	public void displayTiles(int i, int j, String pic) {
 		if (tiles[i][j].isValid()) {
 			tileview[i * row + j] = (new JLabelIcon(pic, piecesidescaled, piecesidescaled));
-			tileview[i * row + j].setLocation((int) (piecesidelength * (j) + offset),
-					(int) (piecesidelength * (i) + offset));
+			tileview[i * row + j].setLocation((int) (piecesidelength * j  + offset + getSize().getWidth()*0.5 - centroid.getX()),
+					(int) (piecesidelength *i + offset + getSize().getHeight()*0.5 - centroid.getY()));
 			add(tileview[i * row + j]);
-
 		}
 	}
-
+	public Point calculateCentroid(){
+		Point pnt = new Point();
+		double x = 0;
+		double y= 0;
+		double xsum = 0;
+		double ysum = 0;
+		int count =0;
+		for(int i = 0; i< col; i++){
+			for(int j =0; j < row ; j++){
+				if(tiles[i][j].isValid()){
+					xsum += piecesidelength *(j+0.5) ;
+					ysum += piecesidelength *(i+0.5);
+					count ++;
+				}
+			}
+		}
+		x = xsum/count;
+		y = ysum/count;
+		pnt.setLocation(x, y);
+		return pnt;
+	}
+	public Point getCentroid(){
+		return centroid;
+	}
 }

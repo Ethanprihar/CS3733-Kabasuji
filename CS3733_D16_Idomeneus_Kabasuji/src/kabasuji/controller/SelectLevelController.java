@@ -73,9 +73,9 @@ public class SelectLevelController extends MouseAdapter {
 				{ testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 },
 				{ testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 } };
 		Tile[][] piece2 = { { testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 },
-				{ testTile1, testTile1, testTile1, testTile2, testTile2, testTile2 },
-				{ testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 },
-				{ testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 },
+				{ testTile1, testTile1, testTile1, testTile1, testTile2, testTile2 },
+				{ testTile2, testTile2, testTile2, testTile1, testTile2, testTile2 },
+				{ testTile2, testTile2, testTile2, testTile1, testTile2, testTile2 },
 				{ testTile2, testTile2, testTile2, testTile2, testTile2, testTile2 },
 				{ testTile2, testTile2, testTile2, testTile2, testTile2, testTile2 } };
 
