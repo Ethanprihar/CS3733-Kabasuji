@@ -76,7 +76,7 @@ public class PieceView extends JPanel {
 		}
 		// scaling + offset to fit the container panel;
 		this.piecesidescaled = (int) (piecesidelength * 0.8);
-		this.offset = (int) ((piecesidelength - piecesidescaled) / 2);
+		this.offset = (int) (piecesidelength - piecesidescaled)/2;
 		updatePiece();
 		repaint();
 	}
