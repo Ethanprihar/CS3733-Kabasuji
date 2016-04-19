@@ -58,6 +58,20 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		PuzzleBoard tboard = new PuzzleBoard(boardTile);
 		BuilderBoardView boardview = new BuilderBoardView(tboard, board);
 		background.add(board);
+		
+		JLabelIcon[] piece = new JLabelIcon[6];
+		
+		// Create a piece in the builder bullpen
+		for (int i = 0; i < 6; i++){
+			piece[i] = new JLabelIcon("tile.PNG", 10, 10);
+			piece[i].setLocation((int)piece[i].getWidth() + 10, piece[i].getHeight()*i);
+			bullpen.add(piece[i]);
+		}
+		
+		// Add a jLabel below the piece in the bullpen
+		JLabel piece1 = new JLabel("0");
+		piece1.setBounds(piece[1].getWidth(), piece[1].getHeight()*6, 10, 10);
+		bullpen.add(piece1);
 
 		JLabelIcon undoBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		undoBtn.setLocation((int) (Screen.width * 0.72) + (int) (undoBtn.getSize().getWidth() / 2),
