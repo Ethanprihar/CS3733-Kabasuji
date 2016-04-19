@@ -86,6 +86,10 @@ public class LightningLevelTest extends TestCase {
 		assertEquals(lightTest.getTimeLeft(), 0);
 
 		assertEquals(lightTest.canMoveBullpenToBoard(boardTile0_0), false);
+		
+		lightTest.setEndCondition(20);
+		
+		assertEquals(lightTest.getEndCondition(),20);
 
 	}
 
@@ -140,23 +144,6 @@ public class LightningLevelTest extends TestCase {
 				{ boardTile2_0, boardTile2_1, boardTile2_2, boardTile2_3, boardTile2_4 },
 				{ boardTile3_0, boardTile3_1, boardTile3_2, boardTile3_3, boardTile3_4 },
 				{ boardTile4_0, boardTile4_1, boardTile4_2, boardTile4_3, boardTile4_4 } };
-
-		/*
-		 * 11 00
-		 */
-		Piece testPiece1 = new Piece(piece1);
-
-		/*
-		 * 01 01
-		 */
-		Piece testPiece2 = new Piece(piece2);
-
-		/*
-		 * 00 11
-		 */
-		Piece testPiece3 = new Piece(piece3);
-
-		Board testBoard1 = new PuzzleBoard(board1);
 		
 		LightningBoard lightBoard1 = new LightningBoard(board1);
 
@@ -180,12 +167,6 @@ public class LightningLevelTest extends TestCase {
 		
 		assertEquals(lightTest.canMoveBullpenToBoard(boardTile4_4),false);
 		assertEquals(lightTest.canMoveBullpenToBoard(boardTile2_2),false);
-		
-		
-		
-		
-		
-		
 		
 	}
 
