@@ -11,6 +11,16 @@ public class LightningLevel extends Level {
 		currentTime = 0;
 	}
 	
+	public int getEndCondition()
+	{
+		return timeLimit;
+	}
+	
+	public void setEndCondition(int ec)
+	{
+		timeLimit = ec;
+	}
+	
 	public boolean canMoveBullpenToBoard(Tile destination)
 	{
 		return (board.canAddPiece(bullpen.getSelectedPiece(), destination) && hasTimeLeft());

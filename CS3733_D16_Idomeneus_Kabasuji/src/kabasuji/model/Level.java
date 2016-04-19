@@ -15,6 +15,10 @@ public abstract class Level implements Serializable{
 		stars = 0; // initialize number of stars to 0
 	}
 	
+	public abstract int getEndCondition();
+	
+	public abstract void setEndCondition(int ec);
+	
 	public abstract boolean canMoveBullpenToBoard(Tile destination);
 	
 	public abstract boolean canMoveBoardToBullpen();

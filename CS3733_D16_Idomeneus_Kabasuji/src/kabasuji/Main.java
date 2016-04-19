@@ -14,6 +14,7 @@ public class Main {
 	 */
 	public static void main(String[] args)
 	{
+		//makePieces();
 		makeLevelsForTesting();
 		Kabasuji kabasuji = new Kabasuji();
 		System.out.println("In Kabasuji the levels:");
@@ -54,107 +55,107 @@ public class Main {
 			{
 				case 0:
 					tiles = new Tile[][]
-					{{ t, t, f, f, f, f},
-					 { t, f, f, f, f, f},
-					 { t, f, f, f, f, f},
-					 { t, t, f, f, f, f},
-					 { f, f, f, f, f, f},
+					{{ f, f, f, f, f, f},
+					 { f, f, t, t, f, f},
+					 { f, f, t, f, f, f},
+					 { f, f, t, f, f, f},
+					 { f, f, t, t, f, f},
 					 { f, f, f, f, f, f}};
 				case 1:
 					tiles = new Tile[][]
-					{{ t, t, f, f, f, f},
-					 { t, f, f, f, f, f},
-					 { t, t, f, f, f, f},
-					 { t, f, f, f, f, f},
-					 { f, f, f, f, f, f},
+					{{ f, f, f, f, f, f},
+					 { f, f, t, t, f, f},
+					 { f, f, t, f, f, f},
+					 { f, f, t, t, f, f},
+					 { f, f, t, f, f, f},
 					 { f, f, f, f, f, f}};
 				case 2:
 					tiles = new Tile[][]
-					{{ t, t, f, f, f, f},
-					 { t, t, f, f, f, f},
-					 { f, t, f, f, f, f},
-					 { f, t, f, f, f, f},
-					 { f, f, f, f, f, f},
+					{{ f, f, f, f, f, f},
+					 { f, f, t, t, f, f},
+					 { f, f, t, t, f, f},
+					 { f, f, f, t, f, f},
+					 { f, f, f, t, f, f},
 					 { f, f, f, f, f, f}};
 				case 3:
 					tiles = new Tile[][]
-					{{ f, t, f, f, f, f},
-					 { t, t, f, f, f, f},
-					 { t, f, f, f, f, f},
-					 { t, f, f, f, f, f},
-					 { t, f, f, f, f, f},
+					{{ f, f, f, t, f, f},
+					 { f, f, t, t, f, f},
+					 { f, f, t, f, f, f},
+					 { f, f, t, f, f, f},
+					 { f, f, t, f, f, f},
 					 { f, f, f, f, f, f}};
 				case 4:
 					tiles = new Tile[][]
-					{{ t, f, f, f, f, f},
-					 { t, f, f, f, f, f},
-					 { t, t, f, f, f, f},
-					 { t, f, f, f, f, f},
-					 { t, f, f, f, f, f},
+					{{ f, f, t, f, f, f},
+					 { f, f, t, f, f, f},
+					 { f, f, t, t, f, f},
+					 { f, f, t, f, f, f},
+					 { f, f, t, f, f, f},
 					 { f, f, f, f, f, f}};
 				case 5:
 					tiles = new Tile[][]
-					{{ t, f, f, f, f, f},
-					 { t, t, f, f, f, f},
-					 { t, f, f, f, f, f},
-					 { t, f, f, f, f, f},
-					 { t, f, f, f, f, f},
+					{{ f, f, t, f, f, f},
+					 { f, f, t, t, f, f},
+					 { f, f, t, f, f, f},
+					 { f, f, t, f, f, f},
+					 { f, f, t, f, f, f},
 					 { f, f, f, f, f, f}};
 				case 6:
 					tiles = new Tile[][]
-					{{ t, t, f, f, f, f},
-					 { t, f, f, f, f, f},
-					 { t, f, f, f, f, f},
-					 { t, f, f, f, f, f},
-					 { t, f, f, f, f, f},
+					{{ f, f, t, t, f, f},
+					 { f, f, t, f, f, f},
+					 { f, f, t, f, f, f},
+					 { f, f, t, f, f, f},
+					 { f, f, t, f, f, f},
 					 { f, f, f, f, f, f}};
 				case 7:
 					tiles = new Tile[][]
-					{{ t, f, f, f, f, f},
-					 { t, f, f, f, f, f},
-					 { t, f, f, f, f, f},
-					 { t, f, f, f, f, f},
-					 { t, f, f, f, f, f},
-					 { t, f, f, f, f, f}};
+					{{ f, f, t, f, f, f},
+					 { f, f, t, f, f, f},
+					 { f, f, t, f, f, f},
+					 { f, f, t, f, f, f},
+					 { f, f, t, f, f, f},
+					 { f, f, t, f, f, f}};
 				case 8:
 					tiles = new Tile[][]
-					{{ t, f, f, f, f, f},
-					 { t, t, f, f, f, f},
-					 { t, t, t, f, f, f},
-					 { f, f, f, f, f, f},
+					{{ f, f, f, f, f, f},
+					 { f, t, f, f, f, f},
+					 { f, t, t, f, f, f},
+					 { f, t, t, t, f, f},
 					 { f, f, f, f, f, f},
 					 { f, f, f, f, f, f}};
 				case 9:
 					tiles = new Tile[][]
-					{{ f, f, t, f, f, f},
-					 { t, t, t, f, f, f},
-					 { t, t, f, f, f, f},
-					 { f, f, f, f, f, f},
+					{{ f, f, f, f, f, f},
+					 { f, f, f, t, f, f},
+					 { f, t, t, t, f, f},
+					 { f, t, t, f, f, f},
 					 { f, f, f, f, f, f},
 					 { f, f, f, f, f, f}};
 				case 10:
 					tiles = new Tile[][]
-					{{ t, f, f, f, f, f},
-					 { t, t, f, f, f, f},
-					 { t, t, f, f, f, f},
-					 { t, f, f, f, f, f},
-					 { f, f, f, f, f, f},
+					{{ f, f, f, f, f, f},
+					 { f, f, t, f, f, f},
+					 { f, f, t, t, f, f},
+					 { f, f, t, t, f, f},
+					 { f, f, t, f, f, f},
 					 { f, f, f, f, f, f}};
 				case 11:
 					tiles = new Tile[][]
-					{{ t, t, t, f, f, f},
-					 { t, f, f, f, f, f},
-					 { t, f, f, f, f, f},
-					 { t, f, f, f, f, f},
-					 { f, f, f, f, f, f},
+					{{ f, f, f, f, f, f},
+					 { f, t, t, t, f, f},
+					 { f, t, f, f, f, f},
+					 { f, t, f, f, f, f},
+					 { f, t, f, f, f, f},
 					 { f, f, f, f, f, f}};
 				case 12:
 					tiles = new Tile[][]
-					{{ t, f, f, f, f, f},
-					 { t, t, t, f, f, f},
-					 { t, f, f, f, f, f},
-					 { t, f, f, f, f, f},
-					 { f, f, f, f, f, f},
+					{{ f, f, f, f, f, f},
+					 { f, t, f, f, f, f},
+					 { f, t, t, t, f, f},
+					 { f, t, f, f, f, f},
+					 { f, t, f, f, f, f},
 					 { f, f, f, f, f, f}};
 				case 13:
 					tiles = new Tile[][]

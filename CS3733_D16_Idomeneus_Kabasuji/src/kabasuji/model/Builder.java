@@ -13,6 +13,7 @@ public class Builder
 	Piece[] pieces;
 	int[] numOfPieces;
 	Level selectedLevel;
+	int endCondition;
 	ArrayList<Board> history;
 
 	public Builder()
@@ -48,6 +49,7 @@ public class Builder
 	public void loadLevel(Level l)
 	{
 		selectedLevel = l;
+		endCondition = selectedLevel.getEndCondition();
 		numOfPieces = new int[35];
 		// this will set the 35 numbers corresponding to the 35
 		// textfields that determine what pieces are in the bullpen
@@ -65,6 +67,7 @@ public class Builder
 	
 	public void saveLevel()
 	{
+		selectedLevel.setEndCondition(endCondition);
 		for(int i=0; i<35; i++)
 		{
 			for(int j=0; j<numOfPieces[i]; j++)
