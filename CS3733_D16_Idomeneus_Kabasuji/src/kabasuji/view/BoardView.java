@@ -54,7 +54,6 @@ public class BoardView extends JPanel {
 	public BoardView(Kabasuji kabasuji) {
 		this.kabasuji = kabasuji;
 		this.board = kabasuji.getSelectedLevel().getBoard();
-//		this.panel = panel;
 		this.tiles = board.getTiles();
 
 	}
@@ -76,7 +75,7 @@ public class BoardView extends JPanel {
 			this.tilesidelength = (int) (getSize().getHeight() / sqmatrixlength);
 		}
 		// scaling + offset to fit the container panel;
-		tilesidescaled = (int) (tilesidelength * 0.95);
+		tilesidescaled = (int) (tilesidelength * 0.98);
 		offset = (int) (tilesidelength - tilesidescaled);
 		
 		updateBoard();
