@@ -4,22 +4,22 @@ import kabasuji.model.Kabasuji;
 import kabasuji.model.Piece;
 
 /**
- * Move class to rotate piece in bullpen by passing in the particular piece and direction
+ * Move class to flip piece in bullpen by passing in the particular piece and direction
  * in the constructor. Validity of move is always checked
  * before execution of move
  * @author jwu
  */
 
-public class RotatePieceMove extends Move{
+public class FlipPieceMove extends Move{
 	// Piece of interest
 	Piece piece;
-	// direction of rotation
-	boolean right;
+	// direction of flip
+	boolean vertical;
 	
 	// Constructor for Rotate Piece Move
-	public RotatePieceMove(Piece piece, boolean right){
+	public FlipPieceMove(Piece piece, boolean vertical){
 		this.piece = piece;
-		this.right = right;
+		this.vertical = vertical;
 	}
 
 	@Override
@@ -27,8 +27,8 @@ public class RotatePieceMove extends Move{
 		if(!valid(kabasuji)){
 			return false;
 		}	
-		/** rotates the selected piece**/
-		kabasuji.getSelectedLevel().getBullpen().getSelectedPiece().rotate(right);
+		/** flip the selected piece**/
+		kabasuji.getSelectedLevel().getBullpen().getSelectedPiece().flip(vertical);
 		return true;
 	}
 

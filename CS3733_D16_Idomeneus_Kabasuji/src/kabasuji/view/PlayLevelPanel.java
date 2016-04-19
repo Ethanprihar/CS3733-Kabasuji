@@ -1,19 +1,14 @@
 package kabasuji.view;
 
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
+import kabasuji.controller.FlipSelectedPieceBullpenController;
 import kabasuji.controller.GoToMainMenuController;
 import kabasuji.controller.RotateSelectedPieceBullpenController;
-import kabasuji.controller.SelectPieceBullpenController;
 import kabasuji.model.Board;
 import kabasuji.model.Bullpen;
 import kabasuji.model.Kabasuji;
-import kabasuji.model.Piece;
-import kabasuji.model.PuzzleBoard;
 import kabasuji.model.Screen;
-import kabasuji.model.Tile;
-
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -30,7 +25,11 @@ public class PlayLevelPanel extends JPanel {
 
 	JLabelIcon zoompiece;
 	
-	JLabelIcon rotatehbtn;
+	JLabelIcon rotatelbtn;
+	JLabelIcon rotaterbtn;
+	
+	JLabelIcon fliphbtn;
+	JLabelIcon flipvbtn;
 
 	/**
 	 * Create the panel.
@@ -55,7 +54,7 @@ public class PlayLevelPanel extends JPanel {
 		add(zoompiece);
 
 
-		JLabelIcon fliphbtn = new JLabelIcon("generalbutton.png", 70, 70);
+		fliphbtn = new JLabelIcon("generalbutton.png", 70, 70);
 		fliphbtn.setLocation((int) (Screen.width * 0.52) + (int) (fliphbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.05));
 		JLabel fliphlbl = new JLabel("<html>Flip<br>Horizontal</html>", SwingConstants.CENTER);
@@ -65,7 +64,7 @@ public class PlayLevelPanel extends JPanel {
 
 		add(fliphbtn);
 
-		JLabelIcon flipvbtn = new JLabelIcon("generalbutton.png", 70, 70);
+		flipvbtn = new JLabelIcon("generalbutton.png", 70, 70);
 		flipvbtn.setLocation((int) (Screen.width * 0.62) + (int) (fliphbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.05));
 		JLabel flipvlbl = new JLabel("<html>Flip<br>Vertical</html>", SwingConstants.CENTER);
@@ -74,26 +73,26 @@ public class PlayLevelPanel extends JPanel {
 		flipvbtn.add(flipvlbl);
 		add(flipvbtn);
 
-		rotatehbtn = new JLabelIcon("generalbutton.png", 70, 70);
-		rotatehbtn.setLocation((int) (Screen.width * 0.52) + (int) (rotatehbtn.getSize().getWidth() / 2),
+		rotatelbtn = new JLabelIcon("generalbutton.png", 70, 70);
+		rotatelbtn.setLocation((int) (Screen.width * 0.52) + (int) (rotatelbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.18));
-		JLabel rotatehlbl = new JLabel("<html>Rotate<br>Right</html>", SwingConstants.CENTER);
-		rotatehlbl.setBounds(0, 0, 70, 70);
-		rotatehlbl.setFont(new Font("Onyx", Font.BOLD, 18));
-		rotatehbtn.add(rotatehlbl);
-		add(rotatehbtn);
+		JLabel rotatellbl = new JLabel("<html>Rotate<br>Left</html>", SwingConstants.CENTER);
+		rotatellbl.setBounds(0, 0, 70, 70);
+		rotatellbl.setFont(new Font("Onyx", Font.BOLD, 18));
+		rotatelbtn.add(rotatellbl);
+		add(rotatelbtn);
 
-		JLabelIcon rotatevbtn = new JLabelIcon("generalbutton.png", 70, 70);
-		rotatevbtn.setLocation((int) (Screen.width * 0.62) + (int) (rotatehbtn.getSize().getWidth() / 2),
+		rotaterbtn = new JLabelIcon("generalbutton.png", 70, 70);
+		rotaterbtn.setLocation((int) (Screen.width * 0.62) + (int) (rotatelbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.18));
-		JLabel rotatevlbl = new JLabel("<html>Rotate<br>Left</html>", SwingConstants.CENTER);
-		rotatevlbl.setBounds(0, 0, 70, 70);
-		rotatevlbl.setFont(new Font("Onyx", Font.BOLD, 18));
-		rotatevbtn.add(rotatevlbl);
-		add(rotatevbtn);
+		JLabel rotaterlbl = new JLabel("<html>Rotate<br>Right</html>", SwingConstants.CENTER);
+		rotaterlbl.setBounds(0, 0, 70, 70);
+		rotaterlbl.setFont(new Font("Onyx", Font.BOLD, 18));
+		rotaterbtn.add(rotaterlbl);
+		add(rotaterbtn);
 
 		JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", 70, 70);
-		mainmenubtn.setLocation((int) (Screen.width * 0.84) + (int) (rotatehbtn.getSize().getWidth() / 2),
+		mainmenubtn.setLocation((int) (Screen.width * 0.84) + (int) (rotatelbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * .6));
 		JLabel mainmenulbl = new JLabel("<html>Main<br>Menu</html>", SwingConstants.CENTER);
 		mainmenulbl.setBounds(0, 0, 70, 70);
@@ -103,7 +102,7 @@ public class PlayLevelPanel extends JPanel {
 		add(mainmenubtn);
 
 		JLabelIcon nextlevelbtn = new JLabelIcon("generalbutton.png", 70, 70);
-		nextlevelbtn.setLocation((int) (Screen.width * 0.74) + (int) (rotatehbtn.getSize().getWidth() / 2),
+		nextlevelbtn.setLocation((int) (Screen.width * 0.74) + (int) (rotatelbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * .6));
 		JLabel nextlevellbl = new JLabel("<html>Next<br>Level</html>", SwingConstants.CENTER);
 		nextlevellbl.setBounds(0, 0, 70, 70);
@@ -112,7 +111,7 @@ public class PlayLevelPanel extends JPanel {
 		add(nextlevelbtn);
 
 		JLabelIcon resetlevelbtn = new JLabelIcon("generalbutton.png", 70, 70);
-		resetlevelbtn.setLocation((int) (Screen.width * 0.74) + (int) (rotatehbtn.getSize().getWidth() / 2),
+		resetlevelbtn.setLocation((int) (Screen.width * 0.74) + (int) (rotatelbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * .73));
 		JLabel resetlevellbl = new JLabel("<html>Reset<br>Level</html>", SwingConstants.CENTER);
 		resetlevellbl.setBounds(0, 0, 70, 70);
@@ -141,7 +140,10 @@ public class PlayLevelPanel extends JPanel {
 	}
 
 	public void addControllers(){
-		rotatehbtn.addMouseListener(new RotateSelectedPieceBullpenController(kabasuji, this, rotatehbtn, true));
+		rotaterbtn.addMouseListener(new RotateSelectedPieceBullpenController(kabasuji, this, rotaterbtn, true));
+		rotatelbtn.addMouseListener(new RotateSelectedPieceBullpenController(kabasuji, this, rotatelbtn, false));
+		flipvbtn.addMouseListener(new FlipSelectedPieceBullpenController(kabasuji, this, flipvbtn, true));
+		fliphbtn.addMouseListener(new FlipSelectedPieceBullpenController(kabasuji, this, fliphbtn, false));
 	}
 	// getter for zoompiece
 	public JLabelIcon getZoomPiece() {
