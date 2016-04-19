@@ -60,8 +60,8 @@ public class BoardView extends JPanel {
 	}
 	public void setupBoard(){
 //		panel = getParent();
-		row = board.getTiles().length+2;
-		col = board.getTiles()[0].length+2;
+		row = board.getTiles().length;
+		col = board.getTiles()[0].length;
 		tile = new JLabelIcon[row * col];
 		
 		setLayout(null);
@@ -76,8 +76,8 @@ public class BoardView extends JPanel {
 			this.tilesidelength = (int) (getSize().getHeight() / sqmatrixlength);
 		}
 		// scaling + offset to fit the container panel;
-		tilesidescaled = (int) (tilesidelength * 0.99);
-		offset = (int) ((tilesidelength - tilesidescaled) / 2);
+		tilesidescaled = (int) (tilesidelength * 0.95);
+		offset = (int) (tilesidelength - tilesidescaled);
 		
 		updateBoard();
 		
@@ -90,12 +90,12 @@ public class BoardView extends JPanel {
 		// display the tiles on the container panel and scales them to fit
 		// row/col
 		// includes centering as well
-		for (int i = 0; i < col-2; i++) {
-			for (int j = 0; j < row-2; j++) {
+		for (int i = 0; i < col; i++) {
+			for (int j = 0; j < row; j++) {
 				// create a button image with specified dimension
 				// only display tile if it's valid
 				if (tiles[j][i].isValid()) {
-					displayTile(i,j,"emptytile.png");
+					displayTile(i,j,"boardtile.png");
 					tile[i*row+j].addMouseListener(new BoardController(board, tile[i*row+j]));
 				}
 			}
@@ -103,8 +103,8 @@ public class BoardView extends JPanel {
 	}
 	public void displayTile(int i,int j, String pic){
 		tile[i * row + j] = new JLabelIcon(pic, tilesidescaled, tilesidescaled);
-		tile[i * row + j].setLocation((int) (tilesidelength * (j+1 + (sqmatrixlength - row) / 2)) + offset,
-				(int) (tilesidelength * (i+1 + (sqmatrixlength - col) / 2)) + offset);
+		tile[i * row + j].setLocation((int) (tilesidelength * (j + (sqmatrixlength - row) / 2)) + offset,
+				(int) (tilesidelength * (i + (sqmatrixlength - col) / 2)) + offset);
 		JLabel numlbl = new JLabel(""+tiles[j][i].getNumber(), SwingConstants.CENTER);
 		numlbl.setBounds(0, 0, tilesidescaled, tilesidescaled);
 		numlbl.setFont(new Font("Arial", Font.BOLD, (int)(tilesidescaled*0.5)));

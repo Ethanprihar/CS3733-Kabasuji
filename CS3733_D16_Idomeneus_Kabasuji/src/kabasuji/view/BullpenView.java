@@ -82,7 +82,7 @@ public class BullpenView extends JPanel {
 
 		// scaling + offset to fit the container panel;
 		this.piecesidescaled = (int) (piecesidelength * 0.8);
-		offset = (int) ((piecesidelength - piecesidescaled) / 2);
+		offset = (int) (piecesidelength - piecesidescaled);
 		
 		updateBullpen();
 		
