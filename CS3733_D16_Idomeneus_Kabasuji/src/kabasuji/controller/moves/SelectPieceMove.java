@@ -32,7 +32,7 @@ public class SelectPieceMove extends Move{
 	@Override
 	public boolean valid(Kabasuji kabasuji) {
 		// move is valid if current piece does not equal target piece
-		if (!kabasuji.getSelectedLevel().getBullpen().getSelectedPiece().equals(piece)){
+		if (kabasuji.getSelectedLevel().getBullpen().getSelectedPiece() != piece){
 			return true;
 		}
 		return false;

@@ -4,6 +4,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import kabasuji.controller.GoToMainMenuController;
+import kabasuji.controller.RotateSelectedPieceBullpenController;
+import kabasuji.controller.SelectPieceBullpenController;
 import kabasuji.model.Board;
 import kabasuji.model.Bullpen;
 import kabasuji.model.Kabasuji;
@@ -27,6 +29,8 @@ public class PlayLevelPanel extends JPanel {
 	BullpenView bullpenview;
 
 	JLabelIcon zoompiece;
+	
+	JLabelIcon rotatehbtn;
 
 	/**
 	 * Create the panel.
@@ -70,10 +74,10 @@ public class PlayLevelPanel extends JPanel {
 		flipvbtn.add(flipvlbl);
 		add(flipvbtn);
 
-		JLabelIcon rotatehbtn = new JLabelIcon("generalbutton.png", 70, 70);
+		rotatehbtn = new JLabelIcon("generalbutton.png", 70, 70);
 		rotatehbtn.setLocation((int) (Screen.width * 0.52) + (int) (rotatehbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.18));
-		JLabel rotatehlbl = new JLabel("<html>Rotate<br>Horizontal</html>", SwingConstants.CENTER);
+		JLabel rotatehlbl = new JLabel("<html>Rotate<br>Right</html>", SwingConstants.CENTER);
 		rotatehlbl.setBounds(0, 0, 70, 70);
 		rotatehlbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		rotatehbtn.add(rotatehlbl);
@@ -82,7 +86,7 @@ public class PlayLevelPanel extends JPanel {
 		JLabelIcon rotatevbtn = new JLabelIcon("generalbutton.png", 70, 70);
 		rotatevbtn.setLocation((int) (Screen.width * 0.62) + (int) (rotatehbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.18));
-		JLabel rotatevlbl = new JLabel("<html>Rotate<br>Vertical</html>", SwingConstants.CENTER);
+		JLabel rotatevlbl = new JLabel("<html>Rotate<br>Left</html>", SwingConstants.CENTER);
 		rotatevlbl.setBounds(0, 0, 70, 70);
 		rotatevlbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		rotatevbtn.add(rotatevlbl);
@@ -136,6 +140,9 @@ public class PlayLevelPanel extends JPanel {
 		add(background);
 	}
 
+	public void addControllers(){
+		rotatehbtn.addMouseListener(new RotateSelectedPieceBullpenController(kabasuji, this, rotatehbtn, true));
+	}
 	// getter for zoompiece
 	public JLabelIcon getZoomPiece() {
 		return zoompiece;

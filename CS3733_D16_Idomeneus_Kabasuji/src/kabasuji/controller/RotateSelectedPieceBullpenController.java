@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 
 import kabasuji.controller.moves.ChangeScreenMove;
+import kabasuji.controller.moves.RotatePieceMove;
 import kabasuji.controller.moves.SelectLevelMove;
 import kabasuji.controller.moves.SelectPieceMove;
 import kabasuji.model.Bullpen;
@@ -23,15 +24,16 @@ import kabasuji.view.PlayLevelPanel;
 import kabasuji.view.TopLevelApplication;
 
 /**
- * Controller for Selecting Piece in bullpen; Selects piece then displays it in zoom Panel
+ * Controller for Rotating Piece in bullpen; rotates piece then displays it in
+ * zoom Panel
  * 
- * When the button is pressed to attempt to select piece, the model
- * will update the selected piece and the gui will reflect the changes
+ * When the button is pressed to attempt to rotate piece, the model will update
+ * the selected piece and the gui will reflect the changes
  * 
  * @author jwu
  *
  */
-public class SelectPieceBullpenController extends MouseAdapter {
+public class RotateSelectedPieceBullpenController extends MouseAdapter {
 
 	/** Entity and Boundaries Associated **/
 	Kabasuji kabasuji;
@@ -47,20 +49,21 @@ public class SelectPieceBullpenController extends MouseAdapter {
 	String fnpiece;
 	Piece selectedPiece;
 
-	int numPiece;
+	boolean right;
 
-	public SelectPieceBullpenController(Kabasuji kabasuji, PlayLevelPanel panel, JLabelIcon pieceicon, int numPiece) {
+	public RotateSelectedPieceBullpenController(Kabasuji kabasuji, PlayLevelPanel panel, JLabelIcon pieceicon,
+			boolean right) {
 		this.kabasuji = kabasuji;
 		this.bullpen = kabasuji.getSelectedLevel().getBullpen();
+		this.selectedPiece = bullpen.getSelectedPiece();
 		this.panel = panel;
+		this.right = right;
 		this.bullpenview = panel.getBullpenView();
 		this.pieceviews = bullpenview.getPieceView();
 		this.pieceicon = pieceicon;
 		this.zoompanel = panel.getZoomPiece();
-		this.fnzoom = zoompanel.getFileName();
+		this.pieceicon = pieceicon;
 		this.fnpiece = pieceicon.getFileName();
-		this.numPiece = numPiece;
-		this.selectedPiece = kabasuji.getSelectedLevel().getBullpen().getPieces().get(numPiece);
 	}
 
 	/**
@@ -68,33 +71,23 @@ public class SelectPieceBullpenController extends MouseAdapter {
 	 * is a GUI controller.
 	 */
 	public void mousePressed(MouseEvent me) {
-		if (bullpen.getSelectedPiece() == null) {
-			SelectPieceMove spm = new SelectPieceMove(selectedPiece);
-			spm.execute(kabasuji);
-			pieceicon.setImg("generalhoverbutton.png");
-		} else if (bullpen.getSelectedPiece() == selectedPiece) {
-			SelectPieceMove spm = new SelectPieceMove(null);
-			spm.execute(kabasuji);
-			pieceicon.setImg(fnpiece);
-		}
-	}
-
-	public void mouseEntered(MouseEvent e) {
-		if (bullpen.getSelectedPiece() == null) {
+			RotatePieceMove rpm = new RotatePieceMove(selectedPiece, right);
+			rpm.execute(kabasuji);
 			zoompanel.removeAll();
+			selectedPiece = kabasuji.getSelectedLevel().getBullpen().getSelectedPiece();
 			PieceView pieceview = new PieceView(selectedPiece);
 			pieceview.setBounds(0, 0, (int) zoompanel.getSize().getWidth(), (int) zoompanel.getSize().getHeight());
 			pieceview.setupPiece();
 			zoompanel.add(pieceview);
 			zoompanel.repaint();
-		}
+	}
 
+	public void mouseEntered(MouseEvent e) {
+		pieceicon.setImg("generalhoverbutton.png");
 	}
 
 	public void mouseExited(MouseEvent e) {
-		if (bullpen.getSelectedPiece() == null) {
-			zoompanel.removeAll();
-			zoompanel.setImg("opaque_canvas.png");
-		}
+		pieceicon.setImg(fnpiece);
 	}
+
 }
