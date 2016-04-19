@@ -90,7 +90,7 @@ public class PieceView extends JPanel {
 			for (int j = 0; j < row; j++) {
 				// create a button image with specified dimension
 				// only display tile if it's valid
-				displayTiles(i, j, "general2button.png");
+				displayTiles(i, j, "generaltealbutton.png");
 			}
 		}
 	}

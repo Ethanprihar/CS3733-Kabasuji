@@ -33,6 +33,7 @@ import javax.swing.ImageIcon;
 
 public class BullpenView extends JPanel {
 	// the associated board
+	Kabasuji kabasuji;
 	Bullpen bullpen;
 
 	PlayLevelPanel panel;
@@ -53,8 +54,9 @@ public class BullpenView extends JPanel {
 	 * Create the Main Menu Panel.
 	 */
 
-	public BullpenView(Bullpen bullpen, PlayLevelPanel panel, int row, int col) {
-		this.bullpen = bullpen;
+	public BullpenView(Kabasuji kabasuji, PlayLevelPanel panel, int row, int col) {
+		this.kabasuji = kabasuji;
+		this.bullpen = kabasuji.getSelectedLevel().getBullpen();
 		this.panel = panel;
 		this.pieces = bullpen.getPieces();
 
@@ -84,7 +86,7 @@ public class BullpenView extends JPanel {
 		
 		updateBullpen();
 		
-		JLabelIcon background = new JLabelIcon("boardpanel_opaque.png", (int) (Screen.width * 0.25), (int) (Screen.height * 0.85));
+		JLabelIcon background = new JLabelIcon("opaque_canvas.png", (int) (Screen.width * 0.25), (int) (Screen.height * 0.85));
 		background.setLocation(0,0);
 		add(background);
 	}
@@ -112,7 +114,7 @@ public class BullpenView extends JPanel {
 		pieceview[i * row + j].setupPiece();
 		imgpieces[i*row+j].add(pieceview[i * row + j]);
 		add(imgpieces[i * row + j]);
-		imgpieces[i * row + j].addMouseListener(new SelectPieceBullpenController(bullpen, panel, imgpieces[i * row + j], i * row + j));
+		imgpieces[i * row + j].addMouseListener(new SelectPieceBullpenController(kabasuji, panel, imgpieces[i * row + j], i * row + j));
 	}
 
 	public JLabelIcon[] getImgPieces() {

@@ -28,6 +28,7 @@ import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 
 public class BoardView extends JPanel {
+	Kabasuji kabasuji;
 	// the associated board
 	Board board;
 	// the JPanel that contains it
@@ -50,8 +51,9 @@ public class BoardView extends JPanel {
 	 * Create the Main Menu Panel.
 	 */
 
-	public BoardView(Board board) {
-		this.board = board;
+	public BoardView(Kabasuji kabasuji) {
+		this.kabasuji = kabasuji;
+		this.board = kabasuji.getSelectedLevel().getBoard();
 //		this.panel = panel;
 		this.tiles = board.getTiles();
 

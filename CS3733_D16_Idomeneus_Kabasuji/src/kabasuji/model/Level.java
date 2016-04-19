@@ -64,6 +64,10 @@ public abstract class Level implements Serializable{
 		locked = l;
 	}
 	
+	public void setBullpen(Bullpen bp){
+		bullpen = bp;
+	}
+	
 	public Bullpen getBullpen()
 	{
 		return bullpen;

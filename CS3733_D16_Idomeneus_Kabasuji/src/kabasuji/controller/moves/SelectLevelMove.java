@@ -26,7 +26,7 @@ public class SelectLevelMove extends Move{
 		}
 		
 		/** changes the selected level**/
-		kabasuji.setSelectedLevel(kabasuji.levels.get(level));
+		kabasuji.setSelectedLevel(kabasuji.levels.get(level-1));
 		return true;
 	}
 
