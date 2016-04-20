@@ -3,11 +3,18 @@ package kabasuji.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * 
+ * @author odell
+ *
+ */
+
 @SuppressWarnings("serial")
 public abstract class Board implements Serializable{
-	Tile[][] tiles;// = new Tile[][];
+	Tile[][] tiles;
 	ArrayList<Piece> pieces = new ArrayList<Piece>();
 	Piece selectedPiece; //The selected piece. May be null.
+	int[][] paintLocs = new int[6][2];
 	
 	Board(Tile[][] t)
 	{
@@ -86,7 +93,7 @@ public abstract class Board implements Serializable{
 						for(int x=0; x<p.getDim(); x++)
 						{
 							try { //If we're trying to place a piece out of range of the board
-;
+
 							if((p.getTile(y,x).isValid()))
 								if(!(tiles[i+y][j+x].isValid()))
 									return false;
@@ -99,9 +106,61 @@ public abstract class Board implements Serializable{
 						}
 					}
 				}
+				else
+				{
+					//return false;
+				}
 			}
 		}
 		return true;
+	}
+	
+	/**
+	 * Returns the locations of the pieces that need to be painted when we are hovering over Tile start
+	 * 
+	 * 
+	 * @param p
+	 * @param start
+	 * @return
+	 */
+	public void updateHoverPaintLocations(Piece p, Tile start)//Returns the locations that need to be painted
+	{
+		int[][] paintLocations = new int[6][2];
+		int xLoc = 0;
+		int yLoc = 0;
+		
+		for(int i=0; i<tiles.length; i++)
+		{
+			for(int j=0; j<tiles.length; j++)
+			{
+				if(true)//tiles[i][j].equals(start))
+				{
+					for(int y=0; y<p.getDim(); y++)
+					{
+						for(int x=0; x<p.getDim(); x++)
+						{
+							try //If we're trying to place a piece out of range of the board
+							{ 
+								if((p.getTile(y,x).isValid()))
+								{
+										paintLocations[xLoc][yLoc] = i+y;
+										System.out.println(paintLocations[xLoc][yLoc]);
+										yLoc++;
+										paintLocations[xLoc][yLoc] = j+x;
+										System.out.println(paintLocations[xLoc][yLoc]);
+										xLoc++;
+								}
+							} 
+							catch (IndexOutOfBoundsException e) 
+							{
+								//Do nothing
+							}
+						}
+					}
+				}
+			}
+		} 
+		paintLocs = paintLocations;
 	}
 	
 	/**
