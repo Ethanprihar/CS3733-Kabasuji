@@ -2,6 +2,7 @@ package kabasuji.model;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 // TODO make a copy method in board
 // TODO make a equals method in board
@@ -14,14 +15,19 @@ public class Builder
 	int[] numOfPieces;
 	Level selectedLevel;
 	int endCondition;
-	ArrayList<Board> history;
-
+	int currentColor;
+	int currentNumber;
+	ArrayList<Board> boardHistory;
+	ArrayList<int[]> bullpenHistory;
+	
 	public Builder()
 	{
+		currentColor = 0;
+		currentNumber = 0;
 		pieces = new Piece[35];
 		numOfPieces = new int[35];
 		levels = new ArrayList<Level>();
-		history = new ArrayList<Board>();
+		boardHistory = new ArrayList<Board>();
 		try
 		{
 			FileInputStream saveFile = new FileInputStream("levels.data");
@@ -134,36 +140,35 @@ public class Builder
 	}
 	
 	// adds the current board to the history
-	// needs to be called before changing a tile
+	// needs to be called before changing a tile or changing a number of pieces
 	public void updateHistory()
 	{
 		boolean remove = false;
-		for(Board b: history)
+		for(int i=0; i<boardHistory.size(); i++)
 		{
-			if(!remove && b.equals(selectedLevel.getBoard()))
-			{
+			if(!remove && boardHistory.get(i).equals(selectedLevel.getBoard()) && Arrays.equals(bullpenHistory.get(i), numOfPieces))
 				remove = true;
-			}
 			if(remove)
 			{
-				history.remove(b);
+				boardHistory.remove(boardHistory.get(i));
+				bullpenHistory.remove(bullpenHistory.get(i));
+				i--;
 			}
 		}
-		history.add(selectedLevel.getBoard().copy());
+		boardHistory.add(selectedLevel.getBoard().copy());
+		bullpenHistory.add(numOfPieces.clone());
 	}
 	
 	// undoes the last tile change
 	public void undo()
 	{
-		if(history.size() != 0)
+		for(int i=0; i<boardHistory.size(); i++)
 		{
-			for(Board b: history)
+			if(boardHistory.get(i).equals(selectedLevel.getBoard()) && Arrays.equals(bullpenHistory.get(i), numOfPieces) && (i != 0))
 			{
-				if(b.equals(selectedLevel.getBoard()))
-				{
-					selectedLevel.setBoard(history.get(history.indexOf(b)-1));
-					break;
-				}
+				selectedLevel.setBoard(boardHistory.get(i-1));
+				numOfPieces = bullpenHistory.get(i-1);
+				return;
 			}
 		}
 	}
@@ -171,15 +176,13 @@ public class Builder
 	//redoes the last tile change
 	public void redo()
 	{
-		if(history.size() != 0)
+		for(int i=0; i<boardHistory.size(); i++)
 		{
-			for(Board b: history)
+			if(boardHistory.get(i).equals(selectedLevel.getBoard()) && Arrays.equals(bullpenHistory.get(i), numOfPieces) && (i != boardHistory.size() - 1))
 			{
-				if(b.equals(selectedLevel.getBoard()) && (history.size()-1 > history.indexOf(b)))
-				{
-					selectedLevel.setBoard(history.get(history.indexOf(b)+1));
-					break;
-				}
+				selectedLevel.setBoard(boardHistory.get(i-1));
+				numOfPieces = bullpenHistory.get(i-1);
+				return;
 			}
 		}
 	}
@@ -198,10 +201,39 @@ public class Builder
 	{
 		levels = l;
 	}
-	public int getCurrentScreen(){
+	
+	public int getCurrentScreen()
+	{
 		return currentScreen;
 	}
-	public void setCurrentScreen(int newScreen){
+	
+	public void setCurrentScreen(int newScreen)
+	{
 		currentScreen = newScreen;
+	}
+	
+	public void incrementNum(int index)
+	{
+		numOfPieces[index]++;
+	}
+	
+	public int getCurrentNumber()
+	{
+		return currentNumber;
+	}
+	
+	public void setCurrentNumber(int n)
+	{
+		currentNumber = n;
+	}
+	
+	public int getCurrentColor()
+	{
+		return currentColor;
+	}
+	
+	public void setCurrentColor(int c)
+	{
+		currentColor = c;
 	}
 }
