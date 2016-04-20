@@ -50,6 +50,18 @@ public class IncrementPieceBuilderController extends MouseAdapter {
 //		BuilderMainMenu lsp = new BuilderMainMenu(builder, app);
 //		app.changeContentPane(lsp);
 		
+		String pieceNum = pieceCount.getText();
+		int newPieceNum = Integer.parseInt(pieceNum);
 		
+		newPieceNum = newPieceNum + 1;
+		String newStringNum = Integer.toString(newPieceNum);
+		
+		// Create an instance of builder class and adding the information for the pieces
+		
+		Builder builder = new Builder();
+		//TODO : increment the num in the builder class
+		//builder.incrementNum(1);
+		
+		pieceCount.setText(newStringNum);
 	}
 }

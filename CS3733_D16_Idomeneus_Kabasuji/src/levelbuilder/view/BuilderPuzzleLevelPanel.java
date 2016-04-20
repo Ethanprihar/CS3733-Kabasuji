@@ -14,6 +14,8 @@ import kabasuji.model.Tile;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.util.Arrays;
+
 import javax.swing.SwingConstants;
 
 public class BuilderPuzzleLevelPanel extends JPanel {
@@ -62,18 +64,18 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		
 		JLabelIcon[] piece = new JLabelIcon[6];
 		
+		// Add a jLabel below the piece in the bullpen
+		JLabel piece1 = new JLabel("0");
+		piece1.setBounds(20, 10*7, 20, 20);
+		bullpen.add(piece1);
+		
 		// Create a piece in the builder bullpen
 		for (int i = 0; i < 6; i++){
 			piece[i] = new JLabelIcon("tile.PNG", 10, 10);
 			piece[i].setLocation((int)piece[i].getWidth() + 10, piece[i].getHeight()*i);
+			piece[i].addMouseListener(new IncrementPieceBuilderController(builder, app, piece1));
 			bullpen.add(piece[i]);
 		}
-		
-		// Add a jLabel below the piece in the bullpen
-		JLabel piece1 = new JLabel("0");
-		piece1.setBounds(20, piece[1].getHeight()*7, 10, 10);
-		piece1.addMouseListener(new IncrementPieceBuilderController(builder, app, piece1));
-		bullpen.add(piece1);
 
 		JLabelIcon undoBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		undoBtn.setLocation((int) (Screen.width * 0.72) + (int) (undoBtn.getSize().getWidth() / 2),
