@@ -49,32 +49,57 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		add(background);
 
 		JLabelIcon bullpen = new JLabelIcon("boardpanel_opaque.png", (int) (Screen.width * 0.9),
-				(int) (Screen.height * 0.30));
-		bullpen.setLocation((int) (Screen.width * 0.05), (int) (Screen.height * 0.60));
+				(int) (Screen.height * 0.38));
+		bullpen.setLocation((int) (Screen.width * 0.05), (int) (Screen.height * 0.55));
 		background.add(bullpen);
 		
 		JLabelIcon board = new JLabelIcon("boardpanel_opaque.png", (int) (Screen.width * 0.5),
 				(int) (Screen.height * 0.5));
-		board.setLocation((int) (Screen.width * 0.22), (int) (Screen.height * 0.05));
+		board.setLocation((int) (Screen.width * 0.22), (int) (Screen.height * 0.02));
 		
 		// Create a puzzle board
 		PuzzleBoard tboard = new PuzzleBoard(boardTile);
 		BuilderBoardView boardview = new BuilderBoardView(tboard, board);
 		background.add(board);
 		
-		JLabelIcon[] piece = new JLabelIcon[6];
+		JLabelIcon[] piece = new JLabelIcon[12];
 		
+		JLabel[] piece1 = new JLabel[12];
 		// Add a jLabel below the piece in the bullpen
-		JLabel piece1 = new JLabel("0");
-		piece1.setBounds(20, 10*7, 20, 20);
-		bullpen.add(piece1);
+		//JLabel piece1 = new JLabel("0");
 		
-		// Create a piece in the builder bullpen
-		for (int i = 0; i < 6; i++){
-			piece[i] = new JLabelIcon("tile.PNG", 10, 10);
-			piece[i].setLocation((int)piece[i].getWidth() + 10, piece[i].getHeight()*i);
-			piece[i].addMouseListener(new IncrementPieceBuilderController(builder, app, piece1));
+		for (int i = 0; i < 12; i++){
+			piece1[i] = new JLabel("0");
+			piece1[i].setBounds(30 + i *60, 65, 20, 20);
+			bullpen.add(piece1[i]);
+		}
+		
+		for (int i = 0; i < 12; i++){
+			// Create a piece in the builder bullpen
+			piece[i] = new JLabelIcon("tile2.png", 60, 60);
+			piece[i].setLocation(i*piece[i].getWidth() + 10, 10);
+			piece[i].addMouseListener(new IncrementPieceBuilderController(builder, app, piece1[i]));
 			bullpen.add(piece[i]);
+		}
+		
+		JLabelIcon[] piece2 = new JLabelIcon[12];
+		
+		for (int i = 0; i < 12; i++){
+			// Create a piece in the builder bullpen
+			piece2[i] = new JLabelIcon("tile3.png", 60, 60);
+			piece2[i].setLocation(i*piece2[i].getWidth() + 10, piece2[i].getHeight() + 20);
+			piece2[i].addMouseListener(new IncrementPieceBuilderController(builder, app, piece1[i]));
+			bullpen.add(piece2[i]);
+		}
+		
+		JLabelIcon[] piece3 = new JLabelIcon[12];
+		
+		for (int i = 0; i < 12; i++){
+			// Create a piece in the builder bullpen
+			piece3[i] = new JLabelIcon("tile4.png", 60, 60);
+			piece3[i].setLocation(i*piece3[i].getWidth() + 10, 2*piece3[i].getHeight() + 30);
+			piece3[i].addMouseListener(new IncrementPieceBuilderController(builder, app, piece1[i]));
+			bullpen.add(piece3[i]);
 		}
 
 		JLabelIcon undoBtn = new JLabelIcon("generalbutton.png", 70, 70);
