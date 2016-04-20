@@ -58,13 +58,13 @@ public class LevelTest extends TestCase {
 		
 		assertEquals(puzzTest.getStars(),0);
 		
-		assertEquals(puzzTest.getLocked(), false);
+		assertEquals(puzzTest.isLocked(), false);
 		
 		assertEquals(puzzTest.canGoNextLevel(), false);
 		
 		puzzTest.setLocked(true);
 		
-		puzzTest.updateStars();
+		puzzTest.getStars();
 		assertEquals(puzzTest.canGoNextLevel(), true);
 		
 		
