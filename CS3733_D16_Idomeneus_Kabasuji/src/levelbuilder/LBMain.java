@@ -25,7 +25,7 @@ public class LBMain {
 		Builder builder = new Builder();
 		System.out.println("In Builder the levels:");
 		for (Level l : builder.getLevels()) {
-			System.out.println(l.getLocked());
+			System.out.println(l.isLocked());
 		}
 		TopLevelApplicationBuilder frame = new TopLevelApplicationBuilder(builder);
 		// start splash screen

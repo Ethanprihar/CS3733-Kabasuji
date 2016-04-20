@@ -17,19 +17,13 @@ public class Kabasuji
 	{
 		currentScreen = 1;
 		loadLevels();
-		if(levels.get(0).getLocked())
+		if(levels.get(0).isLocked())
 			levels.get(0).setLocked(false);
-			levels.get(1).setLocked(false);
 	}
 	
 	public void selectLevel(Level l)
 	{
 		selectedLevel = l;
-	}
-	
-	public void unlockNextLevel()
-	{
-		levels.get(levels.indexOf(selectedLevel)+1).setLocked(false);
 	}
 	
 	public ArrayList<Level> getLevels()
@@ -52,6 +46,13 @@ public class Kabasuji
 	
 	public void setSelectedLevel(Level l){
 		selectedLevel = l;
+	}
+	
+	public void nextLevel()
+	{
+		int index = levels.indexOf(selectedLevel);
+		saveLevels();
+		selectedLevel = levels.get(index + 1);
 	}
 	
 	public void resetLevel()
@@ -79,6 +80,21 @@ public class Kabasuji
 	
 	public void saveLevels()
 	{
+		//if they improve their score
+		if(selectedLevel.getStars() > selectedLevel.getHighScore())
+		{
+			int temp = selectedLevel.getStars();
+			boolean makeUnlocked = false;
+			if(levels.get(levels.indexOf(selectedLevel)+1).isLocked())
+				makeUnlocked = true;
+			resetLevel();
+			if(makeUnlocked)
+				levels.get(levels.indexOf(selectedLevel)+1).setLocked(false);
+			selectedLevel.setHighScore(temp);
+		}
+		//if they dont improve their score
+		else
+			resetLevel();
 		try
 		{
 			FileOutputStream saveFile = new FileOutputStream("levels.data");
