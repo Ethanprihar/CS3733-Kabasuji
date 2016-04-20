@@ -27,14 +27,13 @@ public class TopLevelApplicationBuilder extends JFrame {
 		init();
 	}
 	
-	public JPanel getContentPane(){
+	public JPanel getContentPanel(){
 		return contentPane;
 	}
-	public void changeContentPane(JPanel j){
-		contentPane.removeAll();
+	public void setContentPanel(JPanel j){
 		j.setBounds(0,0,Screen.width,Screen.height);
-		contentPane.add(j);
-		contentPane.repaint();
+		setContentPane(j);
+		repaint();
 	}
 	void init(){
 		// puts top left corner into 10% of screen height and width
@@ -47,14 +46,12 @@ public class TopLevelApplicationBuilder extends JFrame {
 		// not resizable
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		contentPane = new JPanel();
-		contentPane.setBounds(0, 0, Screen.width, Screen.height);
-		setContentPane(contentPane);
 		
+		// create new panel
 		BuilderMainMenu panel = new BuilderMainMenu(builder,TopLevelApplicationBuilder.this);
 		panel.setBounds(0, 0, Screen.width, Screen.height);
-		contentPane.add(panel);
+		// ** set contentPanel for JFrame
+		setContentPane(panel);
 	}
 }
 

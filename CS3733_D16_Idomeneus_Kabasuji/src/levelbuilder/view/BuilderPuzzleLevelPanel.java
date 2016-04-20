@@ -9,6 +9,7 @@ import kabasuji.model.Screen;
 import kabasuji.view.BoardView;
 import kabasuji.view.JLabelIcon;
 import levelbuilder.controller.GoToMainMenuBuilderController;
+import levelbuilder.controller.IncrementPieceBuilderController;
 import kabasuji.model.Tile;
 
 import javax.swing.JLabel;
@@ -70,7 +71,8 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		
 		// Add a jLabel below the piece in the bullpen
 		JLabel piece1 = new JLabel("0");
-		piece1.setBounds(piece[1].getWidth(), piece[1].getHeight()*6, 10, 10);
+		piece1.setBounds(20, piece[1].getHeight()*7, 10, 10);
+		piece1.addMouseListener(new IncrementPieceBuilderController(builder, app, piece1));
 		bullpen.add(piece1);
 
 		JLabelIcon undoBtn = new JLabelIcon("generalbutton.png", 70, 70);

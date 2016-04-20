@@ -38,7 +38,7 @@ public class EditNewLevelBuilderController extends MouseAdapter {
 	public EditNewLevelBuilderController(Builder builder, TopLevelApplicationBuilder app, JLabelIcon button, int levelType, JTextField boardDimensions) {
 		this.builder = builder;
 		this.app = app;
-		this.contentPanel = app.getContentPane();
+		this.contentPanel = app.getContentPanel();
 		this.button = button;
 		this.levelType = levelType;
 		this.boardDimensions = boardDimensions;
@@ -60,19 +60,19 @@ public class EditNewLevelBuilderController extends MouseAdapter {
 			// Create a release level panel if the level type is 0
 			if (levelType == 0){
 				BuilderPuzzleLevelPanel lsp = new BuilderPuzzleLevelPanel(builder, app, boardDimensions);
-				app.changeContentPane(lsp);
+				app.setContentPanel(lsp);
 			}
 			
 			// Create a lightning level panel if the level type is 1
 			if (levelType == 1){
 				BuilderLightningLevelPanel lsp = new BuilderLightningLevelPanel(builder, app);
-				app.changeContentPane(lsp);
+				app.setContentPanel(lsp);
 			}
 			
 			// Create a release level panel if the level type is 2
 			if (levelType == 2){
 				BuilderReleaseLevelPanel lsp = new BuilderReleaseLevelPanel(builder, app);
-				app.changeContentPane(lsp);
+				app.setContentPanel(lsp);
 			}
 		}
 	}

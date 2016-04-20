@@ -3,13 +3,13 @@ package levelbuilder.controller;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import kabasuji.model.Builder;
 import kabasuji.model.Screen;
 import kabasuji.view.JLabelIcon;
 import levelbuilder.controller.moves.ChangeScreenBuilderMove;
-import levelbuilder.view.BuilderLevelSelect;
 import levelbuilder.view.BuilderMainMenu;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
@@ -22,19 +22,19 @@ import levelbuilder.view.TopLevelApplicationBuilder;
  * @author jwu
  *
  */
-public class BuilderSelectLevelController extends MouseAdapter {
+public class IncrementPieceBuilderController extends MouseAdapter {
 
 	/** Entity and Boundaries Associated **/
 	Builder builder;
 	TopLevelApplicationBuilder app;
-	JPanel contentPanel;
-	JLabelIcon button;
+	JPanel contentPanel;	
+	JLabel pieceCount;
 
-	public BuilderSelectLevelController(Builder builder, TopLevelApplicationBuilder app, JLabelIcon button) {
+	public IncrementPieceBuilderController(Builder builder, TopLevelApplicationBuilder app, JLabel pieceCount) {
 		this.builder = builder;
 		this.app = app;
-		this.contentPanel = app.getContentPanel();
-		this.button = button;
+		this.contentPanel = app.getContentPanel();		
+		this.pieceCount = pieceCount;
 	}
 
 	/**
@@ -42,20 +42,14 @@ public class BuilderSelectLevelController extends MouseAdapter {
 	 * is a GUI controller.
 	 */
 	public void mousePressed(MouseEvent me) {
-		// Created ChangeScreenBuilderMove and input desired screen
-		ChangeScreenBuilderMove gtsm = new ChangeScreenBuilderMove(Screen.Opening);
-		// Attempt to execute action on model
-		gtsm.execute(builder);
-		// Created JPanel screen object and update boundary to reflect changes
-		BuilderLevelSelect lsp = new BuilderLevelSelect(builder, app);
-		app.setContentPanel(lsp);
-	}
-	
-	public void mouseEntered(MouseEvent e) {
-		button.setImg("generalhoverbutton.png");
-	}
-
-	public void mouseExited(MouseEvent e) {
-		button.setImg("generalbutton.png");
+//		// Created ChangeScreenBuilderMove and input desired screen
+//		ChangeScreenBuilderMove gtsm = new ChangeScreenBuilderMove(Screen.Opening);
+//		// Attempt to execute action on model
+//		gtsm.execute(builder);
+//		// Created JPanel screen object and update boundary to reflect changes
+//		BuilderMainMenu lsp = new BuilderMainMenu(builder, app);
+//		app.changeContentPane(lsp);
+		
+		
 	}
 }

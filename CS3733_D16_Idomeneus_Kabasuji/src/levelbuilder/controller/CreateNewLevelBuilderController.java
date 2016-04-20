@@ -36,7 +36,7 @@ public class CreateNewLevelBuilderController extends MouseAdapter {
 	public CreateNewLevelBuilderController(Builder builder, TopLevelApplicationBuilder app, JLabelIcon button) {
 		this.builder = builder;
 		this.app = app;
-		this.contentPanel = app.getContentPane();
+		this.contentPanel = app.getContentPanel();
 		this.button = button;
 	}
 
@@ -51,7 +51,7 @@ public class CreateNewLevelBuilderController extends MouseAdapter {
 		gtsm.execute(builder);
 		// Created JPanel screen object and update boundary to reflect changes
 		BuilderLevelMode lsp = new BuilderLevelMode(builder, app);
-		app.changeContentPane(lsp);
+		app.setContentPanel(lsp);
 	}
 	
 	public void mouseEntered(MouseEvent e) {

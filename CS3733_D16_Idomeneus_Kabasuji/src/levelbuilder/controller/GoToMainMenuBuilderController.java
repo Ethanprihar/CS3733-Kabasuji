@@ -34,7 +34,7 @@ public class GoToMainMenuBuilderController extends MouseAdapter {
 	public GoToMainMenuBuilderController(Builder builder, TopLevelApplicationBuilder app, JLabelIcon button) {
 		this.builder = builder;
 		this.app = app;
-		this.contentPanel = app.getContentPane();		
+		this.contentPanel = app.getContentPanel();		
 		this.button = button;
 		this.fn = button.getFileName();
 	}
@@ -50,7 +50,7 @@ public class GoToMainMenuBuilderController extends MouseAdapter {
 		gtsm.execute(builder);
 		// Created JPanel screen object and update boundary to reflect changes
 		BuilderMainMenu lsp = new BuilderMainMenu(builder, app);
-		app.changeContentPane(lsp);
+		app.setContentPanel(lsp);
 	}
 	public void mouseEntered(MouseEvent e) {
 		button.setImg("generalhoverbutton.png");
