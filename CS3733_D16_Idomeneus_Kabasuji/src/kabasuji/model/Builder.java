@@ -201,10 +201,39 @@ public class Builder
 	{
 		levels = l;
 	}
-	public int getCurrentScreen(){
+	
+	public int getCurrentScreen()
+	{
 		return currentScreen;
 	}
-	public void setCurrentScreen(int newScreen){
+	
+	public void setCurrentScreen(int newScreen)
+	{
 		currentScreen = newScreen;
+	}
+	
+	public void incrementNum(int index)
+	{
+		numOfPieces[index]++;
+	}
+	
+	public int getCurrentNumber()
+	{
+		return currentNumber;
+	}
+	
+	public void setCurrentNumber(int n)
+	{
+		currentNumber = n;
+	}
+	
+	public int getCurrentColor()
+	{
+		return currentColor;
+	}
+	
+	public void setCurrentColor(int c)
+	{
+		currentColor = c;
 	}
 }
