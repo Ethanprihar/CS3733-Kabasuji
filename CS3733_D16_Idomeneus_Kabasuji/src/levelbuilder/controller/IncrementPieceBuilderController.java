@@ -19,7 +19,7 @@ import levelbuilder.view.TopLevelApplicationBuilder;
  * When the button is pressed to attempt to go to the next screen, the model
  * will update what screen it is on and the gui will reflect the changes
  * 
- * @author jwu
+ * @author vkr
  *
  */
 public class IncrementPieceBuilderController extends MouseAdapter {
@@ -29,12 +29,14 @@ public class IncrementPieceBuilderController extends MouseAdapter {
 	TopLevelApplicationBuilder app;
 	JPanel contentPanel;	
 	JLabel pieceCount;
+	int numPiece;
 
-	public IncrementPieceBuilderController(Builder builder, TopLevelApplicationBuilder app, JLabel pieceCount) {
+	public IncrementPieceBuilderController(Builder builder, TopLevelApplicationBuilder app, JLabel pieceCount, int numPiece) {
 		this.builder = builder;
 		this.app = app;
 		this.contentPanel = app.getContentPanel();		
 		this.pieceCount = pieceCount;
+		this.numPiece = numPiece;
 	}
 
 	/**
@@ -42,26 +44,24 @@ public class IncrementPieceBuilderController extends MouseAdapter {
 	 * is a GUI controller.
 	 */
 	public void mousePressed(MouseEvent me) {
-//		// Created ChangeScreenBuilderMove and input desired screen
-//		ChangeScreenBuilderMove gtsm = new ChangeScreenBuilderMove(Screen.Opening);
-//		// Attempt to execute action on model
-//		gtsm.execute(builder);
-//		// Created JPanel screen object and update boundary to reflect changes
-//		BuilderMainMenu lsp = new BuilderMainMenu(builder, app);
-//		app.changeContentPane(lsp);
 		
+		// Get the current text of the JLabel
 		String pieceNum = pieceCount.getText();
+		
+		// Convert the current text to integer
 		int newPieceNum = Integer.parseInt(pieceNum);
 		
+		// Increment the count because of the mouse press event
 		newPieceNum = newPieceNum + 1;
+		
+		// Convert the incremented integer back to string 
 		String newStringNum = Integer.toString(newPieceNum);
 		
-		// Create an instance of builder class and adding the information for the pieces
-		
+		// Create an instance of builder class and giving the information to the model class
 		Builder builder = new Builder();
-		//TODO : increment the num in the builder class
-		//builder.incrementNum(1);
+		builder.incrementNum(numPiece);
 		
+		// Set the new string in the JLabel
 		pieceCount.setText(newStringNum);
 	}
 }

@@ -96,7 +96,7 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 			// Create a piece in the builder bullpen
 			piece[i] = new JLabelIcon("tile" + i + ".png", 60, 60);
 			piece[i].setLocation(i*piece[i].getWidth() + 10, 10);
-			piece[i].addMouseListener(new IncrementPieceBuilderController(builder, app, piece1Lbl[i]));
+			piece[i].addMouseListener(new IncrementPieceBuilderController(builder, app, piece1Lbl[i], i + 1));
 			bullpen.add(piece[i]);
 		}
 		
@@ -109,7 +109,7 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 			String newString = Integer.toString(newInt);
 			piece2[i] = new JLabelIcon("tile" + newString + ".png", 60, 60);
 			piece2[i].setLocation(i*piece2[i].getWidth() + 10, piece2[i].getHeight() + 20);
-			piece2[i].addMouseListener(new IncrementPieceBuilderController(builder, app, piece2Lbl[i]));
+			piece2[i].addMouseListener(new IncrementPieceBuilderController(builder, app, piece2Lbl[i], newInt + 1));
 			bullpen.add(piece2[i]);
 		}
 		
@@ -122,7 +122,7 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 			String newString1 = Integer.toString(newInt1);
 			piece3[i] = new JLabelIcon("tile" + newString1 + ".png", 60, 60);
 			piece3[i].setLocation(i*piece3[i].getWidth() + 10, 2*piece3[i].getHeight() + 30);
-			piece3[i].addMouseListener(new IncrementPieceBuilderController(builder, app, piece3Lbl[i]));
+			piece3[i].addMouseListener(new IncrementPieceBuilderController(builder, app, piece3Lbl[i], newInt1 + 1));
 			bullpen.add(piece3[i]);
 		}
 
