@@ -94,7 +94,7 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		// Run the loop to initialize and set the positions
 		for (int i = 0; i < 12; i++){
 			// Create a piece in the builder bullpen
-			piece[i] = new JLabelIcon("tile2.png", 60, 60);
+			piece[i] = new JLabelIcon("tile" + i + ".png", 60, 60);
 			piece[i].setLocation(i*piece[i].getWidth() + 10, 10);
 			piece[i].addMouseListener(new IncrementPieceBuilderController(builder, app, piece1Lbl[i]));
 			bullpen.add(piece[i]);
