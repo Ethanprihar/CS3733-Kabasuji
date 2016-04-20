@@ -20,7 +20,7 @@ public class Main {
 		System.out.println("In Kabasuji the levels:");
 		for(Level l: kabasuji.getLevels())
 		{
-			System.out.println(l.getLocked());
+			System.out.println(l.isLocked());
 		}
 		TopLevelApplication frame = new TopLevelApplication(kabasuji);
 		// start splash screen

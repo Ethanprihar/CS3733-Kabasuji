@@ -36,7 +36,7 @@ public class LevelSelectPanel extends JPanel {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 5; j++) {
 				int starNum = kabasuji.levels.get(i * 5 + j).getStars();
-				boolean locked = kabasuji.levels.get(i * 5 + j).getLocked();
+				boolean locked = kabasuji.levels.get(i * 5 + j).isLocked();
 				// Decide locked picture or not
 				if (locked) {
 					levelselectbtn[i * 5 + j] = new JLabelIcon("generallockedbutton.png", 70, 70);

@@ -33,8 +33,8 @@ public class SelectLevelMove extends Move{
 	@Override
 	public boolean valid(Kabasuji kabasuji) {
 		// move is valid if the current screen is not equal to the new screen
-		if (!kabasuji.levels.get(level-1).getLocked()){
-			System.out.println("Level is " + !kabasuji.levels.get(level-1).getLocked());
+		if (!kabasuji.levels.get(level-1).isLocked()){
+			System.out.println("Level is " + !kabasuji.levels.get(level-1).isLocked());
 			return true;
 		}
 		return false;
