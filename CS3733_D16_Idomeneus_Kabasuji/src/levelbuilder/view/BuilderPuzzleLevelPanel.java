@@ -62,43 +62,63 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		BuilderBoardView boardview = new BuilderBoardView(tboard, board);
 		background.add(board);
 		
-		JLabelIcon[] piece = new JLabelIcon[12];
-		
-		JLabel[] piece1 = new JLabel[12];
-		// Add a jLabel below the piece in the bullpen
-		//JLabel piece1 = new JLabel("0");
-		
+		// Create the first set of JLabels
+		JLabel[] piece1Lbl = new JLabel[12];
+		// Run the loop to initialize and set their positions
 		for (int i = 0; i < 12; i++){
-			piece1[i] = new JLabel("0");
-			piece1[i].setBounds(30 + i *60, 65, 20, 20);
-			bullpen.add(piece1[i]);
+			piece1Lbl[i] = new JLabel("0");
+			piece1Lbl[i].setBounds(30 + i *60, 65, 20, 20);
+			bullpen.add(piece1Lbl[i]);
 		}
 		
+		// Create the second set of labels
+		JLabel[] piece2Lbl = new JLabel[12];
+		// Run the loop to initialize and set their positions
+		for (int i = 0; i < 12; i++){
+			piece2Lbl[i] = new JLabel("0");
+			piece2Lbl[i].setBounds(30 + i *60, 65 + 70, 20, 20);
+			bullpen.add(piece2Lbl[i]);
+		}
+		
+		// Create the third set of labels
+		JLabel[] piece3Lbl = new JLabel[11];
+		// Run the loop to initialize and set their positions
+		for (int i = 0; i < 11; i++){
+			piece3Lbl[i] = new JLabel("0");
+			piece3Lbl[i].setBounds(30 + i *60, 65 + 140, 20, 20);
+			bullpen.add(piece3Lbl[i]);
+		}
+		
+		// Create the first row of pieces in the bullpen
+		JLabelIcon[] piece = new JLabelIcon[12];
+		// Run the loop to initialize and set the positions
 		for (int i = 0; i < 12; i++){
 			// Create a piece in the builder bullpen
 			piece[i] = new JLabelIcon("tile2.png", 60, 60);
 			piece[i].setLocation(i*piece[i].getWidth() + 10, 10);
-			piece[i].addMouseListener(new IncrementPieceBuilderController(builder, app, piece1[i]));
+			piece[i].addMouseListener(new IncrementPieceBuilderController(builder, app, piece1Lbl[i]));
 			bullpen.add(piece[i]);
 		}
 		
+		// Create the second row of pieces in the bullpen
 		JLabelIcon[] piece2 = new JLabelIcon[12];
-		
+		// Run the loop to initialize and set the positions
 		for (int i = 0; i < 12; i++){
 			// Create a piece in the builder bullpen
 			piece2[i] = new JLabelIcon("tile3.png", 60, 60);
 			piece2[i].setLocation(i*piece2[i].getWidth() + 10, piece2[i].getHeight() + 20);
-			piece2[i].addMouseListener(new IncrementPieceBuilderController(builder, app, piece1[i]));
+			piece2[i].addMouseListener(new IncrementPieceBuilderController(builder, app, piece2Lbl[i]));
 			bullpen.add(piece2[i]);
 		}
 		
-		JLabelIcon[] piece3 = new JLabelIcon[12];
-		
-		for (int i = 0; i < 12; i++){
+		// Create the third row of pieces in bullpen
+		JLabelIcon[] piece3 = new JLabelIcon[11];
+		// Run the loop to initialize and set the positions
+		for (int i = 0; i < 11; i++){
 			// Create a piece in the builder bullpen
 			piece3[i] = new JLabelIcon("tile4.png", 60, 60);
 			piece3[i].setLocation(i*piece3[i].getWidth() + 10, 2*piece3[i].getHeight() + 30);
-			piece3[i].addMouseListener(new IncrementPieceBuilderController(builder, app, piece1[i]));
+			piece3[i].addMouseListener(new IncrementPieceBuilderController(builder, app, piece3Lbl[i]));
 			bullpen.add(piece3[i]);
 		}
 
