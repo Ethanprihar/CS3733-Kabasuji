@@ -65,7 +65,7 @@ public class ReleaseLevel extends Level {
 	 * Release Mode does not allow board to board movement
 	 */
 	public boolean canMoveBoardToBoard(Tile destination) {
-		return true; 
+		return false; 
 	}
 	
 }

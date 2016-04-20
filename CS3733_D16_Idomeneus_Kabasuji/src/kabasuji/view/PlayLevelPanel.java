@@ -47,8 +47,6 @@ public class PlayLevelPanel extends JPanel {
 
 	}
 	public void updatePlayLevelPanel(BoardView bv, BullpenView bpv){
-		// test adding pieces to Bullpen
-
 		zoompiece = new JLabelIcon("opaque_canvas.png", (int) (Screen.height * 0.25), (int) (Screen.height * 0.25));
 		zoompiece.setLocation((int) (Screen.width * 0.35), (int) (Screen.height * 0.05));
 		add(zoompiece);
