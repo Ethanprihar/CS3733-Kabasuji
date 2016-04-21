@@ -95,17 +95,17 @@ public class SelectLevelController extends MouseAdapter {
 		Tile boardTile0_1 = new Tile(false, true, 0, 0);
 		Tile boardTile0_2 = new Tile(false, true, 0, 0);
 		Tile boardTile0_3 = new Tile(false, true, 0, 0);
-		Tile boardTile0_4 = new Tile(false, false, 0, 0);
+		Tile boardTile0_4 = new Tile(false, true, 0, 0);
 		Tile boardTile1_0 = new Tile(false, true, 0, 0);
-		Tile boardTile1_1 = new Tile(false, false, 0, 0);
+		Tile boardTile1_1 = new Tile(false, true, 0, 0);
 		Tile boardTile1_2 = new Tile(false, true, 0, 0);
 		Tile boardTile1_3 = new Tile(false, true, 0, 0);
-		Tile boardTile1_4 = new Tile(false, false, 0, 0);
+		Tile boardTile1_4 = new Tile(false, true, 0, 0);
 		Tile boardTile2_0 = new Tile(false, true, 2, 0);
 		Tile boardTile2_1 = new Tile(false, true, 0, 0);
 		Tile boardTile2_2 = new Tile(false, true, 0, 0);
 		Tile boardTile2_3 = new Tile(false, true, 0, 0);
-		Tile boardTile2_4 = new Tile(false, false, 0, 0);
+		Tile boardTile2_4 = new Tile(false, true, 0, 0);
 		Tile boardTile3_0 = new Tile(false, true, 1, 0);
 		Tile boardTile3_1 = new Tile(false, true, 0, 0);
 		Tile boardTile3_2 = new Tile(false, true, 3, 0);
@@ -113,8 +113,8 @@ public class SelectLevelController extends MouseAdapter {
 		Tile boardTile3_4 = new Tile(false, true, 0, 0);
 		Tile boardTile4_0 = new Tile(false, true, 0, 0);
 		Tile boardTile4_1 = new Tile(false, true, 0, 0);
-		Tile boardTile4_2 = new Tile(false, false, 0, 0);
-		Tile boardTile4_3 = new Tile(false, false, 0, 0);
+		Tile boardTile4_2 = new Tile(false, true, 0, 0);
+		Tile boardTile4_3 = new Tile(false, true, 0, 0);
 		Tile boardTile4_4 = new Tile(false, false, 0, 0);
 		Tile[][] tiles = { { boardTile0_0, boardTile0_1, boardTile0_2, boardTile0_3, boardTile0_4 },
 				{ boardTile1_0, boardTile1_1, boardTile1_2, boardTile1_3, boardTile1_4 },

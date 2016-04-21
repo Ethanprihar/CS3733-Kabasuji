@@ -43,8 +43,10 @@ public class BoardController extends MouseAdapter {
 	public void mousePressed(MouseEvent me) {
 
 	}
+	
 	public void mouseEntered(MouseEvent e) {
-		tile.setImg("generalhoverbutton.png");
+		
+		
 	}
 
 	public void mouseExited(MouseEvent e) {
