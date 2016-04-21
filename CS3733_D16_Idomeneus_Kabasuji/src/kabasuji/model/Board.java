@@ -88,19 +88,41 @@ public abstract class Board implements Serializable{
 			{
 				if(tiles[i][j] == start)
 				{
+					System.out.print("Start found at ");
+					System.out.print(i);
+					System.out.print(",");
+					System.out.println(j);
+					
 					for(int y=0; y<p.getDim(); y++)
 					{
 						for(int x=0; x<p.getDim(); x++)
 						{
-							try { //If we're trying to place a piece out of range of the board
-
-							if((p.getTile(y,x).isValid()))
-								if(!(tiles[i+y][j+x].isValid()))
-									return false;
-								else if(!(tiles[i+y][j+x].getPiece() == null))
-									return false;
-							} catch (IndexOutOfBoundsException e) 
+							try 
+							{ //If we're trying to place a piece out of range of the board
+								if((p.getTile(y,x).isValid()))
+								{
+									if(!(tiles[i+y][j+x].isValid()))
+									{
+										System.out.print("Piece valid, tile not. Tile:");
+										System.out.print(j+x);
+										System.out.print(",");
+										System.out.print(i+y);
+										System.out.print(". Piece valid loc:");
+										System.out.print(y);
+										System.out.print(",");
+										System.out.println(x);
+										return false;
+									}
+									else if(!(tiles[i+y][j+x].getPiece() == null))
+									{
+										System.out.println("Piece already here.");
+										return false;
+									}
+								}
+							} 
+							catch (IndexOutOfBoundsException e) 
 							{
+								System.out.println("Out of bounds!!");
 								return false;
 							}
 						}

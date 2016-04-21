@@ -1,32 +1,20 @@
 package kabasuji.view;
 
 import javax.swing.JPanel;
-import javax.swing.border.CompoundBorder;
-
 import kabasuji.controller.BoardController;
-import kabasuji.controller.GoToLevelSelectController;
-import kabasuji.controller.GoToMainMenuController;
+import kabasuji.controller.TileController;
 import kabasuji.model.Board;
 import kabasuji.model.Kabasuji;
+import kabasuji.model.Piece;
 import kabasuji.model.Screen;
 import kabasuji.model.Tile;
 
-import java.awt.Color;
 import java.awt.Container;
-import java.awt.Dimension;
-
-import javax.imageio.ImageIO;
-import java.awt.SystemColor;
-import java.io.File;
-import java.io.IOException;
-
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.Image;
-
 import javax.swing.SwingConstants;
-import javax.swing.ImageIcon;
 
+@SuppressWarnings("serial")
 public class BoardView extends JPanel {
 	Kabasuji kabasuji;
 	// the associated board
@@ -46,6 +34,9 @@ public class BoardView extends JPanel {
 	int tilesidescaled;
 
 	int offset;
+	
+	int[][] highlightLocations;
+
 
 	/**
 	 * Create the Main Menu Panel.
@@ -62,6 +53,22 @@ public class BoardView extends JPanel {
 		row = board.getTiles().length;
 		col = board.getTiles()[0].length;
 		tile = new JLabelIcon[row * col];
+		highlightLocations = new int[col][row];
+		
+//		Bad testing ideas were had.
+//		Tile testTile1 = new Tile(false, true, 0, 0);
+//		Tile testTile2 = new Tile(false, true, 0, 0);
+//		Tile testTile3 = new Tile(false, false, 0, 0);
+//		Tile testTile4 = new Tile(false, false, 0, 0);
+//
+//				
+//		Tile[][] piece1 = { { testTile1, testTile2 }, { testTile3, testTile4 } };
+//				
+//		Piece p =  new Piece(piece1);
+//				
+//		kabasuji.getSelectedLevel().getBullpen().addPiece(p);
+		
+		//board.addMouseListener(new BoardController(board, tile[i*row+j]));
 		
 		setLayout(null);
 
@@ -87,7 +94,7 @@ public class BoardView extends JPanel {
 	}
 	public void updateBoard(){
 		// display the tiles on the container panel and scales them to fit
-		// row/col
+		// row/column
 		// includes centering as well
 		for (int i = 0; i < col; i++) {
 			for (int j = 0; j < row; j++) {
@@ -95,7 +102,11 @@ public class BoardView extends JPanel {
 				// only display tile if it's valid
 				if (tiles[j][i].isValid()) {
 					displayTile(i,j,"boardtile.png");
-					tile[i*row+j].addMouseListener(new BoardController(board, tile[i*row+j]));
+					tile[i*row+j].addMouseListener(
+							new TileController(board, tile[i*row+j], 
+									highlightLocations, j, i, 
+									tiles[j][i],
+									kabasuji));
 				}
 			}
 		}
