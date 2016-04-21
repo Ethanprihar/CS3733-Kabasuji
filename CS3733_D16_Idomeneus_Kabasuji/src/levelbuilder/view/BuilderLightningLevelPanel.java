@@ -4,9 +4,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import kabasuji.model.Builder;
+import kabasuji.model.LightningBoard;
+import kabasuji.model.PuzzleBoard;
 import kabasuji.model.Screen;
+import kabasuji.model.Tile;
 import kabasuji.view.JLabelIcon;
 import levelbuilder.controller.GoToMainMenuBuilderController;
+import levelbuilder.controller.IncrementPieceBuilderController;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -15,28 +19,111 @@ import javax.swing.SwingConstants;
 public class BuilderLightningLevelPanel extends JPanel {
 	Builder builder;
 	TopLevelApplicationBuilder app;
-	//JTextField boardDimensions;
+	JTextField boardDimensions;
 
 	/**
 	 * Create the panel.
 	 */
-	public BuilderLightningLevelPanel(Builder builder, TopLevelApplicationBuilder app) {
+	public BuilderLightningLevelPanel(Builder builder, TopLevelApplicationBuilder app, JTextField boardDimensions) {
 		this.builder = builder;
 		this.app = app;
+		this.boardDimensions = boardDimensions;
+		
+		// Get the board dimensions as an integer
+		String boardDimensionstext = boardDimensions.getText();
+		int dimensions = Integer.parseInt(boardDimensionstext);
+		
+		// Create tiles to add to the board
+		Tile[][] boardTile = new Tile[dimensions][dimensions];
+		
+		for (int i = 0; i < dimensions; i++){
+			for (int j = 0; j < dimensions; j++){
+				boardTile[i][j] = new Tile(true, true, 0, 0);
+			}
+		}
 
 		JLabelIcon background = new JLabelIcon("BuilderLightningLevel_New.png", Screen.width, Screen.height);
 		background.setBounds(0, 0, Screen.width, Screen.height);
 		add(background);
 
 		JLabelIcon bullpen = new JLabelIcon("boardpanel_opaque.png", (int) (Screen.width * 0.9),
-				(int) (Screen.height * 0.30));
-		bullpen.setLocation((int) (Screen.width * 0.05), (int) (Screen.height * 0.60));
+				(int) (Screen.height * 0.38));
+		bullpen.setLocation((int) (Screen.width * 0.05), (int) (Screen.height * 0.55));
 		background.add(bullpen);
 		
 		JLabelIcon board = new JLabelIcon("boardpanel_opaque.png", (int) (Screen.width * 0.5),
 				(int) (Screen.height * 0.5));
-		board.setLocation((int) (Screen.width * 0.22), (int) (Screen.height * 0.05));
+		board.setLocation((int) (Screen.width * 0.22), (int) (Screen.height * 0.02));
 		background.add(board);
+		
+		// Create a puzzle board
+		LightningBoard tboard = new LightningBoard(boardTile);
+		BuilderBoardView boardview = new BuilderBoardView(tboard, board);
+		background.add(board);
+		
+		// Create the first set of JLabels
+		JLabel[] piece1Lbl = new JLabel[12];
+		// Run the loop to initialize and set their positions
+		for (int i = 0; i < 12; i++){
+			piece1Lbl[i] = new JLabel("0");
+			piece1Lbl[i].setBounds(30 + i *60, 65, 20, 20);
+			bullpen.add(piece1Lbl[i]);
+		}
+		
+		// Create the second set of labels
+		JLabel[] piece2Lbl = new JLabel[12];
+		// Run the loop to initialize and set their positions
+		for (int i = 0; i < 12; i++){
+			piece2Lbl[i] = new JLabel("0");
+			piece2Lbl[i].setBounds(30 + i *60, 65 + 70, 20, 20);
+			bullpen.add(piece2Lbl[i]);
+		}
+		
+		// Create the third set of labels
+		JLabel[] piece3Lbl = new JLabel[11];
+		// Run the loop to initialize and set their positions
+		for (int i = 0; i < 11; i++){
+			piece3Lbl[i] = new JLabel("0");
+			piece3Lbl[i].setBounds(30 + i *60, 65 + 140, 20, 20);
+			bullpen.add(piece3Lbl[i]);
+		}
+		
+		// Create the first row of pieces in the bullpen
+		JLabelIcon[] piece = new JLabelIcon[12];
+		// Run the loop to initialize and set the positions
+		for (int i = 0; i < 12; i++){
+			// Create a piece in the builder bullpen
+			piece[i] = new JLabelIcon("tile" + i + ".png", 60, 60);
+			piece[i].setLocation(i*piece[i].getWidth() + 10, 10);
+			piece[i].addMouseListener(new IncrementPieceBuilderController(builder, app, piece1Lbl[i], i));
+			bullpen.add(piece[i]);
+		}
+		
+		// Create the second row of pieces in the bullpen
+		JLabelIcon[] piece2 = new JLabelIcon[12];
+		// Run the loop to initialize and set the positions
+		for (int i = 0; i < 12; i++){
+			// Create a piece in the builder bullpen
+			int newInt = i + 12;
+			String newString = Integer.toString(newInt);
+			piece2[i] = new JLabelIcon("tile" + newString + ".png", 60, 60);
+			piece2[i].setLocation(i*piece2[i].getWidth() + 10, piece2[i].getHeight() + 20);
+			piece2[i].addMouseListener(new IncrementPieceBuilderController(builder, app, piece2Lbl[i], newInt));
+			bullpen.add(piece2[i]);
+		}
+		
+		// Create the third row of pieces in bullpen
+		JLabelIcon[] piece3 = new JLabelIcon[11];
+		// Run the loop to initialize and set the positions
+		for (int i = 0; i < 11; i++){
+			// Create a piece in the builder bullpen
+			int newInt1 = i + 24;
+			String newString1 = Integer.toString(newInt1);
+			piece3[i] = new JLabelIcon("tile" + newString1 + ".png", 60, 60);
+			piece3[i].setLocation(i*piece3[i].getWidth() + 10, 2*piece3[i].getHeight() + 30);
+			piece3[i].addMouseListener(new IncrementPieceBuilderController(builder, app, piece3Lbl[i], newInt1));
+			bullpen.add(piece3[i]);
+		}
 
 		JLabelIcon undoBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		undoBtn.setLocation((int) (Screen.width * 0.72) + (int) (undoBtn.getSize().getWidth() / 2),

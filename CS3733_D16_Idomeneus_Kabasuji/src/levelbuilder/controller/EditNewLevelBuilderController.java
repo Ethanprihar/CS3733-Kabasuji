@@ -72,7 +72,13 @@ public class EditNewLevelBuilderController extends MouseAdapter {
 			
 			// Create a lightning level panel if the level type is 1
 			if (levelType == 1){
-				BuilderLightningLevelPanel lsp = new BuilderLightningLevelPanel(builder, app);
+				
+				// Create the new level
+				String boardDimensionstext = boardDimensions.getText();
+				int dimensions = Integer.parseInt(boardDimensionstext);
+				builder.addNewLevel(1, dimensions);
+				
+				BuilderLightningLevelPanel lsp = new BuilderLightningLevelPanel(builder, app, boardDimensions);
 				app.setContentPanel(lsp);
 			}
 			
