@@ -15,14 +15,14 @@ import kabasuji.view.JLabelIcon;
  * @author jwu
  *
  */
-public class BoardController extends MouseAdapter {
+public class BoardWuTestController extends MouseAdapter {
 
 	/** Entity and Boundaries Associated **/
 	Board board;
 	JLabelIcon tile;
 	String fn;
 
-	public BoardController(Board board, JLabelIcon tile) {
+	public BoardWuTestController(Board board, JLabelIcon tile) {
 		this.board=  board;
 		this.tile = tile;
 		this.fn = tile.getFileName();
@@ -35,10 +35,8 @@ public class BoardController extends MouseAdapter {
 	public void mousePressed(MouseEvent me) {
 
 	}
-	
 	public void mouseEntered(MouseEvent e) {
-		
-		
+		tile.setImg("generalhoverbutton.png");
 	}
 
 	public void mouseExited(MouseEvent e) {
