@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 
 import kabasuji.model.Builder;
 import kabasuji.model.Screen;
+import kabasuji.model.Tile;
 import kabasuji.view.JLabelIcon;
 import levelbuilder.controller.moves.ChangeScreenBuilderMove;
 import levelbuilder.controller.moves.LevelModeBuilderMove;
@@ -59,6 +60,12 @@ public class EditNewLevelBuilderController extends MouseAdapter {
 			
 			// Create a release level panel if the level type is 0
 			if (levelType == 0){
+				
+				// Create the new level
+				String boardDimensionstext = boardDimensions.getText();
+				int dimensions = Integer.parseInt(boardDimensionstext);
+				builder.addNewLevel(0, dimensions);
+				
 				BuilderPuzzleLevelPanel lsp = new BuilderPuzzleLevelPanel(builder, app, boardDimensions);
 				app.setContentPanel(lsp);
 			}
