@@ -7,7 +7,7 @@ import kabasuji.model.Board;
 import kabasuji.view.JLabelIcon;
 
 /**
- * Controller for Board gameplay; Modify BoardView;
+ * Controller for Board gameplay; Modify BoardView.
  * 
  * When a desired tile is pressed, an action is attempted to
  * progress game and update board

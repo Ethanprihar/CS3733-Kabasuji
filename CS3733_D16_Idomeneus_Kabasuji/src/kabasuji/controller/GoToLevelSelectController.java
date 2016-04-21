@@ -13,7 +13,7 @@ import kabasuji.view.LevelSelectPanel;
 import kabasuji.view.TopLevelApplication;
 
 /**
- * Controller for Moving Screens; Go To Level Select Screen (Panel)
+ * Controller for Moving Screens; Go To Level Select Screen (Panel).
  * 
  * When the button is pressed to attempt to go to the next screen, the model
  * will update what screen it is on and the gui will reflect the changes

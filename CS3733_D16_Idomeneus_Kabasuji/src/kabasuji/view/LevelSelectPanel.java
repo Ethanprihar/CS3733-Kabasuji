@@ -16,14 +16,22 @@ import javax.swing.SwingConstants;
 import java.util.Random;
 
 public class LevelSelectPanel extends JPanel {
+	/** Entities and Boundaries associated **/
 	Kabasuji kabasuji;
 	TopLevelApplication app;
 
+	/** Level Button GUI elements **/
 	JLabelIcon[] levelselectbtn;
 	JLabel[] buttonlbl;
+	
+	/** dimensions of level button array **/
+	int row;
+	int col;
 
 	/**
-	 * Create the panel.
+	 * Create the LevelSelectPanel.
+	 * @param kabasuji
+	 * @param app
 	 */
 	public LevelSelectPanel(Kabasuji kabasuji, TopLevelApplication app) {
 		this.kabasuji = kabasuji;
@@ -31,12 +39,19 @@ public class LevelSelectPanel extends JPanel {
 		this.levelselectbtn = new JLabelIcon[kabasuji.getLevels().size()];
 		this.buttonlbl = new JLabel[kabasuji.getLevels().size()];
 
+		// set layout to null
 		setLayout(null);
 
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 5; j++) {
+		
+		// temporary row and col setup ***********
+		row = 5;
+		col = 3;
+		// 
+		for (int i = 0; i < col; i++) {
+			for (int j = 0; j < row; j++) {
 				int starNum = kabasuji.levels.get(i * 5 + j).getStars();
 				boolean locked = kabasuji.levels.get(i * 5 + j).isLocked();
+				
 				// Decide locked picture or not
 				if (locked) {
 					levelselectbtn[i * 5 + j] = new JLabelIcon("generallockedbutton.png", 70, 70);
@@ -57,7 +72,7 @@ public class LevelSelectPanel extends JPanel {
 				levelselectbtn[i * 5 + j].addMouseListener(
 						new SelectLevelController(kabasuji, app, levelselectbtn[i * 5 + j], i * 5 + j + 1));
 				add(levelselectbtn[i * 5 + j]);
-				/*** take this out when levels are good ***/
+				/*** take this out when levels are good *******************************/
 				Random rn = new Random();
 				int n = rn.nextInt(3) + 1;
 				// set # stars and location on gui
@@ -82,14 +97,16 @@ public class LevelSelectPanel extends JPanel {
 		mainmenubtn.addMouseListener(new GoToMainMenuController(kabasuji, app, mainmenubtn));
 		add(mainmenubtn);
 		
-		// 
+		// setup background canvas
 		JLabelIcon background = new JLabelIcon("LevelSelectScreen.png", Screen.width, Screen.height);
 		background.setBounds(0, 0, Screen.width, Screen.height);
 		add(background);
 
 	}
-
-	// getter for list of buttons
+	/**
+	 * Getter for JLabelIcon[] of level select buttons.
+	 * @return
+	 */
 	public JLabelIcon[] getLevelSelectButtons() {
 		return levelselectbtn;
 	}

@@ -33,13 +33,14 @@ import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 
 public class PieceView extends JPanel {
-	// the associated piece
+	// Entities associated
 	Piece piece;
-
 	Tile[][] tiles;
-
+	
+	// Boundaries associated
 	JLabelIcon[] tileview;
 	
+	// GUI positioning variables
 	Point centroid;
 
 	int row;
@@ -50,19 +51,21 @@ public class PieceView extends JPanel {
 	int offset;
 
 	/**
-	 * Create the Piece View
+	 * Construct PieceView.
+	 * @param piece
 	 */
-
 	public PieceView(Piece piece) {
 		this.piece = piece;
 		this.tiles = piece.getTiles();
-
-		setLayout(null);
-
 	}
+	/**
+	 * Set up the piece centered on Container.
+	 */
 	public void setupPiece(){
 		
+		setLayout(null);
 		setOpaque(false);
+		// get row and col of the 2D array of Tile
 		this.row = tiles.length;
 		this.col = tiles[0].length;
 		this.tileview = new JLabelIcon[row * col];
@@ -80,7 +83,9 @@ public class PieceView extends JPanel {
 		updatePiece();
 		repaint();
 	}
-	
+	/**
+	 * Update the Tiles on the Piece.
+	 */
 	public void updatePiece() {
 		centroid = calculateCentroid();
 		// display the tiles on the container panel and scales them to fit
@@ -94,7 +99,12 @@ public class PieceView extends JPanel {
 			}
 		}
 	}
-	// if tile is valid, display tile and necessary components
+	/**
+	 * Display Tiles of Piece if valid.
+	 * @param i
+	 * @param j
+	 * @param pic
+	 */
 	public void displayTiles(int i, int j, String pic) {
 		if (tiles[i][j].isValid()) {
 			tileview[i * row + j] = (new JLabelIcon(pic, piecesidescaled, piecesidescaled));
@@ -103,6 +113,10 @@ public class PieceView extends JPanel {
 			add(tileview[i * row + j]);
 		}
 	}
+	/**
+	 * Calculates the centroid coordinates of the tiles within the piece. (Relative to Piece container)
+	 * @return
+	 */
 	public Point calculateCentroid(){
 		Point pnt = new Point();
 		double x = 0;
@@ -124,6 +138,10 @@ public class PieceView extends JPanel {
 		pnt.setLocation(x, y);
 		return pnt;
 	}
+	/**
+	 * Getter for centroid coordinates.
+	 * @return
+	 */
 	public Point getCentroid(){
 		return centroid;
 	}

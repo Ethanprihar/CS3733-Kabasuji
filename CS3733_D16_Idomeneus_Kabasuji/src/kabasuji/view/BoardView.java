@@ -16,40 +16,39 @@ import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class BoardView extends JPanel {
-	Kabasuji kabasuji;
-	// the associated board
-	Board board;
-	// the JPanel that contains it
-	Container panel;
-
-	Tile[][] tiles;
-
-	int row;
-	int col;
 	
+	/** Entities associated **/
+	Kabasuji kabasuji;
+	Board board;
+	Tile[][] tiles;
+	
+	/** Boundaries associated **/
+	Container panel;
 	JLabelIcon[] tile;
 
+	// desired dimensions to fit
+	int row;
+	int col;
+
+	// location manipulation variables for gui display
 	int sqmatrixlength;
 	int tilesidelength;
 	int tilesidescaled;
-
 	int offset;
 	
 	int[][] highlightLocations;
 
-
 	/**
-	 * Create the Main Menu Panel.
+	 * BoardView Constructor
+	 * @param kabasuji
 	 */
-
 	public BoardView(Kabasuji kabasuji) {
 		this.kabasuji = kabasuji;
 		this.board = kabasuji.getSelectedLevel().getBoard();
 		this.tiles = board.getTiles();
-
 	}
 	public void setupBoard(){
-//		panel = getParent();
+		// get dimesions of board tile array
 		row = board.getTiles().length;
 		col = board.getTiles()[0].length;
 		tile = new JLabelIcon[row * col];
@@ -93,8 +92,7 @@ public class BoardView extends JPanel {
 		repaint();
 	}
 	public void updateBoard(){
-		// display the tiles on the container panel and scales them to fit
-		// row/column
+		// display the tiles on the container panel and scales them to fit row/column
 		// includes centering as well
 		for (int i = 0; i < col; i++) {
 			for (int j = 0; j < row; j++) {
@@ -111,14 +109,23 @@ public class BoardView extends JPanel {
 			}
 		}
 	}
+	/**
+	 * Displays Tiles on the board.
+	 * @param i col
+	 * @param j row
+	 * @param pic name of filename of pic
+	 */
 	public void displayTile(int i,int j, String pic){
+		// Create JLabelIcon to corresponding Tile including label
 		tile[i * row + j] = new JLabelIcon(pic, tilesidescaled, tilesidescaled);
 		tile[i * row + j].setLocation((int) (tilesidelength * (j + (sqmatrixlength - row) / 2)) + offset,
 				(int) (tilesidelength * (i + (sqmatrixlength - col) / 2)) + offset);
+		// Only does labeling, trivial
 		JLabel numlbl = new JLabel(""+tiles[j][i].getNumber(), SwingConstants.CENTER);
 		numlbl.setBounds(0, 0, tilesidescaled, tilesidescaled);
 		numlbl.setFont(new Font("Arial", Font.BOLD, (int)(tilesidescaled*0.5)));
 		tile[i*row+j].add(numlbl);
+		// Add Tile to Board
 		add(tile[i * row + j]);
 	}
 	

@@ -22,7 +22,7 @@ import kabasuji.view.PlayLevelPanel;
 import kabasuji.view.TopLevelApplication;
 
 /**
- * Controller for Moving Screens; Go To Play Level Screen (Panel)
+ * Controller for Moving Screens; Go To Play Level Screen (Panel).
  * 
  * When the button is pressed to attempt to go to the next screen, the model
  * will update what screen it is on and the gui will reflect the changes

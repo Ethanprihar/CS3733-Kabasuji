@@ -9,24 +9,33 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class JLabelIcon extends JLabel {
-	/** attributes: filename, and dimensions **/
+	/** attributes: img, filename, and dimensions **/
 	Image img;
 	String filename;
 	int dimX;
 	int dimY;
 
+	/**
+	 * Create new JLabelIcon.
+	 * @param filename - filename of image
+	 * @param dimX - desired size in x
+	 * @param dimY - desired size in y
+	 */
 	public JLabelIcon(String filename, int dimX, int dimY) {
-		super();
 		this.filename = filename;
 		this.dimX = dimX;
 		this.dimY = dimY;
 
 		// sets size
 		setSize(dimX, dimY);
+		// sets image
 		setImg(filename);
 
 	}
-
+	/**
+	 * Sets the image of JLabelIcon with new given filename (fn).
+	 * @param fn
+	 */
 	public void setImg(String fn) {
 		// maps a path to the desired picture
 		String path = System.getProperty("user.dir") + File.separator + "src//images" + File.separator + fn;
@@ -46,28 +55,45 @@ public class JLabelIcon extends JLabel {
 		setIcon(imgi);
 		repaint();
 	}
-
-	// getter width
+	/**
+	 * Get Width.
+	 */
 	public int getWidth() {
 		return dimX;
 	}
-
-	// setter width
+	/**
+	 * Set Width to given input.
+	 * @param w
+	 */
 	public void setWidth(int w) {
 		setSize(w, dimY);
 	}
-
-	// getting height
+	/**
+	 * Get Height.
+	 */
 	public int getHeight() {
 		return dimY;
 	}
-
-	// setter width
+	/**
+	 * Set Height to given input.
+	 * @param h
+	 */
 	public void setHeight(int h) {
 		setSize(dimX, h);
 	}
+	/**
+	 * Get FileName.
+	 * @return
+	 */
 	public String getFileName(){
 		return filename;
+	}
+	/**
+	 * Get Image used.
+	 * @return
+	 */
+	public Image getImage(){
+		return img;
 	}
 	
 }

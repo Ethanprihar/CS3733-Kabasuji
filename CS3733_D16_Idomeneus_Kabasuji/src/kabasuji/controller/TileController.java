@@ -1,20 +1,13 @@
 package kabasuji.controller;
 
-import java.awt.Container;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JPanel;
-
-import kabasuji.controller.moves.ChangeScreenMove;
 import kabasuji.model.Board;
 import kabasuji.model.Kabasuji;
 import kabasuji.model.Piece;
-import kabasuji.model.Screen;
 import kabasuji.model.Tile;
 import kabasuji.view.JLabelIcon;
-import kabasuji.view.MainMenu;
-import kabasuji.view.TopLevelApplication;
 
 /**
  * Controller for Board gameplay; Modify BoardView;

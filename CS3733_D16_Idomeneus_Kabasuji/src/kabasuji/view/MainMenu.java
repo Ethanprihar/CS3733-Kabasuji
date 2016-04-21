@@ -1,35 +1,33 @@
 package kabasuji.view;
 
 import javax.swing.JPanel;
-import javax.swing.border.CompoundBorder;
 
 import kabasuji.controller.GoToLevelSelectController;
 import kabasuji.model.Kabasuji;
 import kabasuji.model.Screen;
 
-import java.awt.Color;
-import java.awt.Dimension;
-
-import javax.imageio.ImageIO;
-import java.awt.SystemColor;
-import java.io.File;
-import java.io.IOException;
-
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.Image;
-
 import javax.swing.SwingConstants;
-import javax.swing.ImageIcon;
+
+/**
+ * Main Menu navigation screen; offers navigation to SelectLevelPanel.
+ * 
+ * Is contained in JFrame
+ * @author jwu
+ *
+ */
 
 public class MainMenu extends JPanel {
+	/** Entities and Boundaries associated **/
 	Kabasuji kabasuji;
 	TopLevelApplication app;
 
 	/**
 	 * Create the Main Menu Panel.
+	 * @param kabasuji
+	 * @param app
 	 */
-
 	public MainMenu(Kabasuji kabasuji, TopLevelApplication app) {
 		this.kabasuji = kabasuji;
 		this.app = app;
@@ -50,10 +48,10 @@ public class MainMenu extends JPanel {
 		levelselectbtn.add(buttonlbl);
 		levelselectbtn.addMouseListener(new GoToLevelSelectController(kabasuji, app, levelselectbtn));
 		
-		// add button image to background canvas
+		// add button image to JPanel
 		add(levelselectbtn);
 		
-		// create the background canvas ** important
+		// create the background canvas ** important and add to JPanel
 		JLabelIcon background = new JLabelIcon("KabasujiTitleScreen.png",Screen.width,Screen.height);
 		background.setBounds(0, 0, Screen.width, Screen.height);
 		add(background);

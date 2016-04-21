@@ -26,7 +26,7 @@ import kabasuji.view.TopLevelApplication;
 
 /**
  * Controller for Flipping Piece in bullpen; flips piece then displays it in
- * zoom Panel
+ * zoom Panel.
  * 
  * When the button is pressed to attempt to flip piece, the model will update
  * the selected piece and the gui will reflect the changes

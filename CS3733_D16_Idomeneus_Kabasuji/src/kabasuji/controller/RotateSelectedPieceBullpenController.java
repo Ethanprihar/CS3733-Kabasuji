@@ -25,7 +25,7 @@ import kabasuji.view.TopLevelApplication;
 
 /**
  * Controller for Rotating Piece in bullpen; rotates piece then displays it in
- * zoom Panel
+ * zoom Panel.
  * 
  * When the button is pressed to attempt to rotate piece, the model will update
  * the selected piece and the gui will reflect the changes

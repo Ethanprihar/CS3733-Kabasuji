@@ -14,7 +14,7 @@ import kabasuji.view.PieceView;
 import kabasuji.view.PlayLevelPanel;
 
 /**
- * Controller for Selecting Piece in bullpen; Selects piece then displays it in zoom Panel
+ * Controller for Selecting Piece in bullpen; Selects piece then displays it in zoom Panel.
  * 
  * When the button is pressed to attempt to select piece, the model
  * will update the selected piece and the gui will reflect the changes
