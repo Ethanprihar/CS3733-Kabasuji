@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 public class BuilderLightningLevelPanel extends JPanel {
 	Builder builder;
 	TopLevelApplicationBuilder app;
+	//JTextField boardDimensions;
 
 	/**
 	 * Create the panel.

@@ -1,6 +1,8 @@
 package levelbuilder.view;
 
 import javax.swing.JPanel;
+
+import levelbuilder.controller.BuilderBoardController;
 import kabasuji.model.Board;
 import kabasuji.model.Tile;
 import kabasuji.view.JLabelIcon;
@@ -66,12 +68,13 @@ public class BuilderBoardView extends JPanel {
 			for (int j = 0; j < row-2; j++) {
 				// create a button image with specified dimension
 				// only display tile if it's valid
-				if (tiles[j][i].isValid()) {
+				//if (tiles[j][i].isValid()) {
 					displayTile(i,j,"tile.PNG");
-				}
+					tile[i*row+j].addMouseListener(new BuilderBoardController(board, tile[i*row+j], tiles[j][i]));
+				//}
 			}
 		}
-		repaint();
+		//repaint();
 	}
 	public void displayTile(int i,int j, String pic){
 		tile[i * row + j] = new JLabelIcon(pic, tilesidescaled, tilesidescaled);
