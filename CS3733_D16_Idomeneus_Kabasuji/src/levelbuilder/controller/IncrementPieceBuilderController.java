@@ -10,6 +10,7 @@ import kabasuji.model.Builder;
 import kabasuji.model.Screen;
 import kabasuji.view.JLabelIcon;
 import levelbuilder.controller.moves.ChangeScreenBuilderMove;
+import levelbuilder.controller.moves.IncrementPieceBuilderMove;
 import levelbuilder.view.BuilderMainMenu;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
@@ -57,9 +58,10 @@ public class IncrementPieceBuilderController extends MouseAdapter {
 		// Convert the incremented integer back to string 
 		String newStringNum = Integer.toString(newPieceNum);
 		
-		// Create an instance of builder class and giving the information to the model class
-		Builder builder = new Builder();
-		builder.incrementNum(numPiece);
+		// Call the move class which gives information to the entity class about the incremented piece count		
+		IncrementPieceBuilderMove incrementMove = new IncrementPieceBuilderMove(numPiece);
+		// Execute the move
+		incrementMove.execute(builder);
 		
 		// Set the new string in the JLabel
 		pieceCount.setText(newStringNum);
