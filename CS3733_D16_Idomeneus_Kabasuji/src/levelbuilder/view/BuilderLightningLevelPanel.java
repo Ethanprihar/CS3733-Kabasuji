@@ -58,7 +58,7 @@ public class BuilderLightningLevelPanel extends JPanel {
 		
 		// Create a puzzle board
 		LightningBoard tboard = new LightningBoard(boardTile);
-		BuilderBoardView boardview = new BuilderBoardView(tboard, board);
+		BuilderBoardView boardview = new BuilderBoardView(tboard, board, builder, app);
 		background.add(board);
 		
 		// Create the first set of JLabels

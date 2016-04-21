@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 
 import levelbuilder.controller.BuilderBoardController;
 import kabasuji.model.Board;
+import kabasuji.model.Builder;
 import kabasuji.model.Tile;
 import kabasuji.view.JLabelIcon;
 
@@ -12,6 +13,8 @@ import java.awt.Container;
 public class BuilderBoardView extends JPanel {
 	// the associated board
 	Board board;
+	Builder builder;
+	TopLevelApplicationBuilder app;
 	// the JPanel that contains it
 	Container panel;
 
@@ -32,9 +35,11 @@ public class BuilderBoardView extends JPanel {
 	 * Create the Main Menu Panel.
 	 */
 
-	public BuilderBoardView(Board board, Container panel) {
+	public BuilderBoardView(Board board, Container panel, Builder builder, TopLevelApplicationBuilder app) {
 		this.board = board;
 		this.panel = panel;
+		this.builder = builder;
+		this.app = app;
 		this.tiles = board.getTiles();
 
 		this.row = board.getTiles().length+2;
@@ -70,7 +75,7 @@ public class BuilderBoardView extends JPanel {
 				// only display tile if it's valid
 				//if (tiles[j][i].isValid()) {
 					displayTile(i,j,"tile.PNG");
-					tile[i*row+j].addMouseListener(new BuilderBoardController(board, tile[i*row+j], tiles[j][i]));
+					tile[i*row+j].addMouseListener(new BuilderBoardController(board, tile[i*row+j], tiles[j][i], builder, app));
 				//}
 			}
 		}

@@ -4,8 +4,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import kabasuji.model.Board;
+import kabasuji.model.Builder;
 import kabasuji.model.Tile;
 import kabasuji.view.JLabelIcon;
+import levelbuilder.controller.moves.BuilderSelectTileMove;
+import levelbuilder.view.TopLevelApplicationBuilder;
 
 /**
  * Controller for Board gameplay; Modify BoardView;
@@ -19,16 +22,20 @@ import kabasuji.view.JLabelIcon;
 public class BuilderBoardController extends MouseAdapter {
 
 	/** Entity and Boundaries Associated **/
+	Builder builder;
+	TopLevelApplicationBuilder app;
 	Board board;
 	JLabelIcon tile;
 	String fn;
 	Tile currentTile;
 	boolean selected;
 
-	public BuilderBoardController(Board board, JLabelIcon tile, Tile currentTile) {
+	public BuilderBoardController(Board board, JLabelIcon tile, Tile currentTile, Builder builder, TopLevelApplicationBuilder app) {
 		this.board=  board;
 		this.tile = tile;
 		this.currentTile = currentTile;
+		this.app = app;
+		this.builder = builder;
 		this.fn = tile.getFileName();
 	}
 
@@ -41,8 +48,9 @@ public class BuilderBoardController extends MouseAdapter {
 		if (selected){
 			tile.setImg("generalhoverbutton.png");
 			
-			// Give the information to the model class about the valid tile
-			currentTile.setValid(true);
+			// Call the move class to make the currentTile valid
+			BuilderSelectTileMove builderSelectTileMove = new BuilderSelectTileMove(currentTile);
+			builderSelectTileMove.execute(builder);
 		}
 	}
 	public void mouseEntered(MouseEvent e) {
