@@ -25,6 +25,7 @@ public class GoToMainMenuController extends MouseAdapter {
 
 	/** Entity and Boundaries Associated **/
 	Kabasuji kabasuji;
+	
 	TopLevelApplication app;
 	JPanel contentPanel;
 	JLabelIcon button;
@@ -53,10 +54,12 @@ public class GoToMainMenuController extends MouseAdapter {
 		app.setContentPanel(mm);
 	}
 	public void mouseEntered(MouseEvent e) {
+		// sets to image indicating hover event
 		button.setImg("generalhoverbutton.png");
 	}
 
 	public void mouseExited(MouseEvent e) {
+		// sets back to original image
 		button.setImg(fn);
 	}
 }

@@ -5,7 +5,7 @@ import kabasuji.model.Kabasuji;
 /**
  * Move class to move to different screens by passing in the screen number
  * as the target screen in the constructor. Validity of move is always checked
- * before execution of move
+ * before execution of move.
  * @author jwu
  */
 

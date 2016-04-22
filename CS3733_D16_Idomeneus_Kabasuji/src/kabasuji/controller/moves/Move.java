@@ -1,6 +1,11 @@
 package kabasuji.controller.moves;
 
 import kabasuji.model.Kabasuji;
+/**
+ * Abstract Move class.
+ * @author jwu
+ *
+ */
 
 public abstract class Move {
 

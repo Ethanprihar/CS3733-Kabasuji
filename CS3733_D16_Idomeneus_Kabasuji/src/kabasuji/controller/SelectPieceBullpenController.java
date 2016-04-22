@@ -24,21 +24,24 @@ import kabasuji.view.PlayLevelPanel;
  */
 public class SelectPieceBullpenController extends MouseAdapter {
 
-	/** Entity and Boundaries Associated **/
+	/** Entities associated **/
 	Kabasuji kabasuji;
 	Bullpen bullpen;
-	BullpenView bullpenview;
-	JLabelIcon pieceicon;
-	PlayLevelPanel panel;
-	PieceView[] pieceviews;
 	ArrayList<Piece> pieces;
-
+	Piece selectedPiece;
+	
+	int numPiece;
+	
+	/** Boundaries associated **/
+	
+	PlayLevelPanel panel;
+	BullpenView bullpenview;
 	JLabelIcon zoompanel;
+	JLabelIcon pieceicon;
+	PieceView[] pieceviews;
 	String fnzoom;
 	String fnpiece;
-	Piece selectedPiece;
 
-	int numPiece;
 
 	public SelectPieceBullpenController(Kabasuji kabasuji, PlayLevelPanel panel, JLabelIcon pieceicon, int numPiece) {
 		this.kabasuji = kabasuji;
@@ -59,6 +62,7 @@ public class SelectPieceBullpenController extends MouseAdapter {
 	 * is a GUI controller.
 	 */
 	public void mousePressed(MouseEvent me) {
+		// selecting piece toggle
 		if (bullpen.getSelectedPiece() == null) {
 			SelectPieceMove spm = new SelectPieceMove(selectedPiece);
 			spm.execute(kabasuji);
@@ -71,6 +75,7 @@ public class SelectPieceBullpenController extends MouseAdapter {
 	}
 
 	public void mouseEntered(MouseEvent e) {
+		// displays enlarged piece on zoom panel upon entering
 		if (bullpen.getSelectedPiece() == null) {
 			zoompanel.removeAll();
 			PieceView pieceview = new PieceView(selectedPiece);
@@ -83,6 +88,7 @@ public class SelectPieceBullpenController extends MouseAdapter {
 	}
 
 	public void mouseExited(MouseEvent e) {
+		// sets the panel back to empty if no piece is selected before leaving image
 		if (bullpen.getSelectedPiece() == null) {
 			zoompanel.removeAll();
 			zoompanel.setImg("opaque_canvas.png");

@@ -25,6 +25,7 @@ public class GoToLevelSelectController extends MouseAdapter {
 
 	/** Entity and Boundaries Associated **/
 	Kabasuji kabasuji;
+
 	TopLevelApplication app;
 	JPanel contentPanel;
 	JLabelIcon button;
@@ -54,10 +55,11 @@ public class GoToLevelSelectController extends MouseAdapter {
 	}
 
 	public void mouseEntered(MouseEvent e) {
+		// sets image to indicate hover event
 		button.setImg("generalhoverbutton.png");
 	}
-
 	public void mouseExited(MouseEvent e) {
+		// sets back to original image
 		button.setImg(fn);
 	}
 }
