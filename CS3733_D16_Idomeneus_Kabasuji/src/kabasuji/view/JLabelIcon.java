@@ -89,6 +89,13 @@ public class JLabelIcon extends JLabel {
 		return filename;
 	}
 	/**
+	 * Set new FileName.
+	 * @param newfilename
+	 */
+	public void setFileName(String newfilename){
+		filename = newfilename;
+	}
+	/**
 	 * Get Image used.
 	 * @return
 	 */

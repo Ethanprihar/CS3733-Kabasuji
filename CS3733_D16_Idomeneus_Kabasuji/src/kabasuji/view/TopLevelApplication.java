@@ -42,8 +42,8 @@ public class TopLevelApplication extends JFrame {
 	void init(){
 		// puts top left corner into 10% of screen height and width
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		int x0 = (int) (0.1*screenSize.getWidth());
-		int y0 = (int) (0.1*screenSize.getHeight());
+		int x0 = (int) (screenSize.getWidth()-Screen.width)/2;
+		int y0 = (int) (screenSize.getHeight()-Screen.height)/2;
 		// sets location and size of JFrame
 		setBounds(x0,y0,Screen.width,Screen.height);
 		// not resizable
