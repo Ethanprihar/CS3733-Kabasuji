@@ -137,7 +137,7 @@ public class SelectLevelController extends MouseAdapter {
 			
 			PlayLevelPanel lsp = new PlayLevelPanel(kabasuji, app);
 			
-			BoardView bv = new BoardView(kabasuji);
+			BoardView bv = new BoardView(kabasuji, lsp);
 			bv.setBounds((int) (Screen.width * 0.35), (int) (Screen.height * 0.36), (int) (Screen.height * 0.54),
 					(int) (Screen.height * 0.54));
 			

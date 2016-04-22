@@ -1,10 +1,14 @@
 package kabasuji.model;
 
+import java.awt.Point;
 import java.io.Serializable;
 
 public class Piece implements Serializable
 {
 	Tile[][] tiles;
+	
+	// represents top leftmost existing tile with row bias
+	Point refpnt;
 	
 	public Piece(Tile[][] t)
 	{
@@ -95,5 +99,18 @@ public class Piece implements Serializable
 	}
 	public Tile[][] getTiles(){
 		return tiles;
+	}
+	public Point findReferencePoint(){
+		for(int i = 0; i< tiles.length; i++){
+			for (int j = 0; j < tiles.length; j++){
+				if(tiles[j][i].isValid()){
+					System.out.println("VALID ONCE");
+					refpnt = new Point(i,j);
+					System.out.println("Reference x: "+j+"y: "+i);
+					return refpnt;
+				}
+			}
+		}
+		return null;
 	}
 }

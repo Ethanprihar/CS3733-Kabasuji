@@ -1,15 +1,12 @@
 package kabasuji.view;
 
 import javax.swing.JPanel;
-import kabasuji.controller.BoardController;
 import kabasuji.controller.TileController;
 import kabasuji.model.Board;
 import kabasuji.model.Kabasuji;
-import kabasuji.model.Piece;
 import kabasuji.model.Screen;
 import kabasuji.model.Tile;
 
-import java.awt.Container;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -23,7 +20,7 @@ public class BoardView extends JPanel {
 	Tile[][] tiles;
 	
 	/** Boundaries associated **/
-	Container panel;
+	PlayLevelPanel panel;
 	JLabelIcon[] tile;
 
 	// desired dimensions to fit
@@ -42,9 +39,10 @@ public class BoardView extends JPanel {
 	 * BoardView Constructor
 	 * @param kabasuji
 	 */
-	public BoardView(Kabasuji kabasuji) {
+	public BoardView(Kabasuji kabasuji, PlayLevelPanel panel) {
 		this.kabasuji = kabasuji;
 		this.board = kabasuji.getSelectedLevel().getBoard();
+		this.panel = panel;
 		this.tiles = board.getTiles();
 	}
 	public void setupBoard(){
@@ -53,21 +51,6 @@ public class BoardView extends JPanel {
 		col = board.getTiles()[0].length;
 		tile = new JLabelIcon[row * col];
 		highlightLocations = new int[col][row];
-		
-//		Bad testing ideas were had.
-//		Tile testTile1 = new Tile(false, true, 0, 0);
-//		Tile testTile2 = new Tile(false, true, 0, 0);
-//		Tile testTile3 = new Tile(false, false, 0, 0);
-//		Tile testTile4 = new Tile(false, false, 0, 0);
-//
-//				
-//		Tile[][] piece1 = { { testTile1, testTile2 }, { testTile3, testTile4 } };
-//				
-//		Piece p =  new Piece(piece1);
-//				
-//		kabasuji.getSelectedLevel().getBullpen().addPiece(p);
-		
-		//board.addMouseListener(new BoardController(board, tile[i*row+j]));
 		
 		setLayout(null);
 
@@ -101,10 +84,10 @@ public class BoardView extends JPanel {
 				if (tiles[j][i].isValid()) {
 					displayTile(i,j,"boardtile.png");
 					tile[i*row+j].addMouseListener(
-							new TileController(board, tile[i*row+j], 
+							new TileController(kabasuji, panel, tile[i*row+j], 
 									highlightLocations, j, i, 
-									tiles[j][i],
-									kabasuji));
+									tiles[j][i]
+									));
 				}
 			}
 		}
@@ -127,6 +110,13 @@ public class BoardView extends JPanel {
 		tile[i*row+j].add(numlbl);
 		// Add Tile to Board
 		add(tile[i * row + j]);
+	}
+	/**
+	 * getter for JLabel[] tileimages.
+	 * @return
+	 */
+	public JLabelIcon[] getTileImages(){
+		return tile;
 	}
 	
 }
