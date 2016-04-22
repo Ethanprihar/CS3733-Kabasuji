@@ -73,8 +73,28 @@ public class Builder
 	
 	public void saveLevel()
 	{
+		System.out.println("I am here save level");
 		selectedLevel.setEndCondition(endCondition);
 		System.out.println("end condition: " + endCondition);
+		
+		// Test Piece
+		/*Tile testTile1 = new Tile(false, true, 0, 0);
+		Tile testTile2 = new Tile(false, true, 0, 0);
+		Tile testTile3 = new Tile(false, false, 0, 0);
+		Tile testTile4 = new Tile(false, false, 0, 0);
+		
+
+		
+		Tile[][] piece1 = {{testTile1, testTile2, testTile2, testTile2, testTile2, testTile2},
+				{testTile1, testTile2, testTile2, testTile2, testTile2, testTile2},
+				{testTile1, testTile2, testTile2, testTile2, testTile2, testTile2},
+				{testTile1, testTile2, testTile2, testTile2, testTile2, testTile2},
+				{testTile1, testTile2, testTile2, testTile2, testTile2, testTile2},
+				{testTile1, testTile2, testTile2, testTile2, testTile2, testTile2}
+		};
+		Piece testPiece1 = new Piece(piece1);*/
+		
+		
 		for(int i=0; i<35; i++)
 		{
 			for(int j=0; j<numOfPieces[i]; j++)
@@ -83,6 +103,7 @@ public class Builder
 			}
 			System.out.println("added " + numOfPieces[i] + " of piece " + i);
 		}
+		//selectedLevel.getBullpen().addPiece(testPiece1);
 		int valid = 0;
 		int invalid = 0;
 		int hint = 0;
@@ -263,4 +284,12 @@ public class Builder
 	{
 		endCondition = ec;
 	}
+	
+	/*public void addToBullpen(int[] numOfPieces){
+		for (int i = 0; i < numOfPieces.length; i++){
+			for (int j = 0; j < numOfPieces[i]; j++){
+				getSelectedLevel().getBullpen().getPieces().add(pieces[i]);
+			}
+		}
+	}*/
 }
