@@ -32,9 +32,10 @@ import kabasuji.view.TopLevelApplication;
  */
 public class SelectLevelController extends MouseAdapter {
 
-	/** Entity and Boundaries Associated **/
-	int level;
+	/** Entities associated **/
 	Kabasuji kabasuji;
+	int level;
+	/** Boundaries associated **/
 	TopLevelApplication app;
 	JPanel contentPanel;
 	JLabelIcon button;
@@ -54,44 +55,53 @@ public class SelectLevelController extends MouseAdapter {
 	 * is a GUI controller.
 	 */
 	public void mousePressed(MouseEvent me) {
+		/*** MODEL CHANGES ***/
 		// Created SelectLevelMove and input desired level integer
 		SelectLevelMove slm = new SelectLevelMove(level);
 		// Created ChangeScreenMove and input desired screen
 		ChangeScreenMove gtsm = new ChangeScreenMove(Screen.PlayLevel);
-		// kabasuji.selectedLevel = kabasuji.getLevels().get(0);
-		
+
 		// Attempt to execute action on model
 		if (slm.execute(kabasuji)) {
 			gtsm.execute(kabasuji);
-			// Created JPanel screen object and update boundary to reflect
 			
-			
-			PlayLevelPanel lsp = new PlayLevelPanel(kabasuji, app);
-			
-			BullpenView bpv = new BullpenView(kabasuji, lsp, 3, 5);
-			
-			BoardView bv = new BoardView(kabasuji, lsp);
+			// Create PlayLevelPanel screen object and update boundary to
+			// reflect *** GUI CHANGES ***
+
+			// first make the foundation panel and pass model and container
+			// panel
+			PlayLevelPanel plp = new PlayLevelPanel(kabasuji, app);
+
+			// create components of panel and pass model and container panel
+			BullpenView bpv = new BullpenView(kabasuji, plp, 3, 5);
+			BoardView bv = new BoardView(kabasuji, plp);
+
+			// set location and size of components (**necessary)
 			bv.setBounds((int) (Screen.width * 0.35), (int) (Screen.height * 0.36), (int) (Screen.height * 0.54),
 					(int) (Screen.height * 0.54));
-			bpv.setSize((int) (Screen.width * 0.25), (int) (Screen.height * 0.85));
-			bpv.setLocation((int) (Screen.width * 0.05), (int) (Screen.height * 0.05));
-			
-			lsp.removeAll();
-			lsp.updatePlayLevelPanel(bv, bpv);
-			lsp.addControllers();
-			
-			lsp.repaint();
-			
+			bpv.setBounds((int) (Screen.width * 0.05), (int) (Screen.height * 0.05), (int) (Screen.width * 0.25),
+					(int) (Screen.height * 0.85));
 
-			app.setContentPanel(lsp);
+			// remove all components from PLP -> update PLP -> add controllers
+			plp.removeAll();
+			plp.updatePlayLevelPanel(bv, bpv);
+			plp.addControllers();
+
+			// repaint the PlayLevelPanel
+			plp.repaint();
+
+			// set the contentpanel of container to contain PlayLevelPanel
+			app.setContentPanel(plp);
 		}
 	}
 
 	public void mouseEntered(MouseEvent e) {
+		// sets image to indicate hover event
 		button.setImg("generalhoverbutton.png");
 	}
 
 	public void mouseExited(MouseEvent e) {
+		// sets image back to original
 		button.setImg(fn);
 	}
 }

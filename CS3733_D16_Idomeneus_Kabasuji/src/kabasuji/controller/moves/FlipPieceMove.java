@@ -6,7 +6,7 @@ import kabasuji.model.Piece;
 /**
  * Move class to flip piece in bullpen by passing in the particular piece and direction
  * in the constructor. Validity of move is always checked
- * before execution of move
+ * before execution of move.
  * @author jwu
  */
 

@@ -71,24 +71,24 @@ public class RotateSelectedPieceBullpenController extends MouseAdapter {
 	 * is a GUI controller.
 	 */
 	public void mousePressed(MouseEvent me) {
-		if(selectedPiece != null){
-			RotatePieceMove rpm = new RotatePieceMove(selectedPiece, right);
-			rpm.execute(kabasuji);
-			zoompanel.removeAll();
-			selectedPiece = kabasuji.getSelectedLevel().getBullpen().getSelectedPiece();
-			PieceView pieceview = new PieceView(selectedPiece);
-			pieceview.setBounds(0, 0, (int) zoompanel.getSize().getWidth(), (int) zoompanel.getSize().getHeight());
-			pieceview.setupPiece();
-			zoompanel.add(pieceview);
-			zoompanel.repaint();
-		}
+		RotatePieceMove rpm = new RotatePieceMove(selectedPiece, right);
+		rpm.execute(kabasuji);
+		zoompanel.removeAll();
+		selectedPiece = kabasuji.getSelectedLevel().getBullpen().getSelectedPiece();
+		PieceView pieceview = new PieceView(selectedPiece);
+		pieceview.setBounds(0, 0, (int) zoompanel.getSize().getWidth(), (int) zoompanel.getSize().getHeight());
+		pieceview.setupPiece();
+		zoompanel.add(pieceview);
+		zoompanel.repaint();
 	}
 
 	public void mouseEntered(MouseEvent e) {
+		// sets image to indicate hover event
 		pieceicon.setImg("generalhoverbutton.png");
 	}
 
 	public void mouseExited(MouseEvent e) {
+		// sets back to original image
 		pieceicon.setImg(fnpiece);
 	}
 
