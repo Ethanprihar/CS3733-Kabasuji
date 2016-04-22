@@ -73,7 +73,9 @@ public class BuilderBoardController extends MouseAdapter {
 		}
 	}
 	public void mouseEntered(MouseEvent e) {
-		tile.setImg("general1button.png");
+		if (!selected){
+			tile.setImg("generalhoverbutton.png");
+		}
 	}
 
 	public void mouseExited(MouseEvent e) {

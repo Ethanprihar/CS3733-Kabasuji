@@ -28,6 +28,9 @@ public class BuilderHintTileMove extends BuilderMove{
 		// Give information to the builder to make the tile a hint tile
 		currentTile.setHint(true);
 		
+		// In case, the user wants to make an invalid tile, a hint tile; the tile should also be valid now
+		currentTile.setValid(true);
+		
 		return true;
 	}
 

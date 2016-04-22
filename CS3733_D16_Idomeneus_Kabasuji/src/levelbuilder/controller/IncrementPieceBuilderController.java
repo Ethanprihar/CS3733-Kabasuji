@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import kabasuji.model.Builder;
 import kabasuji.model.Screen;
@@ -46,24 +47,28 @@ public class IncrementPieceBuilderController extends MouseAdapter {
 	 */
 	public void mousePressed(MouseEvent me) {
 		
-		// Get the current text of the JLabel
-		String pieceNum = pieceCount.getText();
+		// If it is a left click, increment the count
+		if (SwingUtilities.isLeftMouseButton(me)){
 		
-		// Convert the current text to integer
-		int newPieceNum = Integer.parseInt(pieceNum);
-		
-		// Increment the count because of the mouse press event
-		newPieceNum = newPieceNum + 1;
-		
-		// Convert the incremented integer back to string 
-		String newStringNum = Integer.toString(newPieceNum);
-		
-		// Call the move class which gives information to the entity class about the incremented piece count		
-		IncrementPieceBuilderMove incrementMove = new IncrementPieceBuilderMove(numPiece);
-		// Execute the move
-		incrementMove.execute(builder);
-		
-		// Set the new string in the JLabel
-		pieceCount.setText(newStringNum);
+			// Get the current text of the JLabel
+			String pieceNum = pieceCount.getText();
+			
+			// Convert the current text to integer
+			int newPieceNum = Integer.parseInt(pieceNum);
+			
+			// Increment the count because of the mouse press event
+			newPieceNum = newPieceNum + 1;
+			
+			// Convert the incremented integer back to string 
+			String newStringNum = Integer.toString(newPieceNum);
+			
+			// Call the move class which gives information to the entity class about the incremented piece count		
+			IncrementPieceBuilderMove incrementMove = new IncrementPieceBuilderMove(numPiece);
+			// Execute the move
+			incrementMove.execute(builder);
+			
+			// Set the new string in the JLabel
+			pieceCount.setText(newStringNum);
+		}
 	}
 }
