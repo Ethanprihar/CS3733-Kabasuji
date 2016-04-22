@@ -60,89 +60,10 @@ public class SelectLevelController extends MouseAdapter {
 		ChangeScreenMove gtsm = new ChangeScreenMove(Screen.PlayLevel);
 		// kabasuji.selectedLevel = kabasuji.getLevels().get(0);
 		
-		
-		/**** temporary for testing **/
-		// make a new Bullpen
-		Bullpen bullpen = new Bullpen();
-
-		// make pieces to add to Bullpen
-		Tile testTile1 = new Tile(false, true, 0, 0);
-		Tile testTile2 = new Tile(false, false, 0, 0);
-		Tile[][] piece1 = { { testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 },
-				{ testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 },
-				{ testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 },
-				{ testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 },
-				{ testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 },
-				{ testTile1, testTile2, testTile2, testTile2, testTile2, testTile2 } };
-		Tile[][] piece2 = { { testTile2, testTile2, testTile2, testTile2, testTile2, testTile2 },
-				{ testTile1, testTile1, testTile1, testTile1, testTile2, testTile2 },
-				{ testTile2, testTile2, testTile2, testTile1, testTile2, testTile2 },
-				{ testTile2, testTile2, testTile2, testTile1, testTile2, testTile2 },
-				{ testTile2, testTile2, testTile2, testTile2, testTile2, testTile2 },
-				{ testTile2, testTile2, testTile2, testTile2, testTile2, testTile2 } };
-		Tile[][] piece3 = { { testTile2, testTile2, testTile2, testTile2, testTile2, testTile2 },
-				{ testTile2, testTile2, testTile1, testTile1, testTile2, testTile2 },
-				{ testTile2, testTile2, testTile1, testTile1, testTile2, testTile2 },
-				{ testTile2, testTile2, testTile1, testTile1, testTile2, testTile2 },
-				{ testTile2, testTile2, testTile2, testTile2, testTile2, testTile2 },
-				{ testTile2, testTile2, testTile2, testTile2, testTile2, testTile2 } };
-
-		Piece[] testset = new Piece[15];
-		for (int i = 0; i < testset.length/3; i++) {
-			testset[i] = new Piece(piece1);
-			bullpen.addPiece(testset[i]);
-		}
-		for (int i = 0; i < testset.length/3; i++) {
-			testset[i] = new Piece(piece2);
-			bullpen.addPiece(testset[i]);
-		}
-		for (int i = 0; i < testset.length/3; i++) {
-			testset[i] = new Piece(piece3);
-			bullpen.addPiece(testset[i]);
-		}
-
-		Tile boardTile0_0 = new Tile(false, true, 2, 0);
-		Tile boardTile0_1 = new Tile(false, true, 0, 0);
-		Tile boardTile0_2 = new Tile(false, true, 0, 0);
-		Tile boardTile0_3 = new Tile(false, true, 0, 0);
-		Tile boardTile0_4 = new Tile(false, true, 0, 0);
-		Tile boardTile1_0 = new Tile(false, true, 0, 0);
-		Tile boardTile1_1 = new Tile(false, true, 0, 0);
-		Tile boardTile1_2 = new Tile(false, true, 0, 0);
-		Tile boardTile1_3 = new Tile(false, true, 0, 0);
-		Tile boardTile1_4 = new Tile(false, true, 0, 0);
-		Tile boardTile2_0 = new Tile(false, true, 2, 0);
-		Tile boardTile2_1 = new Tile(false, true, 0, 0);
-		Tile boardTile2_2 = new Tile(false, true, 0, 0);
-		Tile boardTile2_3 = new Tile(false, true, 0, 0);
-		Tile boardTile2_4 = new Tile(false, true, 0, 0);
-		Tile boardTile3_0 = new Tile(false, true, 1, 0);
-		Tile boardTile3_1 = new Tile(false, true, 0, 0);
-		Tile boardTile3_2 = new Tile(false, true, 3, 0);
-		Tile boardTile3_3 = new Tile(false, true, 0, 0);
-		Tile boardTile3_4 = new Tile(false, true, 0, 0);
-		Tile boardTile4_0 = new Tile(false, true, 0, 0);
-		Tile boardTile4_1 = new Tile(false, true, 0, 0);
-		Tile boardTile4_2 = new Tile(false, true, 0, 0);
-		Tile boardTile4_3 = new Tile(false, true, 0, 0);
-		Tile boardTile4_4 = new Tile(false, false, 0, 0);
-		Tile[][] tiles = { { boardTile0_0, boardTile0_1, boardTile0_2, boardTile0_3, boardTile0_4 },
-				{ boardTile1_0, boardTile1_1, boardTile1_2, boardTile1_3, boardTile1_4 },
-				{ boardTile2_0, boardTile2_1, boardTile2_2, boardTile2_3, boardTile2_4 },
-				{ boardTile3_0, boardTile3_1, boardTile3_2, boardTile3_3, boardTile3_4 },
-				{ boardTile4_0, boardTile4_1, boardTile4_2, boardTile4_3, boardTile4_4 } };
-		PuzzleBoard tboard = new PuzzleBoard(tiles);
-
 		// Attempt to execute action on model
 		if (slm.execute(kabasuji)) {
 			gtsm.execute(kabasuji);
 			// Created JPanel screen object and update boundary to reflect
-			// changes
-			/*** temporary for testing ***/
-			kabasuji.getSelectedLevel().setBoard(tboard);
-			kabasuji.getSelectedLevel().setBoard(tboard);
-			kabasuji.getSelectedLevel().setBullpen(bullpen);
-			kabasuji.getSelectedLevel().setBullpen(bullpen);
 			
 			
 			PlayLevelPanel lsp = new PlayLevelPanel(kabasuji, app);

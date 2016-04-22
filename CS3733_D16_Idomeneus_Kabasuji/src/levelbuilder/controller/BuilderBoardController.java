@@ -53,9 +53,8 @@ public class BuilderBoardController extends MouseAdapter {
 			if (selected){
 				tile.setImg("general1button.png");
 				
-				// Call the move class to make the currentTile valid
-				BuilderSelectTileMove builderSelectTileMove = new BuilderSelectTileMove(currentTile);
-				builderSelectTileMove.execute(builder);
+				// Call the move class to make the currentTile in valid
+				currentTile.setValid(false);
 			}
 		}
 		
@@ -66,8 +65,7 @@ public class BuilderBoardController extends MouseAdapter {
 				tile.setImg("general2button.png");
 				
 				// Call the move class to make the currentTile a hint tile
-				BuilderHintTileMove builderHintTileMove = new BuilderHintTileMove(currentTile);
-				builderHintTileMove.execute(builder);
+				currentTile.setHint(true);
 			}
 			
 		}
