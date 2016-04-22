@@ -35,26 +35,19 @@ public class TileController extends MouseAdapter {
 	BullpenView bullpenview;
 
 	String fn;
-	int[][] highlightLocations;
-	int xLoc;
-	int yLoc;
 	Piece selectedPiece;
 	Tile[][] tiles;
 	Tile selfTile;
 	Kabasuji kabasuji;
 	JLabelIcon[] tileimgs;
 
-	public TileController(Kabasuji kabasuji, PlayLevelPanel panel, JLabelIcon tile, int highlightLocations[][], int y,
-			int x, Tile selfTile) {
+	public TileController(Kabasuji kabasuji, PlayLevelPanel panel, JLabelIcon tile, Tile selfTile) {
 		this.panel = panel;
 		this.board = kabasuji.getSelectedLevel().getBoard();
 		this.bullpen = kabasuji.getSelectedLevel().getBullpen();
 		this.tiles = board.getTiles();
 		this.tile = tile;
 		this.fn = tile.getFileName();
-		this.highlightLocations = highlightLocations;
-		xLoc = x;
-		yLoc = y;
 		this.selfTile = selfTile;
 		this.kabasuji = kabasuji;
 		this.boardview = panel.getBoardView();
@@ -71,11 +64,12 @@ public class TileController extends MouseAdapter {
 		bullpenview = panel.getBullpenView();
 		if (board.canAddPiece(selectedPiece, selfTile)) {
 			board.addPiece(selectedPiece, selfTile);
-			displayHoverPiece("generalclearedbutton.png", true,false);
+			displayHoverPiece("bluenightbutton.png", true,false);
 			bullpen.selectPiece(null);
 			bullpen.removePiece(selectedPiece);
 			bullpenview.setupBullpen();
-			
+			panel.getZoomPiece().removeAll();
+			panel.repaint();
 		}
 	}
 
@@ -86,10 +80,10 @@ public class TileController extends MouseAdapter {
 			System.out.println("Have piece....");
 			if (board.canAddPiece(selectedPiece, selfTile)) {
 				System.out.println("Can place.");
-				displayHoverPiece("generalclearedbutton.png", false,false);
+				displayHoverPiece("bluenightbutton.png", false,false);
 			} else {
 				System.out.println("Cannot place.");
-				displayHoverPiece("general1button.png", false,false);
+				displayHoverPiece("rednightbutton.png", false,false);
 
 			}
 		}

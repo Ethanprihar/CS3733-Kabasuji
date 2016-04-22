@@ -95,7 +95,7 @@ public class PieceView extends JPanel {
 			for (int j = 0; j < row; j++) {
 				// create a button image with specified dimension
 				// only display tile if it's valid
-				displayTiles(i, j, "generaltealbutton.png");
+				displayTiles(i, j, "bluenightbutton.png");
 			}
 		}
 	}
@@ -106,8 +106,15 @@ public class PieceView extends JPanel {
 	 * @param pic
 	 */
 	public void displayTiles(int i, int j, String pic) {
+		int xoffset = (int) piece.findReferencePoint().getX();
+		int yoffset = (int) piece.findReferencePoint().getY();
 		if (tiles[i][j].isValid()) {
+			if ( xoffset == j && yoffset == i){
+				tileview[i * row + j] = (new JLabelIcon("generaltealbutton.png", piecesidescaled, piecesidescaled));
+			}
+			else{
 			tileview[i * row + j] = (new JLabelIcon(pic, piecesidescaled, piecesidescaled));
+			}
 			tileview[i * row + j].setLocation((int) (piecesidelength * j  + offset + getSize().getWidth()*0.5 - centroid.getX()),
 					(int) (piecesidelength *i + offset + getSize().getHeight()*0.5 - centroid.getY()));
 			add(tileview[i * row + j]);
