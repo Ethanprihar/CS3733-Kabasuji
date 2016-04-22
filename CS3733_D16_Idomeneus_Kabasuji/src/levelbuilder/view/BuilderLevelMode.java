@@ -77,6 +77,5 @@ public class BuilderLevelMode extends JPanel {
 		mainmenubtn.add(mainmenulbl);
 		mainmenubtn.addMouseListener(new GoToMainMenuBuilderController(builder, app, mainmenubtn));
 		background.add(mainmenubtn);
-	}
-	
+	}	
 }

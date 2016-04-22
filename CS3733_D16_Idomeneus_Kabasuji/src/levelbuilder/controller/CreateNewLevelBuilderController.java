@@ -3,6 +3,7 @@ package levelbuilder.controller;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import kabasuji.controller.moves.ChangeScreenMove;
@@ -50,6 +51,7 @@ public class CreateNewLevelBuilderController extends MouseAdapter {
 		// Attempt to execute action on model
 		gtsm.execute(builder);
 		// Created JPanel screen object and update boundary to reflect changes
+		
 		BuilderLevelMode lsp = new BuilderLevelMode(builder, app);
 		app.setContentPanel(lsp);
 	}

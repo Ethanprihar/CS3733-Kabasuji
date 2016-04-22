@@ -3,6 +3,7 @@ package levelbuilder.controller;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -12,9 +13,11 @@ import kabasuji.model.Tile;
 import kabasuji.view.JLabelIcon;
 import levelbuilder.controller.moves.ChangeScreenBuilderMove;
 import levelbuilder.controller.moves.LevelModeBuilderMove;
+import levelbuilder.view.BuilderLevelMode;
 import levelbuilder.view.BuilderLightningLevelPanel;
 import levelbuilder.view.BuilderPuzzleLevelPanel;
 import levelbuilder.view.BuilderReleaseLevelPanel;
+import levelbuilder.view.ErrorDialogBox;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
 /**
@@ -54,6 +57,7 @@ public class EditNewLevelBuilderController extends MouseAdapter {
 		// Created ChangeScreenBuilderMove and input desired screen
 		ChangeScreenBuilderMove gtsm = new ChangeScreenBuilderMove(Screen.LevelSelect);
 		
+		// If the move was valid, execute this loop
 		if (slm.execute(builder)) {
 			gtsm.execute(builder);
 			// Created JPanel screen object and update boundary to reflect changes
@@ -87,6 +91,11 @@ public class EditNewLevelBuilderController extends MouseAdapter {
 				BuilderReleaseLevelPanel lsp = new BuilderReleaseLevelPanel(builder, app);
 				app.setContentPanel(lsp);
 			}
+		}
+		
+		// If the move was not valid, open a dialog box to display the message
+		else {
+			ErrorDialogBox.infoBox("The dimension entered must be between 3 and 12 inclusive", "Invalid Input");
 		}
 	}
 	
