@@ -104,9 +104,7 @@ public class Piece implements Serializable
 		for(int i = 0; i< tiles.length; i++){
 			for (int j = 0; j < tiles.length; j++){
 				if(tiles[j][i].isValid()){
-					System.out.println("VALID ONCE");
 					refpnt = new Point(i,j);
-					System.out.println("Reference x: "+j+"y: "+i);
 					return refpnt;
 				}
 			}

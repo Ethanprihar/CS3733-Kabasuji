@@ -72,6 +72,7 @@ public class FlipSelectedPieceBullpenController extends MouseAdapter {
 	 * is a GUI controller.
 	 */
 	public void mousePressed(MouseEvent me) {
+		if (selectedPiece != null) {
 			FlipPieceMove fpm = new FlipPieceMove(selectedPiece, right);
 			fpm.execute(kabasuji);
 			zoompanel.removeAll();
@@ -81,6 +82,7 @@ public class FlipSelectedPieceBullpenController extends MouseAdapter {
 			pieceview.setupPiece();
 			zoompanel.add(pieceview);
 			zoompanel.repaint();
+		}
 	}
 
 	public void mouseEntered(MouseEvent e) {

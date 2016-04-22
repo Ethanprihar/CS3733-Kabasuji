@@ -71,6 +71,7 @@ public class RotateSelectedPieceBullpenController extends MouseAdapter {
 	 * is a GUI controller.
 	 */
 	public void mousePressed(MouseEvent me) {
+		if(selectedPiece != null){
 			RotatePieceMove rpm = new RotatePieceMove(selectedPiece, right);
 			rpm.execute(kabasuji);
 			zoompanel.removeAll();
@@ -80,6 +81,7 @@ public class RotateSelectedPieceBullpenController extends MouseAdapter {
 			pieceview.setupPiece();
 			zoompanel.add(pieceview);
 			zoompanel.repaint();
+		}
 	}
 
 	public void mouseEntered(MouseEvent e) {
