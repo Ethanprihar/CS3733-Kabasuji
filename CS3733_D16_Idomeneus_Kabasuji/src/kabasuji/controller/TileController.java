@@ -61,30 +61,23 @@ public class TileController extends MouseAdapter {
 	 * is a GUI controller.
 	 */
 	public void mousePressed(MouseEvent me) {
-
+		if (board.canAddPiece(selectedPiece, selfTile)) {
+			board.addPiece(selectedPiece, selfTile);
+			displayHoverPiece("generalclearedbutton.png", true,false);
+		}
 	}
 
 	public void mouseEntered(MouseEvent e) {
 		selectedPiece = kabasuji.getSelectedLevel().getBullpen().getSelectedPiece();
-		// Shows the shape of a piece.
-		// for(int a = 0; a<6; a++)
-		// {
-		// for (int b = 0; b<6; b++)
-		// {
-		// System.out.print(selectedPiece.getTile(a, b).isValid());
-		// }
-		// System.out.println("");
-		// }
 
 		if (selectedPiece != null) {
 			System.out.println("Have piece....");
 			if (board.canAddPiece(selectedPiece, selfTile)) {
 				System.out.println("Can place.");
-				displayHoverPiece("generalclearedbutton.png");
-
+				displayHoverPiece("generalclearedbutton.png", false,false);
 			} else {
 				System.out.println("Cannot place.");
-				displayHoverPiece("general1button.png");
+				displayHoverPiece("general1button.png", false,false);
 
 			}
 		}
@@ -92,12 +85,12 @@ public class TileController extends MouseAdapter {
 
 	public void mouseExited(MouseEvent e) {
 		if (selectedPiece != null) {
-			displayHoverPiece(fn);
+			displayHoverPiece("general1button.png", false,true);
+			// tile.setImg(fn);
 		}
-		// tile.setImg(fn);
 	}
 
-	public void displayHoverPiece(String hpfn) {
+	public void displayHoverPiece(String hpfn, boolean setNewFilename, boolean setOriginalImg) {
 		selectedPiece = kabasuji.getSelectedLevel().getBullpen().getSelectedPiece();
 		for (int i = 0; i < tiles.length; i++) {
 			for (int j = 0; j < tiles.length; j++) {
@@ -109,7 +102,16 @@ public class TileController extends MouseAdapter {
 							try {
 								if ((selectedPiece.getTile(y + yoffset, x + xoffset).isValid())
 										&& tiles[j + y][i + x].isValid()) {
+									if (setNewFilename) {
+										tileimgs[(j + y) * tiles.length + (i + x)].setFileName(hpfn);
+									}
+									if(setOriginalImg){
+										String origfn = tileimgs[(j + y) * tiles.length + (i + x)].getFileName();
+										tileimgs[(j + y) * tiles.length + (i + x)].setImg(origfn);
+									}
+									else{
 									tileimgs[(j + y) * tiles.length + (i + x)].setImg(hpfn);
+									}
 								}
 							} catch (IndexOutOfBoundsException e) {
 								System.out.println("Out of bounds!!");
