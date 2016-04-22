@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class Builder
 {
 	int currentScreen;
-	ArrayList<Level> levels;
+	public ArrayList<Level> levels;
 	Piece[] pieces;
 	int[] numOfPieces;
 	Level selectedLevel;

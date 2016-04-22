@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 import kabasuji.model.Builder;
 import kabasuji.model.Screen;
 import kabasuji.view.JLabelIcon;
-import levelbuilder.controller.BuilderSelectLevelController;
+import levelbuilder.controller.LoadLevelsBuilderController;
 import levelbuilder.controller.CreateNewLevelBuilderController;
 
 import javax.swing.JLabel;
@@ -59,7 +59,7 @@ public class BuilderMainMenu extends JPanel {
 		buildermainbtn[0].addMouseListener(new CreateNewLevelBuilderController(builder, app, buildermainbtn[0]));
 		
 		// Create a mouse listener for the load level button
-		buildermainbtn[1].addMouseListener(new BuilderSelectLevelController(builder, app, buildermainbtn[1]));
+		buildermainbtn[1].addMouseListener(new LoadLevelsBuilderController(builder, app, buildermainbtn[1]));
 	}
 	
 }

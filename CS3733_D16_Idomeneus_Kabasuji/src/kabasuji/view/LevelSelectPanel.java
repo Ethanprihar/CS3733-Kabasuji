@@ -15,6 +15,7 @@ import java.awt.LayoutManager;
 import javax.swing.SwingConstants;
 import java.util.Random;
 
+@SuppressWarnings("serial")
 public class LevelSelectPanel extends JPanel {
 	/** Entities and Boundaries associated **/
 	Kabasuji kabasuji;
@@ -30,6 +31,9 @@ public class LevelSelectPanel extends JPanel {
 
 	/**
 	 * Create the LevelSelectPanel.
+	 * 
+	 * Note: We use a single large array so that even given 15+ levels, we will only
+	 * display the first 15 levels (15 because row*col)
 	 * 
 	 * @param kabasuji
 	 * @param app
