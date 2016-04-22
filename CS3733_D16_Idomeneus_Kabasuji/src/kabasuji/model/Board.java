@@ -227,6 +227,11 @@ public abstract class Board implements Serializable {
 		else
 			return false;
 	}
+	
+	public Tile getTile(int y, int x)
+	{
+		return tiles[y][x];
+	}
 
 	public Point getPosition(Tile tilepnt) {
 		for (int i = 0; i < tiles.length; i++) {

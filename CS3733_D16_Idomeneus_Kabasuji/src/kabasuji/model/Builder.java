@@ -83,11 +83,30 @@ public class Builder
 			}
 			System.out.println("added " + numOfPieces[i] + " of piece " + i);
 		}
+		int valid = 0;
+		int invalid = 0;
+		int hint = 0;
+		int nothint = 0;
+		for(int i=0; i<selectedLevel.getBoard().getTiles().length; i++)
+		{
+			for(int j=0; j<selectedLevel.getBoard().getTiles().length; j++)
+			{
+				if(selectedLevel.getBoard().getTile(i,j).isValid())
+					valid++;
+				else
+					invalid++;
+				if(selectedLevel.getBoard().getTile(i,j).isHint())
+					hint++;
+				else
+					nothint++;
+			}
+		}
+		System.out.println("hints: " + hint + "    not hints: " + nothint + "    valid: " + valid + "    invalid: " + invalid);
 		if (!levels.contains(selectedLevel))
 			levels.add(selectedLevel);
 		selectedLevel = null;
 		numOfPieces = new int[35];
-		System.out.println(levels.get(levels.size()-1) == null);
+		System.out.println(levels.size());
 	}
 	
 	public void deleteLevel()

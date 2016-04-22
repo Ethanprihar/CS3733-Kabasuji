@@ -55,6 +55,25 @@ public class BuilderBoardController extends MouseAdapter {
 				
 				// Call the move class to make the currentTile in valid
 				currentTile.setValid(false);
+				int valid = 0;
+				int invalid = 0;
+				int hint = 0;
+				int nothint = 0;
+				for(int i=0; i<builder.getSelectedLevel().getBoard().getTiles().length; i++)
+				{
+					for(int j=0; j<builder.getSelectedLevel().getBoard().getTiles().length; j++)
+					{
+						if(builder.getSelectedLevel().getBoard().getTile(i,j).isValid())
+							valid++;
+						else
+							invalid++;
+						if(builder.getSelectedLevel().getBoard().getTile(i,j).isHint())
+							hint++;
+						else
+							nothint++;
+					}
+				}
+				System.out.println("hints: " + hint + "    not hints: " + nothint + "    valid: " + valid + "    invalid: " + invalid);
 			}
 		}
 		
@@ -65,6 +84,7 @@ public class BuilderBoardController extends MouseAdapter {
 				tile.setImg("general2button.png");
 				
 				// Call the move class to make the currentTile a hint tile
+				System.out.println("Just called the tile controller");
 				currentTile.setHint(true);
 			}
 			
