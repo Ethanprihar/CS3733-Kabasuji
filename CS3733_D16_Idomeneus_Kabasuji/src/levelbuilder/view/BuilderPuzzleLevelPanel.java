@@ -145,6 +145,11 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		redoBtn.add(redoLbl);
 		background.add(redoBtn);
 
+		JTextField numMoves = new JTextField();
+		numMoves.setBounds((int) (Screen.width * 0.08 + 10), (int) (Screen.height * 0.30), 40, 20);
+		numMoves.setFont(new Font("Onyx", Font.BOLD, 18));
+		background.add(numMoves);
+		
 		JLabelIcon saveBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		saveBtn.setLocation((int) (Screen.width * 0.72) + (int) (saveBtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.18));
@@ -153,7 +158,7 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		saveLbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		saveBtn.add(saveLbl);
 		background.add(saveBtn);
-		saveBtn.addMouseListener(new SaveLevelController(builder, app, saveBtn));
+		saveBtn.addMouseListener(new SaveLevelController(builder, app, saveBtn, numMoves));
 
 		JLabelIcon deleteBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		deleteBtn.setLocation((int) (Screen.width * 0.82) + (int) (saveBtn.getSize().getWidth() / 2),
@@ -163,11 +168,6 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		deleteLbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		deleteBtn.add(deleteLbl);
 		background.add(deleteBtn);
-		
-		JTextField numMoves = new JTextField();
-		numMoves.setBounds((int) (Screen.width * 0.08 + 10), (int) (Screen.height * 0.30), 40, 20);
-		numMoves.setFont(new Font("Onyx", Font.BOLD, 18));
-		background.add(numMoves);
 
 		JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", 70, 70);
 		mainmenubtn.setLocation((int) (Screen.width * 0.78) + (int) (saveBtn.getSize().getWidth() / 2),

@@ -239,4 +239,9 @@ public class Builder
 	{
 		currentColor = c;
 	}
+	
+	public void setEndCondition(int ec)
+	{
+		endCondition = ec;
+	}
 }

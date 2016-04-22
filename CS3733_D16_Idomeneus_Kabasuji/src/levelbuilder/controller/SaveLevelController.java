@@ -2,10 +2,14 @@ package levelbuilder.controller;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import kabasuji.model.Builder;
+import kabasuji.model.Piece;
 import kabasuji.model.Screen;
 import kabasuji.view.JLabelIcon;
 import levelbuilder.controller.moves.ChangeScreenBuilderMove;
@@ -28,14 +32,16 @@ public class SaveLevelController extends MouseAdapter {
 	JPanel contentPanel;	
 	JLabelIcon button;	
 	String fn;
+	JTextField ec;
 
 
-	public SaveLevelController(Builder builder, TopLevelApplicationBuilder app, JLabelIcon button) {
+	public SaveLevelController(Builder builder, TopLevelApplicationBuilder app, JLabelIcon button, JTextField ec) {
 		this.builder = builder;
 		this.app = app;
 		this.contentPanel = app.getContentPanel();		
 		this.button = button;
 		this.fn = button.getFileName();
+		this.ec = ec;
 	}
 
 	/**
@@ -44,14 +50,22 @@ public class SaveLevelController extends MouseAdapter {
 	 */
 	public void mousePressed(MouseEvent me) {
 		// Created ChangeScreenBuilderMove and input desired screen
-		builder.saveLevel();
-		builder.saveToDisc();
-		ChangeScreenBuilderMove gtsm = new ChangeScreenBuilderMove(Screen.Opening);
-		// Attempt to execute action on model
-		gtsm.execute(builder);
-		// Created JPanel screen object and update boundary to reflect changes
-		BuilderMainMenu lsp = new BuilderMainMenu(builder, app);
-		app.setContentPanel(lsp);
+		try
+		{
+			builder.setEndCondition(Integer.parseInt(ec.getText()));
+			builder.saveLevel();
+			builder.saveToDisc();
+			ChangeScreenBuilderMove gtsm = new ChangeScreenBuilderMove(Screen.Opening);
+			// Attempt to execute action on model
+			gtsm.execute(builder);
+			// Created JPanel screen object and update boundary to reflect changes
+			BuilderMainMenu lsp = new BuilderMainMenu(builder, app);
+			app.setContentPanel(lsp);
+		}
+		catch (Exception exc)
+		{
+			//exc.printStackTrace(); // If there was an error, print the info.
+		}
 	}
 	public void mouseEntered(MouseEvent e) {
 		button.setImg("generalhoverbutton.png");
