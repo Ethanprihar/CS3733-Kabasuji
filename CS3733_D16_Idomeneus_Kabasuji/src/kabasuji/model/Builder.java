@@ -74,17 +74,20 @@ public class Builder
 	public void saveLevel()
 	{
 		selectedLevel.setEndCondition(endCondition);
+		System.out.println("end condition: " + endCondition);
 		for(int i=0; i<35; i++)
 		{
 			for(int j=0; j<numOfPieces[i]; j++)
 			{
 				selectedLevel.getBullpen().addPiece(pieces[i].copy());
 			}
+			System.out.println("added " + numOfPieces[i] + " of piece " + i);
 		}
 		if (!levels.contains(selectedLevel))
 			levels.add(selectedLevel);
 		selectedLevel = null;
 		numOfPieces = new int[35];
+		System.out.println(levels.get(levels.size()-1) == null);
 	}
 	
 	public void deleteLevel()

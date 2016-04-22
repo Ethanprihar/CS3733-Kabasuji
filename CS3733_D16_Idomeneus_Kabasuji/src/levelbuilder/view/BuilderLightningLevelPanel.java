@@ -11,6 +11,7 @@ import kabasuji.model.Tile;
 import kabasuji.view.JLabelIcon;
 import levelbuilder.controller.GoToMainMenuBuilderController;
 import levelbuilder.controller.IncrementPieceBuilderController;
+import levelbuilder.controller.SaveLevelController;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -151,6 +152,7 @@ public class BuilderLightningLevelPanel extends JPanel {
 		saveLbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		saveBtn.add(saveLbl);
 		background.add(saveBtn);
+		saveBtn.addMouseListener(new SaveLevelController(builder, app, saveBtn));
 
 		JLabelIcon deleteBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		deleteBtn.setLocation((int) (Screen.width * 0.82) + (int) (saveBtn.getSize().getWidth() / 2),

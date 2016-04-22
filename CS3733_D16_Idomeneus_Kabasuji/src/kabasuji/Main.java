@@ -14,14 +14,7 @@ public class Main {
 	 */
 	public static void main(String[] args)
 	{
-		makePieces();
-		makeLevelsForTesting();
 		Kabasuji kabasuji = new Kabasuji();
-		System.out.println("In Kabasuji the levels:");
-		for(Level l: kabasuji.getLevels())
-		{
-			System.out.println(l.isLocked());
-		}
 		TopLevelApplication frame = new TopLevelApplication(kabasuji);
 		// start splash screen
 		//new SplashWindow();
