@@ -52,7 +52,9 @@ public class SaveLevelController extends MouseAdapter {
 		// Created ChangeScreenBuilderMove and input desired screen
 		try
 		{
+			System.out.println("I am here 1");
 			builder.setEndCondition(Integer.parseInt(ec.getText()));
+			System.out.println("I am here 2");
 			builder.saveLevel();
 			builder.saveToDisc();
 			ChangeScreenBuilderMove gtsm = new ChangeScreenBuilderMove(Screen.Opening);

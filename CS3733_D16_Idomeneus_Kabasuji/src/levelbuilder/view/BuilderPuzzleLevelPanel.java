@@ -58,8 +58,8 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 				(int) (Screen.height * 0.5));
 		board.setLocation((int) (Screen.width * 0.22), (int) (Screen.height * 0.02));
 		
-		// Create a puzzle board
-		PuzzleBoard tboard = new PuzzleBoard(boardTile);
+		// get the puzzle board
+		PuzzleBoard tboard = (PuzzleBoard) builder.getSelectedLevel().getBoard();
 		BuilderBoardView boardview = new BuilderBoardView(tboard, board, builder, app);
 		background.add(board);
 		
