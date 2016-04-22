@@ -40,8 +40,8 @@ public class TopLevelApplicationBuilder extends JFrame {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		double width = screenSize.getWidth();
 		double height = screenSize.getHeight();
-		int x0 = (int) (0.1*width);
-		int y0 = (int) (0.1*height);
+		int x0 = (int) (width - Screen.width)/2;
+		int y0 = (int) (height-Screen.height)/2;
 		setBounds(x0,y0,Screen.width,Screen.height);
 		// not resizable
 		setResizable(false);

@@ -10,13 +10,13 @@ import kabasuji.model.Tile;
  * @author jwu
  */
 
-public class BuilderSelectTileMove extends BuilderMove{
+public class BuilderHintTileMove extends BuilderMove{
 	
 	// target tile
 	Tile currentTile;
 	
 	// Constructor for Change Screen Move
-	public BuilderSelectTileMove(Tile currentTile){
+	public BuilderHintTileMove(Tile currentTile){
 		this.currentTile = currentTile;
 	}
 
@@ -25,8 +25,8 @@ public class BuilderSelectTileMove extends BuilderMove{
 		if(!valid(builder)){
 			return false;
 		}
-		// Give information to the builder to make the tile invalid
-		currentTile.setValid(false);
+		// Give information to the builder to make the tile a hint tile
+		currentTile.setHint(true);
 		
 		return true;
 	}

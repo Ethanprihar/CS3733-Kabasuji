@@ -3,10 +3,13 @@ package levelbuilder.controller;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.SwingUtilities;
+
 import kabasuji.model.Board;
 import kabasuji.model.Builder;
 import kabasuji.model.Tile;
 import kabasuji.view.JLabelIcon;
+import levelbuilder.controller.moves.BuilderHintTileMove;
 import levelbuilder.controller.moves.BuilderSelectTileMove;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
@@ -44,17 +47,33 @@ public class BuilderBoardController extends MouseAdapter {
 	 * is a GUI controller.
 	 */
 	public void mousePressed(MouseEvent me) {
-		selected = true;
-		if (selected){
-			tile.setImg("generalhoverbutton.png");
+		// If the mousePressed event is a left click, then make the tile invalid
+		if (SwingUtilities.isLeftMouseButton(me)){
+			selected = true;
+			if (selected){
+				tile.setImg("general1button.png");
+				
+				// Call the move class to make the currentTile valid
+				BuilderSelectTileMove builderSelectTileMove = new BuilderSelectTileMove(currentTile);
+				builderSelectTileMove.execute(builder);
+			}
+		}
+		
+		// If the mousePressed event is a left click, then make the tile a hint tile
+		else if (SwingUtilities.isRightMouseButton(me)){
+			selected = true;
+			if (selected){
+				tile.setImg("general2button.png");
+				
+				// Call the move class to make the currentTile a hint tile
+				BuilderHintTileMove builderHintTileMove = new BuilderHintTileMove(currentTile);
+				builderHintTileMove.execute(builder);
+			}
 			
-			// Call the move class to make the currentTile valid
-			BuilderSelectTileMove builderSelectTileMove = new BuilderSelectTileMove(currentTile);
-			builderSelectTileMove.execute(builder);
 		}
 	}
 	public void mouseEntered(MouseEvent e) {
-		tile.setImg("generalhoverbutton.png");
+		tile.setImg("general1button.png");
 	}
 
 	public void mouseExited(MouseEvent e) {
