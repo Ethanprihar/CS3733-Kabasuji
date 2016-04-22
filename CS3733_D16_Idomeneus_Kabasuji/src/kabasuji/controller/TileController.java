@@ -4,10 +4,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import kabasuji.model.Board;
+import kabasuji.model.Bullpen;
 import kabasuji.model.Kabasuji;
 import kabasuji.model.Piece;
 import kabasuji.model.Tile;
 import kabasuji.view.BoardView;
+import kabasuji.view.BullpenView;
 import kabasuji.view.JLabelIcon;
 import kabasuji.view.PlayLevelPanel;
 
@@ -24,11 +26,13 @@ public class TileController extends MouseAdapter {
 
 	/** Entity and Boundaries Associated **/
 	Board board;
+	Bullpen bullpen;
 	JLabelIcon tile;
 
 	PlayLevelPanel panel;
 
 	BoardView boardview;
+	BullpenView bullpenview;
 
 	String fn;
 	int[][] highlightLocations;
@@ -44,6 +48,7 @@ public class TileController extends MouseAdapter {
 			int x, Tile selfTile) {
 		this.panel = panel;
 		this.board = kabasuji.getSelectedLevel().getBoard();
+		this.bullpen = kabasuji.getSelectedLevel().getBullpen();
 		this.tiles = board.getTiles();
 		this.tile = tile;
 		this.fn = tile.getFileName();
@@ -53,6 +58,7 @@ public class TileController extends MouseAdapter {
 		this.selfTile = selfTile;
 		this.kabasuji = kabasuji;
 		this.boardview = panel.getBoardView();
+		this.bullpenview = panel.getBullpenView();
 		this.tileimgs = boardview.getTileImages();
 	}
 
@@ -61,9 +67,15 @@ public class TileController extends MouseAdapter {
 	 * is a GUI controller.
 	 */
 	public void mousePressed(MouseEvent me) {
+		bullpen = kabasuji.getSelectedLevel().getBullpen();
+		bullpenview = panel.getBullpenView();
 		if (board.canAddPiece(selectedPiece, selfTile)) {
 			board.addPiece(selectedPiece, selfTile);
 			displayHoverPiece("generalclearedbutton.png", true,false);
+			bullpen.selectPiece(null);
+			bullpen.removePiece(selectedPiece);
+			bullpenview.setupBullpen();
+			
 		}
 	}
 
@@ -84,6 +96,7 @@ public class TileController extends MouseAdapter {
 	}
 
 	public void mouseExited(MouseEvent e) {
+		selectedPiece = kabasuji.getSelectedLevel().getBullpen().getSelectedPiece();
 		if (selectedPiece != null) {
 			displayHoverPiece("general1button.png", false,true);
 			// tile.setImg(fn);

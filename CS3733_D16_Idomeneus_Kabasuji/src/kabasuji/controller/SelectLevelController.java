@@ -80,14 +80,24 @@ public class SelectLevelController extends MouseAdapter {
 				{ testTile2, testTile2, testTile2, testTile1, testTile2, testTile2 },
 				{ testTile2, testTile2, testTile2, testTile2, testTile2, testTile2 },
 				{ testTile2, testTile2, testTile2, testTile2, testTile2, testTile2 } };
+		Tile[][] piece3 = { { testTile2, testTile2, testTile2, testTile2, testTile2, testTile2 },
+				{ testTile2, testTile2, testTile1, testTile1, testTile2, testTile2 },
+				{ testTile2, testTile2, testTile1, testTile1, testTile2, testTile2 },
+				{ testTile2, testTile2, testTile1, testTile1, testTile2, testTile2 },
+				{ testTile2, testTile2, testTile2, testTile2, testTile2, testTile2 },
+				{ testTile2, testTile2, testTile2, testTile2, testTile2, testTile2 } };
 
-		Piece[] testset = new Piece[40];
-		for (int i = 0; i < testset.length/2; i++) {
+		Piece[] testset = new Piece[15];
+		for (int i = 0; i < testset.length/3; i++) {
 			testset[i] = new Piece(piece1);
 			bullpen.addPiece(testset[i]);
 		}
-		for (int i = 0; i < testset.length/2; i++) {
+		for (int i = 0; i < testset.length/3; i++) {
 			testset[i] = new Piece(piece2);
+			bullpen.addPiece(testset[i]);
+		}
+		for (int i = 0; i < testset.length/3; i++) {
+			testset[i] = new Piece(piece3);
 			bullpen.addPiece(testset[i]);
 		}
 
@@ -137,11 +147,11 @@ public class SelectLevelController extends MouseAdapter {
 			
 			PlayLevelPanel lsp = new PlayLevelPanel(kabasuji, app);
 			
+			BullpenView bpv = new BullpenView(kabasuji, lsp, 2, 10);
+			
 			BoardView bv = new BoardView(kabasuji, lsp);
 			bv.setBounds((int) (Screen.width * 0.35), (int) (Screen.height * 0.36), (int) (Screen.height * 0.54),
 					(int) (Screen.height * 0.54));
-			
-			BullpenView bpv = new BullpenView(kabasuji, lsp, 4, 10);
 			bpv.setSize((int) (Screen.width * 0.25), (int) (Screen.height * 0.85));
 			bpv.setLocation((int) (Screen.width * 0.05), (int) (Screen.height * 0.05));
 			
