@@ -82,9 +82,9 @@ public class BoardView extends JPanel {
 			for (int j = 0; j < row; j++) {
 				// create a button image with specified dimension
 				// only display tile if it's valid
-				if (tiles[j][i].isValid()) {
+				if (tiles[i][j].isValid()) {
 					displayTile(i, j, "boardtile.png");
-					tile[i * row + j].addMouseListener(new TileController(kabasuji, panel, tile[i * row + j], tiles[j][i]));
+					tile[i * row + j].addMouseListener(new TileController(kabasuji, panel, tile[i * row + j], tiles[i][j]));
 				}
 			}
 		}
