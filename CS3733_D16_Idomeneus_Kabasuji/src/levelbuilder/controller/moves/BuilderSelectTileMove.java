@@ -27,7 +27,7 @@ public class BuilderSelectTileMove extends BuilderMove{
 		}
 		// Give information to the builder to make the tile invalid
 		currentTile.setValid(false);
-		
+		currentTile.setHint(false);
 		return true;
 	}
 

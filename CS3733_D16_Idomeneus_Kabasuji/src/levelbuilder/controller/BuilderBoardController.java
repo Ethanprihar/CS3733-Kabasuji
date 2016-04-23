@@ -54,6 +54,7 @@ public class BuilderBoardController extends MouseAdapter {
 				tile.setImg("general1button.png");
 				
 				// Call the move class to make the currentTile in valid
+				currentTile.setHint(false);
 				currentTile.setValid(false);
 				int valid = 0;
 				int invalid = 0;
@@ -87,7 +88,9 @@ public class BuilderBoardController extends MouseAdapter {
 				
 				// Call the move class to make the currentTile a hint tile
 				System.out.println("Just called the tile controller");
-				currentTile.setHint(true);
+				currentTile.setHint(true);		
+				currentTile.setValid(true);
+
 			}
 			
 		}
