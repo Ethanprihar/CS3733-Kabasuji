@@ -4,6 +4,8 @@ import javax.swing.JPanel;
 
 import kabasuji.controller.FlipSelectedPieceBullpenController;
 import kabasuji.controller.GoToMainMenuController;
+import kabasuji.controller.NextLevelController;
+import kabasuji.controller.ResetLevelController;
 import kabasuji.controller.RotateSelectedPieceBullpenController;
 import kabasuji.model.Board;
 import kabasuji.model.Bullpen;
@@ -34,6 +36,9 @@ public class PlayLevelPanel extends JPanel {
 	JLabelIcon rotaterbtn;
 	JLabelIcon fliphbtn;
 	JLabelIcon flipvbtn;
+	
+	JLabelIcon resetlevelbtn;
+	JLabelIcon nextlevelbtn;
 
 	JLabel movesLeft;
 	JLabel movesLeftNum;
@@ -164,7 +169,7 @@ public class PlayLevelPanel extends JPanel {
 		mainmenubtn.addMouseListener(new GoToMainMenuController(kabasuji, app, mainmenubtn));
 		add(mainmenubtn);
 
-		JLabelIcon nextlevelbtn = new JLabelIcon("generalbutton.png", 70, 70);
+		nextlevelbtn = new JLabelIcon("generalbutton.png", 70, 70);
 		nextlevelbtn.setLocation((int) (Screen.width * 0.74) + (int) (rotatelbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * .6));
 		JLabel nextlevellbl = new JLabel("<html>Next<br>Level</html>", SwingConstants.CENTER);
@@ -173,7 +178,7 @@ public class PlayLevelPanel extends JPanel {
 		nextlevelbtn.add(nextlevellbl);
 		add(nextlevelbtn);
 
-		JLabelIcon resetlevelbtn = new JLabelIcon("generalbutton.png", 70, 70);
+		resetlevelbtn = new JLabelIcon("generalbutton.png", 70, 70);
 		resetlevelbtn.setLocation((int) (Screen.width * 0.74) + (int) (rotatelbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * .73));
 		JLabel resetlevellbl = new JLabel("<html>Reset<br>Level</html>", SwingConstants.CENTER);
@@ -212,6 +217,8 @@ public class PlayLevelPanel extends JPanel {
 		rotatelbtn.addMouseListener(new RotateSelectedPieceBullpenController(kabasuji, this, rotatelbtn, false));
 		flipvbtn.addMouseListener(new FlipSelectedPieceBullpenController(kabasuji, this, flipvbtn, true));
 		fliphbtn.addMouseListener(new FlipSelectedPieceBullpenController(kabasuji, this, fliphbtn, false));
+		resetlevelbtn.addMouseListener(new ResetLevelController(kabasuji, app, resetlevelbtn));
+		nextlevelbtn.addMouseListener(new NextLevelController(kabasuji, app, nextlevelbtn));
 	}
 
 	/**
@@ -249,6 +256,16 @@ public class PlayLevelPanel extends JPanel {
 	 */
 	public JLabel getTimeLeftNum() {
 		return timeLeftNum;
+	}
+	
+	/**
+	 * Setter for JLabel timeLeftNum
+	 * 
+	 * @return
+	 */
+	public void setTimeLeftNum(Integer timeLeft) {
+		timeLeftNum.setText(timeLeft.toString());
+		repaint();
 	}
 
 	/**

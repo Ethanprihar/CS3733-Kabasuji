@@ -3,12 +3,24 @@ package kabasuji.model;
 public class LightningLevel extends Level {
 
 	int timeLimit;
-	boolean timeLeft;
+	int currentTime;
 	
 	public LightningLevel(LightningBoard bd, Bullpen bp, int tl) {
 		super(bd, bp);
 		timeLimit = tl;
-		timeLeft = true;
+		currentTime = 0;
+	}
+	
+	public void incrementCurrentTime() {
+		currentTime += 1;
+	}
+	
+	public void setCurrentTime(int time) {
+		currentTime = time;
+	}
+	
+	public int getCurrentTime(int time) {
+		return currentTime;
 	}
 	
 	public Integer getEndCondition()
@@ -40,19 +52,19 @@ public class LightningLevel extends Level {
 		return timeLimit;
 	}
 	
+	public int getTimeLeft() {
+		return timeLimit - currentTime;
+	}
+	
 	/*
 	 * Returns a booleans indicating if there is time left in the game
 	 */
 	public boolean hasTimeLeft() {
-		return timeLeft;
+		return ((timeLimit - currentTime) > 0);
 	}
 	
 	public void setTimeLimit(int tl) {
 		timeLimit = tl;
-	}
-	
-	public void setTimeLeft(boolean tl) {
-		timeLeft = tl;
 	}
 
 }
