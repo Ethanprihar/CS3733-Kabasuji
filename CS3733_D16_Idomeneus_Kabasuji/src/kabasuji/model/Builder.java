@@ -148,20 +148,24 @@ public class Builder
 				tiles[i][j] = new Tile(false, true, 0, 0);
 			}
 		}
-		if (type == 0)
+		if (type == Level.Puzzle)
 		{
 			PuzzleBoard board = new PuzzleBoard(tiles);
 			selectedLevel = new PuzzleLevel(board, bullpen, 0);
 		}
-		else if (type == 1)
+		else if (type == Level.Lighting)
 		{
 			LightningBoard board = new LightningBoard(tiles);
 			selectedLevel = new LightningLevel(board, bullpen, 0);
 		}
-		else
+		else if (type == Level.Release)
 		{
 			ReleaseBoard board = new ReleaseBoard(tiles);
 			selectedLevel = new ReleaseLevel(board, bullpen, 0);
+		}
+		else {
+			System.out.println("Builder.java: Invalid integer for level type");
+			selectedLevel = null;
 		}
 		selectedLevel.setLocked(true);
 	}

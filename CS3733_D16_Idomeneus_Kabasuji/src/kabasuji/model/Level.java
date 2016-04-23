@@ -8,6 +8,11 @@ public abstract class Level implements Serializable{
 	boolean locked;
 	int highScore;
 	
+	/** useful constants **/
+	final static int Puzzle = 0;
+	final static int Lighting = 1;
+	final static int Release = 2;
+	
 	Level(Board bd, Bullpen bp)
 	{
 		this.board = bd;
