@@ -22,7 +22,7 @@ import levelbuilder.view.TopLevelApplicationBuilder;
  * @author jwu
  *
  */
-public class BuilderSelectLevelController extends MouseAdapter {
+public class LoadLevelsBuilderController extends MouseAdapter {
 
 	/** Entity and Boundaries Associated **/
 	Builder builder;
@@ -30,7 +30,7 @@ public class BuilderSelectLevelController extends MouseAdapter {
 	JPanel contentPanel;
 	JLabelIcon button;
 
-	public BuilderSelectLevelController(Builder builder, TopLevelApplicationBuilder app, JLabelIcon button) {
+	public LoadLevelsBuilderController(Builder builder, TopLevelApplicationBuilder app, JLabelIcon button) {
 		this.builder = builder;
 		this.app = app;
 		this.contentPanel = app.getContentPanel();
@@ -59,3 +59,6 @@ public class BuilderSelectLevelController extends MouseAdapter {
 		button.setImg("generalbutton.png");
 	}
 }
+
+
+
