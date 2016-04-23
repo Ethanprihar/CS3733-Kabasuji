@@ -22,7 +22,7 @@ public class BuilderLightningLevelPanel extends JPanel {
 	Builder builder;
 	TopLevelApplicationBuilder app;
 	JTextField boardDimensions;
-	int[] numOfPiecesOnLoad;
+	int[] numOfPiecesOnLoad = new int[35];
 	/**
 	 * Create the panel.
 	 */
