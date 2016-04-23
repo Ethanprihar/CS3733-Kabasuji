@@ -18,13 +18,19 @@ import javax.swing.JLabel;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 
 public class PlayLevelPanel extends JPanel {
 	/** Entities associated **/
 	Kabasuji kabasuji;
 	Board board;
 	Bullpen bullpen;
+
+	Timer timer; // Timer used for Lightning Mode
 
 	/** Boundaries associated **/
 	TopLevelApplication app;
@@ -36,7 +42,7 @@ public class PlayLevelPanel extends JPanel {
 	JLabelIcon rotaterbtn;
 	JLabelIcon fliphbtn;
 	JLabelIcon flipvbtn;
-	
+
 	JLabelIcon resetlevelbtn;
 	JLabelIcon nextlevelbtn;
 
@@ -60,6 +66,39 @@ public class PlayLevelPanel extends JPanel {
 		// set layout null
 		setLayout(null);
 		setBounds(0, 0, Screen.width, Screen.height);
+
+		// if in lightning mode make a new timer object
+		if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
+			timerStart();
+		}
+
+	}
+
+	/**
+	 * Starts the timer used in lightning mode
+	 */
+	public void timerStart() {
+		
+		int delay = 1000; // milliseconds
+		ActionListener taskPerformer = new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+
+				// If the player is out of time stop the timer
+				if (!((LightningLevel) kabasuji.getSelectedLevel()).hasTimeLeft()) {
+					// stop the timer
+					System.out.println("Timer done");
+					timer.stop();
+				} else { // otherwise increment the current time and
+							// refresh the gui
+					((LightningLevel) kabasuji.getSelectedLevel()).incrementCurrentTime();
+					System.out.println("time left: "
+							+ ((Integer) ((LightningLevel) kabasuji.getSelectedLevel()).getTimeLeft()).toString());
+					setTimeLeftNum((Integer) ((LightningLevel) kabasuji.getSelectedLevel()).getTimeLeft());
+				}
+			}
+		};
+		timer = new Timer(delay, taskPerformer);
+		timer.start();
 
 	}
 
@@ -123,7 +162,7 @@ public class PlayLevelPanel extends JPanel {
 					(int) (Screen.height * 0.05));
 			movesLeft.setForeground(Color.WHITE);
 			add(movesLeft);
-			
+
 			System.out.println("end condidition: " + kabasuji.getSelectedLevel().getEndCondition().toString());
 
 			movesLeftNum = new JLabel(kabasuji.getSelectedLevel().getEndCondition().toString(), SwingConstants.CENTER);
@@ -229,7 +268,7 @@ public class PlayLevelPanel extends JPanel {
 	public JLabelIcon getZoomPiece() {
 		return zoompiece;
 	}
-	
+
 	/**
 	 * Getter for JLabel movesLeftNum
 	 * 
@@ -238,7 +277,7 @@ public class PlayLevelPanel extends JPanel {
 	public JLabel getMovesLeftNum() {
 		return movesLeftNum;
 	}
-	
+
 	/**
 	 * Setter for JLabel movesLeftNum
 	 * 
@@ -246,9 +285,8 @@ public class PlayLevelPanel extends JPanel {
 	 */
 	public void setMovesLeftNum(Integer movesLeft) {
 		movesLeftNum.setText(movesLeft.toString());
-		repaint();
 	}
-	
+
 	/**
 	 * Getter for JLabel timeLeftNum
 	 * 
@@ -257,7 +295,7 @@ public class PlayLevelPanel extends JPanel {
 	public JLabel getTimeLeftNum() {
 		return timeLeftNum;
 	}
-	
+
 	/**
 	 * Setter for JLabel timeLeftNum
 	 * 
@@ -265,7 +303,6 @@ public class PlayLevelPanel extends JPanel {
 	 */
 	public void setTimeLeftNum(Integer timeLeft) {
 		timeLeftNum.setText(timeLeft.toString());
-		repaint();
 	}
 
 	/**

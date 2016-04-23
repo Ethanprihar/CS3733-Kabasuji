@@ -1,7 +1,5 @@
 package kabasuji.controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -10,14 +8,12 @@ import javax.swing.JPanel;
 import kabasuji.controller.moves.ChangeScreenMove;
 import kabasuji.controller.moves.SelectLevelMove;
 import kabasuji.model.Kabasuji;
-import kabasuji.model.LightningLevel;
 import kabasuji.model.Screen;
 import kabasuji.view.BoardView;
 import kabasuji.view.BullpenView;
 import kabasuji.view.JLabelIcon;
 import kabasuji.view.PlayLevelPanel;
 import kabasuji.view.TopLevelApplication;
-import javax.swing.Timer; // for lightning level
 
 /**
  * Controller for Moving Screens; Go To Play Level Screen (Panel).
@@ -39,7 +35,6 @@ public class SelectLevelController extends MouseAdapter {
 	JLabelIcon button;
 	PlayLevelPanel plp;
 	String fn;
-	Timer timer;
 
 	public SelectLevelController(Kabasuji kabasuji, TopLevelApplication app, JLabelIcon button, int level) {
 		this.kabasuji = kabasuji;
@@ -71,31 +66,6 @@ public class SelectLevelController extends MouseAdapter {
 			// first make the foundation panel and pass model and container
 			// panel
 			plp = new PlayLevelPanel(kabasuji, app);
-
-			// if in lightning mode make a new timer object
-			if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
-
-				int delay = 1000; // milliseconds
-				ActionListener taskPerformer = new ActionListener() {
-					public void actionPerformed(ActionEvent evt) {
-
-						// If the player is out of time stop the timer
-						if (!((LightningLevel) kabasuji.getSelectedLevel()).hasTimeLeft()) {
-							// stop the timer
-							System.out.println("Timer done");
-							timer.stop();
-						} else { // otherwise increment the current time and
-									// refresh the gui
-							((LightningLevel) kabasuji.getSelectedLevel()).incrementCurrentTime();
-							System.out.println("time left: " + ((Integer)((LightningLevel)kabasuji.getSelectedLevel()).getTimeLeft()).toString());
-							 plp.setTimeLeftNum((Integer) ((LightningLevel)kabasuji.getSelectedLevel()).getTimeLeft());
-						}
-					}
-				};
-				timer = new Timer(delay, taskPerformer);
-				timer.start();
-
-			}
 
 			// create components of panel and pass model and container panel
 			BullpenView bpv = new BullpenView(kabasuji, plp, 4,
