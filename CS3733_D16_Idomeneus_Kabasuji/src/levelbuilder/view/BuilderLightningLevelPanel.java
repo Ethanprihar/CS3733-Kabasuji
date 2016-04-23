@@ -57,8 +57,9 @@ public class BuilderLightningLevelPanel extends JPanel {
 		board.setLocation((int) (Screen.width * 0.22), (int) (Screen.height * 0.02));
 		background.add(board);
 		
-		// Create a puzzle board
-		LightningBoard tboard = new LightningBoard(boardTile);
+		// get the lightning board
+		LightningBoard tboard = (LightningBoard) builder.getSelectedLevel().getBoard();
+		
 		BuilderBoardView boardview = new BuilderBoardView(tboard, board, builder, app);
 		background.add(board);
 		
@@ -144,10 +145,10 @@ public class BuilderLightningLevelPanel extends JPanel {
 		redoBtn.add(redoLbl);
 		background.add(redoBtn);
 
-		JTextField numMoves = new JTextField();
-		numMoves.setBounds((int) (Screen.width * 0.08 + 10), (int) (Screen.height * 0.30), 40, 20);
-		numMoves.setFont(new Font("Onyx", Font.BOLD, 18));
-		background.add(numMoves);
+		JTextField timeSet = new JTextField();
+		timeSet.setBounds((int) (Screen.width * 0.08 + 10), (int) (Screen.height * 0.30), 40, 20);
+		timeSet.setFont(new Font("Onyx", Font.BOLD, 18));
+		background.add(timeSet);
 		
 		JLabelIcon saveBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		saveBtn.setLocation((int) (Screen.width * 0.72) + (int) (saveBtn.getSize().getWidth() / 2),
@@ -157,7 +158,7 @@ public class BuilderLightningLevelPanel extends JPanel {
 		saveLbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		saveBtn.add(saveLbl);
 		background.add(saveBtn);
-		saveBtn.addMouseListener(new SaveLevelController(builder, app, saveBtn, numMoves));
+		saveBtn.addMouseListener(new SaveLevelController(builder, app, saveBtn, timeSet, 2));
 
 		JLabelIcon deleteBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		deleteBtn.setLocation((int) (Screen.width * 0.82) + (int) (saveBtn.getSize().getWidth() / 2),

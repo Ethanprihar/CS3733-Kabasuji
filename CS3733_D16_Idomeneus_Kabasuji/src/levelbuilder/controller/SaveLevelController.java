@@ -34,15 +34,17 @@ public class SaveLevelController extends MouseAdapter {
 	JLabelIcon button;	
 	String fn;
 	JTextField ec;
+	int type;
 
 
-	public SaveLevelController(Builder builder, TopLevelApplicationBuilder app, JLabelIcon button, JTextField ec) {
+	public SaveLevelController(Builder builder, TopLevelApplicationBuilder app, JLabelIcon button, JTextField ec, int type) {
 		this.builder = builder;
 		this.app = app;
 		this.contentPanel = app.getContentPanel();		
 		this.button = button;
 		this.fn = button.getFileName();
 		this.ec = ec;
+		this.type = type;
 	}
 
 	/**
@@ -51,15 +53,28 @@ public class SaveLevelController extends MouseAdapter {
 	 */
 	public void mousePressed(MouseEvent me) {
 		// Created ChangeScreenBuilderMove and input desired screen
-		
-		if (ec.getText().length() == 0){
-			ErrorDialogBox.infoBox("The number of moves can't be left empty", "Invalid Input");
+		if (type == 1){
+			if (ec.getText().length() == 0){
+				ErrorDialogBox.infoBox("The number of moves can't be left empty", "Invalid Input");
+			}
+			else {
+				try {
+					Integer.parseInt(ec.getText());
+				}catch(NumberFormatException e){
+					ErrorDialogBox.infoBox("The number of moves should be an integer", "Invalid Input");
+				}
+			}
 		}
-		else {
-			try {
-				Integer.parseInt(ec.getText());
-			}catch(NumberFormatException e){
-				ErrorDialogBox.infoBox("The number of moves should be an integer", "Invalid Input");
+		else if (type == 2){
+			if (ec.getText().length() == 0){
+				ErrorDialogBox.infoBox("The time field can't be left empty", "Invalid Input");
+			}
+			else {
+				try {
+					Integer.parseInt(ec.getText());
+				}catch(NumberFormatException e){
+					ErrorDialogBox.infoBox("The time (seconds) should be an integer", "Invalid Input");
+				}
 			}
 		}
 		
