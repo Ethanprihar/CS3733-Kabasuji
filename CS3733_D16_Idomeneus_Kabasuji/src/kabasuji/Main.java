@@ -14,6 +14,7 @@ public class Main {
 	 */
 	public static void main(String[] args)
 	{
+		//makePieces();
 		Kabasuji kabasuji = new Kabasuji();
 		TopLevelApplication frame = new TopLevelApplication(kabasuji);
 		// start splash screen
