@@ -85,6 +85,7 @@ public class BoardView extends JPanel {
 				// create a button image with specified dimension
 				// only display tile if it's valid
 				if (tiles[i][j].isValid()) {
+					// determine to display hint tile
 					String imgfn;
 					if (tiles[i][j].isHint()) {
 						imgfn = "hint.png";
