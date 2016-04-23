@@ -3,14 +3,11 @@ package levelbuilder.controller;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-
 import kabasuji.model.Builder;
 import kabasuji.model.Screen;
 import kabasuji.view.JLabelIcon;
 import levelbuilder.controller.moves.ChangeScreenBuilderMove;
 import levelbuilder.view.BuilderMainMenu;
-import levelbuilder.view.ErrorDialogBox;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
 /**
@@ -21,7 +18,7 @@ import levelbuilder.view.TopLevelApplicationBuilder;
  * 
  *
  */
-public class SaveLevelController extends MouseAdapter {
+public class DeleteLevelController extends MouseAdapter {
 
 	/** Entity and Boundaries Associated **/
 	Builder builder;
@@ -29,18 +26,14 @@ public class SaveLevelController extends MouseAdapter {
 	JPanel contentPanel;	
 	JLabelIcon button;	
 	String fn;
-	JTextField ec;
-	int type;
 
 
-	public SaveLevelController(Builder builder, TopLevelApplicationBuilder app, JLabelIcon button, JTextField ec, int type) {
+	public DeleteLevelController(Builder builder, TopLevelApplicationBuilder app, JLabelIcon button) {
 		this.builder = builder;
 		this.app = app;
 		this.contentPanel = app.getContentPanel();		
 		this.button = button;
 		this.fn = button.getFileName();
-		this.ec = ec;
-		this.type = type;
 	}
 
 	/**
@@ -48,42 +41,14 @@ public class SaveLevelController extends MouseAdapter {
 	 * is a GUI controller.
 	 */
 	public void mousePressed(MouseEvent me) {
-		// Created ChangeScreenBuilderMove and input desired screen
-		if (type == 1){
-			if (ec.getText().length() == 0){
-				ErrorDialogBox.infoBox("The number of moves can't be left empty", "Invalid Input");
-			}
-			else {
-				try {
-					Integer.parseInt(ec.getText());
-				}catch(NumberFormatException e){
-					ErrorDialogBox.infoBox("The number of moves should be an integer", "Invalid Input");
-				}
-			}
-		}
-		else if (type == 2){
-			if (ec.getText().length() == 0){
-				ErrorDialogBox.infoBox("The time field can't be left empty", "Invalid Input");
-			}
-			else {
-				try {
-					Integer.parseInt(ec.getText());
-				}catch(NumberFormatException e){
-					ErrorDialogBox.infoBox("The time (seconds) should be an integer", "Invalid Input");
-				}
-			}
-		}
-		
 		try
 		{
-			System.out.println("I am here 1");
-			builder.setEndCondition(Integer.parseInt(ec.getText()));
-			System.out.println("I am here 2");
-			builder.saveLevel();
+			builder.levels.remove(builder.getSelectedLevel());
+			builder.deleteLevel();
 			builder.saveToDisc();
 			ChangeScreenBuilderMove gtsm = new ChangeScreenBuilderMove(Screen.Opening);
-			// Attempt to execute action on model
 			gtsm.execute(builder);
+			
 			// Created JPanel screen object and update boundary to reflect changes
 			BuilderMainMenu lsp = new BuilderMainMenu(builder, app);
 			app.setContentPanel(lsp);

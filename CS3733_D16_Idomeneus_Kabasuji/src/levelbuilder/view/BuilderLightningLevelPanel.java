@@ -9,6 +9,7 @@ import kabasuji.model.PuzzleBoard;
 import kabasuji.model.Screen;
 import kabasuji.model.Tile;
 import kabasuji.view.JLabelIcon;
+import levelbuilder.controller.DeleteLevelController;
 import levelbuilder.controller.GoToMainMenuBuilderController;
 import levelbuilder.controller.IncrementPieceBuilderController;
 import levelbuilder.controller.SaveLevelController;
@@ -173,6 +174,8 @@ public class BuilderLightningLevelPanel extends JPanel {
 		deleteLbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		deleteBtn.add(deleteLbl);
 		background.add(deleteBtn);
+		deleteBtn.addMouseListener(new DeleteLevelController(builder, app, deleteBtn));
+
 
 		JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", 70, 70);
 		mainmenubtn.setLocation((int) (Screen.width * 0.78) + (int) (saveBtn.getSize().getWidth() / 2),
