@@ -10,8 +10,10 @@ import kabasuji.controller.moves.ChangeScreenMove;
 import kabasuji.controller.moves.SelectLevelMove;
 import kabasuji.model.Bullpen;
 import kabasuji.model.Kabasuji;
+import kabasuji.model.LightningBoard;
 import kabasuji.model.Piece;
 import kabasuji.model.PuzzleBoard;
+import kabasuji.model.ReleaseBoard;
 import kabasuji.model.Screen;
 import kabasuji.model.Tile;
 import kabasuji.view.BoardView;
@@ -79,7 +81,10 @@ public class SelectLevelBuilderController extends MouseAdapter {
 		
 		gtsm.execute(builder);
 
-		int levelType = (level-1)%3;
+		int levelType;// = (level-1)%3;
+		levelType = (builder.getSelectedLevel().getBoard() instanceof PuzzleBoard) ? 0 : 
+						(builder.getSelectedLevel().getBoard() instanceof LightningBoard) ? 1 :
+							(builder.getSelectedLevel().getBoard() instanceof ReleaseBoard) ? 2 : -1;
 		
 		JTextField nothing = new JTextField("6");
 		
@@ -98,24 +103,18 @@ public class SelectLevelBuilderController extends MouseAdapter {
 		
 		// Create a lightning level panel if the level type is 1
 		if (levelType == 1){
-			
+			System.out.println("Editing a Lightning level");
+
 			BuilderLightningLevelPanel lsp = new BuilderLightningLevelPanel(builder, app, nothing);
 			//builder.getSelectedLevel();
 			app.setContentPanel(lsp);
-			// Create the new level
-			//String boardDimensionstext = boardDimensions.getText();
-			//int dimensions = Integer.parseInt(boardDimensionstext);
-			//builder.addNewLevel(1, dimensions);
-			
-			//BuilderLightningLevelPanel lsp = new BuilderLightningLevelPanel(builder, app, boardDimensions);
-			//app.setContentPanel(lsp);
 		}
 		
 		// Create a release level panel if the level type is 2
 		if (levelType == 2){
-			
+			System.out.println("Editing a Release level");
+
 			BuilderReleaseLevelPanel lsp = new BuilderReleaseLevelPanel(builder, app);
-			//builder.getSelectedLevel();
 			app.setContentPanel(lsp);
 		}
 			//gtsm.execute(builder);
