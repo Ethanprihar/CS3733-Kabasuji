@@ -1,14 +1,14 @@
-CS3733 - Kakasuji
+CS3733 - Kabasuji
 
 Authors:
 
 
-Odell Dotson
+Odell "Stop editing the readme just to get more commit lines" Dotson
 
-Yu-sen Wu
+Yu-sen "Kung-pow" Wu
 
-Ethan Prihar
+Ethan "Cries too much" Prihar
 
-Vishal (V) Rathi
+Vishal "V vor Victory" Rathi
 
-Brianne Happle
+Brianne "Wait how do I spell your name" Happle
