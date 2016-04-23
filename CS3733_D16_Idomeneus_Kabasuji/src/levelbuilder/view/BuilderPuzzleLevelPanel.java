@@ -20,6 +20,7 @@ import java.util.Arrays;
 
 import javax.swing.SwingConstants;
 
+@SuppressWarnings("serial")
 public class BuilderPuzzleLevelPanel extends JPanel {
 	Builder builder;
 	TopLevelApplicationBuilder app;
@@ -62,34 +63,6 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		// get the puzzle board
 		PuzzleBoard tboard = (PuzzleBoard) builder.getSelectedLevel().getBoard();
 		
-		Tile boardTile0_0 = new Tile(false, true, 0, 0);
-		Tile boardTile0_1 = new Tile(false, true, 0, 0);
-		Tile boardTile0_2 = new Tile(false, true, 0, 0);
-		Tile boardTile0_3 = new Tile(false, true, 0, 0);
-		Tile boardTile1_0 = new Tile(false, true, 0, 0);
-		Tile boardTile1_1 = new Tile(false, true, 0, 0);
-		Tile boardTile1_2 = new Tile(false, true, 0, 0);
-		Tile boardTile1_3 = new Tile(false, true, 0, 0);
-		Tile boardTile2_0 = new Tile(false, true, 0, 0);
-		Tile boardTile2_1 = new Tile(false, true, 0, 0);
-		Tile boardTile2_2 = new Tile(false, true, 0, 0);
-		Tile boardTile2_3 = new Tile(false, true, 0, 0);
-		Tile boardTile3_0 = new Tile(false, true, 0, 0);
-		Tile boardTile3_1 = new Tile(false, true, 0, 0);
-		Tile boardTile3_2 = new Tile(false, true, 0, 0);
-		Tile boardTile3_3 = new Tile(false, true, 0, 0);
-		
-
-		Tile[][] board1 = 
-			{{boardTile0_0,boardTile0_1,boardTile0_2,boardTile0_3},
-			{boardTile1_0,boardTile1_1,boardTile1_2,boardTile1_3},
-			{boardTile2_0,boardTile2_1,boardTile2_2,boardTile2_3},
-			{boardTile3_0,boardTile3_1,boardTile3_2,boardTile3_3}};
-		
-		Board testBoard1 = new PuzzleBoard(board1);
-
-		
-		//BuilderBoardView boardview = new BuilderBoardView(/*tboard*/testBoard1, board, builder, app);
 		BuilderBoardView boardview = new BuilderBoardView(tboard, board, builder, app);
 		background.add(board);
 		
@@ -97,7 +70,7 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		JLabel[] piece1Lbl = new JLabel[12];
 		// Run the loop to initialize and set their positions
 		for (int i = 0; i < 12; i++){
-			piece1Lbl[i] = new JLabel("0");
+			piece1Lbl[i] = new JLabel(String.valueOf(builder.getNum(i)));
 			piece1Lbl[i].setBounds(30 + i *60, 65, 20, 20);
 			bullpen.add(piece1Lbl[i]);
 		}
@@ -106,7 +79,7 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		JLabel[] piece2Lbl = new JLabel[12];
 		// Run the loop to initialize and set their positions
 		for (int i = 0; i < 12; i++){
-			piece2Lbl[i] = new JLabel("0");
+			piece2Lbl[i] = new JLabel(String.valueOf(builder.getNum(i+12)));
 			piece2Lbl[i].setBounds(30 + i *60, 65 + 70, 20, 20);
 			bullpen.add(piece2Lbl[i]);
 		}
@@ -115,7 +88,7 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		JLabel[] piece3Lbl = new JLabel[11];
 		// Run the loop to initialize and set their positions
 		for (int i = 0; i < 11; i++){
-			piece3Lbl[i] = new JLabel("0");
+			piece3Lbl[i] = new JLabel(String.valueOf(builder.getNum(i+12+12)));
 			piece3Lbl[i].setBounds(30 + i *60, 65 + 140, 20, 20);
 			bullpen.add(piece3Lbl[i]);
 		}

@@ -66,86 +66,40 @@ public class SelectLevelBuilderController extends MouseAdapter {
 	 */
 	public void mousePressed(MouseEvent me) {
 		/*** MODEL CHANGES ***/
-		// Created SelectLevelMove and input desired level integer
-		//Tile[][] tile = builder.levels.get(level-1).getBoard().getTiles();
-		//LevelModeBuilderMove slm = new LevelModeBuilderMove(level%3, tile.length);
-		// Created ChangeScreenMove and input desired screen
 		ChangeScreenBuilderMove gtsm = new ChangeScreenBuilderMove(Screen.LevelSelect);
 		
 		
 		builder.loadLevel(builder.levels.get(level-1));
-		System.out.println("Worked!");
-		
-		//builder.setSelectedLevel(kabasuji.levels.get(level-1));
-		// Attempt to execute action on model
-		
+
 		gtsm.execute(builder);
 
-		int levelType;// = (level-1)%3;
+		//Determine the level type, 0 1 or 2. -1 if invalid type.
+		int levelType;
 		levelType = (builder.getSelectedLevel().getBoard() instanceof PuzzleBoard) ? 0 : 
 						(builder.getSelectedLevel().getBoard() instanceof LightningBoard) ? 1 :
 							(builder.getSelectedLevel().getBoard() instanceof ReleaseBoard) ? 2 : -1;
 		
-		JTextField nothing = new JTextField("6");
+		JTextField nothing = new JTextField("6");//Created for compliation reasons, does nothing.
 		
 		if (levelType == 0){
 			System.out.println("Editing a puzzle level");
-			// Create the new level
-			//String boardDimensionstext = boardDimensions.getText();
-			//int dimensions = Integer.parseInt(boardDimensionstext);
-			//builder.addNewLevel(0, dimensions);
-			
 			BuilderPuzzleLevelPanel lsp = new BuilderPuzzleLevelPanel(builder, app, nothing);
-			//builder.getSelectedLevel();
 			app.setContentPanel(lsp);
-			//builder.getSelectedLevel().getBoard();
 		}
 		
 		// Create a lightning level panel if the level type is 1
 		if (levelType == 1){
 			System.out.println("Editing a Lightning level");
-
 			BuilderLightningLevelPanel lsp = new BuilderLightningLevelPanel(builder, app, nothing);
-			//builder.getSelectedLevel();
 			app.setContentPanel(lsp);
 		}
 		
 		// Create a release level panel if the level type is 2
 		if (levelType == 2){
 			System.out.println("Editing a Release level");
-
 			BuilderReleaseLevelPanel lsp = new BuilderReleaseLevelPanel(builder, app);
 			app.setContentPanel(lsp);
-		}
-			//gtsm.execute(builder);
-			
-			// Create PlayLevelPanel screen object and update boundary to
-			// reflect *** GUI CHANGES ***
-
-			// first make the foundation panel and pass model and container
-			// panel
-//			PlayLevelPanel plp = new PlayLevelPanel(builder, app);
-//
-//			// create components of panel and pass model and container panel
-//			BullpenView bpv = new BullpenView(builder, plp, 3, 5);
-//			BoardView bv = new BoardView(builder, plp);
-//
-//			// set location and size of components (**necessary)
-//			bv.setBounds((int) (Screen.width * 0.35), (int) (Screen.height * 0.36), (int) (Screen.height * 0.54),
-//					(int) (Screen.height * 0.54));
-//			bpv.setBounds((int) (Screen.width * 0.05), (int) (Screen.height * 0.05), (int) (Screen.width * 0.25),
-//					(int) (Screen.height * 0.85));
-//
-//			// remove all components from PLP -> update PLP -> add controllers
-//			plp.removeAll();
-//			plp.updatePlayLevelPanel(bv, bpv);
-//			plp.addControllers();
-//
-//			// repaint the PlayLevelPanel
-//			plp.repaint();
-
-			// set the contentpanel of container to contain PlayLevelPanel
-			//app.setContentPanel(plp);
+		}	
 	}
 
 	public void mouseEntered(MouseEvent e) {
