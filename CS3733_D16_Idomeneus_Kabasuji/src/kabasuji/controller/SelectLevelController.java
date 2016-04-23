@@ -46,6 +46,7 @@ public class SelectLevelController extends MouseAdapter {
 	JLabelIcon button;
 	PlayLevelPanel plp;
 	String fn;
+	Timer timer;
 
 	public SelectLevelController(Kabasuji kabasuji, TopLevelApplication app, JLabelIcon button, int level) {
 		this.kabasuji = kabasuji;
@@ -88,6 +89,8 @@ public class SelectLevelController extends MouseAdapter {
 						// If the player is out of time stop the timer
 						if (!((LightningLevel) kabasuji.getSelectedLevel()).hasTimeLeft()) {
 							// stop the timer
+							System.out.println("Timer done");
+							timer.stop();
 						} else { // otherwise increment the current time and
 									// refresh the gui
 							((LightningLevel) kabasuji.getSelectedLevel()).incrementCurrentTime();
@@ -96,7 +99,7 @@ public class SelectLevelController extends MouseAdapter {
 						}
 					}
 				};
-				Timer timer = new Timer(delay, taskPerformer);
+				timer = new Timer(delay, taskPerformer);
 				timer.start();
 
 			}
