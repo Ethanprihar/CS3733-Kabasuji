@@ -1,5 +1,7 @@
 package kabasuji.controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -9,6 +11,7 @@ import kabasuji.controller.moves.ChangeScreenMove;
 import kabasuji.controller.moves.SelectLevelMove;
 import kabasuji.model.Bullpen;
 import kabasuji.model.Kabasuji;
+import kabasuji.model.LightningLevel;
 import kabasuji.model.Piece;
 import kabasuji.model.PuzzleBoard;
 import kabasuji.model.Screen;
@@ -20,6 +23,7 @@ import kabasuji.view.LevelSelectPanel;
 import kabasuji.view.MainMenu;
 import kabasuji.view.PlayLevelPanel;
 import kabasuji.view.TopLevelApplication;
+import javax.swing.Timer; // for lightning level
 
 /**
  * Controller for Moving Screens; Go To Play Level Screen (Panel).
@@ -64,6 +68,21 @@ public class SelectLevelController extends MouseAdapter {
 		// Attempt to execute action on model
 		if (slm.execute(kabasuji)) {
 			gtsm.execute(kabasuji);
+			
+			// if in lightning mode make a new timer object
+			if(kabasuji.getSelectedLevel() instanceof LightningLevel) {
+
+//				Timer timer = new Timer(1000, new ActionListener() {
+//				    public void actionPerformed(ActionEvent evt) {
+//					//...Update the progress bar...
+//
+////				        if (/* thread is done */) {
+////				            timer.stop();
+////				            //...Update the GUI...
+////				        }
+//				    }    
+//				});
+			}
 			
 			// Create PlayLevelPanel screen object and update boundary to
 			// reflect *** GUI CHANGES ***

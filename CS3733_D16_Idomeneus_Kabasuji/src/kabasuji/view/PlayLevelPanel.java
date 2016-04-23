@@ -17,7 +17,6 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import javax.swing.Timer; // goes into lightning level controller
 
 public class PlayLevelPanel extends JPanel {
 	/** Entities associated **/

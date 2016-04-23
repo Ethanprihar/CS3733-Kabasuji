@@ -74,10 +74,14 @@ public class TileController extends MouseAdapter {
 			panel.repaint();
 			// update to show new number of moves if in puzzle mode
 			if (kabasuji.getSelectedLevel() instanceof PuzzleLevel) {
+				// decrement the number of moves left
+				((PuzzleLevel)kabasuji.getSelectedLevel()).setMovesUsed(((PuzzleLevel)kabasuji.getSelectedLevel()).getMovesUsed() + 1);
 				panel.setMovesLeftNum((Integer) ((PuzzleLevel) kabasuji.getSelectedLevel()).getMovesLeft());
 			}
 			// update to show new number of moves if in puzzle mode
 			else if (kabasuji.getSelectedLevel() instanceof ReleaseLevel) {
+				// decrement the number of moves left
+				((ReleaseLevel)kabasuji.getSelectedLevel()).setMovesUsed(((ReleaseLevel)kabasuji.getSelectedLevel()).getMovesUsed() + 1);
 				panel.setMovesLeftNum((Integer) ((ReleaseLevel) kabasuji.getSelectedLevel()).getMovesLeft());
 			}
 		}

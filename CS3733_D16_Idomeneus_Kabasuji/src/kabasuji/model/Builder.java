@@ -74,6 +74,8 @@ public class Builder
 	
 	public void saveLevel()
 	{
+		selectedLevel.setEndCondition(endCondition);
+		
 		for(int i=0; i<35; i++)
 		{
 			for(int j=0; j<numOfPieces[i]; j++)
