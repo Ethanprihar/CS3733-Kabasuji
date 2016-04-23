@@ -71,12 +71,22 @@ public class BuilderBoardView extends JPanel {
 		// includes centering as well
 		for (int i = 0; i < col-2; i++) {
 			for (int j = 0; j < row-2; j++) {
-				// create a button image with specified dimension
-				// only display tile if it's valid
 				//if (tiles[j][i].isValid()) {
-					displayTile(i,j,"tile.PNG");
+					//displayTile(i,j,"tile.PNG");
+					if (tiles[j][i].isHint()) {
+						displayTile(i,j,"general2button.png");
+					}
+					else if(!tiles[j][i].isValid())
+					{
+						displayTile(i,j,"general1button.png");
+					}
+					else //if(tiles[j][i].isValid())
+					{
+						displayTile(i,j,"tile.PNG");
+					}
 					tile[i*row+j].addMouseListener(new BuilderBoardController(board, tile[i*row+j], tiles[j][i], builder, app));
-				//}
+
+
 			}
 		}
 		//repaint();

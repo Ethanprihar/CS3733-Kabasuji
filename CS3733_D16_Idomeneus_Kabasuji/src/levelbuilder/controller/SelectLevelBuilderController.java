@@ -37,7 +37,7 @@ import kabasuji.model.Builder;
  * When the button is pressed to attempt to go to the next screen, the model
  * will update what screen it is on and the gui will reflect the changes
  * 
- * @author jwu
+ * @author ocd
  *
  */
 public class SelectLevelBuilderController extends MouseAdapter {

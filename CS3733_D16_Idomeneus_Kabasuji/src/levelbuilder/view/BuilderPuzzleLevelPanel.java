@@ -3,11 +3,9 @@ package levelbuilder.view;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import kabasuji.model.Board;
 import kabasuji.model.Builder;
 import kabasuji.model.PuzzleBoard;
 import kabasuji.model.Screen;
-import kabasuji.view.BoardView;
 import kabasuji.view.JLabelIcon;
 import levelbuilder.controller.GoToMainMenuBuilderController;
 import levelbuilder.controller.IncrementPieceBuilderController;
@@ -16,8 +14,6 @@ import kabasuji.model.Tile;
 
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.util.Arrays;
-
 import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")

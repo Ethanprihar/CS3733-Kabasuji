@@ -75,7 +75,7 @@ public class BuilderLightningLevelPanel extends JPanel {
 		JLabel[] piece2Lbl = new JLabel[12];
 		// Run the loop to initialize and set their positions
 		for (int i = 0; i < 12; i++){
-			piece2Lbl[i] = new JLabel(String.valueOf(builder.getNum(i)));
+			piece2Lbl[i] = new JLabel(String.valueOf(builder.getNum(i+12)));
 			piece2Lbl[i].setBounds(30 + i *60, 65 + 70, 20, 20);
 			bullpen.add(piece2Lbl[i]);
 		}
@@ -84,7 +84,7 @@ public class BuilderLightningLevelPanel extends JPanel {
 		JLabel[] piece3Lbl = new JLabel[11];
 		// Run the loop to initialize and set their positions
 		for (int i = 0; i < 11; i++){
-			piece3Lbl[i] = new JLabel(String.valueOf(builder.getNum(i)));
+			piece3Lbl[i] = new JLabel(String.valueOf(builder.getNum(i+12+12)));
 			piece3Lbl[i].setBounds(30 + i *60, 65 + 140, 20, 20);
 			bullpen.add(piece3Lbl[i]);
 		}
