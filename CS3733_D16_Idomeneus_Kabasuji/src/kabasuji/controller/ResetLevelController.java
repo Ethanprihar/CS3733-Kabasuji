@@ -15,7 +15,7 @@ import kabasuji.view.PlayLevelPanel;
 import kabasuji.view.TopLevelApplication;
 
 /**
- * Controller for Moving Screens; Go To Next Level Play Level Screen (Panel).
+ * Controller for Reseting Level; Update PlayLevelPanel (Panel).
  * 
  * When the button is pressed to attempt to go to the next screen, the model
  * will update what screen it is on and the gui will reflect the changes
@@ -23,7 +23,7 @@ import kabasuji.view.TopLevelApplication;
  * @author jwu
  *
  */
-public class NextLevelController extends MouseAdapter {
+public class ResetLevelController extends MouseAdapter {
 
 	/** Entities associated **/
 	Kabasuji kabasuji;
@@ -34,13 +34,12 @@ public class NextLevelController extends MouseAdapter {
 	JLabelIcon button;
 	String fn;
 
-	public NextLevelController(Kabasuji kabasuji, TopLevelApplication app, JLabelIcon button) {
+	public ResetLevelController(Kabasuji kabasuji, TopLevelApplication app, JLabelIcon button) {
 		this.kabasuji = kabasuji;
 		this.app = app;
 		this.contentPanel = app.getContentPanel();
 		this.button = button;
 		this.fn = button.getFileName();
-		this.level = kabasuji.getLevels().indexOf(kabasuji.getSelectedLevel());
 	}
 
 	/**
@@ -50,9 +49,9 @@ public class NextLevelController extends MouseAdapter {
 	public void mousePressed(MouseEvent me) {
 		/*** MODEL CHANGES ***/
 		// Created SelectLevelMove and input desired level integer
-		// SelectLevelMove slm = new SelectLevelMove(level+1);
+		// SelectLevelMove slm = new SelectLevelMove(level);
 
-		kabasuji.nextLevel(); // this goes to next level basically
+		kabasuji.resetLevel();
 
 		// Created ChangeScreenMove and input desired screen
 		ChangeScreenMove gtsm = new ChangeScreenMove(Screen.PlayLevel);
