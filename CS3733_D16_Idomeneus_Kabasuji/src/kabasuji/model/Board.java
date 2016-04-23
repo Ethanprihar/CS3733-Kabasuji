@@ -37,8 +37,8 @@ public abstract class Board implements Serializable {
 					for (int y = -yoffset; y < p.getDim()-yoffset; y++) {
 						for (int x = -xoffset; x < p.getDim()-xoffset; x++) {
 							if (p.getTile(y+yoffset, x+xoffset).isValid()) {
-								tiles[j + y][i + x].setPiece(p);
-								tiles[j + y][i + x].setValid(true);
+								tiles[i + y][j + x].setPiece(p);
+								tiles[i + y][j + x].setValid(true);
 							}
 						}
 					}
@@ -83,7 +83,7 @@ public abstract class Board implements Serializable {
 							try { // If we're trying to place a piece out of
 									// range of the board
 								if ((p.getTile(y + yoffset, x + xoffset).isValid())) {
-									if (!(tiles[j + y][i + x].isValid())) {
+									if (!(tiles[i + y][j + x].isValid())) {
 										System.out.print("Piece valid, tile not. Tile:");
 										System.out.print(j + x);
 										System.out.print(",");
@@ -93,10 +93,10 @@ public abstract class Board implements Serializable {
 										System.out.print(",");
 										System.out.println(x);
 										return false;
-									} else if (!(tiles[j + y][i + x].getPiece() == null)) {
+									} else if (!(tiles[i + y][j + x].getPiece() == null)) {
 										System.out.println("Piece already here.");
 										return false;
-									} else if (tiles[j + y][i + x].isValid()){
+									} else if (tiles[i + y][j + x].isValid()){
 										validcount++;
 										if (validcount == 6) {
 											return true;

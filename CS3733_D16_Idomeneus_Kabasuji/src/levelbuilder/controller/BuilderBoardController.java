@@ -81,7 +81,9 @@ public class BuilderBoardController extends MouseAdapter {
 		else if (SwingUtilities.isRightMouseButton(me)){
 			selected = true;
 			if (selected){
-				tile.setImg("general2button.png");
+				tile.setImg("tile.png");
+				JLabelIcon hintImage = new JLabelIcon("hint.png", tile.getWidth(), tile.getHeight());
+				tile.add(hintImage);
 				
 				// Call the move class to make the currentTile a hint tile
 				System.out.println("Just called the tile controller");

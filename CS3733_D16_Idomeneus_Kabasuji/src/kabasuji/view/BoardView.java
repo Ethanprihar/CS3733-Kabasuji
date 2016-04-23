@@ -8,6 +8,8 @@ import kabasuji.model.Screen;
 import kabasuji.model.Tile;
 
 import javax.swing.JLabel;
+
+import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
@@ -82,9 +84,16 @@ public class BoardView extends JPanel {
 			for (int j = 0; j < row; j++) {
 				// create a button image with specified dimension
 				// only display tile if it's valid
-				if (tiles[j][i].isValid()) {
-					displayTile(i, j, "boardtile.png");
-					tile[i * row + j].addMouseListener(new TileController(kabasuji, panel, tile[i * row + j], tiles[j][i]));
+				if (tiles[i][j].isValid()) {
+					String imgfn;
+					if (tiles[i][j].isHint()) {
+						imgfn = "hint.png";
+					} else {
+						imgfn = "boardtile.png";
+					}
+					displayTile(i, j, imgfn);
+					tile[i * row + j]
+							.addMouseListener(new TileController(kabasuji, panel, tile[i * row + j], tiles[i][j]));
 				}
 			}
 		}
@@ -106,9 +115,30 @@ public class BoardView extends JPanel {
 		tile[i * row + j].setLocation((int) (tilesidelength * (j + (sqmatrixlength - row) / 2)) + offset,
 				(int) (tilesidelength * (i + (sqmatrixlength - col) / 2)) + offset);
 		// Only does labeling, trivial
-		JLabel numlbl = new JLabel("" + tiles[j][i].getNumber(), SwingConstants.CENTER);
+		String stringnum = "";
+		int tilenumlbl = tiles[i][j].getNumber();
+		if(tilenumlbl != 0){
+			stringnum = stringnum + tilenumlbl;
+		}
+		JLabel numlbl = new JLabel(stringnum, SwingConstants.CENTER);
 		numlbl.setBounds(0, 0, tilesidescaled, tilesidescaled);
 		numlbl.setFont(new Font("Arial", Font.BOLD, (int) (tilesidescaled * 0.5)));
+		
+		// Determine what color of text should be displayed then set the text color
+		Color textcolor;
+		switch(tiles[i][j].getColor())
+		{
+		case 1: textcolor = Color.RED;
+		break;
+		case 2: textcolor = Color.BLUE;
+		break;
+		case 3: textcolor = Color.YELLOW;
+		break;
+		default: textcolor = Color.darkGray;
+		}
+		numlbl.setForeground(textcolor);
+		
+		// Add label to image
 		tile[i * row + j].add(numlbl);
 		// Add Tile to Board
 		add(tile[i * row + j]);

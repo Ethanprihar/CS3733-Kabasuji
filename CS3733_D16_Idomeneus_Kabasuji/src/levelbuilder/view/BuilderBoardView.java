@@ -73,10 +73,10 @@ public class BuilderBoardView extends JPanel {
 			for (int j = 0; j < row-2; j++) {
 				//if (tiles[j][i].isValid()) {
 					//displayTile(i,j,"tile.PNG");
-					if (tiles[j][i].isHint()) {
+					if (tiles[i][j].isHint()) {
 						displayTile(i,j,"general2button.png");
 					}
-					else if(!tiles[j][i].isValid())
+					else if(!tiles[i][j].isValid())
 					{
 						displayTile(i,j,"general1button.png");
 					}
@@ -84,7 +84,7 @@ public class BuilderBoardView extends JPanel {
 					{
 						displayTile(i,j,"tile.PNG");
 					}
-					tile[i*row+j].addMouseListener(new BuilderBoardController(board, tile[i*row+j], tiles[j][i], builder, app));
+					tile[i*row+j].addMouseListener(new BuilderBoardController(board, tile[i*row+j], tiles[i][j], builder, app));
 
 
 			}

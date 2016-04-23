@@ -122,15 +122,15 @@ public class TileController extends MouseAdapter {
 						for (int x = -xoffset; x < selectedPiece.getDim() - xoffset; x++) {
 							try {
 								if ((selectedPiece.getTile(y + yoffset, x + xoffset).isValid())
-										&& tiles[j + y][i + x].isValid()) {
+										&& tiles[i + y][j + x].isValid()) {
 									if (setNewFilename) {
-										tileimgs[(j + y) * tiles.length + (i + x)].setFileName(hpfn);
+										tileimgs[(i + y) * tiles.length + (j + x)].setFileName(hpfn);
 									}
 									if (setOriginalImg) {
-										String origfn = tileimgs[(j + y) * tiles.length + (i + x)].getFileName();
-										tileimgs[(j + y) * tiles.length + (i + x)].setImg(origfn);
+										String origfn = tileimgs[(i + y) * tiles.length + (j + x)].getFileName();
+										tileimgs[(i + y) * tiles.length + (j + x)].setImg(origfn);
 									} else {
-										tileimgs[(j + y) * tiles.length + (i + x)].setImg(hpfn);
+										tileimgs[(i + y) * tiles.length + (j + x)].setImg(hpfn);
 									}
 								}
 							} catch (IndexOutOfBoundsException e) {

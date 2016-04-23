@@ -109,7 +109,7 @@ public class PieceView extends JPanel {
 		int xoffset = (int) piece.findReferencePoint().getX();
 		int yoffset = (int) piece.findReferencePoint().getY();
 		if (tiles[i][j].isValid()) {
-			if ( xoffset == j && yoffset == i){
+			if (yoffset == i && xoffset == j){
 				tileview[i * row + j] = (new JLabelIcon("generaltealbutton.png", piecesidescaled, piecesidescaled));
 			}
 			else{
