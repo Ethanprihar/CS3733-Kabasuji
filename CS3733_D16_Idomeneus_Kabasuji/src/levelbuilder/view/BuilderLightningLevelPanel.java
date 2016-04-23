@@ -146,6 +146,11 @@ public class BuilderLightningLevelPanel extends JPanel {
 		background.add(redoBtn);
 
 		JTextField timeSet = new JTextField();
+		if(builder.getSelectedLevel().getEndCondition() > 0)
+		{
+			System.out.println("Working");
+			timeSet.setText(Integer.toString(builder.getSelectedLevel().getEndCondition()));
+		}
 		timeSet.setBounds((int) (Screen.width * 0.08 + 10), (int) (Screen.height * 0.30), 40, 20);
 		timeSet.setFont(new Font("Onyx", Font.BOLD, 18));
 		background.add(timeSet);
