@@ -90,7 +90,7 @@ public class SelectLevelController extends MouseAdapter {
 			// repaint the PlayLevelPanel
 			plp.repaint();
 
-			// set the contentpanel of container to contain PlayLevelPanel
+			// set the content panel of container to contain PlayLevelPanel
 			app.setContentPanel(plp);
 		}
 	}

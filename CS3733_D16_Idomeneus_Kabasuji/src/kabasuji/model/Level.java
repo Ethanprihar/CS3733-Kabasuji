@@ -20,7 +20,7 @@ public abstract class Level implements Serializable{
 		highScore = 0;
 	}
 	
-	public abstract int getEndCondition();
+	public abstract Integer getEndCondition();
 	
 	public abstract void setEndCondition(int ec);
 	
