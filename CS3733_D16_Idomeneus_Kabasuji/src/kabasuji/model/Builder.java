@@ -28,6 +28,7 @@ public class Builder
 		numOfPieces = new int[35];
 		levels = new ArrayList<Level>();
 		boardHistory = new ArrayList<Board>();
+		bullpenHistory = new ArrayList<int[]>();
 		try
 		{
 			FileInputStream saveFile = new FileInputStream("levels.data");
@@ -116,6 +117,9 @@ public class Builder
 
 	public void addNewLevel(int type, int dim)
 	{
+		numOfPieces = new int[35];
+		boardHistory = new ArrayList<Board>();
+		bullpenHistory = new ArrayList<int[]>();
 		Bullpen bullpen = new Bullpen();
 		Tile[][] tiles = new Tile[dim][dim];
 		for(int i=0; i<dim;i++)
@@ -235,10 +239,16 @@ public class Builder
 	{
 		currentScreen = newScreen;
 	}
-	
+
 	public void incrementNum(int index)
 	{
 		numOfPieces[index]++;
+	}
+
+	//gets the number of a given piece.
+	public int getNum(int index)
+	{
+		return numOfPieces[index];
 	}
 	
 	public int getCurrentNumber()
