@@ -119,6 +119,8 @@ public class PlayLevelPanel extends JPanel {
 					(int) (Screen.height * 0.05));
 			movesLeft.setForeground(Color.WHITE);
 			add(movesLeft);
+			
+			System.out.println("end condidition: " + kabasuji.getSelectedLevel().getEndCondition().toString());
 
 			movesLeftNum = new JLabel(kabasuji.getSelectedLevel().getEndCondition().toString(), SwingConstants.CENTER);
 			movesLeftNum.setBounds(0, 0, 120, 50);
@@ -220,6 +222,34 @@ public class PlayLevelPanel extends JPanel {
 	 */
 	public JLabelIcon getZoomPiece() {
 		return zoompiece;
+	}
+	
+	/**
+	 * Getter for JLabel movesLeftNum
+	 * 
+	 * @return
+	 */
+	public JLabel getMovesLeftNum() {
+		return movesLeftNum;
+	}
+	
+	/**
+	 * Setter for JLabel movesLeftNum
+	 * 
+	 * @return
+	 */
+	public void setMovesLeftNum(Integer movesLeft) {
+		movesLeftNum.setText(movesLeft.toString());
+		repaint();
+	}
+	
+	/**
+	 * Getter for JLabel timeLeftNum
+	 * 
+	 * @return
+	 */
+	public JLabel getTimeLeftNum() {
+		return timeLeftNum;
 	}
 
 	/**

@@ -7,6 +7,8 @@ import kabasuji.model.Board;
 import kabasuji.model.Bullpen;
 import kabasuji.model.Kabasuji;
 import kabasuji.model.Piece;
+import kabasuji.model.PuzzleLevel;
+import kabasuji.model.ReleaseLevel;
 import kabasuji.model.Tile;
 import kabasuji.view.BoardView;
 import kabasuji.view.BullpenView;
@@ -64,12 +66,20 @@ public class TileController extends MouseAdapter {
 		bullpenview = panel.getBullpenView();
 		if (board.canAddPiece(selectedPiece, selfTile)) {
 			board.addPiece(selectedPiece, selfTile);
-			displayHoverPiece("bluenightbutton.png", true,false);
+			displayHoverPiece("bluenightbutton.png", true, false);
 			bullpen.selectPiece(null);
 			bullpen.removePiece(selectedPiece);
 			bullpenview.setupBullpen();
 			panel.getZoomPiece().removeAll();
 			panel.repaint();
+			// update to show new number of moves if in puzzle mode
+			if (kabasuji.getSelectedLevel() instanceof PuzzleLevel) {
+				panel.setMovesLeftNum((Integer) ((PuzzleLevel) kabasuji.getSelectedLevel()).getMovesLeft());
+			}
+			// update to show new number of moves if in puzzle mode
+			else if (kabasuji.getSelectedLevel() instanceof ReleaseLevel) {
+				panel.setMovesLeftNum((Integer) ((ReleaseLevel) kabasuji.getSelectedLevel()).getMovesLeft());
+			}
 		}
 	}
 
@@ -80,10 +90,10 @@ public class TileController extends MouseAdapter {
 			System.out.println("Have piece....");
 			if (board.canAddPiece(selectedPiece, selfTile)) {
 				System.out.println("Can place.");
-				displayHoverPiece("bluenightbutton.png", false,false);
+				displayHoverPiece("bluenightbutton.png", false, false);
 			} else {
 				System.out.println("Cannot place.");
-				displayHoverPiece("rednightbutton.png", false,false);
+				displayHoverPiece("rednightbutton.png", false, false);
 
 			}
 		}
@@ -92,7 +102,7 @@ public class TileController extends MouseAdapter {
 	public void mouseExited(MouseEvent e) {
 		selectedPiece = kabasuji.getSelectedLevel().getBullpen().getSelectedPiece();
 		if (selectedPiece != null) {
-			displayHoverPiece("general1button.png", false,true);
+			displayHoverPiece("general1button.png", false, true);
 			// tile.setImg(fn);
 		}
 	}
@@ -112,12 +122,11 @@ public class TileController extends MouseAdapter {
 									if (setNewFilename) {
 										tileimgs[(j + y) * tiles.length + (i + x)].setFileName(hpfn);
 									}
-									if(setOriginalImg){
+									if (setOriginalImg) {
 										String origfn = tileimgs[(j + y) * tiles.length + (i + x)].getFileName();
 										tileimgs[(j + y) * tiles.length + (i + x)].setImg(origfn);
-									}
-									else{
-									tileimgs[(j + y) * tiles.length + (i + x)].setImg(hpfn);
+									} else {
+										tileimgs[(j + y) * tiles.length + (i + x)].setImg(hpfn);
 									}
 								}
 							} catch (IndexOutOfBoundsException e) {
