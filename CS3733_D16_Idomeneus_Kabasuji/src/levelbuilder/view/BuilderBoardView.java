@@ -65,14 +65,14 @@ public class BuilderBoardView extends JPanel {
 		updateBoard();
 
 	}
+	
+	// display the tiles on the container panel and scales them to fit
+	// row/col
+	// includes centering as well
 	public void updateBoard(){
-		// display the tiles on the container panel and scales them to fit
-		// row/col
-		// includes centering as well
+
 		for (int i = 0; i < col-2; i++) {
 			for (int j = 0; j < row-2; j++) {
-				//if (tiles[j][i].isValid()) {
-					//displayTile(i,j,"tile.PNG");
 					if (tiles[i][j].isHint()) {
 						displayTile(i,j,"general2button.png");
 					}
@@ -89,7 +89,6 @@ public class BuilderBoardView extends JPanel {
 
 			}
 		}
-		//repaint();
 	}
 	public void displayTile(int i,int j, String pic){
 		tile[i * row + j] = new JLabelIcon(pic, tilesidescaled, tilesidescaled);

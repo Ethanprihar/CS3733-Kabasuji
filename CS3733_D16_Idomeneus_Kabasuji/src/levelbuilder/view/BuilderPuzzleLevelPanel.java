@@ -145,6 +145,13 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		background.add(redoBtn);
 
 		JTextField numMoves = new JTextField();
+		
+		// @ TODO: This is the part where I need to actually fix this stuff.
+		if(true)//builder.getSelectedLevel().getEndCondition() > 0)
+		{
+			System.out.println("Working");
+			numMoves.setText(Integer.toString(builder.getSelectedLevel().getEndCondition()));
+		}
 		numMoves.setBounds((int) (Screen.width * 0.08 + 10), (int) (Screen.height * 0.30), 40, 20);
 		numMoves.setFont(new Font("Onyx", Font.BOLD, 18));
 		background.add(numMoves);
