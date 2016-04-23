@@ -11,7 +11,7 @@ public class ReleaseLevel extends Level {
 		movesUsed = 0; // initialize the moves used to 0
 	}
 	
-	public int getEndCondition()
+	public Integer getEndCondition()
 	{
 		return maxMoves;
 	}

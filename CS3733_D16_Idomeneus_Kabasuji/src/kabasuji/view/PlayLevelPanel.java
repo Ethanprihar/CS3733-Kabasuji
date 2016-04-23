@@ -8,10 +8,16 @@ import kabasuji.controller.RotateSelectedPieceBullpenController;
 import kabasuji.model.Board;
 import kabasuji.model.Bullpen;
 import kabasuji.model.Kabasuji;
+import kabasuji.model.LightningLevel;
+import kabasuji.model.PuzzleLevel;
+import kabasuji.model.ReleaseLevel;
 import kabasuji.model.Screen;
 import javax.swing.JLabel;
+
+import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.Timer; // goes into lightning level controller
 
 public class PlayLevelPanel extends JPanel {
 	/** Entities associated **/
@@ -19,19 +25,25 @@ public class PlayLevelPanel extends JPanel {
 	Board board;
 	Bullpen bullpen;
 
-	/** Boundaries assoiated **/
+	/** Boundaries associated **/
 	TopLevelApplication app;
 	BoardView boardview;
 	BullpenView bullpenview;
-	
+
 	JLabelIcon zoompiece;
 	JLabelIcon rotatelbtn;
 	JLabelIcon rotaterbtn;
 	JLabelIcon fliphbtn;
 	JLabelIcon flipvbtn;
 
+	JLabel movesLeft;
+	JLabel movesLeftNum;
+	JLabel timeLeft;
+	JLabel timeLeftNum;
+
 	/**
 	 * Construct PlayLevelPanel.
+	 * 
 	 * @param kabasuji
 	 * @param app
 	 */
@@ -46,12 +58,14 @@ public class PlayLevelPanel extends JPanel {
 		setBounds(0, 0, Screen.width, Screen.height);
 
 	}
+
 	/**
 	 * Update the PlayLevelPanel with a new BoardView and BullpenView.
+	 * 
 	 * @param bv
 	 * @param bpv
 	 */
-	public void updatePlayLevelPanel(BoardView bv, BullpenView bpv){
+	public void updatePlayLevelPanel(BoardView bv, BullpenView bpv) {
 		/** adding all buttons/images needed **/
 		zoompiece = new JLabelIcon("opaque_canvas.png", (int) (Screen.height * 0.25), (int) (Screen.height * 0.25));
 		zoompiece.setLocation((int) (Screen.width * 0.35), (int) (Screen.height * 0.05));
@@ -93,6 +107,52 @@ public class PlayLevelPanel extends JPanel {
 		rotaterbtn.add(rotaterlbl);
 		add(rotaterbtn);
 
+		// display moves left if in puzzle or release mode
+		if ((kabasuji.getSelectedLevel() instanceof PuzzleLevel)
+				|| (kabasuji.getSelectedLevel() instanceof ReleaseLevel)) {
+
+			// movesLeft Icon
+			movesLeft = new JLabel("<html>Moves Left</html>", SwingConstants.CENTER);
+			movesLeft.setBounds(0, 0, 120, 50);
+			movesLeft.setFont(new Font("Onyx", Font.BOLD, 18));
+			movesLeft.setLocation((int) (Screen.width * 0.715) + (int) (movesLeft.getSize().getWidth() / 2),
+					(int) (Screen.height * 0.05));
+			movesLeft.setForeground(Color.WHITE);
+			add(movesLeft);
+
+			movesLeftNum = new JLabel(kabasuji.getSelectedLevel().getEndCondition().toString(), SwingConstants.CENTER);
+			movesLeftNum.setBounds(0, 0, 120, 50);
+			movesLeftNum.setFont(new Font("Onyx", Font.BOLD, 18));
+			movesLeftNum.setLocation((int) (Screen.width * 0.715) + (int) (movesLeft.getSize().getWidth() / 2),
+					(int) (Screen.height * 0.09));
+			movesLeftNum.setForeground(Color.WHITE);
+			add(movesLeftNum);
+
+		}
+
+		// display time left if in lightning mode
+		else if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
+
+			// timeLeft Icon
+			timeLeft = new JLabel("<html>Time Left</html>", SwingConstants.CENTER);
+			timeLeft.setBounds(0, 0, 120, 50);
+			timeLeft.setFont(new Font("Onyx", Font.BOLD, 18));
+			timeLeft.setLocation((int) (Screen.width * 0.715) + (int) (timeLeft.getSize().getWidth() / 2),
+					(int) (Screen.height * 0.18));
+			timeLeft.setForeground(Color.white);
+			add(timeLeft);
+
+			// time left amount j label
+			timeLeftNum = new JLabel(kabasuji.getSelectedLevel().getEndCondition().toString(), SwingConstants.CENTER);
+			timeLeftNum.setBounds(0, 0, 120, 50);
+			timeLeftNum.setFont(new Font("Onyx", Font.BOLD, 18));
+			timeLeftNum.setLocation((int) (Screen.width * 0.715) + (int) (timeLeft.getSize().getWidth() / 2),
+					(int) (Screen.height * 0.22));
+			timeLeftNum.setForeground(Color.white);
+			add(timeLeftNum);
+
+		}
+
 		JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", 70, 70);
 		mainmenubtn.setLocation((int) (Screen.width * 0.84) + (int) (rotatelbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * .6));
@@ -120,8 +180,7 @@ public class PlayLevelPanel extends JPanel {
 		resetlevellbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		resetlevelbtn.add(resetlevellbl);
 		add(resetlevelbtn);
-		
-		
+
 		/** Star JLabelIcon **/
 		JLabelIcon[] stars = new JLabelIcon[3];
 		for (int i = 0; i < stars.length; i++) {
@@ -131,36 +190,41 @@ public class PlayLevelPanel extends JPanel {
 					(int) (nextlevelbtn.getY() - (((i + 1) % 2) + 1) * stars[i].getSize().getWidth()));
 			add(stars[i]);
 		}
-		
+
 		// add BoardView and BullpenView elements to PlayLevelPanel
 		add(bv);
 		add(bpv);
 		setBoardView(bv);
 		setBullpenView(bpv);
-		
+
 		// setup background canvas **
 		JLabelIcon background = new JLabelIcon("starry_night.jpeg", Screen.width, Screen.height);
 		background.setBounds(0, 0, Screen.width, Screen.height);
 		add(background);
 	}
+
 	/**
-	 * Add controlers to PlayLevelPanel.
+	 * Add controllers to PlayLevelPanel.
 	 */
-	public void addControllers(){
+	public void addControllers() {
 		rotaterbtn.addMouseListener(new RotateSelectedPieceBullpenController(kabasuji, this, rotaterbtn, true));
 		rotatelbtn.addMouseListener(new RotateSelectedPieceBullpenController(kabasuji, this, rotatelbtn, false));
 		flipvbtn.addMouseListener(new FlipSelectedPieceBullpenController(kabasuji, this, flipvbtn, true));
 		fliphbtn.addMouseListener(new FlipSelectedPieceBullpenController(kabasuji, this, fliphbtn, false));
 	}
+
 	/**
-	 * Getter for zoompiece.
+	 * Getter for zoom piece.
+	 * 
 	 * @return
 	 */
 	public JLabelIcon getZoomPiece() {
 		return zoompiece;
 	}
+
 	/**
 	 * Setter for BoardView.
+	 * 
 	 * @param bv
 	 */
 	public void setBoardView(BoardView bv) {
@@ -168,15 +232,19 @@ public class PlayLevelPanel extends JPanel {
 		boardview.setupBoard();
 		repaint();
 	}
+
 	/**
 	 * Getter for BoardView.
+	 * 
 	 * @return
 	 */
 	public BoardView getBoardView() {
 		return boardview;
 	}
+
 	/**
 	 * Setter for BullpenView.
+	 * 
 	 * @param bpv
 	 */
 	public void setBullpenView(BullpenView bpv) {
@@ -184,8 +252,10 @@ public class PlayLevelPanel extends JPanel {
 		bullpenview.setupBullpen();
 		repaint();
 	}
+
 	/**
 	 * Getter for BullpenView.
+	 * 
 	 * @return
 	 */
 	public BullpenView getBullpenView() {
