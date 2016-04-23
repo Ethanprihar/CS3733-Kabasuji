@@ -14,6 +14,7 @@ public class Main {
 	 */
 	public static void main(String[] args)
 	{
+		//makePieces();
 		Kabasuji kabasuji = new Kabasuji();
 		TopLevelApplication frame = new TopLevelApplication(kabasuji);
 		// start splash screen
@@ -54,6 +55,7 @@ public class Main {
 					 { f, f, t, f, f, f},
 					 { f, f, t, t, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 1:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -62,6 +64,7 @@ public class Main {
 					 { f, f, t, t, f, f},
 					 { f, f, t, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 2:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -70,6 +73,7 @@ public class Main {
 					 { f, f, f, t, f, f},
 					 { f, f, f, t, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 3:
 					tiles = new Tile[][]
 					{{ f, f, f, t, f, f},
@@ -78,6 +82,7 @@ public class Main {
 					 { f, f, t, f, f, f},
 					 { f, f, t, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 4:
 					tiles = new Tile[][]
 					{{ f, f, t, f, f, f},
@@ -86,6 +91,7 @@ public class Main {
 					 { f, f, t, f, f, f},
 					 { f, f, t, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 5:
 					tiles = new Tile[][]
 					{{ f, f, t, f, f, f},
@@ -94,6 +100,7 @@ public class Main {
 					 { f, f, t, f, f, f},
 					 { f, f, t, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 6:
 					tiles = new Tile[][]
 					{{ f, f, t, t, f, f},
@@ -102,6 +109,7 @@ public class Main {
 					 { f, f, t, f, f, f},
 					 { f, f, t, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 7:
 					tiles = new Tile[][]
 					{{ f, f, t, f, f, f},
@@ -110,6 +118,7 @@ public class Main {
 					 { f, f, t, f, f, f},
 					 { f, f, t, f, f, f},
 					 { f, f, t, f, f, f}};
+					 break;
 				case 8:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -118,6 +127,7 @@ public class Main {
 					 { f, t, t, t, f, f},
 					 { f, f, f, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 9:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -126,6 +136,7 @@ public class Main {
 					 { f, t, t, f, f, f},
 					 { f, f, f, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 10:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -134,6 +145,7 @@ public class Main {
 					 { f, f, t, t, f, f},
 					 { f, f, t, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 11:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -142,6 +154,7 @@ public class Main {
 					 { f, t, f, f, f, f},
 					 { f, t, f, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 12:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -150,6 +163,7 @@ public class Main {
 					 { f, t, f, f, f, f},
 					 { f, t, f, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 13:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -158,6 +172,7 @@ public class Main {
 					 { f, f, t, f, f, f},
 					 { f, f, t, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 14:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -166,6 +181,7 @@ public class Main {
 					 { f, f, t, f, f, f},
 					 { f, f, t, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 15:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -174,6 +190,7 @@ public class Main {
 					 { f, t, t, f, f, f},
 					 { f, f, t, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 16:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -182,6 +199,7 @@ public class Main {
 					 { f, f, t, f, f, f},
 					 { f, t, t, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 17:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -190,6 +208,7 @@ public class Main {
 					 { f, t, t, f, f, f},
 					 { f, f, t, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 18:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -198,6 +217,7 @@ public class Main {
 					 { f, t, f, f, f, f},
 					 { f, f, f, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 19:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -206,6 +226,7 @@ public class Main {
 					 { f, f, t, f, f, f},
 					 { f, f, f, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 20:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -214,6 +235,7 @@ public class Main {
 					 { f, f, t, f, f, f},
 					 { f, f, f, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 21:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -222,6 +244,7 @@ public class Main {
 					 { f, t, t, f, f, f},
 					 { f, f, f, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 22:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -230,6 +253,7 @@ public class Main {
 					 { f, f, t, f, f, f},
 					 { f, f, t, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 23:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -238,6 +262,7 @@ public class Main {
 					 { f, t, f, f, f, f},
 					 { f, t, f, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 24:
 					tiles = new Tile[][]
 					{{ f, f, f, t, f, f},
@@ -246,6 +271,7 @@ public class Main {
 					 { f, f, t, f, f, f},
 					 { f, f, t, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 25:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -254,6 +280,7 @@ public class Main {
 					 { f, f, t, f, f, f},
 					 { f, f, t, t, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 26:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -262,6 +289,7 @@ public class Main {
 					 { f, f, t, t, f, f},
 					 { f, f, t, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 27:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -270,6 +298,7 @@ public class Main {
 					 { f, f, t, t, f, f},
 					 { f, f, f, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 28:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -278,6 +307,7 @@ public class Main {
 					 { f, f, t, f, f, f},
 					 { f, f, t, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 29:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -286,6 +316,7 @@ public class Main {
 					 { f, t, t, f, f, f},
 					 { f, f, t, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 30:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -294,6 +325,7 @@ public class Main {
 					 { f, t, f, f, f, f},
 					 { f, t, f, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 31:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -302,6 +334,7 @@ public class Main {
 					 { f, t, f, f, f, f},
 					 { f, f, f, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 32:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -310,6 +343,7 @@ public class Main {
 					 { f, t, t, f, f, f},
 					 { f, t, f, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 33:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -318,6 +352,7 @@ public class Main {
 					 { f, t, f, f, f, f},
 					 { f, t, f, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 				case 34:
 					tiles = new Tile[][]
 					{{ f, f, f, f, f, f},
@@ -326,6 +361,7 @@ public class Main {
 					 { f, t, t, f, f, f},
 					 { f, t, f, f, f, f},
 					 { f, f, f, f, f, f}};
+					 break;
 			}
 			pieces[i] = new Piece(tiles);
 		}
