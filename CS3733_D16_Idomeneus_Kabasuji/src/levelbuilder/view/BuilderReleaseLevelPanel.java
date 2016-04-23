@@ -18,6 +18,7 @@ import javax.swing.SwingConstants;
 public class BuilderReleaseLevelPanel extends JPanel {
 	Builder builder;
 	TopLevelApplicationBuilder app;
+	int[] numOfPiecesOnLoad;
 
 	/**
 	 * Create the panel.
@@ -71,7 +72,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		saveLbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		saveBtn.add(saveLbl);
 		background.add(saveBtn);
-		saveBtn.addMouseListener(new SaveLevelController(builder, app, saveBtn, numMoves, 3));
+		saveBtn.addMouseListener(new SaveLevelController(builder, app, saveBtn, numMoves, 3, numOfPiecesOnLoad));
 
 		JLabelIcon deleteBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		deleteBtn.setLocation((int) (Screen.width * 0.82) + (int) (saveBtn.getSize().getWidth() / 2),

@@ -31,9 +31,10 @@ public class SaveLevelController extends MouseAdapter {
 	String fn;
 	JTextField ec;
 	int type;
+	int[] numOfPiecesOnLoad;
 
 
-	public SaveLevelController(Builder builder, TopLevelApplicationBuilder app, JLabelIcon button, JTextField ec, int type) {
+	public SaveLevelController(Builder builder, TopLevelApplicationBuilder app, JLabelIcon button, JTextField ec, int type, int[]numOfPiecesOnLoad) {
 		this.builder = builder;
 		this.app = app;
 		this.contentPanel = app.getContentPanel();		
@@ -41,6 +42,7 @@ public class SaveLevelController extends MouseAdapter {
 		this.fn = button.getFileName();
 		this.ec = ec;
 		this.type = type;
+		this.numOfPiecesOnLoad = numOfPiecesOnLoad;
 	}
 
 	/**
@@ -76,10 +78,8 @@ public class SaveLevelController extends MouseAdapter {
 		
 		try
 		{
-			System.out.println("I am here 1");
 			builder.setEndCondition(Integer.parseInt(ec.getText()));
-			System.out.println("I am here 2");
-			builder.saveLevel();
+			builder.saveLevel(numOfPiecesOnLoad);
 			builder.saveToDisc();
 			ChangeScreenBuilderMove gtsm = new ChangeScreenBuilderMove(Screen.Opening);
 			// Attempt to execute action on model

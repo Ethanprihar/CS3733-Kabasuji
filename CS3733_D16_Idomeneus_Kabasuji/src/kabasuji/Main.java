@@ -31,7 +31,8 @@ public class Main {
 		for(int i=0; i<15; i++)
 		{
 			builder.addNewLevel(i%3, 12);
-			builder.saveLevel();
+			int[] nothing = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+			builder.saveLevel(nothing);
 			System.out.println(builder.getLevels());
 		}
 		builder.saveToDisc();

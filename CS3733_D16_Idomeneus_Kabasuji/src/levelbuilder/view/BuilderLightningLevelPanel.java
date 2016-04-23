@@ -22,7 +22,7 @@ public class BuilderLightningLevelPanel extends JPanel {
 	Builder builder;
 	TopLevelApplicationBuilder app;
 	JTextField boardDimensions;
-
+	int[] numOfPiecesOnLoad;
 	/**
 	 * Create the panel.
 	 */
@@ -69,6 +69,7 @@ public class BuilderLightningLevelPanel extends JPanel {
 		// Run the loop to initialize and set their positions
 		for (int i = 0; i < 12; i++){
 			piece1Lbl[i] = new JLabel(String.valueOf(builder.getNum(i)));
+			numOfPiecesOnLoad[i] = builder.getNum(i);
 			piece1Lbl[i].setBounds(30 + i *60, 65, 20, 20);
 			bullpen.add(piece1Lbl[i]);
 		}
@@ -77,7 +78,8 @@ public class BuilderLightningLevelPanel extends JPanel {
 		JLabel[] piece2Lbl = new JLabel[12];
 		// Run the loop to initialize and set their positions
 		for (int i = 0; i < 12; i++){
-			piece2Lbl[i] = new JLabel(String.valueOf(builder.getNum(i+12)));
+			piece2Lbl[i] = new JLabel(String.valueOf(builder.getNum(i+12)));			
+			numOfPiecesOnLoad[i+12] = builder.getNum(i+12);
 			piece2Lbl[i].setBounds(30 + i *60, 65 + 70, 20, 20);
 			bullpen.add(piece2Lbl[i]);
 		}
@@ -86,7 +88,8 @@ public class BuilderLightningLevelPanel extends JPanel {
 		JLabel[] piece3Lbl = new JLabel[11];
 		// Run the loop to initialize and set their positions
 		for (int i = 0; i < 11; i++){
-			piece3Lbl[i] = new JLabel(String.valueOf(builder.getNum(i+12+12)));
+			piece3Lbl[i] = new JLabel(String.valueOf(builder.getNum(i+24)));
+			numOfPiecesOnLoad[i+24] = builder.getNum(i+24);
 			piece3Lbl[i].setBounds(30 + i *60, 65 + 140, 20, 20);
 			bullpen.add(piece3Lbl[i]);
 		}
@@ -164,7 +167,7 @@ public class BuilderLightningLevelPanel extends JPanel {
 		saveLbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		saveBtn.add(saveLbl);
 		background.add(saveBtn);
-		saveBtn.addMouseListener(new SaveLevelController(builder, app, saveBtn, timeSet, 2));
+		saveBtn.addMouseListener(new SaveLevelController(builder, app, saveBtn, timeSet, 2, numOfPiecesOnLoad));
 
 		JLabelIcon deleteBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		deleteBtn.setLocation((int) (Screen.width * 0.82) + (int) (saveBtn.getSize().getWidth() / 2),

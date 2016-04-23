@@ -72,18 +72,33 @@ public class Builder
 		}
 	}
 	
-	public void saveLevel()
+	public void saveLevel(int[] numOfPiecesOnLoad)
 	{
-		selectedLevel.setEndCondition(endCondition);
-		
-		for(int i=0; i<35; i++)
-		{
-			for(int j=0; j<numOfPieces[i]; j++)
+		if(!(selectedLevel.getEndCondition() > 0))		//If this is being saved for the first time
+		{		
+			for(int i=0; i<35; i++)
 			{
-				selectedLevel.getBullpen().addPiece(pieces[i].copy());
+				for(int j=0; j<numOfPieces[i]; j++)
+				{
+					selectedLevel.getBullpen().addPiece(pieces[i].copy());
+				}
+				System.out.println("added " + numOfPieces[i] + " of piece " + i);
 			}
-			System.out.println("added " + numOfPieces[i] + " of piece " + i);
 		}
+		else
+		{
+			for(int i=0; i<35; i++)
+			{
+				for(int j=numOfPiecesOnLoad[i]; j<numOfPieces[i]; j++)
+				{
+					selectedLevel.getBullpen().addPiece(pieces[i].copy());
+				}
+				System.out.println("added " + numOfPieces[i] + " of piece " + i);
+			}
+		}
+		
+		
+		selectedLevel.setEndCondition(endCondition);
 		int valid = 0;
 		int invalid = 0;
 		int hint = 0;
@@ -107,7 +122,7 @@ public class Builder
 			levels.add(selectedLevel);
 		selectedLevel = null;
 		numOfPieces = new int[35];
-		System.out.println(levels.size());
+		System.out.println("Printing levels.size() for some reason: " + levels.size());
 	}
 	
 	public void deleteLevel()
