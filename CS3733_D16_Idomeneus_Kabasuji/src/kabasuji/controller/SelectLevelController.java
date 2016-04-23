@@ -9,19 +9,12 @@ import javax.swing.JPanel;
 
 import kabasuji.controller.moves.ChangeScreenMove;
 import kabasuji.controller.moves.SelectLevelMove;
-import kabasuji.model.Bullpen;
 import kabasuji.model.Kabasuji;
 import kabasuji.model.LightningLevel;
-import kabasuji.model.Piece;
-import kabasuji.model.PuzzleBoard;
-import kabasuji.model.ReleaseLevel;
 import kabasuji.model.Screen;
-import kabasuji.model.Tile;
 import kabasuji.view.BoardView;
 import kabasuji.view.BullpenView;
 import kabasuji.view.JLabelIcon;
-import kabasuji.view.LevelSelectPanel;
-import kabasuji.view.MainMenu;
 import kabasuji.view.PlayLevelPanel;
 import kabasuji.view.TopLevelApplication;
 import javax.swing.Timer; // for lightning level
