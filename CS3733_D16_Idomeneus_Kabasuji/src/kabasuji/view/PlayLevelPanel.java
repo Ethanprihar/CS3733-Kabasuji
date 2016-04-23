@@ -250,6 +250,16 @@ public class PlayLevelPanel extends JPanel {
 	public JLabel getTimeLeftNum() {
 		return timeLeftNum;
 	}
+	
+	/**
+	 * Setter for JLabel timeLeftNum
+	 * 
+	 * @return
+	 */
+	public void setTimeLeftNum(Integer timeLeft) {
+		timeLeftNum.setText(timeLeft.toString());
+		repaint();
+	}
 
 	/**
 	 * Setter for BoardView.
