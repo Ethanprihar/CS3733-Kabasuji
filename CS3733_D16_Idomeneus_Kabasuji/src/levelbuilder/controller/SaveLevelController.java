@@ -14,6 +14,7 @@ import kabasuji.model.Screen;
 import kabasuji.view.JLabelIcon;
 import levelbuilder.controller.moves.ChangeScreenBuilderMove;
 import levelbuilder.view.BuilderMainMenu;
+import levelbuilder.view.ErrorDialogBox;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
 /**
@@ -50,6 +51,18 @@ public class SaveLevelController extends MouseAdapter {
 	 */
 	public void mousePressed(MouseEvent me) {
 		// Created ChangeScreenBuilderMove and input desired screen
+		
+		if (ec.getText().length() == 0){
+			ErrorDialogBox.infoBox("The number of moves can't be left empty", "Invalid Input");
+		}
+		else {
+			try {
+				Integer.parseInt(ec.getText());
+			}catch(NumberFormatException e){
+				ErrorDialogBox.infoBox("The number of moves should be an integer", "Invalid Input");
+			}
+		}
+		
 		try
 		{
 			System.out.println("I am here 1");
