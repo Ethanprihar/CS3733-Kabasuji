@@ -37,7 +37,7 @@ public class Builder
 		}
 		catch (Exception exc)
 		{
-			//exc.printStackTrace(); // If there was an error, print the info.
+			System.out.println("No levels were found");
 		}
 		try
 		{
@@ -48,7 +48,7 @@ public class Builder
 		}
 		catch (Exception exc)
 		{
-			//exc.printStackTrace(); // If there was an error, print the info.
+			System.out.println("No pieces were found");
 		}
 	}
 
