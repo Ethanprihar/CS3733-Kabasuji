@@ -37,8 +37,8 @@ public abstract class Board implements Serializable {
 					for (int y = -yoffset; y < p.getDim()-yoffset; y++) {
 						for (int x = -xoffset; x < p.getDim()-xoffset; x++) {
 							if (p.getTile(y+yoffset, x+xoffset).isValid()) {
-								tiles[j + y][i + x].setPiece(p);
-								tiles[j + y][i + x].setValid(true);
+								tiles[i + y][j + x].setPiece(p);
+								tiles[i + y][j + x].setValid(true);
 							}
 						}
 					}

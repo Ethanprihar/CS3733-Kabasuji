@@ -83,8 +83,15 @@ public class BoardView extends JPanel {
 				// create a button image with specified dimension
 				// only display tile if it's valid
 				if (tiles[i][j].isValid()) {
-					displayTile(i, j, "boardtile.png");
-					tile[i * row + j].addMouseListener(new TileController(kabasuji, panel, tile[i * row + j], tiles[i][j]));
+					String imgfn;
+					if (tiles[i][j].isHint()) {
+						imgfn = "hint.png";
+					} else {
+						imgfn = "boardtile.png";
+					}
+					displayTile(i, j, imgfn);
+					tile[i * row + j]
+							.addMouseListener(new TileController(kabasuji, panel, tile[i * row + j], tiles[i][j]));
 				}
 			}
 		}
