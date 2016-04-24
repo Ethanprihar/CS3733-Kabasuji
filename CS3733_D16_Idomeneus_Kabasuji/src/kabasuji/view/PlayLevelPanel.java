@@ -101,6 +101,16 @@ public class PlayLevelPanel extends JPanel {
 		timer.start();
 
 	}
+	
+	public void resetTimer() {
+		
+		if (!((LightningLevel) kabasuji.getSelectedLevel()).hasTimeLeft()) {
+			// reset the timer
+			//timerStart();
+			System.out.println("no time left");
+			timer.restart();
+		}
+	}
 
 	/**
 	 * Update the PlayLevelPanel with a new BoardView and BullpenView.
@@ -256,7 +266,7 @@ public class PlayLevelPanel extends JPanel {
 		rotatelbtn.addMouseListener(new RotateSelectedPieceBullpenController(kabasuji, this, rotatelbtn, false));
 		flipvbtn.addMouseListener(new FlipSelectedPieceBullpenController(kabasuji, this, flipvbtn, true));
 		fliphbtn.addMouseListener(new FlipSelectedPieceBullpenController(kabasuji, this, fliphbtn, false));
-		resetlevelbtn.addMouseListener(new ResetLevelController(kabasuji, app, resetlevelbtn));
+		resetlevelbtn.addMouseListener(new ResetLevelController(kabasuji, this, resetlevelbtn));
 		nextlevelbtn.addMouseListener(new NextLevelController(kabasuji, app, nextlevelbtn));
 	}
 

@@ -64,7 +64,7 @@ public class TileController extends MouseAdapter {
 	public void mousePressed(MouseEvent me) {
 		bullpen = kabasuji.getSelectedLevel().getBullpen();
 		bullpenview = panel.getBullpenView();
-		if (board.canAddPiece(selectedPiece, selfTile)) {
+		if (kabasuji.getSelectedLevel().canMoveBullpenToBoard(selfTile)) {
 			board.addPiece(selectedPiece, selfTile);
 			displayHoverPiece("bluenightbutton.png", true, false);
 			bullpen.selectPiece(null);
@@ -92,7 +92,7 @@ public class TileController extends MouseAdapter {
 
 		if (selectedPiece != null) {
 			System.out.println("Have piece....");
-			if (board.canAddPiece(selectedPiece, selfTile)) {
+			if (kabasuji.getSelectedLevel().canMoveBullpenToBoard(selfTile)) {
 				System.out.println("Can place.");
 				displayHoverPiece("bluenightbutton.png", false, false);
 			} else {
