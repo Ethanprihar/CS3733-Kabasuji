@@ -47,12 +47,12 @@ public class RedoController extends MouseAdapter {
 		try
 		{
 			builder.redo();
-			ChangeScreenBuilderMove gtsm = new ChangeScreenBuilderMove(Screen.Opening);
+			builder.setCurrentScreen(Screen.PlayLevel);
 			// Attempt to execute action on model
-			gtsm.execute(builder);
+			//gtsm.execute(builder);
 			// Created JPanel screen object and update boundary to reflect changes
-			BuilderMainMenu lsp = new BuilderMainMenu(builder, app);
-			app.setContentPanel(lsp);
+			//BuilderMainMenu lsp = new BuilderMainMenu(builder, app);
+			//app.setContentPanel(lsp);
 		}
 		catch (Exception exc)
 		{
