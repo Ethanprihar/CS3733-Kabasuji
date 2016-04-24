@@ -32,6 +32,7 @@ public class SaveLevelController extends MouseAdapter {
 	JTextField ec;
 	int type;
 	int[] numOfPiecesOnLoad;
+	boolean valid = true;
 
 
 	public SaveLevelController(Builder builder, TopLevelApplicationBuilder app, JLabelIcon button, JTextField ec, int type, int[]numOfPiecesOnLoad) {
@@ -52,32 +53,48 @@ public class SaveLevelController extends MouseAdapter {
 	public void mousePressed(MouseEvent me) {
 		// Created ChangeScreenBuilderMove and input desired screen
 		if (type == 1){
+			valid = true;
 			if (ec.getText().length() == 0){
 				ErrorDialogBox.infoBox("The number of moves can't be left empty", "Invalid Input");
+				valid = false;
+				
 			}
 			else {
 				try {
-					Integer.parseInt(ec.getText());
+					valid = true;
+					int getMoves = Integer.parseInt(ec.getText());
+					if (getMoves <= 0){
+						ErrorDialogBox.infoBox("The number of moves can't be zero or less, you idiot :P", "Invalid Input");
+						valid = false;
+					}
 				}catch(NumberFormatException e){
 					ErrorDialogBox.infoBox("The number of moves should be an integer", "Invalid Input");
+					valid = false;
 				}
 			}
 		}
 		else if (type == 2){
+			valid = true;
 			if (ec.getText().length() == 0){
 				ErrorDialogBox.infoBox("The time field can't be left empty", "Invalid Input");
+				valid = false;
 			}
 			else {
 				try {
-					Integer.parseInt(ec.getText());
+					valid = true;
+					int getTime = Integer.parseInt(ec.getText());
+					if (getTime < 0){
+						ErrorDialogBox.infoBox("The time can't be zero or less, you idiot :P", "Invalid Input");
+						valid = false;
+					}
 				}catch(NumberFormatException e){
 					ErrorDialogBox.infoBox("The time (seconds) should be an integer", "Invalid Input");
+					valid = false;
 				}
 			}
 		}
 		
-		try
-		{
+		if (valid == true){
 			builder.setEndCondition(Integer.parseInt(ec.getText()));
 			builder.saveLevel(numOfPiecesOnLoad);
 			builder.saveToDisc();
@@ -87,10 +104,6 @@ public class SaveLevelController extends MouseAdapter {
 			// Created JPanel screen object and update boundary to reflect changes
 			BuilderMainMenu lsp = new BuilderMainMenu(builder, app);
 			app.setContentPanel(lsp);
-		}
-		catch (Exception exc)
-		{
-			//exc.printStackTrace(); // If there was an error, print the info.
 		}
 	}
 	public void mouseEntered(MouseEvent e) {
