@@ -51,11 +51,14 @@ public class BuilderBoardController extends MouseAdapter {
 		if (SwingUtilities.isLeftMouseButton(me)){
 			selected = true;
 			if (selected){
+				tile.removeAll();
 				tile.setImg("general1button.png");
 				
 				// Call the move class to make the currentTile in valid
 				currentTile.setValid(false);
 				currentTile.setHint(false);
+				//BuilderSelectTileMove builderSelectTileMove = new BuilderSelectTileMove(currentTile);
+				//builderSelectTileMove.execute(builder);
 				int valid = 0;
 				int invalid = 0;
 				int hint = 0;
@@ -90,6 +93,9 @@ public class BuilderBoardController extends MouseAdapter {
 				System.out.println("Just called the tile controller");
 				currentTile.setHint(true);
 				currentTile.setValid(true);
+				
+				//BuilderHintTileMove builderHintTileMove = new BuilderHintTileMove(currentTile);
+				//builderHintTileMove.execute(builder);
 			}
 			
 		}
