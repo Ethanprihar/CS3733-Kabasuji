@@ -49,6 +49,7 @@ public class BuilderBoardController extends MouseAdapter {
 	public void mousePressed(MouseEvent me) {
 		// If the mousePressed event is a left click, then make the tile invalid
 		if (SwingUtilities.isLeftMouseButton(me)){
+			builder.updateHistory();
 			selected = true;
 			if (selected){
 				tile.removeAll();
@@ -83,6 +84,7 @@ public class BuilderBoardController extends MouseAdapter {
 		
 		// If the mousePressed event is a left click, then make the tile a hint tile
 		else if (SwingUtilities.isRightMouseButton(me)){
+			builder.updateHistory();
 			selected = true;
 			if (selected){
 				tile.setImg("tile.png");
