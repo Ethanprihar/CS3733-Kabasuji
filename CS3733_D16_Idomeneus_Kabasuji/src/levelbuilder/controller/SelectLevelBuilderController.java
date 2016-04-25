@@ -97,7 +97,7 @@ public class SelectLevelBuilderController extends MouseAdapter {
 		// Create a release level panel if the level type is 2
 		if (levelType == 2){
 			System.out.println("Editing a Release level");
-			BuilderReleaseLevelPanel lsp = new BuilderReleaseLevelPanel(builder, app);
+			BuilderReleaseLevelPanel lsp = new BuilderReleaseLevelPanel(builder, app, nothing);
 			app.setContentPanel(lsp);
 		}	
 	}
