@@ -40,6 +40,7 @@ public class RedoController extends MouseAdapter {
 		this.contentPanel = app.getContentPanel();		
 		this.button = button;
 		this.fn = button.getFileName();
+		pieces = new JLabel[3][];
 		pieces[0] = piece1;
 		pieces[1] = piece2;
 		pieces[2] = piece3;
