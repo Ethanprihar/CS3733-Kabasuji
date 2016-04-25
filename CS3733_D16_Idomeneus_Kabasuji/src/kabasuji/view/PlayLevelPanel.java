@@ -50,6 +50,8 @@ public class PlayLevelPanel extends JPanel {
 	JLabel movesLeftNum;
 	JLabel timeLeft;
 	JLabel timeLeftNum;
+	
+	JLabelIcon background;
 
 	/**
 	 * Construct PlayLevelPanel.
@@ -249,7 +251,7 @@ public class PlayLevelPanel extends JPanel {
 		setBullpenView(bpv);
 
 		// setup background canvas **
-		JLabelIcon background = new JLabelIcon("starry_night.jpeg", Screen.width, Screen.height);
+		background = new JLabelIcon("starry_night.jpeg", Screen.width, Screen.height);
 		background.setBounds(0, 0, Screen.width, Screen.height);
 		add(background);
 	}
@@ -362,6 +364,7 @@ public class PlayLevelPanel extends JPanel {
 		// draw the correct number of stars
 		JLabelIcon[] stars = new JLabelIcon[3];
 		for (int i = 0; i < numStars; i++) {
+			remove(background);
 			stars[i] = new JLabelIcon("star_score.png", 50, 50);
 			stars[i].setLocation(
 					(int) (nextlevelbtn.getX()
@@ -369,8 +372,9 @@ public class PlayLevelPanel extends JPanel {
 									- nextlevelbtn.getX()) * (i + 1) / (stars.length)),
 					(int) (nextlevelbtn.getY() - (((i + 1) % 2) + 1) * stars[i].getSize().getWidth()));
 			add(stars[i]);
+			repaint();
 		}
-		// repaint();
+		add(background);
 	}
 
 	/**
@@ -379,6 +383,7 @@ public class PlayLevelPanel extends JPanel {
 	 */
 	public void updateNextLevel() {
 
+		remove(background);
 		JLabelIcon nextlevelbtn2 = new JLabelIcon("generalbutton.png", 70, 70);
 		nextlevelbtn2.setLocation((int) (Screen.width * 0.74) + (int) (rotatelbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * .6));
@@ -387,7 +392,7 @@ public class PlayLevelPanel extends JPanel {
 		nextlevellbl2.setFont(new Font("Onyx", Font.BOLD, 18));
 		nextlevelbtn2.add(nextlevellbl2);
 		add(nextlevelbtn2);
-		// repaint();
+		repaint();
+		add(background);
 	}
-
 }
