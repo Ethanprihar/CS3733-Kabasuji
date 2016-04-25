@@ -15,7 +15,7 @@ import kabasuji.view.PlayLevelPanel;
 import kabasuji.view.TopLevelApplication;
 
 /**
- * Controller for Moving Screens; Go To Next Level Play Level Screen (Panel).
+ * Controller for Reseting Level; Update PlayLevelPanel (Panel).
  * 
  * When the button is pressed to attempt to go to the next screen, the model
  * will update what screen it is on and the gui will reflect the changes
@@ -29,18 +29,15 @@ public class NextLevelController extends MouseAdapter {
 	Kabasuji kabasuji;
 	int level;
 	/** Boundaries associated **/
-	TopLevelApplication app;
-	JPanel contentPanel;
+	PlayLevelPanel plp;
 	JLabelIcon button;
 	String fn;
 
-	public NextLevelController(Kabasuji kabasuji, TopLevelApplication app, JLabelIcon button) {
+	public NextLevelController(Kabasuji kabasuji, PlayLevelPanel panel, JLabelIcon button) {
 		this.kabasuji = kabasuji;
-		this.app = app;
-		this.contentPanel = app.getContentPanel();
+		this.plp = panel;
 		this.button = button;
 		this.fn = button.getFileName();
-		this.level = kabasuji.getLevels().indexOf(kabasuji.getSelectedLevel());
 	}
 
 	/**
@@ -50,9 +47,12 @@ public class NextLevelController extends MouseAdapter {
 	public void mousePressed(MouseEvent me) {
 		/*** MODEL CHANGES ***/
 		// Created SelectLevelMove and input desired level integer
-		// SelectLevelMove slm = new SelectLevelMove(level+1);
+		// SelectLevelMove slm = new SelectLevelMove(level);
 
-		kabasuji.nextLevel(); // this goes to next level basically
+		// update the timer
+		plp.resetTimer();
+		
+		kabasuji.nextLevel();
 
 		// Created ChangeScreenMove and input desired screen
 		ChangeScreenMove gtsm = new ChangeScreenMove(Screen.PlayLevel);
@@ -65,7 +65,7 @@ public class NextLevelController extends MouseAdapter {
 
 		// first make the foundation panel and pass model and container
 		// panel
-		PlayLevelPanel plp = new PlayLevelPanel(kabasuji, app);
+		//PlayLevelPanel plp = new PlayLevelPanel(kabasuji, app);
 
 		// create components of panel and pass model and container panel
 		BullpenView bpv = new BullpenView(kabasuji, plp, 4,
@@ -77,7 +77,7 @@ public class NextLevelController extends MouseAdapter {
 				(int) (Screen.height * 0.54));
 		bpv.setBounds((int) (Screen.width * 0.05), (int) (Screen.height * 0.05), (int) (Screen.width * 0.25),
 				(int) (Screen.height * 0.85));
-
+		
 		// remove all components from PLP -> update PLP -> add controllers
 		plp.removeAll();
 		plp.updatePlayLevelPanel(bv, bpv);
@@ -87,7 +87,7 @@ public class NextLevelController extends MouseAdapter {
 		plp.repaint();
 
 		// set the content panel of container to contain PlayLevelPanel
-		app.setContentPanel(plp);
+		//app.setContentPanel(plp);
 
 	}
 

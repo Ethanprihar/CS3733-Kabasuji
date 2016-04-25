@@ -78,7 +78,7 @@ public class PlayLevelPanel extends JPanel {
 	 * Starts the timer used in lightning mode
 	 */
 	public void timerStart() {
-		
+
 		int delay = 1000; // milliseconds
 		ActionListener taskPerformer = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -101,12 +101,12 @@ public class PlayLevelPanel extends JPanel {
 		timer.start();
 
 	}
-	
+
 	public void resetTimer() {
-		
+
 		if (!((LightningLevel) kabasuji.getSelectedLevel()).hasTimeLeft()) {
 			// reset the timer
-			//timerStart();
+			// timerStart();
 			System.out.println("no time left");
 			timer.restart();
 		}
@@ -218,7 +218,7 @@ public class PlayLevelPanel extends JPanel {
 		mainmenubtn.addMouseListener(new GoToMainMenuController(kabasuji, app, mainmenubtn));
 		add(mainmenubtn);
 
-		nextlevelbtn = new JLabelIcon("generalbutton.png", 70, 70);
+		nextlevelbtn = new JLabelIcon("generallockedbutton.png", 70, 70);
 		nextlevelbtn.setLocation((int) (Screen.width * 0.74) + (int) (rotatelbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * .6));
 		JLabel nextlevellbl = new JLabel("<html>Next<br>Level</html>", SwingConstants.CENTER);
@@ -236,15 +236,7 @@ public class PlayLevelPanel extends JPanel {
 		resetlevelbtn.add(resetlevellbl);
 		add(resetlevelbtn);
 
-		/** Star JLabelIcon **/
-		JLabelIcon[] stars = new JLabelIcon[3];
-		for (int i = 0; i < stars.length; i++) {
-			stars[i] = new JLabelIcon("star_score.png", 50, 50);
-			stars[i].setLocation(
-					(int) (nextlevelbtn.getX() + (mainmenubtn.getX() - nextlevelbtn.getX()) * (i + 1) / (stars.length)),
-					(int) (nextlevelbtn.getY() - (((i + 1) % 2) + 1) * stars[i].getSize().getWidth()));
-			add(stars[i]);
-		}
+		/** Star JLabelIcon (Initially display no stars ) **/
 
 		// add BoardView and BullpenView elements to PlayLevelPanel
 		add(bv);
@@ -267,7 +259,7 @@ public class PlayLevelPanel extends JPanel {
 		flipvbtn.addMouseListener(new FlipSelectedPieceBullpenController(kabasuji, this, flipvbtn, true));
 		fliphbtn.addMouseListener(new FlipSelectedPieceBullpenController(kabasuji, this, fliphbtn, false));
 		resetlevelbtn.addMouseListener(new ResetLevelController(kabasuji, this, resetlevelbtn));
-		nextlevelbtn.addMouseListener(new NextLevelController(kabasuji, app, nextlevelbtn));
+		nextlevelbtn.addMouseListener(new NextLevelController(kabasuji, this, nextlevelbtn));
 	}
 
 	/**
@@ -354,4 +346,44 @@ public class PlayLevelPanel extends JPanel {
 	public BullpenView getBullpenView() {
 		return bullpenview;
 	}
+
+	/**
+	 * Updates the display to show the correct number of stars
+	 */
+	public void updateStars() {
+
+		int numStars = board.getStars();
+		System.out.println("in star func");
+
+		// draw the correct number of stars
+		JLabelIcon[] stars = new JLabelIcon[3];
+		for (int i = 0; i < numStars; i++) {
+			stars[i] = new JLabelIcon("star_score.png", 50, 50);
+			stars[i].setLocation(
+					(int) (nextlevelbtn.getX()
+							+ ((int) (Screen.width * 0.84) + (int) (rotatelbtn.getSize().getWidth() / 2)
+									- nextlevelbtn.getX()) * (i + 1) / (stars.length)),
+					(int) (nextlevelbtn.getY() - (((i + 1) % 2) + 1) * stars[i].getSize().getWidth()));
+			add(stars[i]);
+		}
+		//repaint();
+	}
+
+	/**
+	 * Updates the display to show that the player can now move to the next
+	 * level by illuminating the next level button
+	 */
+	public void updateNextLevel() {
+		
+		JLabelIcon nextlevelbtn2 = new JLabelIcon("generalbutton.png", 70, 70);
+		nextlevelbtn2.setLocation((int) (Screen.width * 0.74) + (int) (rotatelbtn.getSize().getWidth() / 2),
+				(int) (Screen.height * .6));
+		JLabel nextlevellbl2 = new JLabel("<html>Next<br>Level</html>", SwingConstants.CENTER);
+		nextlevellbl2.setBounds(0, 0, 70, 70);
+		nextlevellbl2.setFont(new Font("Onyx", Font.BOLD, 18));
+		nextlevelbtn2.add(nextlevellbl2);
+		add(nextlevelbtn2);
+		//repaint();
+	}
+
 }
