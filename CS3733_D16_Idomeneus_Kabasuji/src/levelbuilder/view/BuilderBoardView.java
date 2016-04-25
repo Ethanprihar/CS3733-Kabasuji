@@ -97,4 +97,9 @@ public class BuilderBoardView extends JPanel {
 		panel.add(tile[i * row + j]);
 	}
 	
+	public void setTiles(Tile[][] t)
+	{
+		tiles = t;
+	}
+	
 }
