@@ -16,9 +16,11 @@ public abstract class Board implements Serializable {
 	ArrayList<Piece> pieces = new ArrayList<Piece>();
 	Piece selectedPiece; // The selected piece. May be null.
 	int[][] paintLocs = new int[6][2];
+	int numStars;
 
 	Board(Tile[][] t) {
 		this.tiles = t;
+		numStars = 0;
 	}
 
 	/**
@@ -195,6 +197,20 @@ public abstract class Board implements Serializable {
 		}
 		// Return the number of stars.
 		return (uncoveredTiles == 0) ? 3 : (uncoveredTiles <= 6) ? 2 : (uncoveredTiles <= 12) ? 1 : 0;
+	}
+	
+	/**
+	 * Returns the number of stored stars for that board
+	 */
+	public int getNumStars() {
+		return numStars;
+	}
+	
+	/**
+	 * Sets the stored number of stars for the board
+	 */
+	public void setNumStars(int stars) {
+		numStars = stars;
 	}
 
 	public boolean equals(Board b) {

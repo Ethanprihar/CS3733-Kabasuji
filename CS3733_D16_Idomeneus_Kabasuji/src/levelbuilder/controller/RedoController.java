@@ -3,12 +3,14 @@ package levelbuilder.controller;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import kabasuji.model.Builder;
 import kabasuji.model.Screen;
 import kabasuji.view.JLabelIcon;
 import levelbuilder.controller.moves.ChangeScreenBuilderMove;
+import levelbuilder.view.BuilderBoardView;
 import levelbuilder.view.BuilderMainMenu;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
@@ -28,14 +30,21 @@ public class RedoController extends MouseAdapter {
 	JPanel contentPanel;	
 	JLabelIcon button;	
 	String fn;
+	JLabel[][] pieces;
+	BuilderBoardView board;
 
 
-	public RedoController(Builder builder, TopLevelApplicationBuilder app, JLabelIcon button) {
+	public RedoController(Builder builder, TopLevelApplicationBuilder app, JLabelIcon button, JLabel[] piece1, JLabel[] piece2, JLabel[] piece3, BuilderBoardView b) {
 		this.builder = builder;
 		this.app = app;
 		this.contentPanel = app.getContentPanel();		
 		this.button = button;
 		this.fn = button.getFileName();
+		pieces = new JLabel[3][];
+		pieces[0] = piece1;
+		pieces[1] = piece2;
+		pieces[2] = piece3;
+		board = b;
 	}
 
 	/**
@@ -47,12 +56,17 @@ public class RedoController extends MouseAdapter {
 		try
 		{
 			builder.redo();
-			builder.setCurrentScreen(Screen.PlayLevel);
-			// Attempt to execute action on model
-			//gtsm.execute(builder);
-			// Created JPanel screen object and update boundary to reflect changes
-			//BuilderMainMenu lsp = new BuilderMainMenu(builder, app);
-			//app.setContentPanel(lsp);
+			int counter = 0;
+			for(int i=0; i<pieces.length; i++)
+			{
+				for(JLabel num: pieces[i])
+				{
+					num.setText(Integer.toString(builder.getNum(counter)));
+					counter++;
+				}
+			}
+			board.setTiles(builder.getSelectedLevel().getBoard().getTiles());
+			board.updateBoard();
 		}
 		catch (Exception exc)
 		{

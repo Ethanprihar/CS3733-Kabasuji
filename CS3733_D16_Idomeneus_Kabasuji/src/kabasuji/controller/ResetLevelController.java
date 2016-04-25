@@ -46,12 +46,10 @@ public class ResetLevelController extends MouseAdapter {
 	 */
 	public void mousePressed(MouseEvent me) {
 		/*** MODEL CHANGES ***/
-		// Created SelectLevelMove and input desired level integer
-		// SelectLevelMove slm = new SelectLevelMove(level);
 
 		// update the timer
 		plp.resetTimer();
-		
+
 		kabasuji.resetLevel();
 
 		// Created ChangeScreenMove and input desired screen
@@ -65,7 +63,7 @@ public class ResetLevelController extends MouseAdapter {
 
 		// first make the foundation panel and pass model and container
 		// panel
-		//PlayLevelPanel plp = new PlayLevelPanel(kabasuji, app);
+		// PlayLevelPanel plp = new PlayLevelPanel(kabasuji, app);
 
 		// create components of panel and pass model and container panel
 		BullpenView bpv = new BullpenView(kabasuji, plp, 4,
@@ -77,7 +75,7 @@ public class ResetLevelController extends MouseAdapter {
 				(int) (Screen.height * 0.54));
 		bpv.setBounds((int) (Screen.width * 0.05), (int) (Screen.height * 0.05), (int) (Screen.width * 0.25),
 				(int) (Screen.height * 0.85));
-		
+
 		// remove all components from PLP -> update PLP -> add controllers
 		plp.removeAll();
 		plp.updatePlayLevelPanel(bv, bpv);
@@ -87,7 +85,7 @@ public class ResetLevelController extends MouseAdapter {
 		plp.repaint();
 
 		// set the content panel of container to contain PlayLevelPanel
-		//app.setContentPanel(plp);
+		// app.setContentPanel(plp);
 
 	}
 

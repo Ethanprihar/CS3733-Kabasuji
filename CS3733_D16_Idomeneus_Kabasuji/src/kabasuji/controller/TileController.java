@@ -71,17 +71,41 @@ public class TileController extends MouseAdapter {
 			bullpen.removePiece(selectedPiece);
 			bullpenview.setupBullpen();
 			panel.getZoomPiece().removeAll();
+
+			/* Check if the number of stars has been updated */
+			int currNumStars = kabasuji.getSelectedLevel().getStars();
+			System.out.print("Calculated Number of Stars: ");
+			System.out.println(currNumStars);
+			System.out.print("Stored Number of Stars: ");
+			System.out.println(kabasuji.getSelectedLevel().getBoard().getNumStars());
+			if (currNumStars != kabasuji.getSelectedLevel().getBoard().getNumStars()) {
+				System.out.println("Entered star condition!");
+				// update the stored number of stars
+				kabasuji.getSelectedLevel().getBoard().setNumStars(currNumStars);
+				
+				panel.updateStars(); // draw the correct number of stars
+
+				/*
+				 * If this is the first star, change the next level button to be
+				 * unlocked
+				 */
+				if (currNumStars == 1) {
+					panel.updateNextLevel();
+				}
+			}
 			panel.repaint();
 			// update to show new number of moves if in puzzle mode
 			if (kabasuji.getSelectedLevel() instanceof PuzzleLevel) {
 				// decrement the number of moves left
-				((PuzzleLevel)kabasuji.getSelectedLevel()).setMovesUsed(((PuzzleLevel)kabasuji.getSelectedLevel()).getMovesUsed() + 1);
+				((PuzzleLevel) kabasuji.getSelectedLevel())
+						.setMovesUsed(((PuzzleLevel) kabasuji.getSelectedLevel()).getMovesUsed() + 1);
 				panel.setMovesLeftNum((Integer) ((PuzzleLevel) kabasuji.getSelectedLevel()).getMovesLeft());
 			}
 			// update to show new number of moves if in puzzle mode
 			else if (kabasuji.getSelectedLevel() instanceof ReleaseLevel) {
 				// decrement the number of moves left
-				((ReleaseLevel)kabasuji.getSelectedLevel()).setMovesUsed(((ReleaseLevel)kabasuji.getSelectedLevel()).getMovesUsed() + 1);
+				((ReleaseLevel) kabasuji.getSelectedLevel())
+						.setMovesUsed(((ReleaseLevel) kabasuji.getSelectedLevel()).getMovesUsed() + 1);
 				panel.setMovesLeftNum((Integer) ((ReleaseLevel) kabasuji.getSelectedLevel()).getMovesLeft());
 			}
 		}

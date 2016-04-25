@@ -14,6 +14,7 @@ import levelbuilder.controller.GoToMainMenuBuilderController;
 import levelbuilder.controller.IncrementPieceBuilderController;
 import levelbuilder.controller.RedoController;
 import levelbuilder.controller.SaveLevelController;
+import levelbuilder.controller.TestLevelBuilderController;
 import levelbuilder.controller.UndoController;
 
 import javax.swing.JLabel;
@@ -141,7 +142,7 @@ public class BuilderLightningLevelPanel extends JPanel {
 		undoLbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		undoBtn.add(undoLbl);
 		background.add(undoBtn);
-		undoBtn.addMouseListener(new UndoController(builder, app, undoBtn));
+		undoBtn.addMouseListener(new UndoController(builder, app, undoBtn, piece1Lbl, piece2Lbl, piece3Lbl, boardview));
 
 		JLabelIcon redoBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		redoBtn.setLocation((int) (Screen.width * 0.82) + (int) (undoBtn.getSize().getWidth() / 2),
@@ -151,7 +152,7 @@ public class BuilderLightningLevelPanel extends JPanel {
 		redoLbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		redoBtn.add(redoLbl);
 		background.add(redoBtn);
-		redoBtn.addMouseListener(new RedoController(builder, app, redoBtn));
+		redoBtn.addMouseListener(new RedoController(builder, app, redoBtn, piece1Lbl, piece2Lbl, piece3Lbl, boardview));
 
 
 		JTextField timeSet = new JTextField();
@@ -163,6 +164,19 @@ public class BuilderLightningLevelPanel extends JPanel {
 		timeSet.setBounds((int) (Screen.width * 0.08 + 10), (int) (Screen.height * 0.30), 40, 20);
 		timeSet.setFont(new Font("Onyx", Font.BOLD, 18));
 		background.add(timeSet);
+		
+		// Add a test level button to the GUI so that the user can test the built level
+		JLabelIcon testBtn = new JLabelIcon("generalbutton.png", 70, 70);
+		testBtn.setLocation((int) (Screen.width * 0.04) + (int) (testBtn.getSize().getWidth() / 2),
+				(int) (Screen.height * 0.05));
+		JLabel testLbl = new JLabel("<html>Test<br>Level</html>", SwingConstants.CENTER);
+		testLbl.setBounds(0, 0, 70, 70);
+		testLbl.setFont(new Font("Onyx", Font.BOLD, 18));
+		testBtn.add(testLbl);
+		background.add(testBtn);
+		
+		// Add a mouse listener for the controller
+		testBtn.addMouseListener(new TestLevelBuilderController(builder, app, testBtn));
 		
 		JLabelIcon saveBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		saveBtn.setLocation((int) (Screen.width * 0.72) + (int) (saveBtn.getSize().getWidth() / 2),
