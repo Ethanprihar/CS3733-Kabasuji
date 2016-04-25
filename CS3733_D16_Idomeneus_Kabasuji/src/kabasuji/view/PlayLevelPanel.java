@@ -265,7 +265,9 @@ public class PlayLevelPanel extends JPanel {
 		flipvbtn.addMouseListener(new FlipSelectedPieceBullpenController(kabasuji, this, flipvbtn, true));
 		fliphbtn.addMouseListener(new FlipSelectedPieceBullpenController(kabasuji, this, fliphbtn, false));
 		resetlevelbtn.addMouseListener(new ResetLevelController(kabasuji, this, resetlevelbtn));
-		nextlevelbtn.addMouseListener(new NextLevelController(kabasuji, this, nextlevelbtn));
+		
+		// Don't attach the nextlevelbtn mouse listener yet
+		//nextlevelbtn.addMouseListener(new NextLevelController(kabasuji, this, nextlevelbtn));
 	}
 
 	/**
@@ -383,7 +385,10 @@ public class PlayLevelPanel extends JPanel {
 	 */
 	public void updateNextLevel() {
 
+		// Remove the background and then add it later so that the button can be added to the background
 		remove(background);
+		// Remove the old nextlevelbtn to display the new one
+		remove(nextlevelbtn);
 		JLabelIcon nextlevelbtn2 = new JLabelIcon("generalbutton.png", 70, 70);
 		nextlevelbtn2.setLocation((int) (Screen.width * 0.74) + (int) (rotatelbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * .6));
@@ -392,6 +397,7 @@ public class PlayLevelPanel extends JPanel {
 		nextlevellbl2.setFont(new Font("Onyx", Font.BOLD, 18));
 		nextlevelbtn2.add(nextlevellbl2);
 		add(nextlevelbtn2);
+		nextlevelbtn2.addMouseListener(new NextLevelController(kabasuji, this, nextlevelbtn2));
 		repaint();
 		add(background);
 	}
