@@ -104,11 +104,15 @@ public class PlayLevelPanel extends JPanel {
 
 	public void resetTimer() {
 
-		if (!((LightningLevel) kabasuji.getSelectedLevel()).hasTimeLeft()) {
-			// reset the timer
-			// timerStart();
-			System.out.println("no time left");
-			timer.restart();
+		// check if the level is a lightning level
+		if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
+
+			if (!((LightningLevel) kabasuji.getSelectedLevel()).hasTimeLeft()) {
+				// reset the timer
+				// timerStart();
+				System.out.println("no time left");
+				timer.restart();
+			}
 		}
 	}
 
@@ -366,7 +370,7 @@ public class PlayLevelPanel extends JPanel {
 					(int) (nextlevelbtn.getY() - (((i + 1) % 2) + 1) * stars[i].getSize().getWidth()));
 			add(stars[i]);
 		}
-		//repaint();
+		// repaint();
 	}
 
 	/**
@@ -374,7 +378,7 @@ public class PlayLevelPanel extends JPanel {
 	 * level by illuminating the next level button
 	 */
 	public void updateNextLevel() {
-		
+
 		JLabelIcon nextlevelbtn2 = new JLabelIcon("generalbutton.png", 70, 70);
 		nextlevelbtn2.setLocation((int) (Screen.width * 0.74) + (int) (rotatelbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * .6));
@@ -383,7 +387,7 @@ public class PlayLevelPanel extends JPanel {
 		nextlevellbl2.setFont(new Font("Onyx", Font.BOLD, 18));
 		nextlevelbtn2.add(nextlevellbl2);
 		add(nextlevelbtn2);
-		//repaint();
+		// repaint();
 	}
 
 }

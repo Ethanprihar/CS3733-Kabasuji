@@ -49,45 +49,50 @@ public class NextLevelController extends MouseAdapter {
 		// Created SelectLevelMove and input desired level integer
 		// SelectLevelMove slm = new SelectLevelMove(level);
 
-		// update the timer
-		plp.resetTimer();
-		
-		kabasuji.nextLevel();
+		// ensure that the player is able to move on the next level
+		if (kabasuji.getSelectedLevel().getStars() >= 1) {
 
-		// Created ChangeScreenMove and input desired screen
-		ChangeScreenMove gtsm = new ChangeScreenMove(Screen.PlayLevel);
+			// update the timer
+			plp.resetTimer();
 
-		// Attempt to execute action on model
-		gtsm.execute(kabasuji);
+			kabasuji.nextLevel();
 
-		// Create PlayLevelPanel screen object and update boundary to
-		// reflect *** GUI CHANGES ***
+			// Created ChangeScreenMove and input desired screen
+			ChangeScreenMove gtsm = new ChangeScreenMove(Screen.PlayLevel);
 
-		// first make the foundation panel and pass model and container
-		// panel
-		//PlayLevelPanel plp = new PlayLevelPanel(kabasuji, app);
+			// Attempt to execute action on model
+			gtsm.execute(kabasuji);
 
-		// create components of panel and pass model and container panel
-		BullpenView bpv = new BullpenView(kabasuji, plp, 4,
-				(int) (kabasuji.selectedLevel.getBullpen().getPieces().size() + 3) / 4);
-		BoardView bv = new BoardView(kabasuji, plp);
+			// Create PlayLevelPanel screen object and update boundary to
+			// reflect *** GUI CHANGES ***
 
-		// set location and size of components (**necessary)
-		bv.setBounds((int) (Screen.width * 0.35), (int) (Screen.height * 0.36), (int) (Screen.height * 0.54),
-				(int) (Screen.height * 0.54));
-		bpv.setBounds((int) (Screen.width * 0.05), (int) (Screen.height * 0.05), (int) (Screen.width * 0.25),
-				(int) (Screen.height * 0.85));
-		
-		// remove all components from PLP -> update PLP -> add controllers
-		plp.removeAll();
-		plp.updatePlayLevelPanel(bv, bpv);
-		plp.addControllers();
+			// first make the foundation panel and pass model and container
+			// panel
+			// PlayLevelPanel plp = new PlayLevelPanel(kabasuji, app);
 
-		// repaint the PlayLevelPanel
-		plp.repaint();
+			// create components of panel and pass model and container panel
+			BullpenView bpv = new BullpenView(kabasuji, plp, 4,
+					(int) (kabasuji.selectedLevel.getBullpen().getPieces().size() + 3) / 4);
+			BoardView bv = new BoardView(kabasuji, plp);
 
-		// set the content panel of container to contain PlayLevelPanel
-		//app.setContentPanel(plp);
+			// set location and size of components (**necessary)
+			bv.setBounds((int) (Screen.width * 0.35), (int) (Screen.height * 0.36), (int) (Screen.height * 0.54),
+					(int) (Screen.height * 0.54));
+			bpv.setBounds((int) (Screen.width * 0.05), (int) (Screen.height * 0.05), (int) (Screen.width * 0.25),
+					(int) (Screen.height * 0.85));
+
+			// remove all components from PLP -> update PLP -> add controllers
+			plp.removeAll();
+			plp.updatePlayLevelPanel(bv, bpv);
+			plp.addControllers();
+
+			// repaint the PlayLevelPanel
+			plp.repaint();
+
+			// set the content panel of container to contain PlayLevelPanel
+			// app.setContentPanel(plp);
+
+		}
 
 	}
 
