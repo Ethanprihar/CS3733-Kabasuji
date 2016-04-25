@@ -47,11 +47,7 @@ public class UndoController extends MouseAdapter {
 		try
 		{
 			builder.undo();
-			builder.setCurrentScreen(Screen.PlayLevel);
-			// Attempt to execute action on model
-			// Created JPanel screen object and update boundary to reflect changes
-			//BuilderMainMenu lsp = new BuilderMainMenu(builder, app);
-			//app.setContentPanel(lsp);
+			app.repaint();
 		}
 		catch (Exception exc)
 		{

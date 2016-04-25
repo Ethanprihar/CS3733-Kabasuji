@@ -203,38 +203,64 @@ public class Builder
 		}
 		boardHistory.add(selectedLevel.getBoard().copy());
 		bullpenHistory.add(numOfPieces.clone());
+		int[] printarray = bullpenHistory.get(bullpenHistory.size()-1);
+		for(int i=0; i<35; i++)
+		{
+			System.out.print(printarray[i]);
+		}
+		System.out.println("");
 		System.out.println("History length: " + boardHistory.size() + "  " + bullpenHistory.size());
 	}
 	
 	// undoes the last tile change
 	public void undo()
 	{
-		System.out.println("Trying to undo");
-		for(int i=0; i<boardHistory.size(); i++)
+		// check to make sure we arn't at the first state
+		if((boardHistory.size() != 0) && !(boardHistory.get(0).equals(selectedLevel.getBoard()) && Arrays.equals(bullpenHistory.get(0), numOfPieces)))
 		{
-			if(boardHistory.get(i).equals(selectedLevel.getBoard()) && Arrays.equals(bullpenHistory.get(i), numOfPieces) && (i != 0))
+			for(int i=1; i<boardHistory.size(); i++)
 			{
-				System.out.println("found something to undo");
-				selectedLevel.setBoard(boardHistory.get(i-1));
-				numOfPieces = bullpenHistory.get(i-1);
-				return;
+				// if the state at this point in history is the current state go to a previous state
+				if(boardHistory.get(i).equals(selectedLevel.getBoard()) && Arrays.equals(bullpenHistory.get(i), numOfPieces))
+				{
+					System.out.println("found something to undo");
+					selectedLevel.setBoard(boardHistory.get(i-1));
+					numOfPieces = bullpenHistory.get(i-1);
+					return;
+				}
 			}
+			// if no states in history are the same as this state turn the current state into the most recent history
+			System.out.println("found something to undo");
+			updateHistory();
+			selectedLevel.setBoard(boardHistory.get(boardHistory.size()-2));
+			numOfPieces = bullpenHistory.get(bullpenHistory.size()-2);
+		}
+		else
+		{
+			System.out.println("Nothing to undo");
 		}
 	}
 	
 	//redoes the last tile change
 	public void redo()
 	{
-		System.out.println("Trying to redo");
-		for(int i=0; i<boardHistory.size(); i++)
+		// check to make sure we arn't at the last state
+		if((boardHistory.size() != 0) && !(boardHistory.get(boardHistory.size() - 1).equals(selectedLevel.getBoard()) && Arrays.equals(bullpenHistory.get(boardHistory.size() - 1), numOfPieces)))
 		{
-			if(boardHistory.get(i).equals(selectedLevel.getBoard()) && Arrays.equals(bullpenHistory.get(i), numOfPieces) && (i != boardHistory.size() - 1))
+			for(int i=0; i<boardHistory.size()-1; i++)
 			{
-				System.out.println("found something to redo");
-				selectedLevel.setBoard(boardHistory.get(i-1));
-				numOfPieces = bullpenHistory.get(i-1);
-				return;
+				if(boardHistory.get(i).equals(selectedLevel.getBoard()) && Arrays.equals(bullpenHistory.get(i), numOfPieces))
+				{
+					System.out.println("found something to redo");
+					selectedLevel.setBoard(boardHistory.get(i+1));
+					numOfPieces = bullpenHistory.get(i+1);
+					return;
+				}
 			}
+		}
+		else
+		{
+			System.out.println("Nothing to redo");
 		}
 	}
 	
