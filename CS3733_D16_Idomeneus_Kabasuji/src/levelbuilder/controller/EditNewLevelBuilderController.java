@@ -3,17 +3,14 @@ package levelbuilder.controller;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import kabasuji.model.Builder;
 import kabasuji.model.Screen;
-import kabasuji.model.Tile;
 import kabasuji.view.JLabelIcon;
 import levelbuilder.controller.moves.ChangeScreenBuilderMove;
 import levelbuilder.controller.moves.LevelModeBuilderMove;
-import levelbuilder.view.BuilderLevelMode;
 import levelbuilder.view.BuilderLightningLevelPanel;
 import levelbuilder.view.BuilderPuzzleLevelPanel;
 import levelbuilder.view.BuilderReleaseLevelPanel;
@@ -64,31 +61,31 @@ public class EditNewLevelBuilderController extends MouseAdapter {
 			
 			// Create a release level panel if the level type is 0
 			if (levelType == 0){
-				
 				// Create the new level
 				String boardDimensionstext = boardDimensions.getText();
 				int dimensions = Integer.parseInt(boardDimensionstext);
 				builder.addNewLevel(0, dimensions);
-				
 				BuilderPuzzleLevelPanel lsp = new BuilderPuzzleLevelPanel(builder, app, boardDimensions);
 				app.setContentPanel(lsp);
 			}
 			
 			// Create a lightning level panel if the level type is 1
 			if (levelType == 1){
-				
 				// Create the new level
 				String boardDimensionstext = boardDimensions.getText();
 				int dimensions = Integer.parseInt(boardDimensionstext);
 				builder.addNewLevel(1, dimensions);
-				
 				BuilderLightningLevelPanel lsp = new BuilderLightningLevelPanel(builder, app, boardDimensions);
 				app.setContentPanel(lsp);
 			}
 			
 			// Create a release level panel if the level type is 2
 			if (levelType == 2){
-				BuilderReleaseLevelPanel lsp = new BuilderReleaseLevelPanel(builder, app);
+				//Create the new level
+				String boardDimensionstext = boardDimensions.getText();
+				int dimensions = Integer.parseInt(boardDimensionstext);
+				builder.addNewLevel(2, dimensions);
+				BuilderReleaseLevelPanel lsp = new BuilderReleaseLevelPanel(builder, app, boardDimensions);
 				app.setContentPanel(lsp);
 			}
 		}
