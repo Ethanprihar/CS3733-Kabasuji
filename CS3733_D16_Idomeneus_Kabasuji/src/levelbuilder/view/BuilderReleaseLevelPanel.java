@@ -51,7 +51,6 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		undoLbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		undoBtn.add(undoLbl);
 		background.add(undoBtn);
-		undoBtn.addMouseListener(new UndoController(builder, app, undoBtn));
 
 		JLabelIcon redoBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		redoBtn.setLocation((int) (Screen.width * 0.82) + (int) (undoBtn.getSize().getWidth() / 2),
@@ -61,8 +60,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		redoLbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		redoBtn.add(redoLbl);
 		background.add(redoBtn);
-		redoBtn.addMouseListener(new RedoController(builder, app, redoBtn));
-
+		
 		JTextField numMoves = new JTextField();
 		numMoves.setBounds((int) (Screen.width * 0.08 + 10), (int) (Screen.height * 0.15), 40, 20);
 		numMoves.setFont(new Font("Onyx", Font.BOLD, 18));

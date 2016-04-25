@@ -142,7 +142,7 @@ public class BuilderLightningLevelPanel extends JPanel {
 		undoLbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		undoBtn.add(undoLbl);
 		background.add(undoBtn);
-		undoBtn.addMouseListener(new UndoController(builder, app, undoBtn));
+		undoBtn.addMouseListener(new UndoController(builder, app, undoBtn, piece1Lbl, piece2Lbl, piece3Lbl, boardview));
 
 		JLabelIcon redoBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		redoBtn.setLocation((int) (Screen.width * 0.82) + (int) (undoBtn.getSize().getWidth() / 2),
@@ -152,7 +152,7 @@ public class BuilderLightningLevelPanel extends JPanel {
 		redoLbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		redoBtn.add(redoLbl);
 		background.add(redoBtn);
-		redoBtn.addMouseListener(new RedoController(builder, app, redoBtn));
+		redoBtn.addMouseListener(new RedoController(builder, app, redoBtn, piece1Lbl, piece2Lbl, piece3Lbl, boardview));
 
 
 		JTextField timeSet = new JTextField();
