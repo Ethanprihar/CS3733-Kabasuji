@@ -58,13 +58,13 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		add(background);
 
 		JLabelIcon bullpen = new JLabelIcon("boardpanel_opaque.png", (int) (Screen.width * 0.9),
-				(int) (Screen.height * 0.30));
-		bullpen.setLocation((int) (Screen.width * 0.05), (int) (Screen.height * 0.60));
+				(int) (Screen.height * 0.38));
+		bullpen.setLocation((int) (Screen.width * 0.05), (int) (Screen.height * 0.55));
 		background.add(bullpen);
 		
-		JLabelIcon board = new JLabelIcon("boardpanel_opaque.png", (int) (Screen.width * 0.52),
+		JLabelIcon board = new JLabelIcon("boardpanel_opaque.png", (int) (Screen.width * 0.5),
 				(int) (Screen.height * 0.5));
-		board.setLocation((int) (Screen.width * 0.22), (int) (Screen.height * 0.05));
+		board.setLocation((int) (Screen.width * 0.22), (int) (Screen.height * 0.02));
 		background.add(board);
 		
 		
