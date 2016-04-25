@@ -98,6 +98,25 @@ public class BuilderBoardController extends MouseAdapter {
 				
 				//BuilderHintTileMove builderHintTileMove = new BuilderHintTileMove(currentTile);
 				//builderHintTileMove.execute(builder);
+				int valid = 0;
+				int invalid = 0;
+				int hint = 0;
+				int nothint = 0;
+				for(int i=0; i<builder.getSelectedLevel().getBoard().getTiles().length; i++)
+				{
+					for(int j=0; j<builder.getSelectedLevel().getBoard().getTiles().length; j++)
+					{
+						if(builder.getSelectedLevel().getBoard().getTile(i,j).isValid())
+							valid++;
+						else
+							invalid++;
+						if(builder.getSelectedLevel().getBoard().getTile(i,j).isHint())
+							hint++;
+						else
+							nothint++;
+					}
+				}
+				System.out.println("hints: " + hint + "    not hints: " + nothint + "    valid: " + valid + "    invalid: " + invalid);
 			}
 			
 		}

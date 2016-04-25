@@ -87,4 +87,14 @@ public class Tile implements Serializable{
 		}
 		return true;
 	}
+	
+	public String toString()
+	{
+		if(hint)
+			return "h ";
+		else if(valid)
+			return "v ";
+		else
+			return "* ";
+	}
 }

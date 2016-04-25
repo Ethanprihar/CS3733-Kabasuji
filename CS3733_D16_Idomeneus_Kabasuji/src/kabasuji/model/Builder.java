@@ -188,12 +188,14 @@ public class Builder
 	// needs to be called before changing a tile or changing a number of pieces
 	public void updateHistory()
 	{
-		System.out.println("History is updated");
+		System.out.println("History is being updated");
 		boolean remove = false;
 		for(int i=0; i<boardHistory.size(); i++)
 		{
 			if(!remove && boardHistory.get(i).equals(selectedLevel.getBoard()) && Arrays.equals(bullpenHistory.get(i), numOfPieces))
+			{
 				remove = true;
+			}
 			if(remove)
 			{
 				boardHistory.remove(boardHistory.get(i));
@@ -203,13 +205,11 @@ public class Builder
 		}
 		boardHistory.add(selectedLevel.getBoard().copy());
 		bullpenHistory.add(numOfPieces.clone());
-		int[] printarray = bullpenHistory.get(bullpenHistory.size()-1);
-		for(int i=0; i<35; i++)
+		System.out.println("Current board history:");
+		for(Board b: boardHistory)
 		{
-			System.out.print(printarray[i]);
+			System.out.println(b.toString());
 		}
-		System.out.println("");
-		System.out.println("History length: " + boardHistory.size() + "  " + bullpenHistory.size());
 	}
 	
 	// undoes the last tile change
