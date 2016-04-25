@@ -77,11 +77,8 @@ public class LevelSelectPanel extends JPanel {
 					levelselectbtn[i * 5 + j].addMouseListener(
 							new SelectLevelController(kabasuji, app, levelselectbtn[i * 5 + j], i * 5 + j + 1));
 					add(levelselectbtn[i * 5 + j]);
-					/***
-					 * take this out when levels are good
-					 *******************************/
-					Random rn = new Random();
-					int n = rn.nextInt(3) + 1;
+					// get high score for particular level
+					int n = kabasuji.getLevels().get(i * 5 + j).getHighScore();
 					// set # stars and location on gui
 					for (int k = 0; k < n; k++) {
 						JLabelIcon star = new JLabelIcon("star_score.png", 15, 15);
