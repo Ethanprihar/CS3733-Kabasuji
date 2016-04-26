@@ -270,7 +270,7 @@ public abstract class Board implements Serializable {
 			{
 				returnString += tiles[i][j].toString();
 			}
-			//returnString.concat("\n");
+			returnString += "\n";
 		}
 		return returnString;
 	}

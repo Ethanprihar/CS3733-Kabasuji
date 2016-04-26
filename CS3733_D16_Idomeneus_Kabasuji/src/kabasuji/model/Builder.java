@@ -4,6 +4,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+// AFTER YOU UNDO YOU CAN'T UPDATE BOARD HISTORY OR REDO BOARD MOVES
+
 public class Builder
 {
 	int currentScreen;
@@ -227,7 +229,7 @@ public class Builder
 				}
 			}
 			// if no states in history are the same as this state turn the current state into the most recent history
-			System.out.println("found something to undo");
+			System.out.println("going to most recent history");
 			updateHistory();
 			selectedLevel.setBoard(boardHistory.get(boardHistory.size()-2));
 			numOfPieces = bullpenHistory.get(bullpenHistory.size()-2);
