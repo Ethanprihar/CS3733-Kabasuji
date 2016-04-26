@@ -33,8 +33,8 @@ public class BuilderReleaseBoardView extends JPanel {
 	int offset;
 	
 	int clickMode = 0; //clickMode 0 does hint/invalidate,  clickMode 1 places release tiles.
-	int numToAdd = 0;
-	int colorToAdd = 0;
+	int numToAdd = 1;
+	int colorToAdd = 1;
 
 	/**
 	 * Create the Main Menu Panel.
@@ -78,6 +78,9 @@ public class BuilderReleaseBoardView extends JPanel {
 
 		for (int i = 0; i < col-2; i++) {
 			for (int j = 0; j < row-2; j++) {
+				
+				if(tiles[i][j].getNumber() == 0)//If this is not a release tile.
+				{
 					if (tiles[i][j].isHint()) {
 						displayTile(i,j,"general2button.png");
 					}
@@ -90,6 +93,59 @@ public class BuilderReleaseBoardView extends JPanel {
 						displayTile(i,j,"tile.PNG");
 					}
 					tile[i*row+j].addMouseListener(new BuilderReleaseBoardController(board, tile[i*row+j], tiles[i][j], builder, app, clickMode, numToAdd, colorToAdd, this));
+				}
+				else//A release tile
+				{
+					
+					String tileToDisplay = "releasetile";
+					if (!tiles[i][j].isHint()) {
+						System.out.println("Making a non-hint release tile.");
+						if(tiles[i][j].getColor() == 1)
+						{
+							tileToDisplay = tileToDisplay + "1_";
+						}
+						else if(tiles[i][j].getColor()  == 2)
+						{
+							tileToDisplay = tileToDisplay + "2_";
+						}
+						else if(tiles[i][j].getColor() == 3)
+						{
+							tileToDisplay = tileToDisplay + "3_";
+						}
+						
+						tileToDisplay = tileToDisplay + Integer.toString(tiles[i][j].getNumber()) + ".PNG";
+						displayTile(i,j,tileToDisplay);
+						tile[i*row+j].setFileName(tileToDisplay);
+					}
+					else if(!tiles[i][j].isValid())
+					{
+						displayTile(i,j,"general1button.png");
+					}
+					else //It is valid and also a hint.
+					{						
+						System.out.println("Making a hint release tile.");
+
+						if(tiles[i][j].getColor() == 1)
+						{
+							tileToDisplay = tileToDisplay + "1_";
+						}
+						else if(tiles[i][j].getColor()  == 2)
+						{
+							tileToDisplay = tileToDisplay + "2_";
+						}
+						else if(tiles[i][j].getColor() == 3)
+						{
+							tileToDisplay = tileToDisplay + "3_";
+						}
+						tileToDisplay = tileToDisplay + Integer.toString(tiles[i][j].getNumber()) + "_h.PNG";
+						System.out.println("File:" + tileToDisplay);
+						displayTile(i,j,tileToDisplay);
+						tile[i*row+j].setFileName(tileToDisplay);
+						
+					}
+					
+					tile[i*row+j].addMouseListener(new BuilderReleaseBoardController(board, tile[i*row+j], tiles[i][j], builder, app, clickMode, numToAdd, colorToAdd, this));
+				}
 			}
 		}
 	}
@@ -105,7 +161,15 @@ public class BuilderReleaseBoardView extends JPanel {
 	}
 
 	public int getEditMode() {
-		return 	clickMode;
+		return clickMode;
+	}
+
+	public int getColor() {
+		return colorToAdd;
+	}
+
+	public int getNumber() {
+		return numToAdd;
 	}
 
 	public void setNumber(int number) {

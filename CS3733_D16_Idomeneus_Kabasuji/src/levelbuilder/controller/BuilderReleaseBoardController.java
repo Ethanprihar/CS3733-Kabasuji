@@ -64,7 +64,74 @@ public class BuilderReleaseBoardController extends MouseAdapter {
 		
 		if(((BuilderReleaseBoardView) releaseLevelPanel).getEditMode() == 1)
 		{
+			int numberToPaint = ((BuilderReleaseBoardView) releaseLevelPanel).getNumber();
+			int colorToPaint = ((BuilderReleaseBoardView) releaseLevelPanel).getColor();
 			release = true;
+			if (SwingUtilities.isLeftMouseButton(me)){
+				builder.updateHistory();
+				selected = true;
+				if (selected){
+					tile.removeAll();
+					if(!currentTile.isHint())
+					{
+						currentTile.setNumber(numberToPaint);
+						currentTile.setColor(colorToPaint);
+						currentTile.setValid(true);
+						String tileToDisplay = "releasetile";
+						if(colorToPaint == 1)
+						{
+							tileToDisplay = tileToDisplay + "1_";
+						}
+						else if(colorToPaint == 2)
+						{
+							tileToDisplay = tileToDisplay + "2_";
+						}
+						else if(colorToPaint == 3)
+						{
+							tileToDisplay = tileToDisplay + "3_";
+						}
+						
+						tileToDisplay = tileToDisplay + Integer.toString(numberToPaint) + ".PNG";
+						tile.setImg(tileToDisplay);
+					}
+					else
+					{
+						currentTile.setNumber(numberToPaint);
+						currentTile.setColor(colorToPaint);
+						currentTile.setValid(true);
+						currentTile.setHint(true);
+						String tileToDisplay = "releasetile";
+						if(colorToPaint == 1)
+						{
+							tileToDisplay = tileToDisplay + "1_";
+						}
+						else if(colorToPaint == 2)
+						{
+							tileToDisplay = tileToDisplay + "2_";
+						}
+						else if(colorToPaint == 3)
+						{
+							tileToDisplay = tileToDisplay + "3_";
+						}
+						
+						tileToDisplay = tileToDisplay + Integer.toString(numberToPaint) + "_h.PNG";
+						tile.setImg(tileToDisplay);
+					}
+
+				}
+			}
+//			else if (SwingUtilities.isRightMouseButton(me)){
+//				builder.updateHistory();
+//				selected = true;
+//				if (selected){
+//					tile.setImg("tile.png");
+//					JLabelIcon hintImage = new JLabelIcon("hint.png", tile.getWidth(), tile.getHeight());
+//					tile.add(hintImage);
+//					
+//					currentTile.setHint(true);
+//					currentTile.setValid(true);
+//				}
+//			}
 		}
 		// If the mousePressed event is a left click, then make the tile invalid
 		else
@@ -75,50 +142,56 @@ public class BuilderReleaseBoardController extends MouseAdapter {
 				if (selected){
 					tile.removeAll();
 					tile.setImg("general1button.png");
-					
-					// Call the move class to make the currentTile in valid
 					currentTile.setValid(false);
 					currentTile.setHint(false);
+					currentTile.setNumber(0);
+					currentTile.setColor(0);
 					//BuilderSelectTileMove builderSelectTileMove = new BuilderSelectTileMove(currentTile);
 					//builderSelectTileMove.execute(builder);
-	//				int valid = 0;s
-	//				int invalid = 0;
-	//				int hint = 0;
-	//				int nothint = 0;
-	//				for(int i=0; i<builder.getSelectedLevel().getBoard().getTiles().length; i++)
-	//				{
-	//					for(int j=0; j<builder.getSelectedLevel().getBoard().getTiles().length; j++)
-	//					{
-	//						if(builder.getSelectedLevel().getBoard().getTile(i,j).isValid())
-	//							valid++;
-	//						else
-	//							invalid++;
-	//						if(builder.getSelectedLevel().getBoard().getTile(i,j).isHint())
-	//							hint++;
-	//						else
-	//							nothint++;
-	//					}
-	//				}
-	//				System.out.println("hints: " + hint + "    not hints: " + nothint + "    valid: " + valid + "    invalid: " + invalid);
 				}
 			}
 			
 			// If the mousePressed event is a left click, then make the tile a hint tile
 			else if (SwingUtilities.isRightMouseButton(me)){
+				int numberToPaint = currentTile.getNumber();
+				int colorToPaint = currentTile.getColor();
 				builder.updateHistory();
 				selected = true;
 				if (selected){
-					tile.setImg("tile.png");
-					JLabelIcon hintImage = new JLabelIcon("hint.png", tile.getWidth(), tile.getHeight());
-					tile.add(hintImage);
-					
-					// Call the move class to make the currentTile a hint tile
-					System.out.println("Just called the tile controller");
-					currentTile.setHint(true);
-					currentTile.setValid(true);
-					
-					//BuilderHintTileMove builderHintTileMove = new BuilderHintTileMove(currentTile);
-					//builderHintTileMove.execute(builder);
+					if((currentTile.getNumber() == 0))
+					{
+						tile.setImg("tile.png");
+						JLabelIcon hintImage = new JLabelIcon("hint.png", tile.getWidth(), tile.getHeight());
+						tile.add(hintImage);
+						currentTile.setHint(true);
+						currentTile.setValid(true);
+						currentTile.setNumber(0);
+						currentTile.setColor(0);
+					}
+					else//If it is a hint tile.
+					{
+						currentTile.setNumber(numberToPaint);
+						currentTile.setColor(colorToPaint);
+						currentTile.setValid(true);
+						currentTile.setHint(true);
+						String tileToDisplay = "releasetile";
+						if(colorToPaint == 1)
+						{
+							tileToDisplay = tileToDisplay + "1_";
+						}
+						else if(colorToPaint == 2)
+						{
+							tileToDisplay = tileToDisplay + "2_";
+						}
+						else if(colorToPaint == 3)
+						{
+							tileToDisplay = tileToDisplay + "3_";
+						}
+						
+						tileToDisplay = tileToDisplay + Integer.toString(numberToPaint) + "_h.PNG";
+						//System.out.println("FIle name:" + tileToDisplay);
+						tile.setImg(tileToDisplay);
+					}
 				}
 			}
 		}
