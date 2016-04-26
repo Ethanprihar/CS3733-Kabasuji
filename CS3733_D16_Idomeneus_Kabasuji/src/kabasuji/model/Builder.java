@@ -216,7 +216,7 @@ public class Builder
 	public void undo()
 	{
 		// check to make sure we arn't at the first state
-		if((boardHistory.size() > 1) && !(boardHistory.get(0).equals(selectedLevel.getBoard()) && Arrays.equals(bullpenHistory.get(0), numOfPieces)))
+		if((boardHistory.size() >= 1) && !(boardHistory.get(0).equals(selectedLevel.getBoard()) && Arrays.equals(bullpenHistory.get(0), numOfPieces)))
 		{
 			for(int i=1; i<boardHistory.size(); i++)
 			{
