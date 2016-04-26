@@ -300,6 +300,11 @@ public class Builder
 		return numOfPieces[index];
 	}
 	
+	// Return the pieces array
+	public int[] getPieces(){
+		return numOfPieces;
+	}
+	
 	public int getCurrentNumber()
 	{
 		return currentNumber;
