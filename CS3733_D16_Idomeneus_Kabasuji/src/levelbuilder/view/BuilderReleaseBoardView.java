@@ -2,7 +2,6 @@ package levelbuilder.view;
 
 import javax.swing.JPanel;
 
-import levelbuilder.controller.BuilderBoardController;
 import levelbuilder.controller.BuilderReleaseBoardController;
 import kabasuji.model.Board;
 import kabasuji.model.Builder;
@@ -11,6 +10,7 @@ import kabasuji.view.JLabelIcon;
 
 import java.awt.Container;
 
+@SuppressWarnings("serial")
 public class BuilderReleaseBoardView extends JPanel {
 	// the associated board
 	Board board;

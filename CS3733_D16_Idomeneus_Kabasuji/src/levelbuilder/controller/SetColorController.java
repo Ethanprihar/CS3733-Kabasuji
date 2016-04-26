@@ -11,9 +11,7 @@ import kabasuji.model.LightningBoard;
 import kabasuji.model.PuzzleBoard;
 import kabasuji.model.ReleaseBoard;
 import kabasuji.view.JLabelIcon;
-import levelbuilder.view.BuilderBoardView;
 import levelbuilder.view.BuilderReleaseBoardView;
-import levelbuilder.view.BuilderReleaseLevelPanel;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
 /**
