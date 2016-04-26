@@ -52,17 +52,17 @@ public class NextLevelController extends MouseAdapter {
 		// Created SelectLevelMove and input desired level integer
 		// SelectLevelMove slm = new SelectLevelMove(level);
 
+		// Get the array list of levels
 		ArrayList<Level> numLevels = kabasuji.getLevels();
+		// Get the selected level
+		Level getSelected = kabasuji.getSelectedLevel();
+		// Get the index of the current level
+		int index = numLevels.indexOf(getSelected);
+		// Get the size of the array list
 		int num = numLevels.size();
-		System.out.println("I am printing");
-		System.out.println(num);
-		
-		System.out.println("Printing Level");
-		System.out.println(level);
+
 		// Throw an error if no more levels exist
-		
-		// TODO : Fix this loop
-		if ((num - 1) == level){
+		if ((num - 1) == index){
 			System.out.println("Printing Level");
 			System.out.println(level);
 			System.out.println("I am here");

@@ -15,6 +15,7 @@ import levelbuilder.controller.RedoController;
 import levelbuilder.controller.SaveLevelController;
 import levelbuilder.controller.SetColorController;
 import levelbuilder.controller.SetNumberController;
+import levelbuilder.controller.TestLevelBuilderController;
 import levelbuilder.controller.UndoController;
 
 import javax.swing.JLabel;
@@ -284,8 +285,8 @@ public class BuilderReleaseLevelPanel extends JPanel {
 
 
 		JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", 70, 70);
-		mainmenubtn.setLocation((int) (Screen.width * 0.78) + (int) (saveBtn.getSize().getWidth() / 2),
-				(int) (Screen.height * .35));
+		mainmenubtn.setLocation((int) (Screen.width * 0.72) + (int) (saveBtn.getSize().getWidth() / 2),
+				(int) (Screen.height * .31));
 		JLabel mainmenulbl = new JLabel("<html>Main<br>Menu</html>", SwingConstants.CENTER);
 		mainmenulbl.setBounds(0, 0, 70, 70);
 		mainmenulbl.setFont(new Font("Onyx", Font.BOLD, 18));
@@ -293,6 +294,19 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		mainmenubtn.addMouseListener(
 				new GoToMainMenuBuilderController(builder, app,mainmenubtn));
 		background.add(mainmenubtn);
+		
+		// Add a test level button to the GUI so that the user can test the built level
+		JLabelIcon testBtn = new JLabelIcon("generalbutton.png", 70, 70);
+		testBtn.setLocation((int) (Screen.width * 0.82) + (int) (testBtn.getSize().getWidth() / 2),
+				(int) (Screen.height * 0.31));
+		JLabel testLbl = new JLabel("<html>Test<br>Level</html>", SwingConstants.CENTER);
+		testLbl.setBounds(0, 0, 70, 70);
+		testLbl.setFont(new Font("Onyx", Font.BOLD, 18));
+		testBtn.add(testLbl);
+		background.add(testBtn);
+		
+		// Add a mouse listener for the controller
+		testBtn.addMouseListener(new TestLevelBuilderController(builder, app, testBtn));
 	}
 
 
