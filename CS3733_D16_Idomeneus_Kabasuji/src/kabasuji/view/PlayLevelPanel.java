@@ -173,7 +173,7 @@ public class PlayLevelPanel extends JPanel {
 			// movesLeft Icon
 			movesLeft = new JLabel("<html>Moves Left</html>", SwingConstants.CENTER);
 			movesLeft.setBounds(0, 0, 120, 50);
-			movesLeft.setFont(new Font("Onyx", Font.BOLD, 18));
+			movesLeft.setFont(new Font("Onyx", Font.BOLD, 30));
 			movesLeft.setLocation((int) (Screen.width * 0.715) + (int) (movesLeft.getSize().getWidth() / 2),
 					(int) (Screen.height * 0.05));
 			movesLeft.setForeground(Color.WHITE);
@@ -183,9 +183,9 @@ public class PlayLevelPanel extends JPanel {
 
 			movesLeftNum = new JLabel(kabasuji.getSelectedLevel().getEndCondition().toString(), SwingConstants.CENTER);
 			movesLeftNum.setBounds(0, 0, 120, 50);
-			movesLeftNum.setFont(new Font("Onyx", Font.BOLD, 18));
+			movesLeftNum.setFont(new Font("Onyx", Font.BOLD, 40));
 			movesLeftNum.setLocation((int) (Screen.width * 0.715) + (int) (movesLeft.getSize().getWidth() / 2),
-					(int) (Screen.height * 0.09));
+					(int) (Screen.height * 0.12));
 			movesLeftNum.setForeground(Color.WHITE);
 			add(movesLeftNum);
 
@@ -197,18 +197,18 @@ public class PlayLevelPanel extends JPanel {
 			// timeLeft Icon
 			timeLeft = new JLabel("<html>Time Left</html>", SwingConstants.CENTER);
 			timeLeft.setBounds(0, 0, 120, 50);
-			timeLeft.setFont(new Font("Onyx", Font.BOLD, 18));
+			timeLeft.setFont(new Font("Onyx", Font.BOLD, 30));
 			timeLeft.setLocation((int) (Screen.width * 0.715) + (int) (timeLeft.getSize().getWidth() / 2),
-					(int) (Screen.height * 0.18));
+					(int) (Screen.height * 0.05));
 			timeLeft.setForeground(Color.white);
 			add(timeLeft);
 
 			// time left amount j label
 			timeLeftNum = new JLabel(kabasuji.getSelectedLevel().getEndCondition().toString(), SwingConstants.CENTER);
 			timeLeftNum.setBounds(0, 0, 120, 50);
-			timeLeftNum.setFont(new Font("Onyx", Font.BOLD, 18));
+			timeLeftNum.setFont(new Font("Onyx", Font.BOLD, 40));
 			timeLeftNum.setLocation((int) (Screen.width * 0.715) + (int) (timeLeft.getSize().getWidth() / 2),
-					(int) (Screen.height * 0.22));
+					(int) (Screen.height * 0.12));
 			timeLeftNum.setForeground(Color.white);
 			add(timeLeftNum);
 
