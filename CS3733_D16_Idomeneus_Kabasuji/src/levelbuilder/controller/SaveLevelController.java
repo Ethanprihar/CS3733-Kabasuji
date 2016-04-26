@@ -2,10 +2,13 @@ package levelbuilder.controller;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import kabasuji.model.Builder;
+import kabasuji.model.Piece;
 import kabasuji.model.Screen;
 import kabasuji.view.JLabelIcon;
 import levelbuilder.controller.moves.ChangeScreenBuilderMove;
@@ -94,6 +97,21 @@ public class SaveLevelController extends MouseAdapter {
 			}
 		}
 		
+		// Get the number of pieces chosen
+		int[] pieces = builder.getPieces();
+		int count = 0;
+		for (int i = 0; i < pieces.length; i++){
+			if (pieces[i] == 0){
+				count = count + 1;
+			}
+		}
+		
+		// Error code for no pieces chosen
+		if (count == pieces.length){
+			ErrorDialogBox.infoBox("Please choose at least one piece", "Invalid Input");
+			valid = false;
+		}
+
 		if (valid == true){
 			builder.setEndCondition(Integer.parseInt(ec.getText()));
 			builder.saveLevel(numOfPiecesOnLoad);

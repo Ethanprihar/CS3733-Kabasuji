@@ -63,13 +63,10 @@ public class NextLevelController extends MouseAdapter {
 
 		// Throw an error if no more levels exist
 		if ((num - 1) == index){
-			System.out.println("Printing Level");
-			System.out.println(level);
-			System.out.println("I am here");
 			ErrorDialogBox.infoBox("No more levels exist :( Go ahead and build one!", "Message");
 		}
 		
-		else {
+		else {		
 			// ensure that the player is able to move on the next level
 			if (kabasuji.getSelectedLevel().getStars() >= 1) {
 	
