@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 // AFTER YOU UNDO YOU CAN'T UPDATE BOARD HISTORY OR REDO BOARD MOVES
+// UNDO DOESNT UNDO BOARD MOVES VISUALY
 
 public class Builder
 {
@@ -197,8 +198,8 @@ public class Builder
 			}
 			if(remove)
 			{
-				boardHistory.remove(boardHistory.get(i));
-				bullpenHistory.remove(bullpenHistory.get(i));
+				boardHistory.remove(i);
+				bullpenHistory.remove(i);
 				i--;
 			}
 		}

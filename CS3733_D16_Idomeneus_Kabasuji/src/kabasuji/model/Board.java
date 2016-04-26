@@ -216,7 +216,8 @@ public abstract class Board implements Serializable {
 	public boolean equals(Board b) {
 		for (int i = 0; i < tiles.length; i++) {
 			for (int j = 0; j < tiles.length; j++) {
-				if (!(tiles[i][j].equals(b.getTiles()[i][j]))) {
+				if (!(tiles[i][j].equals(b.getTile(i,j))))
+				{
 					return false;
 				}
 			}
