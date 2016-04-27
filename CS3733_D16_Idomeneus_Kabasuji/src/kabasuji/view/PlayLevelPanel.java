@@ -8,12 +8,16 @@ import kabasuji.controller.NextLevelController;
 import kabasuji.controller.ResetLevelController;
 import kabasuji.controller.RotateSelectedPieceBullpenController;
 import kabasuji.model.Board;
+import kabasuji.model.Builder;
 import kabasuji.model.Bullpen;
 import kabasuji.model.Kabasuji;
 import kabasuji.model.LightningLevel;
 import kabasuji.model.PuzzleLevel;
 import kabasuji.model.ReleaseLevel;
 import kabasuji.model.Screen;
+import levelbuilder.controller.GoToMainMenuBuilderController;
+import levelbuilder.view.TopLevelApplicationBuilder;
+
 import javax.swing.JLabel;
 
 import java.awt.Color;
@@ -248,8 +252,11 @@ public class PlayLevelPanel extends JPanel {
 			returnLbl.setBounds(0, 0, 70, 70);
 			returnLbl.setFont(new Font("Onyx", Font.BOLD, 18));
 			returnBtn.add(returnLbl);
-			returnBtn.addMouseListener(new GoToMainMenuController(kabasuji, app, returnBtn));
+			Builder builder = new Builder();
+			TopLevelApplicationBuilder app1 = new TopLevelApplicationBuilder(builder);
+			System.out.println("I am in back button");
 			add(returnBtn);
+			returnBtn.addMouseListener(new GoToMainMenuBuilderController(builder, app1, returnBtn));
 		}
 
 		/** Star JLabelIcon (Initially display no stars ) **/
@@ -312,7 +319,9 @@ public class PlayLevelPanel extends JPanel {
 	 * @return
 	 */
 	public void setMovesLeftNum(Integer movesLeft) {
-		movesLeftNum.setText(movesLeft.toString());
+		if (type == 0){
+			movesLeftNum.setText(movesLeft.toString());
+		}
 	}
 
 	/**
@@ -330,7 +339,9 @@ public class PlayLevelPanel extends JPanel {
 	 * @return
 	 */
 	public void setTimeLeftNum(Integer timeLeft) {
-		timeLeftNum.setText(timeLeft.toString());
+		if (type == 0){
+			timeLeftNum.setText(timeLeft.toString());
+		}
 	}
 
 	/**
