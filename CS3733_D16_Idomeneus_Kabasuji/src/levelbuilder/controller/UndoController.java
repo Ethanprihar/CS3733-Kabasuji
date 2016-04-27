@@ -65,8 +65,10 @@ public class UndoController extends MouseAdapter {
 					counter++;
 				}
 			}
+			
 			board.setTiles(builder.getSelectedLevel().getBoard().getTiles());
 			board.updateBoard();
+			
 		}
 		catch (Exception exc)
 		{

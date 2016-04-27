@@ -7,9 +7,13 @@ import javax.swing.SwingUtilities;
 
 import kabasuji.model.Board;
 import kabasuji.model.Builder;
+import kabasuji.model.LightningBoard;
+import kabasuji.model.PuzzleBoard;
+import kabasuji.model.ReleaseBoard;
 import kabasuji.model.Tile;
 import kabasuji.view.JLabelIcon;
 import levelbuilder.view.BuilderReleaseBoardView;
+import levelbuilder.view.BuilderReleaseLevelPanel;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
 /**

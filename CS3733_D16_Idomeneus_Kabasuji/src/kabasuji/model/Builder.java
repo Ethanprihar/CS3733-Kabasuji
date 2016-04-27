@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 // AFTER YOU UNDO YOU CAN'T UPDATE BOARD HISTORY OR REDO BOARD MOVES
-// UNDO DOESNT UNDO BOARD MOVES VISUALY
 
 public class Builder
 {
@@ -93,7 +92,7 @@ public class Builder
 				{
 					selectedLevel.getBullpen().addPiece(pieces[i].copy());
 				}
-				System.out.println("added " + numOfPieces[i] + " of piece " + i);
+				//System.out.println("added " + numOfPieces[i] + " of piece " + i);
 			}
 		}
 		
@@ -198,6 +197,7 @@ public class Builder
 			}
 			if(remove)
 			{
+				System.out.println("REMOVED");
 				boardHistory.remove(i);
 				bullpenHistory.remove(i);
 				i--;
@@ -216,7 +216,7 @@ public class Builder
 	public void undo()
 	{
 		// check to make sure we arn't at the first state
-		if((boardHistory.size() >= 1) && !(boardHistory.get(0).equals(selectedLevel.getBoard()) && Arrays.equals(bullpenHistory.get(0), numOfPieces)))
+		if((boardHistory.size() > 1) && !(boardHistory.get(0).equals(selectedLevel.getBoard()) && Arrays.equals(bullpenHistory.get(0), numOfPieces)))
 		{
 			for(int i=1; i<boardHistory.size(); i++)
 			{
@@ -226,11 +226,17 @@ public class Builder
 					System.out.println("found something to undo");
 					selectedLevel.setBoard(boardHistory.get(i-1));
 					numOfPieces = bullpenHistory.get(i-1);
+					for(Board b: boardHistory)
+					{
+						System.out.println(b.toString());
+					}
+					updateHistory();
 					return;
 				}
 			}
 			// if no states in history are the same as this state turn the current state into the most recent history
 			System.out.println("going to most recent history");
+			
 			updateHistory();
 			selectedLevel.setBoard(boardHistory.get(boardHistory.size()-2));
 			numOfPieces = bullpenHistory.get(bullpenHistory.size()-2);
