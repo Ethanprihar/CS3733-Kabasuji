@@ -71,8 +71,6 @@ public class NextLevelController extends MouseAdapter {
 			if (kabasuji.getSelectedLevel().getStars() >= 1) {
 	
 				// update the timer
-				plp.resetTimer();
-	
 				kabasuji.saveLevels();
 				kabasuji.nextLevel();
 	
@@ -103,6 +101,7 @@ public class NextLevelController extends MouseAdapter {
 				// remove all components from PLP -> update PLP -> add controllers
 				plp.removeAll();
 				plp.updatePlayLevelPanel(bv, bpv);
+				plp.startTimeLimit();
 				plp.addControllers();
 	
 				// repaint the PlayLevelPanel
