@@ -71,7 +71,7 @@ public class SelectLevelController extends MouseAdapter {
 
 			// first make the foundation panel and pass model and container
 			// panel
-			plp = new PlayLevelPanel(kabasuji, app);
+			plp = new PlayLevelPanel(kabasuji, app, 0);
 
 			// create components of panel and pass model and container panel
 			BullpenView bpv = new BullpenView(kabasuji, plp, 4,

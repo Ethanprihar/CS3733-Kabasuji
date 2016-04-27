@@ -29,6 +29,7 @@ public class PlayLevelPanel extends JPanel {
 	Kabasuji kabasuji;
 	Board board;
 	Bullpen bullpen;
+	int type;
 
 	Timer timer; // Timer used for Lightning Mode
 
@@ -59,9 +60,10 @@ public class PlayLevelPanel extends JPanel {
 	 * @param kabasuji
 	 * @param app
 	 */
-	public PlayLevelPanel(Kabasuji kabasuji, TopLevelApplication app) {
+	public PlayLevelPanel(Kabasuji kabasuji, TopLevelApplication app, int type) {
 		this.kabasuji = kabasuji;
 		this.app = app;
+		this.type = type;
 		this.board = kabasuji.getSelectedLevel().getBoard();
 		this.bullpen = kabasuji.getSelectedLevel().getBullpen();
 
@@ -158,81 +160,97 @@ public class PlayLevelPanel extends JPanel {
 		rotaterbtn.add(rotaterlbl);
 		add(rotaterbtn);
 
-		// display moves left if in puzzle or release mode
-		if ((kabasuji.getSelectedLevel() instanceof PuzzleLevel)
-				|| (kabasuji.getSelectedLevel() instanceof ReleaseLevel)) {
-
-			// movesLeft Icon
-			movesLeft = new JLabel("<html>Moves Left</html>", SwingConstants.CENTER);
-			movesLeft.setBounds(0, 0, 150, 50);
-			movesLeft.setFont(new Font("Onyx", Font.BOLD, 25));
-			movesLeft.setLocation((int) (Screen.width * 0.67) + (int) (movesLeft.getSize().getWidth() / 2),
-					(int) (Screen.height * 0.05));
-			movesLeft.setForeground(Color.WHITE);
-			add(movesLeft);
-
-			System.out.println("end condidition: " + kabasuji.getSelectedLevel().getEndCondition().toString());
-
-			movesLeftNum = new JLabel(kabasuji.getSelectedLevel().getEndCondition().toString(), SwingConstants.CENTER);
-			movesLeftNum.setBounds(0, 0, 120, 50);
-			movesLeftNum.setFont(new Font("Onyx", Font.BOLD, 40));
-			movesLeftNum.setLocation((int) (Screen.width * 0.715) + (int) (movesLeft.getSize().getWidth() / 2),
-					(int) (Screen.height * 0.12));
-			movesLeftNum.setForeground(Color.WHITE);
-			add(movesLeftNum);
-
+		if (type == 0){
+			// display moves left if in puzzle or release mode
+			if ((kabasuji.getSelectedLevel() instanceof PuzzleLevel)
+					|| (kabasuji.getSelectedLevel() instanceof ReleaseLevel)) {
+	
+				// movesLeft Icon
+				movesLeft = new JLabel("<html>Moves Left</html>", SwingConstants.CENTER);
+				movesLeft.setBounds(0, 0, 150, 50);
+				movesLeft.setFont(new Font("Onyx", Font.BOLD, 25));
+				movesLeft.setLocation((int) (Screen.width * 0.67) + (int) (movesLeft.getSize().getWidth() / 2),
+						(int) (Screen.height * 0.05));
+				movesLeft.setForeground(Color.WHITE);
+				add(movesLeft);
+	
+				System.out.println("end condidition: " + kabasuji.getSelectedLevel().getEndCondition().toString());
+	
+				movesLeftNum = new JLabel(kabasuji.getSelectedLevel().getEndCondition().toString(), SwingConstants.CENTER);
+				movesLeftNum.setBounds(0, 0, 120, 50);
+				movesLeftNum.setFont(new Font("Onyx", Font.BOLD, 40));
+				movesLeftNum.setLocation((int) (Screen.width * 0.715) + (int) (movesLeft.getSize().getWidth() / 2),
+						(int) (Screen.height * 0.12));
+				movesLeftNum.setForeground(Color.WHITE);
+				add(movesLeftNum);
+	
+			}
+	
+			// display time left if in lightning mode
+			else if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
+	
+				// timeLeft Icon
+				timeLeft = new JLabel("<html>Time Left</html>", SwingConstants.CENTER);
+				timeLeft.setBounds(0, 0, 150, 50);
+				timeLeft.setFont(new Font("Onyx", Font.BOLD, 30));
+				timeLeft.setLocation((int) (Screen.width * 0.67) + (int) (timeLeft.getSize().getWidth() / 2),
+						(int) (Screen.height * 0.05));
+				timeLeft.setForeground(Color.white);
+				add(timeLeft);
+	
+				// time left amount j label
+				timeLeftNum = new JLabel(kabasuji.getSelectedLevel().getEndCondition().toString(), SwingConstants.CENTER);
+				timeLeftNum.setBounds(0, 0, 120, 50);
+				timeLeftNum.setFont(new Font("Onyx", Font.BOLD, 40));
+				timeLeftNum.setLocation((int) (Screen.width * 0.715) + (int) (timeLeft.getSize().getWidth() / 2),
+						(int) (Screen.height * 0.12));
+				timeLeftNum.setForeground(Color.white);
+				add(timeLeftNum);
+			}
 		}
 
-		// display time left if in lightning mode
-		else if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
-
-			// timeLeft Icon
-			timeLeft = new JLabel("<html>Time Left</html>", SwingConstants.CENTER);
-			timeLeft.setBounds(0, 0, 150, 50);
-			timeLeft.setFont(new Font("Onyx", Font.BOLD, 30));
-			timeLeft.setLocation((int) (Screen.width * 0.67) + (int) (timeLeft.getSize().getWidth() / 2),
-					(int) (Screen.height * 0.05));
-			timeLeft.setForeground(Color.white);
-			add(timeLeft);
-
-			// time left amount j label
-			timeLeftNum = new JLabel(kabasuji.getSelectedLevel().getEndCondition().toString(), SwingConstants.CENTER);
-			timeLeftNum.setBounds(0, 0, 120, 50);
-			timeLeftNum.setFont(new Font("Onyx", Font.BOLD, 40));
-			timeLeftNum.setLocation((int) (Screen.width * 0.715) + (int) (timeLeft.getSize().getWidth() / 2),
-					(int) (Screen.height * 0.12));
-			timeLeftNum.setForeground(Color.white);
-			add(timeLeftNum);
-
+		if (type == 0){
+			nextlevelbtn = new JLabelIcon("generallockedbutton.png", 70, 70);
+			nextlevelbtn.setLocation((int) (Screen.width * 0.74) + (int) (rotatelbtn.getSize().getWidth() / 2),
+					(int) (Screen.height * .6));
+			JLabel nextlevellbl = new JLabel("<html>Next<br>Level</html>", SwingConstants.CENTER);
+			nextlevellbl.setBounds(0, 0, 70, 70);
+			nextlevellbl.setFont(new Font("Onyx", Font.BOLD, 18));
+			nextlevelbtn.add(nextlevellbl);
+			add(nextlevelbtn);
+	
+			resetlevelbtn = new JLabelIcon("generalbutton.png", 70, 70);
+			resetlevelbtn.setLocation((int) (Screen.width * 0.74) + (int) (rotatelbtn.getSize().getWidth() / 2),
+					(int) (Screen.height * .73));
+			JLabel resetlevellbl = new JLabel("<html>Reset<br>Level</html>", SwingConstants.CENTER);
+			resetlevellbl.setBounds(0, 0, 70, 70);
+			resetlevellbl.setFont(new Font("Onyx", Font.BOLD, 18));
+			resetlevelbtn.add(resetlevellbl);
+			add(resetlevelbtn);
+			
+			JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", 70, 70);
+			mainmenubtn.setLocation((int) (Screen.width * 0.84) + (int) (rotatelbtn.getSize().getWidth() / 2),
+					(int) (Screen.height * .6));
+			JLabel mainmenulbl = new JLabel("<html>Main<br>Menu</html>", SwingConstants.CENTER);
+			mainmenulbl.setBounds(0, 0, 70, 70);
+			mainmenulbl.setFont(new Font("Onyx", Font.BOLD, 18));
+			mainmenubtn.add(mainmenulbl);
+			mainmenubtn.addMouseListener(new GoToMainMenuController(kabasuji, app, mainmenubtn));
+			add(mainmenubtn);
 		}
-
-		JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", 70, 70);
-		mainmenubtn.setLocation((int) (Screen.width * 0.84) + (int) (rotatelbtn.getSize().getWidth() / 2),
-				(int) (Screen.height * .6));
-		JLabel mainmenulbl = new JLabel("<html>Main<br>Menu</html>", SwingConstants.CENTER);
-		mainmenulbl.setBounds(0, 0, 70, 70);
-		mainmenulbl.setFont(new Font("Onyx", Font.BOLD, 18));
-		mainmenubtn.add(mainmenulbl);
-		mainmenubtn.addMouseListener(new GoToMainMenuController(kabasuji, app, mainmenubtn));
-		add(mainmenubtn);
-
-		nextlevelbtn = new JLabelIcon("generallockedbutton.png", 70, 70);
-		nextlevelbtn.setLocation((int) (Screen.width * 0.74) + (int) (rotatelbtn.getSize().getWidth() / 2),
-				(int) (Screen.height * .6));
-		JLabel nextlevellbl = new JLabel("<html>Next<br>Level</html>", SwingConstants.CENTER);
-		nextlevellbl.setBounds(0, 0, 70, 70);
-		nextlevellbl.setFont(new Font("Onyx", Font.BOLD, 18));
-		nextlevelbtn.add(nextlevellbl);
-		add(nextlevelbtn);
-
-		resetlevelbtn = new JLabelIcon("generalbutton.png", 70, 70);
-		resetlevelbtn.setLocation((int) (Screen.width * 0.74) + (int) (rotatelbtn.getSize().getWidth() / 2),
-				(int) (Screen.height * .73));
-		JLabel resetlevellbl = new JLabel("<html>Reset<br>Level</html>", SwingConstants.CENTER);
-		resetlevellbl.setBounds(0, 0, 70, 70);
-		resetlevellbl.setFont(new Font("Onyx", Font.BOLD, 18));
-		resetlevelbtn.add(resetlevellbl);
-		add(resetlevelbtn);
+		
+		if (type == 1){
+			
+			JLabelIcon returnBtn = new JLabelIcon("generalbutton.png", 70, 70);
+			returnBtn.setLocation((int) (Screen.width * 0.80) + (int) (rotatelbtn.getSize().getWidth() / 2),
+					(int) (Screen.height * .6));
+			JLabel returnLbl = new JLabel("<html>Back</html>", SwingConstants.CENTER);
+			returnLbl.setBounds(0, 0, 70, 70);
+			returnLbl.setFont(new Font("Onyx", Font.BOLD, 18));
+			returnBtn.add(returnLbl);
+			returnBtn.addMouseListener(new GoToMainMenuController(kabasuji, app, returnBtn));
+			add(returnBtn);
+		}
 
 		/** Star JLabelIcon (Initially display no stars ) **/
 
@@ -250,8 +268,10 @@ public class PlayLevelPanel extends JPanel {
 	}
 	public void startTimeLimit(){
 		// if in lightning mode make a new timer object
-		if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
-			timerStart();
+		if (type == 0){
+			if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
+				timerStart();
+			}
 		}
 	}
 
@@ -263,10 +283,9 @@ public class PlayLevelPanel extends JPanel {
 		rotatelbtn.addMouseListener(new RotateSelectedPieceBullpenController(kabasuji, this, rotatelbtn, false));
 		flipvbtn.addMouseListener(new FlipSelectedPieceBullpenController(kabasuji, this, flipvbtn, true));
 		fliphbtn.addMouseListener(new FlipSelectedPieceBullpenController(kabasuji, this, fliphbtn, false));
-		resetlevelbtn.addMouseListener(new ResetLevelController(kabasuji, this, resetlevelbtn));
-		
-		// Don't attach the nextlevelbtn mouse listener yet
-		//nextlevelbtn.addMouseListener(new NextLevelController(kabasuji, this, nextlevelbtn));
+		if (type == 0){
+			resetlevelbtn.addMouseListener(new ResetLevelController(kabasuji, this, resetlevelbtn));
+		}
 	}
 
 	/**

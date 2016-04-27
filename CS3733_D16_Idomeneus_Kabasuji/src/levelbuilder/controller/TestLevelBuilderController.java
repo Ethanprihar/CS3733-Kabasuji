@@ -72,7 +72,7 @@ public class TestLevelBuilderController extends MouseAdapter {
 			
 			// first make the foundation panel and pass model and container
 			// panel
-			PlayLevelPanel plp = new PlayLevelPanel(kabasuji, app1);
+			PlayLevelPanel plp = new PlayLevelPanel(kabasuji, app1, 1);
 
 			// create components of panel and pass model and container panel
 			BullpenView bpv = new BullpenView(kabasuji, plp, 4,
