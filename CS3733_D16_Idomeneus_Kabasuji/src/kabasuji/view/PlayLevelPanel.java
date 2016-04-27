@@ -241,16 +241,18 @@ public class PlayLevelPanel extends JPanel {
 		add(bpv);
 		setBoardView(bv);
 		setBullpenView(bpv);
-		
-		// if in lightning mode make a new timer object
-		if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
-			timerStart();
-		}
+	
 
 		// setup background canvas **
 		background = new JLabelIcon("starry_night.jpeg", Screen.width, Screen.height);
 		background.setBounds(0, 0, Screen.width, Screen.height);
 		add(background);
+	}
+	public void startTimeLimit(){
+		// if in lightning mode make a new timer object
+		if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
+			timerStart();
+		}
 	}
 
 	/**

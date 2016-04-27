@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import kabasuji.controller.moves.ChangeScreenMove;
 import kabasuji.model.Kabasuji;
+import kabasuji.model.LightningLevel;
 import kabasuji.model.Screen;
 import kabasuji.view.BoardView;
 import kabasuji.view.BullpenView;
@@ -48,7 +49,6 @@ public class ResetLevelController extends MouseAdapter {
 		/*** MODEL CHANGES ***/
 
 		// update the timer
-		plp.resetTimer();
 
 		kabasuji.saveLevels();
 		kabasuji.resetLevel();
@@ -80,6 +80,9 @@ public class ResetLevelController extends MouseAdapter {
 		// remove all components from PLP -> update PLP -> add controllers
 		plp.removeAll();
 		plp.updatePlayLevelPanel(bv, bpv);
+		if(kabasuji.selectedLevel instanceof LightningLevel){
+			plp.resetTimer();
+		}
 		plp.addControllers();
 
 		// repaint the PlayLevelPanel
