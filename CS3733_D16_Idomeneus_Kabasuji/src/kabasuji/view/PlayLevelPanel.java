@@ -172,9 +172,9 @@ public class PlayLevelPanel extends JPanel {
 
 			// movesLeft Icon
 			movesLeft = new JLabel("<html>Moves Left</html>", SwingConstants.CENTER);
-			movesLeft.setBounds(0, 0, 120, 50);
-			movesLeft.setFont(new Font("Onyx", Font.BOLD, 30));
-			movesLeft.setLocation((int) (Screen.width * 0.715) + (int) (movesLeft.getSize().getWidth() / 2),
+			movesLeft.setBounds(0, 0, 150, 50);
+			movesLeft.setFont(new Font("Onyx", Font.BOLD, 25));
+			movesLeft.setLocation((int) (Screen.width * 0.67) + (int) (movesLeft.getSize().getWidth() / 2),
 					(int) (Screen.height * 0.05));
 			movesLeft.setForeground(Color.WHITE);
 			add(movesLeft);
