@@ -30,6 +30,7 @@ public class Builder
 		bullpenHistory = new ArrayList<int[]>();
 		try
 		{
+			selectedLevel = null;
 			FileInputStream saveFile = new FileInputStream("levels.data");
 			ObjectInputStream save = new ObjectInputStream(saveFile);
 			levels = (ArrayList<Level>) save.readObject();
@@ -119,7 +120,6 @@ public class Builder
 		System.out.println("hints: " + hint + "    not hints: " + nothint + "    valid: " + valid + "    invalid: " + invalid);
 		if (!levels.contains(selectedLevel))
 			levels.add(selectedLevel);
-		selectedLevel = null;
 		numOfPieces = new int[35];
 		System.out.println("Printing levels.size() for some reason: " + levels.size());
 	}

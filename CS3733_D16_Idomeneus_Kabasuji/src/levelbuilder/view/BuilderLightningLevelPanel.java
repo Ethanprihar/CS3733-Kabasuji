@@ -176,7 +176,7 @@ public class BuilderLightningLevelPanel extends JPanel {
 		background.add(testBtn);
 		
 		// Add a mouse listener for the controller
-		testBtn.addMouseListener(new TestLevelBuilderController(builder, app, testBtn));
+		testBtn.addMouseListener(new TestLevelBuilderController(builder, app, testBtn, numOfPiecesOnLoad, timeSet));
 		
 		JLabelIcon saveBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		saveBtn.setLocation((int) (Screen.width * 0.72) + (int) (saveBtn.getSize().getWidth() / 2),

@@ -306,7 +306,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		background.add(testBtn);
 		
 		// Add a mouse listener for the controller
-		testBtn.addMouseListener(new TestLevelBuilderController(builder, app, testBtn));
+		testBtn.addMouseListener(new TestLevelBuilderController(builder, app, testBtn, numOfPiecesOnLoad, numMoves));
 	}
 
 
