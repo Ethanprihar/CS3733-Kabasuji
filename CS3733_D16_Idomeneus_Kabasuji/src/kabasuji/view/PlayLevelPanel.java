@@ -88,13 +88,10 @@ public class PlayLevelPanel extends JPanel {
 				// If the player is out of time stop the timer
 				if (!((LightningLevel) kabasuji.getSelectedLevel()).hasTimeLeft()) {
 					// stop the timer
-					System.out.println("Timer done");
 					timer.stop();
 				} else { // otherwise increment the current time and
 							// refresh the gui
 					((LightningLevel) kabasuji.getSelectedLevel()).incrementCurrentTime();
-					System.out.println("time left: "
-							+ ((Integer) ((LightningLevel) kabasuji.getSelectedLevel()).getTimeLeft()).toString());
 					setTimeLeftNum((Integer) ((LightningLevel) kabasuji.getSelectedLevel()).getTimeLeft());
 				}
 			}
@@ -196,9 +193,9 @@ public class PlayLevelPanel extends JPanel {
 
 			// timeLeft Icon
 			timeLeft = new JLabel("<html>Time Left</html>", SwingConstants.CENTER);
-			timeLeft.setBounds(0, 0, 120, 50);
+			timeLeft.setBounds(0, 0, 150, 50);
 			timeLeft.setFont(new Font("Onyx", Font.BOLD, 30));
-			timeLeft.setLocation((int) (Screen.width * 0.715) + (int) (timeLeft.getSize().getWidth() / 2),
+			timeLeft.setLocation((int) (Screen.width * 0.67) + (int) (timeLeft.getSize().getWidth() / 2),
 					(int) (Screen.height * 0.05));
 			timeLeft.setForeground(Color.white);
 			add(timeLeft);
