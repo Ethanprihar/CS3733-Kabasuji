@@ -65,7 +65,7 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		// get the puzzle board
 		PuzzleBoard tboard = (PuzzleBoard) builder.getSelectedLevel().getBoard();
 		
-		BuilderBoardView boardview = new BuilderBoardView(tboard, board, builder, app);
+		BuilderBoardView boardview = new BuilderBoardView(tboard, board, builder, app, 0);
 		background.add(board);
 		
 		// Create the first set of JLabels

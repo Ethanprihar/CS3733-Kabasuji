@@ -64,7 +64,7 @@ public class BuilderLightningLevelPanel extends JPanel {
 		// get the lightning board
 		LightningBoard tboard = (LightningBoard) builder.getSelectedLevel().getBoard();
 		
-		BuilderBoardView boardview = new BuilderBoardView(tboard, board, builder, app);
+		BuilderBoardView boardview = new BuilderBoardView(tboard, board, builder, app, 1);
 		background.add(board);
 		
 		// Create the first set of JLabels

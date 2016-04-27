@@ -17,6 +17,7 @@ public class BuilderBoardView extends JPanel {
 	TopLevelApplicationBuilder app;
 	// the JPanel that contains it
 	Container panel;
+	int type;
 
 	Tile[][] tiles;
 
@@ -35,12 +36,13 @@ public class BuilderBoardView extends JPanel {
 	 * Create the Main Menu Panel.
 	 */
 
-	public BuilderBoardView(Board board, Container panel, Builder builder, TopLevelApplicationBuilder app) {
+	public BuilderBoardView(Board board, Container panel, Builder builder, TopLevelApplicationBuilder app, int type) {
 		this.board = board;
 		this.panel = panel;
 		this.builder = builder;
 		this.app = app;
 		this.tiles = board.getTiles();
+		this.type = type;
 
 		this.row = board.getTiles().length+2;
 		this.col = board.getTiles()[0].length+2;
@@ -88,7 +90,7 @@ public class BuilderBoardView extends JPanel {
 					{
 						displayTile(i,j,"tile.PNG");
 					}
-					tile[i*row+j].addMouseListener(new BuilderBoardController(board, tile[i*row+j], i,j, builder, app));
+					tile[i*row+j].addMouseListener(new BuilderBoardController(board, tile[i*row+j], i,j, builder, app, type));
 
 
 			}

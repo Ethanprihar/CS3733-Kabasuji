@@ -33,8 +33,9 @@ public class BuilderBoardController extends MouseAdapter {
 	int i;
 	int j;
 	boolean selected;
+	int type;
 
-	public BuilderBoardController(Board board, JLabelIcon tile, int i, int j, Builder builder, TopLevelApplicationBuilder app) {
+	public BuilderBoardController(Board board, JLabelIcon tile, int i, int j, Builder builder, TopLevelApplicationBuilder app, int type) {
 		this.board=  board;
 		this.tile = tile;
 		this.i = i;
@@ -42,6 +43,7 @@ public class BuilderBoardController extends MouseAdapter {
 		this.app = app;
 		this.builder = builder;
 		this.fn = tile.getFileName();
+		this.type = type;
 	}
 
 	/**
@@ -58,8 +60,10 @@ public class BuilderBoardController extends MouseAdapter {
 				tile.setImg("general1button.png");
 				
 				// Call the move class to make the currentTile in valid
+				if (type != 1){
+					builder.getSelectedLevel().getBoard().getTiles()[i][j].setHint(false);
+				}
 				builder.getSelectedLevel().getBoard().getTiles()[i][j].setValid(false);
-				builder.getSelectedLevel().getBoard().getTiles()[i][j].setHint(false);
 				//BuilderSelectTileMove builderSelectTileMove = new BuilderSelectTileMove(currentTile);
 				//builderSelectTileMove.execute(builder);
 				int valid = 0;
@@ -91,11 +95,13 @@ public class BuilderBoardController extends MouseAdapter {
 			if (selected){
 				tile.setImg("tile.png");
 				JLabelIcon hintImage = new JLabelIcon("hint.png", tile.getWidth(), tile.getHeight());
-				tile.add(hintImage);
 				
 				// Call the move class to make the currentTile a hint tile
 				System.out.println("Just called the tile controller");
-				builder.getSelectedLevel().getBoard().getTiles()[i][j].setHint(true);
+				if (type != 1){
+					builder.getSelectedLevel().getBoard().getTiles()[i][j].setHint(true);
+					tile.add(hintImage);
+				}
 				builder.getSelectedLevel().getBoard().getTiles()[i][j].setValid(true);
 				
 				//BuilderHintTileMove builderHintTileMove = new BuilderHintTileMove(currentTile);
