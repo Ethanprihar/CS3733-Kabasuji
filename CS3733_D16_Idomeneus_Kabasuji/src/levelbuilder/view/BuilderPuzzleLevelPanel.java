@@ -177,7 +177,8 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		background.add(testBtn);
 		
 		// Add a mouse listener for the controller
-		testBtn.addMouseListener(new TestLevelBuilderController(builder, app, testBtn));
+		//testBtn.addMouseListener(new SaveLevelController(builder, app, testBtn, numMoves, 1, numOfPiecesOnLoad));
+		testBtn.addMouseListener(new TestLevelBuilderController(builder, app, testBtn, numOfPiecesOnLoad, numMoves));
 		
 		JLabelIcon saveBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		saveBtn.setLocation((int) (Screen.width * 0.72) + (int) (saveBtn.getSize().getWidth() / 2),
