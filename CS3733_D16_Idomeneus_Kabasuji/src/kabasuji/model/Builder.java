@@ -92,7 +92,7 @@ public class Builder
 				{
 					selectedLevel.getBullpen().addPiece(pieces[i].copy());
 				}
-				System.out.println("added " + numOfPieces[i] + " of piece " + i);
+				//System.out.println("added " + numOfPieces[i] + " of piece " + i);
 			}
 		}
 		
