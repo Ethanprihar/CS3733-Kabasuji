@@ -179,6 +179,10 @@ public class BuilderReleaseBoardView extends JPanel {
 		colorToAdd = color;
 	}
 	
+	public void setTiles(Tile[][] t)
+	{
+		tiles = t;
+	}
 	
 	
 }
