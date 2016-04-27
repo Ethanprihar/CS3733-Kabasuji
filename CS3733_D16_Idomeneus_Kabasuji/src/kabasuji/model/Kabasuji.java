@@ -71,6 +71,29 @@ public class Kabasuji {
 		}
 	}
 
+	public void loadLevel() {
+		
+		int index = levels.indexOf(selectedLevel);
+		selectedLevel = levels.get(index);
+
+		// reset moves used for puzzle mode
+		if (selectedLevel instanceof PuzzleLevel) {
+			((PuzzleLevel) selectedLevel).setMovesUsed(0);
+			((PuzzleLevel) selectedLevel).getBoard().setNumStars(0);
+		}
+		// reset moves used for release mode
+		else if (selectedLevel instanceof ReleaseLevel) {
+			((ReleaseLevel) selectedLevel).setMovesUsed(0);
+			((ReleaseLevel) selectedLevel).getBoard().setNumStars(0);
+		}
+		// reset moves used for release mode
+		else if (selectedLevel instanceof LightningLevel) {
+			((LightningLevel) selectedLevel).setCurrentTime(0);
+			((LightningLevel) selectedLevel).getBoard().setNumStars(0);
+		}
+
+	}
+
 	private void loadLevels() {
 		try {
 			FileInputStream saveFile = new FileInputStream("levels.data");

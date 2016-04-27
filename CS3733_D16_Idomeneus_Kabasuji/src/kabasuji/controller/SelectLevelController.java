@@ -8,6 +8,9 @@ import javax.swing.JPanel;
 import kabasuji.controller.moves.ChangeScreenMove;
 import kabasuji.controller.moves.SelectLevelMove;
 import kabasuji.model.Kabasuji;
+import kabasuji.model.LightningLevel;
+import kabasuji.model.PuzzleLevel;
+import kabasuji.model.ReleaseLevel;
 import kabasuji.model.Screen;
 import kabasuji.view.BoardView;
 import kabasuji.view.BullpenView;
@@ -28,7 +31,7 @@ public class SelectLevelController extends MouseAdapter {
 
 	/** Entities associated **/
 	Kabasuji kabasuji;
-	int level;
+	int level; // 0 = Puzzle, 1 = Lightning, 2 = Release
 	/** Boundaries associated **/
 	TopLevelApplication app;
 	JPanel contentPanel;
@@ -62,6 +65,9 @@ public class SelectLevelController extends MouseAdapter {
 
 			// Create PlayLevelPanel screen object and update boundary to
 			// reflect *** GUI CHANGES ***
+			
+			// reset moves, time, and stars
+			kabasuji.loadLevel();
 
 			// first make the foundation panel and pass model and container
 			// panel
