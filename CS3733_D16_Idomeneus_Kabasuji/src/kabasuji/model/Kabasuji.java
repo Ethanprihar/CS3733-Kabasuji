@@ -55,6 +55,8 @@ public class Kabasuji {
 		int index = levels.indexOf(selectedLevel);
 		selectedLevel = null;
 		loadLevels();
+		if(index == -1)
+			index = levels.size() - 1;
 		selectedLevel = levels.get(index);
 
 		// reset moves used for puzzle mode

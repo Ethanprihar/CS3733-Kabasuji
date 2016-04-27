@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import kabasuji.controller.moves.ChangeScreenMove;
 import kabasuji.model.Kabasuji;
 import kabasuji.model.LightningLevel;
+import kabasuji.model.PuzzleLevel;
 import kabasuji.model.Screen;
 import kabasuji.view.BoardView;
 import kabasuji.view.BullpenView;
@@ -49,10 +50,18 @@ public class ResetLevelController extends MouseAdapter {
 		/*** MODEL CHANGES ***/
 
 		// update the timer
-
-		kabasuji.saveLevels();
-		kabasuji.resetLevel();
-
+		if(kabasuji.getLevels().size() - 1 == kabasuji.getLevels().indexOf(kabasuji.getSelectedLevel()))
+		{
+			kabasuji.getLevels().add(new PuzzleLevel(null, null, 0));
+			kabasuji.saveLevels();
+			kabasuji.resetLevel();
+			kabasuji.getLevels().remove(kabasuji.getLevels().size() - 1);
+		}
+		else
+		{
+			kabasuji.saveLevels();
+			kabasuji.resetLevel();
+		}
 		// Created ChangeScreenMove and input desired screen
 		ChangeScreenMove gtsm = new ChangeScreenMove(Screen.PlayLevel);
 
