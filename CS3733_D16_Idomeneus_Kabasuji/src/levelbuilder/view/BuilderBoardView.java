@@ -70,7 +70,11 @@ public class BuilderBoardView extends JPanel {
 	// row/col
 	// includes centering as well
 	public void updateBoard(){
-
+		
+		board = builder.getSelectedLevel().getBoard();
+		tiles = board.getTiles();
+		
+		panel.removeAll();
 		for (int i = 0; i < col-2; i++) {
 			for (int j = 0; j < row-2; j++) {
 					if (tiles[i][j].isHint()) {
@@ -84,16 +88,18 @@ public class BuilderBoardView extends JPanel {
 					{
 						displayTile(i,j,"tile.PNG");
 					}
-					tile[i*row+j].addMouseListener(new BuilderBoardController(board, tile[i*row+j], tiles[i][j], builder, app));
+					tile[i*row+j].addMouseListener(new BuilderBoardController(board, tile[i*row+j], i,j, builder, app));
 
 
 			}
 		}
+		panel.repaint();
 	}
 	public void displayTile(int i,int j, String pic){
 		tile[i * row + j] = new JLabelIcon(pic, tilesidescaled, tilesidescaled);
 		tile[i * row + j].setLocation((int) (tilesidelength * (j+1 + (sqmatrixlength - row) / 2)) + offset,
 				(int) (tilesidelength * (i+1 + (sqmatrixlength - col) / 2)) + offset);
+		tile[i * row + j].setImg(pic);
 		panel.add(tile[i * row + j]);
 	}
 	

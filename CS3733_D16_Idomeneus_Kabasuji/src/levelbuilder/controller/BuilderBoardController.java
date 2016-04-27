@@ -30,13 +30,15 @@ public class BuilderBoardController extends MouseAdapter {
 	Board board;
 	JLabelIcon tile;
 	String fn;
-	Tile currentTile;
+	int i;
+	int j;
 	boolean selected;
 
-	public BuilderBoardController(Board board, JLabelIcon tile, Tile currentTile, Builder builder, TopLevelApplicationBuilder app) {
+	public BuilderBoardController(Board board, JLabelIcon tile, int i, int j, Builder builder, TopLevelApplicationBuilder app) {
 		this.board=  board;
 		this.tile = tile;
-		this.currentTile = currentTile;
+		this.i = i;
+		this.j = j;
 		this.app = app;
 		this.builder = builder;
 		this.fn = tile.getFileName();
@@ -56,8 +58,8 @@ public class BuilderBoardController extends MouseAdapter {
 				tile.setImg("general1button.png");
 				
 				// Call the move class to make the currentTile in valid
-				currentTile.setValid(false);
-				currentTile.setHint(false);
+				builder.getSelectedLevel().getBoard().getTiles()[i][j].setValid(false);
+				builder.getSelectedLevel().getBoard().getTiles()[i][j].setHint(false);
 				//BuilderSelectTileMove builderSelectTileMove = new BuilderSelectTileMove(currentTile);
 				//builderSelectTileMove.execute(builder);
 				int valid = 0;
@@ -93,8 +95,8 @@ public class BuilderBoardController extends MouseAdapter {
 				
 				// Call the move class to make the currentTile a hint tile
 				System.out.println("Just called the tile controller");
-				currentTile.setHint(true);
-				currentTile.setValid(true);
+				builder.getSelectedLevel().getBoard().getTiles()[i][j].setHint(true);
+				builder.getSelectedLevel().getBoard().getTiles()[i][j].setValid(true);
 				
 				//BuilderHintTileMove builderHintTileMove = new BuilderHintTileMove(currentTile);
 				//builderHintTileMove.execute(builder);
