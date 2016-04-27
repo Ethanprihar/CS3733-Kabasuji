@@ -6,6 +6,9 @@ import javax.swing.OverlayLayout;
 import kabasuji.controller.GoToMainMenuController;
 import kabasuji.controller.SelectLevelController;
 import kabasuji.model.Kabasuji;
+import kabasuji.model.LightningLevel;
+import kabasuji.model.PuzzleLevel;
+import kabasuji.model.ReleaseLevel;
 import kabasuji.model.Screen;
 
 import javax.swing.JLabel;
@@ -24,6 +27,7 @@ public class LevelSelectPanel extends JPanel {
 	/** Level Button GUI elements **/
 	JLabelIcon[] levelselectbtn;
 	JLabel[] buttonlbl;
+	JLabelIcon[] leveltypeicons;
 
 	/** dimensions of level button array **/
 	int row;
@@ -43,6 +47,7 @@ public class LevelSelectPanel extends JPanel {
 		this.app = app;
 		this.levelselectbtn = new JLabelIcon[kabasuji.getLevels().size()];
 		this.buttonlbl = new JLabel[kabasuji.getLevels().size()];
+		this.leveltypeicons = new JLabelIcon[kabasuji.getLevels().size()];
 
 		// set layout to null
 		setLayout(null);
@@ -67,6 +72,21 @@ public class LevelSelectPanel extends JPanel {
 					// set location relative to background
 					int lvlbtnw = (int) levelselectbtn[i * 5 + j].getSize().getWidth();
 					int lvlbtnh = (int) levelselectbtn[i * 5 + j].getSize().getHeight();
+					
+					String leveltypefn = "opaquetile.png";
+					if(kabasuji.getLevels().get(i * 5 + j) instanceof PuzzleLevel){
+						leveltypefn = "puzzle.png";
+					}
+					else if (kabasuji.getLevels().get(i * 5 + j) instanceof LightningLevel){
+						leveltypefn = "lightningcloud.png";
+					}
+					else if (kabasuji.getLevels().get(i * 5 + j) instanceof ReleaseLevel){
+						leveltypefn = "releaseicon.jpg";
+					}
+					leveltypeicons[i * 5 + j] = new JLabelIcon(leveltypefn, 25,25);
+					leveltypeicons[i * 5 + j].setLocation((int) (Screen.width / 6 * (j + 1) - lvlbtnw / 2 + 22),
+							(int) (Screen.height / 12 * (i * 2 + 4) - lvlbtnh / 2 + 60) );
+					add(leveltypeicons[i * 5 + j]);
 					levelselectbtn[i * 5 + j].setLocation((int) (Screen.width / 6 * (j + 1) - lvlbtnw / 2),
 							(int) (Screen.height / 12 * (i * 2 + 4) - lvlbtnh / 2));
 					buttonlbl[i * 5 + j] = new JLabel("<html>Select<br>" + "Level " + (i * 5 + j + 1) + "</html>",
@@ -77,6 +97,7 @@ public class LevelSelectPanel extends JPanel {
 					levelselectbtn[i * 5 + j].addMouseListener(
 							new SelectLevelController(kabasuji, app, levelselectbtn[i * 5 + j], i * 5 + j + 1));
 					add(levelselectbtn[i * 5 + j]);
+					
 					// get high score for particular level
 					int n = kabasuji.getLevels().get(i * 5 + j).getHighScore();
 					// set # stars and location on gui

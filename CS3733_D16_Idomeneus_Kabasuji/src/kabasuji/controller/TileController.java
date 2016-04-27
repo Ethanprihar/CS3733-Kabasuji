@@ -3,6 +3,8 @@ package kabasuji.controller;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.SwingUtilities;
+
 import kabasuji.model.Board;
 import kabasuji.model.Bullpen;
 import kabasuji.model.Kabasuji;
@@ -63,6 +65,7 @@ public class TileController extends MouseAdapter {
 	 */
 	public void mousePressed(MouseEvent me) {
 		bullpen = kabasuji.getSelectedLevel().getBullpen();
+		board = kabasuji.getSelectedLevel().getBoard();
 		bullpenview = panel.getBullpenView();
 		if (kabasuji.getSelectedLevel().canMoveBullpenToBoard(selfTile)) {
 			board.addPiece(selectedPiece, selfTile);
@@ -108,6 +111,9 @@ public class TileController extends MouseAdapter {
 						.setMovesUsed(((ReleaseLevel) kabasuji.getSelectedLevel()).getMovesUsed() + 1);
 				panel.setMovesLeftNum((Integer) ((ReleaseLevel) kabasuji.getSelectedLevel()).getMovesLeft());
 			}
+		}
+		if (SwingUtilities.isRightMouseButton(me)){
+			board.removePiece(selfTile.getPiece());
 		}
 	}
 
