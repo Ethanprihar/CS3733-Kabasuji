@@ -69,11 +69,6 @@ public class PlayLevelPanel extends JPanel {
 		setLayout(null);
 		setBounds(0, 0, Screen.width, Screen.height);
 
-		// if in lightning mode make a new timer object
-		if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
-			timerStart();
-		}
-
 	}
 
 	/**
@@ -246,6 +241,11 @@ public class PlayLevelPanel extends JPanel {
 		add(bpv);
 		setBoardView(bv);
 		setBullpenView(bpv);
+		
+		// if in lightning mode make a new timer object
+		if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
+			timerStart();
+		}
 
 		// setup background canvas **
 		background = new JLabelIcon("starry_night.jpeg", Screen.width, Screen.height);
@@ -357,7 +357,7 @@ public class PlayLevelPanel extends JPanel {
 	 */
 	public void updateStars() {
 
-		int numStars = board.getStars();
+		int numStars = kabasuji.getSelectedLevel().getBoard().getStars();
 		System.out.println("in star func");
 
 		// draw the correct number of stars

@@ -72,7 +72,7 @@ public class Kabasuji {
 	}
 
 	public void loadLevel() {
-		
+
 		int index = levels.indexOf(selectedLevel);
 		selectedLevel = levels.get(index);
 
@@ -103,31 +103,43 @@ public class Kabasuji {
 		} catch (Exception exc) {
 			exc.printStackTrace(); // If there was an error, print the info.
 		}
+		for (int i = 0; i < levels.size() - 1; i++) {
+			if (levels.get(i).getHighScore() > 0) {
+				levels.get(i).setLocked(false);
+				levels.get(i + 1).setLocked(false);
+			}
+		}
 	}
 
 	public void saveLevels() {
 		// if they improve their score
-		if (selectedLevel.getStars() > selectedLevel.getHighScore()) {
-			int temp = selectedLevel.getStars();
-			boolean makeUnlocked = false;
-			if (levels.get(levels.indexOf(selectedLevel) + 1).isLocked())
-				makeUnlocked = true;
-			resetLevel();
-			if (makeUnlocked)
-				levels.get(levels.indexOf(selectedLevel) + 1).setLocked(false);
-			selectedLevel.setHighScore(temp);
-		}
-		// if they dont improve their score
-		else
-			resetLevel();
-		try {
-			FileOutputStream saveFile = new FileOutputStream("levels.data");
-			ObjectOutputStream save = new ObjectOutputStream(saveFile);
-			save.reset();
-			save.writeObject(levels);
-			save.close();
-		} catch (Exception exc) {
-			// exc.printStackTrace(); // If there was an error, print the info.
+		if (selectedLevel != null) {
+			if (selectedLevel.getStars() > selectedLevel.getHighScore()) {
+				int temp = selectedLevel.getStars();
+				if (!(levels.size() <= levels.indexOf(selectedLevel) + 1)) {
+					boolean makeUnlocked = false;
+					if (levels.get(levels.indexOf(selectedLevel) + 1).isLocked())
+						makeUnlocked = true;
+					resetLevel();
+					if (makeUnlocked)
+						levels.get(levels.indexOf(selectedLevel) + 1).setLocked(false);
+				}
+				selectedLevel.setLocked(false);
+				selectedLevel.setHighScore(temp);
+			}
+			// if they dont improve their score
+			else
+				resetLevel();
+			try {
+				FileOutputStream saveFile = new FileOutputStream("levels.data");
+				ObjectOutputStream save = new ObjectOutputStream(saveFile);
+				save.reset();
+				save.writeObject(levels);
+				save.close();
+			} catch (Exception exc) {
+				// exc.printStackTrace(); // If there was an error, print the
+				// info.
+			}
 		}
 	}
 }

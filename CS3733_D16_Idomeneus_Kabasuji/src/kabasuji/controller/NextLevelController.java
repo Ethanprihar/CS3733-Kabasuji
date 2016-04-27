@@ -73,6 +73,7 @@ public class NextLevelController extends MouseAdapter {
 				// update the timer
 				plp.resetTimer();
 	
+				kabasuji.saveLevels();
 				kabasuji.nextLevel();
 	
 				// Created ChangeScreenMove and input desired screen

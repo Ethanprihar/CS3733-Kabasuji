@@ -50,6 +50,7 @@ public class ResetLevelController extends MouseAdapter {
 		// update the timer
 		plp.resetTimer();
 
+		kabasuji.saveLevels();
 		kabasuji.resetLevel();
 
 		// Created ChangeScreenMove and input desired screen

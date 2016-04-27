@@ -10,6 +10,7 @@ import kabasuji.model.Kabasuji;
 import kabasuji.model.Screen;
 import kabasuji.view.JLabelIcon;
 import kabasuji.view.MainMenu;
+import kabasuji.view.PlayLevelPanel;
 import kabasuji.view.TopLevelApplication;
 
 /**
@@ -25,7 +26,7 @@ public class GoToMainMenuController extends MouseAdapter {
 
 	/** Entity and Boundaries Associated **/
 	Kabasuji kabasuji;
-	
+
 	TopLevelApplication app;
 	JPanel contentPanel;
 	JLabelIcon button;
@@ -49,10 +50,13 @@ public class GoToMainMenuController extends MouseAdapter {
 		ChangeScreenMove gtsm = new ChangeScreenMove(Screen.Opening);
 		// Attempt to execute action on model
 		gtsm.execute(kabasuji);
+
+		kabasuji.saveLevels();
 		// Created JPanel screen object and update boundary to reflect changes
 		MainMenu mm = new MainMenu(kabasuji, app);
 		app.setContentPanel(mm);
 	}
+
 	public void mouseEntered(MouseEvent e) {
 		// sets to image indicating hover event
 		button.setImg("generalhoverbutton.png");
