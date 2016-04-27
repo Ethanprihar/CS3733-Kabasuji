@@ -1,12 +1,27 @@
 package kabasuji.controllerTests;
 
+import kabasuji.model.Kabasuji;
 import kabasuji.testUtilities.TestCaseHelper;
+import kabasuji.view.SplashWindow;
+import kabasuji.view.TopLevelApplication;
 
 public class TestKabasuji extends TestCaseHelper
 {
-	public void setup()
+	Kabasuji kabasuji;
+	TopLevelApplication frame;
+	
+	protected void setup() throws Exception
 	{
-		
+		kabasuji = new Kabasuji();
+		frame = new TopLevelApplication(kabasuji);
+		new SplashWindow();
+		frame.setVisible(true); 
+	}
+	
+	protected void tearDown() throws Exception
+	{
+		frame.setVisible(false);
+		frame.dispose();
 	}
 	
 	public void testBoard()
