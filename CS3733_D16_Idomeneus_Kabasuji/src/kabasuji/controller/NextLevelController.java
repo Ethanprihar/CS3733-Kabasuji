@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import kabasuji.controller.moves.ChangeScreenMove;
 import kabasuji.model.Kabasuji;
 import kabasuji.model.Level;
+import kabasuji.model.LightningLevel;
 import kabasuji.model.Screen;
 import kabasuji.view.BoardView;
 import kabasuji.view.BullpenView;
@@ -62,51 +63,58 @@ public class NextLevelController extends MouseAdapter {
 		int num = numLevels.size();
 
 		// Throw an error if no more levels exist
-		if ((num - 1) == index){
+		if ((num - 1) == index) {
 			ErrorDialogBox.infoBox("No more levels exist :( Go ahead and build one!", "Message");
 		}
-		
-		else {		
+
+		else {
 			// ensure that the player is able to move on the next level
 			if (kabasuji.getSelectedLevel().getStars() >= 1) {
-	
+
 				// update the timer
+				if(plp.getTimer() != null){
+					plp.stopTimer();
+				}
 				kabasuji.saveLevels();
 				kabasuji.nextLevel();
-	
+				
+				if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
+					plp.startTimeLimit();
+				}
+
 				// Created ChangeScreenMove and input desired screen
 				ChangeScreenMove gtsm = new ChangeScreenMove(Screen.PlayLevel);
-	
+
 				// Attempt to execute action on model
 				gtsm.execute(kabasuji);
-	
+
 				// Create PlayLevelPanel screen object and update boundary to
 				// reflect *** GUI CHANGES ***
-	
+
 				// first make the foundation panel and pass model and container
 				// panel
 				// PlayLevelPanel plp = new PlayLevelPanel(kabasuji, app);
-	
+
 				// create components of panel and pass model and container panel
 				BullpenView bpv = new BullpenView(kabasuji, plp, 4,
 						(int) (kabasuji.selectedLevel.getBullpen().getPieces().size() + 3) / 4);
 				BoardView bv = new BoardView(kabasuji, plp);
-	
+
 				// set location and size of components (**necessary)
 				bv.setBounds((int) (Screen.width * 0.35), (int) (Screen.height * 0.36), (int) (Screen.height * 0.54),
 						(int) (Screen.height * 0.54));
 				bpv.setBounds((int) (Screen.width * 0.05), (int) (Screen.height * 0.05), (int) (Screen.width * 0.25),
 						(int) (Screen.height * 0.85));
-	
-				// remove all components from PLP -> update PLP -> add controllers
+
+				// remove all components from PLP -> update PLP -> add
+				// controllers
 				plp.removeAll();
 				plp.updatePlayLevelPanel(bv, bpv);
-				plp.startTimeLimit();
 				plp.addControllers();
-	
+
 				// repaint the PlayLevelPanel
 				plp.repaint();
-	
+
 				// set the content panel of container to contain PlayLevelPanel
 				// app.setContentPanel(plp);
 			}

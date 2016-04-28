@@ -67,7 +67,7 @@ public class SelectLevelController extends MouseAdapter {
 
 			// Create PlayLevelPanel screen object and update boundary to
 			// reflect *** GUI CHANGES ***
-			
+
 			// reset moves, time, and stars
 			kabasuji.loadLevel();
 
@@ -89,10 +89,10 @@ public class SelectLevelController extends MouseAdapter {
 			// remove all components from PLP -> update PLP -> add controllers
 			plp.removeAll();
 			plp.updatePlayLevelPanel(bv, bpv);
-			if(kabasuji.selectedLevel instanceof LightningLevel){
+			plp.addControllers();
+			if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
 				plp.startTimeLimit();
 			}
-			plp.addControllers();
 
 			// repaint the PlayLevelPanel
 			plp.repaint();

@@ -106,6 +106,9 @@ public class PlayLevelPanel extends JPanel {
 		timer.start();
 
 	}
+	public void stopTimer(){
+		timer.stop();
+	}
 
 	public void resetTimer() {
 
@@ -435,5 +438,8 @@ public class PlayLevelPanel extends JPanel {
 		nextlevelbtn2.addMouseListener(new NextLevelController(kabasuji, this, nextlevelbtn2));
 		repaint();
 		add(background);
+	}
+	public Timer getTimer(){
+		return timer;
 	}
 }

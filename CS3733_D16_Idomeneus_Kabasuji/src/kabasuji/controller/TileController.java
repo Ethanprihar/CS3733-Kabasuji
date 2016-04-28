@@ -17,6 +17,7 @@ import kabasuji.view.BullpenView;
 import kabasuji.view.JLabelIcon;
 import kabasuji.view.PieceView;
 import kabasuji.view.PlayLevelPanel;
+import misc.MusicPlayer;
 
 /**
  * Controller for Board gameplay; Modify BoardView;
@@ -74,6 +75,7 @@ public class TileController extends MouseAdapter {
 			if (SwingUtilities.isLeftMouseButton(me)) {
 				if (kabasuji.getSelectedLevel().canMoveBullpenToBoard(selfTile)) {
 					board.addPiece(selectedPiece, selfTile);
+					new MusicPlayer("success.wav");
 					displayHoverPiece("bluenightbutton.png", true, false);
 					bullpen.selectPiece(null);
 					bullpen.removePiece(selectedPiece);
@@ -116,6 +118,8 @@ public class TileController extends MouseAdapter {
 								.setMovesUsed(((ReleaseLevel) kabasuji.getSelectedLevel()).getMovesUsed() + 1);
 						panel.setMovesLeftNum((Integer) ((ReleaseLevel) kabasuji.getSelectedLevel()).getMovesLeft());
 					}
+				} else {
+					new MusicPlayer("fail.wav");
 				}
 			}
 		} else if (board.getSelectedPiece() != null) {
@@ -123,6 +127,7 @@ public class TileController extends MouseAdapter {
 				if (kabasuji.getSelectedLevel().canMoveBoardToBoard(selfTile)) {
 					((PuzzleLevel) kabasuji.getSelectedLevel()).moveBoardToBoard(selfTile);
 					displayHoverPiece("bluenightbutton.png", true, false);
+					new MusicPlayer("success.wav");
 					board.selectPiece(null);
 					boardview.setupBoard();
 					panel.getZoomPiece().removeAll();
@@ -149,6 +154,8 @@ public class TileController extends MouseAdapter {
 						}
 					}
 					panel.repaint();
+				} else {
+					new MusicPlayer("fail.wav");
 				}
 			}
 		}

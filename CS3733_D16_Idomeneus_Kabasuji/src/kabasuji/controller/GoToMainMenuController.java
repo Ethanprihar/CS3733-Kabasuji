@@ -12,6 +12,7 @@ import kabasuji.view.JLabelIcon;
 import kabasuji.view.MainMenu;
 import kabasuji.view.PlayLevelPanel;
 import kabasuji.view.TopLevelApplication;
+import misc.MusicPlayer;
 
 /**
  * Controller for Moving Screens; Go To MainMenu Screen (Panel).
@@ -52,6 +53,7 @@ public class GoToMainMenuController extends MouseAdapter {
 		gtsm.execute(kabasuji);
 
 		kabasuji.saveLevels();
+		new MusicPlayer("select.wav");
 		// Created JPanel screen object and update boundary to reflect changes
 		MainMenu mm = new MainMenu(kabasuji, app);
 		app.setContentPanel(mm);

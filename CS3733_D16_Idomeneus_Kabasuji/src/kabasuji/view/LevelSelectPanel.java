@@ -86,7 +86,7 @@ public class LevelSelectPanel extends JPanel {
 						leveltypefn = "lightningcloud.png";
 					}
 					else if (kabasuji.getLevels().get(i * 5 + j) instanceof ReleaseLevel){
-						leveltypefn = "releaseicon.jpg";
+						leveltypefn = "overlapping.png";
 					}
 					leveltypeicons[i * 5 + j] = new JLabelIcon(leveltypefn, 25,25);
 					leveltypeicons[i * 5 + j].setLocation((int) (Screen.width / 6 * (j + 1) - lvlbtnw / 2 + 22),
