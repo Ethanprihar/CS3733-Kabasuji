@@ -195,6 +195,7 @@ public class BuilderReleaseBoardController extends MouseAdapter {
 				}
 			}
 		}
+		builder.updateHistory();
 	}
 	
 	public void mouseEntered(MouseEvent e) {

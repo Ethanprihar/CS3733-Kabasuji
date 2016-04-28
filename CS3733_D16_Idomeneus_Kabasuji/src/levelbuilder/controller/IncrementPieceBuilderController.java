@@ -50,7 +50,6 @@ public class IncrementPieceBuilderController extends MouseAdapter {
 		// If it is a left click, increment the count
 		if (SwingUtilities.isLeftMouseButton(me)){
 		
-			builder.updateHistory();
 			// Get the current text of the JLabel
 			String pieceNum = pieceCount.getText();
 			
@@ -70,6 +69,7 @@ public class IncrementPieceBuilderController extends MouseAdapter {
 			
 			// Set the new string in the JLabel
 			pieceCount.setText(newStringNum);
+			builder.updateHistory();
 		}
 	}
 }

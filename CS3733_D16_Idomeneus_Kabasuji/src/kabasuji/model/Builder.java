@@ -237,7 +237,7 @@ public class Builder
 	//redoes the last tile change
 	public void redo()
 	{
-		if(boardRedoList.size() > 1)
+		if(boardRedoList.size() > 0)
 		{
 			boardHistory.add(boardRedoList.pop());
 			bullpenHistory.add(bullpenRedoList.pop());
