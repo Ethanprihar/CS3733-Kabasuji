@@ -24,6 +24,7 @@ public class BoardView extends JPanel {
 	/** Boundaries associated **/
 	PlayLevelPanel panel;
 	JLabelIcon[] tile;
+	JLabelIcon background;
 
 	// desired dimensions to fit
 	int row;
@@ -69,11 +70,6 @@ public class BoardView extends JPanel {
 		offset = (int) (tilesidelength - tilesidescaled);
 
 		updateBoard();
-
-		JLabelIcon background = new JLabelIcon("opaque_canvas.png", (int) (Screen.height * 0.54),
-				(int) (Screen.height * 0.54));
-		add(background);
-		repaint();
 	}
 
 	public void updateBoard() {
@@ -84,7 +80,7 @@ public class BoardView extends JPanel {
 			for (int j = 0; j < row; j++) {
 				// create a button image with specified dimension
 				// only display tile if it's valid
-				if (tiles[i][j].isValid()) {
+				if (tiles[i][j].isValid() && (tiles[i][j].getPiece() == null)) {
 					// determine to display hint tile
 					String imgfn;
 					if (tiles[i][j].isHint()) {
@@ -98,6 +94,10 @@ public class BoardView extends JPanel {
 				}
 			}
 		}
+		background = new JLabelIcon("opaque_canvas.png", (int) (Screen.height * 0.54),
+				(int) (Screen.height * 0.54));
+		add(background);
+		repaint();
 	}
 
 	/**

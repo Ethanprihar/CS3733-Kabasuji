@@ -72,15 +72,18 @@ public class FlipSelectedPieceBullpenController extends MouseAdapter {
 	 * is a GUI controller.
 	 */
 	public void mousePressed(MouseEvent me) {
-			FlipPieceMove fpm = new FlipPieceMove(selectedPiece, right);
-			fpm.execute(kabasuji);
-			zoompanel.removeAll();
-			selectedPiece = kabasuji.getSelectedLevel().getBullpen().getSelectedPiece();
-			PieceView pieceview = new PieceView(selectedPiece);
-			pieceview.setBounds(0, 0, (int) zoompanel.getSize().getWidth(), (int) zoompanel.getSize().getHeight());
-			pieceview.setupPiece();
-			zoompanel.add(pieceview);
-			zoompanel.repaint();
+		selectedPiece = kabasuji.getSelectedLevel().getBullpen().getSelectedPiece();
+		if (kabasuji.getSelectedLevel().getBullpen().getSelectedPiece() == null) {
+			selectedPiece = kabasuji.getSelectedLevel().getBoard().getSelectedPiece();
+		}
+		FlipPieceMove fpm = new FlipPieceMove(selectedPiece, right);
+		fpm.execute(kabasuji);
+		zoompanel.removeAll();
+		PieceView pieceview = new PieceView(selectedPiece);
+		pieceview.setBounds(0, 0, (int) zoompanel.getSize().getWidth(), (int) zoompanel.getSize().getHeight());
+		pieceview.setupPiece();
+		zoompanel.add(pieceview);
+		zoompanel.repaint();
 	}
 
 	public void mouseEntered(MouseEvent e) {

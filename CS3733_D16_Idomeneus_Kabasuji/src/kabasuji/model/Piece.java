@@ -109,6 +109,7 @@ public class Piece implements Serializable
 				}
 			}
 		}
+		System.out.println("NO REFERENCE POINT");
 		return null;
 	}
 }

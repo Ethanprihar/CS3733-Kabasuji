@@ -24,18 +24,23 @@ public class FlipPieceMove extends Move{
 
 	@Override
 	public boolean execute(Kabasuji kabasuji) {
-		if(!valid(kabasuji)){
+		if (!valid(kabasuji)) {
 			return false;
-		}	
-		/** flip the selected piece**/
-		kabasuji.getSelectedLevel().getBullpen().getSelectedPiece().flip(vertical);
+		}
+		/** rotates the selected piece **/
+		if (kabasuji.getSelectedLevel().getBullpen().getSelectedPiece() == null) {
+			kabasuji.getSelectedLevel().getBoard().getSelectedPiece().flip(vertical);
+		} else {
+			kabasuji.getSelectedLevel().getBullpen().getSelectedPiece().flip(vertical);
+		}
 		return true;
 	}
 
 	@Override
 	public boolean valid(Kabasuji kabasuji) {
 		// move is valid if current selected piece is not empty
-		if (kabasuji.getSelectedLevel().getBullpen().getSelectedPiece() != null){
+		if (kabasuji.getSelectedLevel().getBullpen().getSelectedPiece() != null
+				|| kabasuji.getSelectedLevel().getBoard().getSelectedPiece() != null) {
 			return true;
 		}
 		return false;

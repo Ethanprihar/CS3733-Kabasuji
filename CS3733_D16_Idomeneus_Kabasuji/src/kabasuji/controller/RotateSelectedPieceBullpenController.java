@@ -71,10 +71,13 @@ public class RotateSelectedPieceBullpenController extends MouseAdapter {
 	 * is a GUI controller.
 	 */
 	public void mousePressed(MouseEvent me) {
+		selectedPiece = kabasuji.getSelectedLevel().getBullpen().getSelectedPiece();
+		if(kabasuji.getSelectedLevel().getBullpen().getSelectedPiece() == null){
+			selectedPiece = kabasuji.getSelectedLevel().getBoard().getSelectedPiece();
+		}
 		RotatePieceMove rpm = new RotatePieceMove(selectedPiece, right);
 		rpm.execute(kabasuji);
 		zoompanel.removeAll();
-		selectedPiece = kabasuji.getSelectedLevel().getBullpen().getSelectedPiece();
 		PieceView pieceview = new PieceView(selectedPiece);
 		pieceview.setBounds(0, 0, (int) zoompanel.getSize().getWidth(), (int) zoompanel.getSize().getHeight());
 		pieceview.setupPiece();

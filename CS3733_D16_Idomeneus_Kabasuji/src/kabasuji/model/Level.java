@@ -41,7 +41,7 @@ public abstract class Level implements Serializable{
 	{
 		bullpen.addPiece(board.getSelectedPiece());
 		board.removePiece(board.getSelectedPiece());
-		board.selectPiece(null);
+		//board.selectPiece(null);
 	}
 	
 	public int getStars()
