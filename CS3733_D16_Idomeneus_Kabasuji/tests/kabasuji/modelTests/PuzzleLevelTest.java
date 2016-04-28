@@ -38,8 +38,31 @@ public class PuzzleLevelTest extends TestCase{
 		Tile boardTile3_1 = new Tile(false, false, 0, 0);
 		Tile boardTile3_2 = new Tile(false, false, 0, 0);
 		Tile boardTile3_3 = new Tile(false, false, 0, 0);
-
 		
+		Tile boardTile0_0v = new Tile(false, true, 0, 0);
+		Tile boardTile0_1v = new Tile(false, true, 0, 0);
+		Tile boardTile0_2v = new Tile(false, true, 0, 0);
+		Tile boardTile0_3v = new Tile(false, true, 0, 0);
+		Tile boardTile1_0v = new Tile(false, true, 0, 0);
+		Tile boardTile1_1v = new Tile(false, true, 0, 0);
+		Tile boardTile1_2v = new Tile(false, true, 0, 0);
+		Tile boardTile1_3v = new Tile(false, true, 0, 0);
+		Tile boardTile2_0v = new Tile(false, true, 0, 0);
+		Tile boardTile2_1v = new Tile(false, true, 0, 0);
+		Tile boardTile2_2v = new Tile(false, true, 0, 0);
+		Tile boardTile2_3v = new Tile(false, true, 0, 0);
+		Tile boardTile3_0v = new Tile(false, true, 0, 0);
+		Tile boardTile3_1v = new Tile(false, true, 0, 0);
+		Tile boardTile3_2v = new Tile(false, true, 0, 0);
+		Tile boardTile3_3v = new Tile(false, true, 0, 0);
+		
+		Tile[][] board1v = { { boardTile0_0v, boardTile0_1v, boardTile0_2v, boardTile0_3v },
+				{ boardTile1_0v, boardTile1_1v, boardTile1_2v, boardTile1_3v },
+				{ boardTile2_0v, boardTile2_1v, boardTile2_2v, boardTile2_3v },
+				{ boardTile3_0v, boardTile3_1v, boardTile3_2v, boardTile3_3v } };
+		
+		PuzzleBoard puzzBoardv = new PuzzleBoard(board1v);
+
 		Tile[][] piece1 = {{testTile1, testTile2},{testTile3, testTile4}};
 		Tile[][] piece2 = {{testTile5, testTile6},{testTile7, testTile8}};
 		Tile[][] board1 = 
@@ -122,6 +145,10 @@ public class PuzzleLevelTest extends TestCase{
 		assertEquals(puzzTest1.hasMovesLeft(),false);
 		//assertEquals(puzzTest.canMoveBoardToBoard(boardTile3_3), false);
 		//assertEquals(puzzTest1.hasMovesLeft(),false);
+		assertEquals(puzzTest1.canMoveBoardToBoard(boardTile3_3), false);
+		
+		puzzTest.setEndCondition(20);
+		//assertEquals(puzzTest1.getEndCondition(),20);
 		
 	}
 }

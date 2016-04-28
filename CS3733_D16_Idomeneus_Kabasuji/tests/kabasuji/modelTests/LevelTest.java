@@ -63,7 +63,7 @@ public class LevelTest extends TestCase {
 				{ boardTile2_0, boardTile2_1, boardTile2_2, boardTile2_3 },
 				{ boardTile3_0, boardTile3_1, boardTile3_2, boardTile3_3 } };
 
-		// all tiles are invalid
+		// all tiles are valid
 		Tile[][] board1v = { { boardTile0_0v, boardTile0_1v, boardTile0_2v, boardTile0_3v },
 				{ boardTile1_0v, boardTile1_1v, boardTile1_2v, boardTile1_3v },
 				{ boardTile2_0v, boardTile2_1v, boardTile2_2v, boardTile2_3v },
@@ -114,7 +114,7 @@ public class LevelTest extends TestCase {
 		assertEquals(puzzTest.getBoard().getTile(0,0).getPiece(),null);
 		assertEquals(puzzTest.getBoard(), puzzBoardv);
 		
-		// check that all of the tiles are valid and peices are null
+		// check that all of the tiles are valid and pieces are null
 		for(int i = 0; i < 4;i++) {
 			for(int j = 0; j < 4; j++) {
 				//assertEquals(puzzTest.getBoard().getTile(i,j).isValid(), true);
@@ -125,6 +125,9 @@ public class LevelTest extends TestCase {
 		
 		assertEquals(puzzTest.getStars(), 0);
 		assertEquals(puzzTest.canGoNextLevel(),false);
+		
+		puzzTest.moveBoardToBullpen();
+		//puzzTest.moveBullpenToBoard(boardTile3_2v);
 
 	}
 }
