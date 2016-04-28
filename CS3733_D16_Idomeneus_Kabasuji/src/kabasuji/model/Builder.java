@@ -196,8 +196,7 @@ public class Builder
 	{
 		System.out.println("History is being updated");
 		// if the current state exists in the history, clear the redoLists
-		int last = boardHistory.size() - 1;
-		if(last != -1 && boardHistory.get(last).equals(selectedLevel.getBoard()) && Arrays.equals(bullpenHistory.get(last), numOfPieces))
+		if(boardRedoList.size() != 0)
 		{
 			boardRedoList.clear();
 			bullpenRedoList.clear();
