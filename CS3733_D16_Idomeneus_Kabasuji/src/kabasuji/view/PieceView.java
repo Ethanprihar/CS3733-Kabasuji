@@ -31,7 +31,11 @@ import java.awt.Point;
 
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
-
+/**
+ * PieceView class for showing tiles inside of pieces.
+ * @author jwu
+ *
+ */
 public class PieceView extends JPanel {
 	// Entities associated
 	Piece piece;

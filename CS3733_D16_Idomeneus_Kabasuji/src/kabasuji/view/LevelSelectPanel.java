@@ -19,6 +19,11 @@ import javax.swing.SwingConstants;
 import java.util.Random;
 
 @SuppressWarnings("serial")
+/**
+ * JPanel loading up levels to display and select.
+ * @author jwu
+ *
+ */
 public class LevelSelectPanel extends JPanel {
 	/** Entities and Boundaries associated **/
 	Kabasuji kabasuji;

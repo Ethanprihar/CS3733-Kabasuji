@@ -13,6 +13,11 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+/**
+ * BoardView component; all displaying of board elements are here.
+ * @author jwu
+ *
+ */
 @SuppressWarnings("serial")
 public class BoardView extends JPanel {
 

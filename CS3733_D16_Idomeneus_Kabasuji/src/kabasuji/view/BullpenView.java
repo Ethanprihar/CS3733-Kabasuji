@@ -31,6 +31,11 @@ import java.awt.Image;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 
+/**
+ * BullpenView, all bullpen related activities are displayed here.
+ * @author jwu
+ *
+ */
 public class BullpenView extends JPanel {
 	// Entities associated
 	Kabasuji kabasuji;

@@ -2,6 +2,7 @@ package kabasuji.view;
 
 import javax.swing.JPanel;
 
+import kabasuji.controller.BullpenController;
 import kabasuji.controller.FlipSelectedPieceBullpenController;
 import kabasuji.controller.GoToMainMenuController;
 import kabasuji.controller.NextLevelController;
@@ -27,7 +28,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
-
+/**
+ * Main Gameplay window; all games happen here regardless of type.
+ * @author jwu
+ *
+ */
 public class PlayLevelPanel extends JPanel {
 	/** Entities associated **/
 	Kabasuji kabasuji;
@@ -293,6 +298,7 @@ public class PlayLevelPanel extends JPanel {
 		if (type == 0){
 			resetlevelbtn.addMouseListener(new ResetLevelController(kabasuji, this, resetlevelbtn));
 		}
+		bullpenview.addMouseListener(new BullpenController(kabasuji, this));
 	}
 
 	/**

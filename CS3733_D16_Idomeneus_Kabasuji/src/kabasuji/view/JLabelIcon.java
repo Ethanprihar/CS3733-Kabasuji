@@ -7,7 +7,11 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
+/**
+ * JLabelIcon; an image object for easy displaying and scaling of images.
+ * @author jwu
+ *
+ */
 public class JLabelIcon extends JLabel {
 	/** attributes: img, filename, and dimensions **/
 	Image img;

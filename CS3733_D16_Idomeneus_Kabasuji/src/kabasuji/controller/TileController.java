@@ -155,9 +155,8 @@ public class TileController extends MouseAdapter {
 		if (kabasuji.getSelectedLevel() instanceof PuzzleLevel) {
 			if (SwingUtilities.isRightMouseButton(me)) {
 				if (board.getSelectedPiece() == null) {
-					//boardSelectPiece(selfTile.getPiece(), true);
 					board.selectPiece(selfTile.getPiece());
-					displayHoverPiece("boardtile.png", true, false);
+					boardSelectPiece(selfTile.getPiece());
 					zoompanel.removeAll();
 					PieceView pieceview = new PieceView(selfTile.getPiece());
 					pieceview.setBounds(0, 0, (int) zoompanel.getSize().getWidth(),
@@ -165,9 +164,6 @@ public class TileController extends MouseAdapter {
 					pieceview.setupPiece();
 					zoompanel.add(pieceview);
 					zoompanel.repaint();
-				} else if (board.getSelectedPiece() != null) {
-					boardSelectPiece(selfTile.getPiece(), true);
-					board.selectPiece(null);
 				}
 			}
 		}
@@ -251,16 +247,14 @@ public class TileController extends MouseAdapter {
 		}
 	}
 
-	public void boardSelectPiece(Piece p, boolean newfn) {
+	public void boardSelectPiece(Piece p) {
 		selectedPiece = kabasuji.getSelectedLevel().getBullpen().getSelectedPiece();
 		for (int i = 0; i < tiles.length; i++) {
 			for (int j = 0; j < tiles.length; j++) {
 				if (tiles[i][j].getPiece() == p) {
-					if (newfn) {
-						tileimgs[i * tiles.length + j].setImg("generalhoverbutton.png");
-					} else {
-						tileimgs[i * tiles.length + j].setImg(tileimgs[i * tiles.length + j].getFileName());
-					}
+					tileimgs[i * tiles.length + j].setImg("boardtile.png");
+					tileimgs[i * tiles.length + j].setFileName("boardtile.png");
+
 				}
 			}
 		}
