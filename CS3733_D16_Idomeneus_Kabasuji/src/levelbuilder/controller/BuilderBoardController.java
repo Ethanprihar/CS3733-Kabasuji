@@ -53,7 +53,6 @@ public class BuilderBoardController extends MouseAdapter {
 	public void mousePressed(MouseEvent me) {
 		// If the mousePressed event is a left click, then make the tile invalid
 		if (SwingUtilities.isLeftMouseButton(me)){
-			builder.updateHistory();
 			selected = true;
 			if (selected){
 				tile.removeAll();
@@ -64,6 +63,7 @@ public class BuilderBoardController extends MouseAdapter {
 					builder.getSelectedLevel().getBoard().getTiles()[i][j].setHint(false);
 				}
 				builder.getSelectedLevel().getBoard().getTiles()[i][j].setValid(false);
+				builder.updateHistory();
 				//BuilderSelectTileMove builderSelectTileMove = new BuilderSelectTileMove(currentTile);
 				//builderSelectTileMove.execute(builder);
 				int valid = 0;
@@ -90,7 +90,6 @@ public class BuilderBoardController extends MouseAdapter {
 		
 		// If the mousePressed event is a left click, then make the tile a hint tile
 		else if (SwingUtilities.isRightMouseButton(me)){
-			builder.updateHistory();
 			selected = true;
 			if (selected){
 				tile.setImg("tile.png");
@@ -103,7 +102,7 @@ public class BuilderBoardController extends MouseAdapter {
 					tile.add(hintImage);
 				}
 				builder.getSelectedLevel().getBoard().getTiles()[i][j].setValid(true);
-				
+				builder.updateHistory();
 				//BuilderHintTileMove builderHintTileMove = new BuilderHintTileMove(currentTile);
 				//builderHintTileMove.execute(builder);
 				int valid = 0;
@@ -125,8 +124,7 @@ public class BuilderBoardController extends MouseAdapter {
 					}
 				}
 				System.out.println("hints: " + hint + "    not hints: " + nothint + "    valid: " + valid + "    invalid: " + invalid);
-			}
-			
+			}	
 		}
 	}
 	public void mouseEntered(MouseEvent e) {

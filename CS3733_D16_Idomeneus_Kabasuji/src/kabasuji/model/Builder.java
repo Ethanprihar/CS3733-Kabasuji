@@ -3,6 +3,7 @@ package kabasuji.model;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Stack;
 
 // AFTER YOU UNDO YOU CAN'T UPDATE BOARD HISTORY OR REDO BOARD MOVES
 
@@ -16,8 +17,10 @@ public class Builder
 	int endCondition;
 	int currentColor;
 	int currentNumber;
-	ArrayList<Board> boardHistory;
-	ArrayList<int[]> bullpenHistory;
+	Stack<Board> boardHistory;
+	Stack<Board> boardRedoList;
+	Stack<int[]> bullpenHistory;
+	Stack<int[]> bullpenRedoList;
 	
 	public Builder()
 	{
@@ -26,8 +29,10 @@ public class Builder
 		pieces = new Piece[35];
 		numOfPieces = new int[35];
 		levels = new ArrayList<Level>();
-		boardHistory = new ArrayList<Board>();
-		bullpenHistory = new ArrayList<int[]>();
+		boardHistory = new Stack<Board>();
+		boardRedoList = new Stack<Board>();
+		bullpenHistory = new Stack<int[]>();
+		bullpenRedoList = new Stack<int[]>();
 		try
 		{
 			selectedLevel = null;
@@ -70,6 +75,7 @@ public class Builder
 				}
 			}
 		}
+		updateHistory();
 	}
 	
 	public void saveLevel(int[] numOfPiecesOnLoad)
@@ -134,8 +140,8 @@ public class Builder
 	public void addNewLevel(int type, int dim)
 	{
 		numOfPieces = new int[35];
-		boardHistory = new ArrayList<Board>();
-		bullpenHistory = new ArrayList<int[]>();
+		boardHistory = new Stack<Board>();
+		bullpenHistory = new Stack<int[]>();
 		Bullpen bullpen = new Bullpen();
 		Tile[][] tiles = new Tile[dim][dim];
 		for(int i=0; i<dim;i++)
@@ -165,6 +171,7 @@ public class Builder
 			selectedLevel = null;
 		}
 		selectedLevel.setLocked(true);
+		updateHistory();
 	}
 	
 	public void saveToDisc()
@@ -188,20 +195,12 @@ public class Builder
 	public void updateHistory()
 	{
 		System.out.println("History is being updated");
-		boolean remove = false;
-		for(int i=0; i<boardHistory.size(); i++)
+		// if the current state exists in the history, clear the redoLists
+		int last = boardHistory.size() - 1;
+		if(boardHistory.get(last).equals(selectedLevel.getBoard()) && Arrays.equals(bullpenHistory.get(last), numOfPieces))
 		{
-			if(!remove && boardHistory.get(i).equals(selectedLevel.getBoard()) && Arrays.equals(bullpenHistory.get(i), numOfPieces))
-			{
-				remove = true;
-			}
-			if(remove)
-			{
-				System.out.println("REMOVED");
-				boardHistory.remove(i);
-				bullpenHistory.remove(i);
-				i--;
-			}
+			boardRedoList.clear();
+			bullpenRedoList.clear();
 		}
 		boardHistory.add(selectedLevel.getBoard().copy());
 		bullpenHistory.add(numOfPieces.clone());
@@ -216,31 +215,19 @@ public class Builder
 	public void undo()
 	{
 		// check to make sure we arn't at the first state
-		if((boardHistory.size() > 1) && !(boardHistory.get(0).equals(selectedLevel.getBoard()) && Arrays.equals(bullpenHistory.get(0), numOfPieces)))
+		if(boardHistory.size() > 1)
 		{
-			for(int i=1; i<boardHistory.size(); i++)
+			boardRedoList.add(boardHistory.pop());
+			bullpenRedoList.add(bullpenHistory.pop());
+			int last = boardHistory.size() - 1;
+			selectedLevel.setBoard(boardHistory.get(last));
+			numOfPieces = bullpenHistory.get(last);
+			for(Board b: boardHistory)
 			{
-				// if the state at this point in history is the current state go to a previous state
-				if(boardHistory.get(i).equals(selectedLevel.getBoard()) && Arrays.equals(bullpenHistory.get(i), numOfPieces))
-				{
-					System.out.println("found something to undo");
-					selectedLevel.setBoard(boardHistory.get(i-1));
-					numOfPieces = bullpenHistory.get(i-1);
-					for(Board b: boardHistory)
-					{
-						System.out.println(b.toString());
-					}
-					updateHistory();
-					return;
-				}
+				System.out.println(b.toString());
 			}
-			// if no states in history are the same as this state turn the current state into the most recent history
-			System.out.println("going to most recent history");
-			
-			updateHistory();
-			selectedLevel.setBoard(boardHistory.get(boardHistory.size()-2));
-			numOfPieces = bullpenHistory.get(bullpenHistory.size()-2);
 		}
+		// if there is nothing to undo, say so
 		else
 		{
 			System.out.println("Nothing to undo");
@@ -250,20 +237,19 @@ public class Builder
 	//redoes the last tile change
 	public void redo()
 	{
-		// check to make sure we arn't at the last state
-		if((boardHistory.size() > 1) && !(boardHistory.get(boardHistory.size() - 1).equals(selectedLevel.getBoard()) && Arrays.equals(bullpenHistory.get(boardHistory.size() - 1), numOfPieces)))
+		if(boardRedoList.size() > 1)
 		{
-			for(int i=0; i<boardHistory.size()-1; i++)
+			boardHistory.add(boardRedoList.pop());
+			bullpenHistory.add(bullpenRedoList.pop());
+			int last = boardHistory.size() - 1;
+			selectedLevel.setBoard(boardHistory.get(last));
+			numOfPieces = bullpenHistory.get(last);
+			for(Board b: boardHistory)
 			{
-				if(boardHistory.get(i).equals(selectedLevel.getBoard()) && Arrays.equals(bullpenHistory.get(i), numOfPieces))
-				{
-					System.out.println("found something to redo");
-					selectedLevel.setBoard(boardHistory.get(i+1));
-					numOfPieces = bullpenHistory.get(i+1);
-					return;
-				}
+				System.out.println(b.toString());
 			}
 		}
+		// if there is nothing to redo, say so
 		else
 		{
 			System.out.println("Nothing to redo");
