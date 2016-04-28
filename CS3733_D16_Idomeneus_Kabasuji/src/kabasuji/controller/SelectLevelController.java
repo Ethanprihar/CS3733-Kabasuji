@@ -17,6 +17,7 @@ import kabasuji.view.BullpenView;
 import kabasuji.view.JLabelIcon;
 import kabasuji.view.PlayLevelPanel;
 import kabasuji.view.TopLevelApplication;
+import misc.MusicPlayer;
 
 /**
  * Controller for Moving Screens; Go To Play Level Screen (Panel).
@@ -60,6 +61,7 @@ public class SelectLevelController extends MouseAdapter {
 		ChangeScreenMove gtsm = new ChangeScreenMove(Screen.PlayLevel);
 
 		// Attempt to execute action on model
+		new MusicPlayer("select.wav");
 		if (slm.execute(kabasuji)) {
 			gtsm.execute(kabasuji);
 

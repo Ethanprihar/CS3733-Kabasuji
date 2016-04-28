@@ -11,6 +11,7 @@ import kabasuji.model.Screen;
 import kabasuji.view.JLabelIcon;
 import kabasuji.view.LevelSelectPanel;
 import kabasuji.view.TopLevelApplication;
+import misc.MusicPlayer;
 
 /**
  * Controller for Moving Screens; Go To Level Select Screen (Panel).
@@ -50,6 +51,7 @@ public class GoToLevelSelectController extends MouseAdapter {
 		// Attempt to execute action on model
 		gtsm.execute(kabasuji);
 		// Created JPanel screen object and update boundary to reflect changes
+		new MusicPlayer("select.wav");
 		LevelSelectPanel lsp = new LevelSelectPanel(kabasuji, app);
 		app.setContentPanel(lsp);
 	}
