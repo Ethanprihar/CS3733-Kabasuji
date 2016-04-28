@@ -5,6 +5,8 @@
 
 
 Run the Main.jar, select a level, play it..
+Click pieces in the bullpen to select them and then move your mouse to the board to see if you can place the piece.
+Use buttons on the upper right area to flip the piece around.
 
 # To Use Builder:
 
