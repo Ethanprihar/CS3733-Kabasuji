@@ -57,35 +57,16 @@ public class BuilderBoardController extends MouseAdapter {
 			if (selected){
 				tile.removeAll();
 				tile.setImg("general1button.png");
-				
 				// Call the move class to make the currentTile in valid
-				if (type != 1){
+				if (type != 1)
+				{
 					builder.getSelectedLevel().getBoard().getTiles()[i][j].setHint(false);
 				}
 				builder.getSelectedLevel().getBoard().getTiles()[i][j].setValid(false);
+				builder.updateHistory();
 				//BuilderSelectTileMove builderSelectTileMove = new BuilderSelectTileMove(currentTile);
 				//builderSelectTileMove.execute(builder);
-				int valid = 0;
-				int invalid = 0;
-				int hint = 0;
-				int nothint = 0;
-				for(int i=0; i<builder.getSelectedLevel().getBoard().getTiles().length; i++)
-				{
-					for(int j=0; j<builder.getSelectedLevel().getBoard().getTiles().length; j++)
-					{
-						if(builder.getSelectedLevel().getBoard().getTile(i,j).isValid())
-							valid++;
-						else
-							invalid++;
-						if(builder.getSelectedLevel().getBoard().getTile(i,j).isHint())
-							hint++;
-						else
-							nothint++;
-					}
-				}
-				System.out.println("hints: " + hint + "    not hints: " + nothint + "    valid: " + valid + "    invalid: " + invalid);
 			}
-			builder.updateHistory();
 		}
 		
 		// If the mousePressed event is a left click, then make the tile a hint tile
@@ -102,29 +83,10 @@ public class BuilderBoardController extends MouseAdapter {
 					tile.add(hintImage);
 				}
 				builder.getSelectedLevel().getBoard().getTiles()[i][j].setValid(true);
+				builder.updateHistory();
 				//BuilderHintTileMove builderHintTileMove = new BuilderHintTileMove(currentTile);
 				//builderHintTileMove.execute(builder);
-				int valid = 0;
-				int invalid = 0;
-				int hint = 0;
-				int nothint = 0;
-				for(int i=0; i<builder.getSelectedLevel().getBoard().getTiles().length; i++)
-				{
-					for(int j=0; j<builder.getSelectedLevel().getBoard().getTiles().length; j++)
-					{
-						if(builder.getSelectedLevel().getBoard().getTile(i,j).isValid())
-							valid++;
-						else
-							invalid++;
-						if(builder.getSelectedLevel().getBoard().getTile(i,j).isHint())
-							hint++;
-						else
-							nothint++;
-					}
-				}
-				System.out.println("hints: " + hint + "    not hints: " + nothint + "    valid: " + valid + "    invalid: " + invalid);
 			}
-			builder.updateHistory();
 		}
 	}
 	public void mouseEntered(MouseEvent e) {

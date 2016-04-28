@@ -68,7 +68,6 @@ public class BuilderReleaseBoardController extends MouseAdapter {
 			int colorToPaint = ((BuilderReleaseBoardView) releaseLevelPanel).getColor();
 			release = true;
 			if (SwingUtilities.isLeftMouseButton(me)){
-				builder.updateHistory();
 				selected = true;
 				if (selected){
 					tile.removeAll();
@@ -93,6 +92,7 @@ public class BuilderReleaseBoardController extends MouseAdapter {
 						
 						tileToDisplay = tileToDisplay + Integer.toString(numberToPaint) + ".PNG";
 						tile.setImg(tileToDisplay);
+						builder.updateHistory();
 					}
 					else
 					{
@@ -116,6 +116,7 @@ public class BuilderReleaseBoardController extends MouseAdapter {
 						
 						tileToDisplay = tileToDisplay + Integer.toString(numberToPaint) + "_h.PNG";
 						tile.setImg(tileToDisplay);
+						builder.updateHistory();
 					}
 
 				}
@@ -146,6 +147,7 @@ public class BuilderReleaseBoardController extends MouseAdapter {
 					currentTile.setHint(false);
 					currentTile.setNumber(0);
 					currentTile.setColor(0);
+					builder.updateHistory();
 					//BuilderSelectTileMove builderSelectTileMove = new BuilderSelectTileMove(currentTile);
 					//builderSelectTileMove.execute(builder);
 				}
@@ -155,7 +157,6 @@ public class BuilderReleaseBoardController extends MouseAdapter {
 			else if (SwingUtilities.isRightMouseButton(me)){
 				int numberToPaint = currentTile.getNumber();
 				int colorToPaint = currentTile.getColor();
-				builder.updateHistory();
 				selected = true;
 				if (selected){
 					if((currentTile.getNumber() == 0))
@@ -167,6 +168,7 @@ public class BuilderReleaseBoardController extends MouseAdapter {
 						currentTile.setValid(true);
 						currentTile.setNumber(0);
 						currentTile.setColor(0);
+						builder.updateHistory();
 					}
 					else//If it is a hint tile.
 					{
@@ -191,11 +193,11 @@ public class BuilderReleaseBoardController extends MouseAdapter {
 						tileToDisplay = tileToDisplay + Integer.toString(numberToPaint) + "_h.PNG";
 						//System.out.println("FIle name:" + tileToDisplay);
 						tile.setImg(tileToDisplay);
+						builder.updateHistory();
 					}
 				}
 			}
 		}
-		builder.updateHistory();
 	}
 	
 	public void mouseEntered(MouseEvent e) {
