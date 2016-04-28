@@ -161,7 +161,7 @@ public class TileController extends MouseAdapter {
 		}
 		if (kabasuji.getSelectedLevel() instanceof PuzzleLevel) {
 			if (SwingUtilities.isRightMouseButton(me)) {
-				if (board.getSelectedPiece() == null) {
+				if (board.getSelectedPiece() == null && bullpen.getSelectedPiece() == null) {
 					board.selectPiece(selfTile.getPiece());
 					boardSelectPiece(selfTile.getPiece());
 					zoompanel.removeAll();

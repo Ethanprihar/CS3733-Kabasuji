@@ -18,7 +18,7 @@ public class Main {
 		Kabasuji kabasuji = new Kabasuji();
 		TopLevelApplication frame = new TopLevelApplication(kabasuji);
 		// start splash screen
-		new MusicPlayer("unity.wav");
+		new MusicPlayer("unity.wav").setVolume();
 		// new SplashWindow();
 		// after splash screen ends, show game
 		frame.setVisible(true);
