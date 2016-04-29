@@ -21,6 +21,7 @@ public class Builder
 	Stack<Board> boardRedoList;
 	Stack<int[]> bullpenHistory;
 	Stack<int[]> bullpenRedoList;
+	boolean didUndo;
 	
 	public Builder()
 	{
@@ -33,6 +34,7 @@ public class Builder
 		boardRedoList = new Stack<Board>();
 		bullpenHistory = new Stack<int[]>();
 		bullpenRedoList = new Stack<int[]>();
+		didUndo = false;
 		try
 		{
 			selectedLevel = null;
@@ -195,7 +197,12 @@ public class Builder
 	public void updateHistory()
 	{
 		System.out.println("History is being updated");
-		// if the current state exists in the history, clear the redoLists
+		// if the current state exists in the history, clear the redoLists		
+		if(boardHistory.size() != 0)
+		{
+			boardHistory.add(boardHistory.pop().copy());
+			bullpenHistory.add(bullpenHistory.pop().clone());
+		}
 		boardRedoList.clear();
 		bullpenRedoList.clear();
 		boardHistory.add(selectedLevel.getBoard().copy());
@@ -218,11 +225,14 @@ public class Builder
 		// check to make sure we arn't at the first state
 		if(boardHistory.size() > 1)
 		{
+			didUndo = true;
 			boardRedoList.add(boardHistory.pop());
 			bullpenRedoList.add(bullpenHistory.pop());
 			int last = boardHistory.size() - 1;
 			selectedLevel.setBoard(boardHistory.get(last));
 			numOfPieces = bullpenHistory.get(last);
+			boardHistory.add(boardHistory.pop().copy());
+			bullpenHistory.add(bullpenHistory.pop().clone());
 			for(Board b: boardHistory)
 			{
 				System.out.println(b.toString());
@@ -245,6 +255,8 @@ public class Builder
 			int last = boardHistory.size() - 1;
 			selectedLevel.setBoard(boardHistory.get(last));
 			numOfPieces = bullpenHistory.get(last);
+			boardHistory.add(boardHistory.pop().copy());
+			bullpenHistory.add(bullpenHistory.pop().clone());
 			for(Board b: boardHistory)
 			{
 				System.out.println(b.toString());
