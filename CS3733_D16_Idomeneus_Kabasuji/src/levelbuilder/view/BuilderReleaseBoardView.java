@@ -1,7 +1,5 @@
 package levelbuilder.view;
 
-import javax.swing.JPanel;
-
 import levelbuilder.controller.BuilderReleaseBoardController;
 import kabasuji.model.Board;
 import kabasuji.model.Builder;
@@ -11,7 +9,7 @@ import kabasuji.view.JLabelIcon;
 import java.awt.Container;
 
 @SuppressWarnings("serial")
-public class BuilderReleaseBoardView extends JPanel {
+public class BuilderReleaseBoardView extends BuilderBoardView {
 	// the associated board
 	Board board;
 	Builder builder;
@@ -41,6 +39,7 @@ public class BuilderReleaseBoardView extends JPanel {
 	 */
 
 	public BuilderReleaseBoardView(Board board, Container panel, Builder builder, TopLevelApplicationBuilder app) {
+		super(board, panel, builder, app, 2);
 		this.board = board;
 		this.panel = panel;
 		this.builder = builder;
