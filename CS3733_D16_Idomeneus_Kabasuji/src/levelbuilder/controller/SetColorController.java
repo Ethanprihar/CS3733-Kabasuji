@@ -30,16 +30,21 @@ public class SetColorController extends MouseAdapter {
 	TopLevelApplicationBuilder app;
 	Board board;
 	JLabelIcon tile;
+	JLabelIcon tile1;
+	JLabelIcon tile2;
 	String fn;
 	boolean selected = false;
 	boolean release = false;
 	int color;
 	JPanel releaseLevelPanel;
 
-	public SetColorController(Builder builder, TopLevelApplicationBuilder app, int color, BuilderReleaseBoardView releaseLevelPanel) {
+	public SetColorController(Builder builder, TopLevelApplicationBuilder app, int color, BuilderReleaseBoardView releaseLevelPanel, JLabelIcon tile, JLabelIcon tile1, JLabelIcon tile2) {
 		this.app = app;
 		this.builder = builder;
 		this.color = color;
+		this.tile = tile;
+		this.tile1 = tile1;
+		this.tile2 = tile2;
 		this.releaseLevelPanel = releaseLevelPanel;
 	}
 
@@ -56,6 +61,25 @@ public class SetColorController extends MouseAdapter {
 		
 		if(levelType == 2)
 		{
+			JLabelIcon tickimage = new JLabelIcon("tick.png", 30, 30);
+			if (color == 1){
+				tile1.remove(tickimage);
+				tile2.remove(tickimage);
+				tile.setImg("genera1button.png");
+				tile.add(tickimage);
+			}
+			else if (color == 2){
+				tile.remove(tickimage);
+				tile2.removeAll();
+				tile1.setImg("general2button.png");
+				tile.add(tickimage);
+			}
+			else if (color == 3){
+				tile.remove(tickimage);
+				tile1.remove(tickimage);
+				tile2.setImg("general3button.png");
+				tile.add(tickimage);
+			}
 			((BuilderReleaseBoardView) releaseLevelPanel).setColor(color);
 			((BuilderReleaseBoardView) releaseLevelPanel).setEditMode(1);
 		}

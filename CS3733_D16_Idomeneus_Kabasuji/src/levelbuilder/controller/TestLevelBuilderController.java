@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import kabasuji.controller.moves.ChangeScreenMove;
 import kabasuji.model.Builder;
 import kabasuji.model.Kabasuji;
 import kabasuji.model.Screen;
@@ -63,6 +64,7 @@ public class TestLevelBuilderController extends MouseAdapter {
 		kabasuji.selectLevel(kabasuji.getLevels().get(index));
 		TopLevelApplication app1 = new TopLevelApplication(kabasuji);
 
+		// Created ChangeScreenMove and input desired screen
 		ChangeScreenBuilderMove gtsm = new ChangeScreenBuilderMove(Screen.PlayLevel);
 
 		// Attempt to execute action on model

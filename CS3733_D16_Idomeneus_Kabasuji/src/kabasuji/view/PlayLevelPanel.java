@@ -1,7 +1,6 @@
 package kabasuji.view;
 
 import javax.swing.JPanel;
-
 import kabasuji.controller.BullpenController;
 import kabasuji.controller.FlipSelectedPieceBullpenController;
 import kabasuji.controller.GoToMainMenuController;
@@ -263,8 +262,10 @@ public class PlayLevelPanel extends JPanel {
 			Builder builder = new Builder();
 			TopLevelApplicationBuilder app1 = new TopLevelApplicationBuilder(builder);
 			System.out.println("I am in back button");
-			add(returnBtn);
+			//JTextField nothing = new JTextField("");
 			returnBtn.addMouseListener(new GoToMainMenuBuilderController(builder, app1, returnBtn));
+			add(returnBtn);
+			System.out.println(builder.getLevels().size());
 		}
 
 		/** Star JLabelIcon (Initially display no stars ) **/

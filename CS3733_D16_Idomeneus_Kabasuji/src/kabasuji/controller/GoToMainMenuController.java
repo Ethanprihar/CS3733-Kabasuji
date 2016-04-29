@@ -10,7 +10,6 @@ import kabasuji.model.Kabasuji;
 import kabasuji.model.Screen;
 import kabasuji.view.JLabelIcon;
 import kabasuji.view.MainMenu;
-import kabasuji.view.PlayLevelPanel;
 import kabasuji.view.TopLevelApplication;
 import misc.MusicPlayer;
 

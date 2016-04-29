@@ -264,21 +264,20 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		colorBtn1.setLocation((int) (Screen.width * 0.02) + (int) (colorBtn1.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.35));	
 		background.add(colorBtn1);
-		colorBtn1.addMouseListener(new SetColorController(builder, app, 1, boardview));
-
 		
 		JLabelIcon colorBtn2 = new JLabelIcon("general2button.png", 30, 30);
 		colorBtn2.setLocation((int) (Screen.width * 0.08) + (int) (colorBtn2.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.35));	
 		background.add(colorBtn2);
-		colorBtn2.addMouseListener(new SetColorController(builder, app, 2, boardview));
-
 		
 		JLabelIcon colorBtn3 = new JLabelIcon("general3button.png", 30, 30);
 		colorBtn3.setLocation((int) (Screen.width * 0.14) + (int) (colorBtn3.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.35));	
 		background.add(colorBtn3);
-		colorBtn3.addMouseListener(new SetColorController(builder, app, 3, boardview));
+		
+		colorBtn1.addMouseListener(new SetColorController(builder, app, 1, boardview, colorBtn1, colorBtn2, colorBtn3));
+		colorBtn2.addMouseListener(new SetColorController(builder, app, 2, boardview, colorBtn1, colorBtn2, colorBtn3));
+		colorBtn3.addMouseListener(new SetColorController(builder, app, 3, boardview, colorBtn1, colorBtn2, colorBtn3));
 
 		
 		JLabelIcon colorClearBtn = new JLabelIcon("generalbutton.png", 30, 30);
