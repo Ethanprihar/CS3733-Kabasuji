@@ -12,13 +12,11 @@ import levelbuilder.controller.DeselectReleaseButtonsController;
 import levelbuilder.controller.GoToMainMenuBuilderController;
 import levelbuilder.controller.IncrementPieceBuilderController;
 import levelbuilder.controller.RedoController;
-import levelbuilder.controller.RedoReleaseController;
 import levelbuilder.controller.SaveLevelController;
 import levelbuilder.controller.SetColorController;
 import levelbuilder.controller.SetNumberController;
 import levelbuilder.controller.TestLevelBuilderController;
 import levelbuilder.controller.UndoController;
-import levelbuilder.controller.UndoReleaseController;
 
 import javax.swing.JLabel;
 
@@ -154,7 +152,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		undoLbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		undoBtn.add(undoLbl);
 		background.add(undoBtn);
-		undoBtn.addMouseListener(new UndoReleaseController(builder, app, undoBtn, piece1Lbl, piece2Lbl, piece3Lbl, boardview));
+		undoBtn.addMouseListener(new UndoController(builder, app, undoBtn, piece1Lbl, piece2Lbl, piece3Lbl, boardview));
 
 		JLabelIcon redoBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		redoBtn.setLocation((int) (Screen.width * 0.82) + (int) (undoBtn.getSize().getWidth() / 2),
@@ -164,7 +162,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		redoLbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		redoBtn.add(redoLbl);
 		background.add(redoBtn);
-		redoBtn.addMouseListener(new RedoReleaseController(builder, app, redoBtn, piece1Lbl, piece2Lbl, piece3Lbl, boardview));
+		redoBtn.addMouseListener(new RedoController(builder, app, redoBtn, piece1Lbl, piece2Lbl, piece3Lbl, boardview));
 		
 		JTextField numMoves = new JTextField();
 		if(builder.getSelectedLevel().getEndCondition() > 0)
