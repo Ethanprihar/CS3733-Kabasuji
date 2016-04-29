@@ -197,12 +197,6 @@ public class Builder
 	public void updateHistory()
 	{
 		System.out.println("History is being updated");
-		// if the current state exists in the history, clear the redoLists		
-		if(boardHistory.size() != 0)
-		{
-			boardHistory.add(boardHistory.pop().copy());
-			bullpenHistory.add(bullpenHistory.pop().clone());
-		}
 		boardRedoList.clear();
 		bullpenRedoList.clear();
 		boardHistory.add(selectedLevel.getBoard().copy());
