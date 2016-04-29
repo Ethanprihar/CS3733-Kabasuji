@@ -113,13 +113,20 @@ public class PlayLevelPanel extends JPanel {
 
 		// check if the level is a lightning level
 		if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
+			
+			System.out.println("Time Limit: ");
+			System.out.println(((LightningLevel) kabasuji.getSelectedLevel()).getTimeLimit());
+			System.out.println("Current Time: ");
+			System.out.println(((LightningLevel) kabasuji.getSelectedLevel()).getCurrentTime());
 
-			if (!((LightningLevel) kabasuji.getSelectedLevel()).hasTimeLeft()) {
+			//if (!((LightningLevel) kabasuji.getSelectedLevel()).hasTimeLeft()) {
+				System.out.println("RESET TIMER");
+				timer.stop(); // stop the old timer
 				// reset the timer
-				// timerStart();
-				System.out.println("no time left");
+				timerStart();
+				//System.out.println("no time left");
 				timer.restart();
-			}
+			//}
 		}
 	}
 

@@ -89,6 +89,8 @@ public class ResetLevelController extends MouseAdapter {
 		// remove all components from PLP -> update PLP -> add controllers
 		plp.removeAll();
 		plp.updatePlayLevelPanel(bv, bpv);
+		
+		// If the level is a lightning level then reset the timer
 		if(kabasuji.selectedLevel instanceof LightningLevel){
 			plp.resetTimer();
 		}
@@ -96,9 +98,6 @@ public class ResetLevelController extends MouseAdapter {
 
 		// repaint the PlayLevelPanel
 		plp.repaint();
-
-		// set the content panel of container to contain PlayLevelPanel
-		// app.setContentPanel(plp);
 
 	}
 

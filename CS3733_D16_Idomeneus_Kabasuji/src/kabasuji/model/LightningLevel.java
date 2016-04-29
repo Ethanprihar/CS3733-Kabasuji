@@ -19,7 +19,7 @@ public class LightningLevel extends Level {
 		currentTime = time;
 	}
 	
-	public int getCurrentTime(int time) {
+	public int getCurrentTime() {
 		return currentTime;
 	}
 	

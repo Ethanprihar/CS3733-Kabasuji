@@ -67,7 +67,7 @@ public class Kabasuji {
 		else if (selectedLevel instanceof ReleaseLevel) {
 			((ReleaseLevel) selectedLevel).setMovesUsed(0);
 		}
-		// reset moves used for release mode
+		// reset time used for release mode
 		else if (selectedLevel instanceof LightningLevel) {
 			((LightningLevel) selectedLevel).setCurrentTime(0);
 		}
