@@ -260,22 +260,37 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		
 		JLabelIcon colorBtn1 = new JLabelIcon("general1button.png", 30, 30);
 		colorBtn1.setLocation((int) (Screen.width * 0.02) + (int) (colorBtn1.getSize().getWidth() / 2),
-				(int) (Screen.height * 0.35));	
+				(int) (Screen.height * 0.35));
+		JLabelIcon tick1 = new JLabelIcon("tick.png", 30, 30);
+		tick1.setBounds(0, 0, 20, 20);
+		tick1.setFont(new Font("Onyx", Font.BOLD, 18));
+		colorBtn1.add(tick1);
+		tick1.setVisible(false);
 		background.add(colorBtn1);
 		
 		JLabelIcon colorBtn2 = new JLabelIcon("general2button.png", 30, 30);
 		colorBtn2.setLocation((int) (Screen.width * 0.08) + (int) (colorBtn2.getSize().getWidth() / 2),
-				(int) (Screen.height * 0.35));	
+				(int) (Screen.height * 0.35));
+		JLabelIcon tick2 = new JLabelIcon("tick.png", 30, 30);
+		tick2.setBounds(0, 0, 20, 20);
+		tick2.setFont(new Font("Onyx", Font.BOLD, 18));
+		colorBtn2.add(tick2);
+		tick2.setVisible(false);
 		background.add(colorBtn2);
 		
 		JLabelIcon colorBtn3 = new JLabelIcon("general3button.png", 30, 30);
 		colorBtn3.setLocation((int) (Screen.width * 0.14) + (int) (colorBtn3.getSize().getWidth() / 2),
-				(int) (Screen.height * 0.35));	
+				(int) (Screen.height * 0.35));
+		JLabelIcon tick3 = new JLabelIcon("tick.png", 30, 30);
+		tick3.setBounds(0, 0, 20, 20);
+		tick3.setFont(new Font("Onyx", Font.BOLD, 18));
+		colorBtn3.add(tick3);
+		tick3.setVisible(false);
 		background.add(colorBtn3);
 		
-		colorBtn1.addMouseListener(new SetColorController(builder, app, 1, boardview, colorBtn1, colorBtn2, colorBtn3));
-		colorBtn2.addMouseListener(new SetColorController(builder, app, 2, boardview, colorBtn1, colorBtn2, colorBtn3));
-		colorBtn3.addMouseListener(new SetColorController(builder, app, 3, boardview, colorBtn1, colorBtn2, colorBtn3));
+		colorBtn1.addMouseListener(new SetColorController(builder, app, 1, boardview, tick1, tick2, tick3));
+		colorBtn2.addMouseListener(new SetColorController(builder, app, 2, boardview, tick1, tick2, tick3));
+		colorBtn3.addMouseListener(new SetColorController(builder, app, 3, boardview, tick1, tick2, tick3));
 
 		
 		JLabelIcon colorClearBtn = new JLabelIcon("generalbutton.png", 30, 30);

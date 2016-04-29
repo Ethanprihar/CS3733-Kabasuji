@@ -61,27 +61,24 @@ public class SetColorController extends MouseAdapter {
 		
 		if(levelType == 2)
 		{
-			JLabelIcon tickimage = new JLabelIcon("tick.png", 30, 30);
 			if (color == 1){
-				tile1.remove(tickimage);
-				tile2.remove(tickimage);
-				tile.setImg("genera1button.png");
-				tile.add(tickimage);
+				tile.setVisible(true);
+				tile1.setVisible(false);
+				tile2.setVisible(false);
 			}
 			else if (color == 2){
-				tile.remove(tickimage);
-				tile2.removeAll();
-				tile1.setImg("general2button.png");
-				tile.add(tickimage);
+				tile.setVisible(false);
+				tile1.setVisible(true);
+				tile2.setVisible(false);
 			}
 			else if (color == 3){
-				tile.remove(tickimage);
-				tile1.remove(tickimage);
-				tile2.setImg("general3button.png");
-				tile.add(tickimage);
+				tile.setVisible(false);
+				tile1.setVisible(false);
+				tile2.setVisible(true);
 			}
 			((BuilderReleaseBoardView) releaseLevelPanel).setColor(color);
 			((BuilderReleaseBoardView) releaseLevelPanel).setEditMode(1);
+			app.repaint();
 		}
 	}
 	public void mouseEntered(MouseEvent e) {
