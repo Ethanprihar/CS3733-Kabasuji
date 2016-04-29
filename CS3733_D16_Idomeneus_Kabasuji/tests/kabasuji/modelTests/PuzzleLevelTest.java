@@ -15,8 +15,8 @@ public class PuzzleLevelTest extends TestCase{
 		// make a new board 
 		Tile testTile1 = new Tile(false, true, 0, 0);
 		Tile testTile2 = new Tile(false, true, 0, 0);
-		Tile testTile3 = new Tile(false, false, 0, 0);
-		Tile testTile4 = new Tile(false, false, 0, 0);	
+		Tile testTile3 = new Tile(false, true, 0, 0);
+		Tile testTile4 = new Tile(false, true, 0, 0);	
 		Tile testTile5 = new Tile(false, false, 0, 0);
 		Tile testTile6 = new Tile(false, false, 0, 0);
 		Tile testTile7 = new Tile(false, true, 0, 0);
@@ -83,6 +83,8 @@ public class PuzzleLevelTest extends TestCase{
 		// make a new Puzzle Level Test
 		PuzzleLevel puzzTest = new PuzzleLevel(puzzBoard1, bullpen1, 10);
 		
+		PuzzleLevel puzzTestv = new PuzzleLevel(puzzBoardv, bullpen1, 10);
+		
 		// check that moves used is initially zero
 		assertEquals(puzzTest.getMovesUsed(), 0);
 		// check that the moves left is 10
@@ -147,8 +149,14 @@ public class PuzzleLevelTest extends TestCase{
 		//assertEquals(puzzTest1.hasMovesLeft(),false);
 		assertEquals(puzzTest1.canMoveBoardToBoard(boardTile3_3), false);
 		
-		puzzTest.setEndCondition(20);
-		//assertEquals(puzzTest1.getEndCondition(),20);
+		puzzTest1.setEndCondition(20);
+		assertEquals(puzzTest1.getEndCondition(), (Integer)20);
+		
+		puzzTestv.getBullpen().selectPiece(testPiece1);
+		
+		assertEquals(puzzTestv.hasMovesLeft(),true);
+		
+		//assertEquals(puzzTestv.canMoveBullpenToBoard(boardTile0_0v),true);
 		
 	}
 }

@@ -27,8 +27,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
+
 /**
  * Main Gameplay window; all games happen here regardless of type.
+ * 
  * @author jwu
  *
  */
@@ -59,7 +61,7 @@ public class PlayLevelPanel extends JPanel {
 	JLabel movesLeftNum;
 	JLabel timeLeft;
 	JLabel timeLeftNum;
-	
+
 	JLabelIcon background;
 
 	/**
@@ -105,7 +107,8 @@ public class PlayLevelPanel extends JPanel {
 		timer.start();
 
 	}
-	public void stopTimer(){
+
+	public void stopTimer() {
 		timer.stop();
 	}
 
@@ -113,20 +116,11 @@ public class PlayLevelPanel extends JPanel {
 
 		// check if the level is a lightning level
 		if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
-			
-			System.out.println("Time Limit: ");
-			System.out.println(((LightningLevel) kabasuji.getSelectedLevel()).getTimeLimit());
-			System.out.println("Current Time: ");
-			System.out.println(((LightningLevel) kabasuji.getSelectedLevel()).getCurrentTime());
 
-			//if (!((LightningLevel) kabasuji.getSelectedLevel()).hasTimeLeft()) {
-				System.out.println("RESET TIMER");
-				timer.stop(); // stop the old timer
-				// reset the timer
-				timerStart();
-				//System.out.println("no time left");
-				timer.restart();
-			//}
+			timer.stop(); // stop the old timer
+			// reset the timer
+			timerStart();
+			timer.restart();
 		}
 	}
 
@@ -142,6 +136,7 @@ public class PlayLevelPanel extends JPanel {
 		zoompiece.setLocation((int) (Screen.width * 0.35), (int) (Screen.height * 0.05));
 		add(zoompiece);
 
+		// create a flip horizontal button
 		fliphbtn = new JLabelIcon("generalbutton.png", 70, 70);
 		fliphbtn.setLocation((int) (Screen.width * 0.52) + (int) (fliphbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.05));
@@ -151,6 +146,7 @@ public class PlayLevelPanel extends JPanel {
 		fliphbtn.add(fliphlbl);
 		add(fliphbtn);
 
+		// create a flip vertical button
 		flipvbtn = new JLabelIcon("generalbutton.png", 70, 70);
 		flipvbtn.setLocation((int) (Screen.width * 0.62) + (int) (fliphbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.05));
@@ -160,6 +156,7 @@ public class PlayLevelPanel extends JPanel {
 		flipvbtn.add(flipvlbl);
 		add(flipvbtn);
 
+		// create a rotate left button
 		rotatelbtn = new JLabelIcon("generalbutton.png", 70, 70);
 		rotatelbtn.setLocation((int) (Screen.width * 0.52) + (int) (rotatelbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.18));
@@ -169,6 +166,7 @@ public class PlayLevelPanel extends JPanel {
 		rotatelbtn.add(rotatellbl);
 		add(rotatelbtn);
 
+		// create a rotate right button
 		rotaterbtn = new JLabelIcon("generalbutton.png", 70, 70);
 		rotaterbtn.setLocation((int) (Screen.width * 0.62) + (int) (rotatelbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.18));
@@ -178,11 +176,11 @@ public class PlayLevelPanel extends JPanel {
 		rotaterbtn.add(rotaterlbl);
 		add(rotaterbtn);
 
-		if (type == 0){
+		if (type == 0) {
 			// display moves left if in puzzle or release mode
 			if ((kabasuji.getSelectedLevel() instanceof PuzzleLevel)
 					|| (kabasuji.getSelectedLevel() instanceof ReleaseLevel)) {
-	
+
 				// movesLeft Icon
 				movesLeft = new JLabel("<html>Moves Left</html>", SwingConstants.CENTER);
 				movesLeft.setBounds(0, 0, 150, 50);
@@ -191,22 +189,23 @@ public class PlayLevelPanel extends JPanel {
 						(int) (Screen.height * 0.05));
 				movesLeft.setForeground(Color.WHITE);
 				add(movesLeft);
-	
+
 				System.out.println("end condidition: " + kabasuji.getSelectedLevel().getEndCondition().toString());
-	
-				movesLeftNum = new JLabel(kabasuji.getSelectedLevel().getEndCondition().toString(), SwingConstants.CENTER);
+
+				movesLeftNum = new JLabel(kabasuji.getSelectedLevel().getEndCondition().toString(),
+						SwingConstants.CENTER);
 				movesLeftNum.setBounds(0, 0, 120, 50);
 				movesLeftNum.setFont(new Font("Onyx", Font.BOLD, 40));
 				movesLeftNum.setLocation((int) (Screen.width * 0.715) + (int) (movesLeft.getSize().getWidth() / 2),
 						(int) (Screen.height * 0.12));
 				movesLeftNum.setForeground(Color.WHITE);
 				add(movesLeftNum);
-	
+
 			}
-	
+
 			// display time left if in lightning mode
 			else if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
-	
+
 				// timeLeft Icon
 				timeLeft = new JLabel("<html>Time Left</html>", SwingConstants.CENTER);
 				timeLeft.setBounds(0, 0, 150, 50);
@@ -215,9 +214,10 @@ public class PlayLevelPanel extends JPanel {
 						(int) (Screen.height * 0.05));
 				timeLeft.setForeground(Color.white);
 				add(timeLeft);
-	
+
 				// time left amount j label
-				timeLeftNum = new JLabel(kabasuji.getSelectedLevel().getEndCondition().toString(), SwingConstants.CENTER);
+				timeLeftNum = new JLabel(kabasuji.getSelectedLevel().getEndCondition().toString(),
+						SwingConstants.CENTER);
 				timeLeftNum.setBounds(0, 0, 120, 50);
 				timeLeftNum.setFont(new Font("Onyx", Font.BOLD, 40));
 				timeLeftNum.setLocation((int) (Screen.width * 0.715) + (int) (timeLeft.getSize().getWidth() / 2),
@@ -227,7 +227,7 @@ public class PlayLevelPanel extends JPanel {
 			}
 		}
 
-		if (type == 0){
+		if (type == 0) {
 			nextlevelbtn = new JLabelIcon("generallockedbutton.png", 70, 70);
 			nextlevelbtn.setLocation((int) (Screen.width * 0.74) + (int) (rotatelbtn.getSize().getWidth() / 2),
 					(int) (Screen.height * .6));
@@ -236,7 +236,7 @@ public class PlayLevelPanel extends JPanel {
 			nextlevellbl.setFont(new Font("Onyx", Font.BOLD, 18));
 			nextlevelbtn.add(nextlevellbl);
 			add(nextlevelbtn);
-	
+
 			resetlevelbtn = new JLabelIcon("generalbutton.png", 70, 70);
 			resetlevelbtn.setLocation((int) (Screen.width * 0.74) + (int) (rotatelbtn.getSize().getWidth() / 2),
 					(int) (Screen.height * .73));
@@ -245,7 +245,7 @@ public class PlayLevelPanel extends JPanel {
 			resetlevellbl.setFont(new Font("Onyx", Font.BOLD, 18));
 			resetlevelbtn.add(resetlevellbl);
 			add(resetlevelbtn);
-			
+
 			JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", 70, 70);
 			mainmenubtn.setLocation((int) (Screen.width * 0.84) + (int) (rotatelbtn.getSize().getWidth() / 2),
 					(int) (Screen.height * .6));
@@ -256,9 +256,9 @@ public class PlayLevelPanel extends JPanel {
 			mainmenubtn.addMouseListener(new GoToMainMenuController(kabasuji, app, mainmenubtn));
 			add(mainmenubtn);
 		}
-		
-		if (type == 1){
-			
+
+		if (type == 1) {
+
 			JLabelIcon returnBtn = new JLabelIcon("generalbutton.png", 70, 70);
 			returnBtn.setLocation((int) (Screen.width * 0.80) + (int) (rotatelbtn.getSize().getWidth() / 2),
 					(int) (Screen.height * .6));
@@ -269,7 +269,7 @@ public class PlayLevelPanel extends JPanel {
 			Builder builder = new Builder();
 			TopLevelApplicationBuilder app1 = new TopLevelApplicationBuilder(builder);
 			System.out.println("I am in back button");
-			//JTextField nothing = new JTextField("");
+			// JTextField nothing = new JTextField("");
 			returnBtn.addMouseListener(new GoToMainMenuBuilderController(builder, app1, returnBtn));
 			add(returnBtn);
 			System.out.println(builder.getLevels().size());
@@ -282,16 +282,16 @@ public class PlayLevelPanel extends JPanel {
 		add(bpv);
 		setBoardView(bv);
 		setBullpenView(bpv);
-	
 
 		// setup background canvas **
 		background = new JLabelIcon("starry_night.jpeg", Screen.width, Screen.height);
 		background.setBounds(0, 0, Screen.width, Screen.height);
 		add(background);
 	}
-	public void startTimeLimit(){
+
+	public void startTimeLimit() {
 		// if in lightning mode make a new timer object
-		if (type == 0){
+		if (type == 0) {
 			if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
 				timerStart();
 			}
@@ -306,7 +306,7 @@ public class PlayLevelPanel extends JPanel {
 		rotatelbtn.addMouseListener(new RotateSelectedPieceBullpenController(kabasuji, this, rotatelbtn, false));
 		flipvbtn.addMouseListener(new FlipSelectedPieceBullpenController(kabasuji, this, flipvbtn, true));
 		fliphbtn.addMouseListener(new FlipSelectedPieceBullpenController(kabasuji, this, fliphbtn, false));
-		if (type == 0){
+		if (type == 0) {
 			resetlevelbtn.addMouseListener(new ResetLevelController(kabasuji, this, resetlevelbtn));
 		}
 		bullpenview.addMouseListener(new BullpenController(kabasuji, this));
@@ -336,7 +336,7 @@ public class PlayLevelPanel extends JPanel {
 	 * @return
 	 */
 	public void setMovesLeftNum(Integer movesLeft) {
-		if (type == 0){
+		if (type == 0) {
 			movesLeftNum.setText(movesLeft.toString());
 		}
 	}
@@ -356,7 +356,7 @@ public class PlayLevelPanel extends JPanel {
 	 * @return
 	 */
 	public void setTimeLeftNum(Integer timeLeft) {
-		if (type == 0){
+		if (type == 0) {
 			timeLeftNum.setText(timeLeft.toString());
 		}
 	}
@@ -431,7 +431,8 @@ public class PlayLevelPanel extends JPanel {
 	 */
 	public void updateNextLevel() {
 
-		// Remove the background and then add it later so that the button can be added to the background
+		// Remove the background and then add it later so that the button can be
+		// added to the background
 		remove(background);
 		// Remove the old nextlevelbtn to display the new one
 		remove(nextlevelbtn);
@@ -447,7 +448,8 @@ public class PlayLevelPanel extends JPanel {
 		repaint();
 		add(background);
 	}
-	public Timer getTimer(){
+
+	public Timer getTimer() {
 		return timer;
 	}
 }
