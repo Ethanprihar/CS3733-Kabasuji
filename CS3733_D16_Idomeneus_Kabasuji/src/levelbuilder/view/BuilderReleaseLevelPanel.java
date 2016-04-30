@@ -29,7 +29,24 @@ public class BuilderReleaseLevelPanel extends JPanel {
 	TopLevelApplicationBuilder app;	
 	JTextField boardDimensions;
 	int[] numOfPiecesOnLoad = new int[35];
-
+	
+	JLabelIcon mainmenubtn;
+	JLabelIcon saveBtn;
+	JLabelIcon deleteBtn;
+	JLabelIcon undoBtn;
+	JLabelIcon redoBtn;
+	JLabelIcon testBtn;
+	
+	JLabelIcon colorBtn1;
+	JLabelIcon colorBtn2;
+	JLabelIcon colorBtn3;
+	
+	JLabelIcon numBtn1;
+	JLabelIcon numBtn2;
+	JLabelIcon numBtn3;
+	JLabelIcon numBtn4;
+	JLabelIcon numBtn5;
+	JLabelIcon numBtn6;
 
 	/**
 	 * Create the panel.
@@ -144,7 +161,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 			bullpen.add(piece3[i]);
 		}
 
-		JLabelIcon undoBtn = new JLabelIcon("generalbutton.png", 70, 70);
+		undoBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		undoBtn.setLocation((int) (Screen.width * 0.72) + (int) (undoBtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.05));
 		JLabel undoLbl = new JLabel("<html>Undo</html>", SwingConstants.CENTER);
@@ -154,7 +171,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		background.add(undoBtn);
 		undoBtn.addMouseListener(new UndoController(builder, app, undoBtn, piece1Lbl, piece2Lbl, piece3Lbl, boardview));
 
-		JLabelIcon redoBtn = new JLabelIcon("generalbutton.png", 70, 70);
+		redoBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		redoBtn.setLocation((int) (Screen.width * 0.82) + (int) (undoBtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.05));
 		JLabel redoLbl = new JLabel("<html>Redo</html>", SwingConstants.CENTER);
@@ -173,7 +190,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		numMoves.setFont(new Font("Onyx", Font.BOLD, 18));
 		background.add(numMoves);
 		
-		JLabelIcon saveBtn = new JLabelIcon("generalbutton.png", 70, 70);
+		saveBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		saveBtn.setLocation((int) (Screen.width * 0.72) + (int) (saveBtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.18));
 		JLabel saveLbl = new JLabel("<html>Save<br>Level</html>", SwingConstants.CENTER);
@@ -183,7 +200,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		background.add(saveBtn);
 		saveBtn.addMouseListener(new SaveLevelController(builder, app, saveBtn, numMoves, 3, numOfPiecesOnLoad));
 
-		JLabelIcon deleteBtn = new JLabelIcon("generalbutton.png", 70, 70);
+		deleteBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		deleteBtn.setLocation((int) (Screen.width * 0.82) + (int) (saveBtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.18));
 		JLabel deleteLbl = new JLabel("<html>Delete<br>Level</html>", SwingConstants.CENTER);
@@ -192,7 +209,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		deleteBtn.add(deleteLbl);
 		background.add(deleteBtn);
 		
-		JLabelIcon numBtn1 = new JLabelIcon("generalbutton.png", 20, 20);
+		numBtn1 = new JLabelIcon("generalbutton.png", 20, 20);
 		numBtn1.setLocation((int) (Screen.width * 0) + (int) (numBtn1.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.25));
 		JLabel numBtnLbl = new JLabel("<html>1</html>", SwingConstants.CENTER);
@@ -201,7 +218,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		numBtn1.add(numBtnLbl);
 		background.add(numBtn1);
 		
-		JLabelIcon numBtn2 = new JLabelIcon("generalbutton.png", 20, 20);
+		numBtn2 = new JLabelIcon("generalbutton.png", 20, 20);
 		numBtn2.setLocation((int) (Screen.width * 0.035) + (int) (numBtn2.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.25));
 		JLabel numBtn2Lbl = new JLabel("<html>2</html>", SwingConstants.CENTER);
@@ -210,7 +227,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		numBtn2.add(numBtn2Lbl);
 		background.add(numBtn2);
 		
-		JLabelIcon numBtn3 = new JLabelIcon("generalbutton.png", 20, 20);
+		numBtn3 = new JLabelIcon("generalbutton.png", 20, 20);
 		numBtn3.setLocation((int) (Screen.width * 0.07) + (int) (numBtn3.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.25));
 		JLabel numBtn3Lbl = new JLabel("<html>3</html>", SwingConstants.CENTER);
@@ -219,7 +236,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		numBtn3.add(numBtn3Lbl);
 		background.add(numBtn3);
 		
-		JLabelIcon numBtn4 = new JLabelIcon("generalbutton.png", 20, 20);
+		numBtn4 = new JLabelIcon("generalbutton.png", 20, 20);
 		numBtn4.setLocation((int) (Screen.width * 0.105) + (int) (numBtn4.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.25));
 		JLabel numBtn4Lbl = new JLabel("<html>4</html>", SwingConstants.CENTER);
@@ -228,7 +245,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		numBtn4.add(numBtn4Lbl);
 		background.add(numBtn4);
 		
-		JLabelIcon numBtn5 = new JLabelIcon("generalbutton.png", 20, 20);
+		numBtn5 = new JLabelIcon("generalbutton.png", 20, 20);
 		numBtn5.setLocation((int) (Screen.width * 0.14) + (int) (numBtn5.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.25));
 		JLabel numBtn5Lbl = new JLabel("<html>5</html>", SwingConstants.CENTER);
@@ -237,7 +254,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		numBtn5.add(numBtn5Lbl);
 		background.add(numBtn5);
 		
-		JLabelIcon numBtn6 = new JLabelIcon("generalbutton.png", 20, 20);
+		numBtn6 = new JLabelIcon("generalbutton.png", 20, 20);
 		numBtn6.setLocation((int) (Screen.width * 0.175) + (int) (numBtn6.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.25));
 		JLabel numBtn6Lbl = new JLabel("<html>6</html>", SwingConstants.CENTER);
@@ -246,7 +263,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		numBtn6.add(numBtn6Lbl);
 		background.add(numBtn6);
 		
-		JLabelIcon colorBtn1 = new JLabelIcon("general1button.png", 30, 30);
+		colorBtn1 = new JLabelIcon("general1button.png", 30, 30);
 		colorBtn1.setLocation((int) (Screen.width * 0.02) + (int) (colorBtn1.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.35));
 		JLabelIcon tick1 = new JLabelIcon("tick.png", 30, 30);
@@ -256,7 +273,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		tick1.setVisible(false);
 		background.add(colorBtn1);
 		
-		JLabelIcon colorBtn2 = new JLabelIcon("general2button.png", 30, 30);
+		colorBtn2 = new JLabelIcon("general2button.png", 30, 30);
 		colorBtn2.setLocation((int) (Screen.width * 0.08) + (int) (colorBtn2.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.35));
 		JLabelIcon tick2 = new JLabelIcon("tick.png", 30, 30);
@@ -266,7 +283,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		tick2.setVisible(false);
 		background.add(colorBtn2);
 		
-		JLabelIcon colorBtn3 = new JLabelIcon("general3button.png", 30, 30);
+		colorBtn3 = new JLabelIcon("general3button.png", 30, 30);
 		colorBtn3.setLocation((int) (Screen.width * 0.14) + (int) (colorBtn3.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.35));
 		JLabelIcon tick3 = new JLabelIcon("tick.png", 30, 30);
@@ -293,7 +310,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		background.add(colorClearBtn);
 		colorClearBtn.addMouseListener(new DeselectReleaseButtonsController(builder, app, 4, boardview, tick1, tick2, tick3, numBtn1, numBtn2, numBtn3, numBtn4, numBtn5, numBtn6));
 
-		JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", 70, 70);
+		mainmenubtn = new JLabelIcon("generalbutton.png", 70, 70);
 		mainmenubtn.setLocation((int) (Screen.width * 0.72) + (int) (saveBtn.getSize().getWidth() / 2),
 				(int) (Screen.height * .31));
 		JLabel mainmenulbl = new JLabel("<html>Main<br>Menu</html>", SwingConstants.CENTER);
@@ -305,7 +322,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		background.add(mainmenubtn);
 		
 		// Add a test level button to the GUI so that the user can test the built level
-		JLabelIcon testBtn = new JLabelIcon("generalbutton.png", 70, 70);
+		testBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		testBtn.setLocation((int) (Screen.width * 0.82) + (int) (testBtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.31));
 		JLabel testLbl = new JLabel("<html>Test<br>Level</html>", SwingConstants.CENTER);
@@ -317,6 +334,41 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		// Add a mouse listener for the controller
 		testBtn.addMouseListener(new TestLevelBuilderController(builder, app, testBtn, numOfPiecesOnLoad, numMoves));
 	}
-
+	
+	public JLabelIcon getMainMenuButton() {
+		return mainmenubtn;
+	}
+	
+	public JLabelIcon getSaveButton() {
+		return saveBtn;
+	}
+	
+	public JLabelIcon getDeleteButton() {
+		return deleteBtn;
+	}
+	
+	public JLabelIcon getUndoButton() {
+		return undoBtn;
+	}
+	
+	public JLabelIcon getRedoButton() {
+		return redoBtn;
+	}
+	
+	public JLabelIcon getTestButton() {
+		return testBtn;
+	}
+	
+	public JLabelIcon colorButton1() {
+		return colorBtn1;
+	}
+	
+	public JLabelIcon colorButton2() {
+		return colorBtn2;
+	}
+	
+	public JLabelIcon colorButton3() {
+		return colorBtn3;
+	}
 
 }

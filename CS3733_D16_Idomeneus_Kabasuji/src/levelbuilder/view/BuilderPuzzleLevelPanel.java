@@ -26,7 +26,12 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 	TopLevelApplicationBuilder app;
 	JTextField boardDimensions;
 	int[] numOfPiecesOnLoad = new int[35];
-
+	JLabelIcon mainmenubtn;
+	JLabelIcon saveBtn;
+	JLabelIcon deleteBtn;
+	JLabelIcon undoBtn;
+	JLabelIcon redoBtn;
+	JLabelIcon testBtn;
 
 	/**
 	 * Create the panel.
@@ -137,7 +142,7 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 			bullpen.add(piece3[i]);
 		}
 
-		JLabelIcon undoBtn = new JLabelIcon("generalbutton.png", 70, 70);
+		undoBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		undoBtn.setLocation((int) (Screen.width * 0.72) + (int) (undoBtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.05));
 		JLabel undoLbl = new JLabel("<html>Undo</html>", SwingConstants.CENTER);
@@ -147,7 +152,7 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		background.add(undoBtn);
 		undoBtn.addMouseListener(new UndoController(builder, app, undoBtn, piece1Lbl, piece2Lbl, piece3Lbl, boardview));
 
-		JLabelIcon redoBtn = new JLabelIcon("generalbutton.png", 70, 70);
+		redoBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		redoBtn.setLocation((int) (Screen.width * 0.82) + (int) (undoBtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.05));
 		JLabel redoLbl = new JLabel("<html>Redo</html>", SwingConstants.CENTER);
@@ -167,7 +172,7 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		background.add(numMoves);
 		
 		// Add a test level button to the GUI so that the user can test the built level
-		JLabelIcon testBtn = new JLabelIcon("generalbutton.png", 70, 70);
+		testBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		testBtn.setLocation((int) (Screen.width * 0.04) + (int) (testBtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.05));
 		JLabel testLbl = new JLabel("<html>Test<br>Level</html>", SwingConstants.CENTER);
@@ -180,7 +185,7 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		//testBtn.addMouseListener(new SaveLevelController(builder, app, testBtn, numMoves, 1, numOfPiecesOnLoad));
 		testBtn.addMouseListener(new TestLevelBuilderController(builder, app, testBtn, numOfPiecesOnLoad, numMoves));
 		
-		JLabelIcon saveBtn = new JLabelIcon("generalbutton.png", 70, 70);
+		saveBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		saveBtn.setLocation((int) (Screen.width * 0.72) + (int) (saveBtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.18));
 		JLabel saveLbl = new JLabel("<html>Save<br>Level</html>", SwingConstants.CENTER);
@@ -190,7 +195,7 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		background.add(saveBtn);
 		saveBtn.addMouseListener(new SaveLevelController(builder, app, saveBtn, numMoves, 1, numOfPiecesOnLoad));
 
-		JLabelIcon deleteBtn = new JLabelIcon("generalbutton.png", 70, 70);
+		deleteBtn = new JLabelIcon("generalbutton.png", 70, 70);
 		deleteBtn.setLocation((int) (Screen.width * 0.82) + (int) (saveBtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.18));
 		JLabel deleteLbl = new JLabel("<html>Delete<br>Level</html>", SwingConstants.CENTER);
@@ -200,7 +205,7 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		background.add(deleteBtn);	
 		deleteBtn.addMouseListener(new DeleteLevelController(builder, app, deleteBtn));
 
-		JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", 70, 70);
+		mainmenubtn = new JLabelIcon("generalbutton.png", 70, 70);
 		mainmenubtn.setLocation((int) (Screen.width * 0.78) + (int) (saveBtn.getSize().getWidth() / 2),
 				(int) (Screen.height * .35));
 		JLabel mainmenulbl = new JLabel("<html>Main<br>Menu</html>", SwingConstants.CENTER);
@@ -210,5 +215,29 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		mainmenubtn.addMouseListener(
 				new GoToMainMenuBuilderController(builder, app,mainmenubtn));
 		background.add(mainmenubtn);
+	}
+	
+	public JLabelIcon getMainMenuButton() {
+		return mainmenubtn;
+	}
+	
+	public JLabelIcon getSaveButton() {
+		return saveBtn;
+	}
+	
+	public JLabelIcon getDeleteButton() {
+		return deleteBtn;
+	}
+	
+	public JLabelIcon getUndoButton() {
+		return undoBtn;
+	}
+	
+	public JLabelIcon getRedoButton() {
+		return redoBtn;
+	}
+	
+	public JLabelIcon getTestButton() {
+		return testBtn;
 	}
 }
