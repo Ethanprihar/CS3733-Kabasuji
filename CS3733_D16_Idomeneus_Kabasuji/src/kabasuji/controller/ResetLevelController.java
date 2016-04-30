@@ -48,8 +48,7 @@ public class ResetLevelController extends MouseAdapter {
 	 */
 	public void mousePressed(MouseEvent me) {
 		/*** MODEL CHANGES ***/
-
-		// update the timer
+		
 		if(kabasuji.getLevels().size() - 1 == kabasuji.getLevels().indexOf(kabasuji.getSelectedLevel()))
 		{
 			kabasuji.getLevels().add(new PuzzleLevel(null, null, 0));

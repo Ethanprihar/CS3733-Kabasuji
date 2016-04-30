@@ -109,7 +109,10 @@ public class PlayLevelPanel extends JPanel {
 	}
 
 	public void stopTimer() {
-		timer.stop();
+		// check if the timer is null
+		if(timer != null) {
+			timer.stop();
+		}
 	}
 
 	public void resetTimer() {

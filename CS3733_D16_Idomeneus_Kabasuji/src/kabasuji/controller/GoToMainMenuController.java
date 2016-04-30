@@ -10,6 +10,7 @@ import kabasuji.model.Kabasuji;
 import kabasuji.model.Screen;
 import kabasuji.view.JLabelIcon;
 import kabasuji.view.MainMenu;
+import kabasuji.view.PlayLevelPanel;
 import kabasuji.view.TopLevelApplication;
 import misc.MusicPlayer;
 
@@ -46,16 +47,24 @@ public class GoToMainMenuController extends MouseAdapter {
 	 */
 	public void mousePressed(MouseEvent me) {
 		int index = kabasuji.getLevels().indexOf(kabasuji.getSelectedLevel());
+		// stop the timer if in play level panel
+		if (app.getContentPane() instanceof PlayLevelPanel) {
+			System.out.println("Stop timer");
+			((PlayLevelPanel) app.getContentPane()).stopTimer();
+		}
+
 		// Created ChangeScreenMove and input desired screen
 		ChangeScreenMove gtsm = new ChangeScreenMove(Screen.Opening);
 		// Attempt to execute action on model
 		gtsm.execute(kabasuji);
+
 		kabasuji.saveLevels();
 		kabasuji.getLevels().get(index).setLocked(false);
 		new MusicPlayer("select.wav");
 		// Created JPanel screen object and update boundary to reflect changes
 		MainMenu mm = new MainMenu(kabasuji, app);
 		app.setContentPanel(mm);
+
 	}
 
 	public void mouseEntered(MouseEvent e) {
