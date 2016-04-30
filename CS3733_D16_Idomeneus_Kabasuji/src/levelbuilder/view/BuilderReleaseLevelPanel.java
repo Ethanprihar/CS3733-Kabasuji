@@ -200,8 +200,6 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		numBtnLbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		numBtn1.add(numBtnLbl);
 		background.add(numBtn1);
-		numBtn1.addMouseListener(new SetNumberController(builder, app, 1, boardview));
-
 		
 		JLabelIcon numBtn2 = new JLabelIcon("generalbutton.png", 20, 20);
 		numBtn2.setLocation((int) (Screen.width * 0.035) + (int) (numBtn2.getSize().getWidth() / 2),
@@ -211,8 +209,6 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		numBtn2Lbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		numBtn2.add(numBtn2Lbl);
 		background.add(numBtn2);
-		numBtn2.addMouseListener(new SetNumberController(builder, app, 2, boardview));
-
 		
 		JLabelIcon numBtn3 = new JLabelIcon("generalbutton.png", 20, 20);
 		numBtn3.setLocation((int) (Screen.width * 0.07) + (int) (numBtn3.getSize().getWidth() / 2),
@@ -222,8 +218,6 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		numBtn3Lbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		numBtn3.add(numBtn3Lbl);
 		background.add(numBtn3);
-		numBtn3.addMouseListener(new SetNumberController(builder, app, 3, boardview));
-
 		
 		JLabelIcon numBtn4 = new JLabelIcon("generalbutton.png", 20, 20);
 		numBtn4.setLocation((int) (Screen.width * 0.105) + (int) (numBtn4.getSize().getWidth() / 2),
@@ -233,8 +227,6 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		numBtn4Lbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		numBtn4.add(numBtn4Lbl);
 		background.add(numBtn4);
-		numBtn4.addMouseListener(new SetNumberController(builder, app, 4, boardview));
-
 		
 		JLabelIcon numBtn5 = new JLabelIcon("generalbutton.png", 20, 20);
 		numBtn5.setLocation((int) (Screen.width * 0.14) + (int) (numBtn5.getSize().getWidth() / 2),
@@ -244,8 +236,6 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		numBtn5Lbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		numBtn5.add(numBtn5Lbl);
 		background.add(numBtn5);
-		numBtn5.addMouseListener(new SetNumberController(builder, app, 5, boardview));
-
 		
 		JLabelIcon numBtn6 = new JLabelIcon("generalbutton.png", 20, 20);
 		numBtn6.setLocation((int) (Screen.width * 0.175) + (int) (numBtn6.getSize().getWidth() / 2),
@@ -255,8 +245,6 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		numBtn6Lbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		numBtn6.add(numBtn6Lbl);
 		background.add(numBtn6);
-		numBtn6.addMouseListener(new SetNumberController(builder, app, 6, boardview));
-
 		
 		JLabelIcon colorBtn1 = new JLabelIcon("general1button.png", 30, 30);
 		colorBtn1.setLocation((int) (Screen.width * 0.02) + (int) (colorBtn1.getSize().getWidth() / 2),
@@ -291,14 +279,19 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		colorBtn1.addMouseListener(new SetColorController(builder, app, 1, boardview, tick1, tick2, tick3));
 		colorBtn2.addMouseListener(new SetColorController(builder, app, 2, boardview, tick1, tick2, tick3));
 		colorBtn3.addMouseListener(new SetColorController(builder, app, 3, boardview, tick1, tick2, tick3));
-
 		
+		numBtn1.addMouseListener(new SetNumberController(builder, app, 1, boardview, numBtn1, numBtn2, numBtn3, numBtn4, numBtn5, numBtn6, tick1, tick2, tick3));
+		numBtn2.addMouseListener(new SetNumberController(builder, app, 2, boardview, numBtn1, numBtn2, numBtn3, numBtn4, numBtn5, numBtn6, tick1, tick2, tick3));
+		numBtn3.addMouseListener(new SetNumberController(builder, app, 3, boardview, numBtn1, numBtn2, numBtn3, numBtn4, numBtn5, numBtn6, tick1, tick2, tick3));
+		numBtn4.addMouseListener(new SetNumberController(builder, app, 4, boardview, numBtn1, numBtn2, numBtn3, numBtn4, numBtn5, numBtn6, tick1, tick2, tick3));
+		numBtn5.addMouseListener(new SetNumberController(builder, app, 5, boardview, numBtn1, numBtn2, numBtn3, numBtn4, numBtn5, numBtn6, tick1, tick2, tick3));
+		numBtn6.addMouseListener(new SetNumberController(builder, app, 6, boardview, numBtn1, numBtn2, numBtn3, numBtn4, numBtn5, numBtn6, tick1, tick2, tick3));
+	
 		JLabelIcon colorClearBtn = new JLabelIcon("generalbutton.png", 30, 30);
 		colorClearBtn.setLocation((int) (Screen.width * 0.08) + (int) (colorClearBtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.45));	
 		background.add(colorClearBtn);
-		colorClearBtn.addMouseListener(new DeselectReleaseButtonsController(builder, app, 4, boardview));
-
+		colorClearBtn.addMouseListener(new DeselectReleaseButtonsController(builder, app, 4, boardview, tick1, tick2, tick3, numBtn1, numBtn2, numBtn3, numBtn4, numBtn5, numBtn6));
 
 		JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", 70, 70);
 		mainmenubtn.setLocation((int) (Screen.width * 0.72) + (int) (saveBtn.getSize().getWidth() / 2),
