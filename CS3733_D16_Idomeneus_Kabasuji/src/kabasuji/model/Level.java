@@ -30,6 +30,8 @@ public abstract class Level implements Serializable{
 	
 	public abstract boolean canMoveBoardToBoard(Tile destination);
 	
+	public abstract Level copy();
+	
 	public void moveBullpenToBoard(Tile destination)
 	{
 		board.addPiece(bullpen.getSelectedPiece(), destination);

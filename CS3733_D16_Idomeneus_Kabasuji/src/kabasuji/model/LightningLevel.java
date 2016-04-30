@@ -11,6 +11,13 @@ public class LightningLevel extends Level {
 		currentTime = 0;
 	}
 	
+	public Level copy()
+	{
+		LightningLevel l = new LightningLevel((LightningBoard)board.copy(), bullpen.copy(), timeLimit);
+		l.setLocked(false);
+		return l;
+	}
+	
 	public void incrementCurrentTime() {
 		currentTime += 1;
 	}

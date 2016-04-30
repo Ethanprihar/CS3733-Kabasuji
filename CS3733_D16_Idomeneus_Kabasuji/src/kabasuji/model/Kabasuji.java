@@ -27,6 +27,21 @@ public class Kabasuji {
 		return levels;
 	}
 
+	public void loadTestLevels()
+	{
+		try
+		{
+			FileInputStream saveFile = new FileInputStream("testLevels.data");
+			ObjectInputStream save = new ObjectInputStream(saveFile);
+			levels = (ArrayList<Level>) save.readObject();
+			save.close();
+		}
+		catch (Exception exc)
+		{
+			exc.printStackTrace(); // If there was an error, print the info.
+		}
+	}
+	
 	// getter for current Screen
 	public int getCurrentScreen() {
 		return currentScreen;

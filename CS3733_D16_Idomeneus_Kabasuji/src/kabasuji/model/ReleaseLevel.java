@@ -11,6 +11,13 @@ public class ReleaseLevel extends Level {
 		movesUsed = 0; // initialize the moves used to 0
 	}
 	
+	public Level copy()
+	{
+		ReleaseLevel l = new ReleaseLevel((ReleaseBoard)board.copy(), bullpen.copy(), maxMoves);
+		l.setLocked(false);
+		return l;
+	}
+	
 	public Integer getEndCondition()
 	{
 		return maxMoves;

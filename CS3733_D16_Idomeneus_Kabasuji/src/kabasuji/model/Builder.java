@@ -107,29 +107,51 @@ public class Builder
 		
 		
 		selectedLevel.setEndCondition(endCondition);
-		int valid = 0;
-		int invalid = 0;
-		int hint = 0;
-		int nothint = 0;
-		for(int i=0; i<selectedLevel.getBoard().getTiles().length; i++)
-		{
-			for(int j=0; j<selectedLevel.getBoard().getTiles().length; j++)
-			{
-				if(selectedLevel.getBoard().getTile(i,j).isValid())
-					valid++;
-				else
-					invalid++;
-				if(selectedLevel.getBoard().getTile(i,j).isHint())
-					hint++;
-				else
-					nothint++;
-			}
-		}
-		System.out.println("hints: " + hint + "    not hints: " + nothint + "    valid: " + valid + "    invalid: " + invalid);
 		if (!levels.contains(selectedLevel))
 			levels.add(selectedLevel);
 		numOfPieces = new int[35];
 		System.out.println("Printing levels.size() for some reason: " + levels.size());
+	}
+	
+	public void maketestLevel(int[] numOfPiecesOnLoad)
+	{
+		ArrayList<Level> testLevels = new ArrayList<Level>();
+		Level testLevel = selectedLevel.copy();
+		
+		if(!(testLevel.getEndCondition() > 0))		//If this is being saved for the first time
+		{		
+			for(int i=0; i<35; i++)
+			{
+				for(int j=0; j<numOfPieces[i]; j++)
+				{
+					testLevel.getBullpen().addPiece(pieces[i].copy());
+				}
+			}
+		}
+		else
+		{
+			for(int i=0; i<35; i++)
+			{
+				for(int j=numOfPiecesOnLoad[i]; j<numOfPieces[i]; j++)
+				{
+					testLevel.getBullpen().addPiece(pieces[i].copy());
+				}
+			}
+		}
+		testLevel.setEndCondition(endCondition);
+		testLevels.add(testLevel);
+		try
+		{
+			FileOutputStream saveFile = new FileOutputStream("testLevels.data");
+			ObjectOutputStream save = new ObjectOutputStream(saveFile);
+			save.reset();
+			save.writeObject(testLevels);
+			save.close();
+		}
+		catch (Exception exc)
+		{
+			//exc.printStackTrace(); // If there was an error, print the info.
+		}
 	}
 	
 	public void deleteLevel()
