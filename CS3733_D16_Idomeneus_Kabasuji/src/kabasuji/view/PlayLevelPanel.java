@@ -66,6 +66,9 @@ public class PlayLevelPanel extends JPanel {
 	JLabel timeLeftNum;
 
 	JLabelIcon background;
+	
+	/** button parameters **/
+	int btnsidelength = 70;
 
 	/**
 	 * Construct PlayLevelPanel.
@@ -147,43 +150,27 @@ public class PlayLevelPanel extends JPanel {
 		add(zoompiece);
 
 		// create a flip horizontal button
-		fliphbtn = new JLabelIcon("generalbutton.png", 70, 70);
+		fliphbtn = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength, "Flip" + "<br>" + "Horizontal");
 		fliphbtn.setLocation((int) (Screen.width * 0.52) + (int) (fliphbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.05));
-		JLabel fliphlbl = new JLabel("<html>Flip<br>Horizontal</html>", SwingConstants.CENTER);
-		fliphlbl.setBounds(0, 0, 70, 70);
-		fliphlbl.setFont(new Font("Onyx", Font.BOLD, 18));
-		fliphbtn.add(fliphlbl);
 		add(fliphbtn);
 
 		// create a flip vertical button
-		flipvbtn = new JLabelIcon("generalbutton.png", 70, 70);
+		flipvbtn = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength, "Flip" + "<br>" + "Vertical");
 		flipvbtn.setLocation((int) (Screen.width * 0.62) + (int) (fliphbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.05));
-		JLabel flipvlbl = new JLabel("<html>Flip<br>Vertical</html>", SwingConstants.CENTER);
-		flipvlbl.setBounds(0, 0, 70, 70);
-		flipvlbl.setFont(new Font("Onyx", Font.BOLD, 18));
-		flipvbtn.add(flipvlbl);
 		add(flipvbtn);
 
 		// create a rotate left button
-		rotatelbtn = new JLabelIcon("generalbutton.png", 70, 70);
+		rotatelbtn = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength, "Rotate" + "<br>" + "Left");
 		rotatelbtn.setLocation((int) (Screen.width * 0.52) + (int) (rotatelbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.18));
-		JLabel rotatellbl = new JLabel("<html>Rotate<br>Left</html>", SwingConstants.CENTER);
-		rotatellbl.setBounds(0, 0, 70, 70);
-		rotatellbl.setFont(new Font("Onyx", Font.BOLD, 18));
-		rotatelbtn.add(rotatellbl);
 		add(rotatelbtn);
 
 		// create a rotate right button
-		rotaterbtn = new JLabelIcon("generalbutton.png", 70, 70);
+		rotaterbtn = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength, "Rotate" + "<br>" + "Right");
 		rotaterbtn.setLocation((int) (Screen.width * 0.62) + (int) (rotatelbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.18));
-		JLabel rotaterlbl = new JLabel("<html>Rotate<br>Right</html>", SwingConstants.CENTER);
-		rotaterlbl.setBounds(0, 0, 70, 70);
-		rotaterlbl.setFont(new Font("Onyx", Font.BOLD, 18));
-		rotaterbtn.add(rotaterlbl);
 		add(rotaterbtn);
 
 		if (type == 0) {
