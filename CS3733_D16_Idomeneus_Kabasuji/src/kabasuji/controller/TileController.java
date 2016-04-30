@@ -174,6 +174,18 @@ public class TileController extends MouseAdapter {
 				}
 			}
 		}
+		
+		// If the number of stars are 3, display the winning screen
+		int currNumStars1 = kabasuji.getSelectedLevel().getStars();
+		if (currNumStars1 == 3){
+			try {
+			    Thread.sleep(100);                 //1000 milliseconds is one second.
+			} catch(InterruptedException ex) {
+			    Thread.currentThread().interrupt();
+			}
+			panel.winningScreen();
+		}
+		panel.repaint();
 	}
 
 	public void mouseEntered(MouseEvent e) {
