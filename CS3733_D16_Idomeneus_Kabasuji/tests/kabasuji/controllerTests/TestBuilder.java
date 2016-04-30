@@ -8,6 +8,7 @@ import kabasuji.model.Screen;
 import kabasuji.testUtilities.TestCaseHelper;
 import kabasuji.view.SplashWindow;
 import levelbuilder.view.TopLevelApplicationBuilder;
+import levelbuilder.view.BuilderMainMenu;
 
 public class TestBuilder extends TestCaseHelper {
 	TopLevelApplicationBuilder frame;
@@ -26,16 +27,35 @@ public class TestBuilder extends TestCaseHelper {
 	}
 
 	public void testBuilderBoard() {
+
+		try {
+			setup();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		System.out.println("here");
 		// mouse pressed to build new level (relies on size of button being 70 x
-		// 70
-		MouseEvent cp = createPressed(frame.contentPane, (int) (Screen.width - 70) / 2, (int) Screen.height / 2);
+		// 70 buildermainlbl[i]
+
+		try {
+			MouseEvent cp = createPressed(((BuilderMainMenu) frame.contentPane).getBuildButton(),
+					((BuilderMainMenu) frame.contentPane).getBuildButton().getX(),
+					((BuilderMainMenu) frame.contentPane).getBuildButton().getY());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		// add in the size of the board
-		
+
 		// select puzzle mode to test first
-		MouseEvent puzz = createPressed(frame.contentPane, (int) (Screen.width + ((0 - 70/5 - 2)*70)/2), (int) (Screen.height)/2);
-		
-		
+		try {
+			MouseEvent puzz = createPressed(frame.contentPane, (int) (Screen.width + ((0 - 70 / 5 - 2) * 70) / 2),
+					(int) (Screen.height) / 2);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 

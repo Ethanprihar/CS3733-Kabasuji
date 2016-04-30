@@ -24,6 +24,7 @@ public class BuilderLevelSelect extends JPanel {
 	/** Level Button GUI elements **/
 	JLabelIcon[] levelselectbtn;
 	JLabel[] buttonlbl;
+	JLabelIcon mainmenubtn;
 
 	/** dimensions of level button array **/
 	int row;
@@ -81,7 +82,7 @@ public class BuilderLevelSelect extends JPanel {
 			}
 		}
 		
-		JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", 70, 70);
+		mainmenubtn = new JLabelIcon("generalbutton.png", 70, 70);
 		mainmenubtn.setLocation((int) ((Screen.width - mainmenubtn.getSize().getWidth()) / 2),
 				(int) (Screen.height * .8));
 		mainmenubtn.addMouseListener(new GoToMainMenuBuilderController(builder, app, mainmenubtn));
@@ -90,6 +91,20 @@ public class BuilderLevelSelect extends JPanel {
 		mainmenulbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		mainmenubtn.add(mainmenulbl);
 		background.add(mainmenubtn);
+	}
+	
+	public JLabelIcon getMainMenuButton() {
+		return mainmenubtn;
+	}
+	
+	public JLabelIcon getLevelSelectButton(int i) {
+		if((i >= 0) && (i < builder.getLevels().size())) {
+			return levelselectbtn[i];
+		}
+		else {
+			System.out.println("Level Select Index out of bounds");
+			return levelselectbtn[0];
+		}
 	}
 	
 }

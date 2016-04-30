@@ -16,6 +16,8 @@ import javax.swing.SwingConstants;
 public class BuilderLevelMode extends JPanel {
 	Builder builder;
 	TopLevelApplicationBuilder app;
+	JLabelIcon mainmenubtn;
+	JLabelIcon[] buildermainbtn;
 
 	/**
 	 * Create the Main Menu Panel.
@@ -32,7 +34,7 @@ public class BuilderLevelMode extends JPanel {
 		add(background);
 		
 		// Create an array of JLabelIcon for the buttons
-		JLabelIcon[] buildermainbtn = new JLabelIcon[3];
+		buildermainbtn = new JLabelIcon[3];
 		
 		// Create an array of JLabels for the buttons
 		JLabel[] buildermainlbl = new JLabel[3];
@@ -65,7 +67,7 @@ public class BuilderLevelMode extends JPanel {
 			background.add(buildermainbtn[i]);
 		}
 		
-		JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", 70, 70);
+		mainmenubtn = new JLabelIcon("generalbutton.png", 70, 70);
 		
 		mainmenubtn.setLocation(
 				(int) (Screen.width + ((3 - mainmenubtn.getSize().getWidth()/5 - 2)*mainmenubtn.getSize().getWidth())/2),
@@ -78,4 +80,20 @@ public class BuilderLevelMode extends JPanel {
 		mainmenubtn.addMouseListener(new GoToMainMenuBuilderController(builder, app, mainmenubtn));
 		background.add(mainmenubtn);
 	}	
+	
+	public JLabelIcon getMainMenuButton() {
+		return mainmenubtn;
+	}
+	
+	public JLabelIcon getPuzzleButton() {
+		return buildermainbtn[0];
+	}
+	
+	public JLabelIcon getLightningButton() {
+		return buildermainbtn[1];
+	}
+	
+	public JLabelIcon getReleaseButton() {
+		return buildermainbtn[2];
+	}
 }

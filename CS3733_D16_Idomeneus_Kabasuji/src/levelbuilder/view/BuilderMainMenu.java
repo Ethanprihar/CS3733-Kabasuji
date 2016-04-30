@@ -15,6 +15,9 @@ import javax.swing.SwingConstants;
 public class BuilderMainMenu extends JPanel {
 	Builder builder;
 	TopLevelApplicationBuilder app;
+	
+	// Create an array of JLabelIcon for the buttons
+	JLabelIcon[] buildermainbtn = new JLabelIcon[2];
 
 	/**
 	 * Create the Main Menu Panel.
@@ -29,9 +32,6 @@ public class BuilderMainMenu extends JPanel {
 		JLabelIcon background = new JLabelIcon("BuilderTitleScreen.png",Screen.width,Screen.height);
 		background.setBounds(0, 0, Screen.width, Screen.height);
 		add(background);
-		
-		// Create an array of JLabelIcon for the buttons
-		JLabelIcon[] buildermainbtn = new JLabelIcon[2];
 		
 		// Create an array of JLabels for the buttons
 		JLabel[] buildermainlbl = new JLabel[2];
@@ -60,6 +60,14 @@ public class BuilderMainMenu extends JPanel {
 		
 		// Create a mouse listener for the load level button
 		buildermainbtn[1].addMouseListener(new LoadLevelsBuilderController(builder, app, buildermainbtn[1]));
+	}
+	
+	public JLabelIcon getBuildButton() {
+		return buildermainbtn[0];
+	}
+	
+	public JLabelIcon getLoadButton() {
+		return buildermainbtn[1];
 	}
 	
 }
