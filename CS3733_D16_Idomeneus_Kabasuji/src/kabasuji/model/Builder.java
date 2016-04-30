@@ -82,6 +82,7 @@ public class Builder
 	
 	public void saveLevel(int[] numOfPiecesOnLoad)
 	{
+		selectedLevel.clearBullpen();
 		if(!(selectedLevel.getEndCondition() > 0))		//If this is being saved for the first time
 		{		
 			for(int i=0; i<35; i++)
