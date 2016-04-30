@@ -253,28 +253,6 @@ public class PlayLevelPanel extends JPanel {
 			mainmenubtn.addMouseListener(new GoToMainMenuController(kabasuji, app, mainmenubtn));
 			add(mainmenubtn);
 		}
-
-//		if (type == 1) {
-//
-//			JLabelIcon returnBtn = new JLabelIcon("generalbutton.png", 70, 70);
-//			returnBtn.setLocation((int) (Screen.width * 0.80) + (int) (rotatelbtn.getSize().getWidth() / 2),
-//					(int) (Screen.height * .6));
-//			JLabel returnLbl = new JLabel("<html>Back</html>", SwingConstants.CENTER);
-//			returnLbl.setBounds(0, 0, 70, 70);
-//			returnLbl.setFont(new Font("Onyx", Font.BOLD, 18));
-//			returnBtn.add(returnLbl);
-//			Builder builder = new Builder();
-//			TopLevelApplicationBuilder app1 = new TopLevelApplicationBuilder(builder);
-//			System.out.println("I am in back button");
-//			// JTextField nothing = new JTextField("");
-//			returnBtn.addMouseListener(new GoToMainMenuBuilderController(builder, app1, returnBtn));
-//			add(returnBtn);
-//			System.out.println(builder.getLevels().size());
-//		}
-		
-		/** Star JLabelIcon (Initially display no stars ) **/
-
-		// add BoardView and BullpenView elements to PlayLevelPanel
 		add(bv);
 		add(bpv);
 		setBoardView(bv);
