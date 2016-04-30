@@ -4,10 +4,13 @@ import javax.swing.JComponent;
 import java.awt.event.MouseEvent;
 
 import kabasuji.model.Builder;
+import kabasuji.model.PuzzleLevel;
 import kabasuji.model.Screen;
 import kabasuji.testUtilities.TestCaseHelper;
+import kabasuji.view.JLabelIcon;
 import kabasuji.view.SplashWindow;
 import levelbuilder.view.TopLevelApplicationBuilder;
+import levelbuilder.view.BuilderLevelMode;
 import levelbuilder.view.BuilderMainMenu;
 
 public class TestBuilder extends TestCaseHelper {
@@ -34,15 +37,18 @@ public class TestBuilder extends TestCaseHelper {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		System.out.println("here");
-		// mouse pressed to build new level (relies on size of button being 70 x
-		// 70 buildermainlbl[i]
-
+		
+		BuilderMainMenu test = new BuilderMainMenu(builder, frame);
+		
+		JLabelIcon testBtn = test.getBuildButton();
+		
+		System.out.println(testBtn.getSize().getWidth());
+		System.out.println(testBtn.getSize().getHeight());
+		
 		try {
-			MouseEvent cp = createPressed(((BuilderMainMenu) frame.contentPane).getBuildButton(),
-					((BuilderMainMenu) frame.contentPane).getBuildButton().getX(),
-					((BuilderMainMenu) frame.contentPane).getBuildButton().getY());
+			MouseEvent cp = createPressed(testBtn, 0, 0);
+			testBtn.dispatchEvent(cp);
+			assertTrue(frame.getContentPane() instanceof BuilderLevelMode);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -50,12 +56,12 @@ public class TestBuilder extends TestCaseHelper {
 		// add in the size of the board
 
 		// select puzzle mode to test first
-		try {
-			MouseEvent puzz = createPressed(frame.contentPane, (int) (Screen.width + ((0 - 70 / 5 - 2) * 70) / 2),
-					(int) (Screen.height) / 2);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		try {
+//			MouseEvent puzz = createPressed(frame.contentPane, (int) (Screen.width + ((0 - 70 / 5 - 2) * 70) / 2),
+//					(int) (Screen.height) / 2);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 
 	}
 
@@ -89,9 +95,9 @@ public class TestBuilder extends TestCaseHelper {
 
 	public void testLoadLevelsBuilder() {
 
-		// mouse pressed to load level (relies on size of button being70x70
-		MouseEvent cp = createPressed(frame.contentPane, (int) (Screen.width - 70) / 2,
-				(int) (3 * 70 + Screen.height) / 2);
+//		// mouse pressed to load level (relies on size of button being70x70
+//		MouseEvent cp = createPressed(frame.contentPane, (int) (Screen.width - 70) / 2,
+//				(int) (3 * 70 + Screen.height) / 2);
 
 	}
 
