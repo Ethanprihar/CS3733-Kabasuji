@@ -10,7 +10,8 @@ import kabasuji.view.TopLevelApplication;
 import misc.MusicPlayer;
 
 public class Main {
-	/**
+	/*
+	 * 
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
@@ -18,7 +19,7 @@ public class Main {
 		Kabasuji kabasuji = new Kabasuji();
 		TopLevelApplication frame = new TopLevelApplication(kabasuji);
 		// start splash screen
-		new MusicPlayer("unity.wav").setVolume();
+		new MusicPlayer("hopesanddreams.wav").setVolume();
 		// new SplashWindow();
 		// after splash screen ends, show game
 		frame.setVisible(true);
