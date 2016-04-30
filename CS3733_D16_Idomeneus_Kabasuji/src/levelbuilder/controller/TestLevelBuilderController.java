@@ -1,13 +1,19 @@
 package levelbuilder.controller;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import kabasuji.controller.moves.ChangeScreenMove;
 import kabasuji.model.Builder;
 import kabasuji.model.Kabasuji;
+import kabasuji.model.Piece;
 import kabasuji.model.Screen;
 import kabasuji.view.BoardView;
 import kabasuji.view.BullpenView;
@@ -53,7 +59,7 @@ public class TestLevelBuilderController extends MouseAdapter {
 	 */
 	public void mousePressed(MouseEvent me) {
 	/*** MODEL CHANGES ***/
-		
+		System.out.println("I am in Test Level again");
 		builder.setEndCondition(Integer.parseInt(ec.getText()));
 		builder.saveLevel(numOfPiecesOnLoad);
 
@@ -65,16 +71,18 @@ public class TestLevelBuilderController extends MouseAdapter {
 		TopLevelApplication app1 = new TopLevelApplication(kabasuji);
 
 		// Created ChangeScreenMove and input desired screen
-		ChangeScreenBuilderMove gtsm = new ChangeScreenBuilderMove(Screen.PlayLevel);
+		//ChangeScreenBuilderMove gtsm = new ChangeScreenBuilderMove(Screen.PlayLevel);
 
 		// Attempt to execute action on model
-		if (gtsm.execute(builder)) {
+		//if (gtsm.execute(builder)) {
 			
 			kabasuji.loadLevel(); 
 			
 			// first make the foundation panel and pass model and container
 			// panel
 			PlayLevelPanel plp = new PlayLevelPanel(kabasuji, app1, 1);
+			
+			System.out.println("I am in Test Level again");
 
 			// create components of panel and pass model and container panel
 			BullpenView bpv = new BullpenView(kabasuji, plp, 4,
@@ -94,11 +102,32 @@ public class TestLevelBuilderController extends MouseAdapter {
 
 			// repaint the PlayLevelPanel
 			plp.repaint();
-
+			
+			System.out.println(kabasuji.selectedLevel.getBullpen().getPieces().size());
 			// set the content panel of container to contain PlayLevelPanel
-			app.setContentPanel(plp);
+			//app.setContentPanel(plp);
+			
+			JFrame frame = new JFrame("TestWindow");
+			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+			double width = screenSize.getWidth();
+			double height = screenSize.getHeight();
+			int x0 = (int) (width - Screen.width)/2;
+			int y0 = (int) (height-Screen.height)/2;
+			frame.setBounds(x0,y0,Screen.width,Screen.height);
+			// not resizable
+			frame.setResizable(false);
+			frame.setVisible(true);
+			frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			plp.setBounds(0,0,Screen.width,Screen.height);
+			frame.setContentPane(plp);
+			frame.repaint();
+			
+//			ArrayList<Piece> pieces = builder.getSelectedLevel().getBullpen().getPieces();
+//			for (int i = 0; i < pieces.size(); i++){
+//				pieces.set(i, null);
+//			}
 		}
-	}
+	//}
 	public void mouseEntered(MouseEvent e) {
 		button.setImg("generalhoverbutton.png");
 	}

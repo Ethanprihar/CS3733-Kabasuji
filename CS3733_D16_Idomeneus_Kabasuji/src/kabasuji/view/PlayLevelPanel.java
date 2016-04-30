@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import kabasuji.controller.BullpenController;
 import kabasuji.controller.FlipSelectedPieceBullpenController;
 import kabasuji.controller.GoToMainMenuController;
+import kabasuji.controller.LosingScreenController;
 import kabasuji.controller.NextLevelController;
 import kabasuji.controller.ResetLevelController;
 import kabasuji.controller.RotateSelectedPieceBullpenController;
@@ -40,6 +41,8 @@ public class PlayLevelPanel extends JPanel {
 	Board board;
 	Bullpen bullpen;
 	int type;
+	
+	PlayLevelPanel panel;
 
 	Timer timer; // Timer used for Lightning Mode
 
@@ -96,6 +99,7 @@ public class PlayLevelPanel extends JPanel {
 				if (!((LightningLevel) kabasuji.getSelectedLevel()).hasTimeLeft()) {
 					// stop the timer
 					timer.stop();
+					nothing();
 				} else { // otherwise increment the current time and
 							// refresh the gui
 					((LightningLevel) kabasuji.getSelectedLevel()).incrementCurrentTime();
@@ -106,6 +110,12 @@ public class PlayLevelPanel extends JPanel {
 		timer = new Timer(delay, taskPerformer);
 		timer.start();
 
+	}
+	
+	public void nothing(){
+		if ((kabasuji.getSelectedLevel().getStars()) == 0){
+			this.losingScreen();
+		}
 	}
 
 	public void stopTimer() {
@@ -257,24 +267,24 @@ public class PlayLevelPanel extends JPanel {
 			add(mainmenubtn);
 		}
 
-		if (type == 1) {
-
-			JLabelIcon returnBtn = new JLabelIcon("generalbutton.png", 70, 70);
-			returnBtn.setLocation((int) (Screen.width * 0.80) + (int) (rotatelbtn.getSize().getWidth() / 2),
-					(int) (Screen.height * .6));
-			JLabel returnLbl = new JLabel("<html>Back</html>", SwingConstants.CENTER);
-			returnLbl.setBounds(0, 0, 70, 70);
-			returnLbl.setFont(new Font("Onyx", Font.BOLD, 18));
-			returnBtn.add(returnLbl);
-			Builder builder = new Builder();
-			TopLevelApplicationBuilder app1 = new TopLevelApplicationBuilder(builder);
-			System.out.println("I am in back button");
-			// JTextField nothing = new JTextField("");
-			returnBtn.addMouseListener(new GoToMainMenuBuilderController(builder, app1, returnBtn));
-			add(returnBtn);
-			System.out.println(builder.getLevels().size());
-		}
-
+//		if (type == 1) {
+//
+//			JLabelIcon returnBtn = new JLabelIcon("generalbutton.png", 70, 70);
+//			returnBtn.setLocation((int) (Screen.width * 0.80) + (int) (rotatelbtn.getSize().getWidth() / 2),
+//					(int) (Screen.height * .6));
+//			JLabel returnLbl = new JLabel("<html>Back</html>", SwingConstants.CENTER);
+//			returnLbl.setBounds(0, 0, 70, 70);
+//			returnLbl.setFont(new Font("Onyx", Font.BOLD, 18));
+//			returnBtn.add(returnLbl);
+//			Builder builder = new Builder();
+//			TopLevelApplicationBuilder app1 = new TopLevelApplicationBuilder(builder);
+//			System.out.println("I am in back button");
+//			// JTextField nothing = new JTextField("");
+//			returnBtn.addMouseListener(new GoToMainMenuBuilderController(builder, app1, returnBtn));
+//			add(returnBtn);
+//			System.out.println(builder.getLevels().size());
+//		}
+		
 		/** Star JLabelIcon (Initially display no stars ) **/
 
 		// add BoardView and BullpenView elements to PlayLevelPanel
@@ -501,7 +511,7 @@ public class PlayLevelPanel extends JPanel {
 		// create a main menu button
 		remove(background);
 		JLabelIcon mainMenuButton = new JLabelIcon("general3button.png", 70, 70);
-		mainMenuButton.setLocation((int) (Screen.width * 0.80) + (int) (mainMenuButton.getSize().getWidth() / 2),
+		mainMenuButton.setLocation((int) (Screen.width * 0.85) + (int) (mainMenuButton.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.18));
 		JLabel mainMenuButtonLbl = new JLabel("<html>Main<br>Menu</html>", SwingConstants.CENTER);
 		mainMenuButtonLbl.setBounds(0, 0, 70, 70);
@@ -509,17 +519,6 @@ public class PlayLevelPanel extends JPanel {
 		mainMenuButton.add(mainMenuButtonLbl);
 		mainMenuButton.addMouseListener(new GoToMainMenuController(kabasuji, app, mainMenuButton));
 		add(mainMenuButton);
-
-		// create a next level button
-		JLabelIcon nextLevelButton = new JLabelIcon("general3button.png", 70, 70);
-		nextLevelButton.setLocation((int) (Screen.width * 0.80) + (int) (nextLevelButton.getSize().getWidth() / 2),
-				(int) (Screen.height * 0.40));
-		JLabel nextLevelButtonLbl = new JLabel("<html>Next<br>Level</html>", SwingConstants.CENTER);
-		nextLevelButtonLbl.setBounds(0, 0, 70, 70);
-		nextLevelButtonLbl.setFont(new Font("Onyx", Font.BOLD, 18));
-		nextLevelButton.add(nextLevelButtonLbl);
-		nextLevelButton.addMouseListener(new NextLevelController(kabasuji, this, nextLevelButton));
-		add(nextLevelButton);
 		
 		repaint();
 		add(background);
