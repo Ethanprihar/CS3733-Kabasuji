@@ -59,6 +59,7 @@ public class BoardView extends JPanel {
 		col = board.getTiles()[0].length;
 		tile = new JLabelIcon[row * col];
 
+		//set layout null
 		setLayout(null);
 
 		// this is the largest length of the tile matrix
