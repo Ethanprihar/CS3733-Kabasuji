@@ -131,8 +131,10 @@ public class Kabasuji {
 
 	public void saveLevels() {
 		// if they improve their score
-		if (selectedLevel != null) {
-			if (selectedLevel.getStars() > selectedLevel.getHighScore()) {
+		if (selectedLevel != null)
+		{
+			if (selectedLevel.getStars() > selectedLevel.getHighScore())
+			{
 				int temp = selectedLevel.getStars();
 				if (!(levels.size() <= levels.indexOf(selectedLevel) + 1)) {
 					boolean makeUnlocked = false;
@@ -142,6 +144,7 @@ public class Kabasuji {
 					if (makeUnlocked)
 						levels.get(levels.indexOf(selectedLevel) + 1).setLocked(false);
 				}
+				resetLevel();
 				selectedLevel.setLocked(false);
 				selectedLevel.setHighScore(temp);
 			}
