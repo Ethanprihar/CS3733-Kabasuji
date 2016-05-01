@@ -187,8 +187,8 @@ public class TileController extends MouseAdapter {
 		}
 		panel.repaint();
 		
-		// If the number of moves become 0, display a lose screen
-		if (kabasuji.getSelectedLevel() instanceof PuzzleLevel) {
+		// If the number of moves become 0, display a lose screen in Puzzle Level
+		if ((kabasuji.getSelectedLevel() instanceof PuzzleLevel)) {
 			int getMoves = ((PuzzleLevel) kabasuji.getSelectedLevel()).getMovesUsed();
 			int maxMoves = ((PuzzleLevel) kabasuji.getSelectedLevel()).getMaxMoves();
 			if ((getMoves == maxMoves) && (currNumStars1 == 0)){
@@ -201,7 +201,21 @@ public class TileController extends MouseAdapter {
 			}
 			panel.repaint();
 		}
-		// TODO : For the release level
+		
+		// If the number of moves become 0, display a lose screen in Release Level
+		if ((kabasuji.getSelectedLevel() instanceof ReleaseLevel)) {
+			int getMoves = ((ReleaseLevel) kabasuji.getSelectedLevel()).getMovesUsed();
+			int maxMoves = ((ReleaseLevel) kabasuji.getSelectedLevel()).getMaxMoves();
+			if ((getMoves == maxMoves) && (currNumStars1 == 0)){
+				try {
+				    Thread.sleep(100);                 //1000 milliseconds is one second.
+				} catch(InterruptedException ex) {
+				    Thread.currentThread().interrupt();
+				}
+				panel.losingScreen();
+			}
+			panel.repaint();
+		}
 	}
 
 	public void mouseEntered(MouseEvent e) {

@@ -59,7 +59,7 @@ public class TestLevelBuilderController extends MouseAdapter {
 	 */
 	public void mousePressed(MouseEvent me) {
 	/*** MODEL CHANGES ***/
-		builder.setEndCondition(100);
+		builder.setEndCondition(1000);
 		builder.makeTestLevel(numOfPiecesOnLoad);
 		Kabasuji kabasuji = new Kabasuji();
 		kabasuji.loadTestLevels();
