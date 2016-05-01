@@ -13,6 +13,7 @@ import kabasuji.view.JLabelIcon;
 import kabasuji.view.SplashWindow;
 import levelbuilder.view.TopLevelApplicationBuilder;
 import levelbuilder.view.BuilderLevelMode;
+import levelbuilder.view.BuilderLevelSelect;
 import levelbuilder.view.BuilderLightningLevelPanel;
 import levelbuilder.view.BuilderMainMenu;
 import levelbuilder.view.BuilderPuzzleLevelPanel;
@@ -555,9 +556,9 @@ public class TestBuilder extends TestCaseHelper {
 		// check that the piece count is back at 1
 		assertEquals(testPuzzLev.getNumPieces(6), "1");
 		assertEquals(testPuzzLev.getNumStrightPieces(), "1");
-		
+
 		// add 5 more of the pieces
-		for(int i = 0; i < 5; i++) {
+		for (int i = 0; i < 5; i++) {
 			// try adding the new piece
 			try {
 				MouseEvent cp = createPressed(pieceBtn, 0, 0);
@@ -566,11 +567,20 @@ public class TestBuilder extends TestCaseHelper {
 				e.printStackTrace();
 			}
 		}
-		
+
 		// check that there are now 6 straight pieces in the bullpen
 		assertEquals(testPuzzLev.getNumPieces(6), "6");
 		assertEquals(testPuzzLev.getNumStrightPieces(), "6");
-		
+
+		// try testing the level
+		JLabelIcon testBtn1 = testPuzzLev.getTestButton();
+		try {
+			MouseEvent cp = createPressed(testBtn1, 0, 0);
+			testBtn1.dispatchEvent(cp);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		// try saving the level
 		JLabelIcon saveBtn = testPuzzLev.getSaveButton();
 		try {
@@ -579,14 +589,12 @@ public class TestBuilder extends TestCaseHelper {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		// check that we are returned to the main menu
 		assertTrue(frame.getContentPane() instanceof BuilderMainMenu);
 
 	}
-	
-	
-	
+
 	/**
 	 * Tests saving a lightning level
 	 */
@@ -709,9 +717,9 @@ public class TestBuilder extends TestCaseHelper {
 
 		// check that the piece count is back at 1
 		assertEquals(testLightLev.getNumPieces(6), "1");
-		
+
 		// add 5 more of the pieces
-		for(int i = 0; i < 5; i++) {
+		for (int i = 0; i < 5; i++) {
 			// try adding the new piece
 			try {
 				MouseEvent cp = createPressed(pieceBtn, 0, 0);
@@ -720,10 +728,19 @@ public class TestBuilder extends TestCaseHelper {
 				e.printStackTrace();
 			}
 		}
-		
+
 		// check that there are now 6 straight pieces in the bullpen
 		assertEquals(testLightLev.getNumPieces(6), "6");
-		
+
+		// try testing the level
+		JLabelIcon testBtn1 = testLightLev.getTestButton();
+		try {
+			MouseEvent cp = createPressed(testBtn1, 0, 0);
+			testBtn1.dispatchEvent(cp);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		// try saving the level
 		JLabelIcon saveBtn = testLightLev.getSaveButton();
 		try {
@@ -732,9 +749,65 @@ public class TestBuilder extends TestCaseHelper {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		// check that we are returned to the main menu
 		assertTrue(frame.getContentPane() instanceof BuilderMainMenu);
+
+		test = new BuilderMainMenu(builder, frame);
+
+		JLabelIcon loadBtn = test.getLoadButton();
+
+		try {
+			MouseEvent cp = createPressed(loadBtn, 0, 0);
+			loadBtn.dispatchEvent(cp);
+			assertTrue(frame.getContentPane() instanceof BuilderLevelSelect);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		// load the first level
+		BuilderLevelSelect levSelect = new BuilderLevelSelect(builder, frame);
+
+		// try returning to the main menu
+		JLabelIcon gotomain = levSelect.getMainMenuButton();
+		try {
+			MouseEvent cp = createPressed(gotomain, 0, 0);
+			gotomain.dispatchEvent(cp);
+			assertTrue(frame.getContentPane() instanceof BuilderMainMenu);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		test = new BuilderMainMenu(builder, frame);
+
+		loadBtn = test.getLoadButton();
+
+		try {
+			MouseEvent cp = createPressed(loadBtn, 0, 0);
+			loadBtn.dispatchEvent(cp);
+			assertTrue(frame.getContentPane() instanceof BuilderLevelSelect);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		// load the first level
+		levSelect = new BuilderLevelSelect(builder, frame);
+
+		JLabelIcon firstLev = levSelect.getLevelSelectButton(0);
+		try {
+			MouseEvent cp = createPressed(loadBtn, 0, 0);
+			loadBtn.dispatchEvent(cp);
+			assertTrue(frame.getContentPane() instanceof BuilderLevelSelect);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		try {
+			tearDown();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
