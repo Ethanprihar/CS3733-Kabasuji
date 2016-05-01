@@ -24,11 +24,20 @@ public abstract class TestCaseHelper extends TestCase {
 	
 	/** x and y are coordinates in the whole container */
 	public MouseEvent createRightClick (JComponent container, int x, int y) {
-		MouseEvent me = new MouseEvent(container, MouseEvent.MOUSE_PRESSED, 
+		MouseEvent me = new MouseEvent(container, MouseEvent.BUTTON3, 
 				System.currentTimeMillis(), 0, 
 				x, y, 0, true);
 		return me;
 	}
+	
+	/** x and y are coordinates in the whole container */
+	public MouseEvent createLeftClick (JComponent container, int x, int y) {
+		MouseEvent me = new MouseEvent(container, MouseEvent.BUTTON1, 
+				System.currentTimeMillis(), 0, 
+				x, y, 0, true);
+		return me;
+	}
+	
 	
 	/** x and y are coordinates in the whole container */
 	public MouseEvent createReleased (JComponent container, int x, int y) {
