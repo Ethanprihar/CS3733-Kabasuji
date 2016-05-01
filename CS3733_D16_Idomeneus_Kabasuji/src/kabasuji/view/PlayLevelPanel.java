@@ -37,10 +37,11 @@ public class PlayLevelPanel extends JPanel {
 	Board board;
 	Bullpen bullpen;
 	int type;
-	
+
 	PlayLevelPanel panel;
 
 	Timer timer; // Timer used for Lightning Mode
+	int delay = 1000; // milliseconds
 
 	/** Boundaries associated **/
 	TopLevelApplication app;
@@ -62,7 +63,7 @@ public class PlayLevelPanel extends JPanel {
 	JLabel timeLeftNum;
 
 	JLabelIcon background;
-	
+
 	/** button parameters **/
 	int btnsidelength = 70;
 
@@ -82,65 +83,14 @@ public class PlayLevelPanel extends JPanel {
 		// set layout null
 		setLayout(null);
 		setBounds(0, 0, Screen.width, Screen.height);
-		
+
+		// setup timer
+		setupTimer();
+
 		// setup background
 		background = new JLabelIcon("starry_night.jpeg", Screen.width, Screen.height);
 		background.setBounds(0, 0, Screen.width, Screen.height);
 
-	}
-
-	/**
-	 * Starts the timer used in lightning mode
-	 */
-	public void timerStart() {
-
-		int delay = 1000; // milliseconds
-		ActionListener taskPerformer = new ActionListener() {
-			public void actionPerformed(ActionEvent evt) {
-
-				// If the player is out of time stop the timer
-				if (!((LightningLevel) kabasuji.getSelectedLevel()).hasTimeLeft()) {
-					// stop the timer
-					timer.stop();
-					displayLoseScreen();
-				} else { // otherwise increment the current time and
-							// refresh the gui
-					((LightningLevel) kabasuji.getSelectedLevel()).incrementCurrentTime();
-					setTimeLeftNum((Integer) ((LightningLevel) kabasuji.getSelectedLevel()).getTimeLeft());
-				}
-			}
-		};
-		timer = new Timer(delay, taskPerformer);
-		timer.start();
-
-	}
-	
-	public void displayLoseScreen(){
-		// Only if it is loaded in the player mode not the test level builder
-		if (type == 0){
-			if ((kabasuji.getSelectedLevel().getStars()) == 0){
-				this.losingScreen();
-			}
-		}
-	}
-
-	public void stopTimer() {
-		// check if the timer is null
-		if(timer != null) {
-			timer.stop();
-		}
-	}
-
-	public void resetTimer() {
-
-		// check if the level is a lightning level
-		if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
-
-			timer.stop(); // stop the old timer
-			// reset the timer
-			timerStart();
-			timer.restart();
-		}
 	}
 
 	/**
@@ -231,17 +181,20 @@ public class PlayLevelPanel extends JPanel {
 		}
 
 		if (type == 0) {
-			nextlevelbtn = new JLabelIcon("generallockedbutton.png", btnsidelength, btnsidelength,"Next" + "<br>" + "Level");
+			nextlevelbtn = new JLabelIcon("generallockedbutton.png", btnsidelength, btnsidelength,
+					"Next" + "<br>" + "Level");
 			nextlevelbtn.setLocation((int) (Screen.width * 0.74) + (int) (rotatelbtn.getSize().getWidth() / 2),
 					(int) (Screen.height * .6));
 			add(nextlevelbtn);
 
-			resetlevelbtn = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength,"Reset" + "<br>" + "Level");
+			resetlevelbtn = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength,
+					"Reset" + "<br>" + "Level");
 			resetlevelbtn.setLocation((int) (Screen.width * 0.74) + (int) (rotatelbtn.getSize().getWidth() / 2),
 					(int) (Screen.height * .73));
 			add(resetlevelbtn);
 
-			JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength,"Main" + "<br>" + "Menu");
+			JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength,
+					"Main" + "<br>" + "Menu");
 			mainmenubtn.setLocation((int) (Screen.width * 0.84) + (int) (rotatelbtn.getSize().getWidth() / 2),
 					(int) (Screen.height * .6));
 			mainmenubtn.addMouseListener(new GoToMainMenuController(kabasuji, app, mainmenubtn));
@@ -254,15 +207,6 @@ public class PlayLevelPanel extends JPanel {
 
 		// setup background canvas **
 		add(background);
-	}
-
-	public void startTimeLimit() {
-		// if in lightning mode make a new timer object
-		if (type == 0) {
-			if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
-				timerStart();
-			}
-		}
 	}
 
 	/**
@@ -287,12 +231,100 @@ public class PlayLevelPanel extends JPanel {
 	public ZoomPanel getZoomPanel() {
 		return zoompanel;
 	}
+
 	/**
 	 * Removes all components from zoompanel and updates.
 	 */
-	public void clearZoomPanel(){
+	public void clearZoomPanel() {
 		zoompanel.removeAll();
 		zoompanel.repaint();
+	}
+
+	public void displayLoseScreen() {
+		// Only if it is loaded in the player mode not the test level builder
+		if (type == 0) {
+			if ((kabasuji.getSelectedLevel().getStars()) == 0) {
+				this.losingScreen();
+			}
+		}
+	}
+	/********************* TIMER *************************/
+	/**
+	 * Setup Global Panel Timer object.
+	 */
+	public void setupTimer() {
+		// create repeated task for timer
+		ActionListener taskPerformer = new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+
+				// If the player is out of time stop the timer
+				if (!((LightningLevel) kabasuji.getSelectedLevel()).hasTimeLeft()) {
+					// stop the timer
+					timer.stop();
+					displayLoseScreen();
+				} else { // otherwise increment the current time and
+							// refresh the gui
+					((LightningLevel) kabasuji.getSelectedLevel()).incrementCurrentTime();
+					setTimeLeftNum((Integer) ((LightningLevel) kabasuji.getSelectedLevel()).getTimeLeft());
+				}
+			}
+		};
+		// create timer object
+		timer = new Timer(delay, taskPerformer);
+	}
+
+	/**
+	 * Starts the timer used in lightning mode
+	 */
+	public void timerStart() {
+		// start the timer
+		timer.start();
+
+	}
+
+	public void stopTimer() {
+		// check if the timer is null
+		if (timer != null) {
+			timer.stop();
+		}
+	}
+
+	public void resetTimer() {
+
+		// check if the level is a lightning level
+		if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
+			timer.stop(); // stop the old timer
+			timer.restart();
+		}
+	}
+
+	public void startTimeLimit() {
+		// if in lightning mode make a new timer object
+		if (type == 0) {
+			if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
+				timerStart();
+			}
+		}
+	}
+	/*********************** END OF TIMER ********************/
+	/**
+	 * Getter for JLabel timeLeftNum
+	 * 
+	 * @return
+	 */
+	public JLabel getTimeLeftNum() {
+		return timeLeftNum;
+	}
+
+	/**
+	 * Setter for JLabel timeLeftNum
+	 * 
+	 * @return
+	 */
+	public void setTimeLeftNum(Integer timeLeft) {
+		if (type == 0) {
+			timeLeftNum.setText(timeLeft.toString());
+		}
 	}
 
 	/**
@@ -312,26 +344,6 @@ public class PlayLevelPanel extends JPanel {
 	public void setMovesLeftNum(Integer movesLeft) {
 		if (type == 0) {
 			movesLeftNum.setText(movesLeft.toString());
-		}
-	}
-
-	/**
-	 * Getter for JLabel timeLeftNum
-	 * 
-	 * @return
-	 */
-	public JLabel getTimeLeftNum() {
-		return timeLeftNum;
-	}
-
-	/**
-	 * Setter for JLabel timeLeftNum
-	 * 
-	 * @return
-	 */
-	public void setTimeLeftNum(Integer timeLeft) {
-		if (type == 0) {
-			timeLeftNum.setText(timeLeft.toString());
 		}
 	}
 
@@ -426,18 +438,18 @@ public class PlayLevelPanel extends JPanel {
 	public Timer getTimer() {
 		return timer;
 	}
-	
+
 	// Display the winning screen
-	public void winningScreen(){
-		
+	public void winningScreen() {
+
 		// Only execute if it is in the player mode
-		if (type == 0){	
+		if (type == 0) {
 			removeAll();
 			// setup background canvas
 			JLabelIcon background = new JLabelIcon("winningScreen.jpg", Screen.width, Screen.height);
 			background.setBounds(0, 0, Screen.width, Screen.height);
 			add(background);
-			
+
 			// create a main menu button
 			remove(background);
 			JLabelIcon mainMenuButton = new JLabelIcon("general3button.png", 70, 70);
@@ -449,7 +461,7 @@ public class PlayLevelPanel extends JPanel {
 			mainMenuButton.add(mainMenuButtonLbl);
 			mainMenuButton.addMouseListener(new GoToMainMenuController(kabasuji, app, mainMenuButton));
 			add(mainMenuButton);
-	
+
 			// create a next level button
 			JLabelIcon nextLevelButton = new JLabelIcon("general3button.png", 70, 70);
 			nextLevelButton.setLocation((int) (Screen.width * 0.80) + (int) (nextLevelButton.getSize().getWidth() / 2),
@@ -460,29 +472,28 @@ public class PlayLevelPanel extends JPanel {
 			nextLevelButton.add(nextLevelButtonLbl);
 			nextLevelButton.addMouseListener(new NextLevelController(kabasuji, this, nextLevelButton));
 			add(nextLevelButton);
-			
+
 			repaint();
 			add(background);
-		}		
-		else {
+		} else {
 			// setup background canvas
 			JLabelIcon background = new JLabelIcon("starry_night.jpeg", Screen.width, Screen.height);
 			background.setBounds(0, 0, Screen.width, Screen.height);
 			add(background);
 		}
 	}
-	
-// Display the losing screen
-	public void losingScreen(){
-		
+
+	// Display the losing screen
+	public void losingScreen() {
+
 		// Only execute if it is in the player mode
-		if (type == 0){
+		if (type == 0) {
 			removeAll();
 			// setup background canvas
 			JLabelIcon background = new JLabelIcon("LosingScreen.jpg", Screen.width, Screen.height);
 			background.setBounds(0, 0, Screen.width, Screen.height);
 			add(background);
-			
+
 			// create a main menu button
 			remove(background);
 			JLabelIcon mainMenuButton = new JLabelIcon("general3button.png", 70, 70);
@@ -494,11 +505,10 @@ public class PlayLevelPanel extends JPanel {
 			mainMenuButton.add(mainMenuButtonLbl);
 			mainMenuButton.addMouseListener(new GoToMainMenuController(kabasuji, app, mainMenuButton));
 			add(mainMenuButton);
-			
+
 			repaint();
 			add(background);
-		}		
-		else {
+		} else {
 			// setup background canvas
 			JLabelIcon background = new JLabelIcon("starry_night.jpeg", Screen.width, Screen.height);
 			background.setBounds(0, 0, Screen.width, Screen.height);
