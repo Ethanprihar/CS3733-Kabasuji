@@ -12,6 +12,7 @@ import kabasuji.model.Board;
 import kabasuji.model.Builder;
 import kabasuji.model.Bullpen;
 import kabasuji.model.Kabasuji;
+import kabasuji.model.Level;
 import kabasuji.model.LightningLevel;
 import kabasuji.model.PuzzleLevel;
 import kabasuji.model.ReleaseLevel;
@@ -86,6 +87,10 @@ public class PlayLevelPanel extends JPanel {
 		// set layout null
 		setLayout(null);
 		setBounds(0, 0, Screen.width, Screen.height);
+		
+		// setup background
+		background = new JLabelIcon("starry_night.jpeg", Screen.width, Screen.height);
+		background.setBounds(0, 0, Screen.width, Screen.height);
 
 	}
 
@@ -173,7 +178,7 @@ public class PlayLevelPanel extends JPanel {
 				(int) (Screen.height * 0.18));
 		add(rotaterbtn);
 
-		if (type == 0) {
+		if (type == Level.Puzzle) {
 			// display moves left if in puzzle or release mode
 			if ((kabasuji.getSelectedLevel() instanceof PuzzleLevel)
 					|| (kabasuji.getSelectedLevel() instanceof ReleaseLevel)) {
@@ -224,7 +229,7 @@ public class PlayLevelPanel extends JPanel {
 			}
 		}
 
-		if (type == 0) {
+		if (type == Level.Puzzle) {
 			nextlevelbtn = new JLabelIcon("generallockedbutton.png", btnsidelength, btnsidelength,"Next" + "<br>" + "Level");
 			nextlevelbtn.setLocation((int) (Screen.width * 0.74) + (int) (rotatelbtn.getSize().getWidth() / 2),
 					(int) (Screen.height * .6));
@@ -247,8 +252,6 @@ public class PlayLevelPanel extends JPanel {
 		setBullpenView(bpv);
 
 		// setup background canvas **
-		background = new JLabelIcon("starry_night.jpeg", Screen.width, Screen.height);
-		background.setBounds(0, 0, Screen.width, Screen.height);
 		add(background);
 	}
 

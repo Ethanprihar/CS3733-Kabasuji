@@ -9,9 +9,9 @@ public abstract class Level implements Serializable{
 	int highScore;
 	
 	/** useful constants **/
-	final static int Puzzle = 0;
-	final static int Lighting = 1;
-	final static int Release = 2;
+	public final static int Puzzle = 0;
+	public final static int Lighting = 1;
+	public final static int Release = 2;
 	
 	Level(Board bd, Bullpen bp)
 	{

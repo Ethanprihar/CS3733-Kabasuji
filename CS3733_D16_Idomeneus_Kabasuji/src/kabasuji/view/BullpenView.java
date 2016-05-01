@@ -69,10 +69,12 @@ public class BullpenView extends JPanel {
 	 */
 	public BullpenView(Kabasuji kabasuji, PlayLevelPanel panel, int row, int col) {
 		this.kabasuji = kabasuji;
-		this.panel = panel;
-		
+		this.panel = panel;	
 		this.row = row;
 		this.col = col;
+		
+		setLayout(null);
+		setOpaque(true);
 
 	}
 
@@ -89,9 +91,6 @@ public class BullpenView extends JPanel {
 		// determine size of JLabelIcon[] and corresponding PieceView[]
 		this.imgpieces = new JLabelIcon[pieces.size()];
 		this.pieceview = new PieceView[pieces.size()];
-
-		setLayout(null);
-		setOpaque(true);
 
 		// this is the largest length of the tile matrix
 		// finds the smallest tile length

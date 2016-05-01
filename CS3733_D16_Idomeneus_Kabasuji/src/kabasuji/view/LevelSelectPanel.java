@@ -1,8 +1,6 @@
 package kabasuji.view;
 
 import javax.swing.JPanel;
-import javax.swing.OverlayLayout;
-
 import kabasuji.controller.GoToMainMenuController;
 import kabasuji.controller.SelectLevelController;
 import kabasuji.model.Kabasuji;
@@ -10,13 +8,6 @@ import kabasuji.model.LightningLevel;
 import kabasuji.model.PuzzleLevel;
 import kabasuji.model.ReleaseLevel;
 import kabasuji.model.Screen;
-
-import javax.swing.JLabel;
-import java.awt.Font;
-import java.awt.LayoutManager;
-
-import javax.swing.SwingConstants;
-import java.util.Random;
 
 @SuppressWarnings("serial")
 /**
@@ -43,7 +34,7 @@ public class LevelSelectPanel extends JPanel {
 	int starsidelength = 15;
 	int lvltypesidelength = 26;
 	int lvltypeiconoffsetx = (int) ((btnsidelength - lvltypesidelength) / 2);
-	int lvltypeiconoffsety = (int) (btnsidelength * 0.8);
+	int lvltypeiconoffsety = (int) (btnsidelength * 0.8); // start drawing at 80% of the image height
 
 	/**
 	 * Create the LevelSelectPanel.
@@ -68,15 +59,7 @@ public class LevelSelectPanel extends JPanel {
 				try {
 					boolean locked = kabasuji.levels.get(i * col + j).isLocked();
 
-					// Decide locked picture or not
-					String btnimg = "generalbutton.png";
-					if (locked) {
-						btnimg = "generallockedbutton.png";
-					}
-					levelselectbtn[i * col + j] = new JLabelIcon(btnimg, btnsidelength,
-							btnsidelength,"Level"+"<br>"+ (i * col + j + 1));
-					
-					// set location relative to background
+					/******************* Level Icon Display *******************************************/
 					String leveltypefn = "opaquetile.png";
 					if (kabasuji.getLevels().get(i * col + j) instanceof PuzzleLevel) {
 						leveltypefn = "puzzle.png";
@@ -90,13 +73,21 @@ public class LevelSelectPanel extends JPanel {
 							(int) (Screen.width / 6 * (j + 1) - btnsidelength / 2 + lvltypeiconoffsetx),
 							(int) (Screen.height / 12 * (i * 2 + 4) - btnsidelength / 2 + lvltypeiconoffsety));
 					add(leveltypeicons[i * col + j]);
-					
+					/*********************** Configure Level Select Button ****************************/
+					/****************** Determine Locked or Unlocked Button Display******************/
+					String btnimg = "generalbutton.png";
+					if (locked) {
+						btnimg = "generallockedbutton.png";
+					}
+					levelselectbtn[i * col + j] = new JLabelIcon(btnimg, btnsidelength, btnsidelength,
+							"Level" + "<br>" + (i * col + j + 1));
 					levelselectbtn[i * col + j].setLocation((int) (Screen.width / 6 * (j + 1) - btnsidelength / 2),
-							(int) (Screen.height / 12 * (i * 2 + 4) - btnsidelength / 2));				
+							(int) (Screen.height / 12 * (i * 2 + 4) - btnsidelength / 2));
 					levelselectbtn[i * col + j].addMouseListener(
 							new SelectLevelController(kabasuji, app, levelselectbtn[i * col + j], i * col + j + 1));
 					add(levelselectbtn[i * col + j]);
-
+					
+					
 					// get high score for particular level
 					int numhighscore = kabasuji.getLevels().get(i * col + j).getHighScore();
 					// set # stars and location on gui
@@ -114,13 +105,9 @@ public class LevelSelectPanel extends JPanel {
 			}
 		}
 		// return to main menu button created and set
-		JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength);
+		JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength, "Main"+"<br>"+"Menu");
 		mainmenubtn.setLocation((int) ((Screen.width - mainmenubtn.getSize().getWidth()) / 2),
 				(int) (Screen.height * .8));
-		JLabel mainmenulbl = new JLabel("<html>Main<br>Menu</html>", SwingConstants.CENTER);
-		mainmenulbl.setBounds(0, 0, btnsidelength, btnsidelength);
-		mainmenulbl.setFont(new Font("Onyx", Font.BOLD, 18));
-		mainmenubtn.add(mainmenulbl);
 		mainmenubtn.addMouseListener(new GoToMainMenuController(kabasuji, app, mainmenubtn));
 		add(mainmenubtn);
 
