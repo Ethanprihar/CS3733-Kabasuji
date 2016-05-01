@@ -176,7 +176,7 @@ public class PlayLevelPanel extends JPanel {
 				(int) (Screen.height * 0.18));
 		add(rotaterbtn);
 
-		if (type == Level.Puzzle) {
+		if (type == 0) {
 			// display moves left if in puzzle or release mode
 			if ((kabasuji.getSelectedLevel() instanceof PuzzleLevel)
 					|| (kabasuji.getSelectedLevel() instanceof ReleaseLevel)) {
@@ -227,7 +227,7 @@ public class PlayLevelPanel extends JPanel {
 			}
 		}
 
-		if (type == Level.Puzzle) {
+		if (type == 0) {
 			nextlevelbtn = new JLabelIcon("generallockedbutton.png", btnsidelength, btnsidelength,"Next" + "<br>" + "Level");
 			nextlevelbtn.setLocation((int) (Screen.width * 0.74) + (int) (rotatelbtn.getSize().getWidth() / 2),
 					(int) (Screen.height * .6));

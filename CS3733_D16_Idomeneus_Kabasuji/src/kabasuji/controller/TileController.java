@@ -37,7 +37,6 @@ public class TileController extends MouseAdapter {
 	JLabelIcon tile;
 
 	PlayLevelPanel panel;
-
 	BoardView boardview;
 	BullpenView bullpenview;
 
