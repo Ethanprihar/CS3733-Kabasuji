@@ -93,6 +93,7 @@ public class BuilderReleaseBoardController extends MouseAdapter {
 						tileToDisplay = tileToDisplay + Integer.toString(numberToPaint) + ".PNG";
 						tile.setImg(tileToDisplay);
 						builder.updateHistory();
+						//releaseLevelPanel.updateBoard();
 					}
 					else
 					{
@@ -117,37 +118,30 @@ public class BuilderReleaseBoardController extends MouseAdapter {
 						tileToDisplay = tileToDisplay + Integer.toString(numberToPaint) + "_h.PNG";
 						tile.setImg(tileToDisplay);
 						builder.updateHistory();
+						//releaseLevelPanel.updateBoard();
 					}
 
 				}
 			}
-//			else if (SwingUtilities.isRightMouseButton(me)){
-//				builder.updateHistory();
-//				selected = true;
-//				if (selected){
-//					tile.setImg("tile.png");
-//					JLabelIcon hintImage = new JLabelIcon("hint.png", tile.getWidth(), tile.getHeight());
-//					tile.add(hintImage);
-//					
-//					currentTile.setHint(true);
-//					currentTile.setValid(true);
-//				}
-//			}
 		}
 		// If the mousePressed event is a left click, then make the tile invalid
 		else
 		{
+			System.out.println("Not in the replease painter mode, normal board update running now.");
 			if (SwingUtilities.isLeftMouseButton(me)){
-				builder.updateHistory();
+				//builder.updateHistory();
+				//releaseLevelPanel.updateBoard();
 				selected = true;
 				if (selected){
 					tile.removeAll();
 					tile.setImg("general1button.png");
+					System.out.println("Making a release board have an invalid tile.");
 					currentTile.setValid(false);
 					currentTile.setHint(false);
 					currentTile.setNumber(0);
 					currentTile.setColor(0);
 					builder.updateHistory();
+					//releaseLevelPanel.updateBoard();
 					//BuilderSelectTileMove builderSelectTileMove = new BuilderSelectTileMove(currentTile);
 					//builderSelectTileMove.execute(builder);
 				}
@@ -169,6 +163,7 @@ public class BuilderReleaseBoardController extends MouseAdapter {
 						currentTile.setNumber(0);
 						currentTile.setColor(0);
 						builder.updateHistory();
+						///releaseLevelPanel.updateBoard();
 					}
 					else//If it is a hint tile.
 					{
@@ -194,6 +189,7 @@ public class BuilderReleaseBoardController extends MouseAdapter {
 						//System.out.println("FIle name:" + tileToDisplay);
 						tile.setImg(tileToDisplay);
 						builder.updateHistory();
+						//releaseLevelPanel.updateBoard();
 					}
 				}
 			}
