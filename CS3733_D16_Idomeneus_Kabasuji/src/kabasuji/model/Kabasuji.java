@@ -15,7 +15,7 @@ public class Kabasuji {
 	public Kabasuji() {
 		currentScreen = 1;
 		loadLevels();
-		if(levels.size() > 0 && levels.get(0).isLocked())
+		if(levels != null && levels.size() > 0 && levels.get(0).isLocked())
 			levels.get(0).setLocked(false);
 	}
 
@@ -118,7 +118,7 @@ public class Kabasuji {
 			levels = (ArrayList<Level>) save.readObject();
 			save.close();
 		} catch (Exception exc) {
-			exc.printStackTrace(); // If there was an error, print the info.
+			//exc.printStackTrace(); // If there was an error, print the info.
 		}
 		if(levels != null)
 			for (int i = 0; i < levels.size() - 1; i++) {
