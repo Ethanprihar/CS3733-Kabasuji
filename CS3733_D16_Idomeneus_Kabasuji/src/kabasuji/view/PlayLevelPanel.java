@@ -284,7 +284,7 @@ public class PlayLevelPanel extends JPanel {
 	 * 
 	 * @return
 	 */
-	public ZoomPanel getZoomPiece() {
+	public ZoomPanel getZoomPanel() {
 		return zoompanel;
 	}
 	/**

@@ -51,7 +51,7 @@ public class SelectPieceBullpenController extends MouseAdapter {
 		this.bullpenview = panel.getBullpenView();
 		this.pieceviews = bullpenview.getPieceView();
 		this.pieceicon = pieceicon;
-		this.zoompanel = panel.getZoomPiece();
+		this.zoompanel = panel.getZoomPanel();
 		this.fnzoom = zoompanel.getFileName();
 		this.fnpiece = pieceicon.getFileName();
 		this.numPiece = numPiece;

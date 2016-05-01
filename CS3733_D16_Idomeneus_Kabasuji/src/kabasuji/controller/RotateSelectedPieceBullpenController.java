@@ -23,6 +23,7 @@ import kabasuji.view.MainMenu;
 import kabasuji.view.PieceView;
 import kabasuji.view.PlayLevelPanel;
 import kabasuji.view.TopLevelApplication;
+import kabasuji.view.ZoomPanel;
 
 /**
  * Controller for Rotating Piece in bullpen; rotates piece then displays it in
@@ -46,7 +47,7 @@ public class RotateSelectedPieceBullpenController extends MouseAdapter {
 	BullpenView bullpenview;
 	JLabelIcon pieceicon;
 	PieceView[] pieceviews;
-	JLabelIcon zoompanel;
+	ZoomPanel zoompanel;
 	
 	String fnzoompiece;
 
@@ -60,7 +61,7 @@ public class RotateSelectedPieceBullpenController extends MouseAdapter {
 		this.panel = panel;
 		this.bullpenview = panel.getBullpenView();
 		this.pieceviews = bullpenview.getPieceView();
-		this.zoompanel = panel.getZoomPiece();
+		this.zoompanel = panel.getZoomPanel();
 		// handles the original image details
 		this.pieceicon = pieceicon;
 		this.fnzoompiece = pieceicon.getFileName();

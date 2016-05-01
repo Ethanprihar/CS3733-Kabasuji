@@ -50,7 +50,7 @@ public class TileController extends MouseAdapter {
 
 	public TileController(Kabasuji kabasuji, PlayLevelPanel panel, JLabelIcon tile, Tile selfTile) {
 		this.panel = panel;
-		this.zoompanel = panel.getZoomPiece();
+		this.zoompanel = panel.getZoomPanel();
 		this.board = kabasuji.getSelectedLevel().getBoard();
 		this.bullpen = kabasuji.getSelectedLevel().getBullpen();
 		this.tiles = board.getTiles();
@@ -80,7 +80,7 @@ public class TileController extends MouseAdapter {
 					bullpen.selectPiece(null);
 					bullpen.removePiece(selectedPiece);
 					bullpenview.setupBullpen();
-					panel.getZoomPiece().removeAll();
+					panel.getZoomPanel().removeAll();
 
 					/* Check if the number of stars has been updated */
 					int currNumStars = kabasuji.getSelectedLevel().getStars();
@@ -130,7 +130,7 @@ public class TileController extends MouseAdapter {
 					new MusicPlayer("success.wav");
 					board.selectPiece(null);
 					boardview.setupBoard();
-					panel.getZoomPiece().removeAll();
+					panel.getZoomPanel().removeAll();
 
 					/* Check if the number of stars has been updated */
 					int currNumStars = kabasuji.getSelectedLevel().getStars();
