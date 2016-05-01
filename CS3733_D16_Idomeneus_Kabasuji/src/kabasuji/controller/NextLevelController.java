@@ -57,43 +57,36 @@ public class NextLevelController extends MouseAdapter {
 		ArrayList<Level> numLevels = kabasuji.getLevels();
 		// Get the selected level
 		Level getSelected = kabasuji.getSelectedLevel();
-		// Get the index of the current level
-		int index = numLevels.indexOf(getSelected);
-		// Get the size of the array list
-		int num = numLevels.size();
+		// Get the index of the current level (not 0 based)
+		int numCurrentLevel = numLevels.indexOf(getSelected) + 1;
+		// Get the size of the array list (not 0 based)
+		int numTotalLevels = numLevels.size();
 
-		// Throw an error if no more levels exist
-		if ((num - 1) == index) {
+		// Throw an error if no more levels exist i.e. index of last level equals index of current level
+		if (numTotalLevels == numCurrentLevel) {
 			ErrorDialogBox.infoBox("No more levels exist :( Go ahead and build one!", "Message");
 		}
 
 		else {
 			// ensure that the player is able to move on the next level
-			if (kabasuji.getSelectedLevel().getStars() >= 1) {
+			if (kabasuji.getSelectedLevel().getStars() > 0) {
 
 				// update the timer
 				if(plp.getTimer() != null){
 					plp.stopTimer();
 				}
+				// save level state and advance model to next level
 				kabasuji.saveLevels();
 				kabasuji.nextLevel();
 				
 				if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
 					plp.startTimeLimit();
 				}
-
-				// Created ChangeScreenMove and input desired screen
-				ChangeScreenMove gtsm = new ChangeScreenMove(Screen.PlayLevel);
-
-				// Attempt to execute action on model
-				gtsm.execute(kabasuji);
-
 				// Create PlayLevelPanel screen object and update boundary to
 				// reflect *** GUI CHANGES ***
 
 				// first make the foundation panel and pass model and container
 				// panel
-				// PlayLevelPanel plp = new PlayLevelPanel(kabasuji, app);
 
 				// create components of panel and pass model and container panel
 				BullpenView bpv = new BullpenView(kabasuji, plp, 4,

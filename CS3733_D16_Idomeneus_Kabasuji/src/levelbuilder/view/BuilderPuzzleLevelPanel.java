@@ -252,6 +252,10 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		return piece[6];
 	}
 	
+	public String getNumPieces(int index) {
+		return piece1Lbl[index].getText();
+	}
+	
 	public String getNumStrightPieces() {
 		return piece1Lbl[6].getText();
 	}
