@@ -48,7 +48,7 @@ public class FlipSelectedPieceBullpenController extends MouseAdapter {
 	JLabelIcon pieceicon;
 	PieceView[] pieceviews;
 	ZoomPanel zoompanel;
-	
+
 	String fnzoompiece;
 
 	boolean right;
@@ -81,11 +81,7 @@ public class FlipSelectedPieceBullpenController extends MouseAdapter {
 		FlipPieceMove fpm = new FlipPieceMove(selectedPiece, right);
 		fpm.execute(kabasuji);
 		zoompanel.removeAll();
-		PieceView pieceview = new PieceView(selectedPiece);
-		pieceview.setBounds(0, 0, (int) zoompanel.getSize().getWidth(), (int) zoompanel.getSize().getHeight());
-		pieceview.setupPiece();
-		zoompanel.add(pieceview);
-		zoompanel.repaint();
+		zoompanel.displayPieceView(selectedPiece);
 	}
 
 	public void mouseEntered(MouseEvent e) {
