@@ -10,6 +10,13 @@ public class PuzzleLevel extends Level {
 		maxMoves = mm;
 		movesUsed = 0; // initialize the moves used to 0
 	}
+	
+	public Level copy()
+	{
+		PuzzleLevel l = new PuzzleLevel((PuzzleBoard)board.copy(), bullpen.copy(), maxMoves);
+		l.setLocked(false);
+		return l;
+	}
 
 	public Integer getEndCondition() {
 		return maxMoves;

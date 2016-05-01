@@ -36,19 +36,19 @@ import kabasuji.view.TopLevelApplication;
  */
 public class FlipSelectedPieceBullpenController extends MouseAdapter {
 
-	/** Entity and Boundaries Associated **/
+	/** Entity associated **/
 	Kabasuji kabasuji;
 	Bullpen bullpen;
+	ArrayList<Piece> pieces;
+	Piece selectedPiece;
+	/** Boundaries asssociated **/
+	PlayLevelPanel panel;
 	BullpenView bullpenview;
 	JLabelIcon pieceicon;
-	PlayLevelPanel panel;
 	PieceView[] pieceviews;
-	ArrayList<Piece> pieces;
-
 	JLabelIcon zoompanel;
-	String fnzoom;
-	String fnpiece;
-	Piece selectedPiece;
+	
+	String fnzoompiece;
 
 	boolean right;
 
@@ -58,13 +58,14 @@ public class FlipSelectedPieceBullpenController extends MouseAdapter {
 		this.bullpen = kabasuji.getSelectedLevel().getBullpen();
 		this.selectedPiece = bullpen.getSelectedPiece();
 		this.panel = panel;
-		this.right = right;
 		this.bullpenview = panel.getBullpenView();
 		this.pieceviews = bullpenview.getPieceView();
-		this.pieceicon = pieceicon;
 		this.zoompanel = panel.getZoomPiece();
+		// handles the original image details
 		this.pieceicon = pieceicon;
-		this.fnpiece = pieceicon.getFileName();
+		this.fnzoompiece = pieceicon.getFileName();
+		// turning direction
+		this.right = right;
 	}
 
 	/**
@@ -93,7 +94,7 @@ public class FlipSelectedPieceBullpenController extends MouseAdapter {
 
 	public void mouseExited(MouseEvent e) {
 		// sets image back to original
-		pieceicon.setImg(fnpiece);
+		pieceicon.setImg(fnzoompiece);
 	}
 
 }

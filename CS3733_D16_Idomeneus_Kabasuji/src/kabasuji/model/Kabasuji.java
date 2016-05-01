@@ -15,7 +15,7 @@ public class Kabasuji {
 	public Kabasuji() {
 		currentScreen = 1;
 		loadLevels();
-		if (levels.get(0).isLocked())
+		if(levels.size() > 0 && levels.get(0).isLocked())
 			levels.get(0).setLocked(false);
 	}
 
@@ -27,6 +27,21 @@ public class Kabasuji {
 		return levels;
 	}
 
+	public void loadTestLevels()
+	{
+		try
+		{
+			FileInputStream saveFile = new FileInputStream("testLevels.data");
+			ObjectInputStream save = new ObjectInputStream(saveFile);
+			levels = (ArrayList<Level>) save.readObject();
+			save.close();
+		}
+		catch (Exception exc)
+		{
+			exc.printStackTrace(); // If there was an error, print the info.
+		}
+	}
+	
 	// getter for current Screen
 	public int getCurrentScreen() {
 		return currentScreen;
@@ -105,18 +120,21 @@ public class Kabasuji {
 		} catch (Exception exc) {
 			exc.printStackTrace(); // If there was an error, print the info.
 		}
-		for (int i = 0; i < levels.size() - 1; i++) {
-			if (levels.get(i).getHighScore() > 0) {
-				levels.get(i).setLocked(false);
-				levels.get(i + 1).setLocked(false);
+		if(levels != null)
+			for (int i = 0; i < levels.size() - 1; i++) {
+				if (levels.get(i).getHighScore() > 0) {
+					levels.get(i).setLocked(false);
+					levels.get(i + 1).setLocked(false);
+				}
 			}
-		}
 	}
 
 	public void saveLevels() {
 		// if they improve their score
-		if (selectedLevel != null) {
-			if (selectedLevel.getStars() > selectedLevel.getHighScore()) {
+		if (selectedLevel != null)
+		{
+			if (selectedLevel.getStars() > selectedLevel.getHighScore())
+			{
 				int temp = selectedLevel.getStars();
 				if (!(levels.size() <= levels.indexOf(selectedLevel) + 1)) {
 					boolean makeUnlocked = false;
@@ -126,6 +144,7 @@ public class Kabasuji {
 					if (makeUnlocked)
 						levels.get(levels.indexOf(selectedLevel) + 1).setLocked(false);
 				}
+				resetLevel();
 				selectedLevel.setLocked(false);
 				selectedLevel.setHighScore(temp);
 			}

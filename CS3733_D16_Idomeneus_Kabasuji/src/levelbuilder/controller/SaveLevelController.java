@@ -55,7 +55,7 @@ public class SaveLevelController extends MouseAdapter {
 	 */
 	public void mousePressed(MouseEvent me) {
 		// Created ChangeScreenBuilderMove and input desired screen
-		if (type == 1){
+		if ((type == 1) || (type == 3)){
 			valid = true;
 			if (ec.getText().length() == 0){
 				ErrorDialogBox.infoBox("The number of moves can't be left empty", "Invalid Input");

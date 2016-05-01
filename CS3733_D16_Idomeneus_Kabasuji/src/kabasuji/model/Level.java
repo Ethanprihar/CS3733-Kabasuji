@@ -9,9 +9,9 @@ public abstract class Level implements Serializable{
 	int highScore;
 	
 	/** useful constants **/
-	final static int Puzzle = 0;
-	final static int Lighting = 1;
-	final static int Release = 2;
+	public final static int Puzzle = 0;
+	public final static int Lighting = 1;
+	public final static int Release = 2;
 	
 	Level(Board bd, Bullpen bp)
 	{
@@ -30,6 +30,8 @@ public abstract class Level implements Serializable{
 	
 	public abstract boolean canMoveBoardToBoard(Tile destination);
 	
+	public abstract Level copy();
+	
 	public void moveBullpenToBoard(Tile destination)
 	{
 		board.addPiece(bullpen.getSelectedPiece(), destination);
@@ -42,6 +44,11 @@ public abstract class Level implements Serializable{
 		bullpen.addPiece(board.getSelectedPiece());
 		board.removePiece(board.getSelectedPiece());
 		//board.selectPiece(null);
+	}
+	
+	public void clearBullpen()
+	{
+		bullpen = null;
 	}
 	
 	public int getStars()

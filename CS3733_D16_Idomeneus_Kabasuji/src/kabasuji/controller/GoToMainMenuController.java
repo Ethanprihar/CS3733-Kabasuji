@@ -46,7 +46,8 @@ public class GoToMainMenuController extends MouseAdapter {
 	 * is a GUI controller.
 	 */
 	public void mousePressed(MouseEvent me) {
-		int index = kabasuji.getLevels().indexOf(kabasuji.getSelectedLevel());
+
+		//int index = kabasuji.getLevels().indexOf(kabasuji.getSelectedLevel());
 		// stop the timer if in play level panel
 		if (app.getContentPane() instanceof PlayLevelPanel) {
 			System.out.println("Stop timer");
@@ -54,12 +55,21 @@ public class GoToMainMenuController extends MouseAdapter {
 		}
 
 		// Created ChangeScreenMove and input desired screen
-		ChangeScreenMove gtsm = new ChangeScreenMove(Screen.Opening);
+		//ChangeScreenMove gtsm = new ChangeScreenMove(Screen.Opening);
 		// Attempt to execute action on model
-		gtsm.execute(kabasuji);
+		//gtsm.execute(kabasuji);
+
+
+		int index = -1;
+		if(kabasuji.getSelectedLevel() != null)
+		{
+			index = kabasuji.getLevels().indexOf(kabasuji.getSelectedLevel());
+		}
 
 		kabasuji.saveLevels();
-		kabasuji.getLevels().get(index).setLocked(false);
+		if (index != -1)
+			kabasuji.getLevels().get(index).setLocked(false);
+
 		new MusicPlayer("select.wav");
 		// Created JPanel screen object and update boundary to reflect changes
 		MainMenu mm = new MainMenu(kabasuji, app);

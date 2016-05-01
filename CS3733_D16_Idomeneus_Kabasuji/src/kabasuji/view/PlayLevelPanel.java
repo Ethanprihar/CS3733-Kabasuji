@@ -8,16 +8,13 @@ import kabasuji.controller.NextLevelController;
 import kabasuji.controller.ResetLevelController;
 import kabasuji.controller.RotateSelectedPieceBullpenController;
 import kabasuji.model.Board;
-import kabasuji.model.Builder;
 import kabasuji.model.Bullpen;
 import kabasuji.model.Kabasuji;
+import kabasuji.model.Level;
 import kabasuji.model.LightningLevel;
 import kabasuji.model.PuzzleLevel;
 import kabasuji.model.ReleaseLevel;
 import kabasuji.model.Screen;
-import levelbuilder.controller.GoToMainMenuBuilderController;
-import levelbuilder.view.TopLevelApplicationBuilder;
-
 import javax.swing.JLabel;
 
 import java.awt.Color;
@@ -40,6 +37,8 @@ public class PlayLevelPanel extends JPanel {
 	Board board;
 	Bullpen bullpen;
 	int type;
+	
+	PlayLevelPanel panel;
 
 	Timer timer; // Timer used for Lightning Mode
 
@@ -48,7 +47,7 @@ public class PlayLevelPanel extends JPanel {
 	BoardView boardview;
 	BullpenView bullpenview;
 
-	JLabelIcon zoompiece;
+	ZoomPanel zoompanel;
 	JLabelIcon rotatelbtn;
 	JLabelIcon rotaterbtn;
 	JLabelIcon fliphbtn;
@@ -63,6 +62,9 @@ public class PlayLevelPanel extends JPanel {
 	JLabel timeLeftNum;
 
 	JLabelIcon background;
+	
+	/** button parameters **/
+	int btnsidelength = 70;
 
 	/**
 	 * Construct PlayLevelPanel.
@@ -80,6 +82,10 @@ public class PlayLevelPanel extends JPanel {
 		// set layout null
 		setLayout(null);
 		setBounds(0, 0, Screen.width, Screen.height);
+		
+		// setup background
+		background = new JLabelIcon("starry_night.jpeg", Screen.width, Screen.height);
+		background.setBounds(0, 0, Screen.width, Screen.height);
 
 	}
 
@@ -96,6 +102,7 @@ public class PlayLevelPanel extends JPanel {
 				if (!((LightningLevel) kabasuji.getSelectedLevel()).hasTimeLeft()) {
 					// stop the timer
 					timer.stop();
+					displayLoseScreen();
 				} else { // otherwise increment the current time and
 							// refresh the gui
 					((LightningLevel) kabasuji.getSelectedLevel()).incrementCurrentTime();
@@ -106,6 +113,15 @@ public class PlayLevelPanel extends JPanel {
 		timer = new Timer(delay, taskPerformer);
 		timer.start();
 
+	}
+	
+	public void displayLoseScreen(){
+		// Only if it is loaded in the player mode not the test level builder
+		if (type == 0){
+			if ((kabasuji.getSelectedLevel().getStars()) == 0){
+				this.losingScreen();
+			}
+		}
 	}
 
 	public void stopTimer() {
@@ -135,48 +151,32 @@ public class PlayLevelPanel extends JPanel {
 	 */
 	public void updatePlayLevelPanel(BoardView bv, BullpenView bpv) {
 		/** adding all buttons/images needed **/
-		zoompiece = new JLabelIcon("opaque_canvas.png", (int) (Screen.height * 0.25), (int) (Screen.height * 0.25));
-		zoompiece.setLocation((int) (Screen.width * 0.35), (int) (Screen.height * 0.05));
-		add(zoompiece);
+		zoompanel = new ZoomPanel("opaque_canvas.png", (int) (Screen.height * 0.25), (int) (Screen.height * 0.25));
+		zoompanel.setLocation((int) (Screen.width * 0.35), (int) (Screen.height * 0.05));
+		add(zoompanel);
 
 		// create a flip horizontal button
-		fliphbtn = new JLabelIcon("generalbutton.png", 70, 70);
+		fliphbtn = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength, "Flip" + "<br>" + "Horizontal");
 		fliphbtn.setLocation((int) (Screen.width * 0.52) + (int) (fliphbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.05));
-		JLabel fliphlbl = new JLabel("<html>Flip<br>Horizontal</html>", SwingConstants.CENTER);
-		fliphlbl.setBounds(0, 0, 70, 70);
-		fliphlbl.setFont(new Font("Onyx", Font.BOLD, 18));
-		fliphbtn.add(fliphlbl);
 		add(fliphbtn);
 
 		// create a flip vertical button
-		flipvbtn = new JLabelIcon("generalbutton.png", 70, 70);
+		flipvbtn = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength, "Flip" + "<br>" + "Vertical");
 		flipvbtn.setLocation((int) (Screen.width * 0.62) + (int) (fliphbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.05));
-		JLabel flipvlbl = new JLabel("<html>Flip<br>Vertical</html>", SwingConstants.CENTER);
-		flipvlbl.setBounds(0, 0, 70, 70);
-		flipvlbl.setFont(new Font("Onyx", Font.BOLD, 18));
-		flipvbtn.add(flipvlbl);
 		add(flipvbtn);
 
 		// create a rotate left button
-		rotatelbtn = new JLabelIcon("generalbutton.png", 70, 70);
+		rotatelbtn = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength, "Rotate" + "<br>" + "Left");
 		rotatelbtn.setLocation((int) (Screen.width * 0.52) + (int) (rotatelbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.18));
-		JLabel rotatellbl = new JLabel("<html>Rotate<br>Left</html>", SwingConstants.CENTER);
-		rotatellbl.setBounds(0, 0, 70, 70);
-		rotatellbl.setFont(new Font("Onyx", Font.BOLD, 18));
-		rotatelbtn.add(rotatellbl);
 		add(rotatelbtn);
 
 		// create a rotate right button
-		rotaterbtn = new JLabelIcon("generalbutton.png", 70, 70);
+		rotaterbtn = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength, "Rotate" + "<br>" + "Right");
 		rotaterbtn.setLocation((int) (Screen.width * 0.62) + (int) (rotatelbtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.18));
-		JLabel rotaterlbl = new JLabel("<html>Rotate<br>Right</html>", SwingConstants.CENTER);
-		rotaterlbl.setBounds(0, 0, 70, 70);
-		rotaterlbl.setFont(new Font("Onyx", Font.BOLD, 18));
-		rotaterbtn.add(rotaterlbl);
 		add(rotaterbtn);
 
 		if (type == 0) {
@@ -231,64 +231,28 @@ public class PlayLevelPanel extends JPanel {
 		}
 
 		if (type == 0) {
-			nextlevelbtn = new JLabelIcon("generallockedbutton.png", 70, 70);
+			nextlevelbtn = new JLabelIcon("generallockedbutton.png", btnsidelength, btnsidelength,"Next" + "<br>" + "Level");
 			nextlevelbtn.setLocation((int) (Screen.width * 0.74) + (int) (rotatelbtn.getSize().getWidth() / 2),
 					(int) (Screen.height * .6));
-			JLabel nextlevellbl = new JLabel("<html>Next<br>Level</html>", SwingConstants.CENTER);
-			nextlevellbl.setBounds(0, 0, 70, 70);
-			nextlevellbl.setFont(new Font("Onyx", Font.BOLD, 18));
-			nextlevelbtn.add(nextlevellbl);
 			add(nextlevelbtn);
 
-			resetlevelbtn = new JLabelIcon("generalbutton.png", 70, 70);
+			resetlevelbtn = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength,"Reset" + "<br>" + "Level");
 			resetlevelbtn.setLocation((int) (Screen.width * 0.74) + (int) (rotatelbtn.getSize().getWidth() / 2),
 					(int) (Screen.height * .73));
-			JLabel resetlevellbl = new JLabel("<html>Reset<br>Level</html>", SwingConstants.CENTER);
-			resetlevellbl.setBounds(0, 0, 70, 70);
-			resetlevellbl.setFont(new Font("Onyx", Font.BOLD, 18));
-			resetlevelbtn.add(resetlevellbl);
 			add(resetlevelbtn);
 
-			JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", 70, 70);
+			JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength,"Main" + "<br>" + "Menu");
 			mainmenubtn.setLocation((int) (Screen.width * 0.84) + (int) (rotatelbtn.getSize().getWidth() / 2),
 					(int) (Screen.height * .6));
-			JLabel mainmenulbl = new JLabel("<html>Main<br>Menu</html>", SwingConstants.CENTER);
-			mainmenulbl.setBounds(0, 0, 70, 70);
-			mainmenulbl.setFont(new Font("Onyx", Font.BOLD, 18));
-			mainmenubtn.add(mainmenulbl);
 			mainmenubtn.addMouseListener(new GoToMainMenuController(kabasuji, app, mainmenubtn));
 			add(mainmenubtn);
 		}
-
-		if (type == 1) {
-
-			JLabelIcon returnBtn = new JLabelIcon("generalbutton.png", 70, 70);
-			returnBtn.setLocation((int) (Screen.width * 0.80) + (int) (rotatelbtn.getSize().getWidth() / 2),
-					(int) (Screen.height * .6));
-			JLabel returnLbl = new JLabel("<html>Back</html>", SwingConstants.CENTER);
-			returnLbl.setBounds(0, 0, 70, 70);
-			returnLbl.setFont(new Font("Onyx", Font.BOLD, 18));
-			returnBtn.add(returnLbl);
-			Builder builder = new Builder();
-			TopLevelApplicationBuilder app1 = new TopLevelApplicationBuilder(builder);
-			System.out.println("I am in back button");
-			// JTextField nothing = new JTextField("");
-			returnBtn.addMouseListener(new GoToMainMenuBuilderController(builder, app1, returnBtn));
-			add(returnBtn);
-			System.out.println(builder.getLevels().size());
-		}
-
-		/** Star JLabelIcon (Initially display no stars ) **/
-
-		// add BoardView and BullpenView elements to PlayLevelPanel
 		add(bv);
 		add(bpv);
 		setBoardView(bv);
 		setBullpenView(bpv);
 
 		// setup background canvas **
-		background = new JLabelIcon("starry_night.jpeg", Screen.width, Screen.height);
-		background.setBounds(0, 0, Screen.width, Screen.height);
 		add(background);
 	}
 
@@ -320,8 +284,15 @@ public class PlayLevelPanel extends JPanel {
 	 * 
 	 * @return
 	 */
-	public JLabelIcon getZoomPiece() {
-		return zoompiece;
+	public ZoomPanel getZoomPiece() {
+		return zoompanel;
+	}
+	/**
+	 * Removes all components from zoompanel and updates.
+	 */
+	public void clearZoomPanel(){
+		zoompanel.removeAll();
+		zoompanel.repaint();
 	}
 
 	/**
@@ -459,72 +430,79 @@ public class PlayLevelPanel extends JPanel {
 	// Display the winning screen
 	public void winningScreen(){
 		
-		removeAll();
-		// setup background canvas
-		JLabelIcon background = new JLabelIcon("winningScreen.jpg", Screen.width, Screen.height);
-		background.setBounds(0, 0, Screen.width, Screen.height);
-		add(background);
-		
-		// create a main menu button
-		remove(background);
-		JLabelIcon mainMenuButton = new JLabelIcon("general3button.png", 70, 70);
-		mainMenuButton.setLocation((int) (Screen.width * 0.80) + (int) (mainMenuButton.getSize().getWidth() / 2),
-				(int) (Screen.height * 0.18));
-		JLabel mainMenuButtonLbl = new JLabel("<html>Main<br>Menu</html>", SwingConstants.CENTER);
-		mainMenuButtonLbl.setBounds(0, 0, 70, 70);
-		mainMenuButtonLbl.setFont(new Font("Onyx", Font.BOLD, 18));
-		mainMenuButton.add(mainMenuButtonLbl);
-		mainMenuButton.addMouseListener(new GoToMainMenuController(kabasuji, app, mainMenuButton));
-		add(mainMenuButton);
-
-		// create a next level button
-		JLabelIcon nextLevelButton = new JLabelIcon("general3button.png", 70, 70);
-		nextLevelButton.setLocation((int) (Screen.width * 0.80) + (int) (nextLevelButton.getSize().getWidth() / 2),
-				(int) (Screen.height * 0.40));
-		JLabel nextLevelButtonLbl = new JLabel("<html>Next<br>Level</html>", SwingConstants.CENTER);
-		nextLevelButtonLbl.setBounds(0, 0, 70, 70);
-		nextLevelButtonLbl.setFont(new Font("Onyx", Font.BOLD, 18));
-		nextLevelButton.add(nextLevelButtonLbl);
-		nextLevelButton.addMouseListener(new NextLevelController(kabasuji, this, nextLevelButton));
-		add(nextLevelButton);
-		
-		repaint();
-		add(background);
+		// Only execute if it is in the player mode
+		if (type == 0){	
+			removeAll();
+			// setup background canvas
+			JLabelIcon background = new JLabelIcon("winningScreen.jpg", Screen.width, Screen.height);
+			background.setBounds(0, 0, Screen.width, Screen.height);
+			add(background);
+			
+			// create a main menu button
+			remove(background);
+			JLabelIcon mainMenuButton = new JLabelIcon("general3button.png", 70, 70);
+			mainMenuButton.setLocation((int) (Screen.width * 0.80) + (int) (mainMenuButton.getSize().getWidth() / 2),
+					(int) (Screen.height * 0.18));
+			JLabel mainMenuButtonLbl = new JLabel("<html>Main<br>Menu</html>", SwingConstants.CENTER);
+			mainMenuButtonLbl.setBounds(0, 0, 70, 70);
+			mainMenuButtonLbl.setFont(new Font("Onyx", Font.BOLD, 18));
+			mainMenuButton.add(mainMenuButtonLbl);
+			mainMenuButton.addMouseListener(new GoToMainMenuController(kabasuji, app, mainMenuButton));
+			add(mainMenuButton);
+	
+			// create a next level button
+			JLabelIcon nextLevelButton = new JLabelIcon("general3button.png", 70, 70);
+			nextLevelButton.setLocation((int) (Screen.width * 0.80) + (int) (nextLevelButton.getSize().getWidth() / 2),
+					(int) (Screen.height * 0.40));
+			JLabel nextLevelButtonLbl = new JLabel("<html>Next<br>Level</html>", SwingConstants.CENTER);
+			nextLevelButtonLbl.setBounds(0, 0, 70, 70);
+			nextLevelButtonLbl.setFont(new Font("Onyx", Font.BOLD, 18));
+			nextLevelButton.add(nextLevelButtonLbl);
+			nextLevelButton.addMouseListener(new NextLevelController(kabasuji, this, nextLevelButton));
+			add(nextLevelButton);
+			
+			repaint();
+			add(background);
+		}		
+		else {
+			// setup background canvas
+			JLabelIcon background = new JLabelIcon("starry_night.jpeg", Screen.width, Screen.height);
+			background.setBounds(0, 0, Screen.width, Screen.height);
+			add(background);
+		}
 	}
 	
 // Display the losing screen
 	public void losingScreen(){
 		
-		removeAll();
-		// setup background canvas
-		JLabelIcon background = new JLabelIcon("LosingScreen.jpg", Screen.width, Screen.height);
-		background.setBounds(0, 0, Screen.width, Screen.height);
-		add(background);
-		
-		// create a main menu button
-		remove(background);
-		JLabelIcon mainMenuButton = new JLabelIcon("general3button.png", 70, 70);
-		mainMenuButton.setLocation((int) (Screen.width * 0.80) + (int) (mainMenuButton.getSize().getWidth() / 2),
-				(int) (Screen.height * 0.18));
-		JLabel mainMenuButtonLbl = new JLabel("<html>Main<br>Menu</html>", SwingConstants.CENTER);
-		mainMenuButtonLbl.setBounds(0, 0, 70, 70);
-		mainMenuButtonLbl.setFont(new Font("Onyx", Font.BOLD, 18));
-		mainMenuButton.add(mainMenuButtonLbl);
-		mainMenuButton.addMouseListener(new GoToMainMenuController(kabasuji, app, mainMenuButton));
-		add(mainMenuButton);
-
-		// create a next level button
-		JLabelIcon nextLevelButton = new JLabelIcon("general3button.png", 70, 70);
-		nextLevelButton.setLocation((int) (Screen.width * 0.80) + (int) (nextLevelButton.getSize().getWidth() / 2),
-				(int) (Screen.height * 0.40));
-		JLabel nextLevelButtonLbl = new JLabel("<html>Next<br>Level</html>", SwingConstants.CENTER);
-		nextLevelButtonLbl.setBounds(0, 0, 70, 70);
-		nextLevelButtonLbl.setFont(new Font("Onyx", Font.BOLD, 18));
-		nextLevelButton.add(nextLevelButtonLbl);
-		nextLevelButton.addMouseListener(new NextLevelController(kabasuji, this, nextLevelButton));
-		add(nextLevelButton);
-		
-		repaint();
-		add(background);
+		// Only execute if it is in the player mode
+		if (type == 0){
+			removeAll();
+			// setup background canvas
+			JLabelIcon background = new JLabelIcon("LosingScreen.jpg", Screen.width, Screen.height);
+			background.setBounds(0, 0, Screen.width, Screen.height);
+			add(background);
+			
+			// create a main menu button
+			remove(background);
+			JLabelIcon mainMenuButton = new JLabelIcon("general3button.png", 70, 70);
+			mainMenuButton.setLocation((int) (Screen.width * 0.85) + (int) (mainMenuButton.getSize().getWidth() / 2),
+					(int) (Screen.height * 0.18));
+			JLabel mainMenuButtonLbl = new JLabel("<html>Main<br>Menu</html>", SwingConstants.CENTER);
+			mainMenuButtonLbl.setBounds(0, 0, 70, 70);
+			mainMenuButtonLbl.setFont(new Font("Onyx", Font.BOLD, 18));
+			mainMenuButton.add(mainMenuButtonLbl);
+			mainMenuButton.addMouseListener(new GoToMainMenuController(kabasuji, app, mainMenuButton));
+			add(mainMenuButton);
+			
+			repaint();
+			add(background);
+		}		
+		else {
+			// setup background canvas
+			JLabelIcon background = new JLabelIcon("starry_night.jpeg", Screen.width, Screen.height);
+			background.setBounds(0, 0, Screen.width, Screen.height);
+			add(background);
+		}
 	}
 }

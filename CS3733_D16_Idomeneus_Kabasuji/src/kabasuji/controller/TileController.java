@@ -8,6 +8,7 @@ import javax.swing.SwingUtilities;
 import kabasuji.model.Board;
 import kabasuji.model.Bullpen;
 import kabasuji.model.Kabasuji;
+import kabasuji.model.LightningLevel;
 import kabasuji.model.Piece;
 import kabasuji.model.PuzzleLevel;
 import kabasuji.model.ReleaseLevel;
@@ -36,7 +37,6 @@ public class TileController extends MouseAdapter {
 	JLabelIcon tile;
 
 	PlayLevelPanel panel;
-
 	BoardView boardview;
 	BullpenView bullpenview;
 
@@ -109,7 +109,7 @@ public class TileController extends MouseAdapter {
 						// decrement the number of moves left
 						((PuzzleLevel) kabasuji.getSelectedLevel())
 								.setMovesUsed(((PuzzleLevel) kabasuji.getSelectedLevel()).getMovesUsed() + 1);
-						panel.setMovesLeftNum((Integer) ((PuzzleLevel) kabasuji.getSelectedLevel()).getMovesLeft());
+						panel.setMovesLeftNum((Integer) ((PuzzleLevel) kabasuji.getSelectedLevel()).getMovesLeft());						
 					}
 					// update to show new number of moves if in puzzle mode
 					else if (kabasuji.getSelectedLevel() instanceof ReleaseLevel) {
@@ -186,6 +186,36 @@ public class TileController extends MouseAdapter {
 			panel.winningScreen();
 		}
 		panel.repaint();
+		
+		// If the number of moves become 0, display a lose screen in Puzzle Level
+		if ((kabasuji.getSelectedLevel() instanceof PuzzleLevel)) {
+			int getMoves = ((PuzzleLevel) kabasuji.getSelectedLevel()).getMovesUsed();
+			int maxMoves = ((PuzzleLevel) kabasuji.getSelectedLevel()).getMaxMoves();
+			if ((getMoves == maxMoves) && (currNumStars1 == 0)){
+				try {
+				    Thread.sleep(100);                 //1000 milliseconds is one second.
+				} catch(InterruptedException ex) {
+				    Thread.currentThread().interrupt();
+				}
+				panel.losingScreen();
+			}
+			panel.repaint();
+		}
+		
+		// If the number of moves become 0, display a lose screen in Release Level
+		if ((kabasuji.getSelectedLevel() instanceof ReleaseLevel)) {
+			int getMoves = ((ReleaseLevel) kabasuji.getSelectedLevel()).getMovesUsed();
+			int maxMoves = ((ReleaseLevel) kabasuji.getSelectedLevel()).getMaxMoves();
+			if ((getMoves == maxMoves) && (currNumStars1 == 0)){
+				try {
+				    Thread.sleep(100);                 //1000 milliseconds is one second.
+				} catch(InterruptedException ex) {
+				    Thread.currentThread().interrupt();
+				}
+				panel.losingScreen();
+			}
+			panel.repaint();
+		}
 	}
 
 	public void mouseEntered(MouseEvent e) {

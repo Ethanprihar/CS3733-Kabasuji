@@ -11,6 +11,16 @@ public class Bullpen implements Serializable{
 	public Bullpen() {
 		pieces = new ArrayList<Piece>();
 	}
+	
+	public Bullpen copy()
+	{
+		Bullpen bp = new Bullpen();
+		for(Piece p: pieces)
+		{
+			bp.addPiece(p.copy());
+		}
+		return bp;
+	}
 
 	// Adds a piece to the pieces array list
 	public void addPiece(Piece piece) {

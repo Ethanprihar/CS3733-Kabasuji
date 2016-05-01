@@ -24,25 +24,22 @@ import kabasuji.view.PlayLevelPanel;
  */
 public class BullpenController extends MouseAdapter {
 
-	/** Entity and Boundaries Associated **/
+	/** Entity associated **/
 	Kabasuji kabasuji;
 	Board board;
 	Bullpen bullpen;
-	
-	PlayLevelPanel panel;
-	BullpenView bullpenview;
 	Piece selectedPiece;
-	JLabelIcon tile;
-	String fn;
-	JLabelIcon zoompiece;
+	
+	/** Boundaries associated **/
+	PlayLevelPanel plp;
+	BullpenView bullpenview;
 
-	public BullpenController(Kabasuji kabasuji, PlayLevelPanel panel) {
+	public BullpenController(Kabasuji kabasuji, PlayLevelPanel plp) {
 		this.kabasuji = kabasuji;
 		this.board = kabasuji.getSelectedLevel().getBoard();
 		this.bullpen = kabasuji.getSelectedLevel().getBullpen();
-		this.panel = panel;
-		this.bullpenview = panel.getBullpenView();
-		this.zoompiece = panel.getZoomPiece();
+		this.plp = plp;
+		this.bullpenview = plp.getBullpenView();
 	}
 
 	/**
@@ -50,21 +47,21 @@ public class BullpenController extends MouseAdapter {
 	 * is a GUI controller.
 	 */
 	public void mousePressed(MouseEvent me) {
+		// get piece from board
 		selectedPiece = board.getSelectedPiece();
+		// board must have a piece and must be puzzle level
 		if(board.getSelectedPiece() != null && (kabasuji.getSelectedLevel() instanceof PuzzleLevel)){
+			// move selectedPiece from board to bullpen
 			board.removePiece(selectedPiece);
 			bullpen.addPiece(selectedPiece);
+			// update board to have no piece
 			board.selectPiece(null);
+			// update bullpen to show the selectedPiece and remove from zoompanel
 			bullpenview.setupBullpen();
-			zoompiece.removeAll();
-			zoompiece.repaint();
-			
+			plp.clearZoomPanel();
 		}
 	}
-	
-	public void mouseEntered(MouseEvent e) {
-		
-		
+	public void mouseEntered(MouseEvent e) {	
 	}
 
 	public void mouseExited(MouseEvent e) {

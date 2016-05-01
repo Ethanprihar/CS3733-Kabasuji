@@ -1,6 +1,8 @@
 package kabasuji.controllerTests;
 
 import javax.swing.JComponent;
+import javax.swing.JTextField;
+
 import java.awt.event.MouseEvent;
 
 import kabasuji.model.Builder;
@@ -54,14 +56,23 @@ public class TestBuilder extends TestCaseHelper {
 		}
 
 		// add in the size of the board
-
-		// select puzzle mode to test first
-//		try {
-//			MouseEvent puzz = createPressed(frame.contentPane, (int) (Screen.width + ((0 - 70 / 5 - 2) * 70) / 2),
-//					(int) (Screen.height) / 2);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+		JTextField boardDimensions = ((BuilderLevelMode)frame.contentPane).getBoardDimensionsTextBox();
+		boardDimensions.setText("6");
+		
+		JLabelIcon puzzTest = ((BuilderLevelMode)frame.contentPane).getPuzzleButton();
+		
+		// try making a puzzle level
+		try {
+			MouseEvent cp = createPressed(testBtn, 0, 0);
+			testBtn.dispatchEvent(cp);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		assertTrue(frame.getContentPane() instanceof BuilderLevelMode);
+		
+		// 
+		
 
 	}
 

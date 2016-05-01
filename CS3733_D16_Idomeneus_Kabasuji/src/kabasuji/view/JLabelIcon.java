@@ -1,5 +1,6 @@
 package kabasuji.view;
 
+import java.awt.Font;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
@@ -7,6 +8,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 /**
  * JLabelIcon; an image object for easy displaying and scaling of images.
  * @author jwu
@@ -16,6 +18,7 @@ public class JLabelIcon extends JLabel {
 	/** attributes: img, filename, and dimensions **/
 	Image img;
 	String filename;
+	JLabel lbl;
 	int dimX;
 	int dimY;
 
@@ -29,12 +32,30 @@ public class JLabelIcon extends JLabel {
 		this.filename = filename;
 		this.dimX = dimX;
 		this.dimY = dimY;
+		setup();
 
+	}
+	/**
+	 * Create new JLabelIcon with JLabel.
+	 * @param filename - filename of image
+	 * @param dimX - desired size in x
+	 * @param dimY - desired size in y
+	 */
+	public JLabelIcon(String filename, int dimX, int dimY, String lbl) {
+		this.filename = filename;
+		this.dimX = dimX;
+		this.dimY = dimY;
+		setup();
+		setLabel(lbl);
+	}
+	/**
+	 * Setup size and image for JLabelIcon.
+	 */
+	public void setup(){
 		// sets size
 		setSize(dimX, dimY);
 		// sets image
 		setImg(filename);
-
 	}
 	/**
 	 * Sets the image of JLabelIcon with new given filename (fn).
@@ -58,6 +79,24 @@ public class JLabelIcon extends JLabel {
 		// set picture on label
 		setIcon(imgi);
 		repaint();
+	}
+	/**
+	 * Getter for label.
+	 * @return
+	 */
+	public JLabel getLabel(){
+		return lbl;
+	}
+	/**
+	 * Sets the label on the image.
+	 * @param labeltext
+	 */
+	public void setLabel(String labeltext){
+		lbl = new JLabel("<html><div style='text-align: center;'>" + labeltext + "</html>", SwingConstants.CENTER);
+		lbl.setBounds(0, 0, (int)getSize().getWidth(),
+				(int) getSize().getHeight());
+		lbl.setFont(new Font("Onyx", Font.BOLD, 20));
+		add(lbl);
 	}
 	/**
 	 * Get Width.

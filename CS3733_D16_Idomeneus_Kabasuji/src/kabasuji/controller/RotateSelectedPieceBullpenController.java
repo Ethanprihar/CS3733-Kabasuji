@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 
 import kabasuji.controller.moves.ChangeScreenMove;
+import kabasuji.controller.moves.FlipPieceMove;
 import kabasuji.controller.moves.RotatePieceMove;
 import kabasuji.controller.moves.SelectLevelMove;
 import kabasuji.controller.moves.SelectPieceMove;
@@ -35,35 +36,36 @@ import kabasuji.view.TopLevelApplication;
  */
 public class RotateSelectedPieceBullpenController extends MouseAdapter {
 
-	/** Entity and Boundaries Associated **/
+	/** Entity associated **/
 	Kabasuji kabasuji;
 	Bullpen bullpen;
+	ArrayList<Piece> pieces;
+	Piece selectedPiece;
+	/** Boundaries asssociated **/
+	PlayLevelPanel panel;
 	BullpenView bullpenview;
 	JLabelIcon pieceicon;
-	PlayLevelPanel panel;
 	PieceView[] pieceviews;
-	ArrayList<Piece> pieces;
-
 	JLabelIcon zoompanel;
-	String fnzoom;
-	String fnpiece;
-	Piece selectedPiece;
+	
+	String fnzoompiece;
 
-	boolean right;
+	boolean vertical;
 
 	public RotateSelectedPieceBullpenController(Kabasuji kabasuji, PlayLevelPanel panel, JLabelIcon pieceicon,
-			boolean right) {
+			boolean vertical) {
 		this.kabasuji = kabasuji;
 		this.bullpen = kabasuji.getSelectedLevel().getBullpen();
 		this.selectedPiece = bullpen.getSelectedPiece();
 		this.panel = panel;
-		this.right = right;
 		this.bullpenview = panel.getBullpenView();
 		this.pieceviews = bullpenview.getPieceView();
-		this.pieceicon = pieceicon;
 		this.zoompanel = panel.getZoomPiece();
+		// handles the original image details
 		this.pieceicon = pieceicon;
-		this.fnpiece = pieceicon.getFileName();
+		this.fnzoompiece = pieceicon.getFileName();
+		// turning direction
+		this.vertical = vertical;
 	}
 
 	/**
@@ -72,11 +74,11 @@ public class RotateSelectedPieceBullpenController extends MouseAdapter {
 	 */
 	public void mousePressed(MouseEvent me) {
 		selectedPiece = kabasuji.getSelectedLevel().getBullpen().getSelectedPiece();
-		if(kabasuji.getSelectedLevel().getBullpen().getSelectedPiece() == null){
+		if (kabasuji.getSelectedLevel().getBullpen().getSelectedPiece() == null) {
 			selectedPiece = kabasuji.getSelectedLevel().getBoard().getSelectedPiece();
 		}
-		RotatePieceMove rpm = new RotatePieceMove(selectedPiece, right);
-		rpm.execute(kabasuji);
+		RotatePieceMove fpm = new RotatePieceMove(selectedPiece, vertical);
+		fpm.execute(kabasuji);
 		zoompanel.removeAll();
 		PieceView pieceview = new PieceView(selectedPiece);
 		pieceview.setBounds(0, 0, (int) zoompanel.getSize().getWidth(), (int) zoompanel.getSize().getHeight());
@@ -91,8 +93,8 @@ public class RotateSelectedPieceBullpenController extends MouseAdapter {
 	}
 
 	public void mouseExited(MouseEvent e) {
-		// sets back to original image
-		pieceicon.setImg(fnpiece);
+		// sets image back to original
+		pieceicon.setImg(fnzoompiece);
 	}
 
 }

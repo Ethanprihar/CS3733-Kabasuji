@@ -18,6 +18,7 @@ public class BuilderLevelMode extends JPanel {
 	TopLevelApplicationBuilder app;
 	JLabelIcon mainmenubtn;
 	JLabelIcon[] buildermainbtn;
+	JTextField boardDimensions;
 
 	/**
 	 * Create the Main Menu Panel.
@@ -40,7 +41,7 @@ public class BuilderLevelMode extends JPanel {
 		JLabel[] buildermainlbl = new JLabel[3];
 		
 		// Create a text field for the board dimensions
-		JTextField boardDimensions = new JTextField();
+		boardDimensions = new JTextField();
 		boardDimensions.setBounds((int)(Screen.width - boardDimensions.getSize().getWidth())/2 - 70, (int)(Screen.height/2 + boardDimensions.getSize().getWidth() - 20), 70, 20);
 		background.add(boardDimensions);
 				
@@ -95,5 +96,9 @@ public class BuilderLevelMode extends JPanel {
 	
 	public JLabelIcon getReleaseButton() {
 		return buildermainbtn[2];
+	}
+	
+	public JTextField getBoardDimensionsTextBox() {
+		return boardDimensions;
 	}
 }

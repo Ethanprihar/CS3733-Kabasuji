@@ -61,14 +61,14 @@ public class PieceView extends JPanel {
 	public PieceView(Piece piece) {
 		this.piece = piece;
 		this.tiles = piece.getTiles();
+		setLayout(null);
+		setOpaque(false);
 	}
 	/**
 	 * Set up the piece centered on Container.
 	 */
 	public void setupPiece(){
 		
-		setLayout(null);
-		setOpaque(false);
 		// get row and col of the 2D array of Tile
 		this.row = tiles.length;
 		this.col = tiles[0].length;
