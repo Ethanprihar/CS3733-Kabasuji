@@ -59,10 +59,10 @@ public class TestBuilder extends TestCaseHelper {
 		}
 
 		BuilderLevelMode testbm = new BuilderLevelMode(builder, frame);
-		
+
 		// return to the main menu
 		JLabelIcon returnMainBtn = testbm.getMainMenuButton();
-		
+
 		try {
 			MouseEvent cp = createPressed(returnMainBtn, 0, 0);
 			returnMainBtn.dispatchEvent(cp);
@@ -70,7 +70,7 @@ public class TestBuilder extends TestCaseHelper {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		test = new BuilderMainMenu(builder, frame);
 
 		testBtn = test.getBuildButton();
@@ -172,11 +172,11 @@ public class TestBuilder extends TestCaseHelper {
 
 		// check that we are now back at the main menu
 		assertTrue(frame.getContentPane() instanceof BuilderMainMenu);
-		
+
 		/*
 		 * Make a release level and then return to the main menu
 		 */
-		
+
 		test = new BuilderMainMenu(builder, frame);
 
 		testBtn = test.getBuildButton();
@@ -232,7 +232,7 @@ public class TestBuilder extends TestCaseHelper {
 	}
 
 	public void testDeleteLevel() {
-		
+
 		try {
 			setup();
 		} catch (Exception e) {
@@ -253,10 +253,10 @@ public class TestBuilder extends TestCaseHelper {
 		}
 
 		BuilderLevelMode testbm = new BuilderLevelMode(builder, frame);
-		
+
 		// return to the main menu
 		JLabelIcon returnMainBtn = testbm.getMainMenuButton();
-		
+
 		try {
 			MouseEvent cp = createPressed(returnMainBtn, 0, 0);
 			returnMainBtn.dispatchEvent(cp);
@@ -264,7 +264,7 @@ public class TestBuilder extends TestCaseHelper {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		test = new BuilderMainMenu(builder, frame);
 
 		testBtn = test.getBuildButton();
@@ -366,11 +366,11 @@ public class TestBuilder extends TestCaseHelper {
 
 		// check that we are now back at the main menu
 		assertTrue(frame.getContentPane() instanceof BuilderMainMenu);
-		
+
 		/*
 		 * Make a release level and then return to the main menu
 		 */
-		
+
 		test = new BuilderMainMenu(builder, frame);
 
 		testBtn = test.getBuildButton();
@@ -420,9 +420,109 @@ public class TestBuilder extends TestCaseHelper {
 			e.printStackTrace();
 		}
 
-
+		try {
+			tearDown();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
+	public void testPuzzLevel() {
 
+		try {
+			setup();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		BuilderMainMenu test = new BuilderMainMenu(builder, frame);
+
+		JLabelIcon testBtn = test.getBuildButton();
+
+		try {
+			MouseEvent cp = createPressed(testBtn, 0, 0);
+			testBtn.dispatchEvent(cp);
+			assertTrue(frame.getContentPane() instanceof BuilderLevelMode);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		BuilderLevelMode testbm = new BuilderLevelMode(builder, frame);
+
+		// return to the main menu
+		JLabelIcon returnMainBtn = testbm.getMainMenuButton();
+
+		try {
+			MouseEvent cp = createPressed(returnMainBtn, 0, 0);
+			returnMainBtn.dispatchEvent(cp);
+			assertTrue(frame.getContentPane() instanceof BuilderMainMenu);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		test = new BuilderMainMenu(builder, frame);
+
+		testBtn = test.getBuildButton();
+
+		try {
+			MouseEvent cp = createPressed(testBtn, 0, 0);
+			testBtn.dispatchEvent(cp);
+			assertTrue(frame.getContentPane() instanceof BuilderLevelMode);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		// add in the size of the board
+		try {
+			testbm.setBoardDimensionsTextBox("6");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		// test that the text has been updated
+		assertEquals(testbm.getBoardDimensionsTextBox().getText(), "6");
+
+		JLabelIcon puzzTest = testbm.getPuzzleButton();
+
+		// try making a puzzle level
+		try {
+			MouseEvent cp = createPressed(puzzTest, 0, 0);
+			puzzTest.dispatchEvent(cp);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		assertTrue(frame.getContentPane() instanceof BuilderPuzzleLevelPanel);
+
+		BuilderPuzzleLevelPanel testPuzzLev = new BuilderPuzzleLevelPanel(builder, frame,
+				testbm.getBoardDimensionsTextBox());
+
+		// set the number of moves to 6
+		testPuzzLev.setNumMoves("6");
+
+		// check that there are no straight pieces currently
+		assertEquals(testPuzzLev.getNumStrightPieces(), "0");
+
+		// add a straight piece
+		//JLabelIcon pieceBtn = testPuzzLev.getStraightPiece();
+		JLabelIcon pieceBtn = testPuzzLev.getFirstRowPieces()[6];
+
+		// try adding the new piece
+		try {
+			MouseEvent cp = createPressed(pieceBtn, 0, 0);
+			pieceBtn.dispatchEvent(cp);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		// check that the piece was added
+		System.out.println("num straight pieces: ");
+		System.out.println(testPuzzLev.getNumStrightPieces());
+		assertEquals(testPuzzLev.getNumStrightPieces(), "1");
+		
+
+	}
 
 }

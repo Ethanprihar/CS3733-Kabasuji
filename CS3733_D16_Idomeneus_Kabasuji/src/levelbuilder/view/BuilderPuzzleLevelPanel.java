@@ -32,6 +32,9 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 	JLabelIcon undoBtn;
 	JLabelIcon redoBtn;
 	JLabelIcon testBtn;
+	JTextField numMoves;
+	JLabelIcon[] piece;
+	JLabel[] piece1Lbl;
 
 	/**
 	 * Create the panel.
@@ -74,7 +77,7 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		background.add(board);
 		
 		// Create the first set of JLabels
-		JLabel[] piece1Lbl = new JLabel[12];
+		piece1Lbl = new JLabel[12];
 		// Run the loop to initialize and set their positions
 		for (int i = 0; i < 12; i++){
 			piece1Lbl[i] = new JLabel(String.valueOf(builder.getNum(i)));
@@ -106,7 +109,7 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		System.out.println("Piece 0 has this many instances in the bullpen: " + builder.getNum(0));
 		
 		// Create the first row of pieces in the bullpen
-		JLabelIcon[] piece = new JLabelIcon[12];
+		piece = new JLabelIcon[12];
 		// Run the loop to initialize and set the positions
 		for (int i = 0; i < 12; i++){
 			// Create a piece in the builder bullpen
@@ -162,7 +165,7 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		background.add(redoBtn);
 		redoBtn.addMouseListener(new RedoController(builder, app, redoBtn, piece1Lbl, piece2Lbl, piece3Lbl, boardview));
 
-		JTextField numMoves = new JTextField();
+		numMoves = new JTextField();
 		if(builder.getSelectedLevel().getEndCondition() > 0)
 		{
 			numMoves.setText(Integer.toString(builder.getSelectedLevel().getEndCondition()));
@@ -239,5 +242,21 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 	
 	public JLabelIcon getTestButton() {
 		return testBtn;
+	}
+	
+	public void setNumMoves(String s) {
+		numMoves.setText(s);
+	}
+	
+	public JLabelIcon getStraightPiece() {
+		return piece[6];
+	}
+	
+	public String getNumStrightPieces() {
+		return piece1Lbl[6].getText();
+	}
+	
+	public JLabelIcon[] getFirstRowPieces() {
+		return piece;
 	}
 }
