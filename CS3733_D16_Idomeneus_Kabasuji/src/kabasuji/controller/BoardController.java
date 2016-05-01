@@ -40,7 +40,6 @@ public class BoardController extends MouseAdapter {
 		
 		
 	}
-
 	public void mouseExited(MouseEvent e) {
 		tile.setImg(fn);
 	}

@@ -53,9 +53,7 @@ public class GoToMainMenuController extends MouseAdapter {
 		kabasuji.saveLevels();
 		if (index != -1)
 			kabasuji.getLevels().get(index).setLocked(false);
-		// Created ChangeScreenMove and input desired screen
-		ChangeScreenMove gtsm = new ChangeScreenMove(Screen.Opening);
-		gtsm.execute(kabasuji);
+
 		new MusicPlayer("select.wav");
 		// Created JPanel screen object and update boundary to reflect changes
 		MainMenu mm = new MainMenu(kabasuji, app);

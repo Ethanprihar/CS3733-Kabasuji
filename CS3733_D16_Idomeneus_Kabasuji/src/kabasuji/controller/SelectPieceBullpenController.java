@@ -90,7 +90,6 @@ public class SelectPieceBullpenController extends MouseAdapter {
 	public void mouseExited(MouseEvent e) {
 		// sets the panel back to empty if no piece is selected before leaving image
 		if (bullpen.getSelectedPiece() == null) {
-			//zoompanel.removeAll();
 			zoompanel.setImg("opaque_canvas.png");
 		}
 	}

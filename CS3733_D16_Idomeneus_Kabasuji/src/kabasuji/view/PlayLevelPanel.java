@@ -284,6 +284,13 @@ public class PlayLevelPanel extends JPanel {
 	public JLabelIcon getZoomPiece() {
 		return zoompiece;
 	}
+	/**
+	 * Removes all components from zoompiece and updates.
+	 */
+	public void clearZoomPiece(){
+		zoompiece.removeAll();
+		zoompiece.repaint();
+	}
 
 	/**
 	 * Getter for JLabel movesLeftNum

@@ -20,7 +20,7 @@ import kabasuji.view.TopLevelApplication;
 import misc.MusicPlayer;
 
 /**
- * Controller for Moving Screens; Go To Play Level Screen (Panel).
+ * Controller for Moving Screens; Go To Play numlevel Screen (Panel).
  * 
  * When the button is pressed to attempt to go to the next screen, the model
  * will update what screen it is on and the gui will reflect the changes
@@ -32,21 +32,19 @@ public class SelectLevelController extends MouseAdapter {
 
 	/** Entities associated **/
 	Kabasuji kabasuji;
-	int level; // 0 = Puzzle, 1 = Lightning, 2 = Release
+	int numlevel; // level number
 	/** Boundaries associated **/
 	TopLevelApplication app;
-	JPanel contentPanel;
-	JLabelIcon button;
 	PlayLevelPanel plp;
+	JLabelIcon button;
 	String fn;
 
-	public SelectLevelController(Kabasuji kabasuji, TopLevelApplication app, JLabelIcon button, int level) {
+	public SelectLevelController(Kabasuji kabasuji, TopLevelApplication app, JLabelIcon button, int numlevel) {
 		this.kabasuji = kabasuji;
 		this.app = app;
-		this.contentPanel = app.getContentPanel();
 		this.button = button;
 		this.fn = button.getFileName();
-		this.level = level;
+		this.numlevel = numlevel;
 	}
 
 	/**
@@ -55,15 +53,12 @@ public class SelectLevelController extends MouseAdapter {
 	 */
 	public void mousePressed(MouseEvent me) {
 		/*** MODEL CHANGES ***/
-		// Created SelectLevelMove and input desired level integer
-		SelectLevelMove slm = new SelectLevelMove(level);
-		// Created ChangeScreenMove and input desired screen
-		ChangeScreenMove gtsm = new ChangeScreenMove(Screen.PlayLevel);
+		// Created SelectLevelMove and input desired numlevel integer
+		SelectLevelMove slm = new SelectLevelMove(numlevel);
 
 		// Attempt to execute action on model
 		new MusicPlayer("select.wav");
 		if (slm.execute(kabasuji)) {
-			gtsm.execute(kabasuji);
 
 			// Create PlayLevelPanel screen object and update boundary to
 			// reflect *** GUI CHANGES ***
