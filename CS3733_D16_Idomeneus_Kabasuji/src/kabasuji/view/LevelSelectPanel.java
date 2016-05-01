@@ -32,7 +32,6 @@ public class LevelSelectPanel extends JPanel {
 
 	/** Level Button GUI elements **/
 	JLabelIcon[] levelselectbtn;
-	JLabel[] buttonlbl;
 	JLabelIcon[] leveltypeicons;
 
 	/** dimensions of level button array (row X col display) **/
@@ -59,7 +58,6 @@ public class LevelSelectPanel extends JPanel {
 		this.kabasuji = kabasuji;
 		this.app = app;
 		this.levelselectbtn = new JLabelIcon[kabasuji.getLevels().size()];
-		this.buttonlbl = new JLabel[kabasuji.getLevels().size()];
 		this.leveltypeicons = new JLabelIcon[kabasuji.getLevels().size()];
 
 		// set layout to null
@@ -71,13 +69,13 @@ public class LevelSelectPanel extends JPanel {
 					boolean locked = kabasuji.levels.get(i * col + j).isLocked();
 
 					// Decide locked picture or not
+					String btnimg = "generalbutton.png";
 					if (locked) {
-						levelselectbtn[i * col + j] = new JLabelIcon("generallockedbutton.png", btnsidelength,
-								btnsidelength);
-					} else {
-						levelselectbtn[i * col + j] = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength);
+						btnimg = "generallockedbutton.png";
 					}
-
+					levelselectbtn[i * col + j] = new JLabelIcon(btnimg, btnsidelength,
+							btnsidelength,"Level"+"<br>"+ (i * col + j + 1));
+					
 					// set location relative to background
 					String leveltypefn = "opaquetile.png";
 					if (kabasuji.getLevels().get(i * col + j) instanceof PuzzleLevel) {
@@ -92,13 +90,9 @@ public class LevelSelectPanel extends JPanel {
 							(int) (Screen.width / 6 * (j + 1) - btnsidelength / 2 + lvltypeiconoffsetx),
 							(int) (Screen.height / 12 * (i * 2 + 4) - btnsidelength / 2 + lvltypeiconoffsety));
 					add(leveltypeicons[i * col + j]);
+					
 					levelselectbtn[i * col + j].setLocation((int) (Screen.width / 6 * (j + 1) - btnsidelength / 2),
-							(int) (Screen.height / 12 * (i * 2 + 4) - btnsidelength / 2));
-					buttonlbl[i * col + j] = new JLabel("<html>Select<br>" + "Level " + (i * col + j + 1) + "</html>",
-							SwingConstants.CENTER);
-					buttonlbl[i * col + j].setBounds(0, 0, btnsidelength, btnsidelength);
-					buttonlbl[i * col + j].setFont(new Font("Onyx", Font.BOLD, 18));
-					levelselectbtn[i * col + j].add(buttonlbl[i * col + j]);
+							(int) (Screen.height / 12 * (i * 2 + 4) - btnsidelength / 2));				
 					levelselectbtn[i * col + j].addMouseListener(
 							new SelectLevelController(kabasuji, app, levelselectbtn[i * col + j], i * col + j + 1));
 					add(levelselectbtn[i * col + j]);

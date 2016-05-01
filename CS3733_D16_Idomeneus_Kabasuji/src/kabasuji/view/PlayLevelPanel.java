@@ -225,31 +225,19 @@ public class PlayLevelPanel extends JPanel {
 		}
 
 		if (type == 0) {
-			nextlevelbtn = new JLabelIcon("generallockedbutton.png", 70, 70);
+			nextlevelbtn = new JLabelIcon("generallockedbutton.png", btnsidelength, btnsidelength,"Next" + "<br>" + "Level");
 			nextlevelbtn.setLocation((int) (Screen.width * 0.74) + (int) (rotatelbtn.getSize().getWidth() / 2),
 					(int) (Screen.height * .6));
-			JLabel nextlevellbl = new JLabel("<html>Next<br>Level</html>", SwingConstants.CENTER);
-			nextlevellbl.setBounds(0, 0, 70, 70);
-			nextlevellbl.setFont(new Font("Onyx", Font.BOLD, 18));
-			nextlevelbtn.add(nextlevellbl);
 			add(nextlevelbtn);
 
-			resetlevelbtn = new JLabelIcon("generalbutton.png", 70, 70);
+			resetlevelbtn = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength,"Reset" + "<br>" + "Level");
 			resetlevelbtn.setLocation((int) (Screen.width * 0.74) + (int) (rotatelbtn.getSize().getWidth() / 2),
 					(int) (Screen.height * .73));
-			JLabel resetlevellbl = new JLabel("<html>Reset<br>Level</html>", SwingConstants.CENTER);
-			resetlevellbl.setBounds(0, 0, 70, 70);
-			resetlevellbl.setFont(new Font("Onyx", Font.BOLD, 18));
-			resetlevelbtn.add(resetlevellbl);
 			add(resetlevelbtn);
 
-			JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", 70, 70);
+			JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength,"Main" + "<br>" + "Menu");
 			mainmenubtn.setLocation((int) (Screen.width * 0.84) + (int) (rotatelbtn.getSize().getWidth() / 2),
 					(int) (Screen.height * .6));
-			JLabel mainmenulbl = new JLabel("<html>Main<br>Menu</html>", SwingConstants.CENTER);
-			mainmenulbl.setBounds(0, 0, 70, 70);
-			mainmenulbl.setFont(new Font("Onyx", Font.BOLD, 18));
-			mainmenubtn.add(mainmenulbl);
 			mainmenubtn.addMouseListener(new GoToMainMenuController(kabasuji, app, mainmenubtn));
 			add(mainmenubtn);
 		}
