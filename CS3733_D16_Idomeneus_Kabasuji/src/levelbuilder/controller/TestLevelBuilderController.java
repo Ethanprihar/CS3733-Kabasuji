@@ -59,8 +59,7 @@ public class TestLevelBuilderController extends MouseAdapter {
 	 */
 	public void mousePressed(MouseEvent me) {
 	/*** MODEL CHANGES ***/
-		System.out.println("I am in Test Level again");
-		builder.setEndCondition(Integer.parseInt(ec.getText()));
+		builder.setEndCondition(100);
 		builder.makeTestLevel(numOfPiecesOnLoad);
 		Kabasuji kabasuji = new Kabasuji();
 		kabasuji.loadTestLevels();
@@ -73,58 +72,52 @@ public class TestLevelBuilderController extends MouseAdapter {
 		// Attempt to execute action on model
 		//if (gtsm.execute(builder)) {
 			
-			kabasuji.loadLevel(); 
-			
-			// first make the foundation panel and pass model and container
-			// panel
-			PlayLevelPanel plp = new PlayLevelPanel(kabasuji, app1, 1);
-			
-			System.out.println("I am in Test Level again");
+		kabasuji.loadLevel(); 
+		
+		// first make the foundation panel and pass model and container
+		// panel
+		PlayLevelPanel plp = new PlayLevelPanel(kabasuji, app1, 1);
+		
+		System.out.println("I am in Test Level again");
 
-			// create components of panel and pass model and container panel
-			BullpenView bpv = new BullpenView(kabasuji, plp, 4,
-					(int) (kabasuji.selectedLevel.getBullpen().getPieces().size() + 3) / 4);
-			BoardView bv = new BoardView(kabasuji, plp);
+		// create components of panel and pass model and container panel
+		BullpenView bpv = new BullpenView(kabasuji, plp, 4,
+				(int) (kabasuji.selectedLevel.getBullpen().getPieces().size() + 3) / 4);
+		BoardView bv = new BoardView(kabasuji, plp);
 
-			// set location and size of components (**necessary)
-			bv.setBounds((int) (Screen.width * 0.35), (int) (Screen.height * 0.36), (int) (Screen.height * 0.54),
-					(int) (Screen.height * 0.54));
-			bpv.setBounds((int) (Screen.width * 0.05), (int) (Screen.height * 0.05), (int) (Screen.width * 0.25),
-					(int) (Screen.height * 0.85));
+		// set location and size of components (**necessary)
+		bv.setBounds((int) (Screen.width * 0.35), (int) (Screen.height * 0.36), (int) (Screen.height * 0.54),
+				(int) (Screen.height * 0.54));
+		bpv.setBounds((int) (Screen.width * 0.05), (int) (Screen.height * 0.05), (int) (Screen.width * 0.25),
+				(int) (Screen.height * 0.85));
 
-			// remove all components from PLP -> update PLP -> add controllers
-			plp.removeAll();
-			plp.updatePlayLevelPanel(bv, bpv);
-			plp.addControllers();
+		// remove all components from PLP -> update PLP -> add controllers
+		plp.removeAll();
+		plp.updatePlayLevelPanel(bv, bpv);
+		plp.addControllers();
 
-			// repaint the PlayLevelPanel
-			plp.repaint();
-			
-			System.out.println(kabasuji.selectedLevel.getBullpen().getPieces().size());
-			// set the content panel of container to contain PlayLevelPanel
-			//app.setContentPanel(plp);
-			
-			JFrame frame = new JFrame("TestWindow");
-			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-			double width = screenSize.getWidth();
-			double height = screenSize.getHeight();
-			int x0 = (int) (width - Screen.width)/2;
-			int y0 = (int) (height-Screen.height)/2;
-			frame.setBounds(x0,y0,Screen.width,Screen.height);
-			// not resizable
-			frame.setResizable(false);
-			frame.setVisible(true);
-			frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			plp.setBounds(0,0,Screen.width,Screen.height);
-			frame.setContentPane(plp);
-			frame.repaint();
-			
-//			ArrayList<Piece> pieces = builder.getSelectedLevel().getBullpen().getPieces();
-//			for (int i = 0; i < pieces.size(); i++){
-//				pieces.set(i, null);
-//			}
-		}
-	//}
+		// repaint the PlayLevelPanel
+		plp.repaint();
+		
+		System.out.println(kabasuji.selectedLevel.getBullpen().getPieces().size());
+		// set the content panel of container to contain PlayLevelPanel
+		//app.setContentPanel(plp);
+		
+		JFrame frame = new JFrame("TestWindow");
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = screenSize.getWidth();
+		double height = screenSize.getHeight();
+		int x0 = (int) (width - Screen.width)/2;
+		int y0 = (int) (height-Screen.height)/2;
+		frame.setBounds(x0,y0,Screen.width,Screen.height);
+		// not resizable
+		frame.setResizable(false);
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		plp.setBounds(0,0,Screen.width,Screen.height);
+		frame.setContentPane(plp);
+		frame.repaint();
+	}
 	public void mouseEntered(MouseEvent e) {
 		button.setImg("generalhoverbutton.png");
 	}
