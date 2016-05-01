@@ -248,6 +248,7 @@ public class PlayLevelPanel extends JPanel {
 			}
 		}
 	}
+
 	/********************* TIMER *************************/
 	/**
 	 * Setup Global Panel Timer object.
@@ -306,6 +307,7 @@ public class PlayLevelPanel extends JPanel {
 			}
 		}
 	}
+
 	/*********************** END OF TIMER ********************/
 	/**
 	 * Getter for JLabel timeLeftNum
@@ -452,24 +454,18 @@ public class PlayLevelPanel extends JPanel {
 
 			// create a main menu button
 			remove(background);
-			JLabelIcon mainMenuButton = new JLabelIcon("general3button.png", 70, 70);
+			JLabelIcon mainMenuButton = new JLabelIcon("general3button.png", btnsidelength, btnsidelength,
+					"Main" + "<br>" + "Menu");
 			mainMenuButton.setLocation((int) (Screen.width * 0.80) + (int) (mainMenuButton.getSize().getWidth() / 2),
 					(int) (Screen.height * 0.18));
-			JLabel mainMenuButtonLbl = new JLabel("<html>Main<br>Menu</html>", SwingConstants.CENTER);
-			mainMenuButtonLbl.setBounds(0, 0, 70, 70);
-			mainMenuButtonLbl.setFont(new Font("Onyx", Font.BOLD, 18));
-			mainMenuButton.add(mainMenuButtonLbl);
 			mainMenuButton.addMouseListener(new GoToMainMenuController(kabasuji, app, mainMenuButton));
 			add(mainMenuButton);
 
 			// create a next level button
-			JLabelIcon nextLevelButton = new JLabelIcon("general3button.png", 70, 70);
+			JLabelIcon nextLevelButton = new JLabelIcon("general3button.png", btnsidelength, btnsidelength,
+					"Next" + "<br>" + "Level");
 			nextLevelButton.setLocation((int) (Screen.width * 0.80) + (int) (nextLevelButton.getSize().getWidth() / 2),
 					(int) (Screen.height * 0.40));
-			JLabel nextLevelButtonLbl = new JLabel("<html>Next<br>Level</html>", SwingConstants.CENTER);
-			nextLevelButtonLbl.setBounds(0, 0, 70, 70);
-			nextLevelButtonLbl.setFont(new Font("Onyx", Font.BOLD, 18));
-			nextLevelButton.add(nextLevelButtonLbl);
 			nextLevelButton.addMouseListener(new NextLevelController(kabasuji, this, nextLevelButton));
 			add(nextLevelButton);
 
@@ -496,13 +492,10 @@ public class PlayLevelPanel extends JPanel {
 
 			// create a main menu button
 			remove(background);
-			JLabelIcon mainMenuButton = new JLabelIcon("general3button.png", 70, 70);
+			JLabelIcon mainMenuButton = new JLabelIcon("general3button.png", btnsidelength, btnsidelength,
+					"Main" + "<br>" + "Menu");
 			mainMenuButton.setLocation((int) (Screen.width * 0.85) + (int) (mainMenuButton.getSize().getWidth() / 2),
 					(int) (Screen.height * 0.18));
-			JLabel mainMenuButtonLbl = new JLabel("<html>Main<br>Menu</html>", SwingConstants.CENTER);
-			mainMenuButtonLbl.setBounds(0, 0, 70, 70);
-			mainMenuButtonLbl.setFont(new Font("Onyx", Font.BOLD, 18));
-			mainMenuButton.add(mainMenuButtonLbl);
 			mainMenuButton.addMouseListener(new GoToMainMenuController(kabasuji, app, mainMenuButton));
 			add(mainMenuButton);
 
