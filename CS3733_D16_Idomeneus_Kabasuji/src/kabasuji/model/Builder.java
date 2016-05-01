@@ -113,7 +113,7 @@ public class Builder
 		System.out.println("Printing levels.size() for some reason: " + levels.size());
 	}
 	
-	public void maketestLevel(int[] numOfPiecesOnLoad)
+	public void makeTestLevel(int[] numOfPiecesOnLoad)
 	{
 		ArrayList<Level> testLevels = new ArrayList<Level>();
 		Level testLevel = selectedLevel.copy();

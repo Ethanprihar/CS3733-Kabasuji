@@ -61,13 +61,10 @@ public class TestLevelBuilderController extends MouseAdapter {
 	/*** MODEL CHANGES ***/
 		System.out.println("I am in Test Level again");
 		builder.setEndCondition(Integer.parseInt(ec.getText()));
-		builder.saveLevel(numOfPiecesOnLoad);
-
-		int index = builder.getLevels().indexOf(builder.getSelectedLevel());
-		builder.saveToDisc();
-		
+		builder.makeTestLevel(numOfPiecesOnLoad);
 		Kabasuji kabasuji = new Kabasuji();
-		kabasuji.selectLevel(kabasuji.getLevels().get(index));
+		kabasuji.loadTestLevels();
+		kabasuji.selectLevel(kabasuji.getLevels().get(0));
 		TopLevelApplication app1 = new TopLevelApplication(kabasuji);
 
 		// Created ChangeScreenMove and input desired screen
