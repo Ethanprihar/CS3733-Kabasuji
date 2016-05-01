@@ -101,4 +101,8 @@ public class BuilderLevelMode extends JPanel {
 	public JTextField getBoardDimensionsTextBox() {
 		return boardDimensions;
 	}
+	
+	public void setBoardDimensionsTextBox(String s) {
+		boardDimensions.setText(s);
+	}
 }
