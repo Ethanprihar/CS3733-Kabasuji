@@ -47,7 +47,7 @@ public class PlayLevelPanel extends JPanel {
 	BoardView boardview;
 	BullpenView bullpenview;
 
-	JLabelIcon zoompiece;
+	ZoomPanel zoompanel;
 	JLabelIcon rotatelbtn;
 	JLabelIcon rotaterbtn;
 	JLabelIcon fliphbtn;
@@ -148,9 +148,9 @@ public class PlayLevelPanel extends JPanel {
 	 */
 	public void updatePlayLevelPanel(BoardView bv, BullpenView bpv) {
 		/** adding all buttons/images needed **/
-		zoompiece = new JLabelIcon("opaque_canvas.png", (int) (Screen.height * 0.25), (int) (Screen.height * 0.25));
-		zoompiece.setLocation((int) (Screen.width * 0.35), (int) (Screen.height * 0.05));
-		add(zoompiece);
+		zoompanel = new ZoomPanel("opaque_canvas.png", (int) (Screen.height * 0.25), (int) (Screen.height * 0.25));
+		zoompanel.setLocation((int) (Screen.width * 0.35), (int) (Screen.height * 0.05));
+		add(zoompanel);
 
 		// create a flip horizontal button
 		fliphbtn = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength, "Flip" + "<br>" + "Horizontal");
@@ -281,15 +281,15 @@ public class PlayLevelPanel extends JPanel {
 	 * 
 	 * @return
 	 */
-	public JLabelIcon getZoomPiece() {
-		return zoompiece;
+	public ZoomPanel getZoomPiece() {
+		return zoompanel;
 	}
 	/**
-	 * Removes all components from zoompiece and updates.
+	 * Removes all components from zoompanel and updates.
 	 */
-	public void clearZoomPiece(){
-		zoompiece.removeAll();
-		zoompiece.repaint();
+	public void clearZoomPanel(){
+		zoompanel.removeAll();
+		zoompanel.repaint();
 	}
 
 	/**

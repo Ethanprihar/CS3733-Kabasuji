@@ -58,7 +58,7 @@ public class BullpenController extends MouseAdapter {
 			board.selectPiece(null);
 			// update bullpen to show the selectedPiece and remove from zoompanel
 			bullpenview.setupBullpen();
-			plp.clearZoomPiece();
+			plp.clearZoomPanel();
 		}
 	}
 	public void mouseEntered(MouseEvent e) {	

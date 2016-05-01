@@ -12,6 +12,7 @@ import kabasuji.view.BullpenView;
 import kabasuji.view.JLabelIcon;
 import kabasuji.view.PieceView;
 import kabasuji.view.PlayLevelPanel;
+import kabasuji.view.ZoomPanel;
 
 /**
  * Controller for Selecting Piece in bullpen; Selects piece then displays it in zoom Panel.
@@ -36,7 +37,7 @@ public class SelectPieceBullpenController extends MouseAdapter {
 	
 	PlayLevelPanel panel;
 	BullpenView bullpenview;
-	JLabelIcon zoompanel;
+	ZoomPanel zoompanel;
 	JLabelIcon pieceicon;
 	PieceView[] pieceviews;
 	String fnzoom;
@@ -77,12 +78,8 @@ public class SelectPieceBullpenController extends MouseAdapter {
 	public void mouseEntered(MouseEvent e) {
 		// displays enlarged piece on zoom panel upon entering
 		if (bullpen.getSelectedPiece() == null) {
-			zoompanel.removeAll();
-			PieceView pieceview = new PieceView(selectedPiece);
-			pieceview.setBounds(0, 0, (int) zoompanel.getSize().getWidth(), (int) zoompanel.getSize().getHeight());
-			pieceview.setupPiece();
-			zoompanel.add(pieceview);
-			zoompanel.repaint();
+			// update zoompanel to show selectedPiece
+			zoompanel.displayPieceView(selectedPiece);
 		}
 
 	}
