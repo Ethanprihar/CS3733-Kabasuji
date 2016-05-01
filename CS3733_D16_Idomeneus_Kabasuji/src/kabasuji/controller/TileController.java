@@ -8,6 +8,7 @@ import javax.swing.SwingUtilities;
 import kabasuji.model.Board;
 import kabasuji.model.Bullpen;
 import kabasuji.model.Kabasuji;
+import kabasuji.model.Level;
 import kabasuji.model.LightningLevel;
 import kabasuji.model.Piece;
 import kabasuji.model.PuzzleLevel;
@@ -18,6 +19,7 @@ import kabasuji.view.BullpenView;
 import kabasuji.view.JLabelIcon;
 import kabasuji.view.PieceView;
 import kabasuji.view.PlayLevelPanel;
+import kabasuji.view.ZoomPanel;
 import misc.MusicPlayer;
 
 /**
@@ -35,6 +37,7 @@ public class TileController extends MouseAdapter {
 	Board board;
 	Bullpen bullpen;
 	JLabelIcon tile;
+	Level currentlevel;
 
 	PlayLevelPanel panel;
 	BoardView boardview;
@@ -46,7 +49,7 @@ public class TileController extends MouseAdapter {
 	Tile selfTile;
 	Kabasuji kabasuji;
 	JLabelIcon[] tileimgs;
-	JLabelIcon zoompanel;
+	ZoomPanel zoompanel;
 
 	public TileController(Kabasuji kabasuji, PlayLevelPanel panel, JLabelIcon tile, Tile selfTile) {
 		this.panel = panel;
@@ -63,17 +66,27 @@ public class TileController extends MouseAdapter {
 		this.tileimgs = boardview.getTileImages();
 	}
 
+	public void updateParameters() {
+		currentlevel = kabasuji.getSelectedLevel();
+		bullpen = currentlevel.getBullpen();
+		board = currentlevel.getBoard();
+		bullpenview = panel.getBullpenView();
+		boardview = panel.getBoardView();
+		selectedPiece = bullpen.getSelectedPiece();
+		if (bullpen.getSelectedPiece() == null) {
+			selectedPiece = board.getSelectedPiece();
+		}
+	}
+
 	/**
 	 * Whenever mouse is pressed (left button), attempt to select object. This
 	 * is a GUI controller.
 	 */
 	public void mousePressed(MouseEvent me) {
-		bullpen = kabasuji.getSelectedLevel().getBullpen();
-		board = kabasuji.getSelectedLevel().getBoard();
-		bullpenview = panel.getBullpenView();
+		updateParameters();
 		if (bullpen.getSelectedPiece() != null) {
 			if (SwingUtilities.isLeftMouseButton(me)) {
-				if (kabasuji.getSelectedLevel().canMoveBullpenToBoard(selfTile)) {
+				if (currentlevel.canMoveBullpenToBoard(selfTile)) {
 					board.addPiece(selectedPiece, selfTile);
 					new MusicPlayer("success.wav");
 					displayHoverPiece("bluenightbutton.png", true, false);
@@ -82,78 +95,38 @@ public class TileController extends MouseAdapter {
 					bullpenview.setupBullpen();
 					panel.getZoomPanel().removeAll();
 
-					/* Check if the number of stars has been updated */
-					int currNumStars = kabasuji.getSelectedLevel().getStars();
-					System.out.print("Calculated Number of Stars: ");
-					System.out.println(currNumStars);
-					System.out.print("Stored Number of Stars: ");
-					System.out.println(kabasuji.getSelectedLevel().getBoard().getNumStars());
-					if (currNumStars != kabasuji.getSelectedLevel().getBoard().getNumStars()) {
-						System.out.println("Entered star condition!");
-						// update the stored number of stars
-						kabasuji.getSelectedLevel().getBoard().setNumStars(currNumStars);
+					// update display of stars
+					updateStarDisplay();
 
-						panel.updateStars(); // draw the correct number of stars
-
-						/*
-						 * If this is the first star, change the next level
-						 * button to be unlocked
-						 */
-						if (currNumStars == 1) {
-							panel.updateNextLevel();
-						}
-					}
-					panel.repaint();
 					// update to show new number of moves if in puzzle mode
-					if (kabasuji.getSelectedLevel() instanceof PuzzleLevel) {
+					if (currentlevel instanceof PuzzleLevel) {
 						// decrement the number of moves left
-						((PuzzleLevel) kabasuji.getSelectedLevel())
-								.setMovesUsed(((PuzzleLevel) kabasuji.getSelectedLevel()).getMovesUsed() + 1);
-						panel.setMovesLeftNum((Integer) ((PuzzleLevel) kabasuji.getSelectedLevel()).getMovesLeft());						
+						((PuzzleLevel) currentlevel)
+								.setMovesUsed(((PuzzleLevel) currentlevel).getMovesUsed() + 1);
+						panel.setMovesLeftNum((Integer) ((PuzzleLevel) currentlevel).getMovesLeft());
 					}
 					// update to show new number of moves if in puzzle mode
-					else if (kabasuji.getSelectedLevel() instanceof ReleaseLevel) {
+					else if (currentlevel instanceof ReleaseLevel) {
 						// decrement the number of moves left
-						((ReleaseLevel) kabasuji.getSelectedLevel())
-								.setMovesUsed(((ReleaseLevel) kabasuji.getSelectedLevel()).getMovesUsed() + 1);
-						panel.setMovesLeftNum((Integer) ((ReleaseLevel) kabasuji.getSelectedLevel()).getMovesLeft());
+						((ReleaseLevel) currentlevel)
+								.setMovesUsed(((ReleaseLevel) currentlevel).getMovesUsed() + 1);
+						panel.setMovesLeftNum((Integer) ((ReleaseLevel) currentlevel).getMovesLeft());
 					}
 				} else {
 					new MusicPlayer("fail.wav");
 				}
 			}
 		} else if (board.getSelectedPiece() != null) {
-			if (kabasuji.getSelectedLevel() instanceof PuzzleLevel) {
-				if (kabasuji.getSelectedLevel().canMoveBoardToBoard(selfTile)) {
-					((PuzzleLevel) kabasuji.getSelectedLevel()).moveBoardToBoard(selfTile);
+			if (currentlevel instanceof PuzzleLevel) {
+				if (currentlevel.canMoveBoardToBoard(selfTile)) {
+					((PuzzleLevel) currentlevel).moveBoardToBoard(selfTile);
 					displayHoverPiece("bluenightbutton.png", true, false);
 					new MusicPlayer("success.wav");
 					board.selectPiece(null);
 					boardview.setupBoard();
 					panel.getZoomPanel().removeAll();
-
-					/* Check if the number of stars has been updated */
-					int currNumStars = kabasuji.getSelectedLevel().getStars();
-					System.out.print("Calculated Number of Stars: ");
-					System.out.println(currNumStars);
-					System.out.print("Stored Number of Stars: ");
-					System.out.println(kabasuji.getSelectedLevel().getBoard().getNumStars());
-					if (currNumStars != kabasuji.getSelectedLevel().getBoard().getNumStars()) {
-						System.out.println("Entered star condition!");
-						// update the stored number of stars
-						kabasuji.getSelectedLevel().getBoard().setNumStars(currNumStars);
-
-						panel.updateStars(); // draw the correct number of stars
-
-						/*
-						 * If this is the first star, change the next level
-						 * button to be unlocked
-						 */
-						if (currNumStars == 1) {
-							panel.updateNextLevel();
-						}
-					}
-					panel.repaint();
+					// updates the stars display
+					updateStarDisplay();
 				} else {
 					new MusicPlayer("fail.wav");
 				}
@@ -165,52 +138,49 @@ public class TileController extends MouseAdapter {
 					board.selectPiece(selfTile.getPiece());
 					boardSelectPiece(selfTile.getPiece());
 					zoompanel.removeAll();
-					PieceView pieceview = new PieceView(selfTile.getPiece());
-					pieceview.setBounds(0, 0, (int) zoompanel.getSize().getWidth(),
-							(int) zoompanel.getSize().getHeight());
-					pieceview.setupPiece();
-					zoompanel.add(pieceview);
-					zoompanel.repaint();
+					zoompanel.displayPieceView(selfTile.getPiece());
 				}
 			}
 		}
-		
+
 		// If the number of stars are 3, display the winning screen
-		int currNumStars1 = kabasuji.getSelectedLevel().getStars();
-		if (currNumStars1 == 3){
+		int currNumStars1 = currentlevel.getStars();
+		if (currNumStars1 == 3) {
 			try {
-			    Thread.sleep(100);                 //1000 milliseconds is one second.
-			} catch(InterruptedException ex) {
-			    Thread.currentThread().interrupt();
+				Thread.sleep(100); // 1000 milliseconds is one second.
+			} catch (InterruptedException ex) {
+				Thread.currentThread().interrupt();
 			}
 			panel.winningScreen();
 		}
 		panel.repaint();
-		
-		// If the number of moves become 0, display a lose screen in Puzzle Level
-		if ((kabasuji.getSelectedLevel() instanceof PuzzleLevel)) {
-			int getMoves = ((PuzzleLevel) kabasuji.getSelectedLevel()).getMovesUsed();
-			int maxMoves = ((PuzzleLevel) kabasuji.getSelectedLevel()).getMaxMoves();
-			if ((getMoves == maxMoves) && (currNumStars1 == 0)){
+
+		// If the number of moves become 0, display a lose screen in Puzzle
+		// Level
+		if ((currentlevel instanceof PuzzleLevel)) {
+			int getMoves = ((PuzzleLevel) currentlevel).getMovesUsed();
+			int maxMoves = ((PuzzleLevel) currentlevel).getMaxMoves();
+			if ((getMoves == maxMoves) && (currNumStars1 == 0)) {
 				try {
-				    Thread.sleep(100);                 //1000 milliseconds is one second.
-				} catch(InterruptedException ex) {
-				    Thread.currentThread().interrupt();
+					Thread.sleep(100); // 1000 milliseconds is one second.
+				} catch (InterruptedException ex) {
+					Thread.currentThread().interrupt();
 				}
 				panel.losingScreen();
 			}
 			panel.repaint();
 		}
-		
-		// If the number of moves become 0, display a lose screen in Release Level
-		if ((kabasuji.getSelectedLevel() instanceof ReleaseLevel)) {
-			int getMoves = ((ReleaseLevel) kabasuji.getSelectedLevel()).getMovesUsed();
-			int maxMoves = ((ReleaseLevel) kabasuji.getSelectedLevel()).getMaxMoves();
-			if ((getMoves == maxMoves) && (currNumStars1 == 0)){
+
+		// If the number of moves become 0, display a lose screen in Release
+		// Level
+		if ((currentlevel instanceof ReleaseLevel)) {
+			int getMoves = ((ReleaseLevel) currentlevel).getMovesUsed();
+			int maxMoves = ((ReleaseLevel) currentlevel).getMaxMoves();
+			if ((getMoves == maxMoves) && (currNumStars1 == 0)) {
 				try {
-				    Thread.sleep(100);                 //1000 milliseconds is one second.
-				} catch(InterruptedException ex) {
-				    Thread.currentThread().interrupt();
+					Thread.sleep(100); // 1000 milliseconds is one second.
+				} catch (InterruptedException ex) {
+					Thread.currentThread().interrupt();
 				}
 				panel.losingScreen();
 			}
@@ -219,53 +189,40 @@ public class TileController extends MouseAdapter {
 	}
 
 	public void mouseEntered(MouseEvent e) {
-		selectedPiece = kabasuji.getSelectedLevel().getBullpen().getSelectedPiece();
-		if (kabasuji.getSelectedLevel().getBullpen().getSelectedPiece() == null) {
-			selectedPiece = kabasuji.getSelectedLevel().getBoard().getSelectedPiece();
-		}
-
-		if (kabasuji.getSelectedLevel().getBullpen().getSelectedPiece() != null) {
-			System.out.println("Have piece....");
-			if (kabasuji.getSelectedLevel().canMoveBullpenToBoard(selfTile)) {
-				System.out.println("Can place.");
-				displayHoverPiece("bluenightbutton.png", false, false);
+		updateParameters();
+		String hoverfn = null;
+		if (bullpen.getSelectedPiece() != null) {
+			if (currentlevel.canMoveBullpenToBoard(selfTile)) {
+				hoverfn = "bluenightbutton.png";
 			} else {
-				System.out.println("Cannot place.");
-				displayHoverPiece("rednightbutton.png", false, false);
-
+				hoverfn = "rednightbutton.png";
 			}
-		} else if (kabasuji.getSelectedLevel().getBoard().getSelectedPiece() != null) {
-			System.out.println("Have piece....");
-			if (kabasuji.getSelectedLevel().canMoveBoardToBoard(selfTile)) {
-				System.out.println("Can place.");
-				displayHoverPiece("bluenightbutton.png", false, false);
+		} else if (board.getSelectedPiece() != null) {
+			if (currentlevel.canMoveBoardToBoard(selfTile)) {
+				hoverfn = "bluenightbutton.png";
 			} else {
-				System.out.println("Cannot place.");
-				displayHoverPiece("rednightbutton.png", false, false);
+				hoverfn = "rednightbutton.png";
 			}
+		} else if (hoverfn == null) {
+			// no piece is selected
+			return;
 		}
+		// set image to hover
+		displayHoverPiece(hoverfn, false, false);
 	}
 
 	public void mouseExited(MouseEvent e) {
-
-		selectedPiece = kabasuji.getSelectedLevel().getBullpen().getSelectedPiece();
-		if (kabasuji.getSelectedLevel().getBullpen().getSelectedPiece() == null) {
-			selectedPiece = kabasuji.getSelectedLevel().getBoard().getSelectedPiece();
+		updateParameters();
+		if (selectedPiece == null){
+			// if selectedPiece doesn't exist
+			return;
 		}
-
-		if (kabasuji.getSelectedLevel().getBullpen().getSelectedPiece() != null) {
-			displayHoverPiece("general1button.png", false, true);
-		} else if (kabasuji.getSelectedLevel().getBoard().getSelectedPiece() != null) {
-			displayHoverPiece("general1button.png", false, true);
-		}
+		// set to original image filename
+		displayHoverPiece("general1button.png", false, true);
 	}
 
 	public void displayHoverPiece(String hpfn, boolean setNewFilename, boolean setOriginalImg) {
-		if (kabasuji.getSelectedLevel().getBullpen().getSelectedPiece() == null) {
-			selectedPiece = kabasuji.getSelectedLevel().getBoard().getSelectedPiece();
-		} else {
-			selectedPiece = kabasuji.getSelectedLevel().getBullpen().getSelectedPiece();
-		}
+		updateParameters();
 		for (int i = 0; i < tiles.length; i++) {
 			for (int j = 0; j < tiles.length; j++) {
 				if (tiles[i][j] == selfTile) {
@@ -307,5 +264,33 @@ public class TileController extends MouseAdapter {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Updates the display of stars ( 1-3 ).
+	 */
+	public void updateStarDisplay() {
+		/* Check if the number of stars has been updated */
+		int currNumStars = kabasuji.getSelectedLevel().getStars();
+		System.out.print("Calculated Number of Stars: ");
+		System.out.println(currNumStars);
+		System.out.print("Stored Number of Stars: ");
+		System.out.println(kabasuji.getSelectedLevel().getBoard().getNumStars());
+		if (currNumStars != kabasuji.getSelectedLevel().getBoard().getNumStars()) {
+			System.out.println("Entered star condition!");
+			// update the stored number of stars
+			kabasuji.getSelectedLevel().getBoard().setNumStars(currNumStars);
+
+			panel.updateStars(); // draw the correct number of stars
+
+			/*
+			 * If this is the first star, change the next level button to be
+			 * unlocked
+			 */
+			if (currNumStars == 1) {
+				panel.updateNextLevel();
+			}
+		}
+		panel.repaint();
 	}
 }
