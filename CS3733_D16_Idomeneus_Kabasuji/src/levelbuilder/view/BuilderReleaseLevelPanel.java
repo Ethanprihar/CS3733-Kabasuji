@@ -47,6 +47,10 @@ public class BuilderReleaseLevelPanel extends JPanel {
 	JLabelIcon numBtn4;
 	JLabelIcon numBtn5;
 	JLabelIcon numBtn6;
+	
+	JLabel[] piece1Lbl;
+	JLabelIcon[] piece;
+	JTextField numMoves;
 
 	/**
 	 * Create the panel.
@@ -92,7 +96,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		background.add(board);
 		
 		// Create the first set of JLabels
-		JLabel[] piece1Lbl = new JLabel[12];
+		piece1Lbl = new JLabel[12];
 		// Run the loop to initialize and set their positions
 		for (int i = 0; i < 12; i++){
 			piece1Lbl[i] = new JLabel(String.valueOf(builder.getNum(i)));
@@ -123,7 +127,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		
 		
 		// Create the first row of pieces in the bullpen
-		JLabelIcon[] piece = new JLabelIcon[12];
+		piece = new JLabelIcon[12];
 		// Run the loop to initialize and set the positions
 		for (int i = 0; i < 12; i++){
 			// Create a piece in the builder bullpen
@@ -179,7 +183,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		background.add(redoBtn);
 		redoBtn.addMouseListener(new RedoController(builder, app, redoBtn, piece1Lbl, piece2Lbl, piece3Lbl, boardview));
 		
-		JTextField numMoves = new JTextField();
+		numMoves = new JTextField();
 		if(builder.getSelectedLevel().getEndCondition() > 0)
 		{
 			numMoves.setText(Integer.toString(builder.getSelectedLevel().getEndCondition()));
@@ -367,6 +371,18 @@ public class BuilderReleaseLevelPanel extends JPanel {
 	
 	public JLabelIcon colorButton3() {
 		return colorBtn3;
+	}
+	
+	public JLabelIcon[] getFirstRowPieces() {
+		return piece;
+	}
+	
+	public String getNumPieces(int index) {
+		return piece1Lbl[index].getText();
+	}
+	
+	public void setNumMoves(String s) {
+		numMoves.setText(s);
 	}
 
 }

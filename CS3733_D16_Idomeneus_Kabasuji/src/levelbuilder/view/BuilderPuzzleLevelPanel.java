@@ -248,10 +248,6 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		numMoves.setText(s);
 	}
 	
-	public JLabelIcon getStraightPiece() {
-		return piece[6];
-	}
-	
 	public String getNumPieces(int index) {
 		return piece1Lbl[index].getText();
 	}
