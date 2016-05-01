@@ -79,11 +79,7 @@ public class SetNumberController extends MouseAdapter {
 				tile2.setImg("general0button.png");
 				tile3.setImg("general0button.png");
 				tile4.setImg("general0button.png");
-				tile5.setImg("general0button.png");
-				
-				if ((!(tick1.isVisible())) && (!(tick2.isVisible())) && (!(tick3.isVisible()))){
-					tick1.setVisible(true);
-				}
+				tile5.setImg("general0button.png");	
 			}
 			else if (number == 2){
 				tile.setImg("general0button.png");
@@ -91,11 +87,7 @@ public class SetNumberController extends MouseAdapter {
 				tile2.setImg("general0button.png");
 				tile3.setImg("general0button.png");
 				tile4.setImg("general0button.png");
-				tile5.setImg("general0button.png");
-				
-				if ((!(tick1.isVisible())) && (!(tick2.isVisible())) && (!(tick3.isVisible()))){
-					tick1.setVisible(true);
-				}
+				tile5.setImg("general0button.png");	
 			}
 			else if (number == 3){
 				tile.setImg("general0button.png");
@@ -104,10 +96,6 @@ public class SetNumberController extends MouseAdapter {
 				tile3.setImg("general0button.png");
 				tile4.setImg("general0button.png");
 				tile5.setImg("general0button.png");
-				
-				if ((!(tick1.isVisible())) && (!(tick2.isVisible())) && (!(tick3.isVisible()))){
-					tick1.setVisible(true);
-				}
 			}
 			else if (number == 4){
 				tile.setImg("general0button.png");
@@ -116,10 +104,6 @@ public class SetNumberController extends MouseAdapter {
 				tile3.setImg("general3button.png");
 				tile4.setImg("general0button.png");
 				tile5.setImg("general0button.png");
-				
-				if ((!(tick1.isVisible())) && (!(tick2.isVisible())) && (!(tick3.isVisible()))){
-					tick1.setVisible(true);
-				}
 			}
 			else if (number == 5){
 				tile.setImg("general0button.png");
@@ -128,10 +112,6 @@ public class SetNumberController extends MouseAdapter {
 				tile3.setImg("general0button.png");
 				tile4.setImg("general3button.png");
 				tile5.setImg("general0button.png");
-				
-				if ((!(tick1.isVisible())) && (!(tick2.isVisible())) && (!(tick3.isVisible()))){
-					tick1.setVisible(true);
-				}
 			}
 			else if (number == 6){
 				tile.setImg("general0button.png");
@@ -140,10 +120,18 @@ public class SetNumberController extends MouseAdapter {
 				tile3.setImg("general0button.png");
 				tile4.setImg("general0button.png");
 				tile5.setImg("general3button.png");
-				
-				if ((!(tick1.isVisible())) && (!(tick2.isVisible())) && (!(tick3.isVisible()))){
-					tick1.setVisible(true);
-				}
+			}
+			
+			// Make the code intelligent to figure out the active color
+			int getCol = ((BuilderReleaseBoardView) releaseLevelPanel).getColor();
+			if (getCol == 1){
+				tick1.setVisible(true);
+			}
+			else if (getCol == 2){
+				tick2.setVisible(true);
+			}
+			else if (getCol == 3){
+				tick3.setVisible(true);
 			}
 			((BuilderReleaseBoardView) releaseLevelPanel).setNumber(number);
 			((BuilderReleaseBoardView) releaseLevelPanel).setEditMode(1);

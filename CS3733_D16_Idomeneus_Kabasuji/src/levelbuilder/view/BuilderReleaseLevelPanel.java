@@ -83,9 +83,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		JLabelIcon board = new JLabelIcon("boardpanel_opaque.png", (int) (Screen.width * 0.5),
 				(int) (Screen.height * 0.5));
 		board.setLocation((int) (Screen.width * 0.22), (int) (Screen.height * 0.02));
-		background.add(board);
-		
-		
+		//background.add(board);
 		
 		// get the release board
 		ReleaseBoard tboard = (ReleaseBoard) builder.getSelectedLevel().getBoard();
@@ -293,9 +291,9 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		tick3.setVisible(false);
 		background.add(colorBtn3);
 		
-		colorBtn1.addMouseListener(new SetColorController(builder, app, 1, boardview, tick1, tick2, tick3));
-		colorBtn2.addMouseListener(new SetColorController(builder, app, 2, boardview, tick1, tick2, tick3));
-		colorBtn3.addMouseListener(new SetColorController(builder, app, 3, boardview, tick1, tick2, tick3));
+		colorBtn1.addMouseListener(new SetColorController(builder, app, 1, boardview, tick1, tick2, tick3, numBtn1, numBtn2, numBtn3, numBtn4, numBtn5, numBtn6));
+		colorBtn2.addMouseListener(new SetColorController(builder, app, 2, boardview, tick1, tick2, tick3, numBtn1, numBtn2, numBtn3, numBtn4, numBtn5, numBtn6));
+		colorBtn3.addMouseListener(new SetColorController(builder, app, 3, boardview, tick1, tick2, tick3, numBtn1, numBtn2, numBtn3, numBtn4, numBtn5, numBtn6));
 		
 		numBtn1.addMouseListener(new SetNumberController(builder, app, 1, boardview, numBtn1, numBtn2, numBtn3, numBtn4, numBtn5, numBtn6, tick1, tick2, tick3));
 		numBtn2.addMouseListener(new SetNumberController(builder, app, 2, boardview, numBtn1, numBtn2, numBtn3, numBtn4, numBtn5, numBtn6, tick1, tick2, tick3));
