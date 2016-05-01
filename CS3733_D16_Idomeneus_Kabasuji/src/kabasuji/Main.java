@@ -19,7 +19,7 @@ public class Main {
 		Kabasuji kabasuji = new Kabasuji();
 		TopLevelApplication frame = new TopLevelApplication(kabasuji);
 		// start splash screen
-		new MusicPlayer("hopesanddreams.wav").setVolume();
+		// new MusicPlayer("hopesanddreams.wav").setVolume();
 		// new SplashWindow();
 		// after splash screen ends, show game
 		frame.setVisible(true);
