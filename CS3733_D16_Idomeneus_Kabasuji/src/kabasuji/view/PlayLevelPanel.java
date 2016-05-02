@@ -283,21 +283,25 @@ public class PlayLevelPanel extends JPanel {
 	}
 
 	/**
-	 * Starts the timer used in lightning mode
+	 * Starts the timer used in lightning mode.
 	 */
 	public void timerStart() {
 		// start the timer
 		timer.start();
 
 	}
-
+	/*
+	 * Stops timer.
+	 */
 	public void stopTimer() {
 		// check if the timer is null
 		if (timer != null) {
 			timer.stop();
 		}
 	}
-
+	/**
+	 * Reset timer.
+	 */
 	public void resetTimer() {
 
 		// check if the level is a lightning level
@@ -333,7 +337,8 @@ public class PlayLevelPanel extends JPanel {
 	 */
 	public void setTimeLeftNum(Integer timeLeft) {
 		if (type == 0) {
-			if(timeLeft == 10){
+			int numStars = kabasuji.getSelectedLevel().getBoard().getStars();
+			if(timeLeft == 10 && numStars < 3 ){
 				mp = new MusicPlayer("timebomb10s.wav");
 				mp.setVolume(-10);
 			}
@@ -363,7 +368,8 @@ public class PlayLevelPanel extends JPanel {
 	 */
 	public void setMovesLeftNum(Integer movesLeft) {
 		if (type == 0) {
-			if(movesLeft <= 10){
+			int numStars = kabasuji.getSelectedLevel().getBoard().getStars();
+			if(movesLeft == 10 && numStars < 3 ){
 				movesLeftNum.setForeground(Color.YELLOW);
 			}
 			if(movesLeft <= 5){
