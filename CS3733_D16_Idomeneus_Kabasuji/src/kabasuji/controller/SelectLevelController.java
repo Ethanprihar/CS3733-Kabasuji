@@ -57,9 +57,8 @@ public class SelectLevelController extends MouseAdapter {
 		SelectLevelMove slm = new SelectLevelMove(numlevel);
 
 		// Attempt to execute action on model
-		new MusicPlayer("select.wav").setVolume(-15);
 		if (slm.execute(kabasuji)) {
-
+			new MusicPlayer("select.wav").setVolume(-15);
 			// Create PlayLevelPanel screen object and update boundary to
 			// reflect *** GUI CHANGES ***
 
@@ -95,6 +94,9 @@ public class SelectLevelController extends MouseAdapter {
 
 			// set the content panel of container to contain PlayLevelPanel
 			app.setContentPanel(plp);
+		}
+		else{
+			new MusicPlayer("fail.wav").setVolume(-15);
 		}
 	}
 
