@@ -40,6 +40,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 	JLabelIcon colorBtn1;
 	JLabelIcon colorBtn2;
 	JLabelIcon colorBtn3;
+	JLabelIcon colorClearBtn;
 	
 	JLabelIcon numBtn1;
 	JLabelIcon numBtn2;
@@ -307,7 +308,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		numBtn5.addMouseListener(new SetNumberController(builder, app, 5, boardview, numBtn1, numBtn2, numBtn3, numBtn4, numBtn5, numBtn6, tick1, tick2, tick3));
 		numBtn6.addMouseListener(new SetNumberController(builder, app, 6, boardview, numBtn1, numBtn2, numBtn3, numBtn4, numBtn5, numBtn6, tick1, tick2, tick3));
 	
-		JLabelIcon colorClearBtn = new JLabelIcon("generalbutton.png", 30, 30);
+		colorClearBtn = new JLabelIcon("generalbutton.png", 30, 30);
 		colorClearBtn.setLocation((int) (Screen.width * 0.08) + (int) (colorClearBtn.getSize().getWidth() / 2),
 				(int) (Screen.height * 0.45));	
 		background.add(colorClearBtn);
@@ -372,6 +373,10 @@ public class BuilderReleaseLevelPanel extends JPanel {
 	
 	public JLabelIcon getColorButton3() {
 		return colorBtn3;
+	}
+	
+	public JLabelIcon getClearColorButton() {
+		return colorClearBtn;
 	}
 	
 	public JLabelIcon[] getFirstRowPieces() {

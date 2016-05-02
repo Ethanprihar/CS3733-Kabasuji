@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JComponent;
+import javax.swing.SwingUtilities;
 
 import junit.framework.TestCase;
 
@@ -25,17 +26,21 @@ public abstract class TestCaseHelper extends TestCase {
 	
 	/** x and y are coordinates in the whole container */
 	public MouseEvent createRightClick (JComponent container, int x, int y) {
-		MouseEvent me = new MouseEvent(container, MouseEvent.BUTTON3, 
-				System.currentTimeMillis(), 0, 
+		MouseEvent me = new MouseEvent(container, MouseEvent.MOUSE_PRESSED, 
+				System.currentTimeMillis(), MouseEvent.BUTTON3 | MouseEvent.BUTTON3_DOWN_MASK,
 				x, y, 0, true);
+		
+		assertTrue (SwingUtilities.isRightMouseButton(me));
 		return me;
 	}
 	
 	/** x and y are coordinates in the whole container */
 	public MouseEvent createLeftClick (JComponent container, int x, int y) {
-		MouseEvent me = new MouseEvent(container, MouseEvent.BUTTON1, 
-				System.currentTimeMillis(), 0, 
+		MouseEvent me = new MouseEvent(container, MouseEvent.MOUSE_PRESSED, 
+				System.currentTimeMillis(), MouseEvent.BUTTON1 | MouseEvent.BUTTON1_DOWN_MASK, 
 				x, y, 0, true);
+		
+		assertTrue(SwingUtilities.isLeftMouseButton(me));
 		return me;
 	}
 	

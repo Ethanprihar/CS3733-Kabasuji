@@ -1064,6 +1064,32 @@ public class TestBuilder extends TestCaseHelper {
 
 		// set the number of moves
 		testReleaseLev.setNumMoves("6");
+		
+		// try adding a hint tile
+		JLabelIcon tile10 = testReleaseLev.getBoardview().getTiles()[0];
+		try {
+			MouseEvent cp = createRightClick(tile10, 0, 0);
+			tile10.dispatchEvent(cp);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		assertTrue(builder.getSelectedLevel().getBoard().getTile(0, 0).isHint());
+		
+		// make the tile invalid now
+		try {
+			MouseEvent cp = createRightClick(tile10, 0, 0);
+			tile10.dispatchEvent(cp);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			MouseEvent cp = createLeftClick(tile10, 0, 0);
+			tile10.dispatchEvent(cp);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		// add a red 1 onto tile[0][0]
 		testReleaseLev.getBoardview().setEditMode(1);
@@ -1074,6 +1100,8 @@ public class TestBuilder extends TestCaseHelper {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		
 
 		// add a blue 2 onto tile1
 		JLabelIcon blueBtn = testReleaseLev.getColorButton2();
@@ -1096,6 +1124,15 @@ public class TestBuilder extends TestCaseHelper {
 		try {
 			MouseEvent cp = createLeftClick(tile1, 0, 0);
 			tile1.dispatchEvent(cp);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		// deselect a color
+		JLabelIcon clearButton = testReleaseLev.getClearColorButton();
+		try {
+			MouseEvent cp = createPressed(clearButton, 0, 0);
+			clearButton.dispatchEvent(cp);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -1126,12 +1163,12 @@ public class TestBuilder extends TestCaseHelper {
 		}
 		
 		JLabelIcon tile3 = testReleaseLev.getBoardview().getTiles()[3];
-		try {
-			MouseEvent cp = createRightClick(tile3, 0, 0);
-			tile3.dispatchEvent(cp);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		try {
+			MouseEvent cp1 = createRightClick(tile3, 0, 0);
+			tile3.dispatchEvent(cp1);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 
 		// try saving the level
 		JLabelIcon saveBtn = testReleaseLev.getSaveButton();
