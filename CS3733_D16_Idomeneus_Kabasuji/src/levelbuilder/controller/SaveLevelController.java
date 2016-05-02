@@ -1,9 +1,11 @@
 package levelbuilder.controller;
 
+import java.awt.Dialog;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -53,6 +55,7 @@ public class SaveLevelController extends MouseAdapter {
 	 * Whenever mouse is pressed (left button), attempt to select object. This
 	 * is a GUI controller.
 	 */
+	@SuppressWarnings("static-access")
 	public void mousePressed(MouseEvent me) {
 		// Created ChangeScreenBuilderMove and input desired screen
 		if ((type == 1) || (type == 3)){
@@ -116,6 +119,12 @@ public class SaveLevelController extends MouseAdapter {
 			builder.setEndCondition(Integer.parseInt(ec.getText()));
 			builder.saveLevel(numOfPiecesOnLoad);
 			builder.saveToDisc();
+			
+			// Show a dialog box to let the user know that the level was saved successfully
+			JOptionPane message = new JOptionPane("Level Saved Successfully!");
+			Dialog dialog = message.createDialog("Success");
+			dialog.setVisible(true);
+			
 			ChangeScreenBuilderMove gtsm = new ChangeScreenBuilderMove(Screen.Opening);
 			// Attempt to execute action on model
 			gtsm.execute(builder);

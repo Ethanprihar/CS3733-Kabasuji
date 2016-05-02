@@ -1,7 +1,10 @@
 package levelbuilder.controller;
 
+import java.awt.Dialog;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import kabasuji.model.Builder;
 import kabasuji.model.Screen;
@@ -46,6 +49,12 @@ public class DeleteLevelController extends MouseAdapter {
 			builder.levels.remove(builder.getSelectedLevel());
 			builder.deleteLevel();
 			builder.saveToDisc();
+			
+			// Show a dialog box to let the user know that the level was saved successfully
+			JOptionPane message = new JOptionPane("Level deleted Successfully!");
+			Dialog dialog = message.createDialog("Success");
+			dialog.setVisible(true);
+			
 			ChangeScreenBuilderMove gtsm = new ChangeScreenBuilderMove(Screen.Opening);
 			gtsm.execute(builder);
 			
