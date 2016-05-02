@@ -57,7 +57,7 @@ public class SelectLevelController extends MouseAdapter {
 		SelectLevelMove slm = new SelectLevelMove(numlevel);
 
 		// Attempt to execute action on model
-		new MusicPlayer("select.wav");
+		new MusicPlayer("select.wav").setVolume(-15);
 		if (slm.execute(kabasuji)) {
 
 			// Create PlayLevelPanel screen object and update boundary to
@@ -71,12 +71,12 @@ public class SelectLevelController extends MouseAdapter {
 			plp = new PlayLevelPanel(kabasuji, app, 0);
 
 			// create components of panel and pass model and container panel
-			BullpenView bpv = new BullpenView(kabasuji, plp, 1, 4);
+			BullpenView bpv = new BullpenView(kabasuji, plp, 1, 5);
 //			BullpenView bpv = new BullpenView(kabasuji, plp, 4,
 //					(int) (kabasuji.selectedLevel.getBullpen().getPieces().size() + 3) / 4);
 			BoardView bv = new BoardView(kabasuji, plp);
 
-			// set location and size of components (**necessary)
+			// set location and size of components (**necessary**)
 			bv.setBounds((int) (Screen.width * 0.35), (int) (Screen.height * 0.36), (int) (Screen.height * 0.54),
 					(int) (Screen.height * 0.54));
 			bpv.setBounds((int) (Screen.width * 0.05), (int) (Screen.height * 0.05), (int) (Screen.width * 0.25),

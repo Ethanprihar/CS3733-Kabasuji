@@ -16,6 +16,7 @@ import kabasuji.model.LightningLevel;
 import kabasuji.model.PuzzleLevel;
 import kabasuji.model.ReleaseLevel;
 import kabasuji.model.Screen;
+import misc.MusicPlayer;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -45,6 +46,8 @@ public class PlayLevelPanel extends JPanel {
 
 	Timer timer; // Timer used for Lightning Mode
 	int delay = 1000; // milliseconds
+	
+	MusicPlayer mp;
 
 	/** Boundaries associated **/
 	TopLevelApplication app;
@@ -329,6 +332,16 @@ public class PlayLevelPanel extends JPanel {
 	 */
 	public void setTimeLeftNum(Integer timeLeft) {
 		if (type == 0) {
+			if(timeLeft == 10){
+				mp = new MusicPlayer("timebomb10s.wav");
+				mp.setVolume(-10);
+			}
+			if(timeLeft <= 10){
+				timeLeftNum.setForeground(Color.YELLOW);
+			}
+			if(timeLeft <= 5){
+				timeLeftNum.setForeground(Color.RED);
+			}
 			timeLeftNum.setText(timeLeft.toString());
 		}
 	}
@@ -349,6 +362,12 @@ public class PlayLevelPanel extends JPanel {
 	 */
 	public void setMovesLeftNum(Integer movesLeft) {
 		if (type == 0) {
+			if(movesLeft <= 10){
+				movesLeftNum.setForeground(Color.YELLOW);
+			}
+			if(movesLeft <= 5){
+				movesLeftNum.setForeground(Color.RED);
+			}
 			movesLeftNum.setText(movesLeft.toString());
 		}
 	}
@@ -505,6 +524,7 @@ public class PlayLevelPanel extends JPanel {
 
 			repaint();
 			add(background);
+			new MusicPlayer("gameover.wav");
 		} else {
 			// setup background canvas
 			JLabelIcon background = new JLabelIcon("starry_night.jpeg", Screen.width, Screen.height);
@@ -530,5 +550,8 @@ public class PlayLevelPanel extends JPanel {
 			repaint();
 			add(background);
 		}
+	}
+	public MusicPlayer getMP(){
+		return mp;
 	}
 }

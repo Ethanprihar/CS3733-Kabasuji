@@ -88,7 +88,7 @@ public class TileController extends MouseAdapter {
 			if (SwingUtilities.isLeftMouseButton(me)) {
 				if (currentlevel.canMoveBullpenToBoard(selfTile)) {
 					board.addPiece(selectedPiece, selfTile);
-					new MusicPlayer("success.wav");
+					new MusicPlayer("success.wav").setVolume(-25);
 					displayHoverPiece("bluenightbutton.png", true, false);
 					bullpen.selectPiece(null);
 					bullpen.removePiece(selectedPiece);
@@ -113,7 +113,7 @@ public class TileController extends MouseAdapter {
 						panel.setMovesLeftNum((Integer) ((ReleaseLevel) currentlevel).getMovesLeft());
 					}
 				} else {
-					new MusicPlayer("fail.wav");
+					new MusicPlayer("fail.wav").setVolume(-15);;
 				}
 			}
 		} else if (board.getSelectedPiece() != null) {
@@ -121,14 +121,14 @@ public class TileController extends MouseAdapter {
 				if (currentlevel.canMoveBoardToBoard(selfTile)) {
 					((PuzzleLevel) currentlevel).moveBoardToBoard(selfTile);
 					displayHoverPiece("bluenightbutton.png", true, false);
-					new MusicPlayer("success.wav");
+					new MusicPlayer("success.wav").setVolume(-25);
 					board.selectPiece(null);
 					boardview.setupBoard();
 					panel.getZoomPanel().removeAll();
 					// updates the stars display
 					updateStarDisplay();
 				} else {
-					new MusicPlayer("fail.wav");
+					new MusicPlayer("fail.wav").setVolume(-15);
 				}
 			}
 		}
@@ -193,13 +193,13 @@ public class TileController extends MouseAdapter {
 		String hoverfn = null;
 		if (bullpen.getSelectedPiece() != null) {
 			if (currentlevel.canMoveBullpenToBoard(selfTile)) {
-				hoverfn = "bluenightbutton.png";
+				hoverfn = "square2.png";
 			} else {
 				hoverfn = "rednightbutton.png";
 			}
 		} else if (board.getSelectedPiece() != null) {
 			if (currentlevel.canMoveBoardToBoard(selfTile)) {
-				hoverfn = "bluenightbutton.png";
+				hoverfn = "square3.png";
 			} else {
 				hoverfn = "rednightbutton.png";
 			}

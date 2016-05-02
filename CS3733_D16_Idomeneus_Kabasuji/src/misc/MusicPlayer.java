@@ -24,9 +24,16 @@ public class MusicPlayer {
 		}
 	}
 
-	public void setVolume(){
+	public void setVolume(float db){
 	FloatControl gainControl = 
 		    (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-		gainControl.setValue(-10.0f); // Reduce volume by 10 decibels.
+		gainControl.setValue(db); // Reduce volume by 10 decibels.
+	}
+	/**
+	 * Getter for clip.
+	 * @return
+	 */
+	public Clip getClip(){
+		return clip;
 	}
 }

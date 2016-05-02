@@ -52,6 +52,12 @@ public class NextLevelController extends MouseAdapter {
 		/*** MODEL CHANGES ***/
 		// Created SelectLevelMove and input desired level integer
 		// SelectLevelMove slm = new SelectLevelMove(level);
+		try{
+		plp.getMP().getClip().stop();
+		}
+		catch(NullPointerException e){
+			System.out.println("MainMenuController: no mp");
+		}
 
 		// Get the array list of levels
 		ArrayList<Level> numLevels = kabasuji.getLevels();
@@ -89,8 +95,8 @@ public class NextLevelController extends MouseAdapter {
 				// panel
 
 				// create components of panel and pass model and container panel
-				BullpenView bpv = new BullpenView(kabasuji, plp, 4,
-						(int) (kabasuji.selectedLevel.getBullpen().getPieces().size() + 3) / 4);
+				BullpenView bpv = new BullpenView(kabasuji, plp, 2,
+						4);
 				BoardView bv = new BoardView(kabasuji, plp);
 
 				// set location and size of components (**necessary)

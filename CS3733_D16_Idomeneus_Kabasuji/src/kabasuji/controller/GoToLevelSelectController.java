@@ -46,7 +46,7 @@ public class GoToLevelSelectController extends MouseAdapter {
 	 */
 	public void mousePressed(MouseEvent me) {
 		// Created JPanel screen object and update boundary to reflect changes
-		new MusicPlayer("select.wav");
+		new MusicPlayer("select.wav").setVolume(-15);
 		LevelSelectPanel lsp = new LevelSelectPanel(kabasuji, app);
 		app.setContentPanel(lsp);
 	}

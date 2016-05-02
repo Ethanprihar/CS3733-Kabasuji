@@ -46,7 +46,12 @@ public class GoToMainMenuController extends MouseAdapter {
 	 * is a GUI controller.
 	 */
 	public void mousePressed(MouseEvent me) {
-
+		try{
+		((PlayLevelPanel) app.getContentPane()).getMP().getClip().stop();
+		}
+		catch(NullPointerException e){
+			System.out.println("MainMenuController: no mp");
+		}
 		//int index = kabasuji.getLevels().indexOf(kabasuji.getSelectedLevel());
 		// stop the timer if in play level panel
 		if (app.getContentPane() instanceof PlayLevelPanel) {
@@ -70,7 +75,7 @@ public class GoToMainMenuController extends MouseAdapter {
 		if (index != -1)
 			kabasuji.getLevels().get(index).setLocked(false);
 
-		new MusicPlayer("select.wav");
+		new MusicPlayer("select.wav").setVolume(-15);
 		// Created JPanel screen object and update boundary to reflect changes
 		MainMenu mm = new MainMenu(kabasuji, app);
 		app.setContentPanel(mm);

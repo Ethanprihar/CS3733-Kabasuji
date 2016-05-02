@@ -15,6 +15,7 @@ import kabasuji.view.BullpenView;
 import kabasuji.view.JLabelIcon;
 import kabasuji.view.PlayLevelPanel;
 import kabasuji.view.TopLevelApplication;
+import misc.MusicPlayer;
 
 /**
  * Controller for Reseting Level; Update PlayLevelPanel (Panel).
@@ -48,7 +49,12 @@ public class ResetLevelController extends MouseAdapter {
 	 */
 	public void mousePressed(MouseEvent me) {
 		/*** MODEL CHANGES ***/
-		
+		try{
+		plp.getMP().getClip().stop();
+		}
+		catch(NullPointerException e){
+			System.out.println("MainMenuController: no mp");
+		}
 		if(kabasuji.getLevels().size() - 1 == kabasuji.getLevels().indexOf(kabasuji.getSelectedLevel()))
 		{
 			kabasuji.getLevels().add(new PuzzleLevel(null, null, 0));
@@ -61,12 +67,7 @@ public class ResetLevelController extends MouseAdapter {
 			kabasuji.saveLevels();
 			kabasuji.resetLevel();
 		}
-		// Created ChangeScreenMove and input desired screen
-		ChangeScreenMove gtsm = new ChangeScreenMove(Screen.PlayLevel);
-
-		// Attempt to execute action on model
-		gtsm.execute(kabasuji);
-
+		new MusicPlayer("select.wav").setVolume(-15);
 		// Create PlayLevelPanel screen object and update boundary to
 		// reflect *** GUI CHANGES ***
 
@@ -75,8 +76,8 @@ public class ResetLevelController extends MouseAdapter {
 		// PlayLevelPanel plp = new PlayLevelPanel(kabasuji, app);
 
 		// create components of panel and pass model and container panel
-		BullpenView bpv = new BullpenView(kabasuji, plp, 4,
-				(int) (kabasuji.selectedLevel.getBullpen().getPieces().size() + 3) / 4);
+		BullpenView bpv = new BullpenView(kabasuji, plp, 2,
+				4);
 		BoardView bv = new BoardView(kabasuji, plp);
 
 		// set location and size of components (**necessary)

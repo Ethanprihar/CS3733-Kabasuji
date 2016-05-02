@@ -13,6 +13,7 @@ import kabasuji.view.JLabelIcon;
 import kabasuji.view.PieceView;
 import kabasuji.view.PlayLevelPanel;
 import kabasuji.view.ZoomPanel;
+import misc.MusicPlayer;
 
 /**
  * Controller for Selecting Piece in bullpen; Selects piece then displays it in zoom Panel.
@@ -68,10 +69,12 @@ public class SelectPieceBullpenController extends MouseAdapter {
 			SelectPieceMove spm = new SelectPieceMove(selectedPiece);
 			spm.execute(kabasuji);
 			pieceicon.setImg("generalhoverbutton.png");
+			new MusicPlayer("selectpiecebullpen.wav").setVolume(-20);
 		} else if (bullpen.getSelectedPiece() == selectedPiece) {
 			SelectPieceMove spm = new SelectPieceMove(null);
 			spm.execute(kabasuji);
 			pieceicon.setImg(fnpiece);
+			new MusicPlayer("selectpiecebullpen.wav").setVolume(-20);
 		}
 	}
 
