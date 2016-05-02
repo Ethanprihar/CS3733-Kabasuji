@@ -92,7 +92,7 @@ public class BoardView extends JPanel {
 					// determine to display hint tile
 					String imgfn;
 					if (tiles[i][j].isHint()) {
-						imgfn = "hint.png";
+						imgfn = "boardhinttile.png";
 					} else {
 						imgfn = "boardtile.png";
 					}
