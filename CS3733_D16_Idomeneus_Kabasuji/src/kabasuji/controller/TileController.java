@@ -33,36 +33,36 @@ import misc.MusicPlayer;
  */
 public class TileController extends MouseAdapter {
 
-	/** Entity and Boundaries Associated **/
+	/** Entity associated **/
+	Kabasuji kabasuji;
 	Board board;
+	Tile[][] tiles;
+	Tile selfTile;
 	Bullpen bullpen;
-	JLabelIcon tile;
+	Piece selectedPiece;
 	Level currentlevel;
 
+	/** Boundaries associated **/
 	PlayLevelPanel panel;
 	BoardView boardview;
 	BullpenView bullpenview;
-
-	String fn;
-	Piece selectedPiece;
-	Tile[][] tiles;
-	Tile selfTile;
-	Kabasuji kabasuji;
 	JLabelIcon[] tileimgs;
 	ZoomPanel zoompanel;
+	
+	/** Tile parameters **/
+	JLabelIcon tile;
+	String fn;
+	
 
 	public TileController(Kabasuji kabasuji, PlayLevelPanel panel, JLabelIcon tile, Tile selfTile) {
+		this.kabasuji = kabasuji;
 		this.panel = panel;
-		this.zoompanel = panel.getZoomPanel();
-		this.board = kabasuji.getSelectedLevel().getBoard();
-		this.bullpen = kabasuji.getSelectedLevel().getBullpen();
+		updateParameters();
 		this.tiles = board.getTiles();
+		this.zoompanel = panel.getZoomPanel();
 		this.tile = tile;
 		this.fn = tile.getFileName();
 		this.selfTile = selfTile;
-		this.kabasuji = kabasuji;
-		this.boardview = panel.getBoardView();
-		this.bullpenview = panel.getBullpenView();
 		this.tileimgs = boardview.getTileImages();
 	}
 

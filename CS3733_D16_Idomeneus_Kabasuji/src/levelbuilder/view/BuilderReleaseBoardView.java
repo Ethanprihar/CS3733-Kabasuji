@@ -199,5 +199,4 @@ public class BuilderReleaseBoardView extends BuilderBoardView {
 		tiles = t;
 	}
 	
-	
 }

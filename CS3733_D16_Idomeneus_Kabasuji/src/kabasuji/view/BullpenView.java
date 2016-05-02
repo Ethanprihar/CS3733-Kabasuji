@@ -56,6 +56,8 @@ public class BullpenView extends JPanel {
 							// bullpen
 	int piecesidescaled; // scaled size to allow slight segmentation
 	int offset; // offset value due to scaling size
+	int centeroffsetx;
+	int centeroffsety;
 
 	/**
 	 * Construct BullpenView.
@@ -103,6 +105,9 @@ public class BullpenView extends JPanel {
 		// scaling + offset to fit the container panel;
 		this.piecesidescaled = (int) (piecesidelength * 0.8);
 		this.offset = (int) ((piecesidelength - piecesidescaled) / 2);
+		this.centeroffsetx = (int)(getSize().getWidth() - (piecesidelength * row))/2;
+		this.centeroffsety = (int)(getSize().getHeight() - (piecesidelength * col))/2;
+		
 
 		// draw/redraw bullpen pieces
 		updateBullpen();
@@ -146,8 +151,8 @@ public class BullpenView extends JPanel {
 		// create JLabelIcon to contain piece
 		try {
 			imgpieces[i * row + j] = new JLabelIcon(pic, piecesidescaled, piecesidescaled);
-			imgpieces[i * row + j].setLocation((int) (piecesidelength * (j) + offset),
-					(int) (piecesidelength * (i) + offset));
+			imgpieces[i * row + j].setLocation((int) (piecesidelength * (j) + offset + centeroffsetx),
+					(int) (piecesidelength * (i) + offset + centeroffsety));
 			// get piece and setup the tiles on piece
 			Piece piece = pieces.get(i * row + j);
 			pieceview[i * row + j] = new PieceView(piece);
@@ -180,5 +185,12 @@ public class BullpenView extends JPanel {
 	 */
 	public PieceView[] getPieceView() {
 		return pieceview;
+	}
+	/*
+	 * Setter for row and column.
+	 */
+	public void setDimension(int r, int c){
+		this.row = r;
+		this.col = c;
 	}
 }
