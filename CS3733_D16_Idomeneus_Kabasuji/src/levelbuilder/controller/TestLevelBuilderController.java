@@ -4,23 +4,17 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import kabasuji.controller.moves.ChangeScreenMove;
 import kabasuji.model.Builder;
 import kabasuji.model.Kabasuji;
-import kabasuji.model.Piece;
 import kabasuji.model.Screen;
 import kabasuji.view.BoardView;
 import kabasuji.view.BullpenView;
 import kabasuji.view.JLabelIcon;
 import kabasuji.view.PlayLevelPanel;
 import kabasuji.view.TopLevelApplication;
-import levelbuilder.controller.moves.ChangeScreenBuilderMove;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
 /**
@@ -99,11 +93,9 @@ public class TestLevelBuilderController extends MouseAdapter {
 		// repaint the PlayLevelPanel
 		plp.repaint();
 		
-		System.out.println(kabasuji.selectedLevel.getBullpen().getPieces().size());
-		// set the content panel of container to contain PlayLevelPanel
-		//app.setContentPanel(plp);
-		
 		JFrame frame = new JFrame("TestWindow");
+		plp.exitScreen(frame);
+		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		double width = screenSize.getWidth();
 		double height = screenSize.getHeight();
@@ -117,7 +109,9 @@ public class TestLevelBuilderController extends MouseAdapter {
 		plp.setBounds(0,0,Screen.width,Screen.height);
 		frame.setContentPane(plp);
 		frame.repaint();
+		
 	}
+	
 	public void mouseEntered(MouseEvent e) {
 		button.setImg("generalhoverbutton.png");
 	}

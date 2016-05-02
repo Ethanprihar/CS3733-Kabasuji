@@ -2,6 +2,7 @@ package kabasuji.view;
 
 import javax.swing.JPanel;
 import kabasuji.controller.BullpenController;
+import kabasuji.controller.ExitTestLevelWindowController;
 import kabasuji.controller.FlipSelectedPieceBullpenController;
 import kabasuji.controller.GoToMainMenuController;
 import kabasuji.controller.NextLevelController;
@@ -15,6 +16,8 @@ import kabasuji.model.LightningLevel;
 import kabasuji.model.PuzzleLevel;
 import kabasuji.model.ReleaseLevel;
 import kabasuji.model.Screen;
+
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import java.awt.Color;
@@ -200,6 +203,7 @@ public class PlayLevelPanel extends JPanel {
 			mainmenubtn.addMouseListener(new GoToMainMenuController(kabasuji, app, mainmenubtn));
 			add(mainmenubtn);
 		}
+				
 		add(bv);
 		add(bpv);
 		setBoardView(bv);
@@ -512,6 +516,25 @@ public class PlayLevelPanel extends JPanel {
 			// setup background canvas
 			JLabelIcon background = new JLabelIcon("starry_night.jpeg", Screen.width, Screen.height);
 			background.setBounds(0, 0, Screen.width, Screen.height);
+			add(background);
+		}
+	}
+	
+	// Add an exit button
+	public void exitScreen(JFrame frame){
+		
+		if (type == 1) {
+			remove(background);
+			JLabelIcon returnBtn = new JLabelIcon("generalbutton.png", 70, 70);
+			returnBtn.setLocation((int) (Screen.width * 0.80) + (int) (rotatelbtn.getSize().getWidth() / 2),
+				(int) (Screen.height * .6));
+			JLabel returnLbl = new JLabel("<html>Exit</html>", SwingConstants.CENTER);
+			returnLbl.setBounds(0, 0, 70, 70);
+			returnLbl.setFont(new Font("Onyx", Font.BOLD, 18));
+			returnBtn.add(returnLbl);
+			returnBtn.addMouseListener(new ExitTestLevelWindowController(frame, returnBtn));
+			add(returnBtn);
+			repaint();
 			add(background);
 		}
 	}
