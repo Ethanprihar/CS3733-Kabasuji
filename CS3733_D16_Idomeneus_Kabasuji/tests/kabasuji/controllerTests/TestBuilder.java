@@ -567,16 +567,16 @@ public class TestBuilder extends TestCaseHelper {
 				e.printStackTrace();
 			}
 		}
-		
+
 		// add a tile hint
 		builder.getSelectedLevel().getBoard().getTile(0, 0).setHint(true);
-		
+
 		// check that it is a hint tile
 		assertTrue(builder.getSelectedLevel().getBoard().getTile(0, 0).isHint());
-		
+
 		// trying making a tile invalid
 		builder.getSelectedLevel().getBoard().getTile(0, 1).setValid(false);
-		
+
 		// check that the tile is not valid
 		assertFalse(builder.getSelectedLevel().getBoard().getTile(0, 1).isValid());
 
@@ -604,7 +604,7 @@ public class TestBuilder extends TestCaseHelper {
 
 		// check that we are returned to the main menu
 		assertTrue(frame.getContentPane() instanceof BuilderMainMenu);
-		
+
 		test = new BuilderMainMenu(builder, frame);
 
 		JLabelIcon loadBtn = test.getLoadButton();
@@ -649,7 +649,8 @@ public class TestBuilder extends TestCaseHelper {
 		try {
 			MouseEvent cp = createPressed(firstLev, 0, 0);
 			firstLev.dispatchEvent(cp);
-			//assertTrue(frame.getContentPane() instanceof BuilderPuzzleLevelPanel);
+			// assertTrue(frame.getContentPane() instanceof
+			// BuilderPuzzleLevelPanel);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -865,7 +866,8 @@ public class TestBuilder extends TestCaseHelper {
 		try {
 			MouseEvent cp = createPressed(firstLev, 0, 0);
 			firstLev.dispatchEvent(cp);
-			//assertTrue(frame.getContentPane() instanceof BuilderLightningLevelPanel);
+			// assertTrue(frame.getContentPane() instanceof
+			// BuilderLightningLevelPanel);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -878,12 +880,12 @@ public class TestBuilder extends TestCaseHelper {
 		}
 
 	}
-	
+
 	/**
 	 * Tests making a release level
 	 * 
 	 */
-	
+
 	/**
 	 * Tests saving a Release level
 	 */
@@ -1026,10 +1028,68 @@ public class TestBuilder extends TestCaseHelper {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		// set the number of moves
 		testReleaseLev.setNumMoves("6");
-		
+
+		// add a red 1 onto tile[0][0]
+		JLabelIcon tile00 = testReleaseLev.getBoardview().getTiles()[0];
+		try {
+			MouseEvent cp = createPressed(tile00, 0, 0);
+			tile00.dispatchEvent(cp);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		// add a blue 2 onto tile1
+		JLabelIcon blueBtn = testReleaseLev.getColorButton2();
+		try {
+			MouseEvent cp = createPressed(blueBtn, 0, 0);
+			blueBtn.dispatchEvent(cp);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		JLabelIcon twoBtn = testReleaseLev.getNumButton(2);
+		try {
+			MouseEvent cp = createPressed(twoBtn, 0, 0);
+			twoBtn.dispatchEvent(cp);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		JLabelIcon tile1 = testReleaseLev.getBoardview().getTiles()[1];
+		try {
+			MouseEvent cp = createPressed(tile1, 0, 0);
+			tile1.dispatchEvent(cp);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		// add a yellow 3 onto tile1
+		JLabelIcon yellowBtn = testReleaseLev.getColorButton3();
+		try {
+			MouseEvent cp = createPressed(yellowBtn, 0, 0);
+			yellowBtn.dispatchEvent(cp);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		JLabelIcon threeBtn = testReleaseLev.getNumButton(3);
+		try {
+			MouseEvent cp = createPressed(threeBtn, 0, 0);
+			threeBtn.dispatchEvent(cp);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		JLabelIcon tile2 = testReleaseLev.getBoardview().getTiles()[2];
+		try {
+			MouseEvent cp = createPressed(tile2, 0, 0);
+			tile2.dispatchEvent(cp);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		// try saving the level
 		JLabelIcon saveBtn = testReleaseLev.getSaveButton();
@@ -1087,7 +1147,8 @@ public class TestBuilder extends TestCaseHelper {
 		try {
 			MouseEvent cp = createPressed(firstLev, 0, 0);
 			firstLev.dispatchEvent(cp);
-			//assertTrue(frame.getContentPane() instanceof BuilderLightningLevelPanel);
+			// assertTrue(frame.getContentPane() instanceof
+			// BuilderLightningLevelPanel);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

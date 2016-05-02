@@ -199,4 +199,8 @@ public class BuilderReleaseBoardView extends BuilderBoardView {
 		tiles = t;
 	}
 	
+	public JLabelIcon[] getTiles() {
+		return tile;
+	}
+	
 }

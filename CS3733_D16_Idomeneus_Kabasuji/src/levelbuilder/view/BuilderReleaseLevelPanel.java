@@ -51,6 +51,8 @@ public class BuilderReleaseLevelPanel extends JPanel {
 	JLabel[] piece1Lbl;
 	JLabelIcon[] piece;
 	JTextField numMoves;
+	
+	BuilderReleaseBoardView boardview;
 
 	/**
 	 * Create the panel.
@@ -91,8 +93,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		
 		// get the release board
 		ReleaseBoard tboard = (ReleaseBoard) builder.getSelectedLevel().getBoard();
-		@SuppressWarnings("unused")
-		BuilderReleaseBoardView boardview = new BuilderReleaseBoardView(tboard, board, builder, app);
+		boardview = new BuilderReleaseBoardView(tboard, board, builder, app);
 		background.add(board);
 		
 		// Create the first set of JLabels
@@ -361,15 +362,15 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		return testBtn;
 	}
 	
-	public JLabelIcon colorButton1() {
+	public JLabelIcon getColorButton1() {
 		return colorBtn1;
 	}
 	
-	public JLabelIcon colorButton2() {
+	public JLabelIcon getColorButton2() {
 		return colorBtn2;
 	}
 	
-	public JLabelIcon colorButton3() {
+	public JLabelIcon getColorButton3() {
 		return colorBtn3;
 	}
 	
@@ -383,6 +384,22 @@ public class BuilderReleaseLevelPanel extends JPanel {
 	
 	public void setNumMoves(String s) {
 		numMoves.setText(s);
+	}
+	
+	public JLabelIcon getNumButton(int i) {
+		switch(i) {
+			case 1: return numBtn1;
+			case 2: return numBtn2;
+			case 3: return numBtn3;
+			case 4: return numBtn4;
+			case 5: return numBtn5;
+			case 6: return numBtn6;
+			default: return numBtn1;
+		}
+	}
+	
+	public BuilderReleaseBoardView getBoardview() {
+		return boardview;
 	}
 
 }
