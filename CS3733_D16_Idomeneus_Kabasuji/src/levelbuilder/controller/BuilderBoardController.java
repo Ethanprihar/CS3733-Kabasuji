@@ -9,8 +9,8 @@ import kabasuji.model.Board;
 import kabasuji.model.Builder;
 import kabasuji.model.Tile;
 import kabasuji.view.JLabelIcon;
-import levelbuilder.controller.moves.BuilderHintTileMove;
-import levelbuilder.controller.moves.BuilderSelectTileMove;
+//import levelbuilder.controller.moves.BuilderHintTileMove;
+//import levelbuilder.controller.moves.BuilderSelectTileMove;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
 /**
