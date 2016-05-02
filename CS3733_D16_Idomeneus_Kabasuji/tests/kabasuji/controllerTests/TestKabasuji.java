@@ -3,6 +3,7 @@ package kabasuji.controllerTests;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import kabasuji.controller.moves.SelectPieceMove;
 import kabasuji.model.Bullpen;
 import kabasuji.model.Kabasuji;
 import kabasuji.model.LightningLevel;
@@ -10,6 +11,8 @@ import kabasuji.model.Piece;
 import kabasuji.model.PuzzleLevel;
 import kabasuji.model.ReleaseLevel;
 import kabasuji.testUtilities.TestCaseHelper;
+import kabasuji.view.BoardView;
+import kabasuji.view.BullpenView;
 import kabasuji.view.JLabelIcon;
 import kabasuji.view.LevelSelectPanel;
 import kabasuji.view.MainMenu;
@@ -99,7 +102,7 @@ public class TestKabasuji extends TestCaseHelper {
 
 	}
 
-	public void testFirstLevel() {
+	public void testSecondLevel() {
 		try {
 			setup();
 		} catch (Exception e) {
@@ -121,7 +124,7 @@ public class TestKabasuji extends TestCaseHelper {
 		}
 
 		LevelSelectPanel levSel = new LevelSelectPanel(kabasuji, frame);
-		JLabelIcon firstLevBtn = levSel.getLevelSelectButtons()[0];
+		JLabelIcon firstLevBtn = levSel.getLevelSelectButtons()[1];
 		try {
 			MouseEvent cp = createPressed(firstLevBtn, 0, 0);
 			firstLevBtn.dispatchEvent(cp);
@@ -129,7 +132,7 @@ public class TestKabasuji extends TestCaseHelper {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		// first must select a piece!!!!
 
 		// try flipping the piece vertical
@@ -143,6 +146,49 @@ public class TestKabasuji extends TestCaseHelper {
 		}
 
 		PlayLevelPanel plp = new PlayLevelPanel(kabasuji, frame, type);
+		BullpenView bpv = new BullpenView(kabasuji, plp, 1, 5);
+		
+		try {
+			bpv.setupBullpen();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		BoardView bv = new BoardView(kabasuji,plp);
+		
+		try {
+			plp.updatePlayLevelPanel(bv, bpv);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		// select a piece
+		try {
+			
+			// select piece
+			Piece selPiece = kabasuji.getSelectedLevel().getBullpen().getPieces().get(0);
+			kabasuji.getSelectedLevel().getBullpen().selectPiece(selPiece);
+			SelectPieceMove spm = new SelectPieceMove(selPiece);
+			assertEquals(selPiece, kabasuji.getSelectedLevel().getBullpen().getSelectedPiece());
+			spm.execute(kabasuji);
+			
+			System.out.println("Num pieces in bullpen view: ");
+			System.out.println(plp.getBullpenView().getPieceView().length);
+			
+			System.out.println("Num pieces in bullpen entity: ");
+			System.out.println(kabasuji.getSelectedLevel().getBullpen().getPieces().size());
+			
+			JLabelIcon firstPiece = plp.getBullpenView().getImgPieces()[0];
+			MouseEvent cp = createPressed(firstPiece, 0, 0);
+			firstPiece.dispatchEvent(cp);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		plp = new PlayLevelPanel(kabasuji, frame, type);
+
 		JLabelIcon flipBtn = plp.getFlipVertButton();
 		try {
 			MouseEvent cp = createPressed(flipBtn, 0, 0);
@@ -177,7 +223,7 @@ public class TestKabasuji extends TestCaseHelper {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		// reset the level
 		JLabelIcon resetBtn = plp.getResetButton();
 		try {
@@ -186,7 +232,7 @@ public class TestKabasuji extends TestCaseHelper {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		// return to the main menu
 		JLabelIcon mmBtn = plp.getMainMenuButton();
 		try {
