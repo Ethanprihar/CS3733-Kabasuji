@@ -120,10 +120,10 @@ public class SaveLevelController extends MouseAdapter {
 			builder.saveLevel(numOfPiecesOnLoad);
 			builder.saveToDisc();
 			
-			// Show a dialog box to let the user know that the level was saved successfully
-			JOptionPane message = new JOptionPane("Level Saved Successfully!");
-			Dialog dialog = message.createDialog("Success");
-			dialog.setVisible(true);
+//			// Show a dialog box to let the user know that the level was saved successfully
+//			JOptionPane message = new JOptionPane("Level Saved Successfully!");
+//			Dialog dialog = message.createDialog("Success");
+//			dialog.setVisible(true);
 			
 			ChangeScreenBuilderMove gtsm = new ChangeScreenBuilderMove(Screen.Opening);
 			// Attempt to execute action on model
