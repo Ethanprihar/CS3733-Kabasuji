@@ -24,6 +24,9 @@ public class LevelSelectPanel extends JPanel {
 	/** Level Button GUI elements **/
 	JLabelIcon[] levelselectbtn;
 	JLabelIcon[] leveltypeicons;
+	
+	/** Main Menu Button **/
+	JLabelIcon mainmenubtn;
 
 	/** dimensions of level button array (row X col display) **/
 	int row = 3;
@@ -105,7 +108,7 @@ public class LevelSelectPanel extends JPanel {
 			}
 		}
 		// return to main menu button created and set
-		JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength, "Main"+"<br>"+"Menu");
+		mainmenubtn = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength, "Main"+"<br>"+"Menu");
 		mainmenubtn.setLocation((int) ((Screen.width - mainmenubtn.getSize().getWidth()) / 2),
 				(int) (Screen.height * .8));
 		mainmenubtn.addMouseListener(new GoToMainMenuController(kabasuji, app, mainmenubtn));
@@ -125,5 +128,14 @@ public class LevelSelectPanel extends JPanel {
 	 */
 	public JLabelIcon[] getLevelSelectButtons() {
 		return levelselectbtn;
+	}
+	
+	/**
+	 * Getter for JLabelIcon[] of main menu buttons
+	 * 
+	 * @return
+	 */
+	public JLabelIcon getMainMenuButton() {
+		return mainmenubtn;
 	}
 }

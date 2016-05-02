@@ -12,6 +12,7 @@ import kabasuji.view.JLabelIcon;
 import levelbuilder.controller.moves.ChangeScreenBuilderMove;
 import levelbuilder.view.BuilderBoardView;
 import levelbuilder.view.BuilderMainMenu;
+import levelbuilder.view.BuilderReleaseBoardView;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
 /**
@@ -64,8 +65,7 @@ public class UndoController extends MouseAdapter {
 					num.setText(Integer.toString(builder.getNum(counter)));
 					counter++;
 				}
-			}
-			
+			}		
 			board.setTiles(builder.getSelectedLevel().getBoard().getTiles());
 			board.updateBoard();
 			

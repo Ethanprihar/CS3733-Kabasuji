@@ -46,12 +46,12 @@ public class GoToMainMenuController extends MouseAdapter {
 	 * is a GUI controller.
 	 */
 	public void mousePressed(MouseEvent me) {
-		try{
-		((PlayLevelPanel) app.getContentPane()).getMP().getClip().stop();
-		}
-		catch(NullPointerException e){
-			System.out.println("MainMenuController: no mp");
-		}
+//		try{
+//		((PlayLevelPanel) app.getContentPane()).getMP().getClip().stop();
+//		}
+//		catch(NullPointerException e){
+//			System.out.println("MainMenuController: no mp");
+//		}
 		//int index = kabasuji.getLevels().indexOf(kabasuji.getSelectedLevel());
 		// stop the timer if in play level panel
 		if (app.getContentPane() instanceof PlayLevelPanel) {

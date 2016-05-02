@@ -156,4 +156,12 @@ public class PieceView extends JPanel {
 	public Point getCentroid(){
 		return centroid;
 	}
+	
+	/**
+	 * Getter for piece view
+	 * @return
+	 */
+	public JLabelIcon[] getPieceView(){
+		return tileview;
+	}
 }
