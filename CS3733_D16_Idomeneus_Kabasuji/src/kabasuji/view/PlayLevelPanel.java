@@ -62,6 +62,7 @@ public class PlayLevelPanel extends JPanel {
 
 	JLabelIcon resetlevelbtn;
 	JLabelIcon nextlevelbtn;
+	JLabelIcon mainmenubtn;
 
 	JLabel movesLeft;
 	JLabel movesLeftNum;
@@ -199,7 +200,7 @@ public class PlayLevelPanel extends JPanel {
 					(int) (Screen.height * .73));
 			add(resetlevelbtn);
 
-			JLabelIcon mainmenubtn = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength,
+			mainmenubtn = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength,
 					"Main" + "<br>" + "Menu");
 			mainmenubtn.setLocation((int) (Screen.width * 0.84) + (int) (rotatelbtn.getSize().getWidth() / 2),
 					(int) (Screen.height * .6));
@@ -553,5 +554,33 @@ public class PlayLevelPanel extends JPanel {
 	}
 	public MusicPlayer getMP(){
 		return mp;
+	}
+	
+	public JLabelIcon getRotateLeftButton() {
+		return rotatelbtn;
+	}
+	
+	public JLabelIcon getRotateRightButton() {
+		return rotaterbtn;
+	}
+	
+	public JLabelIcon getFlipHorButton() {
+		return fliphbtn;
+	}
+	
+	public JLabelIcon getFlipVertButton() {
+		return flipvbtn;
+	}
+
+	public JLabelIcon getResetButton() {
+		return resetlevelbtn;
+	}
+	
+	public JLabelIcon getNextLevelButton() {
+		return nextlevelbtn;
+	}
+	
+	public JLabelIcon getMainMenuButton() {
+		return mainmenubtn;
 	}
 }

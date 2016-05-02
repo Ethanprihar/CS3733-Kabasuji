@@ -1,5 +1,6 @@
 package kabasuji.testUtilities;
 
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JComponent;
@@ -36,6 +37,11 @@ public abstract class TestCaseHelper extends TestCase {
 				System.currentTimeMillis(), 0, 
 				x, y, 0, true);
 		return me;
+	}
+	
+	public KeyEvent createKeyPressed(JComponent container) {
+		KeyEvent ke = new KeyEvent(container, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_ENTER);
+		return ke;
 	}
 	
 	
