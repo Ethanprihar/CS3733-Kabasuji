@@ -80,7 +80,9 @@ public class BuilderBoardView extends JPanel {
 		for (int i = 0; i < col-2; i++) {
 			for (int j = 0; j < row-2; j++) {
 					if (tiles[i][j].isHint()) {
-						displayTile(i,j,"general2button.png");
+						displayTile(i,j,"tile.png");
+						JLabelIcon hint = new JLabelIcon("hint.png", tile[i * row + j].getWidth(), tile[i * row + j].getWidth());
+						tile[i * row + j].add(hint);
 					}
 					else if(!tiles[i][j].isValid())
 					{

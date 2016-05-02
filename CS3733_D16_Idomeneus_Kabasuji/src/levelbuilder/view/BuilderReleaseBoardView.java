@@ -87,9 +87,10 @@ public class BuilderReleaseBoardView extends BuilderBoardView {
 					System.out.print("Tile found: ");
 					if(tiles[i][j].getNumber() == 0)//If this is not a release tile.
 					{
-						if (tiles[i][j].isHint()) {
-							displayTile(i,j,"general2button.png");						
-							System.out.println("Painting  it hint.");
+						if (tiles[i][j].isHint()) {					
+							displayTile(i,j,"tile.png");
+							JLabelIcon hint = new JLabelIcon("hint.png", tile[i * row + j].getWidth(), tile[i * row + j].getWidth());
+							tile[i * row + j].add(hint);
 						}
 						else if(!tiles[i][j].isValid())
 						{
