@@ -440,6 +440,11 @@ public class Builder
 		endCondition = ec;
 	}
 	
+	/**
+	 * clears the release level board and then adds all the colors
+	 * and numbers randomly on the board
+	 * @return if the random numbers and colors were assigned
+	 */
 	public boolean addRandomRelease()
 	{
 		for(int i=0; i<selectedLevel.getBoard().getTiles().length; i++)
