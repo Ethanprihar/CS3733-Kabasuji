@@ -447,15 +447,22 @@ public class Builder
 	 */
 	public boolean addRandomRelease()
 	{
+		int numInvalid = 0;
 		for(int i=0; i<selectedLevel.getBoard().getTiles().length; i++)
 		{
 			for(int j=0; j<selectedLevel.getBoard().getTiles().length; j++)
 			{
 				selectedLevel.getBoard().getTile(i,j).setColor(0);
 				selectedLevel.getBoard().getTile(i,j).setNumber(0);
+				if(!selectedLevel.getBoard().getTile(i,j).isValid())
+				{
+					numInvalid ++;
+				}
 			}
 		}
 		if(selectedLevel.getBoard().getTiles().length < 5)
+			return false;
+		else if((selectedLevel.getBoard().getTiles().length * selectedLevel.getBoard().getTiles().length - numInvalid) < 18)
 			return false;
 		int[] row = new int[18];
 		int[] col = new int[18];
