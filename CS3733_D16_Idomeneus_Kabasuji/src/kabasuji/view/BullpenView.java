@@ -76,7 +76,7 @@ public class BullpenView extends JPanel {
 		this.col = col;
 		
 		setLayout(null);
-		setOpaque(true);
+		setOpaque(false);
 
 	}
 

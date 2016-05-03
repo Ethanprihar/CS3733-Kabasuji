@@ -73,7 +73,7 @@ public class BoardView extends JPanel {
 			this.tilesidelength = (int) (getSize().getHeight() / sqmatrixlength);
 		}
 		// scaling + offset to fit the container panel;
-		tilesidescaled = (int) (tilesidelength * .99);
+		tilesidescaled = (int) (tilesidelength);
 		offset = (int) (tilesidelength - tilesidescaled);
 
 		updateBoard();
