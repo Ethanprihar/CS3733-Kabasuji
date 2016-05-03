@@ -1,14 +1,29 @@
 package kabasuji.model;
 
 @SuppressWarnings("serial")
+/**
+ * this class takes care of specific things for release boards like
+ * keeping track of the color and number asociated with a tile
+ * @author Ethan
+ *
+ */
 public class ReleaseBoard extends Board {
 	
+	/**
+	 * this constructor creates a release board
+	 * @param t the matrix of tiles to turn into a board
+	 */
 	public ReleaseBoard(Tile[][] t) {
 		super(t);
 	}
 
 
 	@Override
+	/**
+	 * this method returns the number of stars that a player would get for this board
+	 * based on the colors and numbers the player has covered
+	 * @return the number of stars the player gets
+	 */
 	public int getStars() {
 		int[] color0Released = new int[6];
 		int[] color1Released = new int[6];
@@ -68,6 +83,10 @@ public class ReleaseBoard extends Board {
 		return stars;
 	}
 	
+	/**
+	 * returns a copy of this board
+	 * @return a new ReleaseBoard that is a copy of this board
+	 */
 	public ReleaseBoard copy()
 	{
 		Tile[][] t = new Tile[tiles.length][tiles.length];
