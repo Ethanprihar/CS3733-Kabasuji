@@ -1,15 +1,28 @@
 package kabasuji.model;
 
 @SuppressWarnings("serial")
+
+/**
+ * This class is the model class for the lightning board. It extends the abstract board class for all the shared logic
+ * across the three different types of the boards. This class only has the logic specific to the lightning board.
+ * @author Ethan
+ *
+ */
 public class LightningBoard extends Board {
 
+	/**
+	 * Constructor for the lightning board
+	 * @param t 2D array of tile
+	 */
 	public LightningBoard(Tile[][] t) {
 		super(t);
 	}
 
 	/**
-	 * Can piece be added to given target tile as anchor
-	 * 
+	 * This method determines if the given piece can be added to the lightning board or not.
+	 * @param p The current piece which is being added
+	 * @param start The start reference tile of the piece which is being added
+	 * @return True if the piece can be added and false if the piece can not be added
 	 */
 	@Override
 	public boolean canAddPiece(Piece p, Tile start) {
@@ -64,6 +77,10 @@ public class LightningBoard extends Board {
 		return false;
 	}
 
+	/**
+	 * The method to copy the lightning board.
+	 * @return The copied lightning board
+	 */
 	public LightningBoard copy() {
 		Tile[][] t = new Tile[tiles.length][tiles.length];
 		for (int i = 0; i < tiles.length; i++) {
