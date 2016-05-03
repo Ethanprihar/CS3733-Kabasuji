@@ -46,7 +46,7 @@ public class PlayLevelPanel extends JPanel {
 
 	Timer timer; // Timer used for Lightning Mode
 	int delay = 1000; // milliseconds
-	
+
 	MusicPlayer mp;
 
 	/** Boundaries associated **/
@@ -104,7 +104,9 @@ public class PlayLevelPanel extends JPanel {
 	 * Update the PlayLevelPanel with a new BoardView and BullpenView.
 	 * 
 	 * @param bv
+	 *            boardview
 	 * @param bpv
+	 *            bullpenview
 	 */
 	public void updatePlayLevelPanel(BoardView bv, BullpenView bpv) {
 		/** adding all buttons/images needed **/
@@ -200,14 +202,13 @@ public class PlayLevelPanel extends JPanel {
 					(int) (Screen.height * .73));
 			add(resetlevelbtn);
 
-			mainmenubtn = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength,
-					"Main" + "<br>" + "Menu");
+			mainmenubtn = new JLabelIcon("generalbutton.png", btnsidelength, btnsidelength, "Main" + "<br>" + "Menu");
 			mainmenubtn.setLocation((int) (Screen.width * 0.84) + (int) (rotatelbtn.getSize().getWidth() / 2),
 					(int) (Screen.height * .6));
 			mainmenubtn.addMouseListener(new GoToMainMenuController(kabasuji, app, mainmenubtn));
 			add(mainmenubtn);
 		}
-				
+
 		add(bv);
 		add(bpv);
 		setBoardView(bv);
@@ -234,7 +235,7 @@ public class PlayLevelPanel extends JPanel {
 	/**
 	 * Getter for zoom piece.
 	 * 
-	 * @return
+	 * @return zoompanel
 	 */
 	public ZoomPanel getZoomPanel() {
 		return zoompanel;
@@ -247,6 +248,7 @@ public class PlayLevelPanel extends JPanel {
 		zoompanel.removeAll();
 		zoompanel.repaint();
 	}
+
 	/**
 	 * Display lose screen when player has lost.
 	 */
@@ -292,6 +294,7 @@ public class PlayLevelPanel extends JPanel {
 		timer.start();
 
 	}
+
 	/*
 	 * Stops timer.
 	 */
@@ -301,6 +304,7 @@ public class PlayLevelPanel extends JPanel {
 			timer.stop();
 		}
 	}
+
 	/**
 	 * Reset timer.
 	 */
@@ -312,6 +316,7 @@ public class PlayLevelPanel extends JPanel {
 			timer.restart();
 		}
 	}
+
 	/**
 	 * Start timer for LightningLevel.
 	 */
@@ -328,28 +333,28 @@ public class PlayLevelPanel extends JPanel {
 	/**
 	 * Getter for JLabel timeLeftNum
 	 * 
-	 * @return
+	 * @return time left
 	 */
 	public JLabel getTimeLeftNum() {
 		return timeLeftNum;
 	}
 
 	/**
-	 * Setter for JLabel timeLeftNum
+	 * Setter for Timer.
 	 * 
-	 * @return
+	 * @param timeLeft
 	 */
 	public void setTimeLeftNum(Integer timeLeft) {
 		if (type == 0) {
 			int numStars = kabasuji.getSelectedLevel().getBoard().getStars();
-			if(timeLeft == 10 && numStars < 3 ){
+			if (timeLeft == 10 && numStars < 3) {
 				mp = new MusicPlayer("timebomb10s.wav");
 				mp.setVolume(-10);
 			}
-			if(timeLeft <= 10){
+			if (timeLeft <= 10) {
 				timeLeftNum.setForeground(Color.YELLOW);
 			}
-			if(timeLeft <= 5){
+			if (timeLeft <= 5) {
 				timeLeftNum.setForeground(Color.RED);
 			}
 			timeLeftNum.setText(timeLeft.toString());
@@ -359,24 +364,24 @@ public class PlayLevelPanel extends JPanel {
 	/**
 	 * Getter for JLabel movesLeftNum
 	 * 
-	 * @return
+	 * @return moves left
 	 */
 	public JLabel getMovesLeftNum() {
 		return movesLeftNum;
 	}
 
 	/**
-	 * Setter for JLabel movesLeftNum
+	 * Setter for Moves left.
 	 * 
-	 * @return
+	 * @param movesLeft
 	 */
 	public void setMovesLeftNum(Integer movesLeft) {
 		if (type == 0) {
 			int numStars = kabasuji.getSelectedLevel().getBoard().getStars();
-			if(movesLeft == 10 && numStars < 3 ){
+			if (movesLeft == 10 && numStars < 3) {
 				movesLeftNum.setForeground(Color.YELLOW);
 			}
-			if(movesLeft <= 5){
+			if (movesLeft <= 5) {
 				movesLeftNum.setForeground(Color.RED);
 			}
 			movesLeftNum.setText(movesLeft.toString());
@@ -386,7 +391,7 @@ public class PlayLevelPanel extends JPanel {
 	/**
 	 * Setter for BoardView.
 	 * 
-	 * @param bv
+	 * @param bv boardview
 	 */
 	public void setBoardView(BoardView bv) {
 		boardview = bv;
@@ -397,7 +402,7 @@ public class PlayLevelPanel extends JPanel {
 	/**
 	 * Getter for BoardView.
 	 * 
-	 * @return
+	 * @return boardview
 	 */
 	public BoardView getBoardView() {
 		return boardview;
@@ -406,7 +411,7 @@ public class PlayLevelPanel extends JPanel {
 	/**
 	 * Setter for BullpenView.
 	 * 
-	 * @param bpv
+	 * @param bpv bullpenview
 	 */
 	public void setBullpenView(BullpenView bpv) {
 		bullpenview = bpv;
@@ -417,14 +422,14 @@ public class PlayLevelPanel extends JPanel {
 	/**
 	 * Getter for BullpenView.
 	 * 
-	 * @return
+	 * @return bullpenview
 	 */
 	public BullpenView getBullpenView() {
 		return bullpenview;
 	}
 
 	/**
-	 * Updates the display to show the correct number of stars
+	 * Updates the display to show the correct number of stars.
 	 */
 	public void updateStars() {
 
@@ -470,9 +475,11 @@ public class PlayLevelPanel extends JPanel {
 		repaint();
 		add(background);
 	}
+
 	/**
 	 * Getter for timer.
-	 * @return
+	 * 
+	 * @return timer
 	 */
 	public Timer getTimer() {
 		return timer;
@@ -517,6 +524,7 @@ public class PlayLevelPanel extends JPanel {
 			add(background);
 		}
 	}
+
 	/**
 	 * Display lose screen when player has lost.
 	 */
@@ -549,15 +557,15 @@ public class PlayLevelPanel extends JPanel {
 			add(background);
 		}
 	}
-	
+
 	// Add an exit button
-	public void exitScreen(JFrame frame){
-		
+	public void exitScreen(JFrame frame) {
+
 		if (type == 1) {
 			remove(background);
 			JLabelIcon returnBtn = new JLabelIcon("generalbutton.png", 70, 70);
 			returnBtn.setLocation((int) (Screen.width * 0.80) + (int) (rotatelbtn.getSize().getWidth() / 2),
-				(int) (Screen.height * .6));
+					(int) (Screen.height * .6));
 			JLabel returnLbl = new JLabel("<html>Exit</html>", SwingConstants.CENTER);
 			returnLbl.setBounds(0, 0, 70, 70);
 			returnLbl.setFont(new Font("Onyx", Font.BOLD, 18));
@@ -568,58 +576,74 @@ public class PlayLevelPanel extends JPanel {
 			add(background);
 		}
 	}
-	/** 
+
+	/**
 	 * Getter for musicplayer.
-	 * @return
+	 * 
+	 * @return musicplayer
 	 */
-	public MusicPlayer getMP(){
+	public MusicPlayer getMP() {
 		return mp;
 	}
+
 	/**
 	 * Getter for Rotate Left Button.
-	 * @return
+	 * 
+	 * @return rotate button view
 	 */
 	public JLabelIcon getRotateLeftButton() {
 		return rotatelbtn;
 	}
+
 	/**
 	 * Getter for Rotate Right Button.
-	 * @return
+	 * 
+	 * @return rotate button view
 	 */
 	public JLabelIcon getRotateRightButton() {
 		return rotaterbtn;
 	}
+
 	/**
 	 * Getter for Flip Horizontal Button.
-	 * @return
+	 * 
+	 * @return flip button view
 	 */
 	public JLabelIcon getFlipHorButton() {
 		return fliphbtn;
 	}
+
 	/**
 	 * Getter for Flip Vertical Button.
-	 * @return
+	 * 
+	 * @return flip button view
 	 */
 	public JLabelIcon getFlipVertButton() {
 		return flipvbtn;
 	}
+
 	/**
 	 * Get Reset Level Button.
-	 * @return
+	 * 
+	 * @return reset button view
 	 */
 	public JLabelIcon getResetButton() {
 		return resetlevelbtn;
 	}
+
 	/**
 	 * Get Next Level Button.
-	 * @return
+	 * 
+	 * @return next level button view
 	 */
 	public JLabelIcon getNextLevelButton() {
 		return nextlevelbtn;
 	}
+
 	/**
 	 * Get Main Menu Button.
-	 * @return
+	 * 
+	 * @return main menu button view
 	 */
 	public JLabelIcon getMainMenuButton() {
 		return mainmenubtn;

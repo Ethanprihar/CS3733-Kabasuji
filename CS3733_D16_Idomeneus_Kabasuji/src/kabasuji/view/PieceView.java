@@ -105,9 +105,9 @@ public class PieceView extends JPanel {
 	}
 	/**
 	 * Display Tiles of Piece if valid.
-	 * @param i
-	 * @param j
-	 * @param pic
+	 * @param i col
+	 * @param j row
+	 * @param pic filename
 	 */
 	public void displayTiles(int i, int j, String pic) {
 		int xoffset = (int) piece.findReferencePoint().getX();
@@ -126,7 +126,7 @@ public class PieceView extends JPanel {
 	}
 	/**
 	 * Calculates the centroid coordinates of the tiles within the piece. (Relative to Piece container)
-	 * @return
+	 * @return Point
 	 */
 	public Point calculateCentroid(){
 		Point pnt = new Point();
@@ -151,15 +151,15 @@ public class PieceView extends JPanel {
 	}
 	/**
 	 * Getter for centroid coordinates.
-	 * @return
+	 * @return Point centroid
 	 */
 	public Point getCentroid(){
 		return centroid;
 	}
 	
 	/**
-	 * Getter for piece view
-	 * @return
+	 * Getter for piece view.
+	 * @return pieceview object
 	 */
 	public JLabelIcon[] getPieceView(){
 		return tileview;

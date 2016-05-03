@@ -14,7 +14,7 @@ import javax.swing.SwingConstants;
 /**
  * Main Menu navigation screen; offers navigation to SelectLevelPanel.
  * 
- * Is contained in JFrame
+ * Is contained in JFrame.
  * 
  * @author jwu
  *
@@ -62,7 +62,7 @@ public class MainMenu extends JPanel {
 	/**
 	 * Getter for LevelSelectButton
 	 * 
-	 * @return
+	 * @return level select view.
 	 */
 	public JLabelIcon getLevelSelectButton() {
 		return levelselectbtn;

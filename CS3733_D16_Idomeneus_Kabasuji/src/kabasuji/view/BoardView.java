@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 
 /**
  * BoardView component; all displaying of board elements are here.
+ * 
  * @author jwu
  *
  */
@@ -51,11 +52,14 @@ public class BoardView extends JPanel {
 		this.board = kabasuji.getSelectedLevel().getBoard();
 		this.panel = panel;
 		this.tiles = board.getTiles();
-		//set layout null
+		// set layout null
 		setLayout(null);
 		setOpaque(false);
 	}
 
+	/**
+	 * Setup the board.
+	 */
 	public void setupBoard() {
 		// get dimesions of board tile array
 		row = board.getTiles().length;
@@ -77,6 +81,7 @@ public class BoardView extends JPanel {
 
 		updateBoard();
 	}
+
 	/**
 	 * Updates the display of tiles on the Board.
 	 */
@@ -84,7 +89,7 @@ public class BoardView extends JPanel {
 		// display the tiles on the container panel and scales them to fit
 		// row/column
 		// includes centering as well
-		
+
 		for (int i = 0; i < col; i++) {
 			for (int j = 0; j < row; j++) {
 				// create a button image with specified dimension
@@ -103,9 +108,10 @@ public class BoardView extends JPanel {
 				}
 			}
 		}
-		//background = new JLabelIcon("opaque_canvas.png", (int) (Screen.height * 0.54),
-		//		(int) (Screen.height * 0.54));
-		//add(background);
+		// background = new JLabelIcon("opaque_canvas.png", (int) (Screen.height
+		// * 0.54),
+		// (int) (Screen.height * 0.54));
+		// add(background);
 		repaint();
 	}
 
@@ -127,27 +133,31 @@ public class BoardView extends JPanel {
 		// Only does labeling, trivial
 		String stringnum = "";
 		int tilenumlbl = tiles[i][j].getNumber();
-		if(tilenumlbl != 0){
+		if (tilenumlbl != 0) {
 			stringnum = stringnum + tilenumlbl;
 		}
 		JLabel numlbl = new JLabel(stringnum, SwingConstants.CENTER);
 		numlbl.setBounds(0, 0, tilesidescaled, tilesidescaled);
 		numlbl.setFont(new Font("Arial", Font.BOLD, (int) (tilesidescaled * 0.5)));
-		
-		// Determine what color of text should be displayed then set the text color
+
+		// Determine what color of text should be displayed then set the text
+		// color
 		Color textcolor;
-		switch(tiles[i][j].getColor())
-		{
-		case 1: textcolor = Color.RED;
-		break;
-		case 2: textcolor = Color.BLUE;
-		break;
-		case 3: textcolor = Color.YELLOW;
-		break;
-		default: textcolor = Color.darkGray;
+		switch (tiles[i][j].getColor()) {
+		case 1:
+			textcolor = Color.RED;
+			break;
+		case 2:
+			textcolor = Color.BLUE;
+			break;
+		case 3:
+			textcolor = Color.YELLOW;
+			break;
+		default:
+			textcolor = Color.darkGray;
 		}
 		numlbl.setForeground(textcolor);
-		
+
 		// Add label to image
 		tile[i * row + j].add(numlbl);
 		// Add Tile to Board
@@ -157,7 +167,7 @@ public class BoardView extends JPanel {
 	/**
 	 * getter for JLabel[] tileimages.
 	 * 
-	 * @return
+	 * @return tile view object array
 	 */
 	public JLabelIcon[] getTileImages() {
 		return tile;

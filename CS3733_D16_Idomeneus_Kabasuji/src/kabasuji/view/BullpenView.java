@@ -187,7 +187,7 @@ public class BullpenView extends JPanel {
 	/**
 	 * getter for JLabel[] image containers of pieces.
 	 * 
-	 * @return
+	 * @return piece view object
 	 */
 	public JLabelIcon[] getImgPieces() {
 		return imgpieces;
@@ -196,7 +196,7 @@ public class BullpenView extends JPanel {
 	/**
 	 * getter for PieceView[] pieceview containers.
 	 * 
-	 * @return
+	 * @return piece view array
 	 */
 	public PieceView[] getPieceView() {
 		return pieceview;
