@@ -24,6 +24,7 @@ Selecting a Level:
 
   NOTE: Only 15 levels can be displayed in the level select at a time, so in order to see another level delete some of the levels that currently exist.
 
+
 Playing a Puzzle Level:
 
   Puzzle Mode is the normal playing mode of the game where pieces can be moved from the bullpen to the board score stars. Stars are scored based on how much of the board is covered by pieces. Pieces are not allowed to overlap each other on the board.  A player only has a limited number of moves.  
@@ -42,6 +43,7 @@ Playing a Puzzle Level:
   
   A piece can be moved from the board to the bullpen by right clicking on the piece on the board and then left clicking in the bullpen.
 
+
 Playing a Lightning Level:
 
   Lightning Mode is a mode of the game where a player has a limited amount of time to move pieces from the bullpen to the board to score stars. Stars are scored based on how much of the board is covered by pieces. Pieces are allowed to overlap each other on the board. Once the timer reaches 0 the player will not be able to make any more moves and must either reset the level, return to main menu, or if they have any stars then progress to the next level.
@@ -55,6 +57,7 @@ Playing a Lightning Level:
   A player can go to the next level once they have earned at least one star.  In order to earn stars the player must cover enough of the board.
   
   A player can move a piece from the bullpen to the board by selecting a piece from the bullpen and then left clicking where you would like to place it on the board.
+
 
 Playing a Release Level:
 
@@ -80,6 +83,7 @@ Level Builder Start Up:
 
   Upon startup the player can choose to either build a new level or load a level.  If they choose to load a level by clicking the "Load Level" button then they can select a level from the list of levels to edit by clicking on the level.  The kind of level is indicated by the same symbols that were used in Kabasuji when choosing a level.  A player can choose to build a level by clicking the "Build Level" button.  The player can then specify the board dimensions into the text box which indicates the width of the square board that will be created.  The player can then choose which type of level that they would like to build by clicking on one of the player mode buttons.
   
+  
 Building a Puzzle Level:
 
   A builder can undo a move by clicking the "Undo" button.
@@ -101,6 +105,7 @@ Building a Puzzle Level:
   A player can make a tile a hint tile by right clicking on that tile on the board.
   
   A player can test a level by hitting the "Test Level" button.  A description of how to test the level can be found in the description of how to play a Puzzle Level in the Kabasuji user Manual above.  The player can exit this test by hitting the "Exit" button.
+
   
 Building a Lightning Level:
 
@@ -125,7 +130,29 @@ Building a Lightning Level:
   A player can test a level by hitting the "Test Level" button.  A description of how to test the level can be found in the description of how to play a Lightning Level in the Kabasuji user Manual above. The player can exit this test by hitting the "Exit" button.
 
 
+Building a Release Level:
 
+  A builder can undo a move by clicking the "Undo" button.
+  
+  A builder can redo a move by clicking the "Redo" button.
+  
+  A builder can save a level by clicking the "Save Level" button.
+  
+  A builder can delete a level by clicking the "Delete Level" button.
+  
+  A builder can return to the main menu (which deletes the current level being made) by clicking the "Main Menu" button.
+  
+  A builder can add a piece to the level bullpen by clicking on the piece in the bullpen.
+  
+  A player can specify the number of moves that the player is allowed by typing in the "Moves" text field.
+  
+  A player can make a tile invalid (or not part of the board) by selecting the "white" color button and then left clicking on the tile.
+  
+  A player can make a tile a hint tile by selecting the "white" color button and then right clicking on that tile on the board.
+  
+  A player can test a level by hitting the "Test Level" button.  A description of how to test the level can be found in the description of how to play a Release Level in the Kabasuji user Manual above.  The player can exit this test by hitting the "Exit" button.
+  
+  A player can add a release tile by selecting a number and color and then left clicking on the destination tile on the board.
 
 
 
