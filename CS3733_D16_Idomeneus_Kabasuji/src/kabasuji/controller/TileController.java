@@ -128,6 +128,11 @@ public class TileController extends MouseAdapter {
 					// updates the stars display
 					updateStarDisplay();
 					
+//					// decrement the number of moves left
+					((PuzzleLevel) currentlevel)
+							.setMovesUsed(((PuzzleLevel) currentlevel).getMovesUsed() + 1);
+					panel.setMovesLeftNum((Integer) ((PuzzleLevel) currentlevel).getMovesLeft());
+					
 				} else {
 					new MusicPlayer("fail.wav").setVolume(-15);
 				}
@@ -140,11 +145,6 @@ public class TileController extends MouseAdapter {
 					boardSelectPiece(selfTile.getPiece());
 					zoompanel.removeAll();
 					zoompanel.displayPieceView(selfTile.getPiece());
-					
-//					// decrement the number of moves left
-					((PuzzleLevel) currentlevel)
-							.setMovesUsed(((PuzzleLevel) currentlevel).getMovesUsed() + 1);
-					panel.setMovesLeftNum((Integer) ((PuzzleLevel) currentlevel).getMovesLeft());
 				}
 			}
 		}
