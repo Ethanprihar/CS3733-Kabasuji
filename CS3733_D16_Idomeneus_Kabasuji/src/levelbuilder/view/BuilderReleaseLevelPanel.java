@@ -11,6 +11,7 @@ import kabasuji.view.JLabelIcon;
 import levelbuilder.controller.DeselectReleaseButtonsController;
 import levelbuilder.controller.GoToMainMenuBuilderController;
 import levelbuilder.controller.IncrementPieceBuilderController;
+import levelbuilder.controller.RandomizeReleaseController;
 import levelbuilder.controller.RedoController;
 import levelbuilder.controller.SaveLevelController;
 import levelbuilder.controller.SetColorController;
@@ -46,6 +47,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 	JLabelIcon colorBtn2;
 	JLabelIcon colorBtn3;
 	JLabelIcon colorClearBtn;
+	JLabelIcon randomizeReleaseBtn;
 	
 	JLabelIcon numBtn1;
 	JLabelIcon numBtn2;
@@ -345,6 +347,18 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		
 		// Add a mouse listener for the controller
 		testBtn.addMouseListener(new TestLevelBuilderController(builder, app, testBtn, numOfPiecesOnLoad, numMoves));
+		
+		
+		randomizeReleaseBtn = new JLabelIcon( "generalbutton.png", 140, 50);
+		randomizeReleaseBtn.setLocation((int) (Screen.width * 0.72) + (int) (testBtn.getSize().getWidth() / 2),
+				(int) (Screen.height * 0.44));
+		JLabel randomizeLbl = new JLabel("<html>Randomize<br>Level</html>", SwingConstants.CENTER);
+		randomizeLbl.setBounds(0, 0, 140, 50);
+		randomizeLbl.setFont(new Font("Onyx", Font.BOLD, 18));
+		randomizeReleaseBtn.add(randomizeLbl);
+		background.add(randomizeReleaseBtn);
+		randomizeReleaseBtn.addMouseListener(new RandomizeReleaseController(builder, app, randomizeReleaseBtn));
+		
 	}
 	
 	/**
