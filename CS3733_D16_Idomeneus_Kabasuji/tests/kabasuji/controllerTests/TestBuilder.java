@@ -5,6 +5,7 @@ import javax.swing.JTextField;
 
 import java.awt.event.MouseEvent;
 
+import kabasuji.Main;
 import kabasuji.model.Builder;
 import kabasuji.model.PuzzleLevel;
 import kabasuji.model.Screen;
@@ -12,6 +13,7 @@ import kabasuji.testUtilities.TestCaseHelper;
 import kabasuji.view.JLabelIcon;
 import kabasuji.view.SplashWindow;
 import levelbuilder.view.TopLevelApplicationBuilder;
+import levelbuilder.LBMain;
 import levelbuilder.view.BuilderLevelMode;
 import levelbuilder.view.BuilderLevelSelect;
 import levelbuilder.view.BuilderLightningLevelPanel;
@@ -1205,6 +1207,10 @@ public class TestBuilder extends TestCaseHelper {
 			e.printStackTrace();
 		}
 
+	}
+	
+	public void testMain() {
+		LBMain.main(new String[] {"arg1", "arg2", "arg3"});
 	}
 
 }

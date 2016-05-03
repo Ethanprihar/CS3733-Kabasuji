@@ -3,6 +3,7 @@ package kabasuji.controllerTests;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import kabasuji.Main;
 import kabasuji.controller.moves.SelectLevelMove;
 import kabasuji.controller.moves.SelectPieceMove;
 import kabasuji.model.Bullpen;
@@ -40,16 +41,6 @@ public class TestKabasuji extends TestCaseHelper {
 		frame.dispose();
 	}
 
-	// public void testBoard()
-	// {
-	//
-	// }
-	//
-	// public void testFlipSelectedPieceBullpen()
-	// {
-	//
-	// }
-	//
 	public void testGoToLevelSelect() {
 		try {
 			setup();
@@ -184,7 +175,7 @@ public class TestKabasuji extends TestCaseHelper {
 		MouseEvent cpFlipV = createPressed(flipBtn, 0, 0);
 		flipBtn.dispatchEvent(cpFlipV);
 		
-//		// flip the piece horizontally
+		// flip the piece horizontally
 		JLabelIcon flipHBtn = plp.getFlipHorButton();
 		MouseEvent cpFlipH = createPressed(flipHBtn, 0, 0);
 		flipHBtn.dispatchEvent(cpFlipH);
@@ -215,16 +206,6 @@ public class TestKabasuji extends TestCaseHelper {
 		mainBtn.dispatchEvent(cpMain);
 	}
 
-	// public void testResetLevel()
-	// {
-	//
-	// }
-	//
-	// public void testRotateSelectedPieceBullpen()
-	// {
-	//
-	// }
-	//
 	public void testSelectLevel() {
 		try {
 			setup();
@@ -252,32 +233,12 @@ public class TestKabasuji extends TestCaseHelper {
 		Bullpen testBullpen = kabasuji.getSelectedLevel().getBullpen();
 		// Get a piece in the bullpen
 		ArrayList<Piece> testPiece = testBullpen.getPieces();
-		// Get the first piece in the arraylist
-		Piece piece = testPiece.get(0);
 
-		// Select the piece
-		testBullpen.selectPiece(piece);
-
-		// Get the pieceview
-		PieceView getPieceView = new PieceView(piece);
-
-		// Click on this piece in the bullpen
-		try {
-			MouseEvent cp = createPressed(getPieceView, 0, 0);
-			getPieceView.dispatchEvent(cp);
-			assertEquals(piece, testBullpen.getSelectedPiece());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		//
-		// public void testSelectPieceBullpen()
-		// {
-		//
-		// }
-		//
-		// public void testTile()
-		// {
-		//
-		// }
+	}
+	
+	public void testMain() {
+		Main.main(new String[] {"arg1", "arg2", "arg3"});
+		Main.makeLevelsForTesting();
+		Main.makePieces();
 	}
 }
