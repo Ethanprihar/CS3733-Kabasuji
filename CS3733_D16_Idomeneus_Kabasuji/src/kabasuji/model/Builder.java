@@ -455,8 +455,8 @@ public class Builder
 				boolean newPos = false;
 				while(!newPos)
 				{
-					newRow = (int)(Math.random() * selectedLevel.getBoard().getTiles().length + 1);
-					newCol = (int)(Math.random() * selectedLevel.getBoard().getTiles().length + 1);
+					newRow = (int)(Math.random() * selectedLevel.getBoard().getTiles().length);
+					newCol = (int)(Math.random() * selectedLevel.getBoard().getTiles().length);
 					newPos = true;
 					for(int i = 0; i<18; i++)
 					{
@@ -466,8 +466,8 @@ public class Builder
 				}
 				selectedLevel.getBoard().getTile(newRow, newCol).setColor(color);
 				selectedLevel.getBoard().getTile(newRow, newCol).setNumber(number);
-				row[(color-1)*6+number] = newRow;
-				col[(color-1)*6+number] = newCol;
+				row[(color-1)*6+number-1] = newRow;
+				col[(color-1)*6+number-1] = newCol;
 			}
 		}
 		return true;
