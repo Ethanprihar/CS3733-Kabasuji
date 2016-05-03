@@ -23,16 +23,20 @@ import kabasuji.view.PlayLevelPanel;
  *
  */
 public class BullpenController extends MouseAdapter {
-
-	/** Entity associated **/
-	Kabasuji kabasuji;
-	Board board;
-	Bullpen bullpen;
-	Piece selectedPiece;
 	
-	/** Boundaries associated **/
+	/* Top Level Model */
+	Kabasuji kabasuji;
+	/* Board Model */
+	Board board;
+	/* Bullpen Model*/
+	Bullpen bullpen;
+	/* Selected Piece model */
+	Piece selectedPiece;
+	/* Screen view */
 	PlayLevelPanel plp;
+	/* Bullpenview */
 	BullpenView bullpenview;
+	
 /**
  * Constructor for BullpenController.
  * @param kabasuji

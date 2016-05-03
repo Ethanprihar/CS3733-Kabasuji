@@ -28,23 +28,33 @@ import misc.MusicPlayer;
  */
 public class SelectPieceBullpenController extends MouseAdapter {
 
-	/** Entities associated **/
+	/* Top Level Model */
 	Kabasuji kabasuji;
+	/* Bullpen */
 	Bullpen bullpen;
+	/* Board */
 	Board board;
+	/* List of pieces in bullpen */
 	ArrayList<Piece> pieces;
+	/* Selected piece */
 	Piece selectedPiece;
 
+	/* piece number */
 	int numPiece;
 
-	/** Boundaries associated **/
-
+	/* Top Level Boundary */
 	PlayLevelPanel panel;
+	/* Bullpenview */
 	BullpenView bullpenview;
+	/* ZoomPanel */
 	ZoomPanel zoompanel;
+	/* Piece view object in bullpen */
 	JLabelIcon pieceicon;
+	/* Piece view array */
 	PieceView[] pieceviews;
+	/* filename of zoompanel */
 	String fnzoom;
+	/* original filename of pieceview */
 	String fnpiece;
 
 	/**

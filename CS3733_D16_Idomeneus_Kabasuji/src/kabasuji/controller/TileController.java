@@ -33,24 +33,35 @@ import misc.MusicPlayer;
  */
 public class TileController extends MouseAdapter {
 
-	/** Entity associated **/
+	/* Top Level Model */
 	Kabasuji kabasuji;
+	/* Board */
 	Board board;
+	/* 2D Tile Array in Board */
 	Tile[][] tiles;
+	/* Selected tile */
 	Tile selfTile;
+	/* Bullpen */
 	Bullpen bullpen;
+	/* Selected Piece*/
 	Piece selectedPiece;
+	/* Selected Level */
 	Level currentlevel;
 
-	/** Boundaries associated **/
+	/* Top Level Boundary */
 	PlayLevelPanel panel;
+	/* BoardView */
 	BoardView boardview;
+	/* BullpenView */
 	BullpenView bullpenview;
+	/* List of tile view */
 	JLabelIcon[] tileimgs;
+	/* Zoom Panel */
 	ZoomPanel zoompanel;
 	
-	/** Tile parameters **/
+	/* Tile View */
 	JLabelIcon tile;
+	/* original filename */
 	String fn;
 	
 	/**

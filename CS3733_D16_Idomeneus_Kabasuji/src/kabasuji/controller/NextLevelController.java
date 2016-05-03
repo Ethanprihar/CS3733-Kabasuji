@@ -29,12 +29,15 @@ import kabasuji.view.ErrorDialogBox;
  */
 public class NextLevelController extends MouseAdapter {
 
-	/** Entities associated **/
+	/* Top Level Model */
 	Kabasuji kabasuji;
+	/* Level number */
 	int level;
-	/** Boundaries associated **/
+	/* Top Level Boundary */
 	PlayLevelPanel plp;
+	/* Button view */
 	JLabelIcon button;
+	/* Original filename */
 	String fn;
 
 	/**

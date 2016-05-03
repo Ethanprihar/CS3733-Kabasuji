@@ -17,9 +17,11 @@ import kabasuji.view.JLabelIcon;
  */
 public class BoardController extends MouseAdapter {
 
-	/** Entity and Boundaries Associated **/
+	/* Model board */
 	Board board;
+	/* Tile view associated */
 	JLabelIcon tile;
+	/* Original filename */
 	String fn;
 
 	/**
