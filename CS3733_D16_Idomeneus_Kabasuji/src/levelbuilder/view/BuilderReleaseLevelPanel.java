@@ -449,14 +449,28 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		return piece;
 	}
 	
+	/**
+	 * returns how many of a certain piece there are
+	 * @param index the location that we get the number of pieces from
+	 * @return the number of pieces
+	 */
 	public String getNumPieces(int index) {
 		return piece1Lbl[index].getText();
 	}
 	
+	/**
+	 * sets the displayed max moves value
+	 * @param s the number of moves
+	 */
 	public void setNumMoves(String s) {
 		numMoves.setText(s);
 	}
 	
+	/**
+	 * returns the number button specified
+	 * @param i the number of the button to return
+	 * @return the number button specified
+	 */
 	public JLabelIcon getNumButton(int i) {
 		switch(i) {
 			case 1: return numBtn1;
@@ -469,6 +483,10 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		}
 	}
 	
+	/**
+	 * returns the board view
+	 * @return
+	 */
 	public BuilderReleaseBoardView getBoardview() {
 		return boardview;
 	}
