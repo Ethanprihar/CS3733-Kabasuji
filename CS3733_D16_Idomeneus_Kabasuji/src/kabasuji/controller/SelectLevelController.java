@@ -39,6 +39,16 @@ public class SelectLevelController extends MouseAdapter {
 	JLabelIcon button;
 	String fn;
 
+	/**
+	 * Constructor for SelectLevelController.
+	 * 
+	 * @param kabasuji
+	 * @param app
+	 * @param button
+	 *            view object button associated
+	 * @param numlevel
+	 *            number associated to the level
+	 */
 	public SelectLevelController(Kabasuji kabasuji, TopLevelApplication app, JLabelIcon button, int numlevel) {
 		this.kabasuji = kabasuji;
 		this.app = app;
@@ -93,17 +103,22 @@ public class SelectLevelController extends MouseAdapter {
 
 			// set the content panel of container to contain PlayLevelPanel
 			app.setContentPanel(plp);
-		}
-		else{
+		} else {
 			new MusicPlayer("fail.wav").setVolume(-15);
 		}
 	}
 
+	/**
+	 * Mouse Enter highlights the button.
+	 */
 	public void mouseEntered(MouseEvent e) {
 		// sets image to indicate hover event
 		button.setImg("generalhoverbutton.png");
 	}
 
+	/**
+	 * Mouse Exit unhighlights the button.
+	 */
 	public void mouseExited(MouseEvent e) {
 		// sets image back to original
 		button.setImg(fn);

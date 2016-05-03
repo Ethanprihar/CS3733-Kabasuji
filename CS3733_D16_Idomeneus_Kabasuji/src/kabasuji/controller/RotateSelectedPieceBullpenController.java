@@ -53,6 +53,13 @@ public class RotateSelectedPieceBullpenController extends MouseAdapter {
 
 	boolean vertical;
 
+	/**
+	 * Constructor for RotateSelectedPieceBullpenController.
+	 * @param kabasuji
+	 * @param panel
+	 * @param pieceicon button view object associated
+	 * @param vertical flip direction
+	 */
 	public RotateSelectedPieceBullpenController(Kabasuji kabasuji, PlayLevelPanel panel, JLabelIcon pieceicon,
 			boolean vertical) {
 		this.kabasuji = kabasuji;
@@ -83,7 +90,9 @@ public class RotateSelectedPieceBullpenController extends MouseAdapter {
 		zoompanel.removeAll();
 		zoompanel.displayPieceView(selectedPiece);
 	}
-
+	/**
+	 * Mouse Enter
+	 */
 	public void mouseEntered(MouseEvent e) {
 		// sets image to indicate hover event
 		pieceicon.setImg("generalhoverbutton.png");
