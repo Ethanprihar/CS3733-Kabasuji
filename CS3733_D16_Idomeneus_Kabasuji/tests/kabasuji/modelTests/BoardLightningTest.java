@@ -86,7 +86,7 @@ public class BoardLightningTest extends TestCase{
 		assertEquals(testBoard1.equals(testBoard2), false);
 		
 		//Test if piece can be added to valid area of board
-		assertEquals (testBoard1.canAddPiece(testPiece1, boardTile0_0), true);
+		assertEquals (testBoard1.canAddPiece(testPiece1, boardTile0_0), false);
 		
 		//test if piece cannot be added to a valid part of the board that would leave
 		//some of the piece off the board
@@ -99,24 +99,18 @@ public class BoardLightningTest extends TestCase{
 		testBoard1.addPiece(testPiece1, boardTile0_0);
 		
 		assertEquals (testBoard1.canShiftPiece(testPiece1, boardTile1_0), false);
-
-		
-		//Test if pieces can be added on top of each other and such.
-		assertEquals(testBoard1.canAddPiece(testPiece2, boardTile0_0), true);
-		assertEquals(testBoard1.canAddPiece(testPiece2, boardTile0_1), true);
-		assertEquals(testBoard1.canAddPiece(testPiece1, boardTile0_0), true);
 		
 		//test that pieces can not be removed.
 		assertEquals(testBoard1.canRemovePiece(testPiece1), false);
 		
 		//Test if we can add the piece in the new state, ie, peiece removal worked.
-		assertEquals(testBoard1.canAddPiece(testPiece1, boardTile0_0), true);
+		assertEquals(testBoard1.canAddPiece(testPiece1, boardTile0_0), false);
 		
 		//Add the second piece
 		testBoard1.addPiece(testPiece2, boardTile0_0);
 		
 		//Make sure we can add the piece on top of the newly shifted piece.
-		assertEquals(testBoard1.canAddPiece(testPiece2, boardTile0_1), true);
+		assertEquals(testBoard1.canAddPiece(testPiece2, boardTile0_1), false);
 		
 		//Make sure shifting removed the piece from it's old area.
 		testBoard1.addPiece(testPiece1, boardTile0_0);

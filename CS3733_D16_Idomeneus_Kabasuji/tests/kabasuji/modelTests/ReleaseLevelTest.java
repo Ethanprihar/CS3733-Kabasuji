@@ -173,7 +173,7 @@ public class ReleaseLevelTest extends TestCase {
 		// make a new Puzzle Level Test
 		ReleaseLevel releaseTest = new ReleaseLevel(releaseBoard1, bullpen1, 10);
 		
-		assertEquals(releaseTest.canMoveBullpenToBoard(boardTile2_2),true);
+		assertEquals(releaseTest.canMoveBullpenToBoard(boardTile2_2),false);
 		
 		assertEquals(releaseTest.canMoveBullpenToBoard(boardTile4_4),false);
 		

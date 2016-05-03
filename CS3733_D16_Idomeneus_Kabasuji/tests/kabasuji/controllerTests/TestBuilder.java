@@ -1,14 +1,7 @@
 package kabasuji.controllerTests;
 
-import javax.swing.JComponent;
-import javax.swing.JTextField;
-
 import java.awt.event.MouseEvent;
-
-import kabasuji.Main;
 import kabasuji.model.Builder;
-import kabasuji.model.PuzzleLevel;
-import kabasuji.model.Screen;
 import kabasuji.testUtilities.TestCaseHelper;
 import kabasuji.view.JLabelIcon;
 import kabasuji.view.SplashWindow;
@@ -1033,7 +1026,7 @@ public class TestBuilder extends TestCaseHelper {
 
 		// set the number of moves
 		testReleaseLev.setNumMoves("6");
-		
+
 		// try adding a hint tile
 		JLabelIcon tile10 = testReleaseLev.getBoardview().getTiles()[0];
 		try {
@@ -1042,9 +1035,9 @@ public class TestBuilder extends TestCaseHelper {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		assertTrue(builder.getSelectedLevel().getBoard().getTile(0, 0).isHint());
-		
+
 		// make the tile invalid now
 		try {
 			MouseEvent cp = createRightClick(tile10, 0, 0);
@@ -1052,7 +1045,7 @@ public class TestBuilder extends TestCaseHelper {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		try {
 			MouseEvent cp = createLeftClick(tile10, 0, 0);
 			tile10.dispatchEvent(cp);
@@ -1068,8 +1061,6 @@ public class TestBuilder extends TestCaseHelper {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
 
 		// add a blue 2 onto tile1
 		JLabelIcon blueBtn = testReleaseLev.getColorButton2();
@@ -1095,7 +1086,7 @@ public class TestBuilder extends TestCaseHelper {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		// deselect a color
 		JLabelIcon clearButton = testReleaseLev.getClearColorButton();
 		try {
@@ -1129,14 +1120,14 @@ public class TestBuilder extends TestCaseHelper {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		JLabelIcon tile3 = testReleaseLev.getBoardview().getTiles()[3];
-//		try {
-			MouseEvent cp1 = createRightClick(tile3, 0, 0);
-			tile3.dispatchEvent(cp1);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+		// try {
+		MouseEvent cp1 = createRightClick(tile3, 0, 0);
+		tile3.dispatchEvent(cp1);
+		// } catch (Exception e) {
+		// e.printStackTrace();
+		// }
 
 		// try saving the level
 		JLabelIcon saveBtn = testReleaseLev.getSaveButton();
@@ -1154,51 +1145,35 @@ public class TestBuilder extends TestCaseHelper {
 
 		JLabelIcon loadBtn = test.getLoadButton();
 
-		try {
-			MouseEvent cp = createPressed(loadBtn, 0, 0);
-			loadBtn.dispatchEvent(cp);
-			assertTrue(frame.getContentPane() instanceof BuilderLevelSelect);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		MouseEvent cp = createPressed(loadBtn, 0, 0);
+		loadBtn.dispatchEvent(cp);
+		assertTrue(frame.getContentPane() instanceof BuilderLevelSelect);
 
 		// load the first level
 		BuilderLevelSelect levSelect = new BuilderLevelSelect(builder, frame);
 
 		// try returning to the main menu
 		JLabelIcon gotomain = levSelect.getMainMenuButton();
-		try {
-			MouseEvent cp = createPressed(gotomain, 0, 0);
-			gotomain.dispatchEvent(cp);
-			assertTrue(frame.getContentPane() instanceof BuilderMainMenu);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
+		cp = createPressed(gotomain, 0, 0);
+		gotomain.dispatchEvent(cp);
+		assertTrue(frame.getContentPane() instanceof BuilderMainMenu);
 
 		test = new BuilderMainMenu(builder, frame);
 
 		loadBtn = test.getLoadButton();
 
-		try {
-			MouseEvent cp = createPressed(loadBtn, 0, 0);
-			loadBtn.dispatchEvent(cp);
-			assertTrue(frame.getContentPane() instanceof BuilderLevelSelect);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		cp = createPressed(loadBtn, 0, 0);
+		loadBtn.dispatchEvent(cp);
+		assertTrue(frame.getContentPane() instanceof BuilderLevelSelect);
 
 		// load the first level
 		levSelect = new BuilderLevelSelect(builder, frame);
 
 		JLabelIcon firstLev = levSelect.getLevelSelectButton(0);
-		try {
-			MouseEvent cp = createPressed(firstLev, 0, 0);
-			firstLev.dispatchEvent(cp);
-			// assertTrue(frame.getContentPane() instanceof
-			// BuilderLightningLevelPanel);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
+		cp = createPressed(firstLev, 0, 0);
+		firstLev.dispatchEvent(cp);
 
 		try {
 			tearDown();
@@ -1207,10 +1182,6 @@ public class TestBuilder extends TestCaseHelper {
 			e.printStackTrace();
 		}
 
-	}
-	
-	public void testMain() {
-		LBMain.main(new String[] {"arg1", "arg2", "arg3"});
 	}
 
 }

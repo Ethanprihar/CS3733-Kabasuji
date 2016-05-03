@@ -145,29 +145,21 @@ public class BoardReleaseTest extends TestCase{
 		assertEquals(testBoard1.equals(testBoard2), false);
 		
 		//Test if piece can be added to valid area of board
-		assertEquals (testBoard1.canAddPiece(testPiece1, boardTile0_0), true);
-		
-		//test if piece cannot be added to a valid part of the board that would leave
-		//some of the piece off the board
-		assertEquals (testBoard1.canAddPiece(testPiece2, boardTile3_4), false);
-		assertEquals (testBoard1.canAddPiece(testPiece2, boardTile4_3), false);
-		assertEquals (testBoard1.canAddPiece(testPiece1, boardTile4_4), false);
-	
+		assertEquals (testBoard1.canAddPiece(testPiece1, boardTile0_0), false);
 	
 		//Actually add a piece
 		testBoard1.addPiece(testPiece1, boardTile0_0);
 		
 		//Test if pieces can be added on top of each other and such.
 		assertEquals(testBoard1.canAddPiece(testPiece2, boardTile0_0), false);
-		assertEquals(testBoard1.canAddPiece(testPiece2, boardTile0_1), true);
 		assertEquals(testBoard1.canAddPiece(testPiece1, boardTile0_0), false);
 		
 		//test that pieces can be correctly removed.
 		assertEquals(testBoard1.canRemovePiece(testPiece1), false);
 		testBoard1.removePiece(testPiece1);
 		
-		//Test if we can add the piece in the new state, ie, peiece removal worked.
-		assertEquals(testBoard1.canAddPiece(testPiece1, boardTile0_0), true);
+		//Test if we can add the piece in the new state, ie, piece removal worked.
+		assertEquals(testBoard1.canAddPiece(testPiece1, boardTile0_0), false);
 		
 		assertEquals(testBoard1.getStars(), 0);
 		
