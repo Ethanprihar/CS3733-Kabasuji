@@ -24,6 +24,11 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
+/**
+ * this class is the boundary class that is displayed while the user builds a release level
+ * @author V & J
+ *
+ */
 public class BuilderReleaseLevelPanel extends JPanel {
 	Builder builder;
 	TopLevelApplicationBuilder app;	
@@ -56,7 +61,10 @@ public class BuilderReleaseLevelPanel extends JPanel {
 	BuilderReleaseBoardView boardview;
 
 	/**
-	 * Create the panel.
+	 * creates the release level panel
+	 * @param builder the entity class that stores the state data
+	 * @param app the top level boundary class this panel is displayed in
+	 * @param boardDimensions the height and width of the board
 	 */
 	public BuilderReleaseLevelPanel(Builder builder, TopLevelApplicationBuilder app, JTextField boardDimensions) {
 		this.builder = builder;
@@ -339,46 +347,90 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		testBtn.addMouseListener(new TestLevelBuilderController(builder, app, testBtn, numOfPiecesOnLoad, numMoves));
 	}
 	
+	/**
+	 * returns the main menu button
+	 * @return the main menu button
+	 */
 	public JLabelIcon getMainMenuButton() {
 		return mainmenubtn;
 	}
 	
+	/**
+	 * returns the save button
+	 * @return the save button
+	 */
 	public JLabelIcon getSaveButton() {
 		return saveBtn;
 	}
 	
+	/**
+	 * returns the delete button
+	 * @return the delete button
+	 */
 	public JLabelIcon getDeleteButton() {
 		return deleteBtn;
 	}
 	
+	/**
+	 * returns the undo button
+	 * @return the undo button
+	 */
 	public JLabelIcon getUndoButton() {
 		return undoBtn;
 	}
 	
+	/**
+	 * returns the redo button
+	 * @return the redo button
+	 */
 	public JLabelIcon getRedoButton() {
 		return redoBtn;
 	}
 	
+	/**
+	 * returns the test button
+	 * @return the test button
+	 */
 	public JLabelIcon getTestButton() {
 		return testBtn;
 	}
 	
+	/**
+	 * returns the first color button
+	 * @return the first color button
+	 */
 	public JLabelIcon getColorButton1() {
 		return colorBtn1;
 	}
 	
+	/**
+	 * returns the second color button
+	 * @return the second color button
+	 */
 	public JLabelIcon getColorButton2() {
 		return colorBtn2;
 	}
 	
+	/**
+	 * returns the third color button
+	 * @return the third color button
+	 */
 	public JLabelIcon getColorButton3() {
 		return colorBtn3;
 	}
 	
+	/**
+	 * returns the clear color and number button
+	 * @return the clear color and number button
+	 */
 	public JLabelIcon getClearColorButton() {
 		return colorClearBtn;
 	}
 	
+	/**
+	 * returns the first row of number that correspond to how many of a certain piece there are
+	 * @return
+	 */
 	public JLabelIcon[] getFirstRowPieces() {
 		return piece;
 	}

@@ -440,11 +440,29 @@ public class Builder
 		endCondition = ec;
 	}
 	
-	/*public void addToBullpen(int[] numOfPieces){
-		for (int i = 0; i < numOfPieces.length; i++){
-			for (int j = 0; j < numOfPieces[i]; j++){
-				getSelectedLevel().getBullpen().getPieces().add(pieces[i]);
+	public boolean addRandomRelease()
+	{
+		if(selectedLevel.getBoard().getTiles().length < 5)
+			return false;
+		int[] row = new int[18];
+		int[] col = new int[18];
+		int newRow = 0;
+		int newCol = 0;
+		for(int color = 1; color <= 3; color++)
+		{
+			for(int number = 1; number <=6; number++)
+			{
+				boolean newPos = false;
+				for(int i = 0; i<18; i++)
+				{
+					boolean tracker = true;
+				}
+				while(!newPos)
+				{
+					newRow = (int)(Math.random() * 4 + 1);
+					newCol = (int)(Math.random() * 4 + 1);
+				}
 			}
 		}
-	}*/
+	}
 }
