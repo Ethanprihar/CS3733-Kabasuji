@@ -53,6 +53,16 @@ public class FlipSelectedPieceBullpenController extends MouseAdapter {
 
 	boolean right;
 
+	/**
+	 * Constructor for FlipSelectedPieceBullpenController.
+	 * 
+	 * @param kabasuji
+	 * @param panel
+	 * @param pieceicon
+	 *            the piece view object associated
+	 * @param right
+	 *            the direction of flip
+	 */
 	public FlipSelectedPieceBullpenController(Kabasuji kabasuji, PlayLevelPanel panel, JLabelIcon pieceicon,
 			boolean right) {
 		this.kabasuji = kabasuji;
@@ -84,11 +94,17 @@ public class FlipSelectedPieceBullpenController extends MouseAdapter {
 		zoompanel.displayPieceView(selectedPiece);
 	}
 
+	/**
+	 * Mouse Enter highlights the button.
+	 */
 	public void mouseEntered(MouseEvent e) {
 		// sets image to indicate hover event
 		pieceicon.setImg("generalhoverbutton.png");
 	}
 
+	/**
+	 * Mouse Exit dehighlights the button.
+	 */
 	public void mouseExited(MouseEvent e) {
 		// sets image back to original
 		pieceicon.setImg(fnzoompiece);

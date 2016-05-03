@@ -33,7 +33,11 @@ public class BullpenController extends MouseAdapter {
 	/** Boundaries associated **/
 	PlayLevelPanel plp;
 	BullpenView bullpenview;
-
+/**
+ * Constructor for BullpenController.
+ * @param kabasuji
+ * @param plp
+ */
 	public BullpenController(Kabasuji kabasuji, PlayLevelPanel plp) {
 		this.kabasuji = kabasuji;
 		this.board = kabasuji.getSelectedLevel().getBoard();

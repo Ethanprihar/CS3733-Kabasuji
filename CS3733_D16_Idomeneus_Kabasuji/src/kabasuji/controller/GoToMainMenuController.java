@@ -33,6 +33,14 @@ public class GoToMainMenuController extends MouseAdapter {
 	JLabelIcon button;
 	String fn;
 
+	/**
+	 * Constructor for GoToMainMenuController.
+	 * 
+	 * @param kabasuji
+	 * @param app
+	 * @param button
+	 *            the view object associated
+	 */
 	public GoToMainMenuController(Kabasuji kabasuji, TopLevelApplication app, JLabelIcon button) {
 		this.kabasuji = kabasuji;
 		this.app = app;
@@ -46,13 +54,14 @@ public class GoToMainMenuController extends MouseAdapter {
 	 * is a GUI controller.
 	 */
 	public void mousePressed(MouseEvent me) {
-//		try{
-//		((PlayLevelPanel) app.getContentPane()).getMP().getClip().stop();
-//		}
-//		catch(NullPointerException e){
-//			System.out.println("MainMenuController: no mp");
-//		}
-		//int index = kabasuji.getLevels().indexOf(kabasuji.getSelectedLevel());
+		// try{
+		// ((PlayLevelPanel) app.getContentPane()).getMP().getClip().stop();
+		// }
+		// catch(NullPointerException e){
+		// System.out.println("MainMenuController: no mp");
+		// }
+		// int index =
+		// kabasuji.getLevels().indexOf(kabasuji.getSelectedLevel());
 		// stop the timer if in play level panel
 		if (app.getContentPane() instanceof PlayLevelPanel) {
 			System.out.println("Stop timer");
@@ -60,14 +69,12 @@ public class GoToMainMenuController extends MouseAdapter {
 		}
 
 		// Created ChangeScreenMove and input desired screen
-		//ChangeScreenMove gtsm = new ChangeScreenMove(Screen.Opening);
+		// ChangeScreenMove gtsm = new ChangeScreenMove(Screen.Opening);
 		// Attempt to execute action on model
-		//gtsm.execute(kabasuji);
-
+		// gtsm.execute(kabasuji);
 
 		int index = -1;
-		if(kabasuji.getSelectedLevel() != null)
-		{
+		if (kabasuji.getSelectedLevel() != null) {
 			index = kabasuji.getLevels().indexOf(kabasuji.getSelectedLevel());
 		}
 
@@ -82,11 +89,17 @@ public class GoToMainMenuController extends MouseAdapter {
 
 	}
 
+	/**
+	 * Mouse Enter highlights the button.
+	 */
 	public void mouseEntered(MouseEvent e) {
 		// sets to image indicating hover event
 		button.setImg("generalhoverbutton.png");
 	}
 
+	/**
+	 * Mouse Exit dehighlights the button.
+	 */
 	public void mouseExited(MouseEvent e) {
 		// sets back to original image
 		button.setImg(fn);

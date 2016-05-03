@@ -37,6 +37,14 @@ public class NextLevelController extends MouseAdapter {
 	JLabelIcon button;
 	String fn;
 
+	/**
+	 * Constructor for NextLevelController.
+	 * 
+	 * @param kabasuji
+	 * @param panel
+	 * @param button
+	 *            the view object associated to the button
+	 */
 	public NextLevelController(Kabasuji kabasuji, PlayLevelPanel panel, JLabelIcon button) {
 		this.kabasuji = kabasuji;
 		this.plp = panel;
@@ -52,10 +60,9 @@ public class NextLevelController extends MouseAdapter {
 		/*** MODEL CHANGES ***/
 		// Created SelectLevelMove and input desired level integer
 		// SelectLevelMove slm = new SelectLevelMove(level);
-		try{
-		plp.getMP().getClip().stop();
-		}
-		catch(NullPointerException e){
+		try {
+			plp.getMP().getClip().stop();
+		} catch (NullPointerException e) {
 			System.out.println("MainMenuController: no mp");
 		}
 
@@ -68,7 +75,8 @@ public class NextLevelController extends MouseAdapter {
 		// Get the size of the array list (not 0 based)
 		int numTotalLevels = numLevels.size();
 
-		// Throw an error if no more levels exist i.e. index of last level equals index of current level
+		// Throw an error if no more levels exist i.e. index of last level
+		// equals index of current level
 		if (numTotalLevels == numCurrentLevel) {
 			ErrorDialogBox.infoBox("No more levels exist :( Go ahead and build one!", "Message");
 		}
@@ -78,13 +86,13 @@ public class NextLevelController extends MouseAdapter {
 			if (kabasuji.getSelectedLevel().getStars() > 0) {
 
 				// update the timer
-				if(plp.getTimer() != null){
+				if (plp.getTimer() != null) {
 					plp.stopTimer();
 				}
 				// save level state and advance model to next level
 				kabasuji.saveLevels();
 				kabasuji.nextLevel();
-				
+
 				if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
 					plp.startTimeLimit();
 				}
@@ -122,11 +130,17 @@ public class NextLevelController extends MouseAdapter {
 
 	}
 
+	/**
+	 * Mouse Enter highlights the button.
+	 */
 	public void mouseEntered(MouseEvent e) {
 		// sets image to indicate hover event
 		button.setImg("generalhoverbutton.png");
 	}
 
+	/**
+	 * Mouse Exit dehighlights the button.
+	 */
 	public void mouseExited(MouseEvent e) {
 		// sets image back to original
 		button.setImg(fn);

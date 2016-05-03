@@ -22,6 +22,11 @@ public class BoardController extends MouseAdapter {
 	JLabelIcon tile;
 	String fn;
 
+	/**
+	 * Constructor for BoardController.
+	 * @param board
+	 * @param tile the tile (button) associated to the boardview
+	 */
 	public BoardController(Board board, JLabelIcon tile) {
 		this.board=  board;
 		this.tile = tile;

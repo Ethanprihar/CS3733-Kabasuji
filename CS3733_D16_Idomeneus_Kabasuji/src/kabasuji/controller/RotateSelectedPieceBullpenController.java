@@ -91,13 +91,15 @@ public class RotateSelectedPieceBullpenController extends MouseAdapter {
 		zoompanel.displayPieceView(selectedPiece);
 	}
 	/**
-	 * Mouse Enter
+	 * Mouse Enter highlights button.
 	 */
 	public void mouseEntered(MouseEvent e) {
 		// sets image to indicate hover event
 		pieceicon.setImg("generalhoverbutton.png");
 	}
-
+	/**
+	 * Mouse Exit dehighlights the button.
+	 */
 	public void mouseExited(MouseEvent e) {
 		// sets image back to original
 		pieceicon.setImg(fnzoompiece);

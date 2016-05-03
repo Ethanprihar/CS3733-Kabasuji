@@ -35,7 +35,12 @@ public class ResetLevelController extends MouseAdapter {
 	PlayLevelPanel plp;
 	JLabelIcon button;
 	String fn;
-
+	/**
+	 * Constructor for ResetLevelController.
+	 * @param kabasuji
+	 * @param panel
+	 * @param button the button view object associated
+	 */
 	public ResetLevelController(Kabasuji kabasuji, PlayLevelPanel panel, JLabelIcon button) {
 		this.kabasuji = kabasuji;
 		this.plp = panel;
@@ -100,12 +105,16 @@ public class ResetLevelController extends MouseAdapter {
 		plp.repaint();
 
 	}
-
+	/**
+	 * Mouse Enter event highlights the button.
+	 */
 	public void mouseEntered(MouseEvent e) {
 		// sets image to indicate hover event
 		button.setImg("generalhoverbutton.png");
 	}
-
+	/**
+	 * Mouse Exit event dehighlights the button.
+	 */
 	public void mouseExited(MouseEvent e) {
 		// sets image back to original
 		button.setImg(fn);

@@ -31,6 +31,13 @@ public class ExitTestLevelWindowController extends MouseAdapter {
 	String fn;
 	JFrame frame;
 
+	/**
+	 * Constructor for ExitTestLevelWindowController.
+	 * 
+	 * @param frame
+	 * @param button
+	 *            the button view associated
+	 */
 	public ExitTestLevelWindowController(JFrame frame, JLabelIcon button) {
 		this.button = button;
 		this.frame = frame;
@@ -45,11 +52,17 @@ public class ExitTestLevelWindowController extends MouseAdapter {
 		frame.dispose();
 	}
 
+	/**
+	 * Mouse Enter highlights the button.
+	 */
 	public void mouseEntered(MouseEvent e) {
 		// sets to image indicating hover event
 		button.setImg("generalhoverbutton.png");
 	}
 
+	/**
+	 * Mouse Exit dehighlights the button.
+	 */
 	public void mouseExited(MouseEvent e) {
 		// sets back to original image
 		button.setImg(fn);
