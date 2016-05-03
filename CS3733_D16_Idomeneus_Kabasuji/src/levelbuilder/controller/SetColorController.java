@@ -15,7 +15,8 @@ import levelbuilder.view.BuilderReleaseBoardView;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
 /**
- * Controller for Board gameplay; Modify BoardView;
+ * Controller for Board gameplay; Modify BoardView; This controller sets the color of the numbers in
+ * the release level. You can select the 3 color buttons and set the colors of the number.
  * 
  * When a desired tile is pressed, an action is attempted to
  * progress game and update board
@@ -25,25 +26,73 @@ import levelbuilder.view.TopLevelApplicationBuilder;
  */
 public class SetColorController extends MouseAdapter {
 
-	/** Entity and Boundaries Associated **/
+	/** The builder entity class */
 	Builder builder;
+	
+	/** The top level application */
 	TopLevelApplicationBuilder app;
+	
+	/** The board for the level */
 	Board board;
+	
+	/** Color button 1 */
 	JLabelIcon tile;
+	
+	/** Color button 2 */
 	JLabelIcon tile1;
+	
+	/** Color button 3 */
 	JLabelIcon tile2;
+	
+	/** Number button 1 */
 	JLabelIcon num1;
+	
+	/** Number button 2 */
 	JLabelIcon num2;
+	
+	/** Number button 3 */
 	JLabelIcon num3;
+	
+	/** Number button 4 */
 	JLabelIcon num4;
+	
+	/** Number button 5 */
 	JLabelIcon num5;
+	
+	/** Number button 6 */
 	JLabelIcon num6;
+	
+	/** String image file name */
 	String fn;
+	
+	/** Boolean flag variable to see if the button is selected */
 	boolean selected = false;
+	
+	/** Boolean flag variable */
 	boolean release = false;
+	
+	/** The color for the numbers */
 	int color;
+	
+	/** The release level panel */
 	JPanel releaseLevelPanel;
 
+	/**
+	 * Constructor for the class
+	 * @param builder The builder entity class
+	 * @param app The top level application
+	 * @param color The color for the numbers
+	 * @param releaseLevelPanel The release level panel
+	 * @param tile Color button 1
+	 * @param tile1 Color button 2
+	 * @param tile2 Color button 3
+	 * @param num1 Number button 1
+	 * @param num2 Number button 2
+	 * @param num3 Number button 3
+	 * @param num4 Number button 4
+	 * @param num5 Number button 5
+	 * @param num6 Number button 6
+	 */
 	public SetColorController(Builder builder, TopLevelApplicationBuilder app, int color, BuilderReleaseBoardView releaseLevelPanel, JLabelIcon tile, JLabelIcon tile1, JLabelIcon tile2, JLabelIcon num1, JLabelIcon num2, JLabelIcon num3, JLabelIcon num4, JLabelIcon num5, JLabelIcon num6) {
 		this.app = app;
 		this.builder = builder;
@@ -61,8 +110,9 @@ public class SetColorController extends MouseAdapter {
 	}
 
 	/**
-	 * Whenever mouse is pressed (left button), attempt to select object. This
+	 * Whenever mouse is pressed (left button or right button), attempt to select object. This
 	 * is a GUI controller.
+	 * @param MouseEvent me
 	 */
 	public void mousePressed(MouseEvent me) {
 		selected = true;
@@ -114,12 +164,21 @@ public class SetColorController extends MouseAdapter {
 			app.repaint();
 		}
 	}
+	
+	/**
+	 * Whenever mouse is hovered over the object, change the image.
+	 * @param MouseEvent e
+	 */
 	public void mouseEntered(MouseEvent e) {
 		if (!selected){
 			//tile.setImg("generalhoverbutton.png");
 		}
 	}
 
+	/**
+	 * Whenever mouse is exited after hovering on the object, change the image.
+	 * @param MouseEvent e
+	 */
 	public void mouseExited(MouseEvent e) {
 		if (!selected){
 			//tile.setImg(fn);

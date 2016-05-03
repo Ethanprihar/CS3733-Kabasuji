@@ -20,6 +20,7 @@ import kabasuji.model.Builder;
 
 /**
  * Controller for Moving Screens; Go To Play Level Screen (Panel).
+ * This controller takes us to the appropriate builder panel i.e puzzle, lightning or release. 
  * 
  * When the button is pressed to attempt to go to the next screen, the model
  * will update what screen it is on and the gui will reflect the changes
@@ -29,15 +30,31 @@ import kabasuji.model.Builder;
  */
 public class SelectLevelBuilderController extends MouseAdapter {
 
-	/** Entities associated **/
+	/** The builder entity class */
 	Builder builder;
+	
+	/** The level number */
 	int level;
-	/** Boundaries associated **/
+	
+	/** The top level application */
 	TopLevelApplicationBuilder app;
+	
+	/**JPanel for the boundary class */
 	JPanel contentPanel;
+	
+	/** The button to select a level */
 	JLabelIcon button;
+	
+	/** String image file name */
 	String fn;
 
+	/**
+	 * Constructor for this class
+	 * @param builder The entity builder class
+	 * @param app The top level application
+	 * @param button The button to select the level
+	 * @param level The level number
+	 */
 	public SelectLevelBuilderController(Builder builder, TopLevelApplicationBuilder app, JLabelIcon button, int level) {
 		this.builder = builder;
 		this.app = app;
@@ -50,6 +67,7 @@ public class SelectLevelBuilderController extends MouseAdapter {
 	/**
 	 * Whenever mouse is pressed (left button), attempt to select object. This
 	 * is a GUI controller.
+	 * @param MouseEvent me
 	 */
 	public void mousePressed(MouseEvent me) {
 		/*** MODEL CHANGES ***/
@@ -89,11 +107,19 @@ public class SelectLevelBuilderController extends MouseAdapter {
 		}	
 	}
 
+	/**
+	 * Whenever mouse is hovered over the object, change the image.
+	 * @param MouseEvent e
+	 */
 	public void mouseEntered(MouseEvent e) {
 		// sets image to indicate hover event
 		button.setImg("generalhoverbutton.png");
 	}
 
+	/**
+	 * Whenever mouse is exited after hovering on the object, change the image.
+	 * @param MouseEvent e
+	 */
 	public void mouseExited(MouseEvent e) {
 		// sets image back to original
 		button.setImg(fn);
