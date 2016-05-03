@@ -10,7 +10,6 @@ import kabasuji.model.Screen;
 import kabasuji.view.JLabelIcon;
 import levelbuilder.controller.moves.ChangeScreenBuilderMove;
 import levelbuilder.view.BuilderLevelSelect;
-import levelbuilder.view.BuilderMainMenu;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
 /**
@@ -51,10 +50,16 @@ public class LoadLevelsBuilderController extends MouseAdapter {
 		app.setContentPanel(lsp);
 	}
 	
+	/**
+	 * When a mouse enters the area, change the GUI color to match.
+	 */
 	public void mouseEntered(MouseEvent e) {
 		button.setImg("generalhoverbutton.png");
 	}
-
+	
+	/**
+	 * When a mouse leaves the area, change the GUI color to match.
+	 */
 	public void mouseExited(MouseEvent e) {
 		button.setImg("generalbutton.png");
 	}

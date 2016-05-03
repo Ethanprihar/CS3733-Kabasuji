@@ -3,16 +3,10 @@ package levelbuilder.controller;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import kabasuji.controller.moves.ChangeScreenMove;
 import kabasuji.model.Builder;
-import kabasuji.model.Kabasuji;
 import kabasuji.model.Screen;
 import kabasuji.view.JLabelIcon;
-import kabasuji.view.LevelSelectPanel;
-import kabasuji.view.TopLevelApplication;
 import levelbuilder.controller.moves.ChangeScreenBuilderMove;
 import levelbuilder.view.BuilderLevelMode;
 import levelbuilder.view.TopLevelApplicationBuilder;

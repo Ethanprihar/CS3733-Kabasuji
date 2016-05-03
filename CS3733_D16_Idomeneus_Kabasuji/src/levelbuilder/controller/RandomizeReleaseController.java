@@ -13,7 +13,7 @@ import levelbuilder.view.TopLevelApplicationBuilder;
  * When a desired tile is pressed, an action is attempted to
  * progress game and update board
  * 
- * @author ocd
+ * @author Odell Dotson
  *
  */
 public class RandomizeReleaseController extends MouseAdapter {

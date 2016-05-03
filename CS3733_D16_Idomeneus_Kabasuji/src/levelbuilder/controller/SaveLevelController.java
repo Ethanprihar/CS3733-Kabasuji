@@ -1,16 +1,10 @@
 package levelbuilder.controller;
 
-import java.awt.Dialog;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 import kabasuji.model.Builder;
-import kabasuji.model.Piece;
 import kabasuji.model.Screen;
 import kabasuji.view.JLabelIcon;
 import levelbuilder.controller.moves.ChangeScreenBuilderMove;
@@ -55,7 +49,6 @@ public class SaveLevelController extends MouseAdapter {
 	 * Whenever mouse is pressed (left button), attempt to select object. This
 	 * is a GUI controller.
 	 */
-	@SuppressWarnings("static-access")
 	public void mousePressed(MouseEvent me) {
 		// Created ChangeScreenBuilderMove and input desired screen
 		if ((type == 1) || (type == 3)){

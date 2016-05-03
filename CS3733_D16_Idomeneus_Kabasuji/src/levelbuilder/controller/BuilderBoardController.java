@@ -7,7 +7,6 @@ import javax.swing.SwingUtilities;
 
 import kabasuji.model.Board;
 import kabasuji.model.Builder;
-import kabasuji.model.Tile;
 import kabasuji.view.JLabelIcon;
 //import levelbuilder.controller.moves.BuilderHintTileMove;
 //import levelbuilder.controller.moves.BuilderSelectTileMove;
@@ -18,7 +17,7 @@ import levelbuilder.view.TopLevelApplicationBuilder;
  * 
  * When a desired tile is pressed, an action is attempted to
  * progress game and update board
- * @author Vishal Rathi
+ * @author Vishal Rathi, Odell Dotson
  *
  */
 public class BuilderBoardController extends MouseAdapter {

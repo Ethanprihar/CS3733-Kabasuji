@@ -5,14 +5,8 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-
 import kabasuji.model.Builder;
-import kabasuji.model.Screen;
-import kabasuji.view.JLabelIcon;
-import levelbuilder.controller.moves.ChangeScreenBuilderMove;
 import levelbuilder.controller.moves.IncrementPieceBuilderMove;
-import levelbuilder.view.BuilderMainMenu;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
 /**
@@ -21,7 +15,7 @@ import levelbuilder.view.TopLevelApplicationBuilder;
  * 
  * When the piece is pressed, increment the corresponding JLabel count
  * 
- * @author Vishal Rathi
+ * @author Vishal Rathi, , Odell Dotson
  *
  */
 
