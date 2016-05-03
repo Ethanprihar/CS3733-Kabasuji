@@ -19,7 +19,8 @@ public class LightningBoard extends Board {
 	}
 
 	/**
-	 * This method determines if the given piece can be added to the lightning board or not.
+	 * This method determines if the given piece can be added to the lightning board or not. Overlaps are
+	 * allowed on the lightning board.
 	 * @param p The current piece which is being added
 	 * @param start The start reference tile of the piece which is being added
 	 * @return True if the piece can be added and false if the piece can not be added
