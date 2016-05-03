@@ -460,9 +460,7 @@ public class Builder
 				}
 			}
 		}
-		if(selectedLevel.getBoard().getTiles().length < 5)
-			return false;
-		else if((selectedLevel.getBoard().getTiles().length * selectedLevel.getBoard().getTiles().length - numInvalid) < 18)
+		if((selectedLevel.getBoard().getTiles().length * selectedLevel.getBoard().getTiles().length - numInvalid) < 18)
 			return false;
 		int[] row = new int[18];
 		int[] col = new int[18];
