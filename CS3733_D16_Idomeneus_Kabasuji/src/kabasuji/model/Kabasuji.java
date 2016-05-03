@@ -6,12 +6,21 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+/**
+ * this class is responsible for maintaining the state of the game while its being played
+ * it keeps track of the players progress through all the levels
+ * @author Ethan
+ *
+ */
 public class Kabasuji {
 	// to indicate opening, level select, and level play screens
 	int currentScreen;
 	public ArrayList<Level> levels;
 	public Level selectedLevel;
 
+	/**
+	 * this constructor starts kabasuji by loading all the levels from levels.data
+	 */
 	public Kabasuji() {
 		currentScreen = 1;
 		loadLevels();
@@ -19,14 +28,25 @@ public class Kabasuji {
 			levels.get(0).setLocked(false);
 	}
 
+	/**
+	 * this method selects a level to be played
+	 * @param l the level to select
+	 */
 	public void selectLevel(Level l) {
 		selectedLevel = l;
 	}
 
+	/**
+	 * returns the list of all levels
+	 * @return the list of all levels
+	 */
 	public ArrayList<Level> getLevels() {
 		return levels;
 	}
 
+	/**
+	 * changes the list of all levels to be a list of one level for testing
+	 */
 	public void loadTestLevels()
 	{
 		try
@@ -42,30 +62,50 @@ public class Kabasuji {
 		}
 	}
 	
-	// getter for current Screen
+	/**
+	 * returns an int corresponding to the current screen being displayed
+	 * @return an int corresponding to the current screen being displayed
+	 */
 	public int getCurrentScreen() {
 		return currentScreen;
 	}
 
-	// setter for current Screen
+	/**
+	 * sets the current screen
+	 * @param newCurrentScreen the next screen to be at
+	 */
 	public void setCurrentScreen(int newCurrentScreen) {
 		currentScreen = newCurrentScreen;
 	}
 
+	/**
+	 * returns the level being played
+	 * @return the level being played
+	 */
 	public Level getSelectedLevel() {
 		return selectedLevel;
 	}
 
+	/**
+	 * sets a level to be played
+	 * @param l the level to be played
+	 */
 	public void setSelectedLevel(Level l) {
 		selectedLevel = l;
 	}
 
+	/**
+	 * makes the level after the level being played the level being played
+	 */
 	public void nextLevel() {
 		int index = levels.indexOf(selectedLevel);
 		saveLevels();
 		selectedLevel = levels.get(index + 1);
 	}
 
+	/**
+	 * makes the level being played back to the way it was before the player started playing it
+	 */
 	public void resetLevel() {
 		int index = levels.indexOf(selectedLevel);
 		selectedLevel = null;
@@ -88,6 +128,10 @@ public class Kabasuji {
 		}
 	}
 
+	/**
+	 * sets parameters of kabasuji based on the selected level
+	 * to get ready to play that level
+	 */
 	public void loadLevel() {
 
 		int index = levels.indexOf(selectedLevel);
@@ -111,6 +155,9 @@ public class Kabasuji {
 
 	}
 
+	/**
+	 * loads all of the levels to be played from levels.data
+	 */
 	private void loadLevels() {
 		try {
 			FileInputStream saveFile = new FileInputStream("levels.data");
@@ -129,6 +176,10 @@ public class Kabasuji {
 			}
 	}
 
+	/**
+	 * saves the list of levels to levels.data after updating the high scores
+	 * and whether a level is locked
+	 */
 	public void saveLevels() {
 		// if they improve their score
 		if (selectedLevel != null)

@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Stack;
 
-// AFTER YOU UNDO YOU CAN'T UPDATE BOARD HISTORY OR REDO BOARD MOVES
+/**
+ * this class monitors and controls the state of the level builder. it has all the functionality
+ * to load and save levels and is responsible undoing and redoing in level builder
+ * @author Ethan
+ */
 
 public class Builder
 {
@@ -23,6 +27,10 @@ public class Builder
 	Stack<int[]> bullpenRedoList;
 	boolean didUndo;
 	
+	/**
+	 * this is the constructor for builder, it initializes all the variables but leaves them empty
+	 * then it loads all the levels and pieces from files.
+	 */
 	public Builder()
 	{
 		currentColor = 0;
@@ -60,6 +68,12 @@ public class Builder
 		}
 	}
 
+	/**
+	 * this function is called when the player requests to edit a level that already exists
+	 * it makes the selected level the level they choose to edit and changes the bullpen to
+	 * be what it is for the loaded level
+	 * @param l The level that is being selected for editing
+	 */
 	public void loadLevel(Level l)
 	{
 		selectedLevel = l;
@@ -80,6 +94,11 @@ public class Builder
 		updateHistory();
 	}
 	
+	/**
+	 * this method takes the current numOfPieces array and uses it to add the corresponding pieces
+	 * to the selected levels bullpen
+	 * @param numOfPiecesOnLoad The array of numbers corresponding to how many of each piece the bullpen has
+	 */
 	public void saveLevel(int[] numOfPiecesOnLoad)
 	{
 		if(!(selectedLevel.getEndCondition() > 0))		//If this is being saved for the first time
@@ -112,7 +131,11 @@ public class Builder
 		numOfPieces = new int[35];
 		System.out.println("Printing levels.size() for some reason: " + levels.size());
 	}
-	
+	/**
+	 * this function saves the current level to a different file that can be loaded in kabasuji
+	 * to test whether this level is a good level without adding it to the list of all levels
+	 * @param numOfPiecesOnLoad the array of numbers corresponding to how many pieces are in the bullpen
+	 */
 	public void makeTestLevel(int[] numOfPiecesOnLoad)
 	{
 		ArrayList<Level> testLevels = new ArrayList<Level>();
@@ -154,6 +177,9 @@ public class Builder
 		}
 	}
 	
+	/**
+	 * this method removes the current selected level from the list of all levels
+	 */
 	public void deleteLevel()
 	{
 		if (levels.contains(selectedLevel))
@@ -161,6 +187,11 @@ public class Builder
 		selectedLevel = null;
 	}
 
+	/**
+	 * this method creates a new level that the user can then edit
+	 * @param type this determines whether the level is a puzzle, lightning, or release level
+	 * @param dim this determines how many tiles high and wide the board starts out with.
+	 */
 	public void addNewLevel(int type, int dim)
 	{
 		numOfPieces = new int[35];
@@ -198,6 +229,10 @@ public class Builder
 		updateHistory();
 	}
 	
+	/**
+	 * this method saves the current list of all levels to the levels.data file so they
+	 * can be loaded in kabasuji for playing
+	 */
 	public void saveToDisc()
 	{
 		try
@@ -214,8 +249,11 @@ public class Builder
 		}
 	}
 	
-	// adds the current board to the history
-	// needs to be called before changing a tile or changing a number of pieces
+	/**
+	 * this method saves the current state of the board and the bullpen of the current level
+	 * it adds the state to a list of states in order to record the history of the level
+	 * this method will erase knowledge of items that have been undone
+	 */
 	public void updateHistory()
 	{
 		System.out.println("History is being updated");
@@ -235,7 +273,9 @@ public class Builder
 		}
 	}
 	
-	// undoes the last tile change
+	/**
+	 * this method reverts the state of the level to it's previous state
+	 */
 	public void undo()
 	{
 		// check to make sure we arn't at the first state
@@ -261,7 +301,9 @@ public class Builder
 		}
 	}
 	
-	//redoes the last tile change
+	/**
+	 * this method will bring the level to the state it was before a move was undone
+	 */
 	public void redo()
 	{
 		if(boardRedoList.size() > 0)
@@ -285,52 +327,91 @@ public class Builder
 		}
 	}
 	
+	/**
+	 * returns the selected level
+	 * @return the selected level
+	 */
 	public Level getSelectedLevel()
 	{
 		return selectedLevel;
 	}
 	
+	/**
+	 * returns the list of all levels
+	 * @return the list of all levels
+	 */
 	public ArrayList<Level> getLevels()
 	{
 		return levels;
 	}
 	
+	/**
+	 * this method replaces the list of levels with a new list of levels
+	 * @param l the list of levels that will replace the current list of levels
+	 */
 	public void setLevels(ArrayList<Level> l)
 	{
 		levels = l;
 	}
 	
+	/**
+	 * returns what screen is being displayed
+	 * @return an int corresponding to what screen is displayed
+	 */
 	public int getCurrentScreen()
 	{
 		return currentScreen;
 	}
 	
+	/**
+	 * sets the value of the current screen
+	 * @param newScreen this is the new current screen value
+	 */
 	public void setCurrentScreen(int newScreen)
 	{
 		currentScreen = newScreen;
 	}
 
+	/**
+	 * this increases the number of a type of piece in the bullpen
+	 * @param index an int corresponding to the piece that we are adding one more of
+	 */
 	public void incrementNum(int index)
 	{
 		numOfPieces[index]++;
 	}
 
-	//gets the number of a given piece.
+	/**
+	 * returns how many of a certain piece are in the bullpen
+	 * @param index the piece that we want to know how many of are in the bullpen
+	 * @return how many of the given piece are in the bullpen
+	 */
 	public int getNum(int index)
 	{
 		return numOfPieces[index];
 	}
 	
-	// Return the pieces array
+	/**
+	 * returns the list of how many of each piece are in the bullpen
+	 * @return the list of how many of each piece are in the bullpen
+	 */
 	public int[] getPieces(){
 		return numOfPieces;
 	}
 	
+	/**
+	 * returns the current number for release level tiles
+	 * @return the current number for release level tiles
+	 */
 	public int getCurrentNumber()
 	{
 		return currentNumber;
 	}
 	
+	/**
+	 * sets the current number that tiles will be given for release levels
+	 * @param n the number a tile will be given for release levels
+	 */
 	public void setCurrentNumber(int n)
 	{
 		currentNumber = n;
@@ -341,11 +422,19 @@ public class Builder
 		return currentColor;
 	}
 	
+	/**
+	 * sets the current color that a tile will become when clicked on for release level building
+	 * @param c the color a tile will become if clicked on
+	 */
 	public void setCurrentColor(int c)
 	{
 		currentColor = c;
 	}
 	
+	/**
+	 * this method sets the value of the end condition of the level, either total moves or time limit
+	 * @param ec the end condition
+	 */
 	public void setEndCondition(int ec)
 	{
 		endCondition = ec;
