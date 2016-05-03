@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import kabasuji.model.Builder;
 import kabasuji.view.JLabelIcon;
 import levelbuilder.view.BuilderReleaseBoardView;
+import levelbuilder.view.ErrorDialogBox;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
 /**
@@ -40,7 +41,8 @@ public class RandomizeReleaseController extends MouseAdapter {
 	public void mousePressed(MouseEvent me) {
 		if(!builder.addRandomRelease())
 		{
-			//Throw up an error box
+			// Add a dialog box to warn the user 
+			ErrorDialogBox.infoBox("Not enough valid tiles to build a release level :(", "Invalid Input");
 		}
 		app.repaint();
 		releaseLevelPanel.updateBoard();
