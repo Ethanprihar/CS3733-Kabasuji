@@ -51,6 +51,9 @@ public class BoardView extends JPanel {
 		this.board = kabasuji.getSelectedLevel().getBoard();
 		this.panel = panel;
 		this.tiles = board.getTiles();
+		//set layout null
+		setLayout(null);
+		setOpaque(false);
 	}
 
 	public void setupBoard() {
@@ -58,10 +61,6 @@ public class BoardView extends JPanel {
 		row = board.getTiles().length;
 		col = board.getTiles()[0].length;
 		tile = new JLabelIcon[row * col];
-
-		//set layout null
-		setLayout(null);
-		setOpaque(false);
 
 		// this is the largest length of the tile matrix
 		// finds the smallest tile length
@@ -85,6 +84,7 @@ public class BoardView extends JPanel {
 		// display the tiles on the container panel and scales them to fit
 		// row/column
 		// includes centering as well
+		
 		for (int i = 0; i < col; i++) {
 			for (int j = 0; j < row; j++) {
 				// create a button image with specified dimension
