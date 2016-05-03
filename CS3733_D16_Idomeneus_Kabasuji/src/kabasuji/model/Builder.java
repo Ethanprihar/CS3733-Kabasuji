@@ -442,6 +442,14 @@ public class Builder
 	
 	public boolean addRandomRelease()
 	{
+		for(int i=0; i<selectedLevel.getBoard().getTiles().length; i++)
+		{
+			for(int j=0; j<selectedLevel.getBoard().getTiles().length; j++)
+			{
+				selectedLevel.getBoard().getTile(i,j).setColor(0);
+				selectedLevel.getBoard().getTile(i,j).setNumber(0);
+			}
+		}
 		if(selectedLevel.getBoard().getTiles().length < 5)
 			return false;
 		int[] row = new int[18];
@@ -458,14 +466,20 @@ public class Builder
 					newRow = (int)(Math.random() * selectedLevel.getBoard().getTiles().length);
 					newCol = (int)(Math.random() * selectedLevel.getBoard().getTiles().length);
 					newPos = true;
-					for(int i = 0; i<18; i++)
+					if(!selectedLevel.getBoard().getTile(newRow, newCol).isValid())
+						newPos = false;
+					if(newPos)
 					{
-						if(row[i] == newRow && col[i] == newCol)
-							newPos = false;
+						for(int i = 0; i<18; i++)
+						{
+							if(row[i] == newRow && col[i] == newCol)
+								newPos = false;
+						}
 					}
 				}
 				selectedLevel.getBoard().getTile(newRow, newCol).setColor(color);
 				selectedLevel.getBoard().getTile(newRow, newCol).setNumber(number);
+				System.out.println("added color: " + color + " number: " + number);
 				row[(color-1)*6+number-1] = newRow;
 				col[(color-1)*6+number-1] = newCol;
 			}
