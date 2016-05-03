@@ -2,16 +2,15 @@ package levelbuilder.controller;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import kabasuji.model.Board;
 import kabasuji.model.Builder;
 import kabasuji.view.JLabelIcon;
+import levelbuilder.view.BuilderReleaseBoardView;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
 /**
  * Controller for Board gameplay; Modify BoardView;
  * 
- * When a desired tile is pressed, an action is attempted to
- * progress game and update board
+ * When the randomize button is pressed, we randomize the release tiles throughout the level.
  * 
  * @author Odell Dotson
  *
@@ -21,26 +20,30 @@ public class RandomizeReleaseController extends MouseAdapter {
 	/** Entity and Boundaries Associated **/
 	Builder builder;
 	TopLevelApplicationBuilder app;
-	Board board;
+	BuilderReleaseBoardView releaseLevelPanel;
 	JLabelIcon tile;
 
 	String fn;
 
-	public RandomizeReleaseController(Builder builder, TopLevelApplicationBuilder app, JLabelIcon tile) {
+	public RandomizeReleaseController(Builder builder, BuilderReleaseBoardView releaseLevelPanel, TopLevelApplicationBuilder app, JLabelIcon tile) {
 		this.app = app;
 		this.builder = builder;
+		this.releaseLevelPanel = releaseLevelPanel;
 		this.tile = tile;
 		this.fn = tile.getFileName();
-
 	}
 
 	/**
-	 * Whenever mouse is pressed (left button), attempt to select object. This
-	 * is a GUI controller.
+	 * Whenever mouse is pressed (left button), attempt to call the randomizer function.
+	 * If it is unable, it returns false and we display a dialogue box.
 	 */
 	public void mousePressed(MouseEvent me) {
-		builder.addRandomRelease();
+		if(!builder.addRandomRelease())
+		{
+			//Throw up an error box
+		}
 		app.repaint();
+		releaseLevelPanel.updateBoard();
 	}
 	public void mouseEntered(MouseEvent e) {
 			tile.setImg("generalhoverbutton.png");

@@ -53,7 +53,13 @@ public class TileController extends MouseAdapter {
 	JLabelIcon tile;
 	String fn;
 	
-
+	/**
+	 * Constructor for TileController.
+	 * @param kabasuji
+	 * @param panel the screen jpanel
+	 * @param tile the view object on the board
+	 * @param selfTile the model tile of reference on the board
+	 */
 	public TileController(Kabasuji kabasuji, PlayLevelPanel panel, JLabelIcon tile, Tile selfTile) {
 		this.kabasuji = kabasuji;
 		this.panel = panel;
@@ -65,7 +71,9 @@ public class TileController extends MouseAdapter {
 		this.selfTile = selfTile;
 		this.tileimgs = boardview.getTileImages();
 	}
-
+	/**
+	 * Update the parameters of the current level.
+	 */
 	public void updateParameters() {
 		currentlevel = kabasuji.getSelectedLevel();
 		bullpen = currentlevel.getBullpen();
@@ -79,8 +87,7 @@ public class TileController extends MouseAdapter {
 	}
 
 	/**
-	 * Whenever mouse is pressed (left button), attempt to select object. This
-	 * is a GUI controller.
+	 * Whenever mouse is pressed (left button), attempt to add/remove piece from board.
 	 */
 	public void mousePressed(MouseEvent me) {
 		updateParameters();
@@ -197,7 +204,9 @@ public class TileController extends MouseAdapter {
 			panel.repaint();
 		}
 	}
-
+	/**
+	 * Mouse Enter displays whether the piece can or cannot be placed onto the board.
+	 */
 	public void mouseEntered(MouseEvent e) {
 		updateParameters();
 		String hoverfn = null;
@@ -220,7 +229,9 @@ public class TileController extends MouseAdapter {
 		// set image to hover
 		displayHoverPiece(hoverfn, false, false);
 	}
-
+	/**
+	 * Mouse Exit returns the pieces affected back to the original image.
+	 */
 	public void mouseExited(MouseEvent e) {
 		updateParameters();
 		if (selectedPiece == null){
@@ -230,7 +241,12 @@ public class TileController extends MouseAdapter {
 		// set to original image filename
 		displayHoverPiece("general1button.png", false, true);
 	}
-
+	/**
+	 * Displays the selected piece hovered over the board.
+	 * @param hpfn filename of image
+	 * @param setNewFilename choice to set the new file name of the view object
+	 * @param setOriginalImg choice to set the original file name of the view object
+	 */
 	public void displayHoverPiece(String hpfn, boolean setNewFilename, boolean setOriginalImg) {
 		updateParameters();
 		for (int i = 0; i < tiles.length; i++) {
@@ -262,7 +278,10 @@ public class TileController extends MouseAdapter {
 			}
 		}
 	}
-
+	/**
+	 * Stamps the selected piece onto the board.
+	 * @param p piece of interest.
+	 */
 	public void boardSelectPiece(Piece p) {
 		selectedPiece = kabasuji.getSelectedLevel().getBullpen().getSelectedPiece();
 		for (int i = 0; i < tiles.length; i++) {

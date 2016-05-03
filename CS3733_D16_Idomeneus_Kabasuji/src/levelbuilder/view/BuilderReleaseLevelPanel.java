@@ -357,7 +357,7 @@ public class BuilderReleaseLevelPanel extends JPanel {
 		randomizeLbl.setFont(new Font("Onyx", Font.BOLD, 18));
 		randomizeReleaseBtn.add(randomizeLbl);
 		background.add(randomizeReleaseBtn);
-		randomizeReleaseBtn.addMouseListener(new RandomizeReleaseController(builder, app, randomizeReleaseBtn));
+		randomizeReleaseBtn.addMouseListener(new RandomizeReleaseController(builder, boardview, app, randomizeReleaseBtn));
 		
 	}
 	

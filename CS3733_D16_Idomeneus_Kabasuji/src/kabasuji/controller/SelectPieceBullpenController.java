@@ -47,6 +47,16 @@ public class SelectPieceBullpenController extends MouseAdapter {
 	String fnzoom;
 	String fnpiece;
 
+	/**
+	 * Constructor for SelectPieceBullpenController
+	 * 
+	 * @param kabasuji
+	 * @param panel
+	 * @param pieceicon
+	 *            the piece view object on the boardview
+	 * @param numPiece
+	 *            the number of the relative piece
+	 */
 	public SelectPieceBullpenController(Kabasuji kabasuji, PlayLevelPanel panel, JLabelIcon pieceicon, int numPiece) {
 		this.kabasuji = kabasuji;
 		this.bullpen = kabasuji.getSelectedLevel().getBullpen();
@@ -82,7 +92,9 @@ public class SelectPieceBullpenController extends MouseAdapter {
 			}
 		}
 	}
-
+	/**
+	 * Mouse Enter displays the piece view object on the zoompanel.
+	 */
 	public void mouseEntered(MouseEvent e) {
 		// displays enlarged piece on zoom panel upon entering
 		if (bullpen.getSelectedPiece() == null && board.getSelectedPiece() == null) {
@@ -91,7 +103,9 @@ public class SelectPieceBullpenController extends MouseAdapter {
 		}
 
 	}
-
+	/**
+	 * Mouse Exit removes the pieceview object from the zoompanel.
+	 */
 	public void mouseExited(MouseEvent e) {
 		// sets the panel back to empty if no piece is selected before leaving
 		// image

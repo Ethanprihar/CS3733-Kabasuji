@@ -18,7 +18,7 @@ import kabasuji.view.TopLevelApplication;
 import misc.MusicPlayer;
 
 /**
- * Controller for Reseting Level; Update PlayLevelPanel (Panel).
+ * Controller for Resetting Level; Update PlayLevelPanel (Panel).
  * 
  * When the button is pressed to attempt to go to the next screen, the model
  * will update what screen it is on and the gui will reflect the changes
