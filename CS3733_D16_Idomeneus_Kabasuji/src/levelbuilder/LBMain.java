@@ -1,10 +1,8 @@
 package levelbuilder;
 
 import kabasuji.model.Builder;
-import kabasuji.model.Kabasuji;
 import kabasuji.model.Level;
 import kabasuji.view.SplashWindow;
-import kabasuji.view.TopLevelApplication;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
 public class LBMain {

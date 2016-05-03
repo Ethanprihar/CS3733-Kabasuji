@@ -61,6 +61,7 @@ public class BoardView extends JPanel {
 
 		//set layout null
 		setLayout(null);
+		setOpaque(false);
 
 		// this is the largest length of the tile matrix
 		// finds the smallest tile length
@@ -102,9 +103,9 @@ public class BoardView extends JPanel {
 				}
 			}
 		}
-		background = new JLabelIcon("opaque_canvas.png", (int) (Screen.height * 0.54),
-				(int) (Screen.height * 0.54));
-		add(background);
+		//background = new JLabelIcon("opaque_canvas.png", (int) (Screen.height * 0.54),
+		//		(int) (Screen.height * 0.54));
+		//add(background);
 		repaint();
 	}
 
