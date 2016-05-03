@@ -10,10 +10,15 @@ import java.io.Serializable;
  */
 public class Tile implements Serializable{
 
-	boolean valid; // whether the tile is part of a board or a piece or just extra in the matrix
+	/* whether the tile is part of a board or a piece or just extra in the matrix */
+	boolean valid;
+	/* whether hint or not */
 	boolean hint;
-	int color; // 0 mean no color, 1 - 3 means color
-	int number; // 0 means no number, 1 - 6 means number
+	/* 0 mean no color, 1 - 3 means color */
+	int color;
+	/* 0 means no number, 1 - 6 means number */
+	int number;
+	/* Piece the tile belongs to */
 	Piece piece;
 
 	/**
