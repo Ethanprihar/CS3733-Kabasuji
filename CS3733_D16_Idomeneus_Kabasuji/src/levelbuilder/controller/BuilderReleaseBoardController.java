@@ -17,30 +17,63 @@ import levelbuilder.view.BuilderReleaseLevelPanel;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
 /**
- * Controller for Board gameplay; Modify BoardView;
+ * Controller for Release Board in the builder; Modify BuilderBoardView;
  * 
  * When a desired tile is pressed, an action is attempted to
  * progress game and update board
- * 
- * @author vkr
+ * @author Vishal Rathi
  *
  */
 public class BuilderReleaseBoardController extends MouseAdapter {
 
-	/** Entity and Boundaries Associated **/
+	/** Builder entity class */
 	Builder builder;
+	
+	/** Top level boundary class for builder */
 	TopLevelApplicationBuilder app;
+	
+	/** Board entity class */
 	Board board;
+	
+	/** JLabel for the tile */
 	JLabelIcon tile;
+	
+	/** String image file name */
 	String fn;
+	
+	/** The current tile */
 	Tile currentTile;
+	
+	/** Boolean for the selected tile */
 	boolean selected;
+	
+	/** Boolean flag variable */
 	boolean release = false;
+	
+	/** Click mode for the colors and numbers */
 	int clickMode;
+	
+	/** The number to add in the release level */
 	int numToAdd;
+	
+	/** The color to add in the release level */
 	int colorToAdd;
+	
+	/** Builder release board view */
 	BuilderReleaseBoardView releaseLevelPanel;
 
+	/** 
+	 * Constructor for the class
+	 * @param board The Board 
+	 * @param tile The tile
+	 * @param currentTile The current tile
+	 * @param builder The builder entity class
+	 * @param app The top level application boundary
+	 * @param clickMode The click mode
+	 * @param numToAdd	The number to add in the release level
+	 * @param colorToAdd The color to add to the release tile
+	 * @param releaseLevelPanel The Release board view
+	 */
 	public BuilderReleaseBoardController(Board board, JLabelIcon tile, Tile currentTile, Builder builder, 
 			TopLevelApplicationBuilder app, int clickMode, int numToAdd, int colorToAdd, 
 			BuilderReleaseBoardView releaseLevelPanel) {
@@ -57,8 +90,9 @@ public class BuilderReleaseBoardController extends MouseAdapter {
 	}
 
 	/**
-	 * Whenever mouse is pressed (left button), attempt to select object. This
+	 * Whenever mouse is pressed (left button or right button), attempt to select object. This
 	 * is a GUI controller.
+	 * @param MouseEvent me
 	 */
 	public void mousePressed(MouseEvent me) {
 		
@@ -196,12 +230,20 @@ public class BuilderReleaseBoardController extends MouseAdapter {
 		}
 	}
 	
+	/**
+	 * Whenever mouse is hovered over the object, change the image.
+	 * @param MouseEvent e
+	 */
 	public void mouseEntered(MouseEvent e) {
 		if (!selected){
 			tile.setImg("generalhoverbutton.png");
 		}
 	}
 
+	/**
+	 * Whenever mouse is exited after hovering on the object, change the image.
+	 * @param MouseEvent e
+	 */
 	public void mouseExited(MouseEvent e) {
 		if (!selected){
 			tile.setImg(fn);

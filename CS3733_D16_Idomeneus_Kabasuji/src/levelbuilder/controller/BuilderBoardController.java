@@ -14,27 +14,52 @@ import kabasuji.view.JLabelIcon;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
 /**
- * Controller for Board gameplay; Modify BoardView;
+ * Controller for Board in the builder; Modify BuilderBoardView;
  * 
  * When a desired tile is pressed, an action is attempted to
  * progress game and update board
- * 
- * @author vkr
+ * @author Vishal Rathi
  *
  */
 public class BuilderBoardController extends MouseAdapter {
 
-	/** Entity and Boundaries Associated **/
+	/** Builder entity class */
 	Builder builder;
+	
+	/** Top level boundary class for builder */
 	TopLevelApplicationBuilder app;
+	
+	/** Board entity class */
 	Board board;
+	
+	/** JLabel for the tile */
 	JLabelIcon tile;
+	
+	/** String image file name */
 	String fn;
+	
+	/** i dimension for the tile */
 	int i;
+	
+	/** j dimension for the tile */
 	int j;
+	
+	/** Boolean for the selected tile */
 	boolean selected;
+	
+	/** Type for the level; 0 for puzzle and 1 for lightning */
 	int type;
 
+	/**
+	 * Constructor for the BuilderBoardController
+	 * @param board The board
+	 * @param tile The specific tile
+	 * @param i The i dimension
+	 * @param j The j dimension
+	 * @param builder The builder entity class
+	 * @param app The TopLevelApplication boundary class
+	 * @param type The type of the level
+	 */
 	public BuilderBoardController(Board board, JLabelIcon tile, int i, int j, Builder builder, TopLevelApplicationBuilder app, int type) {
 		this.board=  board;
 		this.tile = tile;
@@ -47,8 +72,9 @@ public class BuilderBoardController extends MouseAdapter {
 	}
 
 	/**
-	 * Whenever mouse is pressed (left button), attempt to select object. This
+	 * Whenever mouse is pressed (left button or right button), attempt to select object. This
 	 * is a GUI controller.
+	 * @param MouseEvent me
 	 */
 	public void mousePressed(MouseEvent me) {
 		// If the mousePressed event is a left click, then make the tile invalid
@@ -89,12 +115,21 @@ public class BuilderBoardController extends MouseAdapter {
 			}
 		}
 	}
+	
+	/**
+	 * Whenever mouse is hovered over the object, change the image.
+	 * @param MouseEvent e
+	 */
 	public void mouseEntered(MouseEvent e) {
 		if (!selected){
 			tile.setImg("generalhoverbutton.png");
 		}
 	}
 
+	/**
+	 * Whenever mouse is exited after hovering on the object, change the image.
+	 * @param MouseEvent e
+	 */
 	public void mouseExited(MouseEvent e) {
 		if (!selected){
 			tile.setImg(fn);

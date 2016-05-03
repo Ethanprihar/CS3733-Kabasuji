@@ -15,35 +15,82 @@ import levelbuilder.view.BuilderReleaseBoardView;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
 /**
- * Controller for Board gameplay; Modify BoardView;
+ * Controller for deselecting the release color and number buttons.
  * 
- * When a desired tile is pressed, an action is attempted to
- * progress game and update board
+ * When the button is pressed to deselect, all the active number and color buttons are deselected and
+ * GUI reflects the changes.
  * 
- * @author ocd
- *
+ * @author Vishal Rathi
  */
 public class DeselectReleaseButtonsController extends MouseAdapter {
 
-	/** Entity and Boundaries Associated **/
+	/** The builder entity class */
 	Builder builder;
+	
+	/** The top level application boundary class */
 	TopLevelApplicationBuilder app;
+	
+	/** The board */
 	Board board;
+	
+	/** The JLabel for the tile */
 	JLabelIcon tile;
+	
+	/** String image file name */
 	String fn;
+	
+	/** Boolean flag */
 	boolean selected = false;
+	
+	/** Boolean flag */
 	boolean release = false;
+	
+	/** Color specification */
 	int color;
+	
+	/** The JPanel for the boundary class */
 	JPanel releaseLevelPanel;
+	
+	/** Button 1 */
 	JLabelIcon tile1;
+	
+	/** Button 2 */
 	JLabelIcon tile2;
+	
+	/** Button 3 */
 	JLabelIcon tile3;
+	
+	/** Button 4 */
 	JLabelIcon tile4;
+	
+	/** Button 5 */
 	JLabelIcon tile5;
+	
+	/** Button 6 */
 	JLabelIcon tile6;
+	
+	/** Button 7 */
 	JLabelIcon tile7;
+	
+	/** Button 8 */
 	JLabelIcon tile8;
 
+	/**
+	 * Constructor for this class
+	 * @param builder The builder entity class
+	 * @param app The top level application boundary class
+	 * @param color The color specified by button click
+	 * @param releaseLevelPanel The JPanel for the boundary class
+	 * @param tile Button 1
+	 * @param tile1 Button 2
+	 * @param tile2 Button 3
+	 * @param tile3 Button 4
+	 * @param tile4 Button 5
+	 * @param tile5 Button 6
+	 * @param tile6 Button 7
+	 * @param tile7 Button 8
+	 * @param tile8 Button 9
+	 */
 	public DeselectReleaseButtonsController(Builder builder, TopLevelApplicationBuilder app, int color, BuilderReleaseBoardView releaseLevelPanel, JLabelIcon tile, JLabelIcon tile1, JLabelIcon tile2, JLabelIcon tile3, JLabelIcon tile4, JLabelIcon tile5, JLabelIcon tile6, JLabelIcon tile7, JLabelIcon tile8) {
 		this.app = app;
 		this.builder = builder;
@@ -61,8 +108,9 @@ public class DeselectReleaseButtonsController extends MouseAdapter {
 	}
 
 	/**
-	 * Whenever mouse is pressed (left button), attempt to select object. This
+	 * Whenever mouse is pressed (left button or right button), attempt to select object. This
 	 * is a GUI controller.
+	 * @param MouseEvent me
 	 */
 	public void mousePressed(MouseEvent me) {
 		selected = true;
@@ -87,12 +135,21 @@ public class DeselectReleaseButtonsController extends MouseAdapter {
 			app.repaint();
 		}
 	}
+	
+	/**
+	 * Whenever mouse is hovered over the object, change the image.
+	 * @param MouseEvent e
+	 */
 	public void mouseEntered(MouseEvent e) {
 		if (!selected){
 			//tile.setImg("generalhoverbutton.png");
 		}
 	}
 
+	/**
+	 * Whenever mouse is exited after hovering on the object, change the image.
+	 * @param MouseEvent e
+	 */
 	public void mouseExited(MouseEvent e) {
 		if (!selected){
 			//tile.setImg(fn);

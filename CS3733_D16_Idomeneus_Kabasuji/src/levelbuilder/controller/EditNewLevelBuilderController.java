@@ -18,24 +18,43 @@ import levelbuilder.view.ErrorDialogBox;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
 /**
- * Controller for Creating a New Level; Go To Level Mode Select Screen (Panel)
+ * Controller for going to the specific type of level for building. You need to enter the board dimensions and 
+ * select the level type (puzzle, lightning, release). Also, you can go back to the main menu.
  * 
- * When the button is pressed to attempt to go to the next screen, the model
+ * When the button is pressed to attempt to buid the level and go to the next screen, the model
  * will update what screen it is on and the gui will reflect the changes
  * 
- * @author vkr
+ * @author Vishal Rathi
  *
  */
 public class EditNewLevelBuilderController extends MouseAdapter {
 
-	/** Entity and Boundaries Associated **/
+	/** The builder entity class */
 	Builder builder;
+	
+	/** The top level boundary class */
 	TopLevelApplicationBuilder app;
+	
+	/** The JPanel for the boundary class */
 	JPanel contentPanel;
+	
+	/** The button to go to the level building screen */
 	JLabelIcon button;
+	
+	/** Flag for the level type; 0 for puzzle, 1 for lightning and 2 for the release level */
 	int levelType;
+	
+	/** The textfield to get the board dimensions specified */
 	JTextField boardDimensions;
 
+	/**
+	 * The constructor for the controller
+	 * @param builder The builder entity class
+	 * @param app The top level application boundary class
+	 * @param button The button to go the level building screen
+	 * @param levelType The level type
+	 * @param boardDimensions The board dimensions the player wants
+	 */
 	public EditNewLevelBuilderController(Builder builder, TopLevelApplicationBuilder app, JLabelIcon button, int levelType, JTextField boardDimensions) {
 		this.builder = builder;
 		this.app = app;
@@ -46,8 +65,9 @@ public class EditNewLevelBuilderController extends MouseAdapter {
 	}
 
 	/**
-	 * Whenever mouse is pressed (left button), attempt to select object. This
+	 * Whenever mouse is pressed (left button or right button), attempt to select object. This
 	 * is a GUI controller.
+	 * @param MouseEvent me
 	 */
 	public void mousePressed(MouseEvent me) {
 		LevelModeBuilderMove slm = new LevelModeBuilderMove(levelType, boardDimensions);
@@ -96,10 +116,18 @@ public class EditNewLevelBuilderController extends MouseAdapter {
 		}
 	}
 	
+	/**
+	 * Whenever mouse is hovered over the object, change the image.
+	 * @param MouseEvent e
+	 */
 	public void mouseEntered(MouseEvent e) {
 		button.setImg("generalhoverbutton.png");
 	}
 
+	/**
+	 * Whenever mouse is exited after hovering on the object, change the image.
+	 * @param MouseEvent e
+	 */
 	public void mouseExited(MouseEvent e) {
 		button.setImg("generalbutton.png");
 	}
