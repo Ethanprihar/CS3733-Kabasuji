@@ -10,6 +10,8 @@ Ethan Prihar
 Vishal Rathi
 Yu-sen Wu
 
+Kabasuji User Manual:
+
 Kabasuji is a interactive game where the player must fill a board with pieces that are provided for them in the bullpen. There are three different kinds of levels in Kabasuji; Puzzle Mode, Release Mode, and Lightning Mode.
 
 Kabasuji Start Up:
@@ -25,9 +27,54 @@ Selecting a Level:
 Playing a Puzzle Level:
 
   Puzzle Mode is the normal playing mode of the game where pieces can be moved from the bullpen to the board score stars. Stars are scored based on how much of the board is covered by pieces. Pieces are not allowed to overlap each other on the board.  A player only has a limited number of moves.  
+  
+  A player can flip or rotate a piece by selecting a piece from the bullpen and hitting either the flip or rotate button.  
+  
+  A player can reset the level by hitting the reset button.
+  
+  A player can return to the main menu by hitting the main menu button. This will not save their progress in the level.
+  
+  A player can go to the next level once they have earned at least one star.  In order to earn stars the player must cover enough of the board.
+  
+  A player can move a piece from the bullpen to the board by selecting a piece from the bullpen and then left clicking where you would like to place it on the board.
 
+  A piece can be moved from one place on the board to another location on the board by right clicking on the piece on the board and then left clicking on the new destination for the piece on the board.
+  
+  A piece can be moved from the board to the bullpen by right clicking on the piece on the board and then left clicking in the bullpen.
 
+Playing a Lightning Level:
 
+  Lightning Mode is a mode of the game where a player has a limited amount of time to move pieces from the bullpen to the board to score stars. Stars are scored based on how much of the board is covered by pieces. Pieces are allowed to overlap each other on the board. Once the timer reaches 0 the player will not be able to make any more moves and must either reset the level, return to main menu, or if they have any stars then progress to the next level.
+  
+  A player can flip or rotate a piece by selecting a piece from the bullpen and hitting either the flip or rotate button.  
+  
+  A player can reset the level by hitting the reset button.
+  
+  A player can return to the main menu by hitting the main menu button. This will not save their progress in the level.
+  
+  A player can go to the next level once they have earned at least one star.  In order to earn stars the player must cover enough of the board.
+  
+  A player can move a piece from the bullpen to the board by selecting a piece from the bullpen and then left clicking where you would like to place it on the board.
+
+Playing a Release Level:
+
+  Release Mode is a mode of the game where a player has a limited number of moves to move pieces from the bullpen to the board to score stars. Stars are scored based on how many of the sets of colored numbers (number from 1-6) are covered.  There are 3 sets of these colored numbers of tiles. Pieces are not allowed to overlap each other on the board. Once the player runs out of moves the player will not be able to make any more moves and must either reset the level, return to main menu, or if they have any stars then progress to the next level.
+  
+  A player can flip or rotate a piece by selecting a piece from the bullpen and hitting either the flip or rotate button.  
+  
+  A player can reset the level by hitting the reset button.
+  
+  A player can return to the main menu by hitting the main menu button. This will not save their progress in the level.
+  
+  A player can go to the next level once they have earned at least one star.  In order to earn stars the player must cover enough sets of colored sets of tiles on the board.
+  
+  A player can move a piece from the bullpen to the board by selecting a piece from the bullpen and then left clicking where you would like to place it on the board.
+  
+  
+  
+Level Builder User Manual:
+
+  
 
 
 
