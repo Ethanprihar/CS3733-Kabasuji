@@ -16,18 +16,25 @@ public class FlipPieceMove extends Move{
 	// direction of flip
 	boolean vertical;
 	
-	// Constructor for Rotate Piece Move
+	/**
+	 * creates a FlipPieceMove
+	 * @param piece the piece to flip
+	 * @param vertical boolean to determine if flipping vertical or horizontal
+	 */
 	public FlipPieceMove(Piece piece, boolean vertical){
 		this.piece = piece;
 		this.vertical = vertical;
 	}
 
 	@Override
+	/**
+	 * flips the selected piece
+	 * @return whether or not the move was executed
+	 */
 	public boolean execute(Kabasuji kabasuji) {
 		if (!valid(kabasuji)) {
 			return false;
 		}
-		/** rotates the selected piece **/
 		if (kabasuji.getSelectedLevel().getBullpen().getSelectedPiece() == null) {
 			kabasuji.getSelectedLevel().getBoard().getSelectedPiece().flip(vertical);
 		} else {
@@ -37,6 +44,10 @@ public class FlipPieceMove extends Move{
 	}
 
 	@Override
+	/**
+	 * determines whether the move can be made
+	 * @return whether the move can be made
+	 */
 	public boolean valid(Kabasuji kabasuji) {
 		// move is valid if current selected piece is not empty
 		if (kabasuji.getSelectedLevel().getBullpen().getSelectedPiece() != null

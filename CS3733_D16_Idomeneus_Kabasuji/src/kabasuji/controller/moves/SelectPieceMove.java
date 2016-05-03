@@ -14,17 +14,23 @@ public class SelectPieceMove extends Move {
 	// Piece of interest
 	Piece piece;
 
-	// Constructor for Select Piece Move
+	/**
+	 * creates a SelectPieceMove
+	 * @param piece the piece that is to be selected
+	 */
 	public SelectPieceMove(Piece piece) {
 		this.piece = piece;
 	}
 
 	@Override
+	/**
+	 * changes the selected piece
+	 * @return whether or not the move was executed
+	 */
 	public boolean execute(Kabasuji kabasuji) {
 		if (!valid(kabasuji)) {
 			return false;
 		}
-		/** changes the selected piece **/
 		kabasuji.getSelectedLevel().getBullpen().selectPiece(piece);
 		// kabasuji.getSelectedLevel().getBoard().selectPiece(piece);
 
@@ -32,6 +38,10 @@ public class SelectPieceMove extends Move {
 	}
 
 	@Override
+	/**
+	 * determines whether the move can be made
+	 * @return whether the move can be made
+	 */
 	public boolean valid(Kabasuji kabasuji) {
 		// move is valid if current piece does not equal target piece
 		if (kabasuji.getSelectedLevel().getBullpen().getSelectedPiece() != piece) {

@@ -9,10 +9,16 @@ import kabasuji.model.Kabasuji;
 
 public abstract class Move {
 
-	/** Execute given move. */
+	/**
+	 * Executes the move
+	 * @return whether or not the move was executed
+	 */
 	public abstract boolean execute(Kabasuji kabasuji);
 	
-	/** Request validity. */
+	/**
+	 * determines whether the move can be made
+	 * @return whether the move can be made
+	 */
 	public abstract boolean valid(Kabasuji kabasuji);
 }
 

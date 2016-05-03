@@ -20,22 +20,34 @@ public class LevelModeBuilderMove extends BuilderMove{
 	JTextField boardDimensions;
 	
 	// Constructor for Change Screen Move
+	/**
+	 * creates a LevelModeBuilderMove
+	 * @param levelType the type of level to build
+	 * @param boardDimensions the height and width of the board in the level
+	 */
 	public LevelModeBuilderMove(int levelType, JTextField boardDimensions){
 		this.levelType = levelType;
 		this.boardDimensions = boardDimensions;
 	}
 
 	@Override
+	/**
+	 * Sets the level type for the builder.
+	 * @return whether or not the move was executed
+	 */
 	public boolean execute(Builder builder) {
 		if(!valid(builder)){
 			return false;
 		}
-		/** sets screen of builder to desired**/
 		builder.setCurrentScreen(levelType);
 		return true;
 	}
 
 	@Override
+	/**
+	 * determines whether the move can be made.
+	 * @return whether the move can be made
+	 */
 	public boolean valid(Builder builder) {
 		
 		boolean valid = false;

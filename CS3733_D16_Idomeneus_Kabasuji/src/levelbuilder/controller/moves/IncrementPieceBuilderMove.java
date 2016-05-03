@@ -18,12 +18,19 @@ public class IncrementPieceBuilderMove extends BuilderMove{
 	// target screen represented as integer
 	int pieceNum;
 	
-	// Constructor for Change Screen Move
+	/**
+	 * creates an IncrementPieceBuilderMove
+	 * @param pieceNum the location of the piece in the array of numbers of pieces
+	 */
 	public IncrementPieceBuilderMove(int pieceNum){
 		this.pieceNum = pieceNum;
 	}
 
 	@Override
+	/**
+	 * increments the number of a certain type of piece
+	 * @return whether or not the move was executed
+	 */
 	public boolean execute(Builder builder) {
 		if(!valid(builder)){
 			return false;
@@ -35,6 +42,10 @@ public class IncrementPieceBuilderMove extends BuilderMove{
 	}
 
 	@Override
+	/**
+	 * determines whether the move can be made.
+	 * @return whether the move can be made
+	 */
 	public boolean valid(Builder builder) {
 				
 		return true;
