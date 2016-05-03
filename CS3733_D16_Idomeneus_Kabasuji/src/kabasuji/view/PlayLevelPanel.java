@@ -247,7 +247,9 @@ public class PlayLevelPanel extends JPanel {
 		zoompanel.removeAll();
 		zoompanel.repaint();
 	}
-
+	/**
+	 * Display lose screen when player has lost.
+	 */
 	public void displayLoseScreen() {
 		// Only if it is loaded in the player mode not the test level builder
 		if (type == 0) {
@@ -310,7 +312,9 @@ public class PlayLevelPanel extends JPanel {
 			timer.restart();
 		}
 	}
-
+	/**
+	 * Start timer for LightningLevel.
+	 */
 	public void startTimeLimit() {
 		// if in lightning mode make a new timer object
 		if (type == 0) {
@@ -466,12 +470,17 @@ public class PlayLevelPanel extends JPanel {
 		repaint();
 		add(background);
 	}
-
+	/**
+	 * Getter for timer.
+	 * @return
+	 */
 	public Timer getTimer() {
 		return timer;
 	}
 
-	// Display the winning screen
+	/**
+	 * Display win screen when player has fully completed level.
+	 */
 	public void winningScreen() {
 
 		// Only execute if it is in the player mode
@@ -508,8 +517,9 @@ public class PlayLevelPanel extends JPanel {
 			add(background);
 		}
 	}
-
-	// Display the losing screen
+	/**
+	 * Display lose screen when player has lost.
+	 */
 	public void losingScreen() {
 
 		// Only execute if it is in the player mode
@@ -558,34 +568,59 @@ public class PlayLevelPanel extends JPanel {
 			add(background);
 		}
 	}
+	/** 
+	 * Getter for musicplayer.
+	 * @return
+	 */
 	public MusicPlayer getMP(){
 		return mp;
 	}
-	
+	/**
+	 * Getter for Rotate Left Button.
+	 * @return
+	 */
 	public JLabelIcon getRotateLeftButton() {
 		return rotatelbtn;
 	}
-	
+	/**
+	 * Getter for Rotate Right Button.
+	 * @return
+	 */
 	public JLabelIcon getRotateRightButton() {
 		return rotaterbtn;
 	}
-	
+	/**
+	 * Getter for Flip Horizontal Button.
+	 * @return
+	 */
 	public JLabelIcon getFlipHorButton() {
 		return fliphbtn;
 	}
-	
+	/**
+	 * Getter for Flip Vertical Button.
+	 * @return
+	 */
 	public JLabelIcon getFlipVertButton() {
 		return flipvbtn;
 	}
-
+	/**
+	 * Get Reset Level Button.
+	 * @return
+	 */
 	public JLabelIcon getResetButton() {
 		return resetlevelbtn;
 	}
-	
+	/**
+	 * Get Next Level Button.
+	 * @return
+	 */
 	public JLabelIcon getNextLevelButton() {
 		return nextlevelbtn;
 	}
-	
+	/**
+	 * Get Main Menu Button.
+	 * @return
+	 */
 	public JLabelIcon getMainMenuButton() {
 		return mainmenubtn;
 	}

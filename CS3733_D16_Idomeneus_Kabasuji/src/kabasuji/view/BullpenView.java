@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.border.CompoundBorder;
 
 import kabasuji.controller.BoardController;
+import kabasuji.controller.BullpenController;
 import kabasuji.controller.GoToLevelSelectController;
 import kabasuji.controller.GoToMainMenuController;
 import kabasuji.controller.SelectPieceBullpenController;
@@ -177,6 +178,7 @@ public class BullpenView extends JPanel {
 			// attach Controllers
 			imgpieces[i * row + j].addMouseListener(
 					new SelectPieceBullpenController(kabasuji, panel, imgpieces[i * row + j], n));
+			imgpieces[i * row + j].addMouseListener(new BullpenController(kabasuji,panel));
 		} catch (IndexOutOfBoundsException e) {
 			System.out.println("Out of bounds!!");
 		}

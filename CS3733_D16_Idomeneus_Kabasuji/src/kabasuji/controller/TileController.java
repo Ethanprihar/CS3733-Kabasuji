@@ -140,11 +140,15 @@ public class TileController extends MouseAdapter {
 		}
 		if (kabasuji.getSelectedLevel() instanceof PuzzleLevel) {
 			if (SwingUtilities.isRightMouseButton(me)) {
+				try{
 				if (board.getSelectedPiece() == null && bullpen.getSelectedPiece() == null) {
 					board.selectPiece(selfTile.getPiece());
 					boardSelectPiece(selfTile.getPiece());
 					zoompanel.removeAll();
 					zoompanel.displayPieceView(selfTile.getPiece());
+				}
+				}catch(NullPointerException e){
+					System.out.println("TileController.java: no piece exists there");
 				}
 			}
 		}

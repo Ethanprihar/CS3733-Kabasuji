@@ -26,11 +26,17 @@ public class TopLevelApplication extends JFrame {
 		this.kabasuji = kabasuji;
 		init();
 	}
-	// getter contentPanel
+	/**
+	 * Getter for ContentPanel.
+	 * @return
+	 */
 	public JPanel getContentPanel(){
 		return contentPanel;
 	}
-	// setter contentPanel
+	/**
+	 * Setter for ContentPanel.
+	 * @param j - panel of interest
+	 */
 	public void setContentPanel(JPanel j){
 		// set location and size relative to JFrame ***
 		j.setBounds(0,0,Screen.width,Screen.height);
@@ -39,6 +45,9 @@ public class TopLevelApplication extends JFrame {
 		// redraw screen
 		repaint();
 	}
+	/**
+	 * Initializes the JFrame and sets the first panel as a MainMenu JPanel.
+	 */
 	void init(){
 		// puts top left corner into 10% of screen height and width
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

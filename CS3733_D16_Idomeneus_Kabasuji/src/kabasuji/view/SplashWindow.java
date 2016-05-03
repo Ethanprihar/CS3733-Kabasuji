@@ -31,11 +31,6 @@
 
 package kabasuji.view;
 
-/*
- * SplashDemo.java
- *
- */
-
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
@@ -44,34 +39,15 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+/**
+ * SplashWindow for Opening Screen.
+ * @author jwu
+ *
+ */
 public class SplashWindow extends Frame{
-	static void renderSplashFrame(Graphics2D g, int frame) {
-		final String[] names = { "THE COOLEST KIDS", "Odell Dotson", "Breanne Happell", "Ethan Prihar", "Vishal Rathi",
-				"Yu-sen Wu" };
-		g.setComposite(AlphaComposite.Clear);
-		g.fillRect(20, 20, 200, 200);
-		g.setPaintMode();
-		g.setColor(Color.BLACK);
-		g.setFont(Font.decode("Arial-BOLD-18"));
-		// need exception catching
-		BufferedImage img = null;
-		try {
-			// maps path to the image file
-			String path = System.getProperty("user.dir") + File.separator + "src\\images\\8bitbunny.jpg";
-			img = ImageIO.read(new File(path));
-		} catch (IOException e) {
-		}
-		for (int i = 0; i < frame + 1; i++) {
-			int plotX = 20;
-			int plotY = 30 + 43 * i;
-			if (i > 4) {
-				plotX = 150;
-				g.drawImage(img, 255, 10 + 43 * i, null);
-			}
-			g.drawString(" " + names[i], plotX, plotY);
-		}
-	}
-
+	/**
+	 * Constructor SplashWindow.
+	 */
 	public SplashWindow() {
 		super("SplashScreen demo");
 		try {
@@ -101,6 +77,37 @@ public class SplashWindow extends Frame{
 			splash.close();
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+	/**
+	 * Displays the frame of interest in the splash screen.
+	 * @param g
+	 * @param frame
+	 */
+	static void renderSplashFrame(Graphics2D g, int frame) {
+		final String[] names = { "THE COOLEST KIDS", "Odell Dotson", "Breanne Happell", "Ethan Prihar", "Vishal Rathi",
+				"Yu-sen Wu" };
+		g.setComposite(AlphaComposite.Clear);
+		g.fillRect(20, 20, 200, 200);
+		g.setPaintMode();
+		g.setColor(Color.BLACK);
+		g.setFont(Font.decode("Arial-BOLD-18"));
+		// need exception catching
+		BufferedImage img = null;
+		try {
+			// maps path to the image file
+			String path = System.getProperty("user.dir") + File.separator + "src\\images\\8bitbunny.jpg";
+			img = ImageIO.read(new File(path));
+		} catch (IOException e) {
+		}
+		for (int i = 0; i < frame + 1; i++) {
+			int plotX = 20;
+			int plotY = 30 + 43 * i;
+			if (i > 4) {
+				plotX = 150;
+				g.drawImage(img, 255, 10 + 43 * i, null);
+			}
+			g.drawString(" " + names[i], plotX, plotY);
 		}
 	}
 }

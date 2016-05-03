@@ -76,8 +76,8 @@ public class ResetLevelController extends MouseAdapter {
 		// PlayLevelPanel plp = new PlayLevelPanel(kabasuji, app);
 
 		// create components of panel and pass model and container panel
-		BullpenView bpv = new BullpenView(kabasuji, plp, 2,
-				4);
+		BullpenView bpv = new BullpenView(kabasuji, plp, 4,
+				(int) (kabasuji.selectedLevel.getBullpen().getPieces().size() + 3) / 4);
 		BoardView bv = new BoardView(kabasuji, plp);
 
 		// set location and size of components (**necessary)
