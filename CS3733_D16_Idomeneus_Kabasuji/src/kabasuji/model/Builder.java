@@ -450,7 +450,7 @@ public class Builder
 		int newCol = 0;
 		for(int color = 1; color <= 3; color++)
 		{
-			for(int number = 1; number <=6; number++)
+			for(int number = 1; number <= 6; number++)
 			{
 				boolean newPos = false;
 				while(!newPos)
