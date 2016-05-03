@@ -24,7 +24,9 @@ public class Kabasuji {
 	public Kabasuji() {
 		currentScreen = 1;
 		loadLevels();
-		if(levels != null && levels.size() > 0 && levels.get(0).isLocked())
+		if(levels == null)
+			levels = new ArrayList<Level>();
+		if(levels.size() > 0 && levels.get(0).isLocked())
 			levels.get(0).setLocked(false);
 	}
 
