@@ -3,6 +3,12 @@ package kabasuji.model;
 import java.awt.Point;
 import java.io.Serializable;
 
+/**
+ * this class stores all data relevant to pieces, such as their shape
+ * it also contains all the logic for rotating and flipping pieces
+ * @author Ethan
+ *
+ */
 public class Piece implements Serializable
 {
 	Tile[][] tiles;
@@ -10,6 +16,11 @@ public class Piece implements Serializable
 	// represents top leftmost existing tile with row bias
 	Point refpnt;
 	
+	/**
+	 * this constructor creates a piece based on the contents
+	 * of a matrix of tiles
+	 * @param t the matrix of tiles that becomes the pieces shape
+	 */
 	public Piece(Tile[][] t)
 	{
 		tiles = t;
@@ -25,12 +36,22 @@ public class Piece implements Serializable
 		}
 	}
 	
+	/**
+	 * rotates the piece 90 degrees in the direction specified
+	 * @param right a boolean that if true, the piece is rotated right
+	 * and if false, the piece rotates left
+	 */
 	public void rotate(boolean right)
 	{
 		flip(right);
 		transpose();
 	}
 	
+	/**
+	 * this method flips the piece
+	 * @param vertical if true the piece is flipped vertically
+	 * and if false the pieces if flipped horizontally
+	 */
 	public void flip(boolean vertical)
 	{
 		Tile[][] newTiles = new Tile[tiles.length][tiles.length];
@@ -47,6 +68,10 @@ public class Piece implements Serializable
 		tiles = newTiles;
 	}
 	
+	/**
+	 * this method makes the piece matrix a transpose of its former self
+	 * this is used as a helper method for rotating
+	 */
 	private void transpose()
 	{
 		Tile[][] newTiles = new Tile[tiles.length][tiles.length];
@@ -60,16 +85,31 @@ public class Piece implements Serializable
 		tiles = newTiles;
 	}
 	
+	/**
+	 * this method returns the tile at a specified location in the matrix
+	 * @param y the row of the tile
+	 * @param x the column of the tile
+	 * @return the tile at the specified row and column
+	 */
 	public Tile getTile(int y, int x)
 	{
 		return tiles[y][x];
 	}
 	
+	/**
+	 * returns the dimension of the piece
+	 * @return an int that is the number of rows and columns in the piece matrix
+	 */
 	public int getDim()
 	{
 		return tiles.length;
 	}
 	
+	/**
+	 * determines whether two pieces are the same shape
+	 * @param p the piece that this piece is compared to
+	 * @return boolean that is true if the pieces are the same shape
+	 */
 	public boolean equals(Piece p)
 	{
 		boolean equal = true;
@@ -84,6 +124,10 @@ public class Piece implements Serializable
 		return equal;
 	}
 	
+	/**
+	 * returns a new piece with the same shape as this piece
+	 * @return a new piece with the same shape as this piece
+	 */
 	public Piece copy()
 	{
 		Tile[][] t = new Tile[tiles.length][tiles.length];
@@ -97,9 +141,19 @@ public class Piece implements Serializable
 		}
 		return new Piece(t);
 	}
+	
+	/**
+	 * returns the tile matrix that makes up the piece
+	 * @return the tile matrix that makes up the piece
+	 */
 	public Tile[][] getTiles(){
 		return tiles;
 	}
+	
+	/**
+	 * returns the location of the topmost leftmost part of the piece
+	 * @return a point with the location of the topmost leftmost tile of the piece
+	 */
 	public Point findReferencePoint(){
 		for(int i = 0; i< tiles.length; i++){
 			for (int j = 0; j < tiles.length; j++){
