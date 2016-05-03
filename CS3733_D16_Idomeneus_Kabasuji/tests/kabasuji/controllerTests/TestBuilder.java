@@ -1,17 +1,14 @@
 package kabasuji.controllerTests;
 
 import javax.swing.JComponent;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import kabasuji.model.Builder;
 import kabasuji.model.PuzzleLevel;
 import kabasuji.model.Screen;
 import kabasuji.testUtilities.TestCaseHelper;
-import kabasuji.view.ErrorDialogBox;
 import kabasuji.view.JLabelIcon;
 import kabasuji.view.SplashWindow;
 import levelbuilder.view.TopLevelApplicationBuilder;
@@ -86,36 +83,6 @@ public class TestBuilder extends TestCaseHelper {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
-		/**
-		 * ERROR TESTING
-		 */
-		
-		// try making a puzz lev before adding in the size to get an error
-		JLabelIcon puzzTest = testbm.getPuzzleButton();
-
-		// try making a puzzle level
-//		try {
-//			MouseEvent cp = createPressed(puzzTest, 0, 0);
-//			puzzTest.dispatchEvent(cp);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-		
-		// make a new error box
-		//ErrorDialogBox eb = ErrorDialogBox.infoBox(String infoMessage, String titleBar)
-		//JOptionPane eb = new JOptionPane("Errrr");
-		
-		// try hitting enter 
-//		try {
-//			frame.getContentPane().dispatchEvent(new KeyEvent(frame.getContentPane(),
-//			        KeyEvent.KEY_TYPED, System.currentTimeMillis(),
-//			        0,
-//			        KeyEvent.VK_ENTER));
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
 
 		// add in the size of the board
 		try {
@@ -127,7 +94,7 @@ public class TestBuilder extends TestCaseHelper {
 		// test that the text has been updated
 		assertEquals(testbm.getBoardDimensionsTextBox().getText(), "6");
 
-		puzzTest = testbm.getPuzzleButton();
+		JLabelIcon puzzTest = testbm.getPuzzleButton();
 
 		// try making a puzzle level
 		try {
@@ -1092,7 +1059,6 @@ public class TestBuilder extends TestCaseHelper {
 		}
 
 		// add a red 1 onto tile[0][0]
-		testReleaseLev.getBoardview().setEditMode(1);
 		JLabelIcon tile00 = testReleaseLev.getBoardview().getTiles()[0];
 		try {
 			MouseEvent cp = createPressed(tile00, 0, 0);
@@ -1122,7 +1088,7 @@ public class TestBuilder extends TestCaseHelper {
 
 		JLabelIcon tile1 = testReleaseLev.getBoardview().getTiles()[1];
 		try {
-			MouseEvent cp = createLeftClick(tile1, 0, 0);
+			MouseEvent cp = createPressed(tile1, 0, 0);
 			tile1.dispatchEvent(cp);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -1156,7 +1122,7 @@ public class TestBuilder extends TestCaseHelper {
 
 		JLabelIcon tile2 = testReleaseLev.getBoardview().getTiles()[2];
 		try {
-			MouseEvent cp = createLeftClick(tile2, 0, 0);
+			MouseEvent cp = createPressed(tile2, 0, 0);
 			tile2.dispatchEvent(cp);
 		} catch (Exception e) {
 			e.printStackTrace();
