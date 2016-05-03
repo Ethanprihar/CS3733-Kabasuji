@@ -22,24 +22,33 @@ import javax.swing.SwingConstants;
 @SuppressWarnings("serial")
 public class BoardView extends JPanel {
 
-	/** Entities associated **/
+	/* Top Level Model */
 	Kabasuji kabasuji;
+	/* Board */
 	Board board;
+	/* 2D Array of Tiles of Board */
 	Tile[][] tiles;
 
-	/** Boundaries associated **/
+	/* Screen view */
 	PlayLevelPanel panel;
+	/* Tile view on board */
 	JLabelIcon[] tile;
+	/* Background image */
 	JLabelIcon background;
 
 	// desired dimensions to fit
+	/* row */
 	int row;
+	/* col */
 	int col;
 
-	// location manipulation variables for gui display
+	/* longest dimension */
 	int sqmatrixlength;
+	/* tile pixel side length */
 	int tilesidelength;
+	/* tile pixel side scaled length */
 	int tilesidescaled;
+	/* offset of tiles */
 	int offset;
 
 	/**

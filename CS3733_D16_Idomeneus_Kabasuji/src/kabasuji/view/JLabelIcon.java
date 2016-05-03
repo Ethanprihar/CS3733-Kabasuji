@@ -15,11 +15,15 @@ import javax.swing.SwingConstants;
  *
  */
 public class JLabelIcon extends JLabel {
-	/** attributes: img, filename, and dimensions **/
+	/* image object associated */
 	Image img;
+	/* image filename in folder */
 	String filename;
+	/* label on the view */
 	JLabel lbl;
+	/* size x */
 	int dimX;
+	/* size y */
 	int dimY;
 
 	/**

@@ -21,14 +21,14 @@ import javax.swing.SwingConstants;
  */
 
 public class MainMenu extends JPanel {
-	/** Entities and Boundaries associated **/
+	/* Top Level Model */
 	Kabasuji kabasuji;
+	/* Top Level Boundary */
 	TopLevelApplication app;
-
-	/** Button(s) **/
+	/* Level Select Buttons */
 	JLabelIcon levelselectbtn;
 
-	/** button parameters **/
+	/* button side length pixels */
 	int btnsidelength = 70;
 
 	/**

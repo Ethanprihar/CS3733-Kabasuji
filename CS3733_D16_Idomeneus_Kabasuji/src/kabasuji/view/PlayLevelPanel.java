@@ -36,42 +36,64 @@ import javax.swing.Timer;
  *
  */
 public class PlayLevelPanel extends JPanel {
-	/** Entities associated **/
+	/* Top Level Model */
 	Kabasuji kabasuji;
+	/* Board */
 	Board board;
+	/* Bullpen */
 	Bullpen bullpen;
+	/* Play type */
 	int type;
 
+	/* Screen view */
 	PlayLevelPanel panel;
 
+	/* Timer global for lighting */
 	Timer timer; // Timer used for Lightning Mode
+	/* millieconds per timer task */
 	int delay = 1000; // milliseconds
 
+	/* Music Player */
 	MusicPlayer mp;
 
-	/** Boundaries associated **/
+	/* Top Level Boundary */
 	TopLevelApplication app;
+	/* Boardview */
 	BoardView boardview;
+	/* BullpenView */
 	BullpenView bullpenview;
 
+	/* ZoomPanel */
 	ZoomPanel zoompanel;
+	/* Rotate Left Button */
 	JLabelIcon rotatelbtn;
+	/* Rotate Right Button */
 	JLabelIcon rotaterbtn;
+	/* Flip Horizontal Button */
 	JLabelIcon fliphbtn;
+	/* Flip Vertical Button */
 	JLabelIcon flipvbtn;
 
+	/* Reset Level Button */
 	JLabelIcon resetlevelbtn;
+	/* Next Level Button */
 	JLabelIcon nextlevelbtn;
+	/* Main Menu Button */
 	JLabelIcon mainmenubtn;
 
+	/* Label Moves Left */
 	JLabel movesLeft;
+	/* Label Number of Moves Left */
 	JLabel movesLeftNum;
+	/* Label Time Left */
 	JLabel timeLeft;
+	/* Label Number of Time Left */
 	JLabel timeLeftNum;
 
+	/* Background image */
 	JLabelIcon background;
 
-	/** button parameters **/
+	/** button sie length in pixels **/
 	int btnsidelength = 70;
 
 	/**
