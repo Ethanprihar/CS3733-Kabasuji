@@ -453,10 +453,6 @@ public class Builder
 			for(int number = 1; number <=6; number++)
 			{
 				boolean newPos = false;
-				for(int i = 0; i<18; i++)
-				{
-					boolean tracker = true;
-				}
 				while(!newPos)
 				{
 					newRow = (int)(Math.random() * 4 + 1);
@@ -464,5 +460,6 @@ public class Builder
 				}
 			}
 		}
+		return true;
 	}
 }
