@@ -74,7 +74,55 @@ Playing a Release Level:
   
 Level Builder User Manual:
 
+  Level Builder is an application that can be used to design levels to be played in Kabasuji.  Level Builder can be used to load previoulsy built levels to edit them or to make Puzzle, Lightning, or Release Levels.
   
+Level Builder Start Up:
+
+  Upon startup the player can choose to either build a new level or load a level.  If they choose to load a level by clicking the "Load Level" button then they can select a level from the list of levels to edit by clicking on the level.  The kind of level is indicated by the same symbols that were used in Kabasuji when choosing a level.  A player can choose to build a level by clicking the "Build Level" button.  The player can then specify the board dimensions into the text box which indicates the width of the square board that will be created.  The player can then choose which type of level that they would like to build by clicking on one of the player mode buttons.
+  
+Building a Puzzle Level:
+
+  A builder can undo a move by clicking the "Undo" button.
+  
+  A builder can redo a move by clicking the "Redo" button.
+  
+  A builder can save a level by clicking the "Save Level" button.
+  
+  A builder can delete a level by clicking the "Delete Level" button.
+  
+  A builder can return to the main menu (which deletes the current level being made) by clicking the "Main Menu" button.
+  
+  A builder can add a piece to the level bullpen by clicking on the piece in the bullpen.
+  
+  A player can specify the number of moves that the player is allowed by typing in the "Moves" text field.
+  
+  A player can make a tile invalid (or not part of the board) by left clicking on the tile.
+  
+  A player can make a tile a hint tile by right clicking on that tile on the board.
+  
+  A player can test a level by hitting the "Test Level" button.  A description of how to test the level can be found in the description of how to play a Puzzle Level in the Kabasuji user Manual above.  The player can exit this test by hitting the "Exit" button.
+  
+Building a Lightning Level:
+
+  A builder can undo a move by clicking the "Undo" button.
+  
+  A builder can redo a move by clicking the "Redo" button.
+  
+  A builder can save a level by clicking the "Save Level" button.
+  
+  A builder can delete a level by clicking the "Delete Level" button.
+  
+  A builder can return to the main menu (which deletes the current level being made) by clicking the "Main Menu" button.
+  
+  A builder can add a piece to the level bullpen by clicking on the piece in the bullpen.
+  
+  A player can specify the amount of time (in seconds) that the player is allowed by typing in the "Time" text field.
+  
+  A player can make a tile invalid (or not part of the board) by left clicking on the tile.
+  
+  A player can make a tile a hint tile by right clicking on that tile on the board.
+  
+  A player can test a level by hitting the "Test Level" button.  A description of how to test the level can be found in the description of how to play a Lightning Level in the Kabasuji user Manual above. The player can exit this test by hitting the "Exit" button.
 
 
 
