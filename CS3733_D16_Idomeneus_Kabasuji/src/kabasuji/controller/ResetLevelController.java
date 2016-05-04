@@ -38,11 +38,14 @@ public class ResetLevelController extends MouseAdapter {
 	JLabelIcon button;
 	/* Original filename */
 	String fn;
+
 	/**
 	 * Constructor for ResetLevelController.
+	 * 
 	 * @param kabasuji
 	 * @param panel
-	 * @param button the button view object associated
+	 * @param button
+	 *            the button view object associated
 	 */
 	public ResetLevelController(Kabasuji kabasuji, PlayLevelPanel panel, JLabelIcon button) {
 		this.kabasuji = kabasuji;
@@ -57,25 +60,28 @@ public class ResetLevelController extends MouseAdapter {
 	 */
 	public void mousePressed(MouseEvent me) {
 		/*** MODEL CHANGES ***/
-		try{
-		plp.getMP().getClip().stop();
-		}
-		catch(NullPointerException e){
+		try {
+			plp.getMP().getClip().stop();
+		} catch (NullPointerException e) {
 			System.out.println("MainMenuController: no mp");
 		}
-		if(kabasuji.getLevels().size() - 1 == kabasuji.getLevels().indexOf(kabasuji.getSelectedLevel()))
-		{
+		if (kabasuji.getLevels().size() - 1 == kabasuji.getLevels().indexOf(kabasuji.getSelectedLevel())) {
 			kabasuji.getLevels().add(new PuzzleLevel(null, null, 0));
 			kabasuji.saveLevels();
 			kabasuji.resetLevel();
 			kabasuji.getLevels().remove(kabasuji.getLevels().size() - 1);
-		}
-		else
-		{
+		} else {
 			kabasuji.saveLevels();
 			kabasuji.resetLevel();
 		}
 		new MusicPlayer("select.wav").setVolume(-15);
+
+		int row = 4;
+		int col = (int) (kabasuji.selectedLevel.getBullpen().getPieces().size() + 3) / 4;
+		if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
+			row = 1;
+			col = 5;
+		}
 		// Create PlayLevelPanel screen object and update boundary to
 		// reflect *** GUI CHANGES ***
 
@@ -84,8 +90,7 @@ public class ResetLevelController extends MouseAdapter {
 		// PlayLevelPanel plp = new PlayLevelPanel(kabasuji, app);
 
 		// create components of panel and pass model and container panel
-		BullpenView bpv = new BullpenView(kabasuji, plp, 4,
-				(int) (kabasuji.selectedLevel.getBullpen().getPieces().size() + 3) / 4);
+		BullpenView bpv = new BullpenView(kabasuji, plp, row, col);
 		BoardView bv = new BoardView(kabasuji, plp);
 
 		// set location and size of components (**necessary)
@@ -97,9 +102,9 @@ public class ResetLevelController extends MouseAdapter {
 		// remove all components from PLP -> update PLP -> add controllers
 		plp.removeAll();
 		plp.updatePlayLevelPanel(bv, bpv);
-		
+
 		// If the level is a lightning level then reset the timer
-		if(kabasuji.selectedLevel instanceof LightningLevel){
+		if (kabasuji.selectedLevel instanceof LightningLevel) {
 			plp.resetTimer();
 		}
 		plp.addControllers();
@@ -108,6 +113,7 @@ public class ResetLevelController extends MouseAdapter {
 		plp.repaint();
 
 	}
+
 	/**
 	 * Mouse Enter event highlights the button.
 	 */
@@ -115,6 +121,7 @@ public class ResetLevelController extends MouseAdapter {
 		// sets image to indicate hover event
 		button.setImg("generalhoverbutton.png");
 	}
+
 	/**
 	 * Mouse Exit event dehighlights the button.
 	 */
