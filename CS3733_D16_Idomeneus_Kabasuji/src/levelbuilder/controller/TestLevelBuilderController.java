@@ -18,7 +18,9 @@ import kabasuji.view.TopLevelApplication;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
 /**
- * Controller for Moving Screens; Go To BuilderMainMenu Screen (Panel)
+ * Controller for Moving Screens; Go To BuilderMainMenu Screen (Panel). This controller 
+ * opens a test level screen where the user can play the built level. The pieces can be moved in
+ * this test level screen and the flip/rotate operations are valid.
  * 
  * When the button is pressed to attempt to go to the next screen, the model
  * will update what screen it is on and the gui will reflect the changes
@@ -26,17 +28,38 @@ import levelbuilder.view.TopLevelApplicationBuilder;
  * @author jwu
  *
  */
+
 public class TestLevelBuilderController extends MouseAdapter {
 
-	/** Entity and Boundaries Associated **/
+	/** The builder entity class */
 	Builder builder;
+	
+	/** The top level application */
 	TopLevelApplicationBuilder app;
+	
+	/** The JPanel for the boundary class */
 	JPanel contentPanel;	
-	JLabelIcon button;	
+	
+	/** The button for testing the level */
+	JLabelIcon button;
+	
+	/** String image file name */
 	String fn;
+	
+	/** The end condition for number of moves or time */
 	JTextField ec;
+	
+	/** The number of pieces array from before */
 	int[] numOfPiecesOnLoad;
 
+	/**
+	 * Constructor for this class
+	 * @param builder The builder entity class
+	 * @param app The top level application
+	 * @param button The button for testing the level
+	 * @param numOfPiecesOnLoad The number of pieces history
+	 * @param ec The end condition i.e. number of moves left or timer
+	 */
 	public TestLevelBuilderController(Builder builder, TopLevelApplicationBuilder app, JLabelIcon button, int[] numOfPiecesOnLoad, JTextField ec) {
 		this.builder = builder;
 		this.app = app;
@@ -48,8 +71,9 @@ public class TestLevelBuilderController extends MouseAdapter {
 	}
 
 	/**
-	 * Whenever mouse is pressed (left button), attempt to select object. This
+	 * Whenever mouse is pressed (left button or right button), attempt to select object. This
 	 * is a GUI controller.
+	 * @param MouseEvent me
 	 */
 	public void mousePressed(MouseEvent me) {
 	/*** MODEL CHANGES ***/
@@ -72,8 +96,6 @@ public class TestLevelBuilderController extends MouseAdapter {
 		// panel
 		PlayLevelPanel plp = new PlayLevelPanel(kabasuji, app1, 1);
 		
-		System.out.println("I am in Test Level again");
-
 		// create components of panel and pass model and container panel
 		BullpenView bpv = new BullpenView(kabasuji, plp, 4,
 				(int) (kabasuji.selectedLevel.getBullpen().getPieces().size() + 3) / 4);
@@ -112,10 +134,18 @@ public class TestLevelBuilderController extends MouseAdapter {
 		
 	}
 	
+	/**
+	 * Whenever mouse is hovered over the object, change the image.
+	 * @param MouseEvent e
+	 */
 	public void mouseEntered(MouseEvent e) {
 		button.setImg("generalhoverbutton.png");
 	}
 
+	/**
+	 * Whenever mouse is exited after hovering on the object, change the image.
+	 * @param MouseEvent e
+	 */
 	public void mouseExited(MouseEvent e) {
 		button.setImg(fn);
 	}
