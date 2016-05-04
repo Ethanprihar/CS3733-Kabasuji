@@ -17,6 +17,13 @@ Vishal Rathi
 
 Yu-sen Wu
 
+For Kabasuji Game:
+1) In \\src\\kabasuji\\Main.java
+	i. in run configuration -> Arguments tab -> VM Arguments -> type -splash:src/images/trip.gif
+
+For Builder:
+1) In \\src\\levelbuilder\\LBMain.java
+	i. in run configuration -> Arguments tab -> VM Arguments -> type -splash:src/images/swirly.gif
 
 
 Kabasuji User Manual:
