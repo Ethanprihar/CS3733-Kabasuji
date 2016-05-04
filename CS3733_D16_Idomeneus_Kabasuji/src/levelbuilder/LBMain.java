@@ -8,6 +8,7 @@ import levelbuilder.view.TopLevelApplicationBuilder;
 public class LBMain {
 	/**
 	 * Launch the application.
+	 * @param args the arguments to give into the level builder.
 	 */
 	public static void main(String[] args) {
 		// THIS CODE SEGMENT WILL RESET THE LEVELS FILE AND ADD 15 FRESH LEVELS
@@ -20,6 +21,7 @@ public class LBMain {
 		// System.out.println(builder.getLevels());
 		// }
 		// builder.saveToDisc();
+		
 		Builder builder = new Builder();
 		System.out.println("In Builder the levels:");
 		for (Level l : builder.getLevels()) {

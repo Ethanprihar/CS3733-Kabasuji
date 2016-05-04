@@ -10,9 +10,9 @@ import kabasuji.view.TopLevelApplication;
 import misc.MusicPlayer;
 
 public class Main {
-	/*
-	 * 
+	/**
 	 * Launch the application.
+	 * @param args arguements to give to main of kabasuji. Not actually used...
 	 */
 	public static void main(String[] args) {
 		// makePieces();
@@ -20,12 +20,14 @@ public class Main {
 		TopLevelApplication frame = new TopLevelApplication(kabasuji);
 		// start splash screen
 		new MusicPlayer("undertaleraining.wav").setVolume(-25);
-		// new SplashWindow();
+		new SplashWindow();
 		// after splash screen ends, show game
 		frame.setVisible(true);
 	}
 
-	// THIS CODE SEGMENT WILL RESET THE LEVELS FILE AND ADD 15 FRESH LEVELS
+	/**
+	 * THIS CODE SEGMENT WILL RESET THE LEVELS FILE AND ADD 15 FRESH LEVELS
+	 */
 	public static void makeLevelsForTesting() {
 		Builder builder = new Builder();
 		builder.setLevels(new ArrayList<Level>());
@@ -39,6 +41,9 @@ public class Main {
 		builder.saveToDisc();
 	}
 
+	/**
+	 * Makes the pieces for kabasuji.
+	 */
 	public static void makePieces() {
 		Piece[] pieces = new Piece[35];
 		for (int i = 0; i < pieces.length; i++) {
