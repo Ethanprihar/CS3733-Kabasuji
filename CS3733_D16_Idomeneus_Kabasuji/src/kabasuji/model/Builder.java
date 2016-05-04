@@ -13,18 +13,31 @@ import java.util.Stack;
 
 public class Builder
 {
+	/* Current Screen */
 	int currentScreen;
+	/* List of Levels */
 	public ArrayList<Level> levels;
+	/* Pieces array stored */
 	Piece[] pieces;
+	/* Number of Pieces In Bullpen */
 	int[] numOfPieces;
+	/* Selected Level */
 	Level selectedLevel;
+	/* End Conditional */
 	int endCondition;
+	/* Current Color to put in release */
 	int currentColor;
+	/* Current Number to put in release */
 	int currentNumber;
+	/* Board History */
 	Stack<Board> boardHistory;
+	/* Board redo List */
 	Stack<Board> boardRedoList;
+	/* Bullpen History */
 	Stack<int[]> bullpenHistory;
+	/* Bullpen Redo List */
 	Stack<int[]> bullpenRedoList;
+	/* undo state */
 	boolean didUndo;
 	
 	/**

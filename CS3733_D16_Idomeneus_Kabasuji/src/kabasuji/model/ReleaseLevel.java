@@ -9,7 +9,9 @@ package kabasuji.model;
  */
 public class ReleaseLevel extends Level {
 
+	/* Moves Used Up */
 	int movesUsed;
+	/* Maximum number of Moves available*/
 	int maxMoves;
 	
 	/**

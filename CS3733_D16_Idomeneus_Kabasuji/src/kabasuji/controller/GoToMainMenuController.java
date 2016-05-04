@@ -25,12 +25,15 @@ import misc.MusicPlayer;
  */
 public class GoToMainMenuController extends MouseAdapter {
 
-	/** Entity and Boundaries Associated **/
+	/* Top Level Model */
 	Kabasuji kabasuji;
-
+	/* Top Level Boundary */
 	TopLevelApplication app;
+	/* Screen view */
 	JPanel contentPanel;
+	/* Button view */
 	JLabelIcon button;
+	/* original filename */
 	String fn;
 
 	/**

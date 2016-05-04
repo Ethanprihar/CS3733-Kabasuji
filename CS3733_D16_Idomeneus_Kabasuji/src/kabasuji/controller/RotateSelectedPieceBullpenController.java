@@ -37,18 +37,25 @@ import kabasuji.view.ZoomPanel;
  */
 public class RotateSelectedPieceBullpenController extends MouseAdapter {
 
-	/** Entity associated **/
+	/* Top Level Model */
 	Kabasuji kabasuji;
+	/* Bullpen */
 	Bullpen bullpen;
+	/* Pieces Array in Bullpen */
 	ArrayList<Piece> pieces;
+	/* Select piece */
 	Piece selectedPiece;
-	/** Boundaries asssociated **/
+	/* Screen view */
 	PlayLevelPanel panel;
+	/* Bullpen view */
 	BullpenView bullpenview;
+	/* Piece view in bullpen */
 	JLabelIcon pieceicon;
+	/* Piece View Array */
 	PieceView[] pieceviews;
+	/* Zoom Panel */
 	ZoomPanel zoompanel;
-
+	/* file name of zoomPanel */
 	String fnzoompiece;
 
 	boolean vertical;

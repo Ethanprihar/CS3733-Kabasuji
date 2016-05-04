@@ -17,27 +17,34 @@ import kabasuji.model.Screen;
  *
  */
 public class LevelSelectPanel extends JPanel {
-	/** Entities and Boundaries associated **/
+	/* Top Level Model */
 	Kabasuji kabasuji;
+	/* Top Level Boundary */
 	TopLevelApplication app;
 
-	/** Level Button GUI elements **/
+	/* Level Select Button Views */
 	JLabelIcon[] levelselectbtn;
+	/* Level Type Icons */
 	JLabelIcon[] leveltypeicons;
 	
 	/** Main Menu Button **/
 	JLabelIcon mainmenubtn;
 
-	/** dimensions of level button array (row X col display) **/
+	/* row */
 	int row = 3;
+	/* col */
 	int col = 5;
 
-	/** generic button size && star size && leveltypeicon(pixels) **/
+	/* button side length pixels */
 	int btnsidelength = 70;
+	/* star side length pixels */
 	int starsidelength = 15;
+	/* level type icon side length */
 	int lvltypesidelength = 26;
+	/* level type icon offset x */
 	int lvltypeiconoffsetx = (int) ((btnsidelength - lvltypesidelength) / 2);
-	int lvltypeiconoffsety = (int) (btnsidelength * 0.8); // start drawing at 80% of the image height
+	/* level type icon offset y */
+	int lvltypeiconoffsety = (int) (btnsidelength * 0.8);
 
 	/**
 	 * Create the LevelSelectPanel.

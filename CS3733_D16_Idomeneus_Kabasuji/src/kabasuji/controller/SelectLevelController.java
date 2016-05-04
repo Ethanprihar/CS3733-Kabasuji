@@ -30,13 +30,17 @@ import misc.MusicPlayer;
  */
 public class SelectLevelController extends MouseAdapter {
 
-	/** Entities associated **/
+	/* Top Level Model */
 	Kabasuji kabasuji;
-	int numlevel; // level number
-	/** Boundaries associated **/
+	/* Level Number */
+	int numlevel;
+	/* Top Level Boundary*/
 	TopLevelApplication app;
+	/* Screen view */
 	PlayLevelPanel plp;
+	/* Button view */
 	JLabelIcon button;
+	/* Original filename */
 	String fn;
 
 	/**

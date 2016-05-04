@@ -13,13 +13,15 @@ import java.util.ArrayList;
  *
  */
 public class Kabasuji {
-	// to indicate opening, level select, and level play screens
+	/* to indicate opening, level select, and level play screens */
 	int currentScreen;
+	/** List of Levels */
 	public ArrayList<Level> levels;
+	/* current selected Level */
 	public Level selectedLevel;
 
 	/**
-	 * this constructor starts kabasuji by loading all the levels from levels.data
+	 * This constructor starts kabasuji by loading all the levels from levels.data.
 	 */
 	public Kabasuji() {
 		currentScreen = 1;

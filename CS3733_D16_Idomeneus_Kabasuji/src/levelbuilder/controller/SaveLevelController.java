@@ -22,18 +22,44 @@ import levelbuilder.view.TopLevelApplicationBuilder;
  */
 public class SaveLevelController extends MouseAdapter {
 
-	/** Entity and Boundaries Associated **/
+	/** The builder entity class */
 	Builder builder;
+	
+	/** The top level application */
 	TopLevelApplicationBuilder app;
-	JPanel contentPanel;	
+	
+	/** The JPanel for the boundary class */
+	JPanel contentPanel;
+	
+	/** The button for the saving the level */
 	JLabelIcon button;	
+	
+	/** String image file name */
 	String fn;
+	
+	/** The text field for the end condition i.e the number of moves or time */
 	JTextField ec;
+	
+	/** The type of the level; 1 for Puzzle; 2 for lightning; 3 for release */
 	int type;
+	
+	/** The array to get information about the number of pieces from before if the level
+	 * is being edited.
+	 */
 	int[] numOfPiecesOnLoad;
+	
+	/** Boolean flag variable */
 	boolean valid = true;
 
-
+	/**
+	 * Constructor for this class
+	 * @param builder The builder entity class
+	 * @param app The top level application
+	 * @param button The button for saving
+	 * @param ec The end condition i.e. the number of moves or time
+	 * @param type The type of the level i.e. Puzzle, Lightning or Release
+	 * @param numOfPiecesOnLoad The previous history about the pieces in a level
+	 */
 	public SaveLevelController(Builder builder, TopLevelApplicationBuilder app, JLabelIcon button, JTextField ec, int type, int[]numOfPiecesOnLoad) {
 		this.builder = builder;
 		this.app = app;
@@ -48,6 +74,7 @@ public class SaveLevelController extends MouseAdapter {
 	/**
 	 * Whenever mouse is pressed (left button), attempt to select object. This
 	 * is a GUI controller.
+	 * @param MouseEvent me
 	 */
 	public void mousePressed(MouseEvent me) {
 		// Created ChangeScreenBuilderMove and input desired screen
@@ -126,10 +153,19 @@ public class SaveLevelController extends MouseAdapter {
 			app.setContentPanel(lsp);
 		}
 	}
+	
+	/**
+	 * Whenever mouse is hovered over the object, change the image.
+	 * @param MouseEvent e
+	 */
 	public void mouseEntered(MouseEvent e) {
 		button.setImg("generalhoverbutton.png");
 	}
 
+	/**
+	 * Whenever mouse is exited after hovering on the object, change the image.
+	 * @param MouseEvent e
+	 */
 	public void mouseExited(MouseEvent e) {
 		button.setImg(fn);
 	}

@@ -24,12 +24,15 @@ import misc.MusicPlayer;
  */
 public class GoToLevelSelectController extends MouseAdapter {
 
-	/** Entity and Boundaries Associated **/
+	/* Top Level Model */
 	Kabasuji kabasuji;
-
+	/* Top Level Boundary */
 	TopLevelApplication app;
+	/* Screen view */
 	JPanel contentPanel;
+	/* button view */
 	JLabelIcon button;
+	/* original filename */
 	String fn;
 
 	/**

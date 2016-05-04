@@ -37,21 +37,28 @@ import javax.swing.ImageIcon;
  *
  */
 public class PieceView extends JPanel {
-	// Entities associated
+	
+	/* Piece model */
 	Piece piece;
+	/* 2D Array of tiles */
 	Tile[][] tiles;
 	
-	// Boundaries associated
+	/* Tile views associated */
 	JLabelIcon[] tileview;
 	
-	// GUI positioning variables
+	/* centroid point */
 	Point centroid;
 
+	/* row */
 	int row;
+	/* col */
 	int col;
 
+	/* piece side length pixels */
 	int piecesidelength;
+	/* piece side length scaled pixels */
 	int piecesidescaled;
+	/* offset of piece */
 	int offset;
 
 	/**

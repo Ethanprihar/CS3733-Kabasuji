@@ -41,26 +41,33 @@ import javax.swing.ImageIcon;
  *
  */
 public class BullpenView extends JPanel {
-	// Entities associated
+	/* Top Level Model */
 	Kabasuji kabasuji;
+	/* Bullpen */
 	Bullpen bullpen;
+	/* List of Pieces in bullpen */
 	ArrayList<Piece> pieces;
-
-	// Boundaries associated
+	/* Top Level Boundary */
 	PlayLevelPanel panel;
+	/* Piece view in Bullpen */
 	JLabelIcon[] imgpieces;
+	/* Tiles in Piece */
 	PieceView[] pieceview;
 
-	// array dimension of bullpen for piece fitting/organization
+	/* row */
 	int row;
+	/* col */
 	int col;
 
-	// variables for location calculations
-	int piecesidelength; // minimum size of piece to fill smallest dimension of
-							// bullpen
-	int piecesidescaled; // scaled size to allow slight segmentation
-	int offset; // offset value due to scaling size
+	/* minimum size of piece side to fill smallest dimension of bullpen */
+	int piecesidelength;
+	/* scaled size to allow slight segmentation */
+	int piecesidescaled;
+	/* offset value due to scaling size */
+	int offset;
+	/* offset x */
 	int centeroffsetx;
+	/* offset y */
 	int centeroffsety;
 
 	/**

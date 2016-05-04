@@ -26,9 +26,11 @@ import misc.MusicPlayer;
  */
 public class ExitTestLevelWindowController extends MouseAdapter {
 
-	/** Entity and Boundaries Associated **/
+	/* Exit button view */
 	JLabelIcon button;
+	/* filename */
 	String fn;
+	/* JFrame */
 	JFrame frame;
 
 	/**

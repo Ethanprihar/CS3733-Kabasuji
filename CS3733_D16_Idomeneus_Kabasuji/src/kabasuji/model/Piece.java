@@ -11,9 +11,10 @@ import java.io.Serializable;
  */
 public class Piece implements Serializable
 {
+	/* 2D array of tiles to show piece */
 	Tile[][] tiles;
 	
-	// represents top leftmost existing tile with row bias
+	/* represents top leftmost existing tile with row bias */
 	Point refpnt;
 	
 	/**
