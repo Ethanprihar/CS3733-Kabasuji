@@ -1,14 +1,23 @@
 WPI's CS3733 Software Engineering 
+
 D Term 2016
+
 Final Project - Kabasuji and Level Builder
+
 
 Authors:
 
 Odell Dotson
+
 Breanne Happell
+
 Ethan Prihar
+
 Vishal Rathi
+
 Yu-sen Wu
+
+
 
 Kabasuji User Manual:
 
@@ -154,6 +163,11 @@ Building a Release Level:
   
   A player can add a release tile by selecting a number and color and then left clicking on the destination tile on the board.
 
+
+
+A note to the testers:
+
+In order to show your own built levels (as we provide 15 prebuilt levels), please delete three of the prebuilt levels before you build your own three levels.
 
 
 
