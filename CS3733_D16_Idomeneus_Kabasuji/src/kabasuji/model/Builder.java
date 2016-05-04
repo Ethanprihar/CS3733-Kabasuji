@@ -507,6 +507,7 @@ public class Builder
 				col[(color-1)*6+number-1] = newCol;
 			}
 		}
+		updateHistory();
 		return true;
 	}
 }
