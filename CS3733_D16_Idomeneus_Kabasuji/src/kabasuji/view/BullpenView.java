@@ -47,6 +47,9 @@ public class BullpenView extends JPanel {
 	Bullpen bullpen;
 	/* List of Pieces in bullpen */
 	ArrayList<Piece> pieces;
+	
+	/* List of Stored Pieces */
+	Piece[] piecestored;
 	/* Top Level Boundary */
 	PlayLevelPanel panel;
 	/* Piece view in Bullpen */
@@ -164,18 +167,11 @@ public class BullpenView extends JPanel {
 	public void displayPiece(int i, int j, String pic, boolean random) {
 		// create JLabelIcon to contain piece
 		try {
-			Random r = new Random();
-			int n = 0;
-			if (random) {
-				n = r.nextInt(pieces.size());
-			} else {
-				n = i * row + j;
-			}
 			imgpieces[i * row + j] = new JLabelIcon(pic, piecesidescaled, piecesidescaled);
 			imgpieces[i * row + j].setLocation((int) (piecesidelength * (j) + offset + centeroffsetx),
 					(int) (piecesidelength * (i) + offset + centeroffsety));
 			// get piece and setup the tiles on piece
-			Piece piece = pieces.get(n);
+			Piece piece = pieces.get(i * row + j);
 			pieceview[i * row + j] = new PieceView(piece);
 			pieceview[i * row + j].setBounds(0, 0, piecesidescaled, piecesidescaled);
 			pieceview[i * row + j].setupPiece();
@@ -184,7 +180,7 @@ public class BullpenView extends JPanel {
 			add(imgpieces[i * row + j]);
 			// attach Controllers
 			imgpieces[i * row + j].addMouseListener(
-					new SelectPieceBullpenController(kabasuji, panel, imgpieces[i * row + j], n));
+					new SelectPieceBullpenController(kabasuji, panel, imgpieces[i * row + j], i * row + j));
 			imgpieces[i * row + j].addMouseListener(new BullpenController(kabasuji,panel));
 		} catch (IndexOutOfBoundsException e) {
 			System.out.println("Out of bounds!!");

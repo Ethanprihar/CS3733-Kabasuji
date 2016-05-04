@@ -85,10 +85,6 @@ public class SelectLevelController extends MouseAdapter {
 
 			int row = 4;
 			int col = (int) (kabasuji.selectedLevel.getBullpen().getPieces().size() + 3) / 4;
-			if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
-				row = 1;
-				col = 5;
-			}
 			// create components of panel and pass model and container panel
 			BullpenView bpv = new BullpenView(kabasuji, plp, row, col);
 			BoardView bv = new BoardView(kabasuji, plp);

@@ -1,7 +1,10 @@
 package kabasuji.model;
 
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * This class is the model class for the bullpen. It contains all the logic for the bullpen like adding or
@@ -16,12 +19,27 @@ public class Bullpen implements Serializable{
 	
 	/** The selected piece in the bullpen */
 	Piece selectedPiece;
+	
+	/* pieces array */
+	Piece[] piecestored;
 
 	/**
 	 * The constructor for the Bullpen class
 	 */
 	public Bullpen() {
 		pieces = new ArrayList<Piece>();
+		piecestored = new Piece[35];
+		try
+		{
+			FileInputStream saveFile = new FileInputStream("pieces.data");
+			ObjectInputStream save = new ObjectInputStream(saveFile);
+			piecestored = (Piece[]) save.readObject();
+			save.close();
+		}
+		catch (Exception exc)
+		{
+			System.out.println("No pieces were found");
+		}
 	}
 	
 	/**
@@ -52,6 +70,11 @@ public class Bullpen implements Serializable{
 	 */
 	public void removePiece(Piece piece) {
 		pieces.remove(piece);
+	}
+	public void replacePieceRand(int index){
+		Random rand = new Random();
+		int n = rand.nextInt(piecestored.length);
+		pieces.set(index, piecestored[n].copy());
 	}
 
 	/**

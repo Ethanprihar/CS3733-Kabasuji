@@ -78,10 +78,7 @@ public class ResetLevelController extends MouseAdapter {
 
 		int row = 4;
 		int col = (int) (kabasuji.selectedLevel.getBullpen().getPieces().size() + 3) / 4;
-		if (kabasuji.getSelectedLevel() instanceof LightningLevel) {
-			row = 1;
-			col = 5;
-		}
+
 		// Create PlayLevelPanel screen object and update boundary to
 		// reflect *** GUI CHANGES ***
 

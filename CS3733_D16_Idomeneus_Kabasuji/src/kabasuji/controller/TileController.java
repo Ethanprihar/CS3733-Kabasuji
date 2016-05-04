@@ -108,8 +108,14 @@ public class TileController extends MouseAdapter {
 					board.addPiece(selectedPiece, selfTile);
 					new MusicPlayer("success.wav").setVolume(-25);
 					displayHoverPiece("bluenightbutton.png", true, false);
+					
 					bullpen.selectPiece(null);
+					int numreplace = bullpen.getPieces().indexOf(selectedPiece);
+					if(currentlevel instanceof LightningLevel){
+						bullpen.replacePieceRand(numreplace);
+					} else{
 					bullpen.removePiece(selectedPiece);
+					}
 					bullpenview.setupBullpen();
 					panel.getZoomPanel().removeAll();
 
