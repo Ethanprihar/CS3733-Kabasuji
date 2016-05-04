@@ -12,26 +12,46 @@ import levelbuilder.view.BuilderBoardView;
 import levelbuilder.view.TopLevelApplicationBuilder;
 
 /**
- * Controller for saving a level; saves level then goes To BuilderMainMenu Screen (Panel)
+ * Controller for undoing the moves in the level. Clicking on the undo button will undo all the moves.
  * 
- * When the button is pressed to attempt to save the level and go to the next screen, the model
- * will update what screen it is on and the gui will reflect the changes
+ * The gui will reflect the changes.
  * 
  *@author Ethan Prihar
  *
  */
 public class UndoController extends MouseAdapter {
 
-	/** Entity and Boundaries Associated **/
+	/** The builder entity class */
 	Builder builder;
+	
+	/** The top level application */
 	TopLevelApplicationBuilder app;
+	
+	/** The JPanel for the boundary class */
 	JPanel contentPanel;	
-	JLabelIcon button;	
+	
+	/** The button for the undo */
+	JLabelIcon button;
+	
+	/** String image file name */
 	String fn;
+	
+	/** The array of pieces in the builder bullpen */
 	JLabel[][] pieces;
+	
+	/** The builder board view */
 	BuilderBoardView board;
 
-
+	/**
+	 * Constructor for the class
+	 * @param builder The builder entity class
+	 * @param app The top level application
+	 * @param button The button for the undo
+	 * @param piece1 The first row of pieces in the bullpen
+	 * @param piece2 The second row of pieces in the bullpen
+	 * @param piece3 The third row of pieces in the bullpen
+	 * @param b The board
+	 */
 	public UndoController(Builder builder, TopLevelApplicationBuilder app, JLabelIcon button, JLabel[] piece1, JLabel[] piece2, JLabel[] piece3, BuilderBoardView b) {
 		this.builder = builder;
 		this.app = app;
@@ -46,8 +66,9 @@ public class UndoController extends MouseAdapter {
 	}
 
 	/**
-	 * Whenever mouse is pressed (left button), attempt to select object. This
+	 * Whenever mouse is pressed (left button or right button), attempt to select object. This
 	 * is a GUI controller.
+	 * @param MouseEvent me
 	 */
 	public void mousePressed(MouseEvent me) {
 		// Created ChangeScreenBuilderMove and input desired screen
@@ -72,10 +93,19 @@ public class UndoController extends MouseAdapter {
 			//exc.printStackTrace(); // If there was an error, print the info.
 		}
 	}
+	
+	/**
+	 * Whenever mouse is hovered over the object, change the image.
+	 * @param MouseEvent e
+	 */
 	public void mouseEntered(MouseEvent e) {
 		button.setImg("generalhoverbutton.png");
 	}
 
+	/**
+	 * Whenever mouse is exited after hovering on the object, change the image.
+	 * @param MouseEvent e
+	 */
 	public void mouseExited(MouseEvent e) {
 		button.setImg(fn);
 	}
