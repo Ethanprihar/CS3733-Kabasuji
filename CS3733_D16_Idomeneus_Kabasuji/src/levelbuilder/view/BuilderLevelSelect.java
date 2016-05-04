@@ -4,7 +4,6 @@ import javax.swing.JPanel;
 import kabasuji.model.Builder;
 import kabasuji.model.Screen;
 import kabasuji.view.JLabelIcon;
-import levelbuilder.controller.LoadLevelsBuilderController;
 import levelbuilder.controller.SelectLevelBuilderController;
 import levelbuilder.controller.GoToMainMenuBuilderController;
 
@@ -14,22 +13,29 @@ import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class BuilderLevelSelect extends JPanel {
+	/**The builder*/
 	Builder builder;
+	/**The top level application*/
 	TopLevelApplicationBuilder app;
 
-	/**
-	 * Create the Main Menu Panel.
-	 */
 
 	/** Level Button GUI elements **/
 	JLabelIcon[] levelselectbtn;
+	/**The button labels*/
 	JLabel[] buttonlbl;
+	/**main menu button*/
 	JLabelIcon mainmenubtn;
 
-	/** dimensions of level button array **/
+	/** dimensions of level button array */
 	int row;
+	/**column dimension of level button array */
 	int col;
 
+	/**
+	 * Builds a builder level select for viewing.
+	 * @param builder the builer to get the levels for
+	 * @param app the application to get levels from 
+	 */
 	public BuilderLevelSelect(Builder builder, TopLevelApplicationBuilder app) {
 		
 		this.builder = builder;
@@ -93,10 +99,19 @@ public class BuilderLevelSelect extends JPanel {
 		background.add(mainmenubtn);
 	}
 	
+	/**
+	 * gets the main menu button
+	 * @return main menu button
+	 */
 	public JLabelIcon getMainMenuButton() {
 		return mainmenubtn;
 	}
 	
+	/**
+	 * Gets the level select button
+	 * @param i Level to select button of
+	 * @return the level selected button
+	 */
 	public JLabelIcon getLevelSelectButton(int i) {
 		if((i >= 0) && (i < builder.getLevels().size())) {
 			return levelselectbtn[i];

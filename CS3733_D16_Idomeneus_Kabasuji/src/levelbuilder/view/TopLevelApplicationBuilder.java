@@ -4,15 +4,8 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
 import kabasuji.model.Builder;
 import kabasuji.model.Screen;
-import kabasuji.view.MainMenu;
-import kabasuji.view.TopLevelApplication;
-
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import java.awt.Dimension;
 /**
  * this class is the top level application panel for the builder, all other panels
@@ -20,9 +13,12 @@ import java.awt.Dimension;
  * @author V & J
  *
  */
+@SuppressWarnings("serial")
 public class TopLevelApplicationBuilder extends JFrame {
 
+	/** The builder that is being used in the top level application. */
 	public Builder builder;
+	/** The content pane that the top level application displays. */
 	public JPanel contentPane;
 	/**
 	 * constructor for the frame.

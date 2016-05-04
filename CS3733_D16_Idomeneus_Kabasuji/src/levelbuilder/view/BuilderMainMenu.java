@@ -12,17 +12,21 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+@SuppressWarnings("serial")
 public class BuilderMainMenu extends JPanel {
+	/** The builder*/
 	Builder builder;
+	/** Top level application */
 	TopLevelApplicationBuilder app;
 	
-	// Create an array of JLabelIcon for the buttons
+	/** an array of JLabelIcon for the buttons */
 	JLabelIcon[] buildermainbtn = new JLabelIcon[2];
 
 	/**
-	 * Create the Main Menu Panel.
+	 * Creates the builder main menu
+	 * @param builder The builder class to get data from
+	 * @param app The application at top level
 	 */
-
 	public BuilderMainMenu(Builder builder, TopLevelApplicationBuilder app) {
 		
 		this.builder = builder;
@@ -62,10 +66,18 @@ public class BuilderMainMenu extends JPanel {
 		buildermainbtn[1].addMouseListener(new LoadLevelsBuilderController(builder, app, buildermainbtn[1]));
 	}
 	
+	/**
+	 * Gets the builder button
+	 * @return the builder button
+	 */
 	public JLabelIcon getBuildButton() {
 		return buildermainbtn[0];
 	}
 	
+	/**
+	 * Gets the load button
+	 * @return rthe load button.
+	 */
 	public JLabelIcon getLoadButton() {
 		return buildermainbtn[1];
 	}

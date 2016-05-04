@@ -13,17 +13,24 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+@SuppressWarnings("serial")
 public class BuilderLevelMode extends JPanel {
+	/**the builder*/
 	Builder builder;
+	/**the top level application*/
 	TopLevelApplicationBuilder app;
+	/**the main menu button*/
 	JLabelIcon mainmenubtn;
+	/**the builder level main menu button*/
 	JLabelIcon[] buildermainbtn;
+	/**the board dimension text field*/
 	JTextField boardDimensions;
 
 	/**
-	 * Create the Main Menu Panel.
+	 * Constructs a screen for selecting level mode.
+	 * @param builder builder to get levels from
+	 * @param app top level applicaton to get levels from
 	 */
-
 	public BuilderLevelMode(Builder builder, TopLevelApplicationBuilder app) {
 		
 		this.builder = builder;
@@ -81,27 +88,46 @@ public class BuilderLevelMode extends JPanel {
 		mainmenubtn.addMouseListener(new GoToMainMenuBuilderController(builder, app, mainmenubtn));
 		background.add(mainmenubtn);
 	}	
-	
+	/**
+	 * gets the main menu button
+	 * @return miain menu button
+	 */
 	public JLabelIcon getMainMenuButton() {
 		return mainmenubtn;
 	}
-	
+	/**
+	 * get puzzle button
+	 * @return puzzle button
+	 */
 	public JLabelIcon getPuzzleButton() {
 		return buildermainbtn[0];
 	}
-	
+	/**
+	 * get lightning level button
+	 * @return ightnign level button
+	 */
 	public JLabelIcon getLightningButton() {
 		return buildermainbtn[1];
 	}
-	
+	/**
+	 * get release button
+	 * @return release button
+	 */
 	public JLabelIcon getReleaseButton() {
 		return buildermainbtn[2];
 	}
-	
+	/**
+	 * get the board dimensions text box
+	 * @return board dimsenions
+	 */
 	public JTextField getBoardDimensionsTextBox() {
 		return boardDimensions;
 	}
 	
+	/**
+	 * set the board dimensions
+	 * @param s value to set board dimensions i and j to
+	 */
 	public void setBoardDimensionsTextBox(String s) {
 		boardDimensions.setText(s);
 	}

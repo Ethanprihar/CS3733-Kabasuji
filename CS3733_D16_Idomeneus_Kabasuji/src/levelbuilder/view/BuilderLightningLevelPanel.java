@@ -2,10 +2,8 @@ package levelbuilder.view;
 
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 import kabasuji.model.Builder;
 import kabasuji.model.LightningBoard;
-import kabasuji.model.PuzzleBoard;
 import kabasuji.model.Screen;
 import kabasuji.model.Tile;
 import kabasuji.view.JLabelIcon;
@@ -21,23 +19,40 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+@SuppressWarnings("serial")
 public class BuilderLightningLevelPanel extends JPanel {
+	/**The buidler*/
 	Builder builder;
+	/**Top level application*/
 	TopLevelApplicationBuilder app;
+	/**the board dimensions*/
 	JTextField boardDimensions;
+	/**the number of pieces on loading*/
 	int[] numOfPiecesOnLoad = new int[35];
+	/**main menu button*/
 	JLabelIcon mainmenubtn;
+	/**save button*/
 	JLabelIcon saveBtn;
+	/**delete button*/
 	JLabelIcon deleteBtn;
+	/**undo button*/
 	JLabelIcon undoBtn;
+	/**redo buttom*/
 	JLabelIcon redoBtn;
+	/**test button*/
 	JLabelIcon testBtn;
+	/**time set field*/
 	JTextField timeSet;
+	/**piece labels*/
 	JLabel[] piece1Lbl;
+	/**piece buttons for incrementing*/
 	JLabelIcon[] piece;
 	
 	/**
-	 * Create the panel.
+	 * Creates the lightning level builder panel
+	 * @param builder the builder that the panel belogs to
+	 * @param app the top level application that the panel belongs with
+	 * @param boardDimensions the dimensions of the board
 	 */
 	public BuilderLightningLevelPanel(Builder builder, TopLevelApplicationBuilder app, JTextField boardDimensions) {
 		this.builder = builder;
@@ -220,43 +235,75 @@ public class BuilderLightningLevelPanel extends JPanel {
 				new GoToMainMenuBuilderController(builder, app,mainmenubtn));
 		background.add(mainmenubtn);
 	}
-	
+	/**
+	 * Gets the main menu button
+	 * @return main menu button
+	 */
 	public JLabelIcon getMainMenuButton() {
 		return mainmenubtn;
 	}
-	
+	/**
+	 * Get the save button
+	 * @return return the save button
+	 */
 	public JLabelIcon getSaveButton() {
 		return saveBtn;
 	}
-	
+	/**
+	 * get the delete button
+	 * @return the delete button
+	 */
 	public JLabelIcon getDeleteButton() {
 		return deleteBtn;
 	}
-	
+	/**
+	 * get the undo  button
+	 * @return undo button
+	 */
 	public JLabelIcon getUndoButton() {
 		return undoBtn;
 	}
-	
+	/**
+	 * get redo button
+	 * @return redo button
+	 */
 	public JLabelIcon getRedoButton() {
 		return redoBtn;
 	}
-	
+	/**
+	 * get test button
+	 * @return test button
+	 */
 	public JLabelIcon getTestButton() {
 		return testBtn;
 	}
-	
+	/**
+	 * set the time limit
+	 * @param t Time to set for the leve
+	 */
 	public void setTime(String t) {
 		timeSet.setText(t);
 	}
-	
+	/**
+	 * get the time
+	 * @return the time limit value
+	 */
 	public String getTime() {
 		return timeSet.getText();
 	}
-	
+	/**
+	 * get the first row of pieces
+	 * @return pieces' numbers
+	 */
 	public JLabelIcon[] getFirstRowPieces() {
 		return piece;
 	}
 	
+	/**
+	 * get the number of the pieces at the given index
+	 * @param index the numeber of the piece to get the value of
+	 * @return returns the number of pieces index
+	 */
 	public String getNumPieces(int index) {
 		return piece1Lbl[index].getText();
 	}

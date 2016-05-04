@@ -1,8 +1,6 @@
 package levelbuilder.controller.moves;
 
 import kabasuji.model.Builder;
-import kabasuji.model.Kabasuji;
-import kabasuji.model.Screen;
 
 /**
  * Move class to move to different screens by passing in the screen number
@@ -13,7 +11,7 @@ import kabasuji.model.Screen;
 
 public class ChangeScreenBuilderMove extends BuilderMove{
 	
-	// target screen represented as integer
+	/**target screen represented as integer*/
 	int newScreen;
 	
 	/**

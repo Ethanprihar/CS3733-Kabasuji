@@ -10,32 +10,48 @@ import kabasuji.view.JLabelIcon;
 
 import java.awt.Container;
 
+@SuppressWarnings("serial")
 public class BuilderBoardView extends JPanel {
-	// the associated board
+	/**board to select*/
 	Board board;
+	/**builder to get view data from*/
 	Builder builder;
+	/**application to get data from*/
 	TopLevelApplicationBuilder app;
-	// the JPanel that contains it
+	/**the JPanel that contains it*/
 	Container panel;
+	/**the type of the view.*/
 	int type;
 
+	/**tiles of the board*/
 	Tile[][] tiles;
 
+	/**row dimension*/
 	int row;
+	/**column dimension*/
 	int col;
-	
+
+	/**tile labels*/
 	JLabelIcon[] tile;
 
+	/**square matrix length*/
 	int sqmatrixlength;
+	/**tile side length*/
 	int tilesidelength;
+	/***tile side scaled*/
 	int tilesidescaled;
 
+	/**the scaling offset*/
 	int offset;
 
 	/**
-	 * Create the Main Menu Panel.
+	 * Builds a board view.
+	 * @param board Board to build viewer from
+	 * @param panel the panel to display to
+	 * @param builder The buidder for data
+	 * @param app the top level applicaiton
+	 * @param type the type of the level.
 	 */
-
 	public BuilderBoardView(Board board, Container panel, Builder builder, TopLevelApplicationBuilder app, int type) {
 		this.board = board;
 		this.panel = panel;
@@ -68,9 +84,12 @@ public class BuilderBoardView extends JPanel {
 
 	}
 	
-	// display the tiles on the container panel and scales them to fit
-	// row/col
-	// includes centering as well
+
+	/**
+	 * 	display the tiles on the container panel and scales them to fit
+	 * in row/col
+	 * includes centering as well
+	 */
 	public void updateBoard(){
 		
 		board = builder.getSelectedLevel().getBoard();
@@ -99,6 +118,13 @@ public class BuilderBoardView extends JPanel {
 		}
 		panel.repaint();
 	}
+	
+	/**
+	 * Displays a tile.
+	 * @param i i location of tile
+	 * @param j j location of tile
+	 * @param pic The icon to be displayed. (file name.)
+	 */
 	public void displayTile(int i,int j, String pic){
 		tile[i * row + j] = new JLabelIcon(pic, tilesidescaled, tilesidescaled);
 		tile[i * row + j].setLocation((int) (tilesidelength * (j+1 + (sqmatrixlength - row) / 2)) + offset,
@@ -107,6 +133,10 @@ public class BuilderBoardView extends JPanel {
 		panel.add(tile[i * row + j]);
 	}
 	
+	/**
+	 * Sets the tiles in the viewer.
+	 * @param t Tiles to set.
+	 */
 	public void setTiles(Tile[][] t)
 	{
 		tiles = t;

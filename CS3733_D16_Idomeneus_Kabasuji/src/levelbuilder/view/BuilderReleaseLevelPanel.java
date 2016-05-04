@@ -36,28 +36,45 @@ public class BuilderReleaseLevelPanel extends JPanel {
 	JTextField boardDimensions;
 	int[] numOfPiecesOnLoad = new int[35];
 	
+	/** Main menu button.*/
 	JLabelIcon mainmenubtn;
+	/** Save button.*/
 	JLabelIcon saveBtn;
+	/** Delete level button.*/
 	JLabelIcon deleteBtn;
+	/** Undo button.*/
 	JLabelIcon undoBtn;
+	/** Redo button.*/
 	JLabelIcon redoBtn;
+	/** Test button.*/
 	JLabelIcon testBtn;
-	
+	/** Color 1 button.*/
 	JLabelIcon colorBtn1;
+	/** Color 2 button.*/
 	JLabelIcon colorBtn2;
+	/** Color 3 button.*/
 	JLabelIcon colorBtn3;
+	/** Clearing color and number button.*/
 	JLabelIcon colorClearBtn;
+	/** Randomize release level button button.*/
 	JLabelIcon randomizeReleaseBtn;
-	
+	/** Number 1 button.*/
 	JLabelIcon numBtn1;
+	/** Number 2 button.*/
 	JLabelIcon numBtn2;
+	/** Number 3 button.*/
 	JLabelIcon numBtn3;
+	/** Number 4 button.*/
 	JLabelIcon numBtn4;
+	/** Number 5 button.*/
 	JLabelIcon numBtn5;
+	/** Number 6 button.*/
 	JLabelIcon numBtn6;
-	
+	/** Bullpen piece labels. button.*/
 	JLabel[] piece1Lbl;
+	/** Piece addition button.*/
 	JLabelIcon[] piece;
+	/** Number of moves text field.*/
 	JTextField numMoves;
 	
 	BuilderReleaseBoardView boardview;

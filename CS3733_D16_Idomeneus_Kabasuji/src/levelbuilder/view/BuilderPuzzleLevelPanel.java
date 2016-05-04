@@ -22,22 +22,39 @@ import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class BuilderPuzzleLevelPanel extends JPanel {
+	/** Builder to pass */
 	Builder builder;
+	/** Top level application */
 	TopLevelApplicationBuilder app;
+	/** board dimensions */
 	JTextField boardDimensions;
+	/** number of copies of pieces on load */
 	int[] numOfPiecesOnLoad = new int[35];
+	/** Main menu button */
 	JLabelIcon mainmenubtn;
+	/** save button */
 	JLabelIcon saveBtn;
+	/** delete button */
 	JLabelIcon deleteBtn;
+	/** undo button */
 	JLabelIcon undoBtn;
+	/** redo button */
 	JLabelIcon redoBtn;
+	/** test button */
 	JLabelIcon testBtn;
+	/** number of moves text field */
 	JTextField numMoves;
+	/** piece labels */
 	JLabelIcon[] piece;
+	/** piece buttons */
 	JLabel[] piece1Lbl;
 
+
 	/**
-	 * Create the panel.
+	 * Creates the puzzle level panel.
+	 * @param builder The builder the puzzl belongs with
+	 * @param app Top level application.
+	 * @param boardDimensions Board dimensions that are used.
 	 */
 	public BuilderPuzzleLevelPanel(Builder builder, TopLevelApplicationBuilder app, JTextField boardDimensions) {
 		this.builder = builder;
@@ -220,42 +237,77 @@ public class BuilderPuzzleLevelPanel extends JPanel {
 		background.add(mainmenubtn);
 	}
 	
+	/**
+	 * gets main menu button
+	 * @return main menu button jlabelicon.
+	 */
 	public JLabelIcon getMainMenuButton() {
 		return mainmenubtn;
 	}
 	
+	/**
+	 * gets save button
+	 * @return save button jlabelicon.
+	 */
 	public JLabelIcon getSaveButton() {
 		return saveBtn;
 	}
-	
+	/**
+	 * gets delete button
+	 * @return delete button jlabelicon.
+	 */
 	public JLabelIcon getDeleteButton() {
 		return deleteBtn;
 	}
-	
+	/**
+	 * gets undo button
+	 * @return undo button jlabelicon.
+	 */
 	public JLabelIcon getUndoButton() {
 		return undoBtn;
 	}
-	
+	/**
+	 * gets redo button
+	 * @return redo  button jlabelicon.
+	 */
 	public JLabelIcon getRedoButton() {
 		return redoBtn;
 	}
 	
+	/**
+	 * gets test button
+	 * @return test  button jlabelicon.
+	 */
 	public JLabelIcon getTestButton() {
 		return testBtn;
 	}
 	
+	/**
+	 * Sets the number of moves in the builder
+	 * @param s Number of moves to set the displayer to.
+	 */
 	public void setNumMoves(String s) {
 		numMoves.setText(s);
 	}
-	
+	/**
+	 * gets number of pieces
+	 * @param index the number of the piece you want the number of pieces of
+	 * @return number of that piece at index
+	 */
 	public String getNumPieces(int index) {
 		return piece1Lbl[index].getText();
 	}
-	
+	/**
+	 * Gets the number of straight pieces. (why does this exist'?)
+	 * @return number of straight pieces
+	 */
 	public String getNumStrightPieces() {
 		return piece1Lbl[6].getText();
 	}
-	
+	/**
+	 * Get the first row pieces.
+	 * @return returns the first row of pieces values
+	 */
 	public JLabelIcon[] getFirstRowPieces() {
 		return piece;
 	}

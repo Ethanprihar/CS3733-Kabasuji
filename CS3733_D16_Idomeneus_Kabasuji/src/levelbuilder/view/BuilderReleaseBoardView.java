@@ -6,38 +6,53 @@ import kabasuji.model.Builder;
 import kabasuji.model.Tile;
 import kabasuji.view.JLabelIcon;
 
-import java.awt.Container;
 
 @SuppressWarnings("serial")
 public class BuilderReleaseBoardView extends BuilderBoardView {
-	// the associated board
+
+	/** The board.*/
 	Board board;
+	/** High level builder class*/
 	Builder builder;
+	/** The application.*/
 	TopLevelApplicationBuilder app;
-	// the JPanel that contains it
+	/** JLabel that contains it.*/
 	JLabelIcon panel;
-
+	
+	/** The tiles in the board */
 	Tile[][] tiles;
-
+	/** Number of rows */
 	int row;
+	/** Number of columns */
 	int col;
 	
+	/** Labels for the tiles */
 	JLabelIcon[] tile;
 
+	/** Square matrix length */
 	int sqmatrixlength;
+	/** Side side length */
 	int tilesidelength;
+	/** Tile side length, scaled. */
 	int tilesidescaled;
 
+	/** Scaling offset */
 	int offset;
-	
-	int clickMode = 0; //clickMode 0 does hint/invalidate,  clickMode 1 places release tiles.
+
+	/** clickMode 0 does hint/invalidate,  clickMode 1 places release tiles. */
+	int clickMode = 0; 
+	/** Which number to add */
 	int numToAdd = 1;
+	/** Which color to add */
 	int colorToAdd = 1;
 
 	/**
-	 * Create the Main Menu Panel.
+	 * Constructs a release board view.
+	 * @param board The board for the viewer to display
+	 * @param panel The display panel to display
+	 * @param builder The builder to retreive info from
+	 * @param app the high level application
 	 */
-
 	public BuilderReleaseBoardView(Board board, JLabelIcon panel, Builder builder, TopLevelApplicationBuilder app) {
 		super(board, panel, builder, app, 2);
 		System.out.println("Initializing the builder release board view.");
@@ -71,15 +86,13 @@ public class BuilderReleaseBoardView extends BuilderBoardView {
 		updateBoard();
 	}
 	
-	// display the tiles on the container panel and scales them to fit
-	// row/col
-	// includes centering as well
+	
+	/**
+	 * display the tiles on the container panel and scales them to fit
+	 * row/col
+	 * includes centering as well
+	 */
 	public void updateBoard(){
-		System.out.println("Attempting to update board.");
-		System.out.println("Value of col:" + col);
-		
-//		board = builder.getSelectedLevel().getBoard();
-//		tiles = board.getTiles();
 		try{
 			panel.removeAll();
 			for (int i = 0; i < col-2; i++) {
@@ -164,6 +177,14 @@ public class BuilderReleaseBoardView extends BuilderBoardView {
 			System.out.println("Null pointer caught, update function called before constructor.");
 		}
 	}
+	
+	
+	/**
+	 * Displays a tile.
+	 * @param i i location of tile
+	 * @param j j location of tile
+	 * @param pic The icon to be displayed. (file name.)
+	 */
 	public void displayTile(int i,int j, String pic){
 		tile[i * row + j] = new JLabelIcon(pic, tilesidescaled, tilesidescaled);
 		tile[i * row + j].setLocation((int) (tilesidelength * (j+1 + (sqmatrixlength - row) / 2)) + offset,
@@ -172,22 +193,42 @@ public class BuilderReleaseBoardView extends BuilderBoardView {
 		panel.add(tile[i * row + j]);
 	}
 
+	/**
+	 * Sets edit mode to the given number.
+	 * @param number Number to set edit mode to.
+	 */
 	public void setEditMode(int number) {
 		clickMode = number;
 	}
 
+	 /**
+	  * Returns the edit mode of the current release level.
+	  * @return
+	  */
 	public int getEditMode() {
 		return clickMode;
 	}
 
+	/**
+	 * Returns the number value of the currently selected color. 
+	 * @return
+	 */
 	public int getColor() {
 		return colorToAdd;
 	}
 
+	/**
+	 * Returns the number value selected to add release values.
+	 * @return
+	 */
 	public int getNumber() {
 		return numToAdd;
 	}
 
+	/**
+	 * Sets number for editing
+	 * @param number Number to add
+	 */
 	public void setNumber(int number) {
 		numToAdd = number;
 	}
@@ -195,11 +236,19 @@ public class BuilderReleaseBoardView extends BuilderBoardView {
 		colorToAdd = color;
 	}
 	
+	/**
+	 * Sets the tiles in the viewer.
+	 * @param t Tiles to set.
+	 */
 	public void setTiles(Tile[][] t)
 	{
 		tiles = t;
 	}
 	
+	/**
+	 * Returns the label icons for the tiles in the board.
+	 * @return JLabelIcon array for tiles.
+	 */
 	public JLabelIcon[] getTiles() {
 		return tile;
 	}
