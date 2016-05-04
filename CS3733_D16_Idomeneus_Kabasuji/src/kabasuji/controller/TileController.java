@@ -168,6 +168,7 @@ public class TileController extends MouseAdapter {
 				if (board.getSelectedPiece() == null && bullpen.getSelectedPiece() == null) {
 					board.selectPiece(selfTile.getPiece());
 					boardSelectPiece(selfTile.getPiece());
+					displayHoverPiece("square3.png", false, false);
 					zoompanel.removeAll();
 					zoompanel.displayPieceView(selfTile.getPiece());
 				}
